@@ -442,6 +442,7 @@
 | `survey_refs.py` / `survey_tools_layout.py` | 本次的引用测量 / 布局测绘工具 | 留在 `tools/` 便于以固定命令复现；两者都已改为**递归**遍历新布局 |
 | `_root.py` / `_root.js` | 统一的项目根定位（Python / JS 同一判据：向上找 `MANIFEST.sha256`） | 迁移后所有子目录脚本共用，见 §5 |
 | `check_architecture.py` | 三条硬契约的守卫 | 只读不写产物；命令固定在 `python tools/check_architecture.py` |
+| `backup_archive.py` | 把 **git 保护不到的东西**备份到另一块盘（默认 `D:\emohealth-backup`）并**逐文件 sha256 双向校验**：`archive/**`（有意不入版本控制的那 755 MB 证据底本）+ 工程树含 `.git`。`--only archive\|repo`、`--verify-only`。只有 0 差异才返回 0——非 0 意味着**这份备份不能信**。 | 跨层运维脚本，不属于任一层；与 `_root.py` 同属基础设施。存在理由见 `.gitignore` 第 36 行附近：**git 只能检出 archive 被改、不能还原**，所以必须有独立物理副本 |
 
 
 ---
