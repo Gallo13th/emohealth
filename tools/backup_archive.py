@@ -64,6 +64,12 @@ from _root import find_root, force_utf8_io  # noqa: E402
 #: 可再生的目录，一律不进副本。`.git` **不在**此列——它是 repo payload 的核心。
 SKIP_DIRS = {".shots", ".tmp", "__pycache__", "vendor"}
 
+#: 本地凭据与抓取缓存，**有意不备份**。
+#: 备份的职责是保住"内容"；密钥不是内容，把一个密钥复制到第二处只会扩大暴露面，
+#: 却保护不了任何东西（它随时可以在知乎开发者后台重新生成）。`.gitignore` 已把这三个
+#: 声明为"不是项目资产"，备份跟着同一条口径走。
+SKIP_FILES = {".zhihu_key", ".zhihu_docs.json", ".zhihu_zhihu_search.json"}
+
 #: 默认备份目标。放 D 盘：C 盘是同盘，同盘备份挡不住盘挂。
 DEFAULT_DEST = r"D:\emohealth-backup"
 
@@ -108,6 +114,8 @@ def collect_repo_files(base: str):
             keep.append(d)
         dirs[:] = keep
         for name in files:
+            if name in SKIP_FILES:
+                continue
             full = os.path.join(cur, name)
             yield os.path.relpath(full, base).replace(os.sep, "/"), full
 
@@ -159,6 +167,8 @@ def verify_payload(label: str, pairs, dst_base: str):
         for cur, dirs, files in os.walk(dst_base):
             dirs[:] = [d for d in dirs if d not in SKIP_DIRS]
             for name in files:
+                if name in SKIP_FILES:
+                    continue
                 rel = os.path.relpath(os.path.join(cur, name), dst_base).replace(os.sep, "/")
                 if rel not in src_rels:
                     problems.append(f"多余（副本里有、源里没有）：{rel}")
