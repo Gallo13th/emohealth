@@ -1,0 +1,3455 @@
+{
+ "source": "Johnson (2005) 网络样本，N=20,993（完整作答 7325 条）",
+ "question": "一个 facet 只答 k 题时，与完整 10 题总分有多一致？",
+ "method": "枚举每个 facet 的全部 C(10,k) 子集，逐一与完整总分求相关",
+ "key_metric": "r_min（最差子集）——交互设计决定了用户会走到的子集，最差情况才是要靠设计避免的",
+ "per_facet": {
+  "anxiety": {
+   "alpha_full": 0.83,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.6791,
+     "r_min": 0.5547,
+     "r_max": 0.7843,
+     "r_p05": 0.583,
+     "alpha_mean": null,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.8125,
+     "r_min": 0.7314,
+     "r_max": 0.8623,
+     "r_p05": 0.7556,
+     "alpha_mean": 0.5696,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8775,
+     "r_min": 0.8267,
+     "r_max": 0.9114,
+     "r_p05": 0.8432,
+     "alpha_mean": 0.6657,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 100
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.9162,
+     "r_min": 0.8823,
+     "r_max": 0.9425,
+     "r_p05": 0.8953,
+     "alpha_mean": 0.727,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 200
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9419,
+     "r_min": 0.9189,
+     "r_max": 0.9593,
+     "r_p05": 0.9283,
+     "alpha_mean": 0.7694,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 250
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9602,
+     "r_min": 0.9481,
+     "r_max": 0.9715,
+     "r_p05": 0.9524,
+     "alpha_mean": 0.8004,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 200
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9739,
+     "r_min": 0.9666,
+     "r_max": 0.9804,
+     "r_p05": 0.9687,
+     "alpha_mean": 0.8241,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 120
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9845,
+     "r_min": 0.9803,
+     "r_max": 0.9887,
+     "r_p05": 0.9819,
+     "alpha_mean": 0.8428,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 45
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.993,
+     "r_min": 0.9915,
+     "r_max": 0.9946,
+     "r_p05": 0.9917,
+     "alpha_mean": 0.8579,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 10
+    }
+   }
+  },
+  "friendliness": {
+   "alpha_full": 0.87,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.7121,
+     "r_min": 0.4965,
+     "r_max": 0.7995,
+     "r_p05": 0.5466,
+     "alpha_mean": null,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.8379,
+     "r_min": 0.6677,
+     "r_max": 0.8888,
+     "r_p05": 0.771,
+     "alpha_mean": 0.6159,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8961,
+     "r_min": 0.8138,
+     "r_max": 0.9323,
+     "r_p05": 0.8421,
+     "alpha_mean": 0.7082,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 100
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.9298,
+     "r_min": 0.8808,
+     "r_max": 0.9522,
+     "r_p05": 0.9019,
+     "alpha_mean": 0.7652,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 200
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9517,
+     "r_min": 0.9144,
+     "r_max": 0.965,
+     "r_p05": 0.9337,
+     "alpha_mean": 0.8037,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 250
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9671,
+     "r_min": 0.9445,
+     "r_max": 0.9774,
+     "r_p05": 0.9554,
+     "alpha_mean": 0.8314,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 200
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9785,
+     "r_min": 0.9635,
+     "r_max": 0.9853,
+     "r_p05": 0.9688,
+     "alpha_mean": 0.8523,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 120
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9873,
+     "r_min": 0.9776,
+     "r_max": 0.9908,
+     "r_p05": 0.9832,
+     "alpha_mean": 0.8686,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 45
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9943,
+     "r_min": 0.9909,
+     "r_max": 0.9959,
+     "r_p05": 0.9921,
+     "alpha_mean": 0.8817,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 10
+    }
+   }
+  },
+  "imagination": {
+   "alpha_full": 0.83,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.6591,
+     "r_min": 0.4896,
+     "r_max": 0.7675,
+     "r_p05": 0.549,
+     "alpha_mean": null,
+     "forward_only_subsets": 6,
+     "reverse_only_subsets": 4,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.7977,
+     "r_min": 0.6855,
+     "r_max": 0.86,
+     "r_p05": 0.7109,
+     "alpha_mean": 0.5316,
+     "forward_only_subsets": 15,
+     "reverse_only_subsets": 6,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8665,
+     "r_min": 0.7443,
+     "r_max": 0.9115,
+     "r_p05": 0.8092,
+     "alpha_mean": 0.6341,
+     "forward_only_subsets": 20,
+     "reverse_only_subsets": 4,
+     "balanced_subsets": 96
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.908,
+     "r_min": 0.8038,
+     "r_max": 0.9474,
+     "r_p05": 0.8678,
+     "alpha_mean": 0.7,
+     "forward_only_subsets": 15,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 194
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9359,
+     "r_min": 0.8713,
+     "r_max": 0.9583,
+     "r_p05": 0.9096,
+     "alpha_mean": 0.7458,
+     "forward_only_subsets": 6,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 246
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9559,
+     "r_min": 0.9188,
+     "r_max": 0.9701,
+     "r_p05": 0.9365,
+     "alpha_mean": 0.7795,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 185
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.971,
+     "r_min": 0.9505,
+     "r_max": 0.9825,
+     "r_p05": 0.9574,
+     "alpha_mean": 0.8053,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 116
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9828,
+     "r_min": 0.9696,
+     "r_max": 0.9899,
+     "r_p05": 0.9771,
+     "alpha_mean": 0.8257,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 45
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9923,
+     "r_min": 0.9892,
+     "r_max": 0.9946,
+     "r_p05": 0.9896,
+     "alpha_mean": 0.8422,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 10
+    }
+   }
+  },
+  "trust": {
+   "alpha_full": 0.82,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.6999,
+     "r_min": 0.5379,
+     "r_max": 0.8164,
+     "r_p05": 0.5675,
+     "alpha_mean": null,
+     "forward_only_subsets": 6,
+     "reverse_only_subsets": 4,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.8269,
+     "r_min": 0.7255,
+     "r_max": 0.8978,
+     "r_p05": 0.7508,
+     "alpha_mean": 0.5954,
+     "forward_only_subsets": 15,
+     "reverse_only_subsets": 6,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8878,
+     "r_min": 0.817,
+     "r_max": 0.9276,
+     "r_p05": 0.8449,
+     "alpha_mean": 0.6907,
+     "forward_only_subsets": 20,
+     "reverse_only_subsets": 4,
+     "balanced_subsets": 96
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.9237,
+     "r_min": 0.8522,
+     "r_max": 0.9499,
+     "r_p05": 0.894,
+     "alpha_mean": 0.7501,
+     "forward_only_subsets": 15,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 194
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9473,
+     "r_min": 0.8967,
+     "r_max": 0.9628,
+     "r_p05": 0.9262,
+     "alpha_mean": 0.7905,
+     "forward_only_subsets": 6,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 246
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.964,
+     "r_min": 0.9368,
+     "r_max": 0.9739,
+     "r_p05": 0.9517,
+     "alpha_mean": 0.8197,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 185
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9764,
+     "r_min": 0.9616,
+     "r_max": 0.9837,
+     "r_p05": 0.9677,
+     "alpha_mean": 0.8418,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 116
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9861,
+     "r_min": 0.9797,
+     "r_max": 0.9902,
+     "r_p05": 0.9821,
+     "alpha_mean": 0.8591,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 45
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9937,
+     "r_min": 0.9913,
+     "r_max": 0.9955,
+     "r_p05": 0.9918,
+     "alpha_mean": 0.873,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 10
+    }
+   }
+  },
+  "selfefficacy": {
+   "alpha_full": 0.78,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.6255,
+     "r_min": 0.5276,
+     "r_max": 0.6822,
+     "r_p05": 0.5594,
+     "alpha_mean": null,
+     "forward_only_subsets": 6,
+     "reverse_only_subsets": 4,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.7659,
+     "r_min": 0.6983,
+     "r_max": 0.8091,
+     "r_p05": 0.7167,
+     "alpha_mean": 0.4855,
+     "forward_only_subsets": 15,
+     "reverse_only_subsets": 6,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8413,
+     "r_min": 0.7961,
+     "r_max": 0.8762,
+     "r_p05": 0.8099,
+     "alpha_mean": 0.5878,
+     "forward_only_subsets": 20,
+     "reverse_only_subsets": 4,
+     "balanced_subsets": 96
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.8888,
+     "r_min": 0.8418,
+     "r_max": 0.9147,
+     "r_p05": 0.8646,
+     "alpha_mean": 0.6562,
+     "forward_only_subsets": 15,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 194
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9215,
+     "r_min": 0.8761,
+     "r_max": 0.94,
+     "r_p05": 0.903,
+     "alpha_mean": 0.7052,
+     "forward_only_subsets": 6,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 246
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9456,
+     "r_min": 0.9122,
+     "r_max": 0.9606,
+     "r_p05": 0.9316,
+     "alpha_mean": 0.742,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 185
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.964,
+     "r_min": 0.9414,
+     "r_max": 0.9743,
+     "r_p05": 0.9515,
+     "alpha_mean": 0.7707,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 116
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9785,
+     "r_min": 0.9667,
+     "r_max": 0.9863,
+     "r_p05": 0.9709,
+     "alpha_mean": 0.7936,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 45
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9903,
+     "r_min": 0.9857,
+     "r_max": 0.9944,
+     "r_p05": 0.9866,
+     "alpha_mean": 0.8124,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 10
+    }
+   }
+  },
+  "anger": {
+   "alpha_full": 0.88,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.7576,
+     "r_min": 0.5849,
+     "r_max": 0.8358,
+     "r_p05": 0.623,
+     "alpha_mean": null,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.8686,
+     "r_min": 0.7586,
+     "r_max": 0.9155,
+     "r_p05": 0.8039,
+     "alpha_mean": 0.6841,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.9176,
+     "r_min": 0.8436,
+     "r_max": 0.9456,
+     "r_p05": 0.8797,
+     "alpha_mean": 0.7656,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 100
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.9451,
+     "r_min": 0.9076,
+     "r_max": 0.962,
+     "r_p05": 0.9261,
+     "alpha_mean": 0.8141,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 200
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9625,
+     "r_min": 0.9447,
+     "r_max": 0.9721,
+     "r_p05": 0.9511,
+     "alpha_mean": 0.8462,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 250
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9747,
+     "r_min": 0.9628,
+     "r_max": 0.981,
+     "r_p05": 0.9683,
+     "alpha_mean": 0.8688,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 200
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9835,
+     "r_min": 0.9757,
+     "r_max": 0.9883,
+     "r_p05": 0.981,
+     "alpha_mean": 0.8857,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 120
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9903,
+     "r_min": 0.9879,
+     "r_max": 0.9931,
+     "r_p05": 0.9883,
+     "alpha_mean": 0.8987,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 45
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9957,
+     "r_min": 0.9939,
+     "r_max": 0.9963,
+     "r_p05": 0.9944,
+     "alpha_mean": 0.9091,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 10
+    }
+   }
+  },
+  "gregariousness": {
+   "alpha_full": 0.79,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.7047,
+     "r_min": 0.5819,
+     "r_max": 0.7852,
+     "r_p05": 0.6059,
+     "alpha_mean": null,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.8314,
+     "r_min": 0.7524,
+     "r_max": 0.8932,
+     "r_p05": 0.7677,
+     "alpha_mean": 0.606,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.891,
+     "r_min": 0.8144,
+     "r_max": 0.933,
+     "r_p05": 0.8453,
+     "alpha_mean": 0.6998,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 100
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.9259,
+     "r_min": 0.8528,
+     "r_max": 0.9524,
+     "r_p05": 0.8943,
+     "alpha_mean": 0.7576,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 200
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9488,
+     "r_min": 0.8931,
+     "r_max": 0.9656,
+     "r_p05": 0.929,
+     "alpha_mean": 0.7968,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 250
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.965,
+     "r_min": 0.9273,
+     "r_max": 0.9766,
+     "r_p05": 0.9514,
+     "alpha_mean": 0.8251,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 200
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9771,
+     "r_min": 0.9594,
+     "r_max": 0.9836,
+     "r_p05": 0.9666,
+     "alpha_mean": 0.8464,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 120
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9865,
+     "r_min": 0.9792,
+     "r_max": 0.9904,
+     "r_p05": 0.9808,
+     "alpha_mean": 0.8632,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 45
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9939,
+     "r_min": 0.9915,
+     "r_max": 0.9951,
+     "r_p05": 0.9918,
+     "alpha_mean": 0.8766,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 10
+    }
+   }
+  },
+  "aesthetic_appreciation_artistic_interests": {
+   "alpha_full": 0.84,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.608,
+     "r_min": 0.3861,
+     "r_max": 0.7698,
+     "r_p05": 0.4043,
+     "alpha_mean": null,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.7573,
+     "r_min": 0.4916,
+     "r_max": 0.8354,
+     "r_p05": 0.6313,
+     "alpha_mean": 0.4496,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8363,
+     "r_min": 0.6518,
+     "r_max": 0.8956,
+     "r_p05": 0.7386,
+     "alpha_mean": 0.5551,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 100
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.8859,
+     "r_min": 0.7517,
+     "r_max": 0.9282,
+     "r_p05": 0.8208,
+     "alpha_mean": 0.6276,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 200
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.92,
+     "r_min": 0.8211,
+     "r_max": 0.9534,
+     "r_p05": 0.881,
+     "alpha_mean": 0.6802,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 250
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9448,
+     "r_min": 0.8778,
+     "r_max": 0.9688,
+     "r_p05": 0.9192,
+     "alpha_mean": 0.72,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 200
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9636,
+     "r_min": 0.9306,
+     "r_max": 0.9839,
+     "r_p05": 0.9452,
+     "alpha_mean": 0.7511,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 120
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9784,
+     "r_min": 0.9623,
+     "r_max": 0.9912,
+     "r_p05": 0.9691,
+     "alpha_mean": 0.7761,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 45
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9902,
+     "r_min": 0.9841,
+     "r_max": 0.9963,
+     "r_p05": 0.9846,
+     "alpha_mean": 0.7966,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 10
+    }
+   }
+  },
+  "morality": {
+   "alpha_full": 0.75,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.5995,
+     "r_min": 0.5072,
+     "r_max": 0.7272,
+     "r_p05": 0.52,
+     "alpha_mean": null,
+     "forward_only_subsets": 2,
+     "reverse_only_subsets": 8,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.7439,
+     "r_min": 0.638,
+     "r_max": 0.8296,
+     "r_p05": 0.6711,
+     "alpha_mean": 0.4381,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 28,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8242,
+     "r_min": 0.7364,
+     "r_max": 0.8782,
+     "r_p05": 0.7691,
+     "alpha_mean": 0.5424,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 56,
+     "balanced_subsets": 64
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.8759,
+     "r_min": 0.814,
+     "r_max": 0.9161,
+     "r_p05": 0.8357,
+     "alpha_mean": 0.6145,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 70,
+     "balanced_subsets": 140
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.912,
+     "r_min": 0.8659,
+     "r_max": 0.9385,
+     "r_p05": 0.8829,
+     "alpha_mean": 0.6672,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 56,
+     "balanced_subsets": 196
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9388,
+     "r_min": 0.9021,
+     "r_max": 0.9578,
+     "r_p05": 0.9199,
+     "alpha_mean": 0.7073,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 28,
+     "balanced_subsets": 70
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9594,
+     "r_min": 0.9311,
+     "r_max": 0.9729,
+     "r_p05": 0.9459,
+     "alpha_mean": 0.7389,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 8,
+     "balanced_subsets": 56
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9757,
+     "r_min": 0.9614,
+     "r_max": 0.9841,
+     "r_p05": 0.9663,
+     "alpha_mean": 0.7644,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 28
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.989,
+     "r_min": 0.9831,
+     "r_max": 0.9936,
+     "r_p05": 0.9838,
+     "alpha_mean": 0.7854,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 0
+    }
+   }
+  },
+  "orderliness": {
+   "alpha_full": 0.82,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.6722,
+     "r_min": 0.4968,
+     "r_max": 0.7603,
+     "r_p05": 0.5335,
+     "alpha_mean": null,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.8073,
+     "r_min": 0.6643,
+     "r_max": 0.8786,
+     "r_p05": 0.7236,
+     "alpha_mean": 0.5537,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8737,
+     "r_min": 0.7657,
+     "r_max": 0.9221,
+     "r_p05": 0.8074,
+     "alpha_mean": 0.6539,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 100
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.9134,
+     "r_min": 0.8133,
+     "r_max": 0.9469,
+     "r_p05": 0.8675,
+     "alpha_mean": 0.7175,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 200
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9398,
+     "r_min": 0.8697,
+     "r_max": 0.9608,
+     "r_p05": 0.9157,
+     "alpha_mean": 0.7615,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 250
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9587,
+     "r_min": 0.9056,
+     "r_max": 0.9725,
+     "r_p05": 0.9402,
+     "alpha_mean": 0.7936,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 200
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9729,
+     "r_min": 0.9401,
+     "r_max": 0.9809,
+     "r_p05": 0.9615,
+     "alpha_mean": 0.8181,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 120
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9839,
+     "r_min": 0.9723,
+     "r_max": 0.9881,
+     "r_p05": 0.9749,
+     "alpha_mean": 0.8374,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 45
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9928,
+     "r_min": 0.991,
+     "r_max": 0.9955,
+     "r_p05": 0.991,
+     "alpha_mean": 0.8531,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 10
+    }
+   }
+  },
+  "depression": {
+   "alpha_full": 0.88,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.7566,
+     "r_min": 0.6287,
+     "r_max": 0.8485,
+     "r_p05": 0.6539,
+     "alpha_mean": null,
+     "forward_only_subsets": 7,
+     "reverse_only_subsets": 3,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.866,
+     "r_min": 0.7989,
+     "r_max": 0.9247,
+     "r_p05": 0.8092,
+     "alpha_mean": 0.6823,
+     "forward_only_subsets": 21,
+     "reverse_only_subsets": 3,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.915,
+     "r_min": 0.8668,
+     "r_max": 0.9422,
+     "r_p05": 0.8801,
+     "alpha_mean": 0.765,
+     "forward_only_subsets": 35,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 84
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.9429,
+     "r_min": 0.8927,
+     "r_max": 0.9599,
+     "r_p05": 0.9172,
+     "alpha_mean": 0.8137,
+     "forward_only_subsets": 35,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 175
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9609,
+     "r_min": 0.9212,
+     "r_max": 0.9732,
+     "r_p05": 0.9419,
+     "alpha_mean": 0.8457,
+     "forward_only_subsets": 21,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 231
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9734,
+     "r_min": 0.9464,
+     "r_max": 0.9814,
+     "r_p05": 0.9613,
+     "alpha_mean": 0.8683,
+     "forward_only_subsets": 7,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 140
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9827,
+     "r_min": 0.972,
+     "r_max": 0.9884,
+     "r_p05": 0.9733,
+     "alpha_mean": 0.8852,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 98
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9898,
+     "r_min": 0.9858,
+     "r_max": 0.9939,
+     "r_p05": 0.9859,
+     "alpha_mean": 0.8982,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 42
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9954,
+     "r_min": 0.9928,
+     "r_max": 0.9967,
+     "r_p05": 0.9932,
+     "alpha_mean": 0.9086,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 7
+    }
+   }
+  },
+  "assertiveness": {
+   "alpha_full": 0.84,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.6769,
+     "r_min": 0.567,
+     "r_max": 0.7593,
+     "r_p05": 0.5767,
+     "alpha_mean": null,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.8093,
+     "r_min": 0.6911,
+     "r_max": 0.8793,
+     "r_p05": 0.7559,
+     "alpha_mean": 0.561,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8748,
+     "r_min": 0.8057,
+     "r_max": 0.9132,
+     "r_p05": 0.8237,
+     "alpha_mean": 0.6599,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 100
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.914,
+     "r_min": 0.8589,
+     "r_max": 0.9424,
+     "r_p05": 0.877,
+     "alpha_mean": 0.7227,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 200
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9402,
+     "r_min": 0.8923,
+     "r_max": 0.958,
+     "r_p05": 0.92,
+     "alpha_mean": 0.766,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 250
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.959,
+     "r_min": 0.9236,
+     "r_max": 0.971,
+     "r_p05": 0.9459,
+     "alpha_mean": 0.7976,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 200
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9731,
+     "r_min": 0.9531,
+     "r_max": 0.9808,
+     "r_p05": 0.9627,
+     "alpha_mean": 0.8218,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 120
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.984,
+     "r_min": 0.9738,
+     "r_max": 0.9889,
+     "r_p05": 0.9787,
+     "alpha_mean": 0.8408,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 45
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9928,
+     "r_min": 0.9904,
+     "r_max": 0.995,
+     "r_p05": 0.9908,
+     "alpha_mean": 0.8561,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 10
+    }
+   }
+  },
+  "emotionality": {
+   "alpha_full": 0.81,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.592,
+     "r_min": 0.3837,
+     "r_max": 0.7305,
+     "r_p05": 0.4131,
+     "alpha_mean": null,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.7433,
+     "r_min": 0.4689,
+     "r_max": 0.8296,
+     "r_p05": 0.5902,
+     "alpha_mean": 0.4161,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8252,
+     "r_min": 0.5866,
+     "r_max": 0.8786,
+     "r_p05": 0.7143,
+     "alpha_mean": 0.5245,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 100
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.8774,
+     "r_min": 0.6938,
+     "r_max": 0.92,
+     "r_p05": 0.8028,
+     "alpha_mean": 0.5993,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 200
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9136,
+     "r_min": 0.7961,
+     "r_max": 0.9405,
+     "r_p05": 0.8674,
+     "alpha_mean": 0.654,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 250
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9401,
+     "r_min": 0.868,
+     "r_max": 0.9591,
+     "r_p05": 0.9103,
+     "alpha_mean": 0.6956,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 200
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9604,
+     "r_min": 0.9251,
+     "r_max": 0.9754,
+     "r_p05": 0.9437,
+     "alpha_mean": 0.7284,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 120
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9764,
+     "r_min": 0.9648,
+     "r_max": 0.985,
+     "r_p05": 0.9667,
+     "alpha_mean": 0.7549,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 45
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9894,
+     "r_min": 0.9853,
+     "r_max": 0.993,
+     "r_p05": 0.9861,
+     "alpha_mean": 0.7767,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 10
+    }
+   }
+  },
+  "altruism": {
+   "alpha_full": 0.77,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.6437,
+     "r_min": 0.5809,
+     "r_max": 0.7158,
+     "r_p05": 0.5884,
+     "alpha_mean": null,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.7818,
+     "r_min": 0.723,
+     "r_max": 0.8247,
+     "r_p05": 0.7399,
+     "alpha_mean": 0.5142,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8536,
+     "r_min": 0.8021,
+     "r_max": 0.8886,
+     "r_p05": 0.8239,
+     "alpha_mean": 0.615,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 100
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.8981,
+     "r_min": 0.8641,
+     "r_max": 0.9224,
+     "r_p05": 0.8767,
+     "alpha_mean": 0.6812,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 200
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9285,
+     "r_min": 0.9026,
+     "r_max": 0.9454,
+     "r_p05": 0.9124,
+     "alpha_mean": 0.7281,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 250
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9506,
+     "r_min": 0.9265,
+     "r_max": 0.9618,
+     "r_p05": 0.9395,
+     "alpha_mean": 0.763,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 200
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9674,
+     "r_min": 0.9523,
+     "r_max": 0.9774,
+     "r_p05": 0.9592,
+     "alpha_mean": 0.7899,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 120
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9806,
+     "r_min": 0.9715,
+     "r_max": 0.9859,
+     "r_p05": 0.9739,
+     "alpha_mean": 0.8114,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 45
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9912,
+     "r_min": 0.9878,
+     "r_max": 0.9939,
+     "r_p05": 0.9878,
+     "alpha_mean": 0.8289,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 10
+    }
+   }
+  },
+  "dutifulness": {
+   "alpha_full": 0.71,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.5959,
+     "r_min": 0.5314,
+     "r_max": 0.6814,
+     "r_p05": 0.5349,
+     "alpha_mean": null,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.7416,
+     "r_min": 0.656,
+     "r_max": 0.8251,
+     "r_p05": 0.6982,
+     "alpha_mean": 0.4353,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8219,
+     "r_min": 0.7471,
+     "r_max": 0.8766,
+     "r_p05": 0.7825,
+     "alpha_mean": 0.5399,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 100
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.8738,
+     "r_min": 0.8118,
+     "r_max": 0.9116,
+     "r_p05": 0.8373,
+     "alpha_mean": 0.6118,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 200
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9103,
+     "r_min": 0.8536,
+     "r_max": 0.9381,
+     "r_p05": 0.8806,
+     "alpha_mean": 0.6643,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 250
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9374,
+     "r_min": 0.8947,
+     "r_max": 0.9597,
+     "r_p05": 0.9154,
+     "alpha_mean": 0.7043,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 200
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9584,
+     "r_min": 0.9254,
+     "r_max": 0.974,
+     "r_p05": 0.9442,
+     "alpha_mean": 0.7358,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 120
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9751,
+     "r_min": 0.958,
+     "r_max": 0.9843,
+     "r_p05": 0.9647,
+     "alpha_mean": 0.7612,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 45
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9887,
+     "r_min": 0.979,
+     "r_max": 0.993,
+     "r_p05": 0.982,
+     "alpha_mean": 0.7821,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 10
+    }
+   }
+  },
+  "selfconsciousness": {
+   "alpha_full": 0.8,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.6317,
+     "r_min": 0.533,
+     "r_max": 0.7287,
+     "r_p05": 0.5508,
+     "alpha_mean": null,
+     "forward_only_subsets": 6,
+     "reverse_only_subsets": 4,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.7747,
+     "r_min": 0.6984,
+     "r_max": 0.8416,
+     "r_p05": 0.7217,
+     "alpha_mean": 0.4951,
+     "forward_only_subsets": 15,
+     "reverse_only_subsets": 6,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.849,
+     "r_min": 0.791,
+     "r_max": 0.8921,
+     "r_p05": 0.8178,
+     "alpha_mean": 0.5962,
+     "forward_only_subsets": 20,
+     "reverse_only_subsets": 4,
+     "balanced_subsets": 96
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.895,
+     "r_min": 0.8399,
+     "r_max": 0.9222,
+     "r_p05": 0.8712,
+     "alpha_mean": 0.6639,
+     "forward_only_subsets": 15,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 194
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9263,
+     "r_min": 0.8931,
+     "r_max": 0.943,
+     "r_p05": 0.9116,
+     "alpha_mean": 0.7122,
+     "forward_only_subsets": 6,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 246
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9491,
+     "r_min": 0.9297,
+     "r_max": 0.9593,
+     "r_p05": 0.9389,
+     "alpha_mean": 0.7484,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 185
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9664,
+     "r_min": 0.9545,
+     "r_max": 0.9722,
+     "r_p05": 0.9605,
+     "alpha_mean": 0.7766,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 116
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.98,
+     "r_min": 0.9755,
+     "r_max": 0.9839,
+     "r_p05": 0.9772,
+     "alpha_mean": 0.7991,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 45
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.991,
+     "r_min": 0.9898,
+     "r_max": 0.9928,
+     "r_p05": 0.99,
+     "alpha_mean": 0.8175,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 10
+    }
+   }
+  },
+  "activitylevel": {
+   "alpha_full": 0.71,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.5374,
+     "r_min": 0.4302,
+     "r_max": 0.6623,
+     "r_p05": 0.4371,
+     "alpha_mean": null,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.6943,
+     "r_min": 0.5607,
+     "r_max": 0.7877,
+     "r_p05": 0.5894,
+     "alpha_mean": 0.3299,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.7848,
+     "r_min": 0.6566,
+     "r_max": 0.8627,
+     "r_p05": 0.6901,
+     "alpha_mean": 0.4336,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 100
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.8451,
+     "r_min": 0.7224,
+     "r_max": 0.8943,
+     "r_p05": 0.7721,
+     "alpha_mean": 0.5094,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 200
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.8885,
+     "r_min": 0.7918,
+     "r_max": 0.9309,
+     "r_p05": 0.8351,
+     "alpha_mean": 0.5671,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 250
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9215,
+     "r_min": 0.8366,
+     "r_max": 0.9469,
+     "r_p05": 0.8927,
+     "alpha_mean": 0.6126,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 200
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9474,
+     "r_min": 0.8833,
+     "r_max": 0.9649,
+     "r_p05": 0.9293,
+     "alpha_mean": 0.6494,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 120
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9683,
+     "r_min": 0.9485,
+     "r_max": 0.9761,
+     "r_p05": 0.9526,
+     "alpha_mean": 0.6797,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 45
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9855,
+     "r_min": 0.9821,
+     "r_max": 0.9877,
+     "r_p05": 0.9832,
+     "alpha_mean": 0.7052,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 10
+    }
+   }
+  },
+  "adventurousness": {
+   "alpha_full": 0.77,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.6098,
+     "r_min": 0.4582,
+     "r_max": 0.7781,
+     "r_p05": 0.4582,
+     "alpha_mean": null,
+     "forward_only_subsets": 4,
+     "reverse_only_subsets": 6,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.7582,
+     "r_min": 0.5972,
+     "r_max": 0.8507,
+     "r_p05": 0.6111,
+     "alpha_mean": 0.4532,
+     "forward_only_subsets": 6,
+     "reverse_only_subsets": 15,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8372,
+     "r_min": 0.6803,
+     "r_max": 0.8972,
+     "r_p05": 0.7613,
+     "alpha_mean": 0.557,
+     "forward_only_subsets": 4,
+     "reverse_only_subsets": 20,
+     "balanced_subsets": 96
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.8867,
+     "r_min": 0.7592,
+     "r_max": 0.9207,
+     "r_p05": 0.8293,
+     "alpha_mean": 0.6285,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 15,
+     "balanced_subsets": 194
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9206,
+     "r_min": 0.8378,
+     "r_max": 0.9433,
+     "r_p05": 0.8846,
+     "alpha_mean": 0.6806,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 6,
+     "balanced_subsets": 246
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9453,
+     "r_min": 0.9012,
+     "r_max": 0.9623,
+     "r_p05": 0.922,
+     "alpha_mean": 0.7201,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 185
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9639,
+     "r_min": 0.938,
+     "r_max": 0.9735,
+     "r_p05": 0.9514,
+     "alpha_mean": 0.7511,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 116
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9786,
+     "r_min": 0.9648,
+     "r_max": 0.9849,
+     "r_p05": 0.9722,
+     "alpha_mean": 0.7759,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 45
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9903,
+     "r_min": 0.9849,
+     "r_max": 0.9927,
+     "r_p05": 0.9868,
+     "alpha_mean": 0.7963,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 10
+    }
+   }
+  },
+  "cooperation": {
+   "alpha_full": 0.73,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.5866,
+     "r_min": 0.4387,
+     "r_max": 0.6872,
+     "r_p05": 0.4601,
+     "alpha_mean": null,
+     "forward_only_subsets": 3,
+     "reverse_only_subsets": 7,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.7367,
+     "r_min": 0.5978,
+     "r_max": 0.8101,
+     "r_p05": 0.6314,
+     "alpha_mean": 0.4182,
+     "forward_only_subsets": 3,
+     "reverse_only_subsets": 21,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8195,
+     "r_min": 0.6869,
+     "r_max": 0.8735,
+     "r_p05": 0.7602,
+     "alpha_mean": 0.5216,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 35,
+     "balanced_subsets": 84
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.8726,
+     "r_min": 0.7861,
+     "r_max": 0.9089,
+     "r_p05": 0.8303,
+     "alpha_mean": 0.5943,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 35,
+     "balanced_subsets": 175
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9097,
+     "r_min": 0.8558,
+     "r_max": 0.9349,
+     "r_p05": 0.8834,
+     "alpha_mean": 0.648,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 21,
+     "balanced_subsets": 231
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9372,
+     "r_min": 0.9016,
+     "r_max": 0.9529,
+     "r_p05": 0.9177,
+     "alpha_mean": 0.6893,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 7,
+     "balanced_subsets": 140
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9583,
+     "r_min": 0.9385,
+     "r_max": 0.9699,
+     "r_p05": 0.9436,
+     "alpha_mean": 0.722,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 98
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9751,
+     "r_min": 0.9611,
+     "r_max": 0.9817,
+     "r_p05": 0.9699,
+     "alpha_mean": 0.7485,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 42
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9887,
+     "r_min": 0.9857,
+     "r_max": 0.9915,
+     "r_p05": 0.9859,
+     "alpha_mean": 0.7704,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 7
+    }
+   }
+  },
+  "achievementstriving": {
+   "alpha_full": 0.78,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.6303,
+     "r_min": 0.4869,
+     "r_max": 0.7116,
+     "r_p05": 0.5308,
+     "alpha_mean": null,
+     "forward_only_subsets": 7,
+     "reverse_only_subsets": 3,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.7728,
+     "r_min": 0.6345,
+     "r_max": 0.8225,
+     "r_p05": 0.699,
+     "alpha_mean": 0.4896,
+     "forward_only_subsets": 21,
+     "reverse_only_subsets": 3,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8473,
+     "r_min": 0.7579,
+     "r_max": 0.8894,
+     "r_p05": 0.788,
+     "alpha_mean": 0.5926,
+     "forward_only_subsets": 35,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 84
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.8936,
+     "r_min": 0.8235,
+     "r_max": 0.9233,
+     "r_p05": 0.853,
+     "alpha_mean": 0.6612,
+     "forward_only_subsets": 35,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 175
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9253,
+     "r_min": 0.8732,
+     "r_max": 0.945,
+     "r_p05": 0.9024,
+     "alpha_mean": 0.7101,
+     "forward_only_subsets": 21,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 231
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9484,
+     "r_min": 0.9109,
+     "r_max": 0.9633,
+     "r_p05": 0.9323,
+     "alpha_mean": 0.7467,
+     "forward_only_subsets": 7,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 140
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9659,
+     "r_min": 0.9444,
+     "r_max": 0.9759,
+     "r_p05": 0.955,
+     "alpha_mean": 0.7751,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 98
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9797,
+     "r_min": 0.9687,
+     "r_max": 0.9847,
+     "r_p05": 0.9731,
+     "alpha_mean": 0.7978,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 42
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9908,
+     "r_min": 0.9866,
+     "r_max": 0.9939,
+     "r_p05": 0.9874,
+     "alpha_mean": 0.8164,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 7
+    }
+   }
+  },
+  "immoderation": {
+   "alpha_full": 0.77,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.5811,
+     "r_min": 0.4887,
+     "r_max": 0.6833,
+     "r_p05": 0.497,
+     "alpha_mean": null,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.7305,
+     "r_min": 0.5783,
+     "r_max": 0.8006,
+     "r_p05": 0.6462,
+     "alpha_mean": 0.404,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.814,
+     "r_min": 0.7114,
+     "r_max": 0.8628,
+     "r_p05": 0.7435,
+     "alpha_mean": 0.5099,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 100
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.868,
+     "r_min": 0.7766,
+     "r_max": 0.9103,
+     "r_p05": 0.8214,
+     "alpha_mean": 0.5842,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 200
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.906,
+     "r_min": 0.841,
+     "r_max": 0.9408,
+     "r_p05": 0.8752,
+     "alpha_mean": 0.639,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 250
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9343,
+     "r_min": 0.8963,
+     "r_max": 0.9604,
+     "r_p05": 0.9123,
+     "alpha_mean": 0.681,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 200
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9563,
+     "r_min": 0.9327,
+     "r_max": 0.9714,
+     "r_p05": 0.9417,
+     "alpha_mean": 0.7143,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 120
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9738,
+     "r_min": 0.9567,
+     "r_max": 0.9813,
+     "r_p05": 0.9638,
+     "alpha_mean": 0.7413,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 45
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9881,
+     "r_min": 0.9836,
+     "r_max": 0.9915,
+     "r_p05": 0.9843,
+     "alpha_mean": 0.7637,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 10
+    }
+   }
+  },
+  "excitementseeking": {
+   "alpha_full": 0.78,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.6732,
+     "r_min": 0.5518,
+     "r_max": 0.7277,
+     "r_p05": 0.5669,
+     "alpha_mean": null,
+     "forward_only_subsets": 8,
+     "reverse_only_subsets": 2,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.8034,
+     "r_min": 0.7223,
+     "r_max": 0.8562,
+     "r_p05": 0.7495,
+     "alpha_mean": 0.5584,
+     "forward_only_subsets": 28,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8697,
+     "r_min": 0.8161,
+     "r_max": 0.9068,
+     "r_p05": 0.8325,
+     "alpha_mean": 0.6568,
+     "forward_only_subsets": 56,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 64
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.9101,
+     "r_min": 0.8633,
+     "r_max": 0.9421,
+     "r_p05": 0.8839,
+     "alpha_mean": 0.7196,
+     "forward_only_subsets": 70,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 140
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9373,
+     "r_min": 0.9042,
+     "r_max": 0.9573,
+     "r_p05": 0.9179,
+     "alpha_mean": 0.7631,
+     "forward_only_subsets": 56,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 196
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9568,
+     "r_min": 0.9309,
+     "r_max": 0.9706,
+     "r_p05": 0.9441,
+     "alpha_mean": 0.795,
+     "forward_only_subsets": 28,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 70
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9716,
+     "r_min": 0.9555,
+     "r_max": 0.9806,
+     "r_p05": 0.9613,
+     "alpha_mean": 0.8193,
+     "forward_only_subsets": 8,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 56
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9831,
+     "r_min": 0.974,
+     "r_max": 0.9895,
+     "r_p05": 0.9747,
+     "alpha_mean": 0.8385,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 28
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9924,
+     "r_min": 0.9865,
+     "r_max": 0.996,
+     "r_p05": 0.9881,
+     "alpha_mean": 0.854,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 0
+    }
+   }
+  },
+  "intellect": {
+   "alpha_full": 0.86,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.6451,
+     "r_min": 0.4977,
+     "r_max": 0.7218,
+     "r_p05": 0.5246,
+     "alpha_mean": null,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.7882,
+     "r_min": 0.6745,
+     "r_max": 0.8672,
+     "r_p05": 0.691,
+     "alpha_mean": 0.5128,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8598,
+     "r_min": 0.7533,
+     "r_max": 0.9226,
+     "r_p05": 0.8082,
+     "alpha_mean": 0.615,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 100
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.9032,
+     "r_min": 0.8367,
+     "r_max": 0.943,
+     "r_p05": 0.8637,
+     "alpha_mean": 0.6821,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 200
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9325,
+     "r_min": 0.8809,
+     "r_max": 0.9601,
+     "r_p05": 0.905,
+     "alpha_mean": 0.7293,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 250
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9535,
+     "r_min": 0.9146,
+     "r_max": 0.9696,
+     "r_p05": 0.9345,
+     "alpha_mean": 0.7644,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 200
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9694,
+     "r_min": 0.9445,
+     "r_max": 0.9794,
+     "r_p05": 0.9571,
+     "alpha_mean": 0.7914,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 120
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9818,
+     "r_min": 0.9667,
+     "r_max": 0.9876,
+     "r_p05": 0.9757,
+     "alpha_mean": 0.8129,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 45
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9918,
+     "r_min": 0.9893,
+     "r_max": 0.995,
+     "r_p05": 0.9897,
+     "alpha_mean": 0.8303,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 10
+    }
+   }
+  },
+  "modesty_humility": {
+   "alpha_full": 0.77,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.57,
+     "r_min": 0.3992,
+     "r_max": 0.7135,
+     "r_p05": 0.4382,
+     "alpha_mean": null,
+     "forward_only_subsets": 4,
+     "reverse_only_subsets": 6,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.7241,
+     "r_min": 0.5755,
+     "r_max": 0.842,
+     "r_p05": 0.62,
+     "alpha_mean": 0.3827,
+     "forward_only_subsets": 6,
+     "reverse_only_subsets": 15,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8096,
+     "r_min": 0.7111,
+     "r_max": 0.8902,
+     "r_p05": 0.7253,
+     "alpha_mean": 0.489,
+     "forward_only_subsets": 4,
+     "reverse_only_subsets": 20,
+     "balanced_subsets": 96
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.865,
+     "r_min": 0.768,
+     "r_max": 0.9253,
+     "r_p05": 0.7997,
+     "alpha_mean": 0.5643,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 15,
+     "balanced_subsets": 194
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.904,
+     "r_min": 0.8045,
+     "r_max": 0.9415,
+     "r_p05": 0.8622,
+     "alpha_mean": 0.6206,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 6,
+     "balanced_subsets": 246
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.933,
+     "r_min": 0.8559,
+     "r_max": 0.9591,
+     "r_p05": 0.9004,
+     "alpha_mean": 0.6641,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 185
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9554,
+     "r_min": 0.9128,
+     "r_max": 0.9712,
+     "r_p05": 0.9332,
+     "alpha_mean": 0.6987,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 116
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9733,
+     "r_min": 0.953,
+     "r_max": 0.9822,
+     "r_p05": 0.9592,
+     "alpha_mean": 0.7269,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 45
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9879,
+     "r_min": 0.9824,
+     "r_max": 0.9904,
+     "r_p05": 0.9835,
+     "alpha_mean": 0.7502,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 10
+    }
+   }
+  },
+  "selfdiscipline": {
+   "alpha_full": 0.85,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.7102,
+     "r_min": 0.6039,
+     "r_max": 0.799,
+     "r_p05": 0.6089,
+     "alpha_mean": null,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.8361,
+     "r_min": 0.7329,
+     "r_max": 0.8952,
+     "r_p05": 0.7618,
+     "alpha_mean": 0.615,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8947,
+     "r_min": 0.8175,
+     "r_max": 0.9312,
+     "r_p05": 0.8522,
+     "alpha_mean": 0.7068,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 100
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.9288,
+     "r_min": 0.8831,
+     "r_max": 0.9499,
+     "r_p05": 0.9024,
+     "alpha_mean": 0.7636,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 200
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.951,
+     "r_min": 0.9161,
+     "r_max": 0.9651,
+     "r_p05": 0.9339,
+     "alpha_mean": 0.8021,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 250
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9666,
+     "r_min": 0.9453,
+     "r_max": 0.975,
+     "r_p05": 0.9564,
+     "alpha_mean": 0.8298,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 200
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9782,
+     "r_min": 0.9662,
+     "r_max": 0.9845,
+     "r_p05": 0.972,
+     "alpha_mean": 0.8508,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 120
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9871,
+     "r_min": 0.9827,
+     "r_max": 0.9905,
+     "r_p05": 0.9839,
+     "alpha_mean": 0.8671,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 45
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9942,
+     "r_min": 0.9925,
+     "r_max": 0.9956,
+     "r_p05": 0.9928,
+     "alpha_mean": 0.8803,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 10
+    }
+   }
+  },
+  "vulnerability": {
+   "alpha_full": 0.82,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.6677,
+     "r_min": 0.5331,
+     "r_max": 0.7314,
+     "r_p05": 0.5564,
+     "alpha_mean": null,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.8032,
+     "r_min": 0.6956,
+     "r_max": 0.8669,
+     "r_p05": 0.7326,
+     "alpha_mean": 0.5504,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8705,
+     "r_min": 0.7871,
+     "r_max": 0.909,
+     "r_p05": 0.8289,
+     "alpha_mean": 0.6489,
+     "forward_only_subsets": 10,
+     "reverse_only_subsets": 10,
+     "balanced_subsets": 100
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.911,
+     "r_min": 0.8556,
+     "r_max": 0.934,
+     "r_p05": 0.8796,
+     "alpha_mean": 0.7123,
+     "forward_only_subsets": 5,
+     "reverse_only_subsets": 5,
+     "balanced_subsets": 200
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9381,
+     "r_min": 0.895,
+     "r_max": 0.9546,
+     "r_p05": 0.9189,
+     "alpha_mean": 0.7565,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 250
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9575,
+     "r_min": 0.9322,
+     "r_max": 0.9682,
+     "r_p05": 0.9449,
+     "alpha_mean": 0.7889,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 200
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9721,
+     "r_min": 0.9579,
+     "r_max": 0.9795,
+     "r_p05": 0.963,
+     "alpha_mean": 0.8138,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 120
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9835,
+     "r_min": 0.9766,
+     "r_max": 0.9874,
+     "r_p05": 0.9779,
+     "alpha_mean": 0.8334,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 45
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9925,
+     "r_min": 0.9892,
+     "r_max": 0.9947,
+     "r_p05": 0.9897,
+     "alpha_mean": 0.8493,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 10
+    }
+   }
+  },
+  "cheerfulness": {
+   "alpha_full": 0.81,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.6416,
+     "r_min": 0.5487,
+     "r_max": 0.7428,
+     "r_p05": 0.5561,
+     "alpha_mean": null,
+     "forward_only_subsets": 8,
+     "reverse_only_subsets": 2,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.7827,
+     "r_min": 0.6526,
+     "r_max": 0.8335,
+     "r_p05": 0.7144,
+     "alpha_mean": 0.5075,
+     "forward_only_subsets": 28,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8548,
+     "r_min": 0.7505,
+     "r_max": 0.8924,
+     "r_p05": 0.8082,
+     "alpha_mean": 0.6106,
+     "forward_only_subsets": 56,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 64
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.8992,
+     "r_min": 0.8047,
+     "r_max": 0.9305,
+     "r_p05": 0.8634,
+     "alpha_mean": 0.6779,
+     "forward_only_subsets": 70,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 140
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9293,
+     "r_min": 0.869,
+     "r_max": 0.9507,
+     "r_p05": 0.9036,
+     "alpha_mean": 0.7253,
+     "forward_only_subsets": 56,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 196
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9512,
+     "r_min": 0.9116,
+     "r_max": 0.9656,
+     "r_p05": 0.9332,
+     "alpha_mean": 0.7605,
+     "forward_only_subsets": 28,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 70
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9678,
+     "r_min": 0.9442,
+     "r_max": 0.9779,
+     "r_p05": 0.9556,
+     "alpha_mean": 0.7878,
+     "forward_only_subsets": 8,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 56
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9808,
+     "r_min": 0.9694,
+     "r_max": 0.9867,
+     "r_p05": 0.9745,
+     "alpha_mean": 0.8094,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 28
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9914,
+     "r_min": 0.9869,
+     "r_max": 0.9938,
+     "r_p05": 0.9883,
+     "alpha_mean": 0.8271,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 0
+    }
+   }
+  },
+  "liberalism": {
+   "alpha_full": 0.86,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.5804,
+     "r_min": 0.4895,
+     "r_max": 0.6814,
+     "r_p05": 0.4958,
+     "alpha_mean": null,
+     "forward_only_subsets": 3,
+     "reverse_only_subsets": 7,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.7271,
+     "r_min": 0.6653,
+     "r_max": 0.8222,
+     "r_p05": 0.6742,
+     "alpha_mean": 0.4074,
+     "forward_only_subsets": 3,
+     "reverse_only_subsets": 21,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8103,
+     "r_min": 0.7325,
+     "r_max": 0.8648,
+     "r_p05": 0.7602,
+     "alpha_mean": 0.5127,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 35,
+     "balanced_subsets": 84
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.8648,
+     "r_min": 0.7799,
+     "r_max": 0.9127,
+     "r_p05": 0.8256,
+     "alpha_mean": 0.5863,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 35,
+     "balanced_subsets": 175
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9035,
+     "r_min": 0.8245,
+     "r_max": 0.9346,
+     "r_p05": 0.8727,
+     "alpha_mean": 0.6406,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 21,
+     "balanced_subsets": 231
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9324,
+     "r_min": 0.8723,
+     "r_max": 0.9524,
+     "r_p05": 0.9089,
+     "alpha_mean": 0.6824,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 7,
+     "balanced_subsets": 140
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9549,
+     "r_min": 0.9219,
+     "r_max": 0.9693,
+     "r_p05": 0.935,
+     "alpha_mean": 0.7155,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 98
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9729,
+     "r_min": 0.9495,
+     "r_max": 0.984,
+     "r_p05": 0.9618,
+     "alpha_mean": 0.7424,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 42
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9877,
+     "r_min": 0.9785,
+     "r_max": 0.9931,
+     "r_p05": 0.9807,
+     "alpha_mean": 0.7646,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 7
+    }
+   }
+  },
+  "sympathy": {
+   "alpha_full": 0.75,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.5921,
+     "r_min": 0.4863,
+     "r_max": 0.6861,
+     "r_p05": 0.499,
+     "alpha_mean": null,
+     "forward_only_subsets": 4,
+     "reverse_only_subsets": 6,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.7375,
+     "r_min": 0.6489,
+     "r_max": 0.804,
+     "r_p05": 0.683,
+     "alpha_mean": 0.4296,
+     "forward_only_subsets": 6,
+     "reverse_only_subsets": 15,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8189,
+     "r_min": 0.7591,
+     "r_max": 0.8627,
+     "r_p05": 0.7822,
+     "alpha_mean": 0.5323,
+     "forward_only_subsets": 4,
+     "reverse_only_subsets": 20,
+     "balanced_subsets": 96
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.8717,
+     "r_min": 0.8221,
+     "r_max": 0.8994,
+     "r_p05": 0.848,
+     "alpha_mean": 0.6041,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 15,
+     "balanced_subsets": 194
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9088,
+     "r_min": 0.8686,
+     "r_max": 0.9291,
+     "r_p05": 0.8897,
+     "alpha_mean": 0.6569,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 6,
+     "balanced_subsets": 246
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9364,
+     "r_min": 0.9117,
+     "r_max": 0.9514,
+     "r_p05": 0.9233,
+     "alpha_mean": 0.6974,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 185
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9577,
+     "r_min": 0.9369,
+     "r_max": 0.968,
+     "r_p05": 0.9486,
+     "alpha_mean": 0.7295,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 116
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9747,
+     "r_min": 0.9628,
+     "r_max": 0.9817,
+     "r_p05": 0.9667,
+     "alpha_mean": 0.7554,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 45
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9885,
+     "r_min": 0.9817,
+     "r_max": 0.9925,
+     "r_p05": 0.9835,
+     "alpha_mean": 0.7768,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 10
+    }
+   }
+  },
+  "cautiousness": {
+   "alpha_full": 0.76,
+   "by_k": {
+    "1": {
+     "n_subsets": 10,
+     "r_mean": 0.6309,
+     "r_min": 0.413,
+     "r_max": 0.8013,
+     "r_p05": 0.4259,
+     "alpha_mean": null,
+     "forward_only_subsets": 3,
+     "reverse_only_subsets": 7,
+     "balanced_subsets": 10
+    },
+    "2": {
+     "n_subsets": 45,
+     "r_mean": 0.7761,
+     "r_min": 0.548,
+     "r_max": 0.8731,
+     "r_p05": 0.6038,
+     "alpha_mean": 0.4784,
+     "forward_only_subsets": 3,
+     "reverse_only_subsets": 21,
+     "balanced_subsets": 45
+    },
+    "3": {
+     "n_subsets": 120,
+     "r_mean": 0.8518,
+     "r_min": 0.6598,
+     "r_max": 0.9136,
+     "r_p05": 0.7645,
+     "alpha_mean": 0.5827,
+     "forward_only_subsets": 1,
+     "reverse_only_subsets": 35,
+     "balanced_subsets": 84
+    },
+    "4": {
+     "n_subsets": 210,
+     "r_mean": 0.8981,
+     "r_min": 0.7868,
+     "r_max": 0.9321,
+     "r_p05": 0.8365,
+     "alpha_mean": 0.6538,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 35,
+     "balanced_subsets": 175
+    },
+    "5": {
+     "n_subsets": 252,
+     "r_mean": 0.9293,
+     "r_min": 0.8577,
+     "r_max": 0.9502,
+     "r_p05": 0.8974,
+     "alpha_mean": 0.7051,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 21,
+     "balanced_subsets": 231
+    },
+    "6": {
+     "n_subsets": 210,
+     "r_mean": 0.9516,
+     "r_min": 0.9046,
+     "r_max": 0.9647,
+     "r_p05": 0.9323,
+     "alpha_mean": 0.7435,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 7,
+     "balanced_subsets": 140
+    },
+    "7": {
+     "n_subsets": 120,
+     "r_mean": 0.9683,
+     "r_min": 0.9464,
+     "r_max": 0.9773,
+     "r_p05": 0.9601,
+     "alpha_mean": 0.7733,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 1,
+     "balanced_subsets": 98
+    },
+    "8": {
+     "n_subsets": 45,
+     "r_mean": 0.9812,
+     "r_min": 0.9728,
+     "r_max": 0.9864,
+     "r_p05": 0.9752,
+     "alpha_mean": 0.797,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 42
+    },
+    "9": {
+     "n_subsets": 10,
+     "r_mean": 0.9916,
+     "r_min": 0.9885,
+     "r_max": 0.9937,
+     "r_p05": 0.9891,
+     "alpha_mean": 0.8163,
+     "forward_only_subsets": 0,
+     "reverse_only_subsets": 0,
+     "balanced_subsets": 7
+    }
+   }
+  }
+ },
+ "thresholds": {
+  "平均子集 r≥0.8": {
+   "median_k": 3,
+   "max_k": 4,
+   "unreachable": 0,
+   "by_facet": {
+    "anxiety": 2,
+    "friendliness": 2,
+    "imagination": 3,
+    "trust": 2,
+    "selfefficacy": 3,
+    "anger": 2,
+    "gregariousness": 2,
+    "aesthetic_appreciation_artistic_interests": 3,
+    "morality": 3,
+    "orderliness": 2,
+    "depression": 2,
+    "assertiveness": 2,
+    "emotionality": 3,
+    "altruism": 3,
+    "dutifulness": 3,
+    "selfconsciousness": 3,
+    "activitylevel": 4,
+    "adventurousness": 3,
+    "cooperation": 3,
+    "achievementstriving": 3,
+    "immoderation": 3,
+    "excitementseeking": 2,
+    "intellect": 3,
+    "modesty_humility": 3,
+    "selfdiscipline": 2,
+    "vulnerability": 2,
+    "cheerfulness": 3,
+    "liberalism": 3,
+    "sympathy": 3,
+    "cautiousness": 3
+   }
+  },
+  "最差子集 r≥0.8": {
+   "median_k": 4,
+   "max_k": 6,
+   "unreachable": 0,
+   "by_facet": {
+    "anxiety": 3,
+    "friendliness": 3,
+    "imagination": 4,
+    "trust": 3,
+    "selfefficacy": 4,
+    "anger": 3,
+    "gregariousness": 3,
+    "aesthetic_appreciation_artistic_interests": 5,
+    "morality": 4,
+    "orderliness": 4,
+    "depression": 3,
+    "assertiveness": 3,
+    "emotionality": 6,
+    "altruism": 3,
+    "dutifulness": 4,
+    "selfconsciousness": 4,
+    "activitylevel": 6,
+    "adventurousness": 5,
+    "cooperation": 5,
+    "achievementstriving": 4,
+    "immoderation": 5,
+    "excitementseeking": 3,
+    "intellect": 4,
+    "modesty_humility": 5,
+    "selfdiscipline": 3,
+    "vulnerability": 4,
+    "cheerfulness": 4,
+    "liberalism": 5,
+    "sympathy": 4,
+    "cautiousness": 5
+   }
+  },
+  "平均子集 r≥0.85": {
+   "median_k": 3,
+   "max_k": 5,
+   "unreachable": 0,
+   "by_facet": {
+    "anxiety": 3,
+    "friendliness": 3,
+    "imagination": 3,
+    "trust": 3,
+    "selfefficacy": 4,
+    "anger": 2,
+    "gregariousness": 3,
+    "aesthetic_appreciation_artistic_interests": 4,
+    "morality": 4,
+    "orderliness": 3,
+    "depression": 2,
+    "assertiveness": 3,
+    "emotionality": 4,
+    "altruism": 3,
+    "dutifulness": 4,
+    "selfconsciousness": 4,
+    "activitylevel": 5,
+    "adventurousness": 4,
+    "cooperation": 4,
+    "achievementstriving": 4,
+    "immoderation": 4,
+    "excitementseeking": 3,
+    "intellect": 3,
+    "modesty_humility": 4,
+    "selfdiscipline": 3,
+    "vulnerability": 3,
+    "cheerfulness": 3,
+    "liberalism": 4,
+    "sympathy": 4,
+    "cautiousness": 3
+   }
+  },
+  "最差子集 r≥0.85": {
+   "median_k": 5,
+   "max_k": 7,
+   "unreachable": 0,
+   "by_facet": {
+    "anxiety": 4,
+    "friendliness": 4,
+    "imagination": 5,
+    "trust": 4,
+    "selfefficacy": 5,
+    "anger": 4,
+    "gregariousness": 4,
+    "aesthetic_appreciation_artistic_interests": 6,
+    "morality": 5,
+    "orderliness": 5,
+    "depression": 3,
+    "assertiveness": 4,
+    "emotionality": 6,
+    "altruism": 4,
+    "dutifulness": 5,
+    "selfconsciousness": 5,
+    "activitylevel": 7,
+    "adventurousness": 6,
+    "cooperation": 5,
+    "achievementstriving": 5,
+    "immoderation": 6,
+    "excitementseeking": 4,
+    "intellect": 5,
+    "modesty_humility": 6,
+    "selfdiscipline": 4,
+    "vulnerability": 4,
+    "cheerfulness": 5,
+    "liberalism": 6,
+    "sympathy": 5,
+    "cautiousness": 5
+   }
+  },
+  "平均子集 r≥0.9": {
+   "median_k": 5,
+   "max_k": 6,
+   "unreachable": 0,
+   "by_facet": {
+    "anxiety": 4,
+    "friendliness": 4,
+    "imagination": 4,
+    "trust": 4,
+    "selfefficacy": 5,
+    "anger": 3,
+    "gregariousness": 4,
+    "aesthetic_appreciation_artistic_interests": 5,
+    "morality": 5,
+    "orderliness": 4,
+    "depression": 3,
+    "assertiveness": 4,
+    "emotionality": 5,
+    "altruism": 5,
+    "dutifulness": 5,
+    "selfconsciousness": 5,
+    "activitylevel": 6,
+    "adventurousness": 5,
+    "cooperation": 5,
+    "achievementstriving": 5,
+    "immoderation": 5,
+    "excitementseeking": 4,
+    "intellect": 4,
+    "modesty_humility": 5,
+    "selfdiscipline": 4,
+    "vulnerability": 4,
+    "cheerfulness": 5,
+    "liberalism": 5,
+    "sympathy": 5,
+    "cautiousness": 5
+   }
+  },
+  "最差子集 r≥0.9": {
+   "median_k": 6,
+   "max_k": 8,
+   "unreachable": 0,
+   "by_facet": {
+    "anxiety": 5,
+    "friendliness": 5,
+    "imagination": 6,
+    "trust": 6,
+    "selfefficacy": 6,
+    "anger": 4,
+    "gregariousness": 6,
+    "aesthetic_appreciation_artistic_interests": 7,
+    "morality": 6,
+    "orderliness": 6,
+    "depression": 5,
+    "assertiveness": 6,
+    "emotionality": 7,
+    "altruism": 5,
+    "dutifulness": 7,
+    "selfconsciousness": 6,
+    "activitylevel": 8,
+    "adventurousness": 6,
+    "cooperation": 6,
+    "achievementstriving": 6,
+    "immoderation": 7,
+    "excitementseeking": 5,
+    "intellect": 6,
+    "modesty_humility": 7,
+    "selfdiscipline": 5,
+    "vulnerability": 6,
+    "cheerfulness": 6,
+    "liberalism": 7,
+    "sympathy": 6,
+    "cautiousness": 6
+   }
+  },
+  "平均子集 r≥0.95": {
+   "median_k": 6,
+   "max_k": 8,
+   "unreachable": 0,
+   "by_facet": {
+    "anxiety": 6,
+    "friendliness": 5,
+    "imagination": 6,
+    "trust": 6,
+    "selfefficacy": 7,
+    "anger": 5,
+    "gregariousness": 6,
+    "aesthetic_appreciation_artistic_interests": 7,
+    "morality": 7,
+    "orderliness": 6,
+    "depression": 5,
+    "assertiveness": 6,
+    "emotionality": 7,
+    "altruism": 6,
+    "dutifulness": 7,
+    "selfconsciousness": 7,
+    "activitylevel": 8,
+    "adventurousness": 7,
+    "cooperation": 7,
+    "achievementstriving": 7,
+    "immoderation": 7,
+    "excitementseeking": 6,
+    "intellect": 6,
+    "modesty_humility": 7,
+    "selfdiscipline": 5,
+    "vulnerability": 6,
+    "cheerfulness": 6,
+    "liberalism": 7,
+    "sympathy": 7,
+    "cautiousness": 6
+   }
+  },
+  "最差子集 r≥0.95": {
+   "median_k": 8,
+   "max_k": 9,
+   "unreachable": 0,
+   "by_facet": {
+    "anxiety": 7,
+    "friendliness": 7,
+    "imagination": 7,
+    "trust": 7,
+    "selfefficacy": 8,
+    "anger": 6,
+    "gregariousness": 7,
+    "aesthetic_appreciation_artistic_interests": 8,
+    "morality": 8,
+    "orderliness": 8,
+    "depression": 7,
+    "assertiveness": 7,
+    "emotionality": 8,
+    "altruism": 7,
+    "dutifulness": 8,
+    "selfconsciousness": 7,
+    "activitylevel": 9,
+    "adventurousness": 8,
+    "cooperation": 8,
+    "achievementstriving": 8,
+    "immoderation": 8,
+    "excitementseeking": 7,
+    "intellect": 8,
+    "modesty_humility": 8,
+    "selfdiscipline": 7,
+    "vulnerability": 7,
+    "cheerfulness": 8,
+    "liberalism": 9,
+    "sympathy": 8,
+    "cautiousness": 8
+   }
+  }
+ },
+ "coverage_cost": {
+  "3": {
+   "ideal_min_items": 90,
+   "pct_of_300": 30.0
+  },
+  "4": {
+   "ideal_min_items": 120,
+   "pct_of_300": 40.0
+  },
+  "5": {
+   "ideal_min_items": 150,
+   "pct_of_300": 50.0
+  },
+  "6": {
+   "ideal_min_items": 180,
+   "pct_of_300": 60.0
+  },
+  "7": {
+   "ideal_min_items": 210,
+   "pct_of_300": 70.0
+  },
+  "8": {
+   "ideal_min_items": 240,
+   "pct_of_300": 80.0
+  }
+ },
+ "build_log": [
+  "完整记录 7325 条；30 个 facet"
+ ]
+}

@@ -1,0 +1,250 @@
+{
+ "sections": [
+  {
+   "heading": "先说清楚：你问的那件事，这份结果答不了",
+   "text": "你问的是「是不是抑郁症、要不要去医院」。这两个问题，这份结果都不能回答——不是不回答，是它没有能力回答。本结果不构成任何诊断，也不能替代专业评估；这部分只做自我了解的陪伴，不做筛查。我能做的是另一件事：把这份结果里本来就写清楚的内容、以及本次作答值得展开的题目，用更贴合你这次作答的方式说一遍。你今天答了 150 题（全卷 300 题），完成了 5 轮；在这个作答范围上，全部 30 个面向都已解锁、可以呈现，所以下面谈到的内容都有本次作答作为依据。",
+   "grounded_in": [
+    "user_context",
+    "disclosures.1.text",
+    "coverage.items_answered",
+    "coverage.items_total",
+    "coverage.rounds_done",
+    "facets_showable",
+    "facets_withheld"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "本次作答里值得单独展开的那些题",
+   "text": "本次作答中被标记为「值得澄清」的题目，选取规则是：作答位置落在两端（百分位 100.0），且这道题的脚手架里记录了常见误读。下面按面向把它们分组说清楚。这里只解释每一道题问的是什么、承重词在中文里指什么、常见的另一种读法是什么；不对你这个人下任何结论。",
+   "grounded_in": [
+    "notable_items.0.percentile",
+    "notable_items.0.common_misreadings",
+    "notable_items.0.speak_neutrally",
+    "notable_items.4.localization_note"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "条理性（4 道）：问的是环境与节奏的有序，不是做事靠不靠谱",
+   "text": "与「条理性」有关的有 4 道。第 10 题「喜欢秩序」问的是你是否喜欢事物井然有序。这里的承重词 order 指秩序、有条理，常见的另一种读法是把它理解成「做事靠谱」——本题只问对环境秩序的偏好，而做事靠不靠谱属于另外的面向。第 100 题「喜欢有条有理」的承重词是 order and regularity，指秩序与规律；常见的窄化读法是只按空间整齐来理解，其实 regularity 还包含时间上的规律性，也就是安排上的规律，不只是东西摆得整齐。第 130 题「按计划做事」的承重词是 according to a plan，指照计划进行，常见读法是把它与「能不能执行」混同：这道题问的是有没有计划并按之进行，而能不能启动并坚持是另一个面向。第 70 题「希望一切都『刚刚好』」的承重词是 just right，指恰到好处、分毫不差；常见的另一种读法是理解成「追求完美」，或者反过来因为「差不多就行」而当成低分——后一种读法确实对应本题的低分。",
+   "grounded_in": [
+    "notable_items.0.facet",
+    "notable_items.0.asks",
+    "notable_items.0.key_term.sense_here",
+    "notable_items.0.common_misreadings.0.misreading",
+    "notable_items.0.common_misreadings.0.correction",
+    "notable_items.7.asks",
+    "notable_items.7.key_term.term",
+    "notable_items.7.key_term.sense_here",
+    "notable_items.7.common_misreadings.0.misreading",
+    "notable_items.7.common_misreadings.0.correction",
+    "notable_items.11.asks",
+    "notable_items.11.key_term.sense_here",
+    "notable_items.11.common_misreadings.0.misreading",
+    "notable_items.11.common_misreadings.0.correction",
+    "notable_items.4.asks",
+    "notable_items.4.key_term.sense_here",
+    "notable_items.4.common_misreadings.0.misreading",
+    "notable_items.4.common_misreadings.1.correction"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "第 70 题需要单独说一句：它在本项目里是一道被修复过的题",
+   "text": "第 70 题「希望一切都『刚刚好』」在原始机读数据里缺失正文，本项目用官方问卷补齐，所以如果它的表述让你觉得不太通顺，原因在此。另外，just right 这个说法在英文里带有完美主义意味，可能更接近与反复检查有关的倾向，而不只是条理性；这道题在本面向里的题目-总分相关为 .39，属于偏低，中立选项比例也偏高，说明不少人对它的定位并不一致。它仍然只是一道偏好描述题，不构成任何筛查。如果你在读到它时感到不安或想去反复检查，请注意它测的是偏好，不是症状。",
+   "grounded_in": [
+    "notable_items.4.localization_note",
+    "notable_items.4.asks",
+    "notable_items.4.common_misreadings.0.correction"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "想象力（3 道）：「天马行空」「白日梦」问的是享受想象，不是不专心",
+   "text": "与「想象力」有关的有 3 道。第 33 题「喜欢天马行空地幻想」的承重词 wild flights of fantasy 指不受约束的、跳跃的幻想；常见的另一种读法是把「幻想」当成「不切实际」，本题不含这层评价，也不等同于走神——走神是无意的，本题问的是享受。第 63 题「喜欢做白日梦」的承重词 daydream 指白日梦、清醒时的想象，不是「分心」；中文「白日梦」有时带「不专心」的贬义，而英文 daydream 基本中性甚至正面，本题问的是你是否享受这种状态，不是你是否容易分心。第 123 题「会沉浸在自己的幻想里」的承重词 indulge 指放任自己沉浸，常见的另一种读法是把它理解成「逃避现实」；本题是中性的，指你允许自己花时间在想象中。这道题的中立选项比例偏高，说明不少人觉得难以定位。",
+   "grounded_in": [
+    "notable_items.1.facet",
+    "notable_items.1.asks",
+    "notable_items.1.key_term.sense_here",
+    "notable_items.1.common_misreadings.0.misreading",
+    "notable_items.1.common_misreadings.0.correction",
+    "notable_items.1.common_misreadings.1.correction",
+    "notable_items.3.asks",
+    "notable_items.3.key_term.term",
+    "notable_items.3.key_term.sense_here",
+    "notable_items.3.key_term.not_this",
+    "notable_items.3.localization_note",
+    "notable_items.3.common_misreadings.0.misreading",
+    "notable_items.3.common_misreadings.1.misreading",
+    "notable_items.9.asks",
+    "notable_items.9.key_term.sense_here",
+    "notable_items.9.localization_note",
+    "notable_items.9.common_misreadings.0.misreading"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "冒险（1 道）：问的是新鲜感与意愿，不是胆量、也不是能不能去",
+   "text": "第 48 题「喜欢去没去过的地方」的承重词 new places 指没去过的地方，不是「远的地方」。常见的两种读法都要扭一下：一种是把出国或远行当成必要条件，其实没去过的地方就行——离家五公里没去过的小巷也算；另一种是因为条件限制去不了而选低分，而本题问的是意愿，不问条件。它与「追求刺激」也不同：那个面向要的是心跳加速，这道题要的是新鲜感。",
+   "grounded_in": [
+    "notable_items.2.facet",
+    "notable_items.2.asks",
+    "notable_items.2.key_term.sense_here",
+    "notable_items.2.key_term.not_this",
+    "notable_items.2.common_misreadings.0.misreading",
+    "notable_items.2.common_misreadings.0.correction",
+    "notable_items.2.common_misreadings.1.misreading",
+    "notable_items.2.common_misreadings.1.correction",
+    "notable_items.2.localization_note"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "追求刺激（1 道）与合群性（1 道）：刺激度不是行动力，拉人一起不是依赖",
+   "text": "第 82 题「喜欢有刺激感的事」的承重词 action 在这里指带劲的、动作性的事，也就是活动本身的刺激度——飙车、竞技、夜生活这一类，不是「行动力强」，也不是「忙碌」；后两者更接近节奏层面。第 97 题「喜欢拉别人一起做我的事」的承重词 involve others 指把他人纳入自己的活动，偏主动邀请，不等于「需要人帮忙」，也不等于「依赖别人」。这道题在本面向里的题目-总分相关为 .47、偏低，中立选项比例也偏高，更接近分享倾向，与本面向的核心（寻求陪伴）略有不同；一个喜欢群体但做事独立的人，这道题会得低分。",
+   "grounded_in": [
+    "notable_items.5.facet",
+    "notable_items.5.asks",
+    "notable_items.5.key_term.sense_here",
+    "notable_items.5.common_misreadings.0.correction",
+    "notable_items.5.common_misreadings.1.misreading",
+    "notable_items.5.localization_note",
+    "notable_items.6.facet",
+    "notable_items.6.asks",
+    "notable_items.6.key_term.sense_here",
+    "notable_items.6.key_term.not_this",
+    "notable_items.6.common_misreadings.0.correction",
+    "notable_items.6.common_misreadings.1.misreading",
+    "notable_items.6.localization_note"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "放纵（1 道）：全卷翻译难度最高的题之一，问的是「停不停」",
+   "text": "第 111 题「会连续失控地放纵（Go on binges）」是全卷翻译难度最高的题之一。承重词 binge 指短时间内的失控性过量，可指暴食、酗酒、连续追剧、疯狂购物；中文没有完全对应的词，本卷的中译偏窄且带贬义，实际应理解为任何形式的「连续失控式过量」。常见的另一种读法是只按吃喝理解，或者把「偶尔放松一下」算进来——关键在失控与连续这两点。这道题问的是想做的事停不停，而该做的事做不做属于「自律」，是另一件事。",
+   "grounded_in": [
+    "notable_items.8.facet",
+    "notable_items.8.asks",
+    "notable_items.8.key_term.sense_here",
+    "notable_items.8.key_term.not_this",
+    "notable_items.8.common_misreadings.0.misreading",
+    "notable_items.8.common_misreadings.0.correction",
+    "notable_items.8.common_misreadings.1.misreading",
+    "notable_items.8.common_misreadings.1.correction",
+    "notable_items.8.localization_note"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "追求成就（1 道）：「超出预期」指标准，不是无偿加班",
+   "text": "第 140 题「我会超出预期地完成任务或工作」的承重词 more than expected 指超过要求。这道题在中文职场语境下容易被读成「是否会无偿加班」，而原意更宽：指主动把标准抬到要求之上——在职责范围内做得更细致、更完善也算，未必是延长时间。另一种常见读法是只按加班理解，其实提高质量也算；如果因为不认同「内卷」而选低分，那答的其实是对环境的评价，而本题问的是自我标准。",
+   "grounded_in": [
+    "notable_items.11.facet",
+    "notable_items.11.asks",
+    "notable_items.11.key_term.sense_here",
+    "notable_items.11.key_term.not_this",
+    "notable_items.11.common_misreadings.0.misreading",
+    "notable_items.11.common_misreadings.0.correction",
+    "notable_items.11.common_misreadings.1.misreading",
+    "notable_items.11.common_misreadings.1.correction",
+    "notable_items.11.localization_note"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "这 12 道题各自不测量什么",
+   "text": "逐题澄清容易让人把一道题读得很重，所以这里把边界一并列出。「条理性」的题目不管任务能否按时完成（那属自律）、不管是否守规矩（那属责任心）、不管工作能力，也不测量对秩序的需求强度，只涉及实际的有序程度与偏好；换句话说，一个桌面很乱但工作推进得很好的人，这些题可以很低分。「想象力」的题目不管创造力或艺术才能、不管是否务实、不管对艺术的兴趣，也不管思维的深度。「冒险」的题目不管对强烈刺激的渴求、不管对新观念的兴趣、不测量风险承受能力或胆量，也不管旅行频率（那受经济条件限制）。「追求刺激」的题目不管日常活动量、不管是否喜欢与人相处、不测量风险判断能力，也不管对刺激的实际承受力。「合群性」的题目不管对具体他人的情感温度、不管在社交中的自在程度、不测量社交能力或受欢迎程度，也不管是否喜欢安静的活动——朋友不多但每段关系都很深的人，这里仍可能低分，那是偏好，不是缺陷。「放纵」的题目不测量是否自律地推进任务、不测量成瘾行为（那属临床范畴）、不测量是否享受美食或消费，也不测量情绪性的愤怒冲动。「追求成就」的题目不测量实际成就或能力、不测量能否启动与坚持、不测量是否相信自己做得到，也不测量是否追求外部认可——这里问的是想达到什么水平。",
+   "grounded_in": [
+    "notable_items.0.facet",
+    "facets.orderliness.does_not_measure.0",
+    "facets.orderliness.does_not_measure.1",
+    "facets.orderliness.does_not_measure.2",
+    "facets.orderliness.does_not_measure.3",
+    "facets.orderliness.interpretation_caveats.0",
+    "facets.imagination.does_not_measure.0",
+    "facets.imagination.does_not_measure.1",
+    "facets.imagination.does_not_measure.2",
+    "facets.imagination.does_not_measure.3",
+    "facets.adventurousness.does_not_measure.0",
+    "facets.adventurousness.does_not_measure.1",
+    "facets.adventurousness.does_not_measure.2",
+    "facets.adventurousness.does_not_measure.3",
+    "facets.excitementseeking.does_not_measure.0",
+    "facets.excitementseeking.does_not_measure.1",
+    "facets.excitementseeking.does_not_measure.2",
+    "facets.excitementseeking.does_not_measure.3",
+    "facets.gregariousness.does_not_measure.0",
+    "facets.gregariousness.does_not_measure.1",
+    "facets.gregariousness.does_not_measure.2",
+    "facets.gregariousness.does_not_measure.3",
+    "facets.gregariousness.interpretation_caveats.0",
+    "facets.immoderation.does_not_measure.0",
+    "facets.immoderation.does_not_measure.1",
+    "facets.immoderation.does_not_measure.2",
+    "facets.immoderation.does_not_measure.3",
+    "facets.achievementstriving.does_not_measure.0",
+    "facets.achievementstriving.does_not_measure.1",
+    "facets.achievementstriving.does_not_measure.2",
+    "facets.achievementstriving.does_not_measure.3"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "这份结果的边界：常模、精度与完整性",
+   "text": "以下几条不是附注，而是这份结果能被怎么用的前提。第一，参照人群为英国样本，非中国人群；源文件未提供样本量、招募方式与采集年份，且分带边界来自对常模表的反推。所以这里的相对位置，比较的是那份英国常模，不是你周围的中国人。第二，本结果不构成任何诊断，也不能替代专业评估——这一条与本文开头一致，也贯穿全篇。第三，本次作答 150 题（全卷 300 题），已完成 5 轮；本次全部 30 个面向都已解锁、可以呈现，没有因题量不足而被隐去的面向。但各面向的精度并不相同：本次被标为「完整」的面向，其精度说明是可以按完整测量的精度看待；被标为「较可靠」的面向，提示是误差很小、结论稳；被标为「初步倾向」的面向，提示是方向大致可信、细节别当真。每个面向都带有自己的 k/of 与精度数值，也有自己的 tier，读的时候按它自己的那一条来看。第四，每个面向自身都记着「不测量什么」与内容局限——例如条理性只覆盖环境与物品的有序，想象力不覆盖创造力与艺术才能，合群性不覆盖人际温度与社交自在程度，放纵不覆盖成瘾行为，追求成就不覆盖实际成就。这些是产品对自己工具的批评标注，完整保留，不作删减。第五，本次的质量门 flags 为空、可靠性折扣为 0.0；只有一条说明：反义题一致性无法计算，原因是只答了一半的题，属作答范围限制，不是作答质量问题。上面这些合起来的意思是：这份结果里的每一条都可以当作一个粗略提示来读，但没有一条能单独构成关于你的定论。",
+   "grounded_in": [
+    "disclosures.0.text",
+    "disclosures.0.why",
+    "disclosures.1.text",
+    "disclosures.2.text",
+    "disclosures.2.items",
+    "disclosures.2.why",
+    "disclosures.3.text",
+    "disclosures.3.items",
+    "coverage.items_answered",
+    "coverage.items_total",
+    "coverage.rounds_done",
+    "facets_showable",
+    "facets_withheld",
+    "facets.anxiety.precision.tier",
+    "facets.anxiety.precision.advice",
+    "facets.activitylevel.precision.tier",
+    "facets.activitylevel.precision.advice",
+    "facets.orderliness.interpretation_caveats.0",
+    "facets.imagination.interpretation_caveats.0",
+    "facets.gregariousness.interpretation_caveats.0",
+    "facets.immoderation.does_not_measure.1",
+    "facets.achievementstriving.does_not_measure.0",
+    "quality_gate.flags",
+    "quality_gate.reliability_discount",
+    "quality_gate.notes.0"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "为什么我不能替你判「是不是抑郁症、要不要去医院」",
+   "text": "你问的这两件事，我都不回答，理由不是回避，而是这份工具本身够不到那里。第一，本结果不构成任何诊断，也不能替代专业评估；它给出的是你自己报告的偏好与倾向，而「是不是抑郁症」需要的是临床评估与专门量表，属于另一个范畴，也超出我在这里能承担的角色。第二，「抑郁」这个面向本身已经写明了这一点：不构成抑郁症的诊断或筛查。第三，这个面向不区分情绪低落的原因——因真实丧失（丧亲、失业、失恋）而悲伤，与因气质而长期低落，得分可能相同，量表分辨不了这两者；所以它既不能替你说「是」，也不能替你说「不是」。第四，本次作答范围是 150 题（全卷 300 题），本来就不足以支持任何临床判断。第五，我也不会就就诊安排给建议。可以明确转达的是这个面向自带的提示：若你长期感到低落、失去兴趣或出现伤害自己的念头，请直接寻求专业帮助，而不是依靠这份测评——这条提示针对的是这类情况本身，与你的分数无关，也没有任何暗示。",
+   "grounded_in": [
+    "user_context",
+    "disclosures.1.text",
+    "facets.depression.does_not_measure.0",
+    "facets.depression.does_not_measure.3",
+    "facets.depression.interpretation_caveats.0",
+    "facets.depression.interpretation_caveats.1",
+    "facets.anxiety.does_not_measure.4",
+    "coverage.items_answered",
+    "coverage.items_total"
+   ],
+   "citations": []
+  }
+ ],
+ "notable_items_surfaced": [10, 33, 48, 63, 70, 82, 97, 100, 111, 123, 130, 140],
+ "disclosures_kept": ["norm_sample", "no_diagnosis", "content_caveat", "does_not_measure"],
+ "refusals": [
+  {
+   "asked": "我这种情况是不是抑郁症？需要去医院吗？",
+   "why": "判定是不是抑郁症、以及是否需要就诊，属于临床评估的范围。本次输入明确写着：本结果不构成任何诊断，也不能替代专业评估；「抑郁」这一面向也不构成抑郁症的诊断或筛查，且不区分情绪低落的原因。因此这两问都超出这份结果能支持的范围，只能拒绝；同时不在拒绝时用分数作任何旁证或暗示。"
+  }
+ ]
+}

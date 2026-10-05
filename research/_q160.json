@@ -1,0 +1,182 @@
+[
+ {
+  "i": 160,
+  "en": "I make promises that I don’t really intendto keep.",
+  "zh": "我会做出自己其实并不打算兑现的承诺。",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "i": 161,
+  "en": "I make up stories about things that happened that are totally untrue.",
+  "zh": "我会就发生过的事编造完全不符合事实的说法。",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "i": 162,
+  "en": "I never know where my emotions will go from moment to moment.",
+  "zh": "我从不知道自己的情绪下一刻会转向哪里",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "i": 163,
+  "en": "I never show emotions to others.",
+  "zh": "我从不对他人表露情绪（I never show emotions to others.）",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "i": 164,
+  "en": "I never take risks.",
+  "zh": "我从不冒险（I never take risks.）",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "i": 165,
+  "en": "I never want tobe alone.",
+  "zh": "我从不想独自一人",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "i": 166,
+  "en": "I often “zone out”and then suddenly come to and realize that a lot of timehas passed.",
+  "zh": "我常常“走神”，然后突然回过神来，发现已经过去了很多时间",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "i": 167,
+  "en": "I often can’t control what I think about.",
+  "zh": "我常常无法控制自己在想什么",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "i": 168,
+  "en": "I often feel just miserable.",
+  "zh": "我常常感到十分痛苦",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "i": 169,
+  "en": "I often feel like a failure.",
+  "zh": "我常常觉得自己是个失败者",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "i": 170,
+  "en": "I often feel like nothing I do really matters.",
+  "zh": "我常常觉得我做什么都无关紧要",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "i": 171,
+  "en": "I often forget to pay my bills.",
+  "zh": "我常常忘记付账单",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "i": 172,
+  "en": "I often get into physical fights.",
+  "zh": "我常常和别人动手打架",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "i": 173,
+  "en": "I often have ideas that are too unusual to explain to anyone.",
+  "zh": "我常常有一些离奇得无法向任何人解释的想法（I often have ideas that are too unusual to explain to anyone.）",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "i": 174,
+  "en": "I often have thoughts that make sense to me but that other people say are strange.",
+  "zh": "我常常有一些自己觉得有道理、别人却说很奇怪的想法",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "i": 175,
+  "en": "I often have to deal with people who are less important than me.",
+  "zh": "我常常不得不与不如我重要的人打交道",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "i": 176,
+  "en": "I often have unusual experiences, such as sensing the presence of someone who isn’t actually there.",
+  "zh": "我常常有不同寻常的体验，比如感到有某人在场，其实那人并不在（I often have unusual experiences, such as sensing the presence of someone who isn’t actually there.）",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "i": 177,
+  "en": "I often make up things about myself to help me get what I want.",
+  "zh": "我常常编造关于自己的事来帮我得到想要的东西",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "i": 178,
+  "en": "I often say things that others find odd or strange.",
+  "zh": "我常常说些别人觉得古怪或奇怪的话",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "i": 179,
+  "en": "I often see unusual connections between things that most people miss.",
+  "zh": "我常常看出事物之间大多数人没注意到的奇特联系（I often see unusual connections between things that most people miss.）",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ }
+]

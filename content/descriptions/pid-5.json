@@ -1,0 +1,220 @@
+{
+  "_note": "PID-5（220 题）的证据文件。生成物 data/descriptions/pid-5.md 由 tools/build/build_descriptions.py 产出，禁止手改。α 由脚本从 archive/norms/pid-5-psychometrics/derived/pid5_item_params_demo.json 自动汇总，不在此复制。",
+  "code": "pid-5",
+  "instrument": "PID-5",
+  "record_kind": "descriptions_source",
+  "schema_version": "1.0",
+
+  "display_name": "PID-5 — The Personality Inventory for DSM-5（成人版，220 题）",
+  "what_it_is": {
+    "text": "APA 发布的**适应不良人格特质**自评量表：220 道题，25 个 facet（每个 4–14 题），归入 5 个域（每个域由 3 个 facet 均分构成）。它是 DSM-5 人格障碍模型（AMPD）里 Criterion B（适应不良特质）的操作化工具。",
+    "source": "archive/scales/PID-5/manual.pdf（『25 personality trait facets』『five broader trait domains』『each trait facet consisting of 4 to 14 items』）；结构见 data/instruments/pid-5.json 的 structure 与 scoring"
+  },
+  "what_it_measures": {
+    "text": "作答方式是 0–3 的四点自评（0 = very false or often false … 3 = very true or often true）。**facet 分 = 该 facet 内题目的均分**（反向题先做 `3 − x`）；**域分 = 该域 3 个 facet 分的均分**。分数越高表示该适应不良特质越突出。",
+    "source": "archive/scales/PID-5/manual.pdf 的 Scoring 段（sum then average、prorate）；data/instruments/pid-5.json 的 scoring（facet = mean of items，domain = mean of 3 facets）"
+  },
+  "does_not_measure": [
+    {
+      "text": "**不是诊断**。高分代表特质突出，不代表符合任何人格障碍的诊断标准；AMPD 的诊断还需要 Criterion A（人格功能损害）与临床判断。",
+      "source": "data/instruments/pid-5.json 的 citation（DSM-5 AMPD 框架）与手册的临床使用定位"
+    },
+    {
+      "text": "**不测「正常人格」的常模位置**。它测的是适应不良特质，不是大五式的常态特质分布；PID-5 的百分位不能当作「你在人群中的性格位置」。",
+      "source": "archive/norms/pid-5/README.md 与 data/norms/pid-5.json 的 percentile_method（条件百分位，按性别×年龄分层）"
+    },
+    {
+      "text": "**不衡量症状病程、功能损害或严重度分级**。手册不含严重度分级，本项目也没找到可采用的 220 题版临床分界值。",
+      "source": "research/pid5_psychometrics_survey.md §2.4 与 §4（通行的分界值不是 220 题版或不是一般人群）"
+    },
+    {
+      "text": "**不测智力、认知能力或器质性因素**。",
+      "source": "量表范围（25 个特质 facet 全为适应不良特质）"
+    },
+    {
+      "text": "**不包含效度/装好装坏量表**。作答真实性只能靠外部质量门识别。",
+      "source": "本量表包无 validity 维度；质量门见 data/quality-gate-calibration.json"
+    },
+    {
+      "text": "**不是 PID-5-BF**。本项目收录的是 220 题完整版；PID-5-BF（25 题）只用于交叉核对题项归属，不作为本量表的结果口径。",
+      "source": "data/instruments/pid-5.json 的 provenance（与 PID-5-BF 25/25 交叉核对）"
+    }
+  ],
+  "applicability": {
+    "applicable": "18 岁及以上成人。常模为德国 GESIS Panel 总体代表性样本（N=4,727，条件百分位按性别×年龄分层）。",
+    "inapplicable": ["18 岁以下", "把结果当诊断依据", "把本量表的百分位当作常态人格的位置"],
+    "source": "data/norms/pid-5.json 的 n / n_note / conditional / cells"
+  },
+
+  "dimension_order": [
+    "pid5_anhedonia", "pid5_anxiousness", "pid5_attention_seeking", "pid5_callousness",
+    "pid5_deceitfulness", "pid5_depressivity", "pid5_distractibility", "pid5_eccentricity",
+    "pid5_emotional_lability", "pid5_grandiosity", "pid5_hostility", "pid5_impulsivity",
+    "pid5_intimacy_avoidance", "pid5_irresponsibility", "pid5_manipulativeness",
+    "pid5_perceptual_dysregulation", "pid5_perseveration", "pid5_restricted_affectivity",
+    "pid5_rigid_perfectionism", "pid5_risk_taking", "pid5_separation_insecurity",
+    "pid5_submissiveness", "pid5_suspiciousness", "pid5_unusual_beliefs_experiences",
+    "pid5_withdrawal"
+  ],
+  "domain_table": [
+    {"id": "pid5_negative_affect", "zh": "负性情感", "name": "Negative Affect",
+     "children": ["pid5_emotional_lability", "pid5_anxiousness", "pid5_separation_insecurity"],
+     "gloss": "情绪易波动、焦虑紧张、害怕被抛弃的情感范围。"},
+    {"id": "pid5_detachment", "zh": "疏离", "name": "Detachment",
+     "children": ["pid5_withdrawal", "pid5_anhedonia", "pid5_intimacy_avoidance"],
+     "gloss": "回避社交与亲密关系、难以体验愉快。"},
+    {"id": "pid5_antagonism", "zh": "对抗", "name": "Antagonism",
+     "children": ["pid5_manipulativeness", "pid5_deceitfulness", "pid5_grandiosity"],
+     "gloss": "操纵他人、欺骗、自我夸大。"},
+    {"id": "pid5_disinhibition", "zh": "去抑制", "name": "Disinhibition",
+     "children": ["pid5_irresponsibility", "pid5_impulsivity", "pid5_distractibility"],
+     "gloss": "冲动、不负责任、注意力易被拉走。"},
+    {"id": "pid5_psychoticism", "zh": "精神病性", "name": "Psychoticism",
+     "children": ["pid5_unusual_beliefs_experiences", "pid5_eccentricity", "pid5_perceptual_dysregulation"],
+     "gloss": "异常的信念与体验、行为古怪、知觉失调。"}
+  ],
+  "domain_table_source": "data/pid5-scoring-keys.json 的 domains（手册域表 + 正文『five broader trait domains』）；域分 = 3 个 facet 的均分",
+
+  "dimensions": {
+    "pid5_anhedonia": {"zh": "快感缺失", "gloss": "从活动中难以获得乐趣或满足，对本来喜欢的事提不起兴趣。", "gloss_source": "derived_from_items:pid5_anhedonia 的 8 题", "does_not_measure": ["不是抑郁发作本身（不含心境低落或自责条目）"]},
+    "pid5_anxiousness": {"zh": "焦虑性", "gloss": "强烈的紧张、担心与不安，常伴随对身体感受的警觉。", "gloss_source": "derived_from_items:pid5_anxiousness 的 9 题", "does_not_measure": ["不诊断焦虑障碍（无病程与功能损害标准）"]},
+    "pid5_attention_seeking": {"zh": "寻求关注", "gloss": "渴望成为注意的焦点，靠行为或外表吸引他人注意。", "gloss_source": "derived_from_items:pid5_attention_seeking 的 8 题"},
+    "pid5_callousness": {"zh": "冷漠无情", "gloss": "对他人感受漠不关心，利用他人、缺乏内疚。", "gloss_source": "derived_from_items:pid5_callousness 的 14 题", "does_not_measure": ["不等于反社会行为史（无行为记录条目）"]},
+    "pid5_deceitfulness": {"zh": "欺骗性", "gloss": "为私利而撒谎、隐瞒、误导他人。", "gloss_source": "derived_from_items:pid5_deceitfulness 的 10 题"},
+    "pid5_depressivity": {"zh": "抑郁性", "gloss": "持续的低落、无望感与自我贬低，觉得生活没有意义。", "gloss_source": "derived_from_items:pid5_depressivity 的 14 题", "does_not_measure": ["不评估自杀风险"]},
+    "pid5_distractibility": {"zh": "易分心", "gloss": "注意力容易被外界或杂念拉走，难以维持在一件事上。", "gloss_source": "derived_from_items:pid5_distractibility 的 9 题"},
+    "pid5_eccentricity": {"zh": "古怪", "gloss": "行为、言谈或外表显得奇特，与所在文化环境不合拍。", "gloss_source": "derived_from_items:pid5_eccentricity 的 13 题"},
+    "pid5_emotional_lability": {"zh": "情绪不稳", "gloss": "情绪起伏大且变化快，容易因小事被激起。", "gloss_source": "derived_from_items:pid5_emotional_lability 的 7 题"},
+    "pid5_grandiosity": {"zh": "夸大", "gloss": "觉得自己特殊、优于他人，理应得到特殊对待。", "gloss_source": "derived_from_items:pid5_grandiosity 的 6 题"},
+    "pid5_hostility": {"zh": "敌意", "gloss": "容易生气、易被冒犯，对他人抱有敌意。", "gloss_source": "derived_from_items:pid5_hostility 的 10 题"},
+    "pid5_impulsivity": {"zh": "冲动", "gloss": "凭一时冲动行动，缺少计划，事后后悔。", "gloss_source": "derived_from_items:pid5_impulsivity 的 6 题"},
+    "pid5_intimacy_avoidance": {"zh": "回避亲密", "gloss": "回避亲密的情感联系或亲密关系。", "gloss_source": "derived_from_items:pid5_intimacy_avoidance 的 6 题"},
+    "pid5_irresponsibility": {"zh": "不负责任", "gloss": "不履行承诺与义务，不关心工作或财务上的后果。", "gloss_source": "derived_from_items:pid5_irresponsibility 的 7 题"},
+    "pid5_manipulativeness": {"zh": "操纵性", "gloss": "用欺骗、奉承或施压等手段让他人按自己的意愿行事。", "gloss_source": "derived_from_items:pid5_manipulativeness 的 5 题"},
+    "pid5_perceptual_dysregulation": {"zh": "知觉失调", "gloss": "在清醒状态下出现异常的知觉体验（觉得世界不真实、感到自己与身体或思维分离等）。", "gloss_source": "derived_from_items:pid5_perceptual_dysregulation 的 12 题", "does_not_measure": ["不评估器质性或物质所致原因"]},
+    "pid5_perseveration": {"zh": "固执持续", "gloss": "坚持已经不合时宜的做法，难以转换思路或停止。", "gloss_source": "derived_from_items:pid5_perseveration 的 9 题"},
+    "pid5_restricted_affectivity": {"zh": "情感受限", "gloss": "情绪表达少、情感体验平淡，对事情缺少反应。", "gloss_source": "derived_from_items:pid5_restricted_affectivity 的 7 题"},
+    "pid5_rigid_perfectionism": {"zh": "刻板完美主义", "gloss": "对秩序、细节与完美的严格要求，达到影响任务完成的程度。", "gloss_source": "derived_from_items:pid5_rigid_perfectionism 的 10 题"},
+    "pid5_risk_taking": {"zh": "冒险", "gloss": "从事有危险、可能造成伤害的活动，不权衡后果。", "gloss_source": "derived_from_items:pid5_risk_taking 的 14 题", "does_not_measure": ["不衡量风险判断能力或冒险的动机"]},
+    "pid5_separation_insecurity": {"zh": "分离不安", "gloss": "害怕被重要他人遗弃或离开，对被抛弃的迹象过度敏感。", "gloss_source": "derived_from_items:pid5_separation_insecurity 的 7 题"},
+    "pid5_submissiveness": {"zh": "顺从", "gloss": "在关系中习惯性让渡主导权、顺从他人的意愿。", "gloss_source": "derived_from_items:pid5_submissiveness 的 4 题", "does_not_measure": ["不衡量文化性的礼貌或情境性的让步"]},
+    "pid5_suspiciousness": {"zh": "猜疑", "gloss": "怀疑他人的动机，觉得别人可能对自己有恶意。", "gloss_source": "derived_from_items:pid5_suspiciousness 的 7 题"},
+    "pid5_unusual_beliefs_experiences": {"zh": "异常信念与体验", "gloss": "持有与所在文化环境不符的信念，或报告异常的体验。", "gloss_source": "derived_from_items:pid5_unusual_beliefs_experiences 的 8 题", "does_not_measure": ["不区分文化/宗教语境下的正常信念"]},
+    "pid5_withdrawal": {"zh": "退缩", "gloss": "偏好独处、回避社交接触与人际互动。", "gloss_source": "derived_from_items:pid5_withdrawal 的 10 题", "does_not_measure": ["不等于社交焦虑（后者是焦虑性 facets）"]}
+  },
+  "dimension_definition_note": "**APA 的 PID-5 手册没有逐 facet 的构念定义**（它是施测与计分手册，只有 facet 名称、题号与计分规则）。因此上表的「通俗解释」一律标注为依据该 facet 题目内容推导（derived_from_items），**不冒充文献定义**。要在文档里给出「文献定义」，需要 DSM-5-TR 正文 Section III 的 AMPD 章节或 Krueger et al. (2012) 原文——本项目未入档这两份来源，故留白，见 evidence_gaps。",
+
+  "reverse_note": "PID-5 的反向题**有历史争议**：手册两处原文不一致，本项目采用 16 题（不是 Step 1 正文列的 14 题），逐项清单见 §3.1。",
+  "reverse_dispute": [
+    {"text": "**手册 Step 1 正文**逐字列 14 题：35, 58, 87, 90, 96, 97, 98, 131, 142, 155, 164, 177, 210, 215。", "source": "archive/scales/PID-5/manual.pdf Step 1；逐字复现于 data/pid5-reverse-keys.json 的 verbatim"},
+    {"text": "**手册 facet 评分表**另有 7、30 两题标 `R`，合计 16 题。", "source": "data/pid5-reverse-keys.json 的 reverse_source = manual-facet-table-R"},
+    {"text": "**题面证据**：第 7 题「I avoid risky situations.」是 Risk Taking 的反向表述；第 30 题「I'm an energetic person.」是 Anhedonia 的反向表述。", "source": "archive/scales/PID-5/items-extracted.json"},
+    {"text": "**数据证据**（两份独立样本，N=2,471，CC-BY-4.0）：不翻转时第 7 题与 Risk Taking 总分 r = −0.685、第 30 题与 Anhedonia r = −0.519；其余 14 题翻转后为 +0.37…+0.74。", "source": "data/pid5-reverse-keys.json 的 evidence.evidence_2_data"},
+    {"text": "**信度证据**：按 16 题翻转后，Anhedonia α .842→**.907**、Risk Taking .838→**.900**（已发表值 .88/.88），两个 facet 的 r_min 由负转正。", "source": "data/pid5-reverse-keys.json 的 evidence.evidence_3_reliability"},
+    {"text": "**外部核对**：同 facet 内「自己 facet」相关最高者 218/220；25 facet 的 α 均值 0.860（已发表 0.87）；facet 间相关均值 0.322（已发表 .33）。三项同时吻合。", "source": "data/pid5-reverse-keys.json 的 evidence.cross_check；调研报告 research/pid5_psychometrics_survey.md"}
+  ],
+  "display_chinese_items": true,
+  "translation_source_note": "数据层文本库 `data/text-db/text-db.json`（生成器 `tools/build/build_text_db.py`）——那是中译的源头；连接键是 `items[].source_code` ↔ `entries[*].codes`。界面侧的数据包只是读文本库后的**下游再生成物**，界面回退不会影响这里的中译。",
+  "translation_caveat": "220 题中译在数据层**齐全**（`data/text-db/text-db.json`，连接键 `items[].source_code` ↔ `entries[*].codes`），但 `zh_source` 全部标记为「**subagent 初译（待人工复核）**」——即**尚未人工复核**的初稿。因此：本项目的 PID-5 中译可用于自填与内部核对，**不得**当作已定稿的正式中文版对外发布；正式使用前应完成人工复核（术语统一、与 25 个 facet 的构念对齐）。",
+  "scoring_notes": [
+    {
+      "text": "**反向题先做 `3 − x` 变换**（0↔3、1↔2），再按 facet 求均分。",
+      "source": "archive/scales/PID-5/manual.pdf（『3 becomes 0, 2 becomes 1, 1 becomes 2, and 0 becomes 3』）；data/pid5-reverse-keys.json 的 scale.transform"
+    },
+    {
+      "text": "**缺答按比例推算（prorate）**：手册允许在该 facet 缺答 ≤25% 时，用「已答题均分 × 题目总数」推算；缺答 >25% 时该 facet 分不应计算。",
+      "source": "archive/scales/PID-5/manual.pdf 的 Scoring 段（25% 规则）"
+    },
+    {
+      "text": "**域分是 3 个 facet 分的均分**（不是把全部题加总）。",
+      "source": "archive/scales/PID-5/manual.pdf 的 Domain Table；data/instruments/pid-5.json 的 scoring（scope=dimensions）"
+    },
+    {
+      "text": "**注意 `pid5_scoring_keys` 里的 220 题恰好各归一个 facet**（无跨 facet 条目）。",
+      "source": "data/pid5-scoring-keys.json 的 extraction_method 与 facets"
+    }
+  ],
+  "score_ranges": [
+    {"text": "每题 0–3；facet 分 0–3（均分）；域分 0–3（3 个 facet 均分）。", "source": "data/instruments/pid-5.json 的 response_format 与 scoring"}
+  ],
+
+  "norms_spec": {
+    "status": "available",
+    "interpretation_basis": "percentile_conditional_on_gender_and_age",
+    "reference_sample": {
+      "n": 4727,
+      "population": "德国 GESIS Panel（总体代表性概率样本）",
+      "recruitment": "概率抽样面板；但只施测了 34 题 PID5BF+ 短表，完整 220 题的分布由三个全量表供体样本（N=2,471）经贝叶斯桥接投影得到",
+      "year": 2026,
+      "conditional_cells": "9 个性别×年龄组（如「f [18,35)」）"
+    },
+    "detail_source": "data/norms/pid-5.json",
+    "applicability_warning": "常模是**德国总体样本**，不是中国人群；且完整 220 题的百分位是**桥接投影**的结果（4,727 人没有直接做过 220 题），不是「4,727 人做过 220 题」的实测分布。",
+    "source": {
+      "citation": "Zimmermann, Kerber, Kemper & Weweck (2026). Population-Representative Norms for the PID-5 and Its Abbreviated Versions. Zenodo 10.5281/zenodo.22280403（CC BY 4.0）",
+      "evidence": ["archive/norms/pid-5/norm_tables_long.csv", "archive/norms/pid-5/README.md", "archive/norms/pid-5/source-log.json", "data/norms/pid-5.json"],
+      "license": "CC BY 4.0（常模表；分析代码 MIT）"
+    },
+    "notes": "条件百分位（pctl_med/lo/hi）与 T 分（T/T_lo/T_hi）逐 raw 分给出，**按性别×年龄分层**；本项目不重新计算百分位，直接引用来源表。"
+  },
+  "result_reading": [
+    {
+      "text": "**原始分本身不是百分位。** 来源明确强调（原文重复三次）：得到的是原始分数，**不代表你在人群中的百分比占比**；要看百分位必须查条件常模表（按性别与年龄选 cell）。",
+      "source": "archive/norms/pid-5/README.md 与 data/norms/pid-5.json 的 percentile_method"
+    },
+    {
+      "text": "百分位必须**按性别×年龄**查对应的 cell（9 个 cell）；跨 cell 引用会得到错误的位置。",
+      "source": "data/norms/pid-5.json 的 conditional 与 cells"
+    },
+    {
+      "text": "**没有可采用的临床分界值**：文献里 220 题版的分界只见于波斯语版（付费墙），开放获取的那篇是 36 题 BF+M。本项目因此**不给分界、不给分级标签**。",
+      "source": "research/pid5_psychometrics_survey.md §2.4 与 §4；data/pid5-reverse-keys.json 的 evidence.survey_report"
+    }
+  ],
+
+  "alpha_note": "α **由本项目从公开原始作答自算**（N=2,471，两份样本 Fisher z 合并），并与已发表值逐 facet 对照。口径与复现见 archive/norms/pid-5-psychometrics/derived/pid5_item_params_demo.json 与 research/pid5_psychometrics_survey.md。",
+  "alpha_summary": [
+    {"text": "25 个 facet 的自算 α 均值 0.860，已发表均值约 0.87；facet 间相关均值 0.322，已发表约 .33——两项外部核对吻合。", "source": "data/pid5-reverse-keys.json 的 evidence.cross_check"},
+    {"text": "样本构成不是纯一般人群：临床 683 + 非临床 560 + 配额 1,228。临床样本会抬高题目间相关，故 α 可能略高于一般人群。", "source": "archive/norms/pid-5-psychometrics/derived/pid5_item_params_demo.json 的 inputs 与 research/pid5_psychometrics_survey.md §5"}
+  ],
+  "known_critiques": [
+    {"text": "**没有已发表的 220 题题级参数表**：Europe PMC 5 组检索式 + 数据仓检索全部止于 facet 级（25 个值）。本项目改为从公开原始作答自算。", "source": "research/pid5_psychometrics_survey.md §1.2 与 §2.1"},
+    {"text": "**常模是桥接投影**：4,727 人的概率样本只做了 34 题短表；220 题的分布来自 2,471 人供体样本的桥接。跨版本桥接的误差未在来源中量化。", "source": "data/norms/pid-5.json 的 n_note"},
+    {"text": "**本项目的题级参数样本不是纯一般人群**（含临床样本），且 r_min 是极值序统计量、在 N=2,471 下会被系统性低估。", "source": "research/pid5_psychometrics_survey.md §5"}
+  ],
+  "interpretation_caveats": [
+    {"text": "**不得**把原始分说成百分位或「超过多少比例的人」——来源原文对此重复强调三次。", "source": "archive/norms/pid-5/README.md；data/norms/pid-5.json 的 percentile_method"},
+    {"text": "**不得**给出临床分界、严重度分级或「确诊/不确诊」的判断（本项目没有可采用的 220 题版分界值）。", "source": "research/pid5_psychometrics_survey.md §2.4"},
+    {"text": "**不得**把 PID-5 的高分直接说成「人格障碍」；AMPD 诊断还需人格功能损害（Criterion A）与临床判断。", "source": "DSM-5 AMPD 结构；data/linkage/dsm5tr-chain.json 的 pid5_interface"},
+    {"text": "**不得**把 PID-5 的百分位当作常态人格的位置（它测的是适应不良特质，不是大五）。", "source": "本量表构念范围（25 个适应不良特质 facet）"},
+    {"text": "**不得**跨性别/年龄 cell 混用常模，也不得对中国用户直接套用德国常模而不说明。", "source": "data/norms/pid-5.json 的 conditional 与 n_note"},
+    {"text": "**不得**在结果里暗示诊断标签的中文译名（如把 Callousness 说成「反社会」）：facets 是特质维度名，不是诊断名。", "source": "25 个 facet 是特质而非 DSM 诊断类别（手册结构）"}
+  ],
+
+  "provenance": {
+    "题项": "archive/scales/PID-5/items-extracted.json（提取器 tools/build/build_pid5_items.py；与 PID-5-BF 25/25 交叉核对）",
+    "计分键": "data/pid5-scoring-keys.json（生成器 tools/build/build_pid5_scoring_keys.py）",
+    "反向键裁决": "data/pid5-reverse-keys.json（含三条独立证据）",
+    "手册哈希": "archive/scales/PID-5/manual.pdf sha256 ce366db46f324ba7…（439,682 字节）",
+    "常模": "archive/norms/pid-5/norm_tables_long.csv（Zimmermann et al. 2026，CC BY 4.0）",
+    "题级参数": "archive/norms/pid-5-psychometrics/derived/pid5_item_params_demo.json（N=2,471，CC-BY-4.0 原始作答）"
+  },
+  "evidence_gaps": [
+    {
+      "what": "25 个 facet 的文献构念定义（DSM-5-TR Section III / Krueger et al. 2012）",
+      "detail": "APA 的 PID-5 手册只有 facet 名称与计分表，**不含构念定义**；本项目的通俗解释因此全部标注为「依题目内容推导」。要给出正式文献定义需入档 DSM-5-TR Section III 或原始论文，本轮未取得。"
+    },
+    {
+      "what": "220 题的题级已发表参数（载荷 / IRT 区分度 / 题间相关矩阵）",
+      "detail": "已系统检索（5 组 Europe PMC 检索式 + 通用检索 + 数据仓），确认文献系统性地只发表 facet 级汇总。本项目改以公开原始作答自算（N=2,471）。"
+    },
+    {
+      "what": "可采用的临床分界值",
+      "detail": "220 题版的唯一分界来源是波斯语版（付费墙）；开放获取的 36 题 BF+M 阈值不能顶替。故本项目只给百分位、不给分界。"
+    },
+    {
+      "what": "中国人群常模",
+      "detail": "现有常模为德国总体样本；本项目没有中国样本的 PID-5 常模，也不做跨文化转换。"
+    }
+  ]
+}

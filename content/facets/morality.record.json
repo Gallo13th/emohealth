@@ -1,0 +1,685 @@
+{
+ "_note": "道德（Morality / A2）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.morality",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "道德",
+  "facet_name_en": "Morality",
+  "facet_code": "A2",
+  "domain": "agreeableness",
+  "domain_zh": "宜人性"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "在人际交往中保持坦诚、直率与守诺的倾向：是否回避欺骗与操纵，以及是否在利益面前仍然诚实。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量道德水平或人品（这是自我报告，且构念窄得多）",
+   "不测量是否守法",
+   "不测量对他人的信任（属 A1 信任）",
+   "不测量政治或价值立场（属 O6 价值开放）"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "trust",
+    "against_facet_zh": "信任",
+    "distinction": "道德是**自己的诚实**；信任是**对他人动机的判断**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "cooperation",
+    "against_facet_zh": "合作",
+    "distinction": "道德管**诚不诚实**；合作管**让不让步**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "dutifulness",
+    "against_facet_zh": "责任心",
+    "distinction": "责任心（C3）管**履不履行义务**；道德管**在利益面前是否诚实**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "modesty_humility",
+    "against_facet_zh": "谦逊",
+    "distinction": "道德是**不欺骗**；谦逊是**不自我抬高**。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "必要时会为私利隐瞒、夸大或利用他人",
+   "2": "多数时候诚实，但个别情况会变通",
+   "3": "一般守规矩，特殊情况看情形",
+   "4": "比较直率坦诚，不太会为了利益绕弯子",
+   "5": "即使吃亏也不欺骗、不利用他人",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_193",
+   "ipip_neo_194",
+   "ipip_neo_195",
+   "ipip_neo_196",
+   "ipip_neo_197",
+   "ipip_neo_198",
+   "ipip_neo_199",
+   "ipip_neo_200"
+  ],
+  "forward_items": [
+   "ipip_neo_191",
+   "ipip_neo_192"
+  ],
+  "key_balance": "2 正向 / 8 反向",
+  "reverse_keyed_count": 8,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.75,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 3.25,
+   "reference_age_band": "18-29",
+   "sd_used": 6.5,
+   "alpha_used": 0.75,
+   "by_age_band": {
+    "14-17": {
+     "sd": 6.5,
+     "sem": 3.25
+    },
+    "18-29": {
+     "sd": 6.5,
+     "sem": 3.25
+    },
+    "30+": {
+     "sd": 6.0,
+     "sem": 3.0
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±6.4 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "45-50",
+    "High": "38-44",
+    "Average": "32-37",
+    "Low": "25-31",
+    "Very Low": "10-24"
+   },
+   "18-29": {
+    "Very High": "46-50",
+    "High": "40-45",
+    "Average": "33-39",
+    "Low": "27-32",
+    "Very Low": "10-26"
+   },
+   "30+": {
+    "Very High": "47-50",
+    "High": "41-46",
+    "Average": "35-40",
+    "Low": "28-34",
+    "Very Low": "10-27"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "247-300",
+    "High": "217-246",
+    "Average": "187-216",
+    "Low": "157-186",
+    "Very Low": "60-156"
+   },
+   "18-29": {
+    "Very High": "253-300",
+    "High": "224-252",
+    "Average": "195-223",
+    "Low": "166-194",
+    "Very Low": "60-165"
+   },
+   "30+": {
+    "Very High": "254-300",
+    "High": "227-253",
+    "Average": "200-226",
+    "Low": "174-199",
+    "Very Low": "60-173"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "**社会赞许性是本面向最大的威胁。** 题目诊断显示第 2 题（Use others for my own ends）与第 6 题（Get back at others）的空答率明显偏高——**第 6 题高达 15.3%**（全库平均约 0.4%，是其 38 倍）。这说明部分作答者**拒答**这类题目，而非答「不符合」。",
+   "**本面向的计分键严重不平衡（2 正 / 8 反）**，会显著放大默许倾向的污染（见 `tools/check/validate_records.py` V3 告警）。",
+   "「道德」这一名称本身带有强烈的评价色彩，作答者可能按「我是不是个好人」作答，而非按「我在利益面前是否诚实」作答。"
+  ],
+  "interpretation_caveats": [
+   "**这一面向的名字（「道德」）比它实际测的东西大得多。**它测的只是**在利益面前是否诚实、是否操纵他人**，不涉及你的人品、守法或价值立场。",
+   "**它极易受到「希望自己看起来是好人」这一倾向的影响**，所以分数普遍偏高，区分度有限。请把它当作很粗略的提示。",
+   "另需留意：其中有题目（如「会利用他人达成自己的目的」）会让人不愿意作答——**跳过不答也是有效的反应**，不必勉强。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 4,
+  "chinese_project_translation": 6,
+  "chinese_overridden": 0,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 9,
+   "id": "ipip_neo_191",
+   "facet": "morality",
+   "key": 1,
+   "text_en": "Would never cheat on my taxes.",
+   "text_master": "Would never cheat on my taxes.",
+   "text_zh": "绝不会在报税上作假",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.67,
+    "item_total_r": 0.3681,
+    "missing_rate": 0.0037,
+    "neutral_rate": 0.1778
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否绝不会在税务上作假",
+    "key_term": {
+     "term": "cheat on taxes",
+     "sense_here": "报税作假",
+     "not_this": "「合法避税」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「合理避税」当成作假",
+      "correction": "只有**违法**的才算。"
+     },
+     {
+      "misreading": "因为环境不同而不确定怎么答",
+      "correction": "可类比成「在没人查的情况下，你会不会少报收入」。"
+     }
+    ],
+    "counts_as": [
+     "即使在没人查的情况下也如实申报"
+    ],
+    "does_not_count_as": [
+     "合法利用税收优惠"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题涉及违法行为的自陈，社会赞许性与自我保护的动机都会强烈影响作答。** 另外**纳税制度与稽核环境在各地差异极大**，中文作答者对这个具体场景的熟悉度不一。本题实际测的是「在无人监督且有利可图时是否诚实」。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「cheat on taxes」"
+   }
+  },
+  {
+   "administration_order": 39,
+   "id": "ipip_neo_192",
+   "facet": "morality",
+   "key": 1,
+   "text_en": "Stick to the rules.",
+   "text_master": "Stick to the rules.",
+   "text_zh": "遵守规则",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.684,
+    "item_total_r": 0.3717,
+    "missing_rate": 0.0062,
+    "neutral_rate": 0.2001
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否倾向于按规则办事",
+    "key_term": {
+     "term": "rules",
+     "sense_here": "规则",
+     "not_this": "「法律」或「道德」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「灵活变通」当成不遵守",
+      "correction": "本题问的是默认倾向。"
+     },
+     {
+      "misreading": "与「责任心」（C3）混同",
+      "correction": "责任心偏义务与承诺，本题偏规则本身。"
+     }
+    ],
+    "counts_as": [
+     "默认会按规定的流程办事"
+    ],
+    "does_not_count_as": [
+     "规则明显不合理时的变通（那是另一维度）"
+    ],
+    "edge_cases": null,
+    "localization_note": "**这里有一个重要区分**：中文「遵守规则」可能被理解为「守规矩、不逾矩」，也可能被理解为「不灵活」。本题是中性的行为描述。**另外，如果规则本身不合理，本题不覆盖那种情形**（那属价值开放）。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「rules」"
+   }
+  },
+  {
+   "administration_order": 69,
+   "id": "ipip_neo_193",
+   "facet": "morality",
+   "key": -1,
+   "text_en": "Use flattery to get ahead.",
+   "text_master": "Use flattery to get ahead.",
+   "text_zh": "会靠奉承往上爬",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.404,
+    "item_total_r": 0.3947,
+    "missing_rate": 0.0037,
+    "neutral_rate": 0.2234
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会靠说好话来获取好处",
+    "key_term": {
+     "term": "flattery",
+     "sense_here": "言不由衷的恭维",
+     "not_this": "「会说话、情商高」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「礼貌、客气」当成奉承",
+      "correction": "真心或不伤人的客气不算。"
+     },
+     {
+      "misreading": "认为职场里难免",
+      "correction": "本题问的是你是否会**以此作为手段**。"
+     }
+    ],
+    "counts_as": [
+     "会说言不由衷的好话来换取好处"
+    ],
+    "does_not_count_as": [
+     "真诚地肯定他人 / 一般性礼貌"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「奉承」与「会做人」的边界常被模糊。**判断标准是「说的是不是真心话」**，而不是「会不会说话」。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「flattery」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 99,
+   "id": "ipip_neo_194",
+   "facet": "morality",
+   "key": -1,
+   "text_en": "Use others for my own ends.",
+   "text_master": "Use others for my own ends.",
+   "text_zh": "会利用他人来达成自己的目的",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.118,
+    "item_total_r": 0.5979,
+    "missing_rate": 0.0059,
+    "neutral_rate": 0.2234
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会把他人的资源或关系当作工具来达成自己的目标",
+    "key_term": {
+     "term": "use others",
+     "sense_here": "**把他人当工具**",
+     "not_this": "「合作」或「互相帮忙」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「互相帮忙」当成利用",
+      "correction": "互利与单方利用不同。"
+     },
+     {
+      "misreading": "因为工作里必须协调资源而选高分",
+      "correction": "协调不等于把人当工具。"
+     }
+    ],
+    "counts_as": [
+     "会为了目标去接近对你有用的人"
+    ],
+    "does_not_count_as": [
+     "互利合作 / 单纯地请人帮忙"
+    ],
+    "edge_cases": "**若此题让你不愿作答，跳过也是有效的反应。**",
+    "localization_note": "**本题空答率 5.3%（约常态的 10 倍）**，说明部分作答者不愿回答——**跳过也是有效的反应**。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「use others」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 129,
+   "id": "ipip_neo_195",
+   "facet": "morality",
+   "key": -1,
+   "text_en": "Know how to get around the rules.",
+   "text_master": "Know how to get around the rules.",
+   "text_zh": "懂得怎么绕开规则",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.743,
+    "item_total_r": 0.4612,
+    "missing_rate": 0.0039,
+    "neutral_rate": 0.2207
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否知道如何规避规则的限制",
+    "key_term": {
+     "term": "get around",
+     "sense_here": "绕过、规避",
+     "not_this": "「理解规则」或「寻求合规替代」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「找到规则允许的做法」当成绕开",
+      "correction": "只要不违反，那叫合规。"
+     },
+     {
+      "misreading": "认为这是能力而自豪",
+      "correction": "本题在道德面向里会反向计分。"
+     }
+    ],
+    "counts_as": [
+     "会主动寻找规则的漏洞并利用"
+    ],
+    "does_not_count_as": [
+     "在规则范围内寻找替代方案"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「绕开规则」与「灵活处理」界限模糊。**判断标准是：规则是否明确禁止，而你是否故意规避。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「get around」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 159,
+   "id": "ipip_neo_196",
+   "facet": "morality",
+   "key": -1,
+   "text_en": "Cheat to get ahead.",
+   "text_master": "Cheat to get ahead.",
+   "text_zh": "为了领先别人，我会采用作弊的方式",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.325,
+    "item_total_r": 0.5868,
+    "missing_rate": 0.0054,
+    "neutral_rate": 0.0994
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）为了取得优势，你是否会作弊",
+    "key_term": {
+     "term": "cheat",
+     "sense_here": "作弊、欺骗",
+     "not_this": "「竞争」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「利用规则空间」当成作弊",
+      "correction": "作弊是违反明确规则。"
+     },
+     {
+      "misreading": "认为「想想而已」也算",
+      "correction": "本题问的是是否做了。"
+     }
+    ],
+    "counts_as": [
+     "在不会被发现时会采取不正当手段"
+    ],
+    "does_not_count_as": [
+     "只是在竞争中全力以赴"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题是最直白的自陈不诚信的题目**，社会赞许性与自我形象保护会强烈压低承认度。这是本面向最难获得真实作答的题之一。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「cheat」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 189,
+   "id": "ipip_neo_197",
+   "facet": "morality",
+   "key": -1,
+   "text_en": "Put people under pressure.",
+   "text_master": "Put people under pressure.",
+   "text_zh": "会给人施加压力",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.279,
+    "item_total_r": 0.4108,
+    "missing_rate": 0.0055,
+    "neutral_rate": 0.1874
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会向别人施压以达到目的",
+    "key_term": {
+     "term": "put under pressure",
+     "sense_here": "主动施压",
+     "not_this": "「有要求、有期待」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「提出明确要求」当成施压",
+      "correction": "关键在是否让对方感到被迫。"
+     },
+     {
+      "misreading": "与「决断性」混同（那属外向性）",
+      "correction": "决断性是主导，本题是施压。"
+     }
+    ],
+    "counts_as": [
+     "会用各种方式让对方接受你的方案"
+    ],
+    "does_not_count_as": [
+     "明确表达期望但尊重对方选择"
+    ],
+    "edge_cases": null,
+    "localization_note": "注意与「合作」面向的 pushy（讨厌显得咄咄逼人）**方向相反**：那一题问你是否**避免**施压，本题问你是否**施加**。两题分别属于不同维度，若答案看似矛盾，是因为构念不同。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「put under pressure」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 219,
+   "id": "ipip_neo_198",
+   "facet": "morality",
+   "key": -1,
+   "text_en": "Pretend to be concerned for others.",
+   "text_master": "Pretend to be concerned for others.",
+   "text_zh": "会假装关心别人",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.362,
+    "item_total_r": 0.4005,
+    "missing_rate": 0.0045,
+    "neutral_rate": 0.1236
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会假装关心别人",
+    "key_term": {
+     "term": "pretend",
+     "sense_here": "假装",
+     "not_this": "「表达关心」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「礼貌性地问候」当成假装",
+      "correction": "本题指**内心并不在意但做出关心的样子**。"
+     },
+     {
+      "misreading": "认为社交中难免而选高分",
+      "correction": "可，但请按真实频率。"
+     }
+    ],
+    "counts_as": [
+     "会在不在意的时候表现出关心以维持关系"
+    ],
+    "does_not_count_as": [
+     "真心关心但表达得笨拙"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「假装关心」带道德贬义，与英文 pretend to be concerned 的负面强度接近，**翻译风险较低**。但作答者可能因为不愿承认而低报。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「pretend」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 249,
+   "id": "ipip_neo_199",
+   "facet": "morality",
+   "key": -1,
+   "text_en": "Take advantage of others.",
+   "text_master": "Take advantage of others.",
+   "text_zh": "占别人的便宜",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.108,
+    "item_total_r": 0.641,
+    "missing_rate": 0.0054,
+    "neutral_rate": 0.1071
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会利用别人的处境或善意来获取好处",
+    "key_term": {
+     "term": "take advantage",
+     "sense_here": "占便宜、利用",
+     "not_this": "「接受帮助」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「接受别人的好意」当成占便宜",
+      "correction": "关键在是否**超出对方意愿**。"
+     },
+     {
+      "misreading": "与第 4 题混同",
+      "correction": "谋划 vs 占取，侧重不同。"
+     }
+    ],
+    "counts_as": [
+     "会利用对方的不好意思来占取好处"
+    ],
+    "does_not_count_as": [
+     "坦然接受别人主动提供的好意"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「占便宜」很口语，贴近原意，**翻译风险低**。与「利用他人达成目的」（第 4 题）的区别：第 4 题偏**主动谋划**，本题偏**占取便宜**。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「take advantage」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 279,
+   "id": "ipip_neo_200",
+   "facet": "morality",
+   "key": -1,
+   "text_en": "Obstruct others' plans.",
+   "text_master": "Obstruct others' plans.",
+   "text_zh": "给别人使坏",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.836,
+    "item_total_r": 0.4539,
+    "missing_rate": 0.0049,
+    "neutral_rate": 0.1364
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会阻挠别人的计划",
+    "key_term": {
+     "term": "obstruct",
+     "sense_here": "阻挠、妨碍",
+     "not_this": "「提出反对」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把正常的竞争或反对当成使坏",
+      "correction": "关键在动机。"
+     },
+     {
+      "misreading": "与「合作」面向的 Contradict others 混同",
+      "correction": "那是言语反驳，本题是行动阻挠。"
+     }
+    ],
+    "counts_as": [
+     "会暗中设置障碍让对方做不成"
+    ],
+    "does_not_count_as": [
+     "公开反对某个方案 / 正当竞争"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「使坏」带主观恶意，与英文 obstruct 相比**略重**。本题的关键是「是否出于恶意去妨碍」，不是「是否与人意见不合」。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「obstruct」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

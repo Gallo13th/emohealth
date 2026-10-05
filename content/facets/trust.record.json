@@ -1,0 +1,675 @@
+{
+ "_note": "信任（Trust / A1）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.trust",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "信任",
+  "facet_name_en": "Trust",
+  "facet_code": "A1",
+  "domain": "agreeableness",
+  "domain_zh": "宜人性"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "对他人动机持正面假设的倾向：是否倾向于相信别人是善意的、值得托付的，还是默认需要防备。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量是否容易亲近他人（属 E1 友好）",
+   "不测量是否天真或缺乏判断力",
+   "不测量实际的被骗经历",
+   "不测量是否愿意帮助他人（属 A3 利他）"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "morality",
+    "against_facet_zh": "道德",
+    "distinction": "信任是**对他人动机的判断**；道德是**自己的行事准则**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "altruism",
+    "against_facet_zh": "利他",
+    "distinction": "信任是**认知假设**；利他是**行为付出**。可以信任人但不主动帮人。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "friendliness",
+    "against_facet_zh": "友好",
+    "distinction": "信任是**判断**；友好是**情感温度**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "cautiousness",
+    "against_facet_zh": "审慎",
+    "distinction": "信任是对**人**的假设；审慎是对**事**的权衡。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "默认他人有保留，需要长时间才能建立信任",
+   "2": "对多数人保持适度警惕",
+   "3": "先默认对方是善意的，但会观察",
+   "4": "通常相信别人的动机是好的",
+   "5": "基本默认他人值得信任，很少设防",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_187",
+   "ipip_neo_188",
+   "ipip_neo_189",
+   "ipip_neo_190"
+  ],
+  "forward_items": [
+   "ipip_neo_181",
+   "ipip_neo_182",
+   "ipip_neo_183",
+   "ipip_neo_184",
+   "ipip_neo_185",
+   "ipip_neo_186"
+  ],
+  "key_balance": "6 正向 / 4 反向",
+  "reverse_keyed_count": 4,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.82,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 3.18,
+   "reference_age_band": "18-29",
+   "sd_used": 7.5,
+   "alpha_used": 0.82,
+   "by_age_band": {
+    "14-17": {
+     "sd": 7.5,
+     "sem": 3.18
+    },
+    "18-29": {
+     "sd": 7.5,
+     "sem": 3.18
+    },
+    "30+": {
+     "sd": 7.5,
+     "sem": 3.18
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±6.2 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "43-50",
+    "High": "36-42",
+    "Average": "28-35",
+    "Low": "20-27",
+    "Very Low": "10-19"
+   },
+   "18-29": {
+    "Very High": "45-50",
+    "High": "37-44",
+    "Average": "30-36",
+    "Low": "22-29",
+    "Very Low": "10-21"
+   },
+   "30+": {
+    "Very High": "46-50",
+    "High": "38-45",
+    "Average": "31-37",
+    "Low": "23-30",
+    "Very Low": "10-22"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "247-300",
+    "High": "217-246",
+    "Average": "187-216",
+    "Low": "157-186",
+    "Very Low": "60-156"
+   },
+   "18-29": {
+    "Very High": "253-300",
+    "High": "224-252",
+    "Average": "195-223",
+    "Low": "166-194",
+    "Very Low": "60-165"
+   },
+   "30+": {
+    "Very High": "254-300",
+    "High": "227-253",
+    "Average": "200-226",
+    "Low": "174-199",
+    "Very Low": "60-173"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "**「信任」在中国的社会语境下与「城府」「防人之心」等评价纠缠**，低信任可能被读作「成熟」，高信任可能被读作「幼稚」。此为脚手架需处理的语境问题。",
+   "第 4 题（Believe that people are basically moral）指向的是**道德判断**，与「信任」的行为层面略有偏移。"
+  ],
+  "interpretation_caveats": [
+   "这一面向描述的是**你对他人动机的默认假设**，不含褒贬——它既不是「天真」，低分也不是「成熟」。",
+   "它与「是否愿意帮助别人」（属「利他」）不是一回事：可以信任所有人但不主动付出。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 4,
+  "chinese_project_translation": 6,
+  "chinese_overridden": 0,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 4,
+   "id": "ipip_neo_181",
+   "facet": "trust",
+   "key": 1,
+   "text_en": "Trust others.",
+   "text_master": "Trust others.",
+   "text_zh": "信任其他人",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.08,
+    "item_total_r": 0.6471,
+    "missing_rate": 0.004,
+    "neutral_rate": 0.1927
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否信任他人",
+    "key_term": {
+     "term": "trust",
+     "sense_here": "对他人动机与可靠性的正面假设",
+     "not_this": "「轻信」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它当成「是否幼稚」",
+      "correction": "本题不含评价。"
+     },
+     {
+      "misreading": "因为「防人之心不可无」的训诫而选低分",
+      "correction": "请按真实默认假设作答，而不是按你认为对的做法。"
+     }
+    ],
+    "counts_as": [
+     "默认他人是可以托付的"
+    ],
+    "does_not_count_as": [
+     "谨慎评估后才信任（那是判断，不是默认）"
+    ],
+    "edge_cases": null,
+    "localization_note": "**中文「信任」与社会评价纠缠很深**：低信任可能被看作「成熟、有城府」，高信任可能被看作「幼稚」。**本题不含褒贬**——它只描述你的默认假设。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「trust」"
+   }
+  },
+  {
+   "administration_order": 34,
+   "id": "ipip_neo_182",
+   "facet": "trust",
+   "key": 1,
+   "text_en": "Believe that others have good intentions.",
+   "text_master": "Believe that others have good intentions.",
+   "text_zh": "相信他人的出发点是好的",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.108,
+    "item_total_r": 0.6946,
+    "missing_rate": 0.0054,
+    "neutral_rate": 0.2284
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否相信他人的出发点是好的",
+    "key_term": {
+     "term": "good intentions",
+     "sense_here": "动机善良",
+     "not_this": "「相信结果会好」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「结果好」当成「动机好」",
+      "correction": "本题只问动机。"
+     },
+     {
+      "misreading": "与第 6 题（觉得一切都会好）混同",
+      "correction": "那是乐观，本题是人际判断。"
+     }
+    ],
+    "counts_as": [
+     "即使对方做错了也倾向认为不是故意的"
+    ],
+    "does_not_count_as": [
+     "按结果反过来推断动机"
+    ],
+    "edge_cases": null,
+    "localization_note": "**关键区分**：本题问的是**动机**，不是**结果**。相信对方是善意的，但事情仍可能办砸——两者不矛盾。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「good intentions」"
+   }
+  },
+  {
+   "administration_order": 64,
+   "id": "ipip_neo_183",
+   "facet": "trust",
+   "key": 1,
+   "text_en": "Trust what people say.",
+   "text_master": "Trust what people say.",
+   "text_zh": "相信他人说的话",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.058,
+    "item_total_r": 0.6961,
+    "missing_rate": 0.0029,
+    "neutral_rate": 0.2357
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否相信别人说的话",
+    "key_term": {
+     "term": "what people say",
+     "sense_here": "他人的陈述",
+     "not_this": "「不核实」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「重要事项上核实」当成不信任",
+      "correction": "那属于审慎的做法，不是本题所指。"
+     },
+     {
+      "misreading": "因为被骗过而选低分",
+      "correction": "请按一贯的默认倾向作答。"
+     }
+    ],
+    "counts_as": [
+     "一般不会去怀疑别人说的话"
+    ],
+    "does_not_count_as": [
+     "重大事项上会核实"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题偏「默认相信」而非「从不怀疑」**。在重要事项上核实，与日常对话中默认相信，是可以并存的。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「what people say」"
+   }
+  },
+  {
+   "administration_order": 94,
+   "id": "ipip_neo_184",
+   "facet": "trust",
+   "key": 1,
+   "text_en": "Believe that people are basically moral.",
+   "text_master": "Believe that people are basically moral.",
+   "text_zh": "相信人基本上是讲道德的",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.094,
+    "item_total_r": 0.5953,
+    "missing_rate": 0.0047,
+    "neutral_rate": 0.2669
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否相信人基本上是讲道德的",
+    "key_term": {
+     "term": "basically moral",
+     "sense_here": "本质上有道德感",
+     "not_this": "「所有人都是好人」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它理解成「所有人都是好人」",
+      "correction": "本题问的是基本默认假设。"
+     },
+     {
+      "misreading": "因为见过坏人而选低分",
+      "correction": "可按「大多数人」这一层理解。"
+     }
+    ],
+    "counts_as": [
+     "认为多数人内心有是非"
+    ],
+    "does_not_count_as": [
+     "认为人只要有机会就会作恶"
+    ],
+    "edge_cases": null,
+    "localization_note": "**「Basically」是关键**——它不是「所有人任何时候都讲道德」，而是**默认状态下人是向善的**。承认有人会做坏事，不妨碍本题给高分。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「basically moral」"
+   }
+  },
+  {
+   "administration_order": 124,
+   "id": "ipip_neo_185",
+   "facet": "trust",
+   "key": 1,
+   "text_en": "Believe in human goodness.",
+   "text_master": "Believe in human goodness.",
+   "text_zh": "相信人性本善",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.07,
+    "item_total_r": 0.6354,
+    "missing_rate": 0.0035,
+    "neutral_rate": 0.1778
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否相信人性本善",
+    "key_term": {
+     "term": "human goodness",
+     "sense_here": "人性中的善",
+     "not_this": "——"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它当成宗教信仰式的表述",
+      "correction": "这里指对人性的基本假设。"
+     },
+     {
+      "misreading": "与第 4、6 题混同",
+      "correction": "三题接近，可给相近答案。"
+     }
+    ],
+    "counts_as": [
+     "认为人性中善的一面是主要的"
+    ],
+    "does_not_count_as": [
+     "认为人性本恶需约束"
+    ],
+    "edge_cases": null,
+    "localization_note": "**这是本面向最哲学化的一题**，接近一种世界观而非具体的人际判断。它与第 4 题（基本讲道德）、第 6 题（一切会好）语义有交叠。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「human goodness」"
+   }
+  },
+  {
+   "administration_order": 154,
+   "id": "ipip_neo_186",
+   "facet": "trust",
+   "key": 1,
+   "text_en": "Think that all will be well.",
+   "text_master": "Think that all will be well.",
+   "text_zh": "觉得一切都会好起来",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.299,
+    "item_total_r": 0.4076,
+    "missing_rate": 0.0049,
+    "neutral_rate": 0.2004
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否觉得一切都会好起来",
+    "key_term": {
+     "term": "all will be well",
+     "sense_here": "总体的乐观预期",
+     "not_this": "「信任他人」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它当成人际信任",
+      "correction": "本题偏总体乐观。"
+     },
+     {
+      "misreading": "与「开朗」（E6）面向混同",
+      "correction": "那是情绪基线。"
+     }
+    ],
+    "counts_as": [
+     "对事情的走向总体乐观"
+    ],
+    "does_not_count_as": [
+     "对人不信任但对自己运气有信心"
+    ],
+    "edge_cases": "**本题偏「乐观倾向」，与「人际信任」略有偏移。**",
+    "localization_note": "**本题的题目-总分相关 .41，是本面向最低的**——「觉得一切都会好起来」更接近**乐观倾向**（与「开朗」或「神经质」相关），而不完全是**对他人的信任**。**一个乐观但对人保持警惕的人，本题会得高分而其余题得低分。** 这是本面向内容异质性的一处。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「all will be well」"
+   }
+  },
+  {
+   "administration_order": 184,
+   "id": "ipip_neo_187",
+   "facet": "trust",
+   "key": -1,
+   "text_en": "Distrust people.",
+   "text_master": "Distrust people.",
+   "text_zh": "不相信别人",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.066,
+    "item_total_r": 0.7485,
+    "missing_rate": 0.0033,
+    "neutral_rate": 0.1996
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否不相信别人",
+    "key_term": {
+     "term": "distrust",
+     "sense_here": "不信任",
+     "not_this": "「谨慎」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「谨慎」当成「不信任」",
+      "correction": "审慎针对事，本题针对人。"
+     },
+     {
+      "misreading": "与第 1 题方向搞混",
+      "correction": "两题正反配对。"
+     }
+    ],
+    "counts_as": [
+     "默认他人有保留，需要观察"
+    ],
+    "does_not_count_as": [
+     "只在具体证据出现后才保留"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题的题目-总分相关 .75，是本面向最能区分人的题**——它直接命中构念核心。**与「审慎」（C6）的区别**：审慎是对事的权衡，本题是对人的默认态度。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「distrust」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 214,
+   "id": "ipip_neo_188",
+   "facet": "trust",
+   "key": -1,
+   "text_en": "Suspect hidden motives in others.",
+   "text_master": "Suspect hidden motives in others.",
+   "text_zh": "会怀疑别人有隐藏的动机",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.088,
+    "item_total_r": 0.5781,
+    "missing_rate": 0.0044,
+    "neutral_rate": 0.209
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会怀疑别人有隐藏的动机",
+    "key_term": {
+     "term": "hidden motives",
+     "sense_here": "未明说的动机",
+     "not_this": "「分析他人的话」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 4 题（相信动机是好的）混同",
+      "correction": "第 4 题是正向、本题是反向，两题对照但方向相反。"
+     }
+    ],
+    "counts_as": [
+     "常猜测别人话背后的用意"
+    ],
+    "does_not_count_as": [
+     "倾向于按字面理解"
+    ],
+    "edge_cases": null,
+    "localization_note": "**关键区分**：分析别人的话（理解意图）≠ 怀疑有隐藏动机（预设对方有所图）。本题偏后者，且带负面预设。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「hidden motives」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 244,
+   "id": "ipip_neo_189",
+   "facet": "trust",
+   "key": -1,
+   "text_en": "Am wary of others.",
+   "text_master": "Am wary of others.",
+   "text_zh": "对别人保持警惕",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.517,
+    "item_total_r": 0.4852,
+    "missing_rate": 0.0046,
+    "neutral_rate": 0.2537
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否对别人保持警惕",
+    "key_term": {
+     "term": "wary",
+     "sense_here": "提防、保持戒心",
+     "not_this": "「有边界感」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「有边界感」当成警惕",
+      "correction": "两者动机不同。"
+     },
+     {
+      "misreading": "因为阅历丰富而选高分",
+      "correction": "请按默认心态而非经验教训作答。"
+     }
+    ],
+    "counts_as": [
+     "与人交往时习惯留一手"
+    ],
+    "does_not_count_as": [
+     "尊重边界但默认对方善意"
+    ],
+    "edge_cases": null,
+    "localization_note": "**中文「警惕」与「有边界感」不同**：边界感是保护隐私与精力，警惕是**预设对方可能伤害你**。本题偏后者。中立选项比例偏高（.25），说明不少人觉得难以定位。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「wary」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 274,
+   "id": "ipip_neo_190",
+   "facet": "trust",
+   "key": -1,
+   "text_en": "Believe that people are essentially evil.",
+   "text_master": "Believe that people are essentially evil.",
+   "text_zh": "认为人本质上是恶的",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.072,
+    "item_total_r": 0.5811,
+    "missing_rate": 0.0036,
+    "neutral_rate": 0.14
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否认为人本质上是恶的",
+    "key_term": {
+     "term": "essentially evil",
+     "sense_here": "本性为恶",
+     "not_this": "「人会做坏事」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「人会做坏事」当成「人性本恶」",
+      "correction": "经验判断 vs 本质论。"
+     },
+     {
+      "misreading": "因为愤世嫉俗而选高分",
+      "correction": "那确实是本题的高分。"
+     }
+    ],
+    "counts_as": [
+     "认为人只要不受约束就会作恶"
+    ],
+    "does_not_count_as": [
+     "认为人有时会做坏事但本性向善"
+    ],
+    "edge_cases": null,
+    "localization_note": "**这是本面向最极端的一题**——「本质上是恶的」是一个强烈的人性论立场。**注意与「人会做坏事」区别**：后者是经验判断，本题是本质论。本题空答率虽正常，但极端表述可能引发抵触。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「essentially evil」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

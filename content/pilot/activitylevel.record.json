@@ -1,0 +1,621 @@
+{
+  "_note": "Phase 1 切片：活跃度（Activity Level / E4）。由 tools/build/build_remaining_slices.py 从规范数据集组装，脚手架为人工撰写。",
+  "identity": {
+    "id": "ipip-neo-300.activitylevel",
+    "instrument": "IPIP-NEO-300",
+    "facet_name_zh": "活跃度",
+    "facet_name_en": "Activity Level",
+    "facet_code": "E4",
+    "domain": "extraversion",
+    "domain_zh": "外向性"
+  },
+  "license": {
+    "status": "public_domain",
+    "show_items": true,
+    "translate": true,
+    "redistribute": true,
+    "evidence": "https://www.ipip.ori.org/newPermission.htm"
+  },
+  "construct": {
+    "definition": {
+      "text": "活跃度这一面向描述的是**生活节奏与能量输出**：做事的速度、同时推进多件事的容量、以及总体上偏好快节奏还是从容节奏。它关注的是\"多快、多少\"，而不是\"想不想要刺激\"。",
+      "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中 E4 Activity 的面向定义",
+      "provenance": "published_definition"
+    },
+    "does_not_measure": [
+      "不测量对强烈刺激的渴求（属 E5 追求刺激）",
+      "不测量社交中的主导性（属 E3 决断性）",
+      "不测量是否喜欢与人相处（属 E1 友好、E2 合群）",
+      "不测量积极情绪的高低（属 E6 开朗）",
+      "不测量工作是否自律（属 C5 自律）"
+    ],
+    "boundaries": [
+      {
+        "against_facet": "excitementseeking",
+        "against_facet_zh": "追求刺激",
+        "distinction": "活跃度是**基础节奏**（走得快、做得多）；追求刺激是**对强烈体验的渴求**（冒险、喧闹）。节奏快的人未必爱冒险，爱冒险的人也未必日常忙碌。",
+        "basis": "NEO-PI-R 面向定义"
+      },
+      {
+        "against_facet": "assertiveness",
+        "against_facet_zh": "决断性",
+        "distinction": "决断性是**在人群中主导**（发言、带队）；活跃度是**个人节奏**。安静但一天做很多事的人是活跃度高、决断性低。",
+        "basis": "NEO-PI-R 面向定义"
+      },
+      {
+        "against_facet": "gregariousness",
+        "against_facet_zh": "合群性",
+        "distinction": "合群性是**寻求他人陪伴**；活跃度是**活动量**。独处但高效的人两者可以分离。",
+        "basis": "NEO-PI-R 面向定义"
+      },
+      {
+        "against_facet": "cheerfulness",
+        "against_facet_zh": "开朗",
+        "distinction": "开朗是**积极情绪的强度**；活跃度是**动作的速率**。",
+        "basis": "NEO-PI-R 面向定义"
+      },
+      {
+        "against_facet": "selfdiscipline",
+        "against_facet_zh": "自律",
+        "distinction": "自律是**能否启动并坚持该做的事**；活跃度是**总体节奏快慢**。被逼着忙碌且拖延的人，活跃度可能不低，自律却低。",
+        "basis": "NEO-PI-R 面向定义"
+      }
+    ],
+    "applicable_population": "成年一般人群",
+    "inapplicable_population": [
+      "无法理解中文题面者",
+      "处于急性危机状态者（应先处理危机，而非测评）"
+    ]
+  },
+  "administration": {
+    "recall_window": {
+      "value": "typical",
+      "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+      "source": "IPIP-NEO-300 官方问卷指导语",
+      "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+    },
+    "item_count": 10,
+    "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+    "order_style": "interleaved_facet_cycle",
+    "estimated_duration_min": 35,
+    "response_format": {
+      "points": 5,
+      "labels_zh": [
+        "非常不符合",
+        "比较不符合",
+        "中立",
+        "比较符合",
+        "非常符合"
+      ]
+    },
+    "anchor_semantics": {
+      "1": "节奏很慢，喜欢从容，同时处理多件事会觉得吃力",
+      "2": "偏慢，做事不太赶，同时做多件事比较勉强",
+      "3": "节奏中等，看情况调整快慢",
+      "4": "偏快，日常行程较满，能应付多件事并行",
+      "5": "节奏很快，总在做事情，能同时推进多项事务",
+      "provenance": "editorial_clarification"
+    }
+  },
+  "scoring": {
+    "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+    "reverse_items": [
+      "ipip_neo_096",
+      "ipip_neo_097",
+      "ipip_neo_098",
+      "ipip_neo_099",
+      "ipip_neo_100"
+    ],
+    "forward_items": [
+      "ipip_neo_091",
+      "ipip_neo_092",
+      "ipip_neo_093",
+      "ipip_neo_094",
+      "ipip_neo_095"
+    ],
+    "key_balance": "5 正向 / 5 反向",
+    "reverse_keyed_count": 5,
+    "reference_system": "norm_percentile"
+  },
+  "reliability": {
+    "cronbach_alpha": 0.71,
+    "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+    "sem": {
+      "formula": "SEM = SD × sqrt(1 − α)",
+      "status": "DERIVED",
+      "value": 3.23,
+      "reference_age_band": "18-29",
+      "sd_used": 6.0,
+      "alpha_used": 0.71,
+      "by_age_band": {
+        "14-17": {
+          "sd": 5.5,
+          "sem": 2.96
+        },
+        "18-29": {
+          "sd": 6.0,
+          "sem": 3.23
+        },
+        "30+": {
+          "sd": 6.5,
+          "sem": 3.5
+        }
+      },
+      "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+      "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+    },
+    "noise_floor": {
+      "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+      "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+      "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+      "interpretation_with_sem": "95% 置信区间约 ±6.3 分；小于该幅度的变化不应被解读为真实变化。",
+      "provenance": "published_definition"
+    }
+  },
+  "norms": {
+    "status": "AVAILABLE",
+    "parser": "tools/build/parse_uk_norms.py",
+    "bands_values": {
+      "14-17": {
+        "Very High": "38-50",
+        "High": "32-37",
+        "Average": "27-31",
+        "Low": "21-26",
+        "Very Low": "10-20"
+      },
+      "18-29": {
+        "Very High": "39-50",
+        "High": "33-38",
+        "Average": "27-32",
+        "Low": "22-26",
+        "Very Low": "10-21"
+      },
+      "30+": {
+        "Very High": "42-50",
+        "High": "36-41",
+        "Average": "29-35",
+        "Low": "23-28",
+        "Very Low": "10-22"
+      }
+    },
+    "domain_bands_values": {
+      "14-17": {
+        "Very High": "254-300",
+        "High": "220-253",
+        "Average": "186-219",
+        "Low": "153-185",
+        "Very Low": "60-152"
+      },
+      "18-29": {
+        "Very High": "252-300",
+        "High": "219-251",
+        "Average": "186-218",
+        "Low": "153-185",
+        "Very Low": "60-152"
+      },
+      "30+": {
+        "Very High": "248-300",
+        "High": "214-247",
+        "Average": "180-213",
+        "Low": "146-179",
+        "Very Low": "60-145"
+      }
+    },
+    "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+    "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本切片统一采用 FACETS 文件。"
+  },
+  "evidence": {
+    "validated_in_chinese": false,
+    "chinese_note": "IPIP-NEO-300 无中文译本；官方便携译本仅覆盖 120 题版且未经 IPIP 验证。",
+    "known_critiques": [
+      "**本 facet 是本量表 α 最低的一个（.71）**，且其题目在内容上并不单一：",
+      "· 行为量：第 1、2、3 题（忙碌、奔波、闲暇充实）",
+      "· 处理容量：第 4 题（同时处理多件事）",
+      "· 反应速度：第 5、10 题（反应快/慢）",
+      "· **偏好**而非行为：第 6、7、8、9 题（喜欢慢慢来、不慌不忙、悠闲、顺其自然）",
+      "**「行为」与「偏好」混在同一 facet 内，是这一低信度最可能的解释。**作答者在这些题上可能出现\"我实际很快，但我向往从容\"之类的真实分离。",
+      "**官方便携中文译本在该 facet 上的 α 仅为 .422**（见 phase0_ipip_audit §4），为 30 个 facet 中最低——说明这一内容异质性在翻译后可能被放大。"
+    ],
+    "interpretation_caveats": [
+      "**本面向的题目混合了两类不同的东西**：第 1–5、10 题问的是你的**实际节奏与行为**（忙碌、奔波、并行、反应快慢），而第 6–9 题问的是你对从容节奏的**偏好**（喜欢慢慢来、不慌不忙、向往悠闲、顺其自然）。",
+      "这是本量表内部一致性最低的面向（α=.71，其余多为 .80 以上）。**如果你的实际节奏与内心偏好并不一致（例如「实际很快，但向往从容」），这个总分无法同时描述这两件事**——请分别看上述两类题目。"
+    ]
+  },
+  "items": [
+    {
+      "administration_order": 17,
+      "id": "ipip_neo_091",
+      "facet": "activitylevel",
+      "key": 1,
+      "text_en": "Am always busy.",
+      "text_master": "Am always busy.",
+      "text_zh": "总是很忙碌",
+      "text_zh_source": "mandarin_baseline",
+      "scaffolding": {
+        "asks": "你平时是否处于忙碌状态",
+        "key_term": {
+          "term": "busy",
+          "sense_here": "手头持续有事情在推进",
+          "not_this": "不是\"被迫应付\""
+        },
+        "common_misreadings": [
+          {
+            "misreading": "把\"被安排满\"当成\"活跃\"",
+            "correction": "如果忙碌完全来自外部摊派、而你本人并不想动，那反映的是处境而非特质。请按\"一贯的自己\"作答。"
+          },
+          {
+            "misreading": "认为只有工作忙才算",
+            "correction": "照顾家庭、社交、爱好都算占用与推进。"
+          }
+        ],
+        "counts_as": [
+          "日常总是有事在做，闲不下来",
+          "即使没有外部要求，也会给自己找事"
+        ],
+        "does_not_count_as": [
+          "这段时间被临时任务填满（阶段性）",
+          "被迫忙碌但内心很想停下来"
+        ],
+        "edge_cases": "请以\"平时的你\"为基准，不要用最忙的那个月作答。",
+        "provenance": "editorial_clarification",
+        "evidence_anchor": "题干承重词为 “busy”；"
+      }
+    },
+    {
+      "administration_order": 47,
+      "id": "ipip_neo_092",
+      "facet": "activitylevel",
+      "key": 1,
+      "text_en": "Am always on the go.",
+      "text_master": "Am always on the go.",
+      "text_zh": "总是在奔波",
+      "text_zh_source": "mandarin_baseline",
+      "scaffolding": {
+        "asks": "你是否总是在不同的事情之间奔走",
+        "key_term": {
+          "term": "on the go",
+          "sense_here": "地点或事项的频繁切换",
+          "not_this": "不是\"爱出门\""
+        },
+        "common_misreadings": [
+          {
+            "misreading": "把\"爱出门玩\"当成\"奔波\"",
+            "correction": "这一题问的是节奏与切换频率，不是社交意愿。宅在家但一直在做事，也算符合。"
+          },
+          {
+            "misreading": "认为\"奔波\"含有辛苦的意思",
+            "correction": "这里不含褒贬，只描述节奏。"
+          }
+        ],
+        "counts_as": [
+          "一天里在多项事务间来回切换",
+          "很少长时间停在单一状态"
+        ],
+        "does_not_count_as": [
+          "一天只做一件事但做得很久",
+          "喜欢出门但节奏缓慢"
+        ],
+        "edge_cases": null,
+        "provenance": "editorial_clarification",
+        "evidence_anchor": "题干承重词为 “on the go”；"
+      }
+    },
+    {
+      "administration_order": 77,
+      "id": "ipip_neo_093",
+      "facet": "activitylevel",
+      "key": 1,
+      "text_en": "Do a lot in my spare time.",
+      "text_master": "Do a lot in my spare time.",
+      "text_zh": "我的闲暇时间非常充实",
+      "text_zh_source": "mandarin_baseline",
+      "scaffolding": {
+        "asks": "空闲时间里你是否做很多事",
+        "key_term": {
+          "term": "do a lot",
+          "sense_here": "闲暇中被填进去的活动量",
+          "not_this": "不是\"闲不下来\"这种焦虑式忙碌"
+        },
+        "common_misreadings": [
+          {
+            "misreading": "把\"休息\"当成\"没做事\"",
+            "correction": "有内容的休息（看片、散步、读书）都算活动。这一题只问量。"
+          },
+          {
+            "misreading": "因为工作忙就选高分",
+            "correction": "这一题限定在**空闲时间**。工作忙不等于闲暇也充实。"
+          }
+        ],
+        "counts_as": [
+          "闲暇时间安排得比较满",
+          "休息日也会做不少事"
+        ],
+        "does_not_count_as": [
+          "把工作挤占的时间算进来",
+          "空闲时主要是躺着恢复"
+        ],
+        "edge_cases": null,
+        "provenance": "editorial_clarification",
+        "evidence_anchor": "题干承重词为 “do a lot”；"
+      }
+    },
+    {
+      "administration_order": 107,
+      "id": "ipip_neo_094",
+      "facet": "activitylevel",
+      "key": 1,
+      "text_en": "Can manage many things at the same time.",
+      "text_master": "Can manage many things at the same time.",
+      "text_zh": "能同时处理很多事情",
+      "text_zh_source": "project_translation",
+      "scaffolding": {
+        "asks": "你能否同时处理好几件事",
+        "key_term": {
+          "term": "at the same time",
+          "sense_here": "并行处理的容量",
+          "not_this": "不是\"被迫多线程\""
+        },
+        "common_misreadings": [
+          {
+            "misreading": "把\"被迫同时应付\"当成\"擅长并行\"",
+            "correction": "被逼着多线程且手忙脚乱，不符合这一题。这里问的是能不能应付得来。"
+          },
+          {
+            "misreading": "与第 1 题（忙碌）混同",
+            "correction": "忙碌是量，并行是容量。有人事很多但只能一件件做。"
+          }
+        ],
+        "counts_as": [
+          "能同时推进多项事务而不乱",
+          "被打断后能快速回到多条线里"
+        ],
+        "does_not_count_as": [
+          "事情多到超出负荷、频频出错",
+          "只能串行处理，一次一件"
+        ],
+        "edge_cases": null,
+        "provenance": "editorial_clarification",
+        "evidence_anchor": "题干承重词为 “at the same time”；"
+      }
+    },
+    {
+      "administration_order": 137,
+      "id": "ipip_neo_095",
+      "facet": "activitylevel",
+      "key": 1,
+      "text_en": "React quickly.",
+      "text_master": "React quickly.",
+      "text_zh": "反应很快",
+      "text_zh_source": "project_translation",
+      "scaffolding": {
+        "asks": "你的反应速度是否偏快",
+        "key_term": {
+          "term": "react quickly",
+          "sense_here": "对外界刺激做出回应的速度",
+          "not_this": "不是\"决定得快\""
+        },
+        "common_misreadings": [
+          {
+            "misreading": "把\"反应快\"当成\"性子急\"",
+            "correction": "反应快是速度，性子急是情绪。两者可以分开。"
+          },
+          {
+            "misreading": "认为反应快总是优点",
+            "correction": "这里不作好坏判断，只描述快慢。"
+          }
+        ],
+        "counts_as": [
+          "别人说完能立刻接上",
+          "身体动作与回应都比较利落"
+        ],
+        "does_not_count_as": [
+          "说话做事前习惯停顿一下（那属于审慎，不是慢）",
+          "只在熟悉的事情上快"
+        ],
+        "edge_cases": "这一题在 facet 内偏\"速度\"而非\"活动量\"，与本 facet 其余题目略有不同——见 known_critiques。",
+        "provenance": "editorial_clarification",
+        "evidence_anchor": "题干承重词为 “react quickly”；"
+      }
+    },
+    {
+      "administration_order": 167,
+      "id": "ipip_neo_096",
+      "facet": "activitylevel",
+      "key": -1,
+      "text_en": "Like to take it easy.",
+      "text_master": "Like to take it easy.",
+      "text_zh": "喜欢慢慢来",
+      "text_zh_source": "mandarin_baseline",
+      "scaffolding": {
+        "asks": "（反向题）你是否偏好慢节奏",
+        "key_term": {
+          "term": "take it easy",
+          "sense_here": "对从容、不赶的偏好",
+          "not_this": "不是\"懒\""
+        },
+        "common_misreadings": [
+          {
+            "misreading": "把\"慢慢来\"当成\"效率低\"",
+            "correction": "这一题问的是偏好，不是能力。偏好从容不等于做不好。"
+          },
+          {
+            "misreading": "因为它谈偏好而非行为，不知该怎么答",
+            "correction": "确实如此——本 facet 混有\"行为\"与\"偏好\"两类题目，这是它的已知问题。照实作答即可。"
+          }
+        ],
+        "counts_as": [
+          "有意识地选择不赶的节奏",
+          "对\"快\"本身没有向往"
+        ],
+        "does_not_count_as": [
+          "被迫慢下来（如身体原因、外部限制）",
+          "休息时慢，但平时节奏很快"
+        ],
+        "edge_cases": null,
+        "provenance": "editorial_clarification",
+        "evidence_anchor": "题干承重词为 “take it easy”；本题为反向计分（key = −1），已注明。",
+        "reverse_item_note": "反向题。题干表述的是本 facet 的**低**端。照实作答即可，系统会反向计分——不要为了\"保持一致\"而调整答案。"
+      }
+    },
+    {
+      "administration_order": 197,
+      "id": "ipip_neo_097",
+      "facet": "activitylevel",
+      "key": -1,
+      "text_en": "Like to take my time.",
+      "text_master": "Like to take my time.",
+      "text_zh": "喜欢不慌不忙",
+      "text_zh_source": "project_translation",
+      "scaffolding": {
+        "asks": "（反向题）你是否喜欢不慌不忙地做事",
+        "key_term": {
+          "term": "take my time",
+          "sense_here": "做事情时给自己留出充裕时间",
+          "not_this": "不是\"拖沓\""
+        },
+        "common_misreadings": [
+          {
+            "misreading": "把\"不慌不忙\"当成\"拖延\"",
+            "correction": "这里指按自己的节奏稳着做，不是把事往后拖。"
+          },
+          {
+            "misreading": "与第 6 题（喜欢慢慢来）视为同一题",
+            "correction": "第 6 题是整体的生活节奏偏好，这一题特指**做事时**的节奏。可以不同。"
+          }
+        ],
+        "counts_as": [
+          "做事时不喜欢被时间催着",
+          "宁可慢一点也不赶"
+        ],
+        "does_not_count_as": [
+          "因为拖延才显得慢",
+          "任务紧急时会主动加速"
+        ],
+        "edge_cases": null,
+        "provenance": "editorial_clarification",
+        "evidence_anchor": "题干承重词为 “take my time”；本题为反向计分（key = −1），已注明。",
+        "reverse_item_note": "反向题。题干表述的是本 facet 的**低**端。照实作答即可，系统会反向计分——不要为了\"保持一致\"而调整答案。"
+      }
+    },
+    {
+      "administration_order": 227,
+      "id": "ipip_neo_098",
+      "facet": "activitylevel",
+      "key": -1,
+      "text_en": "Like a leisurely lifestyle.",
+      "text_master": "Like a leisurely lifestyle.",
+      "text_zh": "喜欢悠闲的生活方式",
+      "text_zh_source": "project_translation",
+      "scaffolding": {
+        "asks": "（反向题）你是否向往悠闲的生活方式",
+        "key_term": {
+          "term": "leisurely lifestyle",
+          "sense_here": "对整体生活方式的取向",
+          "not_this": "不是\"想偷懒\""
+        },
+        "common_misreadings": [
+          {
+            "misreading": "把\"悠闲\"理解成\"不做事\"",
+            "correction": "悠闲指节奏从容，不等于无所事事。"
+          },
+          {
+            "misreading": "与\"有没有条件悠闲\"混同",
+            "correction": "这一题问取向，不问现实条件。"
+          }
+        ],
+        "counts_as": [
+          "理想的生活状态是从容不迫的",
+          "不羡慕高强度高节奏的生活"
+        ],
+        "does_not_count_as": [
+          "现实中被逼慢下来但内心想快",
+          "只是这一个阶段想休息"
+        ],
+        "edge_cases": null,
+        "provenance": "editorial_clarification",
+        "evidence_anchor": "题干承重词为 “leisurely lifestyle”；本题为反向计分（key = −1），已注明。",
+        "reverse_item_note": "反向题。题干表述的是本 facet 的**低**端。照实作答即可，系统会反向计分——不要为了\"保持一致\"而调整答案。"
+      }
+    },
+    {
+      "administration_order": 257,
+      "id": "ipip_neo_099",
+      "facet": "activitylevel",
+      "key": -1,
+      "text_en": "Let things proceed at their own pace.",
+      "text_master": "Let things proceed at their own pace.",
+      "text_zh": "让事情按自己的节奏进行",
+      "text_zh_source": "project_translation",
+      "scaffolding": {
+        "asks": "（反向题）你是否倾向让事情按它们自己的节奏发展",
+        "key_term": {
+          "term": "their own pace",
+          "sense_here": "不主动加速、不推动",
+          "not_this": "不是\"不负责任\""
+        },
+        "common_misreadings": [
+          {
+            "misreading": "把\"不推\"当成\"不管\"",
+            "correction": "事情仍在推进，只是不额外加力。"
+          },
+          {
+            "misreading": "认为这与\"计划性\"矛盾",
+            "correction": "它可以与计划性共存——按计划走，但不催。"
+          }
+        ],
+        "counts_as": [
+          "不急于推动进度",
+          "能接受事情按原有速度展开"
+        ],
+        "does_not_count_as": [
+          "因为无从下手而被动等待",
+          "该推的时候会果断推（那说明并非一贯如此）"
+        ],
+        "edge_cases": null,
+        "provenance": "editorial_clarification",
+        "evidence_anchor": "题干承重词为 “their own pace”；本题为反向计分（key = −1），已注明。",
+        "reverse_item_note": "反向题。题干表述的是本 facet 的**低**端。照实作答即可，系统会反向计分——不要为了\"保持一致\"而调整答案。"
+      }
+    },
+    {
+      "administration_order": 287,
+      "id": "ipip_neo_100",
+      "facet": "activitylevel",
+      "key": -1,
+      "text_en": "React slowly.",
+      "text_master": "React slowly.",
+      "text_zh": "反应较慢",
+      "text_zh_source": "project_translation",
+      "scaffolding": {
+        "asks": "（反向题）你的反应速度是否偏慢",
+        "key_term": {
+          "term": "react slowly",
+          "sense_here": "回应外界所需的时间",
+          "not_this": "不是\"想得深\""
+        },
+        "common_misreadings": [
+          {
+            "misreading": "把\"反应慢\"理解成\"思考周密\"",
+            "correction": "周密是深度，慢是速度。这里只问速度。"
+          },
+          {
+            "misreading": "与第 5 题（反应很快）的方向混淆",
+            "correction": "这一题说\"慢\"，越符合活跃度越低。系统会反向计分。"
+          }
+        ],
+        "counts_as": [
+          "需要一点时间才回应",
+          "动作与反应节奏偏缓"
+        ],
+        "does_not_count_as": [
+          "只是说话前习惯斟酌（不等于反应慢）",
+          "在陌生情境下慢，熟悉后很快"
+        ],
+        "edge_cases": null,
+        "provenance": "editorial_clarification",
+        "evidence_anchor": "题干承重词为 “react slowly”；本题为反向计分（key = −1），已注明。",
+        "reverse_item_note": "反向题。题干表述的是本 facet 的**低**端。照实作答即可，系统会反向计分——不要为了\"保持一致\"而调整答案。"
+      }
+    }
+  ]
+}

@@ -1,0 +1,683 @@
+{
+ "_note": "想象力（Imagination / O1）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.imagination",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "想象力",
+  "facet_name_en": "Imagination",
+  "facet_code": "O1",
+  "domain": "openness",
+  "domain_zh": "开放性"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "主动运用想象与幻想的倾向：是否喜欢做白日梦、在脑海中构建画面，以及是否让思绪自由漫游。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量创造力或艺术才能",
+   "不测量是否务实（那更接近 C 维度的对立面）",
+   "不测量对艺术的兴趣（属 O2 审美）",
+   "不测量思维的深度（属 O5 思辨）"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "aesthetic_appreciation_artistic_interests",
+    "against_facet_zh": "审美",
+    "distinction": "想象力是**自己生成画面**；审美是**被作品打动**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "intellect",
+    "against_facet_zh": "思辨",
+    "distinction": "想象力偏**图像与场景**；思辨偏**概念与推理**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "emotionality",
+    "against_facet_zh": "情感丰富",
+    "distinction": "想象力是**认知性的构建**；情感丰富是**情绪体验的强度**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "adventurousness",
+    "against_facet_zh": "冒险",
+    "distinction": "想象力发生在**心里**；冒险发生在**行动上**。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "很少做白日梦，心思基本停在眼前的事上",
+   "2": "偶尔走神，但不太主动去想象",
+   "3": "有时会沉浸在设想的情境里",
+   "4": "经常在脑海中构建画面与情节，觉得这很有趣",
+   "5": "想象几乎随时在进行，常活在丰富的内心世界里",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_127",
+   "ipip_neo_128",
+   "ipip_neo_129",
+   "ipip_neo_130"
+  ],
+  "forward_items": [
+   "ipip_neo_121",
+   "ipip_neo_122",
+   "ipip_neo_123",
+   "ipip_neo_124",
+   "ipip_neo_125",
+   "ipip_neo_126"
+  ],
+  "key_balance": "6 正向 / 4 反向",
+  "reverse_keyed_count": 4,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.83,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": null,
+   "reference_age_band": "18-29",
+   "sd_used": null,
+   "alpha_used": 0.83,
+   "by_age_band": {
+    "14-17": {
+     "sd": null,
+     "sem": null
+    },
+    "18-29": {
+     "sd": null,
+     "sem": null
+    },
+    "30+": {
+     "sd": 7.5,
+     "sem": 3.09
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": null,
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "High": "45-50",
+    "Average": "39-44",
+    "Low": "32-38",
+    "Very Low": "10-31"
+   },
+   "18-29": {
+    "High": "44-50",
+    "Average": "38-43",
+    "Low": "31-37",
+    "Very Low": "10-30"
+   },
+   "30+": {
+    "Very High": "50",
+    "High": "43-49",
+    "Average": "35-42",
+    "Low": "28-34",
+    "Very Low": "10-27"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "260-300",
+    "High": "234-259",
+    "Average": "208-233",
+    "Low": "182-207",
+    "Very Low": "60-181"
+   },
+   "18-29": {
+    "Very High": "263-300",
+    "High": "238-262",
+    "Average": "212-237",
+    "Low": "187-211",
+    "Very Low": "60-186"
+   },
+   "30+": {
+    "Very High": "266-300",
+    "High": "239-265",
+    "Average": "212-238",
+    "Low": "186-211",
+    "Very Low": "60-185"
+   }
+  },
+  "source_anomalies": [
+   "14-17: 源常模表中该带为空 ['Very High']",
+   "18-29: 源常模表中该带为空 ['Very High']"
+  ],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "第 1 题（Have a vivid imagination）与第 2 题（Enjoy day-dreaming）分别指向能力与偏好，侧面略有不同。"
+  ],
+  "interpretation_caveats": [
+   "这一面向问的是**你是否主动使用想象**，与**有没有艺术才能或创造力**无关。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 3,
+  "chinese_project_translation": 6,
+  "chinese_overridden": 1,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 3,
+   "id": "ipip_neo_121",
+   "facet": "imagination",
+   "key": 1,
+   "text_en": "Have a vivid imagination.",
+   "text_master": "Have a vivid imagination.",
+   "text_zh": "有丰富的想象力",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.044,
+    "item_total_r": 0.5435,
+    "missing_rate": 0.0022,
+    "neutral_rate": 0.1199
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你的想象力是否丰富",
+    "key_term": {
+     "term": "vivid",
+     "sense_here": "鲜明的、有画面的",
+     "not_this": "「有创造力」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它当成创造力测试",
+      "correction": "本题只问想象的活跃程度。"
+     },
+     {
+      "misreading": "认为自己「没创意」而选低分",
+      "correction": "想象的活跃与创意产出是两件事。"
+     }
+    ],
+    "counts_as": [
+     "脑子里常出现清晰的画面与场景"
+    ],
+    "does_not_count_as": [
+     "依赖外部素材才能想象"
+    ],
+    "edge_cases": null,
+    "localization_note": "**注意：本面向测的是「想象的活跃度」，不是「创造力」。** 中文「想象力」常被等同于创造才能，但本题只问你脑子里是否常出现鲜明的画面与情境。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「vivid」"
+   }
+  },
+  {
+   "administration_order": 33,
+   "id": "ipip_neo_122",
+   "facet": "imagination",
+   "key": 1,
+   "text_en": "Enjoy wild flights of fantasy.",
+   "text_master": "Enjoy wild flights of fantasy.",
+   "text_zh": "喜欢天马行空地幻想",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.12,
+    "item_total_r": 0.5702,
+    "missing_rate": 0.006,
+    "neutral_rate": 0.1813
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否喜欢天马行空地幻想",
+    "key_term": {
+     "term": "wild flights of fantasy",
+     "sense_here": "不受约束的、跳跃的幻想",
+     "not_this": "「胡思乱想」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「幻想」当成「不切实际」",
+      "correction": "本题不含评价。"
+     },
+     {
+      "misreading": "与「走神」混同",
+      "correction": "走神是无意的，本题是享受的。"
+     }
+    ],
+    "counts_as": [
+     "会主动让思绪飘到各种情境里"
+    ],
+    "does_not_count_as": [
+     "只在无聊时走神"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「天马行空」偏褒义，「胡思乱想」偏贬义。**本题是中性的**：指享受让思绪自由飘散。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「wild flights of fantasy」"
+   }
+  },
+  {
+   "administration_order": 63,
+   "id": "ipip_neo_123",
+   "facet": "imagination",
+   "key": 1,
+   "text_en": "Love to daydream.",
+   "text_master": "Love to daydream.",
+   "text_zh": "喜欢做白日梦",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.056,
+    "item_total_r": 0.6864,
+    "missing_rate": 0.0028,
+    "neutral_rate": 0.1363
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否喜欢做白日梦",
+    "key_term": {
+     "term": "daydream",
+     "sense_here": "白日梦、清醒时的想象",
+     "not_this": "「分心」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它理解成「走神、不专注」",
+      "correction": "本题问是否享受。"
+     },
+     {
+      "misreading": "与「注意力」问题混同",
+      "correction": "那是另一回事。"
+     }
+    ],
+    "counts_as": [
+     "会在空闲时主动进入想象"
+    ],
+    "does_not_count_as": [
+     "只在听不进去时才走神"
+    ],
+    "edge_cases": null,
+    "localization_note": "**中文「白日梦」有时带「不专心」的贬义**，而英文 daydream 基本中性甚至正面。**本题问的是你是否享受这种状态，不是你是否容易分心。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「daydream」"
+   }
+  },
+  {
+   "administration_order": 93,
+   "id": "ipip_neo_124",
+   "facet": "imagination",
+   "key": 1,
+   "text_en": "Like to get lost in thought.",
+   "text_master": "Like to get lost in thought.",
+   "text_zh": "喜欢想事情想得出神（Like to get lost in thought）",
+   "text_zh_source": "project_translation_override",
+   "text_zh_official_ref": "喜欢陷入沉思",
+   "translation_note": {
+    "defect": "语义偏移（A6）",
+    "reason": "原意是**思绪飘走、沉浸其中到自己都没察觉**，接近忘我；「沉思」偏深度思考，是另一回事。情境：别人叫你几声你才回过神。"
+   },
+   "diagnostics": {
+    "priority_score": 0.086,
+    "item_total_r": 0.6319,
+    "missing_rate": 0.0043,
+    "neutral_rate": 0.1452
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否喜欢陷入沉思",
+    "key_term": {
+     "term": "get lost in thought",
+     "sense_here": "沉浸于思考、忘我",
+     "not_this": "「思考能力强」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「思辨」面向混同",
+      "correction": "那是抽象推理，本题是思绪沉浸。"
+     },
+     {
+      "misreading": "与「反思」混同",
+      "correction": "那是回顾与省察。"
+     }
+    ],
+    "counts_as": [
+     "常想事情想得出神"
+    ],
+    "does_not_count_as": [
+     "只在需要解决问题时思考"
+    ],
+    "edge_cases": null,
+    "localization_note": "**注意：本题的「thought」偏思绪流动，与「思辨」（O5）偏抽象推理不同。** 中译「喜欢陷入沉思」贴近原意，但请按**沉浸在自己的思绪里**理解。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「get lost in thought」"
+   }
+  },
+  {
+   "administration_order": 123,
+   "id": "ipip_neo_125",
+   "facet": "imagination",
+   "key": 1,
+   "text_en": "Indulge in my fantasies.",
+   "text_master": "Indulge in my fantasies.",
+   "text_zh": "会沉浸在自己的幻想里",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.234,
+    "item_total_r": 0.5105,
+    "missing_rate": 0.0031,
+    "neutral_rate": 0.2352
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会沉浸在自己的幻想里",
+    "key_term": {
+     "term": "indulge",
+     "sense_here": "放任自己沉浸",
+     "not_this": "「逃避现实」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它理解成「逃避」",
+      "correction": "本题不含评价。"
+     },
+     {
+      "misreading": "觉得「浪费时间」而选低分",
+      "correction": "请按实际频率作答。"
+     }
+    ],
+    "counts_as": [
+     "会花不少时间在自己的想象世界里"
+    ],
+    "does_not_count_as": [
+     "只在睡前想一会儿"
+    ],
+    "edge_cases": null,
+    "localization_note": "**中文「沉浸在自己的幻想里」容易被读成「逃避现实」**（负面）。本题是中性的，指你允许自己花时间在想象中。中立选项比例偏高（.24），说明不少人觉得难以定位。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「indulge」"
+   }
+  },
+  {
+   "administration_order": 153,
+   "id": "ipip_neo_126",
+   "facet": "imagination",
+   "key": 1,
+   "text_en": "Spend time reflecting on things.",
+   "text_master": "Spend time reflecting on things.",
+   "text_zh": "会花时间回想事情",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.567,
+    "item_total_r": 0.382,
+    "missing_rate": 0.0055,
+    "neutral_rate": 0.1249
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会花时间回想事情",
+    "key_term": {
+     "term": "reflecting on",
+     "sense_here": "回想、反刍",
+     "not_this": "「喜欢想象」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它当成「想象丰富」",
+      "correction": "回想与想象不同——一个是回顾，一个是构建。"
+     },
+     {
+      "misreading": "与「情感丰富」面向混同",
+      "correction": "那面向测对情绪的觉察。"
+     }
+    ],
+    "counts_as": [
+     "常花时间回顾过去的事"
+    ],
+    "does_not_count_as": [
+     "不常回顾，更多向前看"
+    ],
+    "edge_cases": "**本题偏「反思」，与「想象」略有偏移。**",
+    "localization_note": "**本题的题目-总分相关 .38，在本面向最低**——「花时间回想事情」更接近**反思**（与「情感丰富」面向的自我审视交叠），而不完全是「想象的活动」。**一个不怎么做白日梦、但常反思的人，本题会得高分。** 这是本面向内容异质性的一处。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「reflecting on」"
+   }
+  },
+  {
+   "administration_order": 183,
+   "id": "ipip_neo_127",
+   "facet": "imagination",
+   "key": -1,
+   "text_en": "Seldom daydream.",
+   "text_master": "Seldom daydream.",
+   "text_zh": "很少做白日梦",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.058,
+    "item_total_r": 0.6413,
+    "missing_rate": 0.0029,
+    "neutral_rate": 0.1087
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否很少做白日梦",
+    "key_term": {
+     "term": "seldom",
+     "sense_here": "很少",
+     "not_this": "「从不」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 3 题方向搞混",
+      "correction": "第 3 题正向、本题反向。"
+     },
+     {
+      "misreading": "把「很少」当成「从不」",
+      "correction": "偶尔也算不频繁。"
+     }
+    ],
+    "counts_as": [
+     "很少让思绪飘走"
+    ],
+    "does_not_count_as": [
+     "只在特定情境下做白日梦"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 3 题（喜欢做白日梦）是**正反配对**。本题只问频率，不涉及是否享受。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「seldom」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 213,
+   "id": "ipip_neo_128",
+   "facet": "imagination",
+   "key": -1,
+   "text_en": "Do not have a good imagination.",
+   "text_master": "Do not have a good imagination.",
+   "text_zh": "想象力不好",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.452,
+    "item_total_r": 0.5086,
+    "missing_rate": 0.0063,
+    "neutral_rate": 0.0701
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你的想象力是否不好",
+    "key_term": {
+     "term": "good imagination",
+     "sense_here": "想象力好",
+     "not_this": "「有创意」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 8 题混同",
+      "correction": "整体 vs 视觉化。"
+     },
+     {
+      "misreading": "把它当创造力评价",
+      "correction": "本题只问想象。"
+     }
+    ],
+    "counts_as": [
+     "觉得自己想不出什么画面或情境"
+    ],
+    "does_not_count_as": [
+     "能想象但不常做"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 8 题（很难想象出画面）的区别：本题是**整体评估**，第 8 题特指**视觉化能力**。两题可以不同。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「good imagination」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 243,
+   "id": "ipip_neo_129",
+   "facet": "imagination",
+   "key": -1,
+   "text_en": "Seldom get lost in thought.",
+   "text_master": "Seldom get lost in thought.",
+   "text_zh": "很少想得出神",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.45,
+    "item_total_r": 0.4887,
+    "missing_rate": 0.003,
+    "neutral_rate": 0.1127
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否很少想得出神",
+    "key_term": {
+     "term": "get lost in thought",
+     "sense_here": "想得出神、忘我",
+     "not_this": "「不思考」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 4 题方向搞混",
+      "correction": "两题正反配对。"
+     },
+     {
+      "misreading": "与「思辨」面向混同",
+      "correction": "那是抽象推理。"
+     }
+    ],
+    "counts_as": [
+     "很少出现想事情想出神的情况"
+    ],
+    "does_not_count_as": [
+     "只是不容易在外人面前走神"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 4 题（喜欢陷入沉思）是正反配对。**注意：「想得出神」指沉浸在思绪中，不是「思考得深入」。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「get lost in thought」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 273,
+   "id": "ipip_neo_130",
+   "facet": "imagination",
+   "key": -1,
+   "text_en": "Have difficulty imagining things.",
+   "text_master": "Have difficulty imagining things.",
+   "text_zh": "很难在脑子里想象出画面",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.167,
+    "item_total_r": 0.5358,
+    "missing_rate": 0.0047,
+    "neutral_rate": 0.0651
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否很难在脑子里想象出画面",
+    "key_term": {
+     "term": "imagining things",
+     "sense_here": "在脑中构建画面",
+     "not_this": "——"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它当成整体想象力",
+      "correction": "本题特指视觉画面。"
+     },
+     {
+      "misreading": "因为心象缺失而认为自己想象力差",
+      "correction": "想象可以是语言、声音、概念等多种形式。"
+     }
+    ],
+    "counts_as": [
+     "很难在脑中「看见」具体画面"
+    ],
+    "does_not_count_as": [
+     "能看见画面但不常主动去想象"
+    ],
+    "edge_cases": "**本题特指视觉化；心象缺失者在此题会得低分，不代表整体想象力低。**",
+    "localization_note": "**本题特指「视觉化能力」**（在脑中看见画面），是本面向中较少见的偏「能力」的题。**有人心象缺失（aphantasia）但仍想象力活跃于其他通道（语言、声音、概念）**——若你属于这种情况，本题会给低分但其余题不会。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「imagining things」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

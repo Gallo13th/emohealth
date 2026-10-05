@@ -1,0 +1,676 @@
+{
+ "_note": "条理性（Orderliness / C2）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.orderliness",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "条理性",
+  "facet_name_en": "Orderliness",
+  "facet_code": "C2",
+  "domain": "conscientiousness",
+  "domain_zh": "尽责性"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "偏好环境与事务有序整洁的倾向：物品是否归位、安排是否清楚、以及对杂乱的不适程度。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量任务能否按时完成（属 C5 自律）",
+   "不测量是否守规矩（属 C3 责任心）",
+   "不测量工作能力",
+   "不测量对秩序的**需求强度**——这里问的是**实际的有序程度与偏好**"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "selfdiscipline",
+    "against_facet_zh": "自律",
+    "distinction": "条理性管**环境与物品**；自律管**行动的启动与推进**。**桌面很乱但任务照做的人，自律高、条理性低**——这是最常见的混淆。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "dutifulness",
+    "against_facet_zh": "责任心",
+    "distinction": "条理性是**物理与事务的整齐**；责任心是**对规范的遵守**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "cautiousness",
+    "against_facet_zh": "审慎",
+    "distinction": "条理性是**结果的状态**；审慎是**行动前的过程**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "achievementstriving",
+    "against_facet_zh": "追求成就",
+    "distinction": "条理性是**秩序偏好**；追求成就是**目标抱负**。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "环境与安排常年杂乱，也不太在意",
+   "2": "偏乱，需要时才收拾",
+   "3": "关键的地方会整理，其余随意",
+   "4": "习惯保持整洁，物品各归其位",
+   "5": "对秩序要求很高，杂乱会明显影响我的状态",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_256",
+   "ipip_neo_257",
+   "ipip_neo_258",
+   "ipip_neo_259",
+   "ipip_neo_260"
+  ],
+  "forward_items": [
+   "ipip_neo_251",
+   "ipip_neo_252",
+   "ipip_neo_253",
+   "ipip_neo_254",
+   "ipip_neo_255"
+  ],
+  "key_balance": "5 正向 / 5 反向",
+  "reverse_keyed_count": 5,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.82,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 3.39,
+   "reference_age_band": "18-29",
+   "sd_used": 8.0,
+   "alpha_used": 0.82,
+   "by_age_band": {
+    "14-17": {
+     "sd": 7.5,
+     "sem": 3.18
+    },
+    "18-29": {
+     "sd": 8.0,
+     "sem": 3.39
+    },
+    "30+": {
+     "sd": 8.5,
+     "sem": 3.61
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±6.6 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "40-50",
+    "High": "32-39",
+    "Average": "25-31",
+    "Low": "17-24",
+    "Very Low": "10-16"
+   },
+   "18-29": {
+    "Very High": "43-50",
+    "High": "35-42",
+    "Average": "27-34",
+    "Low": "19-26",
+    "Very Low": "10-18"
+   },
+   "30+": {
+    "Very High": "46-50",
+    "High": "38-45",
+    "Average": "29-37",
+    "Low": "21-28",
+    "Very Low": "10-20"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "236-300",
+    "High": "208-235",
+    "Average": "174-207",
+    "Low": "143-173",
+    "Very Low": "60-142"
+   },
+   "18-29": {
+    "Very High": "246-300",
+    "High": "215-245",
+    "Average": "184-214",
+    "Low": "153-183",
+    "Very Low": "60-152"
+   },
+   "30+": {
+    "Very High": "261-300",
+    "High": "231-260",
+    "Average": "200-230",
+    "Low": "169-199",
+    "Very Low": "60-168"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "**本面向的中文名「条理性」容易与「自律」混为一谈**——日常语中「有条理」常被用作「做事靠谱」的同义替换，但本面向只覆盖**环境与物品的有序**。这是脚手架必须处理的头号混淆。",
+   "**第 3 题（Want everything to be \"just right.\"）在机读源中是悬空引用**（key `ipip_E11` 无法解析），正文由官方问卷第 70 题补齐（见 `research/phase1_findings.md` §1.1）。这是本项目修复过的源缺陷，需在本档案中留痕。"
+  ],
+  "interpretation_caveats": [
+   "**注意：「条理」在这里只指「环境与物品是否整齐」，不是「做事是否靠谱」。**一个桌面很乱但工作推进得很好的人，这一面向可以很低，而「自律」很高。",
+   "另需留意：**本面向的一题在原始机读数据中缺失正文**，我们是用官方问卷补齐的——如果那题的表述让你觉得不太通顺，原因在此。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 4,
+  "chinese_project_translation": 6,
+  "chinese_overridden": 0,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 10,
+   "id": "ipip_neo_251",
+   "facet": "orderliness",
+   "key": 1,
+   "text_en": "Like order.",
+   "text_master": "Like order.",
+   "text_zh": "喜欢秩序",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.1,
+    "item_total_r": 0.6329,
+    "missing_rate": 0.005,
+    "neutral_rate": 0.1981
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否喜欢事物井然有序",
+    "key_term": {
+     "term": "order",
+     "sense_here": "秩序、有条理",
+     "not_this": "「做事靠谱」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它理解成「做事靠谱」",
+      "correction": "本题只问对环境秩序的偏好。"
+     },
+     {
+      "misreading": "与「自律」（C5）混同",
+      "correction": "那是行动的启动与推进。"
+     }
+    ],
+    "counts_as": [
+     "环境整洁让你舒服"
+    ],
+    "does_not_count_as": [
+     "只是工作有流程"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本面向的头号本地化陷阱**：中文「喜欢秩序」容易与「做事有条理、靠谱」混同，而本面向只覆盖**环境与物品的有序**。「桌面很乱但工作推进得很好」是自律高、条理性低。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「order」"
+   }
+  },
+  {
+   "administration_order": 40,
+   "id": "ipip_neo_252",
+   "facet": "orderliness",
+   "key": 1,
+   "text_en": "Like to tidy up.",
+   "text_master": "Like to tidy up.",
+   "text_zh": "喜欢整洁",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.124,
+    "item_total_r": 0.6746,
+    "missing_rate": 0.0062,
+    "neutral_rate": 0.2084
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否喜欢收拾整理",
+    "key_term": {
+     "term": "tidy up",
+     "sense_here": "收拾、归整",
+     "not_this": "「打扫卫生」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「房间干净」当成「喜欢整理」",
+      "correction": "可能是他人维持的。"
+     },
+     {
+      "misreading": "与第 1 题混同",
+      "correction": "偏好 vs 行为。"
+     }
+    ],
+    "counts_as": [
+     "会主动收拾整理"
+    ],
+    "does_not_count_as": [
+     "房间干净但不是你维持的"
+    ],
+    "edge_cases": null,
+    "localization_note": "**「Tidy up」是主动整理的行为倾向**，不只是「房间恰好干净」（那可能是别人收拾的）。本题问你是否**享受或习惯整理**。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「tidy up」"
+   }
+  },
+  {
+   "administration_order": 70,
+   "id": "ipip_neo_253",
+   "facet": "orderliness",
+   "key": 1,
+   "text_en": "Want everything to be \"just right.\"",
+   "text_master": null,
+   "text_zh": "希望一切都「刚刚好」",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.516,
+    "item_total_r": 0.3851,
+    "missing_rate": 0.0045,
+    "neutral_rate": 0.1913
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否希望一切都「刚刚好」",
+    "key_term": {
+     "term": "just right",
+     "sense_here": "恰到好处、分毫不差",
+     "not_this": "「追求完美」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它理解为强迫症状",
+      "correction": "本题只是偏好描述，不构成任何筛查。"
+     },
+     {
+      "misreading": "因为「差不多就行」而选低分",
+      "correction": "那确实是本题的低分。"
+     }
+    ],
+    "counts_as": [
+     "东西摆放不到位会觉得别扭"
+    ],
+    "does_not_count_as": [
+     "有点乱也能接受"
+    ],
+    "edge_cases": "**本题的英文表述带完美主义色彩，可能混入与强迫倾向相关的成分。**",
+    "localization_note": "**这是本项目修复过的源缺陷题**——它在机读数据里缺失正文（悬空引用），由官方问卷第 70 题补齐（见 `research/phase1_findings.md` §1.1）。**「just right」在英文里带有完美主义意味**，可能与强迫倾向接近而非单纯的条理性。题目-总分相关 .39，在本面向偏低。**若这题让你感到不安或反复检查，请注意它测的是偏好而非症状。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「just right」"
+   }
+  },
+  {
+   "administration_order": 100,
+   "id": "ipip_neo_254",
+   "facet": "orderliness",
+   "key": 1,
+   "text_en": "Love order and regularity.",
+   "text_master": "Love order and regularity.",
+   "text_zh": "喜欢有条有理",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.098,
+    "item_total_r": 0.6316,
+    "missing_rate": 0.0049,
+    "neutral_rate": 0.2381
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否喜欢有条有理",
+    "key_term": {
+     "term": "order and regularity",
+     "sense_here": "秩序与规律",
+     "not_this": "「一成不变」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "只按空间整齐理解",
+      "correction": "也包括时间上的规律。"
+     },
+     {
+      "misreading": "与「审慎」面向混同",
+      "correction": "那是事前思考。"
+     }
+    ],
+    "counts_as": [
+     "生活与空间都讲究条理"
+    ],
+    "does_not_count_as": [
+     "只是空间整齐但作息随意"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「有条有理」很贴切。**注意 regularity 还包含「规律性」**（时间安排有规律），不只是空间上的整齐。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「order and regularity」"
+   }
+  },
+  {
+   "administration_order": 130,
+   "id": "ipip_neo_255",
+   "facet": "orderliness",
+   "key": 1,
+   "text_en": "Do things according to a plan.",
+   "text_master": "Do things according to a plan.",
+   "text_zh": "按计划做事",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.444,
+    "item_total_r": 0.4911,
+    "missing_rate": 0.0039,
+    "neutral_rate": 0.2265
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否按计划做事",
+    "key_term": {
+     "term": "according to a plan",
+     "sense_here": "照计划进行",
+     "not_this": "「能不能执行」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「自律」混同",
+      "correction": "计划性 vs 执行力。"
+     },
+     {
+      "misreading": "与「审慎」（C6）混同",
+      "correction": "那是行动前的思考。"
+     }
+    ],
+    "counts_as": [
+     "做事前会先列步骤"
+    ],
+    "does_not_count_as": [
+     "有计划但常不照做"
+    ],
+    "edge_cases": null,
+    "localization_note": "**与「自律」（C5）的区别**：自律是**能不能启动并坚持**，本题是**是否有计划并按之进行**。有计划但执行不了，本题高、自律低。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「according to a plan」"
+   }
+  },
+  {
+   "administration_order": 160,
+   "id": "ipip_neo_256",
+   "facet": "orderliness",
+   "key": -1,
+   "text_en": "Often forget to put things back in their proper place.",
+   "text_master": "Often forget to put things back in their proper place.",
+   "text_zh": "经常忘记把东西放回原处",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.084,
+    "item_total_r": 0.5808,
+    "missing_rate": 0.0042,
+    "neutral_rate": 0.1435
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否经常忘记把东西放回原处",
+    "key_term": {
+     "term": "put things back",
+     "sense_here": "物归原处",
+     "not_this": "「记性不好」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 3 题（希望刚刚好）混同",
+      "correction": "两题都属条理性，可给相近答案。"
+     }
+    ],
+    "counts_as": [
+     "用完东西随手一放"
+    ],
+    "does_not_count_as": [
+     "记得位置但懒得放回（那也算）"
+    ],
+    "edge_cases": null,
+    "localization_note": "**关键区分**：忘记放回 ≠ 记性差。本题问的是**是否形成归位的习惯**，不是记忆力。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「put things back」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 190,
+   "id": "ipip_neo_257",
+   "facet": "orderliness",
+   "key": -1,
+   "text_en": "Leave a mess in my room.",
+   "text_master": "Leave a mess in my room.",
+   "text_zh": "我的房间很乱",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.078,
+    "item_total_r": 0.6437,
+    "missing_rate": 0.0039,
+    "neutral_rate": 0.111
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你的房间是否很乱",
+    "key_term": {
+     "term": "mess",
+     "sense_here": "杂乱",
+     "not_this": "「东西多」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「东西多」当成「乱」",
+      "correction": "关键在是否有秩序。"
+     },
+     {
+      "misreading": "因为房间刚收拾过而选低分",
+      "correction": "请按一贯情况作答。"
+     }
+    ],
+    "counts_as": [
+     "房间长期处于杂乱状态"
+    ],
+    "does_not_count_as": [
+     "东西多但有分类"
+    ],
+    "edge_cases": null,
+    "localization_note": "**「东西多」不等于「乱」**——收藏丰富但分类清楚，不算乱。本题问的是**有没有秩序**。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「mess」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 220,
+   "id": "ipip_neo_258",
+   "facet": "orderliness",
+   "key": -1,
+   "text_en": "Leave my belongings around.",
+   "text_master": "Leave my belongings around.",
+   "text_zh": "我的东西放得到处都是",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.094,
+    "item_total_r": 0.5864,
+    "missing_rate": 0.0047,
+    "neutral_rate": 0.1413
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你的东西是否放得到处都是",
+    "key_term": {
+     "term": "belongings around",
+     "sense_here": "物品散落各处",
+     "not_this": "「常用物品在手边」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「手边放着常用物品」当成乱",
+      "correction": "关键在是否有固定位置。"
+     },
+     {
+      "misreading": "与第 7 题（房间乱）混同",
+      "correction": "两题接近。"
+     }
+    ],
+    "counts_as": [
+     "物品没有固定位置"
+    ],
+    "does_not_count_as": [
+     "固定位置但不在收纳柜里"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「放得到处都是」很口语，贴近原意。**注意与「常用物品放在手边」的区别**：那是为了方便，本题指缺少归位。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「belongings around」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 250,
+   "id": "ipip_neo_259",
+   "facet": "orderliness",
+   "key": -1,
+   "text_en": "Am not bothered by messy people.",
+   "text_master": "Am not bothered by messy people.",
+   "text_zh": "不在意别人邋遢",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.163,
+    "item_total_r": 0.5174,
+    "missing_rate": 0.003,
+    "neutral_rate": 0.1302
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否不在意别人邋遢",
+    "key_term": {
+     "term": "not bothered",
+     "sense_here": "不被困扰",
+     "not_this": "「不介意」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它理解成「我自己也邋遢」",
+      "correction": "本题问你对**他人**的容忍度。"
+     },
+     {
+      "misreading": "与第 10 题（不在意杂乱）混同",
+      "correction": "一个是对他人，一个是对自己。"
+     }
+    ],
+    "counts_as": [
+     "别人的杂乱不太影响你"
+    ],
+    "does_not_count_as": [
+     "只是不好意思说"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题问的是「他人的杂乱是否影响你」**，而非「你自己是否乱」。一个自己很整齐、但对别人的乱无所谓的人，本题会得高分而其余题得低分。这是本面向的一个侧面。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「not bothered」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 280,
+   "id": "ipip_neo_260",
+   "facet": "orderliness",
+   "key": -1,
+   "text_en": "Am not bothered by disorder.",
+   "text_master": "Am not bothered by disorder.",
+   "text_zh": "不在意杂乱",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.076,
+    "item_total_r": 0.5912,
+    "missing_rate": 0.0038,
+    "neutral_rate": 0.1496
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否不在意杂乱",
+    "key_term": {
+     "term": "disorder",
+     "sense_here": "杂乱（自己的环境）",
+     "not_this": "「随性」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 9 题混同",
+      "correction": "自己 vs 他人。"
+     },
+     {
+      "misreading": "把「能忍一时」当成「不在意」",
+      "correction": "本题问一贯状态。"
+     }
+    ],
+    "counts_as": [
+     "杂乱的环境不影响你的状态"
+    ],
+    "does_not_count_as": [
+     "能忍但心里不舒服"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 9 题（不在意别人邋遢）的区别：本题指**自己身处杂乱时的感受**。**自己整齐但对他人宽容，两题答案会不同。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「disorder」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

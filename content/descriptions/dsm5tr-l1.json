@@ -1,0 +1,340 @@
+{
+  "_note": "DSM-5-TR Level 1（跨切面症状量表·成人）的证据文件。本文件是人工核对的来源；data/descriptions/dsm5tr-l1.md 由 tools/build/build_descriptions.py 从本文件 + 量表包生成，禁止手改生成物。",
+  "code": "dsm5tr-l1",
+  "instrument": "DSM5TR-L1",
+  "record_kind": "descriptions_source",
+  "schema_version": "1.0",
+  "what_it_is": {
+    "text": "APA 官方发布的**跨诊断症状筛查表**（成人版），23 道题覆盖 13 个症状域；它是 DSM-5-TR 在线评估量表体系的第一级（Level 1），用来回答「这个人有没有哪个症状域值得进一步细看」。",
+    "source": "archive/scales/DSM5TR-L1/manual.pdf（APA DSM-5-TR Self-Rated Level 1 Cross-Cutting Symptom Measure—Adult）"
+  },
+  "what_it_measures": {
+    "text": "过去**两周内** 13 个症状域的出现程度：抑郁、愤怒、躁狂、焦虑、躯体症状、自杀意念、精神病性、睡眠问题、记忆、重复思维与行为、解离、人格功能、物质使用。每一域取该域内题目的**最高分**作为域分，再与该域的门槛比较（≥门槛 = 建议就该域做更细评估）。",
+    "source": "archive/scales/DSM5TR-L1/manual.pdf 的 Instructions to Clinicians（Scoring and Interpretation）；域与门槛见同册 Table 1 与 data/linkage/dsm5tr-chain.json"
+  },
+  "does_not_measure": [
+    {
+      "text": "**不做诊断**。手册原文：这些量表「should be used … not as the sole basis for making a clinical diagnosis」（不得作为临床诊断的唯一依据）。",
+      "source": "archive/scales/DSM5TR-L1/manual.pdf 的 disclaimer 原文"
+    },
+    {
+      "text": "**不给出常模分数、百分位或 T 分**。它不是常模参照量表，只给「某域达到/未达到门槛」。",
+      "source": "data/instruments/dsm5tr-l1.json 的 interpretation.note 与 kind=threshold"
+    },
+    {
+      "text": "**不覆盖 DSM-5-TR 的全部诊断类别**。13 个域是跨诊断筛查面，不是诊断清单；未列出的障碍（如进食障碍、人格障碍的完整诊断）不在本表范围内。",
+      "source": "archive/scales/DSM5TR-L1/manual.pdf Table 1（域清单即范围）"
+    },
+    {
+      "text": "**不衡量症状的时长、起病、功能损害或病因**。题面问的是「近两周有没有/多严重」，一个域的分数不携带病程信息。",
+      "source": "题面本身的时间窗（past TWO (2) WEEKS）与 0–4 频率/程度锚点"
+    },
+    {
+      "text": "**不评估作答的真实性**。本册没有效度分量表；它假设作答者如实报告。",
+      "source": "archive/scales/DSM5TR-L1/manual.pdf（全册无 validity scale 章节）"
+    }
+  ],
+  "applicability": {
+    "applicable": "18 岁及以上成人（自评版）；手册定位为初诊访谈时施测与治疗进程监测。",
+    "inapplicable": [
+      "18 岁以下（应使用对应的儿童/青少年版）",
+      "无法自读或理解题面的作答者（需访谈者协助，此时不是自评）"
+    ],
+    "source": "archive/scales/DSM5TR-L1/manual.pdf 的适用对象说明"
+  },
+  "dimension_order": [
+    "l1_depression",
+    "l1_anger",
+    "l1_mania",
+    "l1_anxiety",
+    "l1_somatic_symptoms",
+    "l1_suicidal_ideation",
+    "l1_psychosis",
+    "l1_sleep_problems",
+    "l1_memory",
+    "l1_repetitive_thoughts_and_behaviors",
+    "l1_dissociation",
+    "l1_personality_functioning",
+    "l1_substance_use"
+  ],
+  "dimensions": {
+    "l1_depression": {
+      "zh": "抑郁",
+      "gloss": "近两周对事情提不起兴趣或乐趣，以及情绪低落、沮丧或绝望。",
+      "gloss_source": "derived_from_items:l1_01,l1_02",
+      "definition": "DSM-5-TR Level 1 的「Depression」域（Table 1 第 I 域）。",
+      "definition_source": "archive/scales/DSM5TR-L1/manual.pdf Table 1",
+      "does_not_measure": [
+        "不是抑郁障碍诊断",
+        "不区分抑郁与双相抑郁",
+        "不评估病程长短"
+      ]
+    },
+    "l1_anger": {
+      "zh": "愤怒",
+      "gloss": "近两周比平时更容易被激惹、烦躁或发火。",
+      "gloss_source": "derived_from_items:l1_03",
+      "definition": "DSM-5-TR Level 1 的「Anger」域（Table 1 第 II 域）。",
+      "definition_source": "archive/scales/DSM5TR-L1/manual.pdf Table 1",
+      "does_not_measure": [
+        "不衡量愤怒的表达方式（外显/内隐）",
+        "不评估攻击行为"
+      ]
+    },
+    "l1_mania": {
+      "zh": "躁狂",
+      "gloss": "近两周睡得比平时少却仍精力充沛，以及比平时开展更多项目或做更多冒险的事。",
+      "gloss_source": "derived_from_items:l1_04,l1_05",
+      "definition": "DSM-5-TR Level 1 的「Mania」域（Table 1 第 III 域）。",
+      "definition_source": "archive/scales/DSM5TR-L1/manual.pdf Table 1",
+      "does_not_measure": [
+        "不诊断双相障碍（诊断需病程与功能损害标准）",
+        "不覆盖轻躁狂与躁狂的鉴别"
+      ]
+    },
+    "l1_anxiety": {
+      "zh": "焦虑",
+      "gloss": "近两周紧张、焦虑、害怕或坐立不安；出现惊恐感；以及回避让自己焦虑的情境。",
+      "gloss_source": "derived_from_items:l1_06,l1_07,l1_08",
+      "definition": "DSM-5-TR Level 1 的「Anxiety」域（Table 1 第 IV 域）。",
+      "definition_source": "archive/scales/DSM5TR-L1/manual.pdf Table 1",
+      "does_not_measure": [
+        "不区分广泛性焦虑、惊恐障碍、社交焦虑等具体类型",
+        "不评估回避行为的功能后果"
+      ]
+    },
+    "l1_somatic_symptoms": {
+      "zh": "躯体症状",
+      "gloss": "近两周无法解释的疼痛（头、背、关节、腹部、腿），以及觉得自己的病痛没有被认真对待。",
+      "gloss_source": "derived_from_items:l1_09,l1_10",
+      "definition": "DSM-5-TR Level 1 的「Somatic Symptoms」域（Table 1 第 V 域）。",
+      "definition_source": "archive/scales/DSM5TR-L1/manual.pdf Table 1",
+      "does_not_measure": [
+        "不排除器质性病因——本域分数不能用来推断症状「是心理的」",
+        "不评估疼痛部位或医学严重度"
+      ]
+    },
+    "l1_suicidal_ideation": {
+      "zh": "自杀意念",
+      "gloss": "近两周出现过「真的伤害自己」的念头。",
+      "gloss_source": "derived_from_items:l1_11",
+      "definition": "DSM-5-TR Level 1 的「Suicidal Ideation」域（Table 1 第 VI 域）。",
+      "definition_source": "archive/scales/DSM5TR-L1/manual.pdf Table 1",
+      "does_not_measure": [
+        "不是自杀风险评估工具（无计划、意图、手段、既往尝试等条目）",
+        "不能用于排除风险：未达门槛不等于没有风险"
+      ]
+    },
+    "l1_psychosis": {
+      "zh": "精神病性体验",
+      "gloss": "近两周听到别人听不到的声音，或觉得别人能听到自己的想法 / 自己能听到别人的想法。",
+      "gloss_source": "derived_from_items:l1_12,l1_13",
+      "definition": "DSM-5-TR Level 1 的「Psychosis」域（Table 1 第 VII 域）。",
+      "definition_source": "archive/scales/DSM5TR-L1/manual.pdf Table 1",
+      "does_not_measure": [
+        "不诊断精神病性障碍",
+        "不区分幻觉、妄想与解离体验"
+      ]
+    },
+    "l1_sleep_problems": {
+      "zh": "睡眠问题",
+      "gloss": "近两周的睡眠问题影响到了整体睡眠质量。",
+      "gloss_source": "derived_from_items:l1_14",
+      "definition": "DSM-5-TR Level 1 的「Sleep Problems」域（Table 1 第 VIII 域）。",
+      "definition_source": "archive/scales/DSM5TR-L1/manual.pdf Table 1",
+      "does_not_measure": [
+        "不诊断失眠障碍（无频率/病程/日间损害标准）",
+        "不区分入睡困难、维持困难与早醒"
+      ]
+    },
+    "l1_memory": {
+      "zh": "记忆",
+      "gloss": "近两周记东西（学习新信息）或找路（如回家）出现问题。",
+      "gloss_source": "derived_from_items:l1_15",
+      "definition": "DSM-5-TR Level 1 的「Memory」域（Table 1 第 IX 域）。",
+      "definition_source": "archive/scales/DSM5TR-L1/manual.pdf Table 1",
+      "does_not_measure": [
+        "不是认知功能测验（无客观测量、无常模）",
+        "不区分注意、记忆与定向问题"
+      ]
+    },
+    "l1_repetitive_thoughts_and_behaviors": {
+      "zh": "重复思维与行为",
+      "gloss": "近两周反复出现不愉快的想法、冲动或画面，以及感到被驱动着反复做某些行为或心理活动。",
+      "gloss_source": "derived_from_items:l1_16,l1_17",
+      "definition": "DSM-5-TR Level 1 的「Repetitive Thoughts and Behaviors」域（Table 1 第 X 域）。",
+      "definition_source": "archive/scales/DSM5TR-L1/manual.pdf Table 1",
+      "does_not_measure": [
+        "不诊断强迫症",
+        "不区分强迫思维与其它侵入性思维（如创伤相关）"
+      ]
+    },
+    "l1_dissociation": {
+      "zh": "解离",
+      "gloss": "近两周感到与自己、自己的身体、周围环境或记忆疏离、有距离。",
+      "gloss_source": "derived_from_items:l1_18",
+      "definition": "DSM-5-TR Level 1 的「Dissociation」域（Table 1 第 XI 域）。",
+      "definition_source": "archive/scales/DSM5TR-L1/manual.pdf Table 1",
+      "does_not_measure": [
+        "不诊断解离障碍",
+        "不区分人格解体/现实解体与精神病性体验"
+      ]
+    },
+    "l1_personality_functioning": {
+      "zh": "人格功能",
+      "gloss": "近两周不清楚自己是谁、想要什么，以及感到与他人不亲近或无法享受关系。",
+      "gloss_source": "derived_from_items:l1_19,l1_20",
+      "definition": "DSM-5-TR Level 1 的「Personality Functioning」域（Table 1 第 XII 域）。对应 DSM-5 人格功能模型中的「自我」与「人际」两个方向。",
+      "definition_source": "archive/scales/DSM5TR-L1/manual.pdf Table 1；data/linkage/dsm5tr-chain.json 的 pid5_interface"
+    },
+    "l1_substance_use": {
+      "zh": "物质使用",
+      "gloss": "近两周饮酒（单日 ≥4 杯）、吸烟，或在无处方的情况下自行使用镇痛药、兴奋剂、镇静剂或其它药物。",
+      "gloss_source": "derived_from_items:l1_21,l1_22,l1_23",
+      "definition": "DSM-5-TR Level 1 的「Substance Use」域（Table 1 第 XIII 域）。",
+      "definition_source": "archive/scales/DSM5TR-L1/manual.pdf Table 1",
+      "does_not_measure": [
+        "不诊断物质使用障碍（无耐受、戒断、失控、功能损害等条目）",
+        "不区分使用频率、剂量与危害"
+      ]
+    }
+  },
+  "translation_policy": {
+    "stance": "supplementary_bilingual",
+    "text": "APA 授权写明「may not be modified absent written permission from APA」。本项目**逐字不改原文**，而是把 ① 英文原文、② 中文翻译、③ 本地化内容讲解三者**并列**呈现——中译与讲解是**补充性独立内容**，不是对原文的修改，因此授权条款不构成障碍。各条中译的复核状态见其 `zh_source`（均标「subagent 初译/重译（待人工复核）」），**未人工复核前不得作为定稿中文版发布**。",
+    "supersedes": "`display_chinese_items: false` / 旧 `translation_unavailable_reason`（「不在文档里提供中译」）——该处置已被 R2 推翻，本字段为其替代。",
+    "source": "archive/scales/DSM5TR-L1/source.json 的授权原文 + 用户 R2"
+  },
+  "response_labels_zh": null,
+  "reverse_note": "本册**没有反向计分题**：23 题全部正向计分（0 = 无 / 完全没有，4 = 严重 / 几乎每天）。",
+  "scoring_notes": [
+    {
+      "text": "**域分 = 该域内任一题的最高分**（手册原文：the highest score on any item within a domain）。注意不是求和、也不是均分——这是本册最容易写错的地方。",
+      "source": "archive/scales/DSM5TR-L1/manual.pdf 的 Instructions to Clinicians；记录在 data/instruments/dsm5tr-l1.json 的 scoring（aggregation = max）"
+    },
+    {
+      "text": "13 个域的门槛不完全相同：自杀意念、精神病性、物质使用为 **≥1**（Slight or greater），其余 10 个域为 **≥2**（Mild or greater）。低门槛的三个域是因为「漏报的代价高于误报」。",
+      "source": "archive/scales/DSM5TR-L1/manual.pdf Table 1；逐域数值见 data/linkage/dsm5tr-chain.json 的 level1.domains"
+    },
+    {
+      "text": "达到门槛只表示「建议就该域做更细评估」，不表示「有病」。",
+      "source": "archive/scales/DSM5TR-L1/manual.pdf 的 Instructions to Clinicians"
+    },
+    {
+      "text": "作答缺漏：APA 对跨切面量表的通行要求是缺答过多时不得解释分数；本册未提供按比例推算的规则。",
+      "source": "data/criteria/dsm5tr-l2.json 的 missing_rule（同属 DSM-5-TR Online Assessment Measures 体系）"
+    }
+  ],
+  "score_ranges": [
+    {
+      "text": "每题 0–4（0 = None/Not at all … 4 = Severe/Nearly every day）。",
+      "source": "data/instruments/dsm5tr-l1.json 的 response_format"
+    },
+    {
+      "text": "域分范围 0–4（单题域）或 0–4（多题域取最高分，仍是 0–4，不是求和）。13 个域各给一个 0–4 的域分。",
+      "source": "aggregation = max 的定义"
+    }
+  ],
+  "norms_spec": {
+    "status": "unavailable",
+    "interpretation_basis": "threshold",
+    "reference_sample": null,
+    "unavailable_reason": "APA 把本册设计为**门槛型筛查**而非常模参照量表：手册不提供常模表、百分位或 T 分，只提供每域的门槛。因此不存在「可溯源的常模」可供本项目使用；若强行套用一般人群分布，会给出手册没有授权、也没有数据支撑的百分位。",
+    "applicability_warning": "门槛值来自 APA 手册原文，适用于该量表的设计用途（初诊筛查与进程监测），不构成诊断阈值。",
+    "source": {
+      "citation": "American Psychiatric Association. DSM-5-TR Self-Rated Level 1 Cross-Cutting Symptom Measure—Adult.",
+      "evidence": [
+        "archive/scales/DSM5TR-L1/manual.pdf",
+        "archive/scales/DSM5TR-L1/source.json",
+        "data/linkage/dsm5tr-chain.json"
+      ],
+      "url": "https://www.psychiatry.org/getmedia/e0b4b299-95b3-407b-b8c2-caa871ca218d/APA-DSM5TR-Level1MeasureAdult.pdf",
+      "license": "APA 版权；允许研究人员/临床医生为患者使用而复制，**不得修改**"
+    },
+    "notes": "逐域门槛（含 level2 对照）见 data/linkage/dsm5tr-chain.json；本记录不复制门槛表，避免第二个真相源。"
+  },
+  "result_reading": [
+    {
+      "text": "只报「哪些域达到门槛 / 未达到门槛」，**不报分数带、不报百分位、不报 T 分**。",
+      "source": "data/linkage/dsm5tr-chain.json 的 presentation_rules"
+    },
+    {
+      "text": "达到门槛的域给出「建议进一步评估」及对应的 Level 2 量表名（若手册为该域指定了）；未达门槛的域不给结论。",
+      "source": "data/linkage/dsm5tr-chain.json 的 presentation_rules"
+    },
+    {
+      "text": "自杀意念 / 精神病性 / 物质使用三域门槛更低（≥1），呈现时必须如实说明「门槛更低」及原因，不能让用户误以为与其它域同标准。",
+      "source": "data/linkage/dsm5tr-chain.json 的 presentation_rules；门槛值见 level1.domains"
+    },
+    {
+      "text": "人格功能域达门槛时可提示「该域的细评工具为 PID-5（依 DSM-5 架构推出，**非本册原文**）」。已核查：9 册 DSM-5-TR 量表手册正文从未提到 PID-5。",
+      "source": "data/linkage/dsm5tr-chain.json 的 pid5_interface.caveat"
+    }
+  ],
+  "alpha": {
+    "values": {},
+    "note": "**APA 在本册里没有报告 α 或任何信度系数。** 跨切面量表的 13 个域各由 1–3 题构成（其中 7 个域只有 1 题），按单个域计算内部一致性在没有常模样本的情况下不可复现。本项目因此**不给 α**，也不引用未入档的二手数值。",
+    "summary": [
+      {
+        "text": "可核对的替代信息是**题目来源**：13 个域来自 DSM-5-TR 跨切面症状量表体系，各域题数以本量表包为准（1–3 题，共 23 题）。",
+        "source": "data/instruments/dsm5tr-l1.json 的 structure 与 dimensions"
+      }
+    ]
+  },
+  "known_critiques": [
+    {
+      "text": "单题域（如自杀意念、睡眠、记忆、解离）无法估计内部一致性；这类域的分数只是「该条目的反应」，不是潜变量的可靠测量。",
+      "source": "由本册题数结构直接推出（data/instruments/dsm5tr-l1.json 的 dimensions 逐域题数）"
+    },
+    {
+      "text": "手册明确定位为「初诊访谈时施测 + 进程监测」，**不是**独立的诊断工具。",
+      "source": "archive/scales/DSM5TR-L1/manual.pdf 的 disclaimer 原文"
+    }
+  ],
+  "interpretation_caveats": [
+    {
+      "text": "**不得**由 Level 1 的结果推出任何诊断结论（手册原文：not as the sole basis for making a clinical diagnosis）。",
+      "source": "archive/scales/DSM5TR-L1/manual.pdf 的 disclaimer"
+    },
+    {
+      "text": "**不得**把域分说成「严重度百分位」或与一般人比较——本册没有常模。",
+      "source": "本册无 norms（data/norms/dsm5tr-l1.json 的 status=unavailable）"
+    },
+    {
+      "text": "**不得**把「未达门槛」说成「没有问题」：本册是筛查，阴性结果不排除障碍。",
+      "source": "archive/scales/DSM5TR-L1/manual.pdf 的 Instructions to Clinicians"
+    },
+    {
+      "text": "**不得**把自杀意念域的分数当作自杀风险分级；它是单题筛查，不是风险评估。",
+      "source": "本册该域仅 1 题（data/instruments/dsm5tr-l1.json 的 dimensions）"
+    },
+    {
+      "text": "**不得**把人格功能域达门槛直接说成「人格障碍」；与 PID-5 的衔接是依 DSM-5 架构推出的接口，不是本册原文。",
+      "source": "data/linkage/dsm5tr-chain.json 的 pid5_interface.caveat"
+    },
+    {
+      "text": "**不得**把本项目的中译当作「官方中文版」发布：APA 授权未许可**修改**原文；本项目提供的是**补充性独立内容**（① 英文原文 + ② 中译 + ③ 本地化讲解），且 23 条中译均**未经人工复核**（`zh_source` 逐条标注）。",
+      "source": "data/instruments/dsm5tr-l1.json 的 provenance.translation_policy（R2）"
+    }
+  ],
+  "provenance": {
+    "题项提取": "archive/scales/DSM5TR-L1/items-extracted.json（提取器 tools/build/build_l1_items.py）",
+    "授权原文": "archive/scales/DSM5TR-L1/source.json（补录：tools/build/fix_dsm5tr_licenses.py）",
+    "手册哈希": "archive/scales/DSM5TR-L1/manual.pdf sha256 260bb4400ebe5206…（282,005 字节）",
+    "域与门槛": "archive/scales/DSM5TR-L1/manual.pdf 的 Table 1；解析器 tools/survey/extract_l1_table1.py"
+  },
+  "evidence_gaps": [
+    {
+      "what": "手册原文页（Instructions to Clinicians 全文）",
+      "detail": "本项目只入档了手册 PDF 本体；本文件引用的是该 PDF 的段落与 Table 1 的抽取结果，没有逐句转录。"
+    },
+    {
+      "what": "本册的 α / 重测信度",
+      "detail": "APA 未在本册报告任何信度系数，项目也未找到可入档的一手来源，故不给数字。"
+    },
+    {
+      "what": "l1_23（物质使用第 3 题）的题面完整性",
+      "detail": "实测题文在「…or m」处**截断**，且尾部被追加了 APA 版权句（提取器把页脚并入了题干）。这是数据层的缺陷，已记录、未在本任务中修改（见 research/descriptions-evidence/known-data-gaps.md）。"
+    }
+  ]
+}

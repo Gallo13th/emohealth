@@ -1,0 +1,226 @@
+{
+ "chain": "DSM-5-TR 精神状态评估链路",
+ "direction": "筛查 → 细评 → （人格障碍）特质评估",
+ "level1": {
+  "instrument": "DSM5TR-L1",
+  "display_name": "DSM-5-TR Level 1 跨切面症状量表（成人）",
+  "purpose": "跨诊断的症状域筛查；**不给常模分数**，给的是「是否需要就该域做更细评估」的门槛",
+  "scoring": "域分 = 该域内**任一题的最高分**（手册原文：the highest score on any item within a domain）",
+  "response_scale": {
+   "min": 0,
+   "max": 4,
+   "labels": [
+    "None or not at all",
+    "Slight or rare, less than a day or two",
+    "Mild or several days",
+    "Moderate or more than half the days",
+    "Severe or nearly every day"
+   ]
+  },
+  "window": "past TWO (2) WEEKS",
+  "domains": [
+   {
+    "index": 1,
+    "roman": "I",
+    "name": "Depression",
+    "items": [
+     "l1_01",
+     "l1_02"
+    ],
+    "threshold": 2,
+    "threshold_label": "Mild or greater",
+    "level2": "DSM5TR-L2-Depression",
+    "note": ""
+   },
+   {
+    "index": 2,
+    "roman": "II",
+    "name": "Anger",
+    "items": [
+     "l1_03"
+    ],
+    "threshold": 2,
+    "threshold_label": "Mild or greater",
+    "level2": "DSM5TR-L2-Anger",
+    "note": ""
+   },
+   {
+    "index": 3,
+    "roman": "III",
+    "name": "Mania",
+    "items": [
+     "l1_04",
+     "l1_05"
+    ],
+    "threshold": 2,
+    "threshold_label": "Mild or greater",
+    "level2": "DSM5TR-L2-Mania",
+    "note": ""
+   },
+   {
+    "index": 4,
+    "roman": "IV",
+    "name": "Anxiety",
+    "items": [
+     "l1_06",
+     "l1_07",
+     "l1_08"
+    ],
+    "threshold": 2,
+    "threshold_label": "Mild or greater",
+    "level2": "DSM5TR-L2-Anxiety",
+    "note": ""
+   },
+   {
+    "index": 5,
+    "roman": "V",
+    "name": "Somatic Symptoms",
+    "items": [
+     "l1_09",
+     "l1_10"
+    ],
+    "threshold": 2,
+    "threshold_label": "Mild or greater",
+    "level2": "DSM5TR-L2-Somatic",
+    "note": ""
+   },
+   {
+    "index": 6,
+    "roman": "VI",
+    "name": "Suicidal Ideation",
+    "items": [
+     "l1_11"
+    ],
+    "threshold": 1,
+    "threshold_label": "Slight or greater",
+    "level2": null,
+    "note": "门槛较低（≥1）：漏报代价高于误报"
+   },
+   {
+    "index": 7,
+    "roman": "VII",
+    "name": "Psychosis",
+    "items": [
+     "l1_12",
+     "l1_13"
+    ],
+    "threshold": 1,
+    "threshold_label": "Slight or greater",
+    "level2": null,
+    "note": "门槛较低（≥1）：漏报代价高于误报"
+   },
+   {
+    "index": 8,
+    "roman": "VIII",
+    "name": "Sleep Problems",
+    "items": [
+     "l1_14"
+    ],
+    "threshold": 2,
+    "threshold_label": "Mild or greater",
+    "level2": "DSM5TR-L2-Sleep",
+    "note": ""
+   },
+   {
+    "index": 9,
+    "roman": "IX",
+    "name": "Memory",
+    "items": [
+     "l1_15"
+    ],
+    "threshold": 2,
+    "threshold_label": "Mild or greater",
+    "level2": null,
+    "note": ""
+   },
+   {
+    "index": 10,
+    "roman": "X",
+    "name": "Repetitive Thoughts and Behaviors",
+    "items": [
+     "l1_16",
+     "l1_17"
+    ],
+    "threshold": 2,
+    "threshold_label": "Mild or greater",
+    "level2": "DSM5TR-L2-Repetitive",
+    "note": ""
+   },
+   {
+    "index": 11,
+    "roman": "XI",
+    "name": "Dissociation",
+    "items": [
+     "l1_18"
+    ],
+    "threshold": 2,
+    "threshold_label": "Mild or greater",
+    "level2": null,
+    "note": ""
+   },
+   {
+    "index": 12,
+    "roman": "XII",
+    "name": "Personality Functioning",
+    "items": [
+     "l1_19",
+     "l1_20"
+    ],
+    "threshold": 2,
+    "threshold_label": "Mild or greater",
+    "level2": null,
+    "note": ""
+   },
+   {
+    "index": 13,
+    "roman": "XIII",
+    "name": "Substance Use",
+    "items": [
+     "l1_21",
+     "l1_22",
+     "l1_23"
+    ],
+    "threshold": 1,
+    "threshold_label": "Slight or greater",
+    "level2": "DSM5TR-L2-Substance",
+    "note": "门槛较低（≥1）：漏报代价高于误报"
+   }
+  ],
+  "evidence": {
+   "file": "archive/scales/DSM5TR-L1/manual.pdf",
+   "section": "Instructions to Clinicians — Scoring and Interpretation；Table 1",
+   "extractor": "tools/survey/extract_l1_table1.py"
+  }
+ },
+ "level2": {
+  "maps_from": {
+   "Depression": "DSM5TR-L2-Depression",
+   "Anger": "DSM5TR-L2-Anger",
+   "Mania": "DSM5TR-L2-Mania",
+   "Anxiety": "DSM5TR-L2-Anxiety",
+   "Somatic Symptoms": "DSM5TR-L2-Somatic",
+   "Sleep Problems": "DSM5TR-L2-Sleep",
+   "Repetitive Thoughts and Behaviors": "DSM5TR-L2-Repetitive",
+   "Substance Use": "DSM5TR-L2-Substance"
+  },
+  "note": "Level 2 用于对已触发域做更细的症状评估；各册口径不同（PROMIS 给 T 分、躯体册为 0–2 求和、躁狂册为选项组求和）——**不能互相套用**",
+  "norms_status": "待逐册核实。PROMIS 类给 T 分（美国一般人群 M=50, SD=10），与 PID-5 的百分位口径不同，需单独取来源"
+ },
+ "pid5_interface": {
+  "status": "inferred",
+  "from_domain": "Personality Functioning",
+  "to_instrument": "PID-5",
+  "evidence": "Table 1 里 XII「Personality Functioning」的对应 Level 2 列为 **None**——即手册没有为该域指定 Level 2 细评工具",
+  "basis": "DSM-5 体系的 Section III（AMPD）里，人格功能的详细评估由 PID-5 承担：Criterion A 为人格功能（自我/人际），Criterion B 为 适应不良特质，PID-5 即 Criterion B 的操作化工具",
+  "caveat": "**已核查：9 册 DSM-5-TR 量表手册的正文一次都没提到 PID-5，也没提到 personality disorder**。所以这条衔接是依 DSM-5 架构推出的接口，不是这些册子的原文。界面呈现时必须如实区分。",
+  "how_to_verify": "要升格为「原文明确」，需查阅 DSM-5-TR 正文 Section III（Emerging Measures and Models → Personality Disorders）中 AMPD 与 PID-5 的表述"
+ },
+ "presentation_rules": [
+  "Level 1 的结果**不显示为分数带或百分位**——它不是常模量表，只显示「哪些域达到/超过门槛」",
+  "达到门槛的域给出「建议进一步评估」与对应的 Level 2 名称；未达到门槛的域不给结论",
+  "自杀意念/精神病性/物质使用三个域门槛为 ≥1，界面必须如实说明「门槛更低」及其原因",
+  "人格功能域达到门槛时，可提示「该域的细评工具为 PID-5（依 DSM-5 架构，非本册原文）」",
+  "**不得**由 Level 1 或 Level 2 的结果推出任何诊断结论"
+ ],
+ "disclaimer": "DSM-5-TR 手册原文：「These patient assessment measures were developed to be administered at the initial patient interview and to monitor treatment progress. They should be used in research and evaluation as potentially useful tools to enhance clinical decision-making and **not as the sole basis for making a clinical diagnosis**.」"
+}

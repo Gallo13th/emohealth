@@ -1,0 +1,160 @@
+{
+ "source": "DSM-5-TR Online Assessment Measures（APA 官方公开）",
+ "note": "逐册判读口径。**八册口径互不相同，不可互相套用。**",
+ "missing_rule": "缺答超过 25% 时不得使用分数；个别册允许按比例推算（prorated）。各册原文均有此说明。",
+ "instruments": {
+  "DSM5TR-L2-Mania": {
+   "kind": "cutoff",
+   "scale": "ASRM（Altman Self-Rating Mania Scale）",
+   "sum_range": [
+    0,
+    20
+   ],
+   "bands": [
+    {
+     "label": "不太可能与显著躁狂症状相关",
+     "lo": 0,
+     "hi": 5
+    },
+    {
+     "label": "高度可能是躁狂或轻躁狂；可能需要治疗与／或进一步诊断性检查",
+     "lo": 6,
+     "hi": 20
+    }
+   ],
+   "cutoff": 6,
+   "notes": "原文同时给出两条 ≥6 的表述（高概率、可能需治疗/进一步检查）",
+   "source_of_criteria": "manual",
+   "evidence": "archive/scales/DSM5TR-L2-Mania/manual.pdf 的 Scoring and Interpretation 段"
+  },
+  "DSM5TR-L2-Somatic": {
+   "kind": "severity_bands",
+   "scale": "PHQ-15（躯体症状）",
+   "sum_range": [
+    0,
+    30
+   ],
+   "bands": [
+    {
+     "label": "Minimal（极轻）",
+     "lo": 0,
+     "hi": 4
+    },
+    {
+     "label": "Low（轻）",
+     "lo": 5,
+     "hi": 9
+    },
+    {
+     "label": "Medium（中）",
+     "lo": 10,
+     "hi": 14
+    },
+    {
+     "label": "High（重）",
+     "lo": 15,
+     "hi": 30
+    }
+   ],
+   "cutoff": null,
+   "source_of_criteria": "manual",
+   "evidence": "archive/scales/DSM5TR-L2-Somatic/manual.pdf 的 Scoring and Interpretation 段"
+  },
+  "DSM5TR-L2-Repetitive": {
+   "kind": "cutoff",
+   "scale": "改编自 FOCI（Florida Obsessive-Compulsive Inventory）",
+   "sum_range": [
+    0,
+    20
+   ],
+   "bands": [
+    {
+     "label": "低于分界",
+     "lo": 0,
+     "hi": 7
+    },
+    {
+     "label": "可考虑对强迫症做更详细的评估",
+     "lo": 8,
+     "hi": 20
+    }
+   ],
+   "cutoff": 8,
+   "notes": "原文另有『average total score』口径",
+   "source_of_criteria": "manual",
+   "evidence": "archive/scales/DSM5TR-L2-Repetitive/manual.pdf 的 Scoring and Interpretation 段"
+  },
+  "DSM5TR-L2-Substance": {
+   "kind": "per_item",
+   "scale": "改编自 NIDA-Modified ASSIST",
+   "sum_range": null,
+   "aggregate": "count_positive",
+   "aggregate_label": ">0 的项数（严重度／复杂度指标，**不是总分**）",
+   "bands": [],
+   "cutoff": null,
+   "notes": "逐项独立解释：每一一面对应一种物质；多项 >0 表示更严重、更复杂",
+   "source_of_criteria": "manual",
+   "evidence": "archive/scales/DSM5TR-L2-Substance/manual.pdf 的 Scoring and Interpretation 段"
+  },
+  "DSM5TR-L2-Depression": {
+   "kind": "t_score",
+   "scale": "PROMIS Depression Short Form",
+   "items": 8,
+   "sum_range": [
+    8,
+    40
+   ],
+   "bands": [],
+   "cutoff": null,
+   "tscore_table": null,
+   "source_of_criteria": "pending_external",
+   "pending_reason": "手册 Scoring 段要求使用 T-score table，但**表不在册子里**（已核查：无 raw→T 成对数字）。需另取 PROMIS 官方 scoring manual 才能给 T 分；在取到之前只给原始分。",
+   "evidence": "archive/scales/DSM5TR-L2-Depression/manual.pdf 的 Scoring and Interpretation 段"
+  },
+  "DSM5TR-L2-Anger": {
+   "kind": "t_score",
+   "scale": "PROMIS Anger Short Form",
+   "items": 5,
+   "sum_range": [
+    5,
+    25
+   ],
+   "bands": [],
+   "cutoff": null,
+   "tscore_table": null,
+   "source_of_criteria": "pending_external",
+   "pending_reason": "手册 Scoring 段要求使用 T-score table，但**表不在册子里**（已核查：无 raw→T 成对数字）。需另取 PROMIS 官方 scoring manual 才能给 T 分；在取到之前只给原始分。",
+   "evidence": "archive/scales/DSM5TR-L2-Anger/manual.pdf 的 Scoring and Interpretation 段"
+  },
+  "DSM5TR-L2-Anxiety": {
+   "kind": "t_score",
+   "scale": "PROMIS Anxiety Short Form",
+   "items": 7,
+   "sum_range": [
+    7,
+    35
+   ],
+   "bands": [],
+   "cutoff": null,
+   "tscore_table": null,
+   "source_of_criteria": "pending_external",
+   "pending_reason": "手册 Scoring 段要求使用 T-score table，但**表不在册子里**（已核查：无 raw→T 成对数字）。需另取 PROMIS 官方 scoring manual 才能给 T 分；在取到之前只给原始分。",
+   "evidence": "archive/scales/DSM5TR-L2-Anxiety/manual.pdf 的 Scoring and Interpretation 段"
+  },
+  "DSM5TR-L2-Sleep": {
+   "kind": "t_score",
+   "scale": "PROMIS Sleep Disturbance Short Form",
+   "items": 8,
+   "sum_range": [
+    8,
+    40
+   ],
+   "bands": [],
+   "cutoff": null,
+   "tscore_table": null,
+   "source_of_criteria": "pending_external",
+   "pending_reason": "手册 Scoring 段要求使用 T-score table，但**表不在册子里**（已核查：无 raw→T 成对数字）。需另取 PROMIS 官方 scoring manual 才能给 T 分；在取到之前只给原始分。",
+   "evidence": "archive/scales/DSM5TR-L2-Sleep/manual.pdf 的 Scoring and Interpretation 段"
+  }
+ }
+}

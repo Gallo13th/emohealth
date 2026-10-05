@@ -1,0 +1,163 @@
+{
+  "_note": "IPIP-NEO-300 的证据文件（量表级）。30 个维度的构念定义、边界、α 与出处**不在这里复制**——它们来自 content/facets/<facet>.record.json，由 tools/build/build_descriptions.py 直接读取并渲染。本文件只写量表级事实。生成物 data/descriptions/ipip-neo.md 禁止手改。",
+  "code": "ipip-neo",
+  "instrument": "IPIP-NEO",
+  "record_kind": "descriptions_source",
+  "schema_version": "1.0",
+
+  "display_name": "IPIP-NEO-300（大五人格 300 题）",
+  "what_it_is": {
+    "text": "IPIP 版本的大五人格量表：**300 道自评题，30 个 facet（面向）× 每面向 10 题，归入 5 个域**。题项与量表为公有领域（public domain），可自由使用与再分发。本项目的这一份是 OpenScales 归档的 `IPIP-NEO.osd` 转换而来，施测序为官方的「30 面向交错循环」。",
+    "source": "archive/ipip/data/OpenScales/scales/ipip/IPIP-NEO/IPIP-NEO.osd；转换器 tools/build_scales.py；题序来源见 data/instruments/ipip-neo.json 的 item_order_source"
+  },
+  "what_it_measures": {
+    "text": "五个大五域（神经质、外向性、开放性、宜人性、尽责性）及其下 30 个 facet。作答方式是 1–5 的自我描述准确度评分（1=非常不符合 … 5=非常符合）。每个 facet 分 = 该 facet 10 题（反向题先做 `6 − x` 变换）的**均分**；每个域分 = 其 6 个 facet 分的**均分**。",
+    "source": "data/norms/ipip-neo-300.json 的 unit（facet_mean_of_10_items）与 domain_unit（mean_of_6_facets）、reverse_transform（6 - v）"
+  },
+  "does_not_measure": [
+    {
+      "text": "**不是临床诊断工具**。它测的是常态人格特质分布，不能用来判断任何精神障碍的有无。",
+      "source": "IPIP-NEO 的构念范围（30 个 facet 全为常态特质；量表包无任何临床分界）"
+    },
+    {
+      "text": "**不测智力、能力或成就**。facet 里的「想象力」「思辨」是自评的思维倾向，不是认知能力测验。",
+      "source": "content/facets/imagination.record.json 与 intellect.record.json 的 construct.does_not_measure"
+    },
+    {
+      "text": "**不做类型学分类**。大五的分数是连续维度，不存在「你是 INTJ」式的类型；把 facet 分数切成类型是误用。",
+      "source": "PLAN.md 的反 Barnum 与反类型学立场；本项目 30 个 facet 均为连续分"
+    },
+    {
+      "text": "**不保证跨文化/跨语言等值**。300 题版**没有任何官方中文译本**（官方法定中译只覆盖 120 题版），本项目的 300 题中译是自译，未做认知访谈或等值检验。",
+      "source": "content/facets/*.record.json 的 evidence.chinese_note（逐 facet 一致）"
+    },
+    {
+      "text": "**不衡量作答真实性**。300 题版没有效度分量表；粗心作答只能靠外部质量门（本项目另有 quality-gate 标定）识别，量表本身不报告。",
+      "source": "data/quality-gate-calibration.json（质量门独立于本量表）；本量表包无 validity 维度"
+    },
+    {
+      "text": "**不是「20 万人常模」的量表**。常模来自 Johnson (2005) 公开的 IPIP-NEO-300 数据集（N=145,388）；项目早先提到的 N=20,993 是另一个更小的子集，两者不可互换引用。",
+      "source": "data/norms/ipip-neo-300.json 的 n 与 n_note"
+    }
+  ],
+  "applicability": {
+    "applicable": "成年一般人群（自评）。常模样本为 IPIP 官网的**网络施测志愿者**，不是概率抽样。",
+    "inapplicable": ["无法理解 300 题长度或自评方式者", "18 岁以下（无青少年常模）", "中国人群的临床判断（常模为国际网络样本，不是中国常模）"],
+    "source": "data/norms/ipip-neo-300.json 的 source 与 n_note；archive/datasets/osf-johnson/raw/IPIP300.dat"
+  },
+
+  "display_chinese_items": true,
+  "translation_source_note": "数据层文本库 `data/text-db/text-db.json`（生成器 `tools/build/build_text_db.py`）；连接键是 `items[].source_code` ↔ `entries[*].codes`。界面侧数据包只是读文本库后的下游再生成物。",
+  "translation_caveat": "300 题中译的**单一真相源是数据层文本库** `data/text-db/text-db.json`，其 `zh_source` 标记为「data/scene-taxonomy.json（大五人格，已人工核对）」——即已人工核对。但注意：这 300 条里只有约 120 题来自官方普通话译本（每 facet 4 题），其余是项目自译（见 §1.1 与 facet 记录的 `item_status`）。",
+  "response_labels_zh": ["非常不符合", "比较不符合", "中立", "比较符合", "非常符合"],
+  "response_labels_source": "content/facets/<facet>.record.json 的 administration.response_format.labels_zh（30 个 facet 一致）",
+  "recall_window": {
+    "text": "请描述你**平时一贯**的样子，而不是今天的样子，也不是你希望成为的样子。（官方指导语原文：\"Describe yourself as you generally are now, not as you wish to be in the future.\"）",
+    "source": "IPIP-NEO-300 官方问卷指导语；逐 facet 记录于 content/facets/*.record.json 的 administration.recall_window"
+  },
+  "reverse_note": "本题库的 148 道反向题由**量表包 `items[].key == -1` 逐项导出**，并与 Johnson (2005) 官方计分表逐项核对过：官方 148 项、本项目 148 项、交集 148 项，三者完全一致。",
+  "scoring_notes": [
+    {
+      "text": "**反向题先做 `6 − x` 变换**（1↔5、2↔4），再按 facet 求均分；域分为 6 个 facet 分的均分（不是 60 题的均分——两者结果不同）。",
+      "source": "data/norms/ipip-neo-300.json 的 reverse_transform 与 domain_unit；data/instruments/ipip-neo.json 的 scoring（aggregation=mean）"
+    },
+    {
+      "text": "**题序是官方的「30 面向交错循环」**：每连续 30 题覆盖全部 30 个面向各 1 题。本项目保留该顺序（作为已发布施测序），但**不声称**交错序在心理测量上优于分块序——归档里没有这类证据。",
+      "source": "data/instruments/ipip-neo.json 的 item_order_source；facet 记录的 administration.order_style"
+    },
+    {
+      "text": "缺答处理：IPIP-NEO-300 没有官方定义的缺答规则；本项目按「只对已答题求均分」处理，并在结果里标注完成度。",
+      "source": "本项目实现在 engine/scoring；本量表包未声明缺答规则"
+    }
+  ],
+  "score_ranges": [
+    {
+      "text": "**facet 分：1–5（10 题均分）；域分：1–5（6 个 facet 均分）**。原始分不是求和，不要按 10–50 或 60–300 报告。",
+      "source": "data/norms/ipip-neo-300.json 的 unit / domain_unit；data/instruments/ipip-neo.json 的 scoring"
+    },
+    {
+      "text": "UK 常模的分带是按**求和口径**印的（facet 10–50、域 60–300），与本项目的均分口径不同；换算前必须先对齐口径。",
+      "source": "content/facets/*.record.json 的 norms.bands_values / domain_bands_values（求和分带）"
+    }
+  ],
+
+  "norms_spec": {
+    "status": "available",
+    "interpretation_basis": "percentile",
+    "reference_sample": {
+      "n": 145388,
+      "population": "IPIP 官网网络施测志愿者（国际样本，非概率抽样）",
+      "recruitment": "来源文件为 Johnson (2005) 公开数据集；本项目未获得独立的招募说明（见 evidence_gaps）",
+      "year": 2005,
+      "records_scanned": 307313
+    },
+    "detail_source": "data/norms/ipip-neo-300.json",
+    "applicability_warning": "常模来自国际网络样本（IPIP 官网志愿者），**不是中国人群常模**；且为「平时一贯」自评，与临床样本不可比。",
+    "source": {
+      "citation": "Johnson, J. A. (2005). Ascertaining the validity of individual protocols from Web-based personality inventories. Journal of Research in Personality, 39(1), 103–129. 数据集见 OSF。",
+      "evidence": ["archive/datasets/osf-johnson/raw/IPIP300.dat", "archive/datasets/osf-johnson/scoring/IPIP-NEO-300_ScoringTool.xlsx", "data/norms/ipip-neo-300.json"],
+      "license": "IPIP 题项与量表为公有领域；Johnson (2005) 数据集随论文公开（OSF）"
+    },
+    "notes": "逐 facet / 逐域的百分位表（1..99）与均值、SD 在 detail_source；本文档 §4.0 只摘要均值/SD，避免两个真相源。另有 UK 常模的求和分带（按 14-17/18-29/30+ 分带），来源与局限见 content/facets/*.record.json 的 norms 段。"
+  },
+
+  "alpha_note": "α 逐 facet 取自 OpenScales `IPIP-NEO.osd`（源自 Goldberg 的 ESCS 数据），**不是本项目自算**。30 个 facet 的 α 范围约 0.71–0.88；facet 记录另给出由 α 与分带反推的 SEM（标注为 DERIVED，含 ±0.5 分舍入不确定性）。",
+  "alpha_summary": [
+    {
+      "text": "测量噪音下限有独立文献依据：Kohút et al. (2020) 报告 facet 层 6 个月重测相关约 .70，facet 记录据此给出「变动小于约 0.15–0.2 SD 属测量噪音」的用户级规则。",
+      "source": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf（逐 facet 记录于 content/facets/*.record.json 的 reliability.noise_floor）"
+    }
+  ],
+  "known_critiques": [
+    {
+      "text": "300 题版的**中译是自译**，官方译本只覆盖 120 题版（每 facet 4 题）且 IPIP 官方声明未经其验证；因此「题目 10 题里 4 题用官方译、6 题自译」，跨语言的分数可比性没有证据。"
+    },
+    {
+      "text": "常模是**网络志愿者**样本，不是概率抽样；用它做「与一般人比较」时会带上志愿者偏差（教育程度、年龄结构、网络使用倾向）。",
+      "source": "data/norms/ipip-neo-300.json 的 n_note 与 source"
+    },
+    {
+      "text": "IPIP-NEO-300 是 IPIP 对 NEO-PI-R 的**公有领域再实现**，不是 NEO-PI-R 本身；两者的 facet 划分与题目不同，不能把本量表的分数直接当作 NEO-PI-R 的分数。",
+      "source": "archive/literature/personality/goldberg1999_ipip-300.pdf 与 goldberg2006_ipip-public-domain.pdf"
+    }
+  ],
+  "interpretation_caveats": [
+    {
+      "text": "**不得**把 facet 或域分数说成「类型」或「人格障碍」（大五是连续特质，不是类型学；临床判断需另用临床工具）。",
+      "source": "PLAN.md 的反 Barnum 立场"
+    },
+    {
+      "text": "**不得**用百分位做「你比 X% 的人更…」之外的具体断言（例如「你不适合某职业」）；常模是网络志愿者样本，且职业/临床决策需要专门工具与标准。",
+      "source": "data/norms/ipip-neo-300.json 的 n_note（非概率抽样）"
+    },
+    {
+      "text": "**不得**把自译题面的分数与英文原版常模直接比较而不说明翻译风险（facet 记录逐条列出中文语境下的读法风险）。",
+      "source": "content/facets/*.record.json 的 evidence.chinese_note 与 items[].scaffolding.localization_note"
+    },
+    {
+      "text": "**不得**把「回答了很多题」当成「结果更准」的证明；每个 facet 只有 10 题，facet 层估计的可靠性有限。",
+      "source": "content/facets/*.record.json 的 reliability（facet α 0.71–0.88，SEM 为反推值）"
+    },
+    {
+      "text": "**不得**在缺少完成度信息时给出域分：未答完的 facet 只能按已答题求均分并标注完成度。",
+      "source": "本项目缺答处理约定（本量表无官方缺答规则）"
+    }
+  ],
+
+  "provenance": {
+    "量表包": "data/instruments/ipip-neo.json（转换器 tools/build_scales.py，源 archive/ipip/data/OpenScales/scales/ipip/IPIP-NEO/IPIP-NEO.osd）",
+    "常模细表": "data/norms/ipip-neo-300.json（生成器 tools/build/build_norms_ipip300.py）",
+    "facet 档案": "content/facets/<facet>.record.json（30 份，组装器 tools/build/build_all_facets.py）",
+    "官方计分表核对": "archive/datasets/osf-johnson/scoring/IPIP-NEO-300_ScoringTool.xlsx（反向题 148/148 一致，记录在 data/norms/ipip-neo-300.json 的 validation）"
+  },
+  "evidence_gaps": [
+    {
+      "what": "常模样本的招募方式与采集年份（原始文件）",
+      "detail": "本项目只有 Johnson (2005) 的数据文件与论文引用，没有该数据集的招募说明页；因此 §4 的 reference_sample 只写「来源文件为公开数据集」，不写具体招募方式。"
+    },
+    {
+      "what": "30 个 facet 的中文 α（自译题面的信度）",
+      "detail": "现有 α 是英文原版/OpenScales 的值；自译题面的 α 需要中国样本重新采集，本项目没有该数据。"
+    }
+  ]
+}

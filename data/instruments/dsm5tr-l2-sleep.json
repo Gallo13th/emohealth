@@ -1,0 +1,233 @@
+{
+ "schema_version": "2.0",
+ "instrument": "DSM5TR-L2-Sleep",
+ "display_name": "Level 2—Sleep Disturbance—Adult (PROMIS—Sleep Disturbance—Short Form)",
+ "version": "1.0",
+ "citation": "American Psychiatric Association. Level 2—Sleep Disturbance—Adult (PROMIS—Sleep Disturbance—Short Form).",
+ "license": {
+  "kind": "copyright_permitted",
+  "holder": "American Psychiatric Association",
+  "text": "Copyright © 2013 American Psychiatric Association. All rights reserved.This material can be reproduced without permission by researchers and by clinicians for use with their patients.",
+  "url": "https://www.psychiatry.org/getmedia/c606b335-f087-4358-9c8d-f233313d9d04/APA-DSM5TR-Level2SleepDisturbanceAdult.pdf",
+  "evidence": "archive/scales/DSM5TR-L2-Sleep/source.json（sha256 1f750105569baeb4…）",
+  "redistribution": true,
+  "notes": "APA 版权，允许研究人员/临床医生无需许可复制使用。"
+ },
+ "structure": {
+  "source": "APA DSM-5-TR Online Assessment Measures（官方公开）",
+  "items": 8,
+  "dimensions": 1,
+  "response_format": {
+   "points": 5,
+   "min": 1,
+   "max": 5,
+   "labels": [
+    "Not at all",
+    "A little bit",
+    "Somewhat",
+    "Quite a bit",
+    "Very much"
+   ],
+   "question_head": ""
+  },
+  "window": "past SEVEN (7) DAYS"
+ },
+ "item_order_source": "archive/scales/DSM5TR-L2-Sleep/manual.pdf 题项顺序",
+ "dimensions": [
+  {
+   "id": "l2_sleep_disturbance",
+   "name": "Sleep Disturbance",
+   "level": 1,
+   "items": [
+    "dsm5trl2sleep_01",
+    "dsm5trl2sleep_02",
+    "dsm5trl2sleep_03",
+    "dsm5trl2sleep_04",
+    "dsm5trl2sleep_05",
+    "dsm5trl2sleep_06",
+    "dsm5trl2sleep_07",
+    "dsm5trl2sleep_08"
+   ]
+  }
+ ],
+ "items": [
+  {
+   "order": 1,
+   "id": "dsm5trl2sleep_01",
+   "text": "My sleep was restless",
+   "dimensions": [
+    "l2_sleep_disturbance"
+   ],
+   "key": 1,
+   "source_code": "DSM5TR-L2-Sleep item 1",
+   "text_source": "APA DSM5TR-L2-Sleep manual"
+  },
+  {
+   "order": 2,
+   "id": "dsm5trl2sleep_02",
+   "text": "I was satisfied with my sleep",
+   "dimensions": [
+    "l2_sleep_disturbance"
+   ],
+   "key": 1,
+   "source_code": "DSM5TR-L2-Sleep item 2",
+   "text_source": "APA DSM5TR-L2-Sleep manual"
+  },
+  {
+   "order": 3,
+   "id": "dsm5trl2sleep_03",
+   "text": "My sleep was refreshing",
+   "dimensions": [
+    "l2_sleep_disturbance"
+   ],
+   "key": 1,
+   "source_code": "DSM5TR-L2-Sleep item 3",
+   "text_source": "APA DSM5TR-L2-Sleep manual"
+  },
+  {
+   "order": 4,
+   "id": "dsm5trl2sleep_04",
+   "text": "I had difficulty falling asleep",
+   "dimensions": [
+    "l2_sleep_disturbance"
+   ],
+   "key": 1,
+   "source_code": "DSM5TR-L2-Sleep item 4",
+   "text_source": "APA DSM5TR-L2-Sleep manual"
+  },
+  {
+   "order": 5,
+   "id": "dsm5trl2sleep_05",
+   "text": "I had trouble staying asleep",
+   "dimensions": [
+    "l2_sleep_disturbance"
+   ],
+   "key": 1,
+   "source_code": "DSM5TR-L2-Sleep item 5",
+   "text_source": "APA DSM5TR-L2-Sleep manual"
+  },
+  {
+   "order": 6,
+   "id": "dsm5trl2sleep_06",
+   "text": "I had trouble sleeping",
+   "dimensions": [
+    "l2_sleep_disturbance"
+   ],
+   "key": 1,
+   "source_code": "DSM5TR-L2-Sleep item 6",
+   "text_source": "APA DSM5TR-L2-Sleep manual"
+  },
+  {
+   "order": 7,
+   "id": "dsm5trl2sleep_07",
+   "text": "I got enough sleep",
+   "dimensions": [
+    "l2_sleep_disturbance"
+   ],
+   "key": 1,
+   "source_code": "DSM5TR-L2-Sleep item 7",
+   "text_source": "APA DSM5TR-L2-Sleep manual"
+  },
+  {
+   "order": 8,
+   "id": "dsm5trl2sleep_08",
+   "text": "My sleep quality was",
+   "dimensions": [
+    "l2_sleep_disturbance"
+   ],
+   "key": 1,
+   "source_code": "DSM5TR-L2-Sleep item 8",
+   "text_source": "APA DSM5TR-L2-Sleep manual",
+   "options": [
+    {
+     "v": 5,
+     "text": "Very Poor"
+    },
+    {
+     "v": 4,
+     "text": "Poor"
+    },
+    {
+     "v": 3,
+     "text": "Fair"
+    },
+    {
+     "v": 2,
+     "text": "Good"
+    },
+    {
+     "v": 1,
+     "text": "Very good"
+    }
+   ],
+   "options_evidence": "手册第 8 题上方一行原文：`Very Poor Poor Fair Good Very good`；该题 5 个框按 `5 4 3 2 1` 排布（5=Very Poor … 1=Very good）"
+  }
+ ],
+ "scoring": {
+  "l2_sleep_disturbance": {
+   "label": "Sleep Disturbance",
+   "aggregation": "sum",
+   "scope": "items",
+   "of": [
+    "dsm5trl2sleep_01",
+    "dsm5trl2sleep_02",
+    "dsm5trl2sleep_03",
+    "dsm5trl2sleep_04",
+    "dsm5trl2sleep_05",
+    "dsm5trl2sleep_06",
+    "dsm5trl2sleep_07",
+    "dsm5trl2sleep_08"
+   ],
+   "notes": "手册『Scoring and Interpretation』：各题原始分求和"
+  }
+ },
+ "norms": {},
+ "provenance": {
+  "items": "archive/scales/DSM5TR-L2-Sleep/items-extracted.json（提取器 tools/build/build_l2_items.py 或 build_l2_items_rest.py）",
+  "license": "archive/scales/DSM5TR-L2-Sleep/source.json",
+  "reverse_keyed": [
+   2,
+   3,
+   7,
+   8
+  ],
+  "manual_sha256": "1f750105569baeb4048d7deeddb39a1517b5d725297e2562478f050d41eb54da"
+ },
+ "linkage": {
+  "role": "level2",
+  "label": "Level 2 细评（对应 Level 1 的「Sleep Problems」域）",
+  "upstream": {
+   "instrument": "DSM5TR-L1",
+   "domain": "Sleep Problems",
+   "domain_roman": "VIII",
+   "threshold": 2,
+   "threshold_label": "Mild or greater"
+  },
+  "source": {
+   "file": "archive/scales/DSM5TR-L1/manual.pdf",
+   "section": "Instructions to Clinicians — Scoring and Interpretation；Table 1",
+   "extractor": "tools/survey/extract_l1_table1.py"
+  }
+ },
+ "norms_status": {
+  "available": false,
+  "note": "本项目暂无该量表的可溯源常模数据——界面只显示原始分，不显示百分位，也不提供「高于/低于常人」的判断",
+  "reason": "该量表题量较少（题库条目簇），通常没有独立常模"
+ },
+ "criteria": {
+  "kind": "t_score",
+  "scale": "PROMIS Sleep Disturbance Short Form",
+  "items": 8,
+  "sum_range": [
+   8,
+   40
+  ],
+  "bands": [],
+  "cutoff": null,
+  "tscore_table": null,
+  "source_of_criteria": "pending_external",
+  "pending_reason": "手册 Scoring 段要求使用 T-score table，但**表不在册子里**（已核查：无 raw→T 成对数字）。需另取 PROMIS 官方 scoring manual 才能给 T 分；在取到之前只给原始分。",
+  "evidence": "archive/scales/DSM5TR-L2-Sleep/manual.pdf 的 Scoring and Interpretation 段"
+ },
+ "criteria_source": "DSM-5-TR Online Assessment Measures（APA 官方公开）"
+}

@@ -1,0 +1,64 @@
+{
+ "record_kind": "translation-review",
+ "schema_version": "1.0",
+ "reviewed_at": "2026-10-04",
+ "scope": "zh_source 含「待人工复核」的全部条目（初译 336 + 重译 1 = 337）",
+ "reviewed_count": 337,
+ "method": "AI 逐条对抗性审核（每批 20 条）+ **独立复核者仲裁**压误报：原始报出 40 条问题 → 仲裁压掉 36 条误报 → 确认 4 条",
+ "outcome": {
+  "passed": 333,
+  "confirmed_issues": 4,
+  "breakdown": "3 条译文更正（见 corrections）；1 条是**修复前旧版残留**（L1 第 23 题含页脚授权句的旧条目），按「同题旧版清理」规则删除，不是译文问题"
+ },
+ "label": "AI 逐条复核 + 仲裁（2026-10-04）",
+ "label_corrected": "AI 逐条复核 + 仲裁（2026-10-04，已按仲裁结论更正）",
+ "why_not_human": "复核由 **AI 逐条 + 独立仲裁**完成，**不是人工复核**——不得写成「已人工复核」。AI 复核不能单独保证正确，另有 `tools/check/check_text_db.py` 的规则校验与抽样兜底。",
+ "corrections": [
+  {
+   "en": "Make demands on others.",
+   "old_zh": "我向别人提出要求（Make demands on others.）",
+   "new_zh": "向他人提出要求。",
+   "reason": "① 擅加第一人称「我」——同批 `Leave things unfinished.` / `Mess things up.` 都是**无主语条目式**；② 去掉括号内重复的整句英文原文。"
+  },
+  {
+   "en": "Methamphetamine (like speed)",
+   "old_zh": "甲基苯丙胺（如斯皮德）",
+   "new_zh": "甲基苯丙胺（如冰毒）",
+   "reason": "「斯皮德」是**生硬音译**；同一种物质在库内必须同译——L1 第 23 题该词已译作「冰毒」，此处与之对齐。"
+  },
+  {
+   "en": "You need to step on some toes to get what you want in life.",
+   "old_zh": "在生活中，你必须踩到一些人的脚趾，才能得到自己想要的（You need to step on some toes to get what you want in life.）。",
+   "new_zh": "在生活中，你必须踩到一些人的脚趾，才能得到自己想要的。",
+   "reason": "去掉句末重复的整句英文（英文原文已由条目本身承载）。"
+  }
+ ],
+ "confirmed_findings": [
+  {
+   "no": 1,
+   "en": "Make demands on others.",
+   "kind": "translation_corrected",
+   "fixed_in": "corrections[0]"
+  },
+  {
+   "no": 2,
+   "en": "Methamphetamine (like speed)",
+   "kind": "translation_corrected",
+   "fixed_in": "corrections[1]"
+  },
+  {
+   "no": 3,
+   "en": "Usingany of the following medicines … or m Copyright © 2013 American Psychiatric Association. All Rights Reserved. …",
+   "kind": "stale_entry_removed",
+   "note": "这是**修复前的旧条目残留**（题面被截断在 `or m`、且拼进了页脚授权句），不是译文本身的问题。已由 `tools/build/build_text_db.py` 的 `purge_stale()` 删除（判据：孤儿条目且题文/译文含页脚授权句）；旧译并入**现行条目**的 `zh_note`，并完整记入 `stats.stale_entries_removed`，可回查。"
+  },
+  {
+   "no": 4,
+   "en": "You need to step on some toes to get what you want in life.",
+   "kind": "translation_corrected",
+   "fixed_in": "corrections[2]"
+  }
+ ],
+ "item23_final_status": "L1 第 23 题（新条目）此前标「subagent 重译（待人工复核）」；本轮 337 条**全部**经过「AI 逐条 + 独立仲裁」，故按 Lead 意见转为**「AI 逐条复核 + 仲裁（2026-10-04）」**。注意措辞：**不是「已人工复核」**——AI 复核不等于人工复核，仍以规则校验与抽样兜底。",
+ "r6_resolution": "**已决（Lead 2026-10-04，选②）**：`zh` 里的「（英文原文）」内嵌**统一删除**——R2 的三部分是**并列**的，英文原文由 `en` 字段承担（界面本就把 `zh`/`en` 并列显示），不该在同一字段里混排。规则落在 `tools/build/build_text_db.py` 的 `strip_parenthetical_english()`，判据反转进 `tools/check/check_text_db.py`。本次删除 29 处；`（如麦角酸二乙酰胺，LSD）`、`（如冰毒）` 等**正常中文补充不动**。"
+}

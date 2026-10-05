@@ -1,0 +1,679 @@
+{
+ "_note": "自我效能（Self-Efficacy / C1）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.selfefficacy",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "自我效能",
+  "facet_name_en": "Self-Efficacy",
+  "facet_code": "C1",
+  "domain": "conscientiousness",
+  "domain_zh": "尽责性"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "对自己有能力把事情做成的信念：面对任务时是否感到胜任，以及对自己办事效率的评价。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量实际能力或过往成绩",
+   "不测量是否自律地推进（属 C5 自律）",
+   "不测量自尊或自我价值（那属神经质）",
+   "不测量是否喜欢思考（属 O5 思辨）"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "selfdiscipline",
+    "against_facet_zh": "自律",
+    "distinction": "自我效能是**相信能做成**；自律是**真的去做**。两者常同向但可分离——自信却拖沓是常见的组合。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "achievementstriving",
+    "against_facet_zh": "追求成就",
+    "distinction": "自我效能是**对能力的判断**；追求成就是**对目标的抱负**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "vulnerability",
+    "against_facet_zh": "脆弱性",
+    "distinction": "自我效能是**能力信心**；脆弱性是**压力承受**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "assertiveness",
+    "against_facet_zh": "决断性",
+    "distinction": "自我效能是**对自己能力的评价**；决断性是**在人群中的行为**。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "常觉得自己办不好事，面对任务先感到没底",
+   "2": "对不少事情缺乏把握，需要确认才敢做",
+   "3": "对熟悉的事有信心，新事情会有点忐忑",
+   "4": "多数事情觉得能应付得来",
+   "5": "几乎总相信自己能把事办成，面对新任务也很有底",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_247",
+   "ipip_neo_248",
+   "ipip_neo_249",
+   "ipip_neo_250"
+  ],
+  "forward_items": [
+   "ipip_neo_241",
+   "ipip_neo_242",
+   "ipip_neo_243",
+   "ipip_neo_244",
+   "ipip_neo_245",
+   "ipip_neo_246"
+  ],
+  "key_balance": "6 正向 / 4 反向",
+  "reverse_keyed_count": 4,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.78,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 2.58,
+   "reference_age_band": "18-29",
+   "sd_used": 5.5,
+   "alpha_used": 0.78,
+   "by_age_band": {
+    "14-17": {
+     "sd": 6.0,
+     "sem": 2.81
+    },
+    "18-29": {
+     "sd": 5.5,
+     "sem": 2.58
+    },
+    "30+": {
+     "sd": 5.5,
+     "sem": 2.58
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±5.1 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "45-50",
+    "High": "39-44",
+    "Average": "33-38",
+    "Low": "28-32",
+    "Very Low": "10-27"
+   },
+   "18-29": {
+    "Very High": "46-50",
+    "High": "40-45",
+    "Average": "35-39",
+    "Low": "29-34",
+    "Very Low": "10-28"
+   },
+   "30+": {
+    "Very High": "48-50",
+    "High": "42-47",
+    "Average": "37-41",
+    "Low": "31-36",
+    "Very Low": "10-30"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "236-300",
+    "High": "208-235",
+    "Average": "174-207",
+    "Low": "143-173",
+    "Very Low": "60-142"
+   },
+   "18-29": {
+    "Very High": "246-300",
+    "High": "215-245",
+    "Average": "184-214",
+    "Low": "153-183",
+    "Very Low": "60-152"
+   },
+   "30+": {
+    "Very High": "261-300",
+    "High": "231-260",
+    "Average": "200-230",
+    "Low": "169-199",
+    "Very Low": "60-168"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "**「自我效能」与「自律」在中文里容易被合称为「靠谱」**，作答者可能把「我做事可靠」读成两者都高，而它们实际是两个独立的面向。",
+   "第 1 题（Complete tasks successfully）偏向**事实描述**（我是否完成了任务），而非**信心判断**，与自我效能的构念略有偏移。"
+  ],
+  "interpretation_caveats": [
+   "**这一面向问的是「你觉得自己行不行」，不是「你实际行不行」。**它反映的是信心，不反映能力、成绩或经验。",
+   "它与「自律」是两件事：**相信自己能把事做好，和真的会去做，可以分开。**自信却拖延，是这个量表里很常见的一种组合。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 4,
+  "chinese_project_translation": 6,
+  "chinese_overridden": 0,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 5,
+   "id": "ipip_neo_241",
+   "facet": "selfefficacy",
+   "key": 1,
+   "text_en": "Complete tasks successfully.",
+   "text_master": "Complete tasks successfully.",
+   "text_zh": "能成功完成任务",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.57,
+    "item_total_r": 0.4779,
+    "missing_rate": 0.0036,
+    "neutral_rate": 0.1479
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你交给自己的任务，是否通常能完成",
+    "key_term": {
+     "term": "successfully",
+     "sense_here": "成功地完成",
+     "not_this": "——"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「实际成绩」混同",
+      "correction": "本题问的是自我评价。"
+     },
+     {
+      "misreading": "把「完成」理解成「完美完成」",
+      "correction": "达到目标即可。"
+     }
+    ],
+    "counts_as": [
+     "交给自己的事基本都能做完"
+    ],
+    "does_not_count_as": [
+     "依靠大量外部帮助才完成"
+    ],
+    "edge_cases": "**本题偏事实描述，与「能力信心」的构念略有偏移。**",
+    "localization_note": "**本题偏「事实描述」（我是否完成了任务）而非「信心判断」**，与本面向的构念（对自己能力的信念）略有偏移。**若你完成了任务但过程很吃力、并不觉得自己有能力，本题会给出偏高的分数。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「successfully」"
+   }
+  },
+  {
+   "administration_order": 35,
+   "id": "ipip_neo_242",
+   "facet": "selfefficacy",
+   "key": 1,
+   "text_en": "Excel in what I do.",
+   "text_master": "Excel in what I do.",
+   "text_zh": "在自己所从事的领域出类拔萃",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.096,
+    "item_total_r": 0.5326,
+    "missing_rate": 0.0048,
+    "neutral_rate": 0.1702
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否认为自己做得比多数人好",
+    "key_term": {
+     "term": "excel",
+     "sense_here": "出类拔萃",
+     "not_this": "「自夸」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "因为觉得自夸不好而选低分",
+      "correction": "请按真实判断作答。"
+     },
+     {
+      "misreading": "把「出类拔萃」理解为「顶尖」",
+      "correction": "明显高于平均即可。"
+     }
+    ],
+    "counts_as": [
+     "认为自己在主要领域明显优于一般人"
+    ],
+    "does_not_count_as": [
+     "只是做得还行"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题在中文语境里容易被读成「自夸」而不愿承认**（社会赞许性会压低分数）。**它测的是对自己相对水平的判断，不是谦虚程度。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「excel」"
+   }
+  },
+  {
+   "administration_order": 65,
+   "id": "ipip_neo_243",
+   "facet": "selfefficacy",
+   "key": 1,
+   "text_en": "Handle tasks smoothly.",
+   "text_master": "Handle tasks smoothly.",
+   "text_zh": "能轻松完成任务",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.06,
+    "item_total_r": 0.5659,
+    "missing_rate": 0.003,
+    "neutral_rate": 0.2268
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你做事情是否顺畅、不费力",
+    "key_term": {
+     "term": "smoothly",
+     "sense_here": "顺畅、不磕绊",
+     "not_this": "「不努力」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 1 题混同",
+      "correction": "完成 vs 顺畅。"
+     },
+     {
+      "misreading": "把「轻松」理解成「不努力」",
+      "correction": "方法与能力带来的顺畅也是顺畅。"
+     }
+    ],
+    "counts_as": [
+     "做事过程少遇阻碍"
+    ],
+    "does_not_count_as": [
+     "困难但最终完成"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 1 题的区别：第 1 题问**能不能完成**，本题问**完成得顺不顺**。**完成但每次都磕磕绊绊的人，两题答案会不同。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「smoothly」"
+   }
+  },
+  {
+   "administration_order": 95,
+   "id": "ipip_neo_244",
+   "facet": "selfefficacy",
+   "key": 1,
+   "text_en": "Am sure of my ground.",
+   "text_master": "Am sure of my ground.",
+   "text_zh": "对自己的立场有把握",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.628,
+    "item_total_r": 0.4769,
+    "missing_rate": 0.006,
+    "neutral_rate": 0.22
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你对自己的立场或判断是否有把握",
+    "key_term": {
+     "term": "sure of my ground",
+     "sense_here": "对自己的立论有把握",
+     "not_this": "「能力有信心」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它当成能力信心",
+      "correction": "这里偏立场与判断。"
+     },
+     {
+      "misreading": "与「决断性」（E3）混同",
+      "correction": "那是社交中的主导。"
+     }
+    ],
+    "counts_as": [
+     "表达观点时心里有底"
+    ],
+    "does_not_count_as": [
+     "对能力有信心但常常改主意"
+    ],
+    "edge_cases": "**本题偏「立场确定性」，与能力信心略有偏移。**",
+    "localization_note": "**本题的题目-总分相关 .48，内容与本面向核心（能力信心）略有不同**——它更接近**信念的确定性**。**「对自己的能力没把握」与「对自己的立场没把握」不是一回事。** 这是本面向内容异质性的一处。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「sure of my ground」"
+   }
+  },
+  {
+   "administration_order": 125,
+   "id": "ipip_neo_245",
+   "facet": "selfefficacy",
+   "key": 1,
+   "text_en": "Come up with good solutions.",
+   "text_master": "Come up with good solutions.",
+   "text_zh": "能想出好办法",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.181,
+    "item_total_r": 0.5162,
+    "missing_rate": 0.0033,
+    "neutral_rate": 0.1135
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "遇到问题时，你是否能想出有效的解决办法",
+    "key_term": {
+     "term": "come up with",
+     "sense_here": "想出、提出",
+     "not_this": "「享受思考」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「思辨」混同",
+      "correction": "享受 vs 有效。"
+     },
+     {
+      "misreading": "认为必须想出别人想不到的",
+      "correction": "有效即可。"
+     }
+    ],
+    "counts_as": [
+     "遇到难题能提出可行的办法"
+    ],
+    "does_not_count_as": [
+     "只喜欢分析但提不出方案"
+    ],
+    "edge_cases": null,
+    "localization_note": "与「思辨」（O5）的区别：思辨是**享受思考**，本题是**能解决问题**。爱思考但常想不出办法的人，两题答案会不同。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「come up with」"
+   }
+  },
+  {
+   "administration_order": 155,
+   "id": "ipip_neo_246",
+   "facet": "selfefficacy",
+   "key": 1,
+   "text_en": "Know how to get things done.",
+   "text_master": "Know how to get things done.",
+   "text_zh": "知道如何完成任务",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.114,
+    "item_total_r": 0.586,
+    "missing_rate": 0.0057,
+    "neutral_rate": 0.1451
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否清楚把事情做成的路径",
+    "key_term": {
+     "term": "get things done",
+     "sense_here": "把事情办成",
+     "not_this": "「知道步骤」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "只按「知道步骤」理解",
+      "correction": "还包括推动落地。"
+     },
+     {
+      "misreading": "与「思辨」混同",
+      "correction": "那是理论，本题是实务。"
+     }
+    ],
+    "counts_as": [
+     "面对陌生任务也知道从哪里入手"
+    ],
+    "does_not_count_as": [
+     "懂原理但实际操作常卡住"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「知道如何完成」容易只被理解成**知道步骤**，而英文更偏**能把事情推动落地**（包含找人、找资源、推动流程）。**它是「办事能力」而非「知识储备」。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「get things done」"
+   }
+  },
+  {
+   "administration_order": 185,
+   "id": "ipip_neo_247",
+   "facet": "selfefficacy",
+   "key": -1,
+   "text_en": "Misjudge situations.",
+   "text_master": "Misjudge situations.",
+   "text_zh": "会误判形势",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.506,
+    "item_total_r": 0.4839,
+    "missing_rate": 0.0034,
+    "neutral_rate": 0.2535
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会看错形势",
+    "key_term": {
+     "term": "misjudge",
+     "sense_here": "误判",
+     "not_this": "「想得不周到」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与审慎混同",
+      "correction": "思考 vs 准确。"
+     },
+     {
+      "misreading": "把「事后证明错了」一律算误判",
+      "correction": "信息不足导致的错不算误判。"
+     }
+    ],
+    "counts_as": [
+     "常事后发现当初判断有偏差"
+    ],
+    "does_not_count_as": [
+     "信息充分时判断准确"
+    ],
+    "edge_cases": null,
+    "localization_note": "与「审慎」（C6）的区别：审慎是**行动前是否思考**，本题是**判断是否准确**。想得很多但判断错，审慎高而本题低。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「misjudge」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 215,
+   "id": "ipip_neo_248",
+   "facet": "selfefficacy",
+   "key": -1,
+   "text_en": "Don't understand things.",
+   "text_master": "Don't understand things.",
+   "text_zh": "搞不懂事情",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.349,
+    "item_total_r": 0.5062,
+    "missing_rate": 0.0067,
+    "neutral_rate": 0.1561
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否常觉得搞不懂事情",
+    "key_term": {
+     "term": "understand",
+     "sense_here": "理解",
+     "not_this": "——"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「智力」混同",
+      "correction": "本题是自我评价。"
+     },
+     {
+      "misreading": "与第 7 题（误判）混同",
+      "correction": "理解 vs 判断。"
+     }
+    ],
+    "counts_as": [
+     "常觉得事情超出自己的理解"
+    ],
+    "does_not_count_as": [
+     "理解得慢但最终能懂"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「搞不懂」很口语，贴近原意。**它偏「理解力」而非「信心」**——本面向测的应是后者。这是构念上的一处偏移。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「understand」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 245,
+   "id": "ipip_neo_249",
+   "facet": "selfefficacy",
+   "key": -1,
+   "text_en": "Have little to contribute.",
+   "text_master": "Have little to contribute.",
+   "text_zh": "没什么能贡献的",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.41,
+    "item_total_r": 0.4929,
+    "missing_rate": 0.0031,
+    "neutral_rate": 0.1399
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）在讨论或合作中，你是否觉得自己拿不出什么",
+    "key_term": {
+     "term": "contribute",
+     "sense_here": "贡献",
+     "not_this": "——"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「抑郁」面向混同",
+      "correction": "那是情绪基调，本题是能力的自我评价。"
+     },
+     {
+      "misreading": "因为场合不熟而选高分",
+      "correction": "按一般情形作答。"
+     }
+    ],
+    "counts_as": [
+     "在群体中常觉得自己没什么可说的"
+    ],
+    "does_not_count_as": [
+     "只是在不熟悉的领域里少发言"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题偏「自我价值感」而非「能力信心」**，靠近神经质维度的自我评价。这是本面向与神经质边界模糊的地方。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「contribute」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 275,
+   "id": "ipip_neo_250",
+   "facet": "selfefficacy",
+   "key": -1,
+   "text_en": "Don't see the consequences of things.",
+   "text_master": "Don't see the consequences of things.",
+   "text_zh": "看不到事情的后果",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.474,
+    "item_total_r": 0.3877,
+    "missing_rate": 0.0037,
+    "neutral_rate": 0.1089
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否常看不到事情的后果",
+    "key_term": {
+     "term": "see the consequences",
+     "sense_here": "预见后果",
+     "not_this": "——"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「审慎」面向混同",
+      "correction": "那是事前思考的习惯。"
+     },
+     {
+      "misreading": "与第 7 题（误判）接近",
+      "correction": "两题都偏判断准确度。"
+     }
+    ],
+    "counts_as": [
+     "常在事后才发现当初没考虑到"
+    ],
+    "does_not_count_as": [
+     "想得周全但行动慢"
+    ],
+    "edge_cases": "**本题偏「预见性」，与能力信心略有偏移。**",
+    "localization_note": "**本题的题目-总分相关 .39，在本面向偏低**——「看不到后果」更接近**审慎**（事前评估）或**冲动**，而不完全是「能力信心」。这是本面向内容异质性的一处。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「see the consequences」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

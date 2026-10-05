@@ -1,0 +1,684 @@
+{
+ "_note": "决断性（Assertiveness / E3）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.assertiveness",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "决断性",
+  "facet_name_en": "Assertiveness",
+  "facet_code": "E3",
+  "domain": "extraversion",
+  "domain_zh": "外向性"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "在人际情境中主动表达、主导与带头的倾向：是否愿意发声、是否习惯掌控局面、以及在群体中是否自然地成为推动者。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量是否喜欢与人相处（属 E1 友好、E2 合群）",
+   "不测量攻击性或支配欲（那更接近 N2 愤怒或 A 维度的对立面）",
+   "不测量领导能力或职位",
+   "不测量能否坚持己见（那属 C6 审慎的对立面）"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "gregariousness",
+    "against_facet_zh": "合群性",
+    "distinction": "决断性是**主导**；合群性是**在场**。可以在人群中安静地待着。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "selfconsciousness",
+    "against_facet_zh": "自我意识",
+    "distinction": "决断性是**是否愿意出头**；自我意识是**被注视时是否不适**。两者常反向，但一个不自在的人也可能因责任感而站出来。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "cooperation",
+    "against_facet_zh": "合作",
+    "distinction": "合作是**面对分歧时是否让步**；决断性是**是否主动定调**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "activitylevel",
+    "against_facet_zh": "活跃度",
+    "distinction": "决断性是**社会性的主导**；活跃度是**一般节奏**。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "很少主动发言或带队，宁可跟着别人走",
+   "2": "在自己熟悉的话题上会表达，一般不主导",
+   "3": "该说话时会说，是否主导看场合",
+   "4": "常主动表达立场，习惯承担推动角色",
+   "5": "几乎总能主导局面，习惯发号施令并带着别人走",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_086",
+   "ipip_neo_087",
+   "ipip_neo_088",
+   "ipip_neo_089",
+   "ipip_neo_090"
+  ],
+  "forward_items": [
+   "ipip_neo_081",
+   "ipip_neo_082",
+   "ipip_neo_083",
+   "ipip_neo_084",
+   "ipip_neo_085"
+  ],
+  "key_balance": "5 正向 / 5 反向",
+  "reverse_keyed_count": 5,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.84,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 3.0,
+   "reference_age_band": "18-29",
+   "sd_used": 7.5,
+   "alpha_used": 0.84,
+   "by_age_band": {
+    "14-17": {
+     "sd": 8.0,
+     "sem": 3.2
+    },
+    "18-29": {
+     "sd": 7.5,
+     "sem": 3.0
+    },
+    "30+": {
+     "sd": 7.5,
+     "sem": 3.0
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±5.9 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "45-50",
+    "High": "37-44",
+    "Average": "29-36",
+    "Low": "21-28",
+    "Very Low": "10-20"
+   },
+   "18-29": {
+    "Very High": "45-50",
+    "High": "37-44",
+    "Average": "30-36",
+    "Low": "22-29",
+    "Very Low": "10-21"
+   },
+   "30+": {
+    "Very High": "46-50",
+    "High": "39-45",
+    "Average": "31-38",
+    "Low": "24-30",
+    "Very Low": "10-23"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "254-300",
+    "High": "220-253",
+    "Average": "186-219",
+    "Low": "153-185",
+    "Very Low": "60-152"
+   },
+   "18-29": {
+    "Very High": "252-300",
+    "High": "219-251",
+    "Average": "186-218",
+    "Low": "153-185",
+    "Very Low": "60-152"
+   },
+   "30+": {
+    "Very High": "248-300",
+    "High": "214-247",
+    "Average": "180-213",
+    "Low": "146-179",
+    "Very Low": "60-145"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "**本面向与「攻击性」在社会认知上容易被混淆**，尤其在中国文化语境下，「主动表达」有时被读作「爱出风头」。脚手架需明确区分。",
+   "第 6 题（Take charge）与第 5 题（Try to lead others）语义高度重叠。"
+  ],
+  "interpretation_caveats": [
+   "这一面向问的是**是否主动表达与主导**，**不是攻击性，也不是爱出风头**。它可以表现为「在需要有人拍板时站出来」，而不必然是强势。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 3,
+  "chinese_project_translation": 5,
+  "chinese_overridden": 2,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 12,
+   "id": "ipip_neo_081",
+   "facet": "assertiveness",
+   "key": 1,
+   "text_en": "Take charge.",
+   "text_master": "Take charge.",
+   "text_zh": "主动接过主导权（Take charge）",
+   "text_zh_source": "project_translation_override",
+   "text_zh_official_ref": "承担责任",
+   "translation_note": {
+    "defect": "语义偏移（A6 语境依存近义词）",
+    "reason": "原意是**在需要有人拍板时主动接过指挥权**。官方译本「承担责任」偏向 take responsibility（承担后果），丢了「掌权、主导」这一核心义。情境：团队没人决定方向时，你会不会站出来说「那就这样办」。"
+   },
+   "diagnostics": {
+    "priority_score": 0.14,
+    "item_total_r": 0.6684,
+    "missing_rate": 0.007,
+    "neutral_rate": 0.213
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "在需要有人主导时，你是否会站出来",
+    "key_term": {
+     "term": "take charge",
+     "sense_here": "**主动接过主导权**（掌权、负责指挥）",
+     "not_this": "「承担责任」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "按「我会承担责任」作答",
+      "correction": "本题问的是是否**接主导权**，不是是否负责任。"
+     },
+     {
+      "misreading": "与「责任心」（C3）面向混同",
+      "correction": "那面向管义务与承诺。"
+     }
+    ],
+    "counts_as": [
+     "群体需要人带头时会主动站出来"
+    ],
+    "does_not_count_as": [
+     "愿意负责任但不愿主导"
+    ],
+    "edge_cases": "**本题中译有语义偏移，请按上面的说明校准，并留意这是官方译本的已知问题。**",
+    "localization_note": "**⚠️ 本题的官方法定译文「承担责任」丢失了核心义。** 英文 take charge 强调的是**主动接过主导权、负责指挥**，而「承担责任」偏向 take responsibility（承担后果）。**这是官方译本的语义偏移，本项目未擅自改动以保留溯源**（见 `research/phase2_rollout_status.md` 的待办）。**请按「需要有人拍板时，你是否会站出来主导」理解本题。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「take charge」"
+   }
+  },
+  {
+   "administration_order": 42,
+   "id": "ipip_neo_082",
+   "facet": "assertiveness",
+   "key": 1,
+   "text_en": "Try to lead others.",
+   "text_master": "Try to lead others.",
+   "text_zh": "我会尝试去领导他人",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.126,
+    "item_total_r": 0.6636,
+    "missing_rate": 0.0063,
+    "neutral_rate": 0.2383
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会尝试去领导他人",
+    "key_term": {
+     "term": "try to lead",
+     "sense_here": "主动尝试领导",
+     "not_this": "「有领导力」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它理解成「有领导职位」",
+      "correction": "本题问倾向，不是职位。"
+     },
+     {
+      "misreading": "因为「不想当领导」而选低分",
+      "correction": "那确实是本题的低分。"
+     }
+    ],
+    "counts_as": [
+     "在协作中会主动牵头"
+    ],
+    "does_not_count_as": [
+     "被推举才担任但没有主动意愿"
+    ],
+    "edge_cases": null,
+    "localization_note": "**「Try to」强调主动尝试**，不要求成功或有职位。**没有领导职位但常在小组里自然成为推动者，同样计入。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「try to lead」"
+   }
+  },
+  {
+   "administration_order": 72,
+   "id": "ipip_neo_083",
+   "facet": "assertiveness",
+   "key": 1,
+   "text_en": "Can talk others into doing things.",
+   "text_master": "Can talk others into doing things.",
+   "text_zh": "能说服别人去做事",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.536,
+    "item_total_r": 0.4813,
+    "missing_rate": 0.0036,
+    "neutral_rate": 0.2126
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否能说服别人接受你的想法",
+    "key_term": {
+     "term": "talk others into",
+     "sense_here": "说服、劝服",
+     "not_this": "「强迫」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「施压成功」当成「说服」",
+      "correction": "本题偏沟通与说理。"
+     },
+     {
+      "misreading": "因为自己不爱争辩而选低分",
+      "correction": "那可能是不愿主导，确实是本题的低分。"
+     }
+    ],
+    "counts_as": [
+     "能通过沟通让对方接受你的方案"
+    ],
+    "does_not_count_as": [
+     "靠职权或压力让对方就范"
+    ],
+    "edge_cases": null,
+    "localization_note": "**「Talk into」是靠说服而非施压。** 注意与「道德」（A2）面向的 `Put people under pressure`（给人施加压力）区分：那是施压，本题是说理与劝说。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「talk others into」"
+   }
+  },
+  {
+   "administration_order": 102,
+   "id": "ipip_neo_084",
+   "facet": "assertiveness",
+   "key": 1,
+   "text_en": "Seek to influence others.",
+   "text_master": "Seek to influence others.",
+   "text_zh": "喜欢影响别人",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.912,
+    "item_total_r": 0.4485,
+    "missing_rate": 0.006,
+    "neutral_rate": 0.2414
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否喜欢影响别人",
+    "key_term": {
+     "term": "influence",
+     "sense_here": "影响、带动他人",
+     "not_this": "「控制别人」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它理解成「控制别人」",
+      "correction": "这里指主动施加影响，不含操控之义。"
+     },
+     {
+      "misreading": "因为觉得「不该影响别人」而选低分",
+      "correction": "请按实际意愿作答。"
+     }
+    ],
+    "counts_as": [
+     "会主动表达观点并希望带动他人"
+    ],
+    "does_not_count_as": [
+     "只是表达但不关心是否被采纳"
+    ],
+    "edge_cases": null,
+    "localization_note": "**中文「影响别人」容易被读成「控制欲强」**（负面）。**本题是中性的**：指你是否愿意主动去带动他人的想法或做法。中立选项比例偏高（.24），说明不少人觉得难以定位。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「influence」"
+   }
+  },
+  {
+   "administration_order": 132,
+   "id": "ipip_neo_085",
+   "facet": "assertiveness",
+   "key": 1,
+   "text_en": "Take control of things.",
+   "text_master": "Take control of things.",
+   "text_zh": "掌控局面",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.078,
+    "item_total_r": 0.6317,
+    "missing_rate": 0.0039,
+    "neutral_rate": 0.2083
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会掌控局面",
+    "key_term": {
+     "term": "take control",
+     "sense_here": "掌握控制权",
+     "not_this": "「参与」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 1 题混同",
+      "correction": "两题确实接近。"
+     },
+     {
+      "misreading": "把「参与」当成「掌控」",
+      "correction": "参与不等于主导。"
+     }
+    ],
+    "counts_as": [
+     "事情由你安排推进才安心"
+    ],
+    "does_not_count_as": [
+     "参与其中但不主导"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 1 题（接过主导权）的区别：第 1 题偏**在需要时站出来**，本题偏**持续保持在掌控位置**。两题语义接近，答案通常一致。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「take control」"
+   }
+  },
+  {
+   "administration_order": 162,
+   "id": "ipip_neo_086",
+   "facet": "assertiveness",
+   "key": -1,
+   "text_en": "Wait for others to lead the way.",
+   "text_master": "Wait for others to lead the way.",
+   "text_zh": "等着别人来带头",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.096,
+    "item_total_r": 0.625,
+    "missing_rate": 0.0048,
+    "neutral_rate": 0.2093
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否等着别人来带头",
+    "key_term": {
+     "term": "wait for others",
+     "sense_here": "等别人先动",
+     "not_this": "「配合别人」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 1、2 题方向搞混",
+      "correction": "第 1、2 题正向、本题反向，系统会自动反向计分。"
+     }
+    ],
+    "counts_as": [
+     "群体里通常等别人先开口"
+    ],
+    "does_not_count_as": [
+     "主动配合但不当头"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 1、2 题是**正反配对**。**注意区分「等别人带头」与「配合别人」**：配合是主动协作，等待是被动。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「wait for others」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 192,
+   "id": "ipip_neo_087",
+   "facet": "assertiveness",
+   "key": -1,
+   "text_en": "Keep in the background.",
+   "text_master": "Keep in the background.",
+   "text_zh": "待在幕后，不出头",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.082,
+    "item_total_r": 0.6337,
+    "missing_rate": 0.0041,
+    "neutral_rate": 0.2178
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否待在幕后、不出头",
+    "key_term": {
+     "term": "keep in the background",
+     "sense_here": "留在幕后",
+     "not_this": "「低调」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「谦逊」混同",
+      "correction": "自我定位 vs 行为选择。"
+     },
+     {
+      "misreading": "与「自我意识」（N4）混同",
+      "correction": "那是被注视时的不适。"
+     }
+    ],
+    "counts_as": [
+     "倾向让别人去当代表"
+    ],
+    "does_not_count_as": [
+     "低调但需要时会出面"
+    ],
+    "edge_cases": null,
+    "localization_note": "**与「谦逊」（A5）面向的区别**：那是**自我定位**（不抬高自己），本题是**行为上是否回避出头**。可以在心里认可自己的能力却仍不站到台前。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「keep in the background」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 222,
+   "id": "ipip_neo_088",
+   "facet": "assertiveness",
+   "key": -1,
+   "text_en": "Have little to say.",
+   "text_master": "Have little to say.",
+   "text_zh": "在讨论中发言不多（Have little to say）",
+   "text_zh_source": "project_translation_override",
+   "translation_note": {
+    "defect": "强度不同（B5）",
+    "reason": "原意偏**发言量少**，不含「无话可说」的自我贬低意味。情境：开会或聊天时，你通常说得比在场的人少。"
+   },
+   "diagnostics": {
+    "priority_score": 0.114,
+    "item_total_r": 0.5477,
+    "missing_rate": 0.0057,
+    "neutral_rate": 0.1466
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否没什么话说",
+    "key_term": {
+     "term": "little to say",
+     "sense_here": "没什么可说",
+     "not_this": "「不爱闲聊」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「自我效能」面向混同",
+      "correction": "那是能不能贡献，本题是说不说。"
+     },
+     {
+      "misreading": "把「不爱闲聊」当成「没什么话说」",
+      "correction": "如果只对闲聊没兴趣，可给中等分。"
+     }
+    ],
+    "counts_as": [
+     "在讨论中很少发言"
+    ],
+    "does_not_count_as": [
+     "有想法但不喜欢抢话"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题的题目-总分相关 .55，但内容偏「表达量」**，可能混入内敛或话题偏好。**与「自我效能」（C1）面向的 `Have little to contribute`（没什么能贡献）不同**：那是自我价值感，本题是发言量。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「little to say」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 252,
+   "id": "ipip_neo_089",
+   "facet": "assertiveness",
+   "key": -1,
+   "text_en": "Don't like to draw attention to myself.",
+   "text_master": "Don't like to draw attention to myself.",
+   "text_zh": "不喜欢引人注意",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.295,
+    "item_total_r": 0.5074,
+    "missing_rate": 0.0046,
+    "neutral_rate": 0.1814
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否不喜欢引人注意",
+    "key_term": {
+     "term": "draw attention",
+     "sense_here": "引来注意",
+     "not_this": "「不喜欢社交」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「自我意识」面向混同",
+      "correction": "不适 vs 不主动。"
+     },
+     {
+      "misreading": "因为不喜欢社交而选高分",
+      "correction": "那可能是合群性低。"
+     }
+    ],
+    "counts_as": [
+     "不主动把自己放在显眼位置"
+    ],
+    "does_not_count_as": [
+     "怕被注意（那属自我意识）"
+    ],
+    "edge_cases": null,
+    "localization_note": "**与「自我意识」（N4）面向的同类题区别**：那面向偏**被注意时的不适**（情绪反应），本面向偏**是否主动争取被注意**（行为选择）。可以不怕被注意、但也不想被注意。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「draw attention」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 282,
+   "id": "ipip_neo_090",
+   "facet": "assertiveness",
+   "key": -1,
+   "text_en": "Hold back my opinions.",
+   "text_master": "Hold back my opinions.",
+   "text_zh": "不轻易说出自己的看法",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.198,
+    "item_total_r": 0.5187,
+    "missing_rate": 0.0054,
+    "neutral_rate": 0.139
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否不轻易说出自己的看法",
+    "key_term": {
+     "term": "hold back",
+     "sense_here": "压住不说",
+     "not_this": "「没想法」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「没想法」当成「不说」",
+      "correction": "两者在本题目上同分，但含义不同。"
+     },
+     {
+      "misreading": "与「审慎」（C6）混同",
+      "correction": "那是决定前的思考。"
+     }
+    ],
+    "counts_as": [
+     "心里有看法但通常不说出来"
+    ],
+    "does_not_count_as": [
+     "只是场合不合适时才不说"
+    ],
+    "edge_cases": null,
+    "localization_note": "**关键区分**：有看法但选择不说（本题高分）≠ 没有看法（本题也高分但含义不同）。量表无法区分这两者——**这是本面向的固有局限**，作答者可自行留意。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「hold back」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+{
+ "schema_version": "1.0",
+ "record_kind": "descriptions_norms",
+ "instrument": "DSM5TR-L2-Somatic",
+ "code": "dsm5tr-l2-somatic",
+ "status": "unavailable",
+ "interpretation_basis": "bands_or_t_score_pending",
+ "reference_sample": null,
+ "detail_source": null,
+ "dimension_summary": {},
+ "source": {
+  "citation": "American Psychiatric Association. DSM-5-TR Online Assessment Measures — Level 2（8 册）。",
+  "evidence": [
+   "archive/scales/DSM5TR-L2-*/manual.pdf",
+   "archive/scales/DSM5TR-L2-*/source.json",
+   "data/criteria/dsm5tr-l2.json"
+  ],
+  "license": "APA 版权；允许研究人员/临床医生为患者使用而复制"
+ },
+ "applicability_warning": "各册的分带/分界只对**该册自己的量表与施测方式**有效，不得跨册套用。",
+ "notes": "逐册的 kind / 分带 / 分界 / T 分待补状态见 data/criteria/dsm5tr-l2.json；本文档 §4 直接渲染该文件，不复制第二份。",
+ "unavailable_reason": ""
+}

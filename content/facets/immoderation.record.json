@@ -1,0 +1,686 @@
+{
+ "_note": "放纵（Immoderation / N5）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.immoderation",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "放纵",
+  "facet_name_en": "Immoderation",
+  "facet_code": "N5",
+  "domain": "neuroticism",
+  "domain_zh": "神经质"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "难以抵抗诱惑与冲动的倾向：在饮食、消费、娱乐等方面的自我控制能力，以及是否容易在欲望面前失控。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量是否自律地推进任务（属 C5 自律）——自律管的是**该做的事做不做**，放纵管的是**想做的事停不停**",
+   "不测量成瘾行为（那是临床范畴）",
+   "不测量是否享受美食或消费",
+   "不测量情绪性的愤怒冲动（属 N2 愤怒）"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "selfdiscipline",
+    "against_facet_zh": "自律",
+    "distinction": "自律是**启动**该做的事；放纵是**停止**想做的事。两者常同向但可分离——一个能高效完成工作却在深夜暴食的人，自律不低、放纵却高。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "excitementseeking",
+    "against_facet_zh": "追求刺激",
+    "distinction": "追求刺激是**主动寻求**强烈体验；放纵是**抵抗不住**已有的诱惑。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "cautiousness",
+    "against_facet_zh": "审慎",
+    "distinction": "审慎是**行动前的思考**；放纵是**欲望面前的克制**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "anger",
+    "against_facet_zh": "愤怒",
+    "distinction": "愤怒是情绪爆发；放纵是欲望失控。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "面对诱惑能轻易克制，很少事后后悔",
+   "2": "偶尔放纵，但基本能控制",
+   "3": "有时会在欲望面前让步，事后有点后悔",
+   "4": "经常控制不住，事后常后悔",
+   "5": "很难抵抗诱惑，反复在同类事情上失控",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_046",
+   "ipip_neo_047",
+   "ipip_neo_048",
+   "ipip_neo_049",
+   "ipip_neo_050"
+  ],
+  "forward_items": [
+   "ipip_neo_041",
+   "ipip_neo_042",
+   "ipip_neo_043",
+   "ipip_neo_044",
+   "ipip_neo_045"
+  ],
+  "key_balance": "5 正向 / 5 反向",
+  "reverse_keyed_count": 5,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.77,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 3.6,
+   "reference_age_band": "18-29",
+   "sd_used": 7.5,
+   "alpha_used": 0.77,
+   "by_age_band": {
+    "14-17": {
+     "sd": 6.5,
+     "sem": 3.12
+    },
+    "18-29": {
+     "sd": 7.5,
+     "sem": 3.6
+    },
+    "30+": {
+     "sd": 8.0,
+     "sem": 3.84
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±7.1 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "44-50",
+    "High": "38-43",
+    "Average": "31-37",
+    "Low": "24-30",
+    "Very Low": "10-23"
+   },
+   "18-29": {
+    "Very High": "46-50",
+    "High": "39-45",
+    "Average": "31-38",
+    "Low": "24-30",
+    "Very Low": "10-23"
+   },
+   "30+": {
+    "Very High": "44-50",
+    "High": "36-43",
+    "Average": "28-35",
+    "Low": "21-27",
+    "Very Low": "10-20"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "242-300",
+    "High": "205-241",
+    "Average": "168-204",
+    "Low": "131-167",
+    "Very Low": "60-130"
+   },
+   "18-29": {
+    "Very High": "238-300",
+    "High": "200-237",
+    "Average": "163-199",
+    "Low": "125-162",
+    "Very Low": "60-124"
+   },
+   "30+": {
+    "Very High": "230-300",
+    "High": "190-229",
+    "Average": "149-189",
+    "Low": "109-148",
+    "Very Low": "60-108"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "第 5 题（Go on binges）是唯一直接指向「失控」的题，其余多依赖作答者对「放纵」的自我归因，可能受社会赞许性影响。",
+   "本面向的各项放纵行为（饮食、消费、娱乐）之间相关不高，构念可能不够单一。"
+  ],
+  "interpretation_caveats": [
+   "**「放纵」的具体行为在不同人身上差别很大**（饮食、消费、娱乐、拖延…），而题目并未固定在某一种。这个总分只能粗略反映「是否容易在诱惑前让步」的总体倾向。",
+   "这一面向问的是**想做的事能不能停**，与**该做的事做不做**（属「自律」）是两件事。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 3,
+  "chinese_project_translation": 6,
+  "chinese_overridden": 1,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 21,
+   "id": "ipip_neo_041",
+   "facet": "immoderation",
+   "key": 1,
+   "text_en": "Often eat too much.",
+   "text_master": "Often eat too much.",
+   "text_zh": "经常吃得过多",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.627,
+    "item_total_r": 0.474,
+    "missing_rate": 0.0045,
+    "neutral_rate": 0.2036
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否有经常吃撑的情况",
+    "key_term": {
+     "term": "too much",
+     "sense_here": "超出需要",
+     "not_this": "「喜欢美食」或「食量大」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「食量大」当成「吃得过多」",
+      "correction": "这里问的是**失控**，不是量。"
+     },
+     {
+      "misreading": "认为社交聚餐吃多是常态",
+      "correction": "若你觉得那是应酬而非失控，不算。"
+     }
+    ],
+    "counts_as": [
+     "经常吃到胀、吃完后悔"
+    ],
+    "does_not_count_as": [
+     "天生食量大",
+     "应酬时吃得多但不觉得失控"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「吃得多」在社交场合可能是常态（聚餐、待客），**判断标准是「事后是否觉得吃撑了、后悔了」**，而不是「吃了多少」。文化上被鼓励的多吃不算放纵。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「too much」"
+   }
+  },
+  {
+   "administration_order": 51,
+   "id": "ipip_neo_042",
+   "facet": "immoderation",
+   "key": 1,
+   "text_en": "Don't know why I do some of the things I do.",
+   "text_master": "Don't know why I do some of the things I do.",
+   "text_zh": "不明白自己为什么会做某些事",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 2.095,
+    "item_total_r": 0.3298,
+    "missing_rate": 0.0058,
+    "neutral_rate": 0.1644
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否做过一些自己事后也说不清动机的事",
+    "key_term": {
+     "term": "don't know why",
+     "sense_here": "**说不出动机**",
+     "not_this": "「做事冲动」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它读成「我不了解自己」",
+      "correction": "这里指具体行为，不是自我认识。"
+     },
+     {
+      "misreading": "与「冲动行事」混同（那属审慎）",
+      "correction": "本题偏事后困惑而非事前无思。"
+     }
+    ],
+    "counts_as": [
+     "事后回想某些行为，说不出当时为什么"
+    ],
+    "does_not_count_as": [
+     "对自己的动机清楚只是不愿说"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文这句容易被读成**自我困惑**（接近情感丰富面向的「理解自己」）。但本题在放纵面向里，指的是**行为层面的失控**——先做了，事后自己也不明白。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「don't know why」"
+   }
+  },
+  {
+   "administration_order": 81,
+   "id": "ipip_neo_043",
+   "facet": "immoderation",
+   "key": 1,
+   "text_en": "Do things I later regret.",
+   "text_master": "Do things that I later regret.",
+   "text_zh": "会做让自己事后后悔的事",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.713,
+    "item_total_r": 0.3636,
+    "missing_rate": 0.0036,
+    "neutral_rate": 0.2004
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否常做后来后悔的事",
+    "key_term": {
+     "term": "regret",
+     "sense_here": "事后的后悔",
+     "not_this": "「犯错」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把任何「结果不好的事」都算进来",
+      "correction": "关键在**事前你是否知道不该做**。"
+     },
+     {
+      "misreading": "与「犯错」混同",
+      "correction": "犯错可能是信息不足，本题是明知故犯。"
+     }
+    ],
+    "counts_as": [
+     "明知不该还是做了，事后后悔"
+    ],
+    "does_not_count_as": [
+     "出于信息不足做错 / 工作中必要的试错"
+    ],
+    "edge_cases": null,
+    "localization_note": "判断标准是**事前的可预见性**：如果明知会后悔还是做了，属本题；如果是无法预料的后果，不属于。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「regret」"
+   }
+  },
+  {
+   "administration_order": 111,
+   "id": "ipip_neo_044",
+   "facet": "immoderation",
+   "key": 1,
+   "text_en": "Go on binges.",
+   "text_master": "Go on binges.",
+   "text_zh": "会连续失控地放纵（Go on binges）",
+   "text_zh_source": "project_translation_override",
+   "text_zh_official_ref": "大吃大喝寻欢作乐",
+   "translation_note": {
+    "defect": "目标语言中不存在的词（B3）",
+    "reason": "中文没有对应 binge 的词。原意是**短时间内连续、失控地做某件事**——暴食、酗酒、连续追剧、疯狂购物都算，**不限于吃喝**。情境：本打算只吃一点/只刷一集，结果停不下来持续很久。"
+   },
+   "diagnostics": {
+    "priority_score": 0.377,
+    "item_total_r": 0.5002,
+    "missing_rate": 0.0051,
+    "neutral_rate": 0.2417
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否有过连续地、失控地放纵（吃喝、消费、娱乐等）",
+    "key_term": {
+     "term": "binge",
+     "sense_here": "**短时间内的失控性过量**，可指暴食、酗酒、连续追剧、疯狂购物",
+     "not_this": "「偶尔放松一下」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "只按吃喝理解",
+      "correction": "也包括连续刷剧、通宵游戏、疯狂购物等。"
+     },
+     {
+      "misreading": "把「偶尔放松」算进来",
+      "correction": "关键在**失控**与**连续**。"
+     }
+    ],
+    "counts_as": [
+     "会连续几个小时甚至几天停不下来地做某件事"
+    ],
+    "does_not_count_as": [
+     "有计划地放松一次"
+    ],
+    "edge_cases": "**本题的中译偏窄，请按上面的说明校准。**",
+    "localization_note": "**这是全卷翻译难度最高的题之一。** 英文 binge 是中性偏负面的行为词，中文没有一个完全对应的词——本卷译为「大吃大喝寻欢作乐」**偏窄且带贬义**，实际应理解为**任何形式的「连续失控式过量」**（属 11 类错误中的「目标语言中不存在的词」）。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「binge」"
+   }
+  },
+  {
+   "administration_order": 141,
+   "id": "ipip_neo_045",
+   "facet": "immoderation",
+   "key": 1,
+   "text_en": "Love to eat.",
+   "text_master": "Love to eat.",
+   "text_zh": "很喜欢吃",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.408,
+    "item_total_r": 0.3939,
+    "missing_rate": 0.0035,
+    "neutral_rate": 0.1713
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否很喜欢吃东西",
+    "key_term": {
+     "term": "love to eat",
+     "sense_here": "对吃的喜爱",
+     "not_this": "「控制不住地吃」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「喜欢吃」当成「吃得多失控」",
+      "correction": "偏好与失控不同。"
+     },
+     {
+      "misreading": "因为中国饮食文化的重视而选高分",
+      "correction": "请按是否与失控相关作答。"
+     }
+    ],
+    "counts_as": [
+     "对吃有明显兴趣"
+    ],
+    "does_not_count_as": [
+     "只是不挑食"
+    ],
+    "edge_cases": "**本题与本面向其余题的构念略有偏移**，若你觉得它像在问另一个问题，你的感觉有依据。",
+    "localization_note": "**本题的题目-总分相关偏中等（.39），且与本面向其他题不像在问同一件事**——「喜欢吃」是偏好，「失控」才是本面向的核心。这是本面向内部的**内容异质性**之一。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「love to eat」"
+   }
+  },
+  {
+   "administration_order": 171,
+   "id": "ipip_neo_046",
+   "facet": "immoderation",
+   "key": -1,
+   "text_en": "Rarely overindulge.",
+   "text_master": "Rarely overindulge.",
+   "text_zh": "很少过度放纵自己",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.106,
+    "item_total_r": 0.5556,
+    "missing_rate": 0.0053,
+    "neutral_rate": 0.2658
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否很少过度放纵",
+    "key_term": {
+     "term": "overindulge",
+     "sense_here": "过度放纵",
+     "not_this": "「享受生活」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「适度享受」算成放纵",
+      "correction": "只有**超出你自认为合适的量**才算。"
+     },
+     {
+      "misreading": "没注意是反向题",
+      "correction": "越符合「很少放纵」，本面向得分越低。"
+     }
+    ],
+    "counts_as": [
+     "即使在喜欢的活动上也能停下来"
+    ],
+    "does_not_count_as": [
+     "偶尔满足一下自己"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「放纵」带贬义，容易被理解成道德评价，从而压低承认度。本题是中性的行为描述。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「overindulge」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 201,
+   "id": "ipip_neo_047",
+   "facet": "immoderation",
+   "key": -1,
+   "text_en": "Easily resist temptations.",
+   "text_master": "Easily resist temptations.",
+   "text_zh": "能轻松抵御诱惑",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.48,
+    "item_total_r": 0.4883,
+    "missing_rate": 0.0043,
+    "neutral_rate": 0.2032
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）面对诱惑时你是否容易克制",
+    "key_term": {
+     "term": "temptations",
+     "sense_here": "具体的诱惑",
+     "not_this": "「诱惑是否存在」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与审慎混同",
+      "correction": "区别是：想不想（审慎）vs 停不停（本题）。"
+     },
+     {
+      "misreading": "因为「没什么诱惑」而选高分",
+      "correction": "请按面对诱惑时的克制力作答。"
+     }
+    ],
+    "counts_as": [
+     "面对想买、想吃的东西能说不"
+    ],
+    "does_not_count_as": [
+     "生活里没什么诱惑（那是处境）"
+    ],
+    "edge_cases": null,
+    "localization_note": "与「审慎」（C6）不同：审慎是**行动前的思考**，本题是**欲望面前的克制**。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「temptations」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 231,
+   "id": "ipip_neo_048",
+   "facet": "immoderation",
+   "key": -1,
+   "text_en": "Am able to control my cravings.",
+   "text_master": "Am able to control my cravings.",
+   "text_zh": "可以控制自己的欲望",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.072,
+    "item_total_r": 0.5515,
+    "missing_rate": 0.0036,
+    "neutral_rate": 0.1874
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你能否控制住自己的欲望",
+    "key_term": {
+     "term": "cravings",
+     "sense_here": "强烈的欲望",
+     "not_this": "「一般偏好」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "认为「没有欲望」就是控制得好",
+      "correction": "本题问有欲望时能否控制。"
+     },
+     {
+      "misreading": "与第 7 题混同",
+      "correction": "两题侧重不同侧面。"
+     }
+    ],
+    "counts_as": [
+     "想做什么时能等一等再决定"
+    ],
+    "does_not_count_as": [
+     "欲望本来就不强"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 7 题（抵御诱惑）语义接近，**两题共同测「克制力」**。区别在于本题偏「欲望本身有多强」，第 7 题偏「面对时能否拒绝」。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「cravings」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 261,
+   "id": "ipip_neo_049",
+   "facet": "immoderation",
+   "key": -1,
+   "text_en": "Never spend more than I can afford.",
+   "text_master": "Never spend more than I can afford.",
+   "text_zh": "从不超支",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.716,
+    "item_total_r": 0.3637,
+    "missing_rate": 0.0038,
+    "neutral_rate": 0.112
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你的花费是否从不超过自己的承受能力",
+    "key_term": {
+     "term": "afford",
+     "sense_here": "承受能力",
+     "not_this": "「预算之内」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「有计划地花大钱」当成超支",
+      "correction": "只要在承受范围内且想清楚了，不算。"
+     },
+     {
+      "misreading": "把理财投资算入",
+      "correction": "投资不是消费。"
+     }
+    ],
+    "counts_as": [
+     "花钱前会考虑是否承受得起"
+    ],
+    "does_not_count_as": [
+     "有计划的大额支出 / 投资"
+    ],
+    "edge_cases": null,
+    "localization_note": "「超支」的判定标准因人而异（有人以月收入为线，有人以存款为线）。**请按你自己认定的「能承受」为基准。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「afford」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 291,
+   "id": "ipip_neo_050",
+   "facet": "immoderation",
+   "key": -1,
+   "text_en": "Never splurge.",
+   "text_master": "Never splurge.",
+   "text_zh": "从不乱花钱",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.473,
+    "item_total_r": 0.3894,
+    "missing_rate": 0.0045,
+    "neutral_rate": 0.1998
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否从不冲动消费",
+    "key_term": {
+     "term": "splurge",
+     "sense_here": "**冲动性的奢侈消费**",
+     "not_this": "「花了较多的钱」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「买贵的东西」当成乱花钱",
+      "correction": "关键在是否冲动。"
+     },
+     {
+      "misreading": "与第 9 题混同",
+      "correction": "两题分别测冲动与承受力。"
+     }
+    ],
+    "counts_as": [
+     "很少因为一时高兴而买计划外的东西"
+    ],
+    "does_not_count_as": [
+     "深思后买贵重物品"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 9 题（不超支）的区别：本题强调**冲动性**，第 9 题强调**承受能力**。买了一支贵的钢笔但想了半年，不算 splurge。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「splurge」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

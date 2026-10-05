@@ -1,0 +1,681 @@
+{
+ "_note": "思辨（Intellect / O5）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.intellect",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "思辨",
+  "facet_name_en": "Intellect",
+  "facet_code": "O5",
+  "domain": "openness",
+  "domain_zh": "开放性"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "喜欢抽象思考、概念讨论与智力探索的倾向：是否享受思辨本身，以及是否主动接触复杂的观念。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量智力水平或学业成绩",
+   "不测量知识储备",
+   "不测量想象力（属 O1 想象力）",
+   "不测量是否爱读书（那可能只是习惯）"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "imagination",
+    "against_facet_zh": "想象力",
+    "distinction": "思辨偏**概念与推理**；想象力偏**图像与情节**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "aesthetic_appreciation_artistic_interests",
+    "against_facet_zh": "审美",
+    "distinction": "思辨偏**分析**；审美偏**感受**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "emotionality",
+    "against_facet_zh": "情感丰富",
+    "distinction": "思辨偏**认知**；情感丰富偏**情绪**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "selfefficacy",
+    "against_facet_zh": "自我效能",
+    "distinction": "自我效能是**相信自己能解决问题**（属尽责性）；思辨是**享受思考过程本身**。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "对抽象讨论没兴趣，偏好具体实际的事",
+   "2": "必要时会思考复杂问题，但不享受",
+   "3": "对感兴趣的话题愿意深入想",
+   "4": "喜欢讨论抽象概念，享受把问题想透的过程",
+   "5": "思考本身对我是享受，常主动去接触复杂的观念",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_166",
+   "ipip_neo_167",
+   "ipip_neo_168",
+   "ipip_neo_169",
+   "ipip_neo_170"
+  ],
+  "forward_items": [
+   "ipip_neo_161",
+   "ipip_neo_162",
+   "ipip_neo_163",
+   "ipip_neo_164",
+   "ipip_neo_165"
+  ],
+  "key_balance": "5 正向 / 5 反向",
+  "reverse_keyed_count": 5,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.86,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 2.62,
+   "reference_age_band": "18-29",
+   "sd_used": 7.0,
+   "alpha_used": 0.86,
+   "by_age_band": {
+    "14-17": {
+     "sd": 7.0,
+     "sem": 2.62
+    },
+    "18-29": {
+     "sd": 7.0,
+     "sem": 2.62
+    },
+    "30+": {
+     "sd": null,
+     "sem": null
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±5.1 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "49-50",
+    "High": "42-48",
+    "Average": "35-41",
+    "Low": "29-34",
+    "Very Low": "10-28"
+   },
+   "18-29": {
+    "Very High": "50",
+    "High": "43-49",
+    "Average": "36-42",
+    "Low": "30-35",
+    "Very Low": "10-29"
+   },
+   "30+": {
+    "High": "44-50",
+    "Average": "37-43",
+    "Low": "31-36",
+    "Very Low": "10-30"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "260-300",
+    "High": "234-259",
+    "Average": "208-233",
+    "Low": "182-207",
+    "Very Low": "60-181"
+   },
+   "18-29": {
+    "Very High": "263-300",
+    "High": "238-262",
+    "Average": "212-237",
+    "Low": "187-211",
+    "Very Low": "60-186"
+   },
+   "30+": {
+    "Very High": "266-300",
+    "High": "239-265",
+    "Average": "212-238",
+    "Low": "186-211",
+    "Very Low": "60-185"
+   }
+  },
+  "source_anomalies": [
+   "30+: 源常模表中该带为空 ['Very High']"
+  ],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "**本面向的名称在中文里极易被读成「智力」**，而它实际测的是**对思考的喜爱程度**，与智力水平不是一回事。这是本面向最需要在脚手架中澄清的一点。",
+   "第 1 题（Am interested in many things）在 O4 冒险中出现过同类表述，两个面向的题目存在语义交叠。"
+  ],
+  "interpretation_caveats": [
+   "**这一面向的名字容易误导。它测的是「你喜不喜欢思考」，不是「你有多聪明」。**它不反映智力水平、学历或知识储备。",
+   "如果你只是**必要的时候**能把复杂问题想清楚，但并不享受这个过程，这里应给中等分数；享受过程本身才是高分。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 4,
+  "chinese_project_translation": 6,
+  "chinese_overridden": 0,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 23,
+   "id": "ipip_neo_161",
+   "facet": "intellect",
+   "key": 1,
+   "text_en": "Like to solve complex problems.",
+   "text_master": "Like to solve complex problems.",
+   "text_zh": "喜欢解复杂的问题",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.054,
+    "item_total_r": 0.4347,
+    "missing_rate": 0.0062,
+    "neutral_rate": 0.1814
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否享受解决复杂问题",
+    "key_term": {
+     "term": "complex",
+     "sense_here": "复杂的",
+     "not_this": "「困难的」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「费力的活」当成「复杂问题」",
+      "correction": "复杂强调结构，不是力气。"
+     },
+     {
+      "misreading": "把「喜欢」当成「擅长」",
+      "correction": "本题问兴趣。"
+     }
+    ],
+    "counts_as": [
+     "享受拆解需要多步推理的问题"
+    ],
+    "does_not_count_as": [
+     "擅长但不喜欢做"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「复杂」与「困难」常被混用。**复杂 = 需要多步骤、多因素权衡；困难 = 需要更多力气。** 重复性的苦活是困难但不复杂。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「complex」"
+   }
+  },
+  {
+   "administration_order": 53,
+   "id": "ipip_neo_162",
+   "facet": "intellect",
+   "key": 1,
+   "text_en": "Love to read challenging material.",
+   "text_master": "Love to read challenging material.",
+   "text_zh": "喜欢阅读有挑战性的材料",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.124,
+    "item_total_r": 0.5953,
+    "missing_rate": 0.0062,
+    "neutral_rate": 0.2035
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否喜欢读需要动脑的材料",
+    "key_term": {
+     "term": "challenging material",
+     "sense_here": "有挑战性的读物（理论、专业、思辨类）",
+     "not_this": "「篇幅长」或「生词多」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「长文」当成挑战性",
+      "correction": "关键在是否需要思考。"
+     },
+     {
+      "misreading": "把「专业书」一律算入",
+      "correction": "若你的专业阅读是熟练劳动，未必有挑战性。"
+     }
+    ],
+    "counts_as": [
+     "会主动读需要慢慢琢磨的书"
+    ],
+    "does_not_count_as": [
+     "只读轻松读物"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「有挑战性的材料」偏抽象。**它指需要持续思考才能读懂的内容**（学术、理论、哲学），不是篇幅长或生词多的读物。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「challenging material」"
+   }
+  },
+  {
+   "administration_order": 83,
+   "id": "ipip_neo_163",
+   "facet": "intellect",
+   "key": 1,
+   "text_en": "Have a rich vocabulary.",
+   "text_master": "Have a rich vocabulary.",
+   "text_zh": "词汇量丰富",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.098,
+    "item_total_r": 0.536,
+    "missing_rate": 0.0049,
+    "neutral_rate": 0.1722
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你的词汇量是否比一般人丰富",
+    "key_term": {
+     "term": "rich vocabulary",
+     "sense_here": "词汇量",
+     "not_this": "——**注意：这是能力指标，不是兴趣指标**"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把词汇量等同于「喜欢思考」",
+      "correction": "两者可以分离。"
+     },
+     {
+      "misreading": "因为觉得自己「文笔不好」而选低分",
+      "correction": "本题只问词汇量。"
+     }
+    ],
+    "counts_as": [
+     "掌握并使用较丰富的词汇"
+    ],
+    "does_not_count_as": [
+     "只是专业术语多"
+    ],
+    "edge_cases": "**本题偏语言能力，与「享受思考」的构念有偏移。**",
+    "localization_note": "**本题是本面向最明显的构念偏移**——词汇量是**语言能力**的代理指标，而本面向测的是**对思考的喜爱**。**一个词汇量大但不喜欢抽象思考的人，本题会给出偏高的分数。** 这是把「开放性」操作化为「智力」时的常见问题。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「rich vocabulary」"
+   }
+  },
+  {
+   "administration_order": 113,
+   "id": "ipip_neo_164",
+   "facet": "intellect",
+   "key": 1,
+   "text_en": "Can handle a lot of information.",
+   "text_master": "Can handle a lot of information.",
+   "text_zh": "能处理大量信息",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.832,
+    "item_total_r": 0.4549,
+    "missing_rate": 0.0052,
+    "neutral_rate": 0.1333
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你能否消化并处理大量信息",
+    "key_term": {
+     "term": "handle",
+     "sense_here": "处理、消化",
+     "not_this": "「看得多」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「看得多」当成「能处理」",
+      "correction": "关键在能否消化。"
+     },
+     {
+      "misreading": "与「活跃度」混同",
+      "correction": "那是节奏快慢。"
+     }
+    ],
+    "counts_as": [
+     "面对大量材料能理出头绪"
+    ],
+    "does_not_count_as": [
+     "信息一多就混乱"
+    ],
+    "edge_cases": null,
+    "localization_note": "注意区分**接收量**与**处理能力**：刷很多信息不等于能处理。本题指能从中提取结构、形成判断。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「handle」"
+   }
+  },
+  {
+   "administration_order": 143,
+   "id": "ipip_neo_165",
+   "facet": "intellect",
+   "key": 1,
+   "text_en": "Enjoy thinking about things.",
+   "text_master": "Enjoy thinking about things.",
+   "text_zh": "喜欢琢磨事情",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.458,
+    "item_total_r": 0.3986,
+    "missing_rate": 0.0055,
+    "neutral_rate": 0.0736
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否享受思考本身",
+    "key_term": {
+     "term": "enjoy thinking",
+     "sense_here": "**享受思考**",
+     "not_this": "「思考能力强」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「不得不思考」当成喜欢",
+      "correction": "关键是是否享受。"
+     },
+     {
+      "misreading": "与「思辨能力」混同",
+      "correction": "那是能力，本题是兴趣。"
+     }
+    ],
+    "counts_as": [
+     "会为想清楚一件事而感到愉快"
+    ],
+    "does_not_count_as": [
+     "只在必要时思考"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「琢磨」很贴切。**本题直接命中本面向的核心——它问的是「思考是否带来乐趣」，与思考的产出无关。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「enjoy thinking」"
+   }
+  },
+  {
+   "administration_order": 173,
+   "id": "ipip_neo_166",
+   "facet": "intellect",
+   "key": -1,
+   "text_en": "Am not interested in abstract ideas.",
+   "text_master": "Am not interested in abstract ideas.",
+   "text_zh": "对抽象的概念没兴趣",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.384,
+    "item_total_r": 0.5017,
+    "missing_rate": 0.0062,
+    "neutral_rate": 0.2131
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否对抽象概念没兴趣",
+    "key_term": {
+     "term": "abstract ideas",
+     "sense_here": "抽象概念（理论、原理、模式）",
+     "not_this": "——"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「听不懂」当成「没兴趣」",
+      "correction": "本题问兴趣。"
+     },
+     {
+      "misreading": "与「务实」混同",
+      "correction": "务实是偏好具体，本题就是问这一点。"
+     }
+    ],
+    "counts_as": [
+     "对理论性的讨论提不起兴趣"
+    ],
+    "does_not_count_as": [
+     "对某些抽象领域有兴趣但不广"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「抽象」在口语里常带贬义（「太抽象了」＝听不懂）。**本题是中性的**：指理论性、概念性的内容，不含贬义。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「abstract ideas」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 203,
+   "id": "ipip_neo_167",
+   "facet": "intellect",
+   "key": -1,
+   "text_en": "Avoid philosophical discussions.",
+   "text_master": "Avoid philosophical discussions.",
+   "text_zh": "会避免参与关于哲学的讨论",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.094,
+    "item_total_r": 0.5776,
+    "missing_rate": 0.0047,
+    "neutral_rate": 0.1388
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会回避哲学性的讨论",
+    "key_term": {
+     "term": "philosophical",
+     "sense_here": "哲学性的（追问根本问题）",
+     "not_this": "「哲学专业」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "只按哲学专业理解",
+      "correction": "泛指根本性问题的讨论。"
+     },
+     {
+      "misreading": "因为「不懂哲学」而选高分",
+      "correction": "与专业训练无关。"
+     }
+    ],
+    "counts_as": [
+     "遇到根本性问题的讨论会想转开话题"
+    ],
+    "does_not_count_as": [
+     "只在没兴趣的领域回避"
+    ],
+    "edge_cases": null,
+    "localization_note": "**中文「哲学」容易被窄化为「哲学专业」。** 这里的 philosophical discussions 指**追问根本问题的讨论**（如「什么是公平」「意识是什么」），不限于哲学学科。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「philosophical」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 233,
+   "id": "ipip_neo_168",
+   "facet": "intellect",
+   "key": -1,
+   "text_en": "Have difficulty understanding abstract ideas.",
+   "text_master": "Have difficulty understanding abstract ideas.",
+   "text_zh": "理解抽象概念对我来说有些困难",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.104,
+    "item_total_r": 0.6046,
+    "missing_rate": 0.0052,
+    "neutral_rate": 0.1632
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）理解抽象概念对你是否困难",
+    "key_term": {
+     "term": "abstract ideas",
+     "sense_here": "抽象概念",
+     "not_this": "——"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 6 题混同",
+      "correction": "兴趣 vs 难度。"
+     },
+     {
+      "misreading": "与「智力」混同",
+      "correction": "本题是自我评价。"
+     }
+    ],
+    "counts_as": [
+     "面对理论内容常觉得吃力"
+    ],
+    "does_not_count_as": [
+     "需要时间但能理解"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 6 题（对抽象没兴趣）的区别：第 6 题是**兴趣**，本题是**难度**。有兴趣但觉得难，与没兴趣但不觉得难，是两种情形。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「abstract ideas」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 263,
+   "id": "ipip_neo_169",
+   "facet": "intellect",
+   "key": -1,
+   "text_en": "Am not interested in theoretical discussions.",
+   "text_master": "Am not interested in theoretical discussions.",
+   "text_zh": "对理论性的讨论不感兴趣",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.09,
+    "item_total_r": 0.6153,
+    "missing_rate": 0.0045,
+    "neutral_rate": 0.1341
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否对理论性讨论没兴趣",
+    "key_term": {
+     "term": "theoretical",
+     "sense_here": "理论性的",
+     "not_this": "——"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 6 题混同",
+      "correction": "两题几乎同义。"
+     },
+     {
+      "misreading": "与第 8 题混同",
+      "correction": "一个问兴趣、一个问难度，但都指向抽象内容。"
+     }
+    ],
+    "counts_as": [
+     "对纯理论的话题提不起兴趣"
+    ],
+    "does_not_count_as": [
+     "只对某些理论领域有兴趣"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 6、8 题共同测「对抽象内容的兴趣」，**三题语义高度重叠**（abstract ideas / abstract ideas / theoretical discussions）。这是本面向题目冗余的表现。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「theoretical」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 293,
+   "id": "ipip_neo_170",
+   "facet": "intellect",
+   "key": -1,
+   "text_en": "Avoid difficult reading material.",
+   "text_master": "Avoid difficult reading material.",
+   "text_zh": "回避难读的材料",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.11,
+    "item_total_r": 0.6108,
+    "missing_rate": 0.0055,
+    "neutral_rate": 0.1161
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会回避需要费力的读物",
+    "key_term": {
+     "term": "difficult",
+     "sense_here": "难读的（需要持续思考才能读懂）",
+     "not_this": "「篇幅长」或「生词多」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「长文」当成难读",
+      "correction": "关键在是否需要思考。"
+     },
+     {
+      "misreading": "与第 2 题方向搞混",
+      "correction": "第 2 题正向、本题反向。"
+     }
+    ],
+    "counts_as": [
+     "遇到需要琢磨的材料会绕开"
+    ],
+    "does_not_count_as": [
+     "只是暂时搁置"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 2 题（喜欢有挑战性的材料）是**正反配对**。**注意：「难读」指需要思考，不是篇幅长或生词多。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「difficult」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

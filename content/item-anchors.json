@@ -1,0 +1,603 @@
+{
+  "_note": "选项锚点表：每套量表/每册一把尺子。data/items-structured 由 tools/build/build_item_structured.py 依据本文件 + 量表包 + 文本库生成；本文件是**人工核对**的证据源，生成物禁止手改。",
+  "schema_version": "2.0",
+  "record_kind": "item_anchor_table",
+
+  "levels": {
+    "instrument_guide": "量表级（整个量表一次）：量表性质、总体作答说明、非诊断声明、按维度的敏感内容提示、反向计分说明。生成器从量表包与 policy.sensitive_topics 组装。",
+    "scale_guides[scale_id]": "锚点级（一组程度词一次）：`anchor_note_zh`＝这组程度词的共同说明；`quantification_note_zh`＝**量化状态说明**（手册给了哪些天数、哪些没给；没有统一标准的**只在这里说一次**）；`options[].meaning_zh`＝每个选项**特有**的语义。",
+    "items[].response.options": "选项级（每题每选项）：默认只留 `v` / `label_en` / `label_zh`；**逐题锚点**的两册（ASRM 整句陈述 / FOCI 逐题锚点）语义随题而变，写在该题自己的 `options[].meaning_zh`。",
+    "cleanup_rule": "**研究者关心的元说明不进用户文本**：「手册为什么没给天数」「按 14 天窗口推算的 8–14」这类内容只留在本文件的 `source` 字段里供内部核对；用户文本只说「有没有数字」和「该怎么办」。但「没有统一标准、凭你自己的判断」这个**事实**必须保留（诚实性），位置是锚点级、只说一次。"
+  },
+
+  "policy": {
+    "basis_vocabulary": {
+      "manual_verbatim": "锚点标签与其天数/程度语义均来自已归档手册原文（逐字可核）",
+      "manual_labels": "锚点标签来自手册原文；情景说明按标签语义展开（手册未给更细定义，不补天数）",
+      "manual_derived": "由**该册手册自己的**标签 + 该册手册自己的时间窗做算术推导（例：『超过一半的天数』× 14 天窗口 ⇒ 超过 7 天）；推导式只写在 `source` 里，**不进用户文本**",
+      "official_english_labels": "英文锚点来自 IPIP 官方英文主文件（Goldberg 等，ipip.ori.org）",
+      "project_editorial": "项目自撰的构念消歧层（editorial_clarification），**不是手册原文**",
+      "project_translation": "本项目补充中译（R2 中英双版；未人工复核）",
+      "self_report": "**手册/文献没有给量化标准**的如实陈述：告诉用户这一档没有统一标准、凭自己的判断（不是项目自撰的定义）"
+    },
+    "quantification_rule": "每个选项只能归两类之一：① counted＝有可核对来源的定量（unit/range/source 齐全）；② self_report＝明确声明『没有统一标准，凭你自己的判断』。禁止用模糊程度词含糊过去，也禁止为了让统计好看而编一个定量。跨量表套用（如把 PHQ-9 的天数套给 DSM-5-TR L1）同样禁止。",
+    "unavailable_marker": "未取到权威锚点定义",
+    "sensitive_topics": {
+      "l1_suicidal_ideation": {
+        "topic": "自伤 / 自杀相关",
+        "text": "本题涉及自伤/自杀相关的内容。若你此刻有伤害自己的念头，请立即联系当地紧急服务或你最信任的人——本工具不能提供危机干预。",
+        "source": "本项目安全策略（非手册原文）"
+      },
+      "l1_substance_use": {
+        "topic": "物质使用",
+        "text": "本题涉及酒精、烟草与处方/非处方物质使用。如实作答即可；本工具不做任何法律或医学判断。",
+        "source": "本项目安全策略（非手册原文）"
+      },
+      "l2_substance_use": {
+        "topic": "物质使用",
+        "text": "本册涉及具体物质的过去两周使用频率。如实作答即可；本工具不做任何法律或医学判断。",
+        "source": "本项目安全策略（非手册原文）"
+      },
+      "l1_psychosis": {
+        "topic": "精神病性体验",
+        "text": "本题涉及他人听不到的声音、或想法被他人听到之类的体验。这类体验也可能出现在极度疲劳、睡眠剥夺或药物影响下。",
+        "source": "本项目安全策略（非手册原文）"
+      },
+      "l1_dissociation": {
+        "topic": "解离体验",
+        "text": "本题涉及与自己、身体、环境或记忆疏离的体验。这类体验在压力大或睡眠不足时也可能出现。",
+        "source": "本项目安全策略（非手册原文）"
+      },
+      "pid5_depressivity": {
+        "topic": "自伤 / 自杀相关",
+        "text": "有几句话会问到自己有没有过自伤、自杀的念头。要是答到那里觉得难受，可以先停下来，也可以找身边信得过的人或者专业人员聊一聊。",
+        "source": "本项目安全策略（非手册原文）"
+      }
+    },
+    "non_diagnostic_notice": {
+      "text": "本量表是筛查/细评工具，**不构成任何诊断**；结果只能用于辅助判断，不能替代专业评估。",
+      "source": "archive/scales/DSM5TR-L1/manual.pdf 的 disclaimer 原文（同体系条款适用于 Level 2 各册）"
+    },
+    "reverse_transform": {
+      "IPIP-NEO": {"transform": "6 − x", "source": "data/norms/ipip-neo-300.json 的 reverse_transform"},
+      "PID-5": {"transform": "3 − x", "source": "archive/scales/PID-5/manual.pdf 的 Scoring 段（3→0、2→1、1→2、0→3）"}
+    }
+  },
+
+  "known_gaps": [
+    {
+      "what": "PROMIS 四册（Anger / Anxiety / Depression / Sleep）的 rarely / sometimes / often / always：**未取到量化定义**",
+      "detail": "复核范围：① 四册 APA 版手册（只给 1=never; 2=rarely; 3=sometimes; 4=often; 5=always 与 7 天窗口，**无次数定义**）；② archive/literature/norms/ 下 4 份 PROMIS CAT scoring manual（2023/2025）——**同样没有**把 rarely/sometimes/often 折算成次数的表述；③ archive/norms/promis/ 的第三方附录（rimed 2021、sunnaas 2021）——只说『7-day recall period + 5-point Likert』，**没有天数**，且属第三方二手来源，按本轮要求不采用。→ 结论：**未取到**，四个词全部转「凭自知」。",
+      "status": "未取到定量依据（已尽力检索；不引第三方二手来源凑数）",
+      "owner": "要真定量，需另找 **PROMIS 官方 short-form scoring manual**（当前未入档）——本仓 archive/ 内已无更多可依据的量化定义"
+    },
+    {
+      "what": "DSM-5-TR L1 的『several days』与『nearly every day』：手册只给词，未给天数",
+      "detail": "L1 手册 Scoring 段的原文只有括号里的标签串：『0=none or not at all; 1=slight or rare, less than a day or two; 2=mild or several days; 3=moderate or more than half the days; 4=severe or nearly every day』。其中 1 档（不到 1–2 天）与 3 档（超过 7 天＝14 天窗口的一半）可定，2 档与 4 档**没有天数**。⚠️ PHQ-9 的 2–6 / 12–14 天**不适用于本册**，故不采用。",
+      "status": "部分取到（1、3 档定量）；2、4 档转「凭自知」",
+      "owner": "无（手册即如此）"
+    },
+    {
+      "what": "DSM-5-TR L2 Substance 的『several days』与『nearly every day』：同上",
+      "detail": "该册 Scoring 段原文：『0=not at all; 1=one or two days; 2=several days; 3=more than half the days; 4=nearly every day』。1 档（1–2 天）与 3 档（>7 天，按该册 past TWO (2) WEEKS 窗口）可定，2 档与 4 档无天数。",
+      "status": "部分取到（1、3 档定量）；2、4 档转「凭自知」",
+      "owner": "无（手册即如此）"
+    },
+    {
+      "what": "IPIP-NEO 的逐档情景说明来自项目自撰（editorial_clarification）",
+      "detail": "IPIP 官方英文只给「Very Inaccurate … Very Accurate」这组准确度标签，**没有**逐档行为学描述，也没有任何量化。逐 facet 的五档阶梯由项目撰写；「没有统一标准」的声明放在锚点级（`quantification_note_zh`），只说一次。",
+      "status": "有依据但非手册原文（basis = project_editorial）+ 锚点级已声明凭自知",
+      "owner": "若要升级为「已发表定义」，需认知访谈（当前未做，标签不得升级）"
+    },
+    {
+      "what": "DSM-5-TR L2 Sleep 手册内部标签不一致",
+      "detail": "该册**作答区**印的是『Not at all / A little bit / Somewhat / Quite a bit / Very much』（与包内 labels 一致），但**Scoring 段**却写『1=never; 2=rarely; 3=sometimes; 4=often; 5=always』（该段疑为同系列其它册的模板文字）。**本表选作答区的理由**：① 作答区是用户实际看到的尺子，五个选项与包内 labels 逐字一致；② Scoring 段那两句与其它册雷同，更像复制模板，且与本册作答区直接冲突，不足为据；③ 若两者都写进界面，用户会看到两把尺子——那是更大的错误。故按作答区处理并把不一致登记在此，供后续仲裁。",
+      "status": "已按作答区处理；手册内部不一致如实登记",
+      "owner": "如需仲裁，须查 PROMIS 官方 Sleep Disturbance 短表材料"
+    },
+    {
+      "what": "Mania / Repetitive / Substance 三册的包内 structure.window 为空",
+      "detail": "时间窗从手册正文取到（Mania/Repetitive: during the past 7 days；Substance: During the past TWO (2) WEEKS），已写入本锚点表；量表包字段仍为空。",
+      "status": "本任务在锚点表里补上并标了出处；量表包字段的补齐属数据层",
+      "owner": "数据层（task-14 范围）"
+    },
+    {
+      "what": "ASRM 第 1 组第 5 句的英文原文有拼写缺陷",
+      "detail": "包内为「I feel happier **of** more cheerful than usual all of the time」（应为 or）。按「text_en 逐字一致」原则原样搬运并登记，未擅自改。",
+      "status": "已知缺陷，待数据层修复",
+      "owner": "数据层（task-14 范围）"
+    }
+  ],
+
+  "ipip_template": {
+    "scale_id_pattern": "ipip-neo.accuracy_1_5.{facet}",
+    "label": "IPIP-NEO-300 · 自我描述准确度（1–5）",
+    "type": "accuracy_likert",
+    "points": 5, "min": 1, "max": 5,
+    "time_frame_zh": "平时一贯（不是今天，也不是你希望成为的样子）",
+    "time_frame_en": "As you generally are now",
+    "question_head_en": "How Accurately Can You Describe Yourself? Describe yourself as you generally are now, not as you wish to be in the future. Describe yourself as you honestly see yourself, in relation to other people you know of the same sex as you are, and roughly your same age.",
+    "question_head_zh": "你描述自己有多准确？请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子；请按你对自己诚实的看法作答，参照与你同性别、年龄相近的熟人。",
+    "anchor_note_zh": "这五档表示「这句话描述得有多准确」，从「非常不符合」到「非常符合」。",
+    "quantification_note_zh": "这五档**没有统一标准**：每个人对「比较符合」的理解不同——凭你自己的判断作答即可（描述你平时一贯的样子，不是你希望的样子）。",
+    "options": [
+      {"v": 1, "label_en": "Very Inaccurate", "label_zh": "非常不符合"},
+      {"v": 2, "label_en": "Moderately Inaccurate", "label_zh": "比较不符合"},
+      {"v": 3, "label_en": "Neither Accurate Nor Inaccurate", "label_zh": "中立"},
+      {"v": 4, "label_en": "Moderately Accurate", "label_zh": "比较符合"},
+      {"v": 5, "label_en": "Very Accurate", "label_zh": "非常符合"}
+    ],
+    "default_quantification": {
+      "kind": "self_report",
+      "unit": null, "range": null, "window_days": null, "text_zh": null,
+      "basis": "self_report",
+      "source": "archive/ipip/data/OpenScales/scales/ipip/translations/ipip_master_en.json：官方英文锚点只有准确度标签，无任何量化定义"
+    },
+    "label_basis": "official_english_labels",
+    "label_source": "archive/ipip/data/OpenScales/scales/ipip/translations/ipip_master_en.json（ipip_likert_1..5 与 ipip_question_head，_translator = Lewis R. Goldberg and colleagues）",
+    "label_zh_source": "content/facets/<facet>.record.json 的 administration.response_format.labels_zh（30 个 facet 一致）",
+    "meaning_basis": "project_editorial",
+    "meaning_source": "content/facets/<facet>.record.json 的 administration.anchor_semantics（**逐 facet 特有**的五档行为学阶梯；provenance = editorial_clarification，不是手册原文）",
+    "meaning_note": "阶梯文本是该 facet 的**锚点级**说明（该 facet 的 10 道题共用），放锚点级，不逐题复制。",
+    "evidence": [
+      "archive/ipip/data/OpenScales/scales/ipip/translations/ipip_master_en.json",
+      "content/facets/*.record.json"
+    ]
+  },
+
+  "scales": {
+    "pid-5.false_true_0_3": {
+      "label": "PID-5 · 符合度（0–3）",
+      "type": "false_true_likert",
+      "points": 4, "min": 0, "max": 3,
+      "time_frame_zh": "通常情况（本题库未指定时间窗）",
+      "time_frame_en": "in general",
+      "question_head_zh": "请按每一句陈述与你平时样子的符合程度作答。",
+      "anchor_note_zh": "这四档表示这句话与你平时样子的符合程度，从「完全不符合」到「完全符合」。这里问的是**像不像你**，不是「对不对」「好不好」。",
+      "quantification_note_zh": "这四档**没有统一标准**：每个人对「有一点符合」的理解不同——凭你自己的判断作答即可（按你对自己平时的了解）。",
+      "default_quantification": {
+        "kind": "self_report",
+        "unit": null, "range": null, "window_days": null, "text_zh": null,
+        "basis": "self_report",
+        "source": "archive/scales/PID-5/manual.pdf：手册只规定 4 点量表与 very false ↔ very true 的标签，**没有**规定各档的量化含义（也没有时间窗）"
+      },
+      "options": [
+        {"v": 0, "label_en": "very false or often false", "label_zh": "完全不符合或通常不符合",
+         "meaning_zh": "这一句对你基本不成立。", "meaning_basis": "manual_labels"},
+        {"v": 1, "label_en": "sometimes or somewhat false", "label_zh": "有时或有一点不符合",
+         "meaning_zh": "这一句对你有**一点**成立，但整体仍偏「不符合」。", "meaning_basis": "manual_labels"},
+        {"v": 2, "label_en": "sometimes or somewhat true", "label_zh": "有时或有一点符合",
+         "meaning_zh": "这一句对你有**一点**成立，整体偏「符合」。", "meaning_basis": "manual_labels"},
+        {"v": 3, "label_en": "very true or often true", "label_zh": "完全符合或通常符合",
+         "meaning_zh": "这一句对你基本成立。", "meaning_basis": "manual_labels"}
+      ],
+      "label_source": "archive/scales/PID-5/manual.pdf 的 Scoring 段（『Each item on the measure is rated on a 4-point scale』）+ data/pid5-scoring-keys.json 的 response_format",
+      "label_zh_source": "本项目补充中译（R2 中英双版；未人工复核）",
+      "meaning_source": "archive/scales/PID-5/manual.pdf 的 4 点锚点标签（very false ↔ very true）+ 包内 response_format；**手册未给逐档情景描述与量化**",
+      "meaning_note": "本量表测的是适应不良特质的强度，不是「对不对/好不好」——该说明放在锚点级。",
+      "evidence": ["archive/scales/PID-5/manual.pdf", "data/pid5-scoring-keys.json", "data/instruments/pid-5.json"]
+    },
+
+    "dsm5tr-l1.frequency_0_4": {
+      "label": "DSM-5-TR Level 1 · 过去两周的严重度/频率（0–4）",
+      "type": "frequency_severity",
+      "points": 5, "min": 0, "max": 4,
+      "time_frame_zh": "过去两周（past TWO (2) WEEKS）",
+      "time_frame_en": "past TWO (2) WEEKS",
+      "time_frame_source": "archive/scales/DSM5TR-L1/manual.pdf（『during the past TWO (2) WEEKS』）；data/instruments/dsm5tr-l1.json 的 interpretation.window",
+      "question_head_zh": "下面列出的是人们有时会出现的问题。请按**过去两周**内你被该问题困扰的**程度或频率**作答。",
+      "anchor_note_zh": "这五档按**过去两周内出现的天数**排列，从「完全没有」到「几乎每天」，选最贴近你实际情况的一档。",
+      "quantification_note_zh": "**「有几天」和「几乎每天」没有统一标准**——只有「完全没有」和「不到一两天」有确切天数。凭你自己的判断（按你在这段时间里的整体印象作答即可）。",
+      "options": [
+        {"v": 0, "label_en": "None / Not at all", "label_zh": "无 / 完全没有",
+         "meaning_zh": "**0 天**：过去两周完全没有出现这个问题。", "meaning_basis": "manual_derived",
+         "quantification": {
+           "kind": "counted", "unit": "days", "range": [0, 0], "window_days": 14,
+           "text_zh": "0 天", "basis": "manual_derived",
+           "source": "archive/scales/DSM5TR-L1/manual.pdf 的 Scoring 段：『0=none or not at all』；窗口『past TWO (2) WEEKS』。派生：none 即 0 天。"
+         }},
+        {"v": 1, "label_en": "Slight / Rare, less than a day or two", "label_zh": "轻微 / 很少，不到一两天",
+         "meaning_zh": "**不到 1–2 天**：过去两周里出现过，但总共不超过两天，程度轻微。", "meaning_basis": "manual_verbatim",
+         "quantification": {
+           "kind": "counted", "unit": "days", "range": [0, 2], "window_days": 14,
+           "text_zh": "不到 1–2 天", "basis": "manual_verbatim",
+           "source": "archive/scales/DSM5TR-L1/manual.pdf 的 Scoring 段原文：『1=slight or rare, less than a day or two』（天数由手册标签自身给出）"
+         }},
+        {"v": 2, "label_en": "Mild / Several days", "label_zh": "轻度 / 有几天",
+         "meaning_zh": "**有几天**：过去两周里有几天出现，程度轻。", "meaning_basis": "manual_labels",
+         "quantification": {
+           "kind": "self_report", "unit": null, "range": null, "window_days": 14,
+           "text_zh": null, "basis": "self_report",
+           "source": "archive/scales/DSM5TR-L1/manual.pdf 未定义『several days』的天数（PHQ-9 的 2–6 天**不适用于本册**，故不采用）"
+         }},
+        {"v": 3, "label_en": "Moderate / More than half the days", "label_zh": "中度 / 一半以上的天数",
+         "meaning_zh": "**超过 7 天**：过去两周里超过一半的天数出现，程度中等。", "meaning_basis": "manual_derived",
+         "quantification": {
+           "kind": "counted", "unit": "days", "range": [8, 14], "window_days": 14,
+           "text_zh": "超过 7 天", "basis": "manual_derived",
+           "source": "archive/scales/DSM5TR-L1/manual.pdf 的 Scoring 段：『3=moderate or more than half the days』+ 该册窗口『past TWO (2) WEEKS』（14 天）。派生：一半以上 ⇒ 8–14 天（内部核对用，不进用户文本）。"
+         }},
+        {"v": 4, "label_en": "Severe / Nearly every day", "label_zh": "重度 / 几乎每天",
+         "meaning_zh": "**几乎每天**：过去两周里几乎每天都出现，程度严重。", "meaning_basis": "manual_labels",
+         "quantification": {
+           "kind": "self_report", "unit": null, "range": null, "window_days": 14,
+           "text_zh": null, "basis": "self_report",
+           "source": "archive/scales/DSM5TR-L1/manual.pdf 未定义『nearly every day』的天数"
+         }}
+      ],
+      "label_source": "archive/scales/DSM5TR-L1/manual.pdf（Scoring 段逐字给出 0–4 的五档标签）+ 包内 response_format",
+      "label_zh_source": "本项目补充中译（R2 中英双版；未人工复核）",
+      "meaning_source": "archive/scales/DSM5TR-L1/manual.pdf 的 Scoring 段；1、3 档可定量，2、4 档手册未定义 → 锚点级声明凭自知",
+      "meaning_note": "本册域分取该域内任一题的最高分（max），不是求和；域门槛也不同（多数 ≥2，自杀意念/精神病性/物质使用 ≥1）。",
+      "evidence": ["archive/scales/DSM5TR-L1/manual.pdf", "data/instruments/dsm5tr-l1.json", "data/linkage/dsm5tr-chain.json"]
+    },
+
+    "dsm5tr-l2.promis_frequency_1_5": {
+      "label": "DSM-5-TR L2（PROMIS 短表 · Anger/Anxiety/Depression）· 过去 7 天的频率（1–5）",
+      "type": "promis_frequency",
+      "points": 5, "min": 1, "max": 5,
+      "time_frame_zh": "过去 7 天（past SEVEN (7) DAYS）",
+      "time_frame_en": "In the past SEVEN (7) DAYS",
+      "time_frame_source": "archive/scales/DSM5TR-L2-{Anger,Anxiety,Depression}/manual.pdf（『during the past 7 days. Please respond to each item … In the past SEVEN (7) DAYS』）；包内 structure.window",
+      "question_head_zh": "请按**过去 7 天**内该感受出现的频率作答。",
+      "anchor_note_zh": "这五档按**过去 7 天内出现的频率**排列，从「从不」到「总是」。",
+      "quantification_note_zh": "**「很少 / 有时 / 经常 / 总是」没有统一标准**，每个人理解不同——凭你自己的判断（按你在这段时间里的整体印象作答即可）。",
+      "options": [
+        {"v": 1, "label_en": "Never", "label_zh": "从不",
+         "meaning_zh": "**0 天**：过去 7 天里一次都没有出现。", "meaning_basis": "manual_derived",
+         "quantification": {
+           "kind": "counted", "unit": "days", "range": [0, 0], "window_days": 7,
+           "text_zh": "0 天", "basis": "manual_derived",
+           "source": "archive/scales/DSM5TR-L2-*/manual.pdf 的 Scoring 段：『1=never』+ 该册窗口『In the past SEVEN (7) DAYS』。派生：never 即 0 天。"
+         }},
+        {"v": 2, "label_en": "Rarely", "label_zh": "很少",
+         "meaning_zh": "偶尔出现，但次数很少。", "meaning_basis": "manual_labels",
+         "quantification": {
+           "kind": "self_report", "unit": null, "range": null, "window_days": 7,
+           "text_zh": null, "basis": "self_report",
+           "source": "archive/scales/DSM5TR-L2-*/manual.pdf 只给『2=rarely』；另查 archive/literature/norms/ 的 PROMIS CAT scoring manual 亦无次数定义 → 未取到"
+         }},
+        {"v": 3, "label_en": "Sometimes", "label_zh": "有时",
+         "meaning_zh": "有时出现，但不算经常。", "meaning_basis": "manual_labels",
+         "quantification": {
+           "kind": "self_report", "unit": null, "range": null, "window_days": 7,
+           "text_zh": null, "basis": "self_report",
+           "source": "archive/scales/DSM5TR-L2-*/manual.pdf 只给『3=sometimes』；已另查 PROMIS CAT scoring manual，无次数定义 → 未取到"
+         }},
+        {"v": 4, "label_en": "Often", "label_zh": "经常",
+         "meaning_zh": "经常出现。", "meaning_basis": "manual_labels",
+         "quantification": {
+           "kind": "self_report", "unit": null, "range": null, "window_days": 7,
+           "text_zh": null, "basis": "self_report",
+           "source": "archive/scales/DSM5TR-L2-*/manual.pdf 只给『4=often』；已另查 PROMIS CAT scoring manual，无次数定义 → 未取到"
+         }},
+        {"v": 5, "label_en": "Always", "label_zh": "总是",
+         "meaning_zh": "几乎一直如此。", "meaning_basis": "manual_labels",
+         "quantification": {
+           "kind": "self_report", "unit": null, "range": null, "window_days": 7,
+           "text_zh": null, "basis": "self_report",
+           "source": "archive/scales/DSM5TR-L2-*/manual.pdf 只给『5=always』；已另查 PROMIS CAT scoring manual，无定义 → 未取到"
+         }}
+      ],
+      "label_source": "archive/scales/DSM5TR-L2-{Anger,Anxiety,Depression}/manual.pdf（每册 Scoring 段逐字给 1=never; 2=rarely; 3=sometimes; 4=often; 5=always）+ 包内 response_format",
+      "label_zh_source": "本项目补充中译（R2 中英双版；未人工复核）",
+      "meaning_source": "手册锚点标签原文 + 时间窗；**手册未给 rarely/sometimes/often/always 的次数定义**（已复核 PROMIS CAT scoring manual 与第三方附录，均无）→ 除「从不」外全部转「凭自知」",
+      "meaning_note": "不要把 Never–Always 自行换算成天数——本册（以及归档的 PROMIS 材料）都没有这个定义。",
+      "evidence": ["archive/scales/DSM5TR-L2-Anger/manual.pdf", "archive/scales/DSM5TR-L2-Anxiety/manual.pdf", "archive/scales/DSM5TR-L2-Depression/manual.pdf", "archive/literature/norms/healthmeasures2023_promis-anxiety-cat-scoring-manual.pdf"]
+    },
+
+    "dsm5tr-l2-sleep.intensity_1_5": {
+      "label": "DSM-5-TR L2 Sleep（PROMIS Sleep Disturbance）· 过去 7 天的程度（1–5）",
+      "type": "intensity_likert",
+      "points": 5, "min": 1, "max": 5,
+      "time_frame_zh": "过去 7 天（past SEVEN (7) DAYS）",
+      "time_frame_en": "In the past SEVEN (7) DAYS",
+      "time_frame_source": "archive/scales/DSM5TR-L2-Sleep/manual.pdf 的作答区（『In the past SEVEN (7) DAYS…. Not at all / A little bit / Somewhat / Quite a bit / Very much』）；包内 structure.window",
+      "question_head_zh": "请按**过去 7 天**内该情况的程度作答。",
+      "anchor_note_zh": "这五档表示这类睡眠情况在过去 7 天里的**程度**，从「完全没有」到「非常多」。",
+      "quantification_note_zh": "这几档**没有统一标准**，每个人的感受不同——凭你自己的判断（按你在这段时间里的整体印象作答即可）。",
+      "options": [
+        {"v": 1, "label_en": "Not at all", "label_zh": "完全没有",
+         "meaning_zh": "**0 次**：完全没有出现这种情形。", "meaning_basis": "manual_derived",
+         "quantification": {
+           "kind": "counted", "unit": "occurrences", "range": [0, 0], "window_days": 7,
+           "text_zh": "0 次", "basis": "manual_derived",
+           "source": "archive/scales/DSM5TR-L2-Sleep/manual.pdf 的作答区：『Not at all』+ 窗口『In the past SEVEN (7) DAYS』。派生：not at all 即 0 次出现。"
+         }},
+        {"v": 2, "label_en": "A little bit", "label_zh": "有一点点",
+         "meaning_zh": "有一点点。", "meaning_basis": "manual_labels",
+         "quantification": {"kind": "self_report", "unit": null, "range": null, "window_days": 7,
+                            "text_zh": null, "basis": "self_report",
+                            "source": "archive/scales/DSM5TR-L2-Sleep/manual.pdf 未给程度量化"}},
+        {"v": 3, "label_en": "Somewhat", "label_zh": "有一些",
+         "meaning_zh": "有一些，程度中等偏轻。", "meaning_basis": "manual_labels",
+         "quantification": {"kind": "self_report", "unit": null, "range": null, "window_days": 7,
+                            "text_zh": null, "basis": "self_report",
+                            "source": "archive/scales/DSM5TR-L2-Sleep/manual.pdf 未给程度量化"}},
+        {"v": 4, "label_en": "Quite a bit", "label_zh": "相当多",
+         "meaning_zh": "相当明显。", "meaning_basis": "manual_labels",
+         "quantification": {"kind": "self_report", "unit": null, "range": null, "window_days": 7,
+                            "text_zh": null, "basis": "self_report",
+                            "source": "archive/scales/DSM5TR-L2-Sleep/manual.pdf 未给程度量化"}},
+        {"v": 5, "label_en": "Very much", "label_zh": "非常多",
+         "meaning_zh": "非常明显，几乎一直如此。", "meaning_basis": "manual_labels",
+         "quantification": {"kind": "self_report", "unit": null, "range": null, "window_days": 7,
+                            "text_zh": null, "basis": "self_report",
+                            "source": "archive/scales/DSM5TR-L2-Sleep/manual.pdf 未给程度量化"}}
+      ],
+      "label_source": "archive/scales/DSM5TR-L2-Sleep/manual.pdf 的作答区（逐字印出 Not at all / A little bit / Somewhat / Quite a bit / Very much）+ 包内 response_format",
+      "label_zh_source": "本项目补充中译（R2 中英双版；未人工复核）",
+      "meaning_source": "手册作答区锚点原文；**手册未给程度量化**（该册 Scoring 段印的是另一套 never…always 标签，与本表采用的作答区不一致——已在 known_gaps 登记）",
+      "meaning_note": "本册第 2/3/7 题（「我满意我的睡眠」「我的睡眠让我恢复精力」「我睡够了」）是**正向表述**，按同一把尺子计分。",
+      "evidence": ["archive/scales/DSM5TR-L2-Sleep/manual.pdf", "data/instruments/dsm5tr-l2-sleep.json"]
+    },
+
+    "dsm5tr-l2-somatic.phq15_0_2": {
+      "label": "DSM-5-TR L2 Somatic（PHQ-15）· 过去 7 天被困扰的程度（0–2）",
+      "type": "bother_severity",
+      "points": 3, "min": 0, "max": 2,
+      "time_frame_zh": "过去 7 天（past 7 days）",
+      "time_frame_en": "during the past 7 days",
+      "time_frame_source": "archive/scales/DSM5TR-L2-Somatic/manual.pdf（『rate the severity of the individual’s somatic symptom during the past 7 days』）；包内 structure.window",
+      "question_head_zh": "过去 7 天里，你被下面每个症状**困扰**的程度如何？",
+      "anchor_note_zh": "这三档表示过去 7 天里你被该症状**困扰的程度**，从「完全没有」到「被困扰很多」。",
+      "quantification_note_zh": "**「有一点」「被困扰很多」没有统一标准**——凭你自己的判断（按你在这段时间里的整体印象作答即可）。",
+      "options": [
+        {"v": 0, "label_en": "Not bothered at all", "label_zh": "完全没有被困扰",
+         "meaning_zh": "**0 次**：这个症状没有困扰到你。", "meaning_basis": "manual_derived",
+         "quantification": {
+           "kind": "counted", "unit": "occurrences", "range": [0, 0], "window_days": 7,
+           "text_zh": "0 次", "basis": "manual_derived",
+           "source": "archive/scales/DSM5TR-L2-Somatic/manual.pdf 的 Scoring 段：『0=not bothered at all』。派生：not at all 即 0 次被困扰。"
+         }},
+        {"v": 1, "label_en": "Bothered a little", "label_zh": "有一点被困扰",
+         "meaning_zh": "症状轻微困扰你。", "meaning_basis": "manual_labels",
+         "quantification": {"kind": "self_report", "unit": null, "range": null, "window_days": 7,
+                            "text_zh": null, "basis": "self_report",
+                            "source": "archive/scales/DSM5TR-L2-Somatic/manual.pdf 未给程度量化（该册的分带是「总分」层面的）"}},
+        {"v": 2, "label_en": "Bothered a lot", "label_zh": "被困扰很多",
+         "meaning_zh": "症状相当困扰你。", "meaning_basis": "manual_labels",
+         "quantification": {"kind": "self_report", "unit": null, "range": null, "window_days": 7,
+                            "text_zh": null, "basis": "self_report",
+                            "source": "archive/scales/DSM5TR-L2-Somatic/manual.pdf 未给程度量化"}}
+      ],
+      "label_source": "archive/scales/DSM5TR-L2-Somatic/manual.pdf（『3-point scale (0=not bothered at all; 1=bothered a little; 2=bothered a lot)』）+ 包内 response_format",
+      "label_zh_source": "本项目补充中译（R2 中英双版；未人工复核）",
+      "meaning_source": "手册 Scoring 段逐字给出 0/1/2 的语义标签；**未给各档的程度量化** → 除 0 档外转「凭自知」",
+      "meaning_note": "本册总分 0–30，手册给出四档严重度分带（Minimal / Low / Medium / High）——那是**总分**层面，不是单题选项层面的量化。",
+      "evidence": ["archive/scales/DSM5TR-L2-Somatic/manual.pdf", "data/criteria/dsm5tr-l2.json"]
+    },
+
+    "dsm5tr-l2-substance.assist_frequency_0_4": {
+      "label": "DSM-5-TR L2 Substance（NIDA-Modified ASSIST 改编）· 过去两周的使用频率（0–4）",
+      "type": "frequency",
+      "points": 5, "min": 0, "max": 4,
+      "time_frame_zh": "过去两周（past TWO (2) WEEKS）",
+      "time_frame_en": "During the past TWO (2) WEEKS",
+      "time_frame_source": "archive/scales/DSM5TR-L2-Substance/manual.pdf（『During the past TWO (2) WEEKS, about how often did you use any of the following…』）",
+      "question_head_zh": "请按**过去两周**内每一类物质的使用频率作答。",
+      "anchor_note_zh": "这五档按**过去两周内的使用天数**排列。每一题对应一种物质，逐项作答即可。",
+      "quantification_note_zh": "**「有几天」和「几乎每天」没有统一标准**——只有「完全没有」「一两天」和「超过一半」是确切的。凭你自己的判断。",
+      "options": [
+        {"v": 0, "label_en": "Not at all", "label_zh": "完全没有",
+         "meaning_zh": "**0 天**：过去两周完全没有使用。", "meaning_basis": "manual_derived",
+         "quantification": {
+           "kind": "counted", "unit": "days", "range": [0, 0], "window_days": 14,
+           "text_zh": "0 天", "basis": "manual_derived",
+           "source": "archive/scales/DSM5TR-L2-Substance/manual.pdf 的 Scoring 段：『0=not at all』+ 窗口『During the past TWO (2) WEEKS』。派生：not at all 即 0 天。"
+         }},
+        {"v": 1, "label_en": "One or two days", "label_zh": "一两天",
+         "meaning_zh": "**1–2 天**：过去两周里有 1 到 2 天使用过。", "meaning_basis": "manual_verbatim",
+         "quantification": {
+           "kind": "counted", "unit": "days", "range": [1, 2], "window_days": 14,
+           "text_zh": "1–2 天", "basis": "manual_verbatim",
+           "source": "archive/scales/DSM5TR-L2-Substance/manual.pdf 的 Scoring 段原文：『1=one or two days』（天数由手册标签自身给出）"
+         }},
+        {"v": 2, "label_en": "Several days", "label_zh": "有几天",
+         "meaning_zh": "**有几天**：过去两周有几天使用过。", "meaning_basis": "manual_labels",
+         "quantification": {
+           "kind": "self_report", "unit": null, "range": null, "window_days": 14,
+           "text_zh": null, "basis": "self_report",
+           "source": "archive/scales/DSM5TR-L2-Substance/manual.pdf 未定义『several days』的天数"
+         }},
+        {"v": 3, "label_en": "More than half the days", "label_zh": "一半以上的天数",
+         "meaning_zh": "**超过 7 天**：过去两周超过一半的天数使用过。", "meaning_basis": "manual_derived",
+         "quantification": {
+           "kind": "counted", "unit": "days", "range": [8, 14], "window_days": 14,
+           "text_zh": "超过 7 天", "basis": "manual_derived",
+           "source": "archive/scales/DSM5TR-L2-Substance/manual.pdf 的 Scoring 段：『3=more than half the days』+ 该册窗口『past TWO (2) WEEKS』（14 天）。派生：一半以上 ⇒ 8–14 天（内部核对用，不进用户文本）。"
+         }},
+        {"v": 4, "label_en": "Nearly every day", "label_zh": "几乎每天",
+         "meaning_zh": "**几乎每天**：过去两周几乎每天都使用过。", "meaning_basis": "manual_labels",
+         "quantification": {
+           "kind": "self_report", "unit": null, "range": null, "window_days": 14,
+           "text_zh": null, "basis": "self_report",
+           "source": "archive/scales/DSM5TR-L2-Substance/manual.pdf 未定义『nearly every day』的天数"
+         }}
+      ],
+      "label_source": "archive/scales/DSM5TR-L2-Substance/manual.pdf 的 Scoring 段与作答区（逐字）+ 包内 items[].options",
+      "label_zh_source": "本项目补充中译（R2 中英双版；未人工复核）",
+      "meaning_source": "手册 Scoring 段原文；1、3 档可定量，2、4 档未定义 → 锚点级声明凭自知",
+      "meaning_note": "本册**逐项独立解释**：每一题对应一种物质，「>0 的项数」是严重度/复杂度指标，**不是总分**。",
+      "evidence": ["archive/scales/DSM5TR-L2-Substance/manual.pdf", "data/criteria/dsm5tr-l2.json"]
+    },
+
+    "dsm5tr-l2-mania.asrm_statement_0_4": {
+      "label": "DSM-5-TR L2 Mania（ASRM）· 每组 5 句陈述中选最符合的一句（0–4）",
+      "type": "statement_choice",
+      "options_source": "item",
+      "points": 5, "min": 0, "max": 4,
+      "time_frame_zh": "过去 7 天（past 7 days）",
+      "time_frame_en": "during the past 7 days",
+      "time_frame_source": "archive/scales/DSM5TR-L2-Mania/manual.pdf（『rate the severity of the individual’s manic symptoms during the past 7 days』）",
+      "question_head_zh": "下面每一组有 5 句话。请从**每一组**里选出**最符合你过去 7 天情况**的一句（每组只能选一句）。",
+      "anchor_note_zh": "每一组的 5 句按程度**从轻到重**排列：请在本组内挑出最贴近你的一句。",
+      "quantification_note_zh": "**「偶尔 / 经常 / 频繁 / 一直」没有统一标准**，每个人理解不同——凭你自己的判断，在本组里选最贴近你的一项即可。",
+      "default_quantification": {
+        "kind": "self_report",
+        "unit": null, "range": null, "window_days": 7,
+        "text_zh": null, "basis": "self_report",
+        "source": "archive/scales/DSM5TR-L2-Mania/manual.pdf 只给『5-point scale (i.e., 0 to 4)』与每组的 5 句陈述，**未给频率/强度量化定义**"
+      },
+      "option_meaning_basis": "manual_labels",
+      "option_meaning_source": "archive/scales/DSM5TR-L2-Mania/manual.pdf（『5-point scale (i.e., 0 to 4)』）+ 包内 items[].options[].text（每题自己的 5 句陈述，逐字）",
+      "statements_zh": {
+        "dsm5trl2mania_01": {
+          "0": "我并不比平时更快乐或更愉快",
+          "1": "我偶尔比平时更快乐或更愉快",
+          "2": "我经常比平时更快乐或更愉快",
+          "3": "我大多数时候都比平时更快乐或更愉快",
+          "4": "我一直都比平时更快乐或更愉快"
+        },
+        "dsm5trl2mania_02": {
+          "0": "我并不比平时更有自信",
+          "1": "我偶尔比平时更有自信",
+          "2": "我经常比平时更有自信",
+          "3": "我频繁地比平时更有自信",
+          "4": "我一直都极度自信"
+        },
+        "dsm5trl2mania_03": {
+          "0": "我不比平时需要更少的睡眠",
+          "1": "我偶尔比平时需要更少的睡眠",
+          "2": "我经常比平时需要更少的睡眠",
+          "3": "我频繁地比平时需要更少的睡眠",
+          "4": "我可以整天整夜不睡仍不觉得累"
+        },
+        "dsm5trl2mania_04": {
+          "0": "我并不比平时话多",
+          "1": "我偶尔比平时话多",
+          "2": "我经常比平时话多",
+          "3": "我频繁地比平时话多",
+          "4": "我说个不停，别人插不上话"
+        },
+        "dsm5trl2mania_05": {
+          "0": "我并不比平时更活跃（社交、性、工作、家务或学业上都是）",
+          "1": "我偶尔比平时更活跃",
+          "2": "我经常比平时更活跃",
+          "3": "我频繁地比平时更活跃",
+          "4": "我一直都更活跃，总是在忙个不停"
+        }
+      },
+      "statement_zh_source": "本项目补充中译（R2 中英双版；未人工复核），与包内英文陈述逐句对应",
+      "label_zh_source": "见 statements_zh",
+      "label_source": "data/instruments/dsm5tr-l2-mania.json 的 items[].options[].text（提取自 archive/scales/DSM5TR-L2-Mania/manual.pdf；task-14 已把选项组规范到 items[].options）",
+      "evidence": ["archive/scales/DSM5TR-L2-Mania/manual.pdf", "data/instruments/dsm5tr-l2-mania.json"],
+      "data_defect_note": "⚠️ 实测第 1 组第 5 句原文为「I feel happier **of** more cheerful than usual all of the time」（应为 or）——量表包里的拼写缺陷，按**逐字一致**原则原样搬运并登记；修复归数据层（task-14）。"
+    },
+
+    "dsm5tr-l2-repetitive.foci_severity_0_4": {
+      "label": "DSM-5-TR L2 Repetitive（改编自 FOCI Part B）· 逐题锚点（0–4）",
+      "type": "item_specific_severity",
+      "options_source": "item",
+      "points": 5, "min": 0, "max": 4,
+      "time_frame_zh": "过去 7 天（past 7 days）",
+      "time_frame_en": "during the past 7 days",
+      "time_frame_source": "archive/scales/DSM5TR-L2-Repetitive/manual.pdf（『bothered by a list of symptoms during the past 7 days』）",
+      "question_head_zh": "请按**过去 7 天**的情况，就下面每一问选择最符合的一档。",
+      "anchor_note_zh": "每一问用的程度词**不一样**（有的问「时间」，有的问「困扰」，有的问「能不能控制」）——请按该问自己的程度词作答。",
+      "quantification_note_zh": "**除「没有」「完全能控制」外，其余程度词没有统一标准**——凭你自己的判断（按你在这段时间里的整体印象作答即可）。",
+      "option_meaning_basis": "manual_labels",
+      "option_meaning_source": "archive/scales/DSM5TR-L2-Repetitive/manual.pdf（『5-point scale (i.e., 0 to 4) with the response categories having **different anchors depending on the item**』）+ 包内 items[].options[].text（逐题锚点，逐字）",
+      "lexicons": {
+        "severity": {
+          "None": {"label_zh": "没有",
+                   "meaning_zh": {"dsm5trl2repetitive_01": "完全没有占用你的时间。",
+                                  "dsm5trl2repetitive_02": "完全没有带来困扰。",
+                                  "dsm5trl2repetitive_05": "完全没有影响你的生活。"},
+                   "quantification": {"kind": "counted", "unit": "occurrences", "range": [0, 0], "window_days": 7,
+                                      "text_zh": "0 次", "basis": "manual_derived",
+                                      "source": "archive/scales/DSM5TR-L2-Repetitive/manual.pdf 的逐题锚点『None』。派生：None 即 0 次。"}},
+          "No avoidance": {"label_zh": "没有回避",
+                           "meaning_zh": {"dsm5trl2repetitive_04": "完全没有因为它而回避任何事情。"},
+                           "quantification": {"kind": "counted", "unit": "occurrences", "range": [0, 0], "window_days": 7,
+                                              "text_zh": "0 次", "basis": "manual_derived",
+                                              "source": "archive/scales/DSM5TR-L2-Repetitive/manual.pdf 的逐题锚点『No avoidance』。派生：no avoidance 即 0 次回避。"}},
+          "Mild": {"label_zh": "轻微",
+                   "meaning_zh": {"dsm5trl2repetitive_01": "占用的时间很少。",
+                                  "dsm5trl2repetitive_02": "带来的困扰很轻。",
+                                  "dsm5trl2repetitive_04": "有一点回避。",
+                                  "dsm5trl2repetitive_05": "有一点影响。"},
+                   "quantification": {"kind": "self_report", "unit": null, "range": null, "window_days": 7,
+                                      "text_zh": null, "basis": "self_report",
+                                      "source": "archive/scales/DSM5TR-L2-Repetitive/manual.pdf 未给程度量化"}},
+          "Moderate": {"label_zh": "中等",
+                       "meaning_zh": {"dsm5trl2repetitive_01": "占用的时间中等。",
+                                      "dsm5trl2repetitive_02": "带来的困扰中等。",
+                                      "dsm5trl2repetitive_04": "有中等程度的回避。",
+                                      "dsm5trl2repetitive_05": "影响中等。"},
+                       "quantification": {"kind": "self_report", "unit": null, "range": null, "window_days": 7,
+                                          "text_zh": null, "basis": "self_report",
+                                          "source": "archive/scales/DSM5TR-L2-Repetitive/manual.pdf 未给程度量化"}},
+          "Severe": {"label_zh": "严重",
+                     "meaning_zh": {"dsm5trl2repetitive_01": "占用的时间较多。",
+                                    "dsm5trl2repetitive_02": "带来的困扰较重。",
+                                    "dsm5trl2repetitive_04": "回避比较多。",
+                                    "dsm5trl2repetitive_05": "影响较大。"},
+                     "quantification": {"kind": "self_report", "unit": null, "range": null, "window_days": 7,
+                                        "text_zh": null, "basis": "self_report",
+                                        "source": "archive/scales/DSM5TR-L2-Repetitive/manual.pdf 未给程度量化"}},
+          "Extreme": {"label_zh": "极重",
+                      "meaning_zh": {"dsm5trl2repetitive_01": "占用的时间极多。",
+                                     "dsm5trl2repetitive_02": "带来的困扰极重。",
+                                     "dsm5trl2repetitive_04": "回避极多。",
+                                     "dsm5trl2repetitive_05": "影响极大。"},
+                      "quantification": {"kind": "self_report", "unit": null, "range": null, "window_days": 7,
+                                         "text_zh": null, "basis": "self_report",
+                                         "source": "archive/scales/DSM5TR-L2-Repetitive/manual.pdf 未给程度量化"}}
+        },
+        "control": {
+          "Complete control": {"label_zh": "完全能控制",
+                               "meaning_zh": {"dsm5trl2repetitive_03": "你完全能控制它。"},
+                               "quantification": {"kind": "counted", "unit": "occurrences", "range": [0, 0], "window_days": 7,
+                                                  "text_zh": "0 次控制困难", "basis": "manual_derived",
+                                                  "source": "archive/scales/DSM5TR-L2-Repetitive/manual.pdf 的逐题锚点『Complete control』。派生：完全能控制 ⇒ 控制困难 0 次。"}},
+          "Much control": {"label_zh": "大部分能控制",
+                           "meaning_zh": {"dsm5trl2repetitive_03": "你大部分时候能控制它。"},
+                           "quantification": {"kind": "self_report", "unit": null, "range": null, "window_days": 7,
+                                              "text_zh": null, "basis": "self_report",
+                                              "source": "archive/scales/DSM5TR-L2-Repetitive/manual.pdf 未给程度量化"}},
+          "Moderate control": {"label_zh": "中等程度能控制",
+                               "meaning_zh": {"dsm5trl2repetitive_03": "你有时能控制、有时控制不住。"},
+                               "quantification": {"kind": "self_report", "unit": null, "range": null, "window_days": 7,
+                                                  "text_zh": null, "basis": "self_report",
+                                                  "source": "archive/scales/DSM5TR-L2-Repetitive/manual.pdf 未给程度量化"}},
+          "Little control": {"label_zh": "很难控制",
+                             "meaning_zh": {"dsm5trl2repetitive_03": "你大多控制不住它。"},
+                             "quantification": {"kind": "self_report", "unit": null, "range": null, "window_days": 7,
+                                                "text_zh": null, "basis": "self_report",
+                                                "source": "archive/scales/DSM5TR-L2-Repetitive/manual.pdf 未给程度量化"}},
+          "No control": {"label_zh": "完全控制不住",
+                         "meaning_zh": {"dsm5trl2repetitive_03": "你完全控制不住它。"},
+                         "quantification": {"kind": "self_report", "unit": null, "range": null, "window_days": 7,
+                                            "text_zh": null, "basis": "self_report",
+                                            "source": "archive/scales/DSM5TR-L2-Repetitive/manual.pdf 未给程度量化"}}
+        }
+      },
+      "item_lexicon": {
+        "dsm5trl2repetitive_01": "severity",
+        "dsm5trl2repetitive_02": "severity",
+        "dsm5trl2repetitive_03": "control",
+        "dsm5trl2repetitive_04": "severity",
+        "dsm5trl2repetitive_05": "severity"
+      },
+      "label_source": "data/instruments/dsm5tr-l2-repetitive.json 的 items[].options[].text（提取自 archive/scales/DSM5TR-L2-Repetitive/manual.pdf）",
+      "label_zh_source": "本项目补充中译（R2 中英双版；未人工复核）",
+      "evidence": ["archive/scales/DSM5TR-L2-Repetitive/manual.pdf", "data/instruments/dsm5tr-l2-repetitive.json"],
+      "direction_note": "第 3 题问的是「你有多难控制」：档位越高表示**控制力越低**（越严重），方向与其它四题一致。"
+    }
+  },
+
+  "instrument_map": {
+    "IPIP-NEO": {"default_scale": "ipip-neo.accuracy_1_5.{facet}"},
+    "PID-5": {"default_scale": "pid-5.false_true_0_3"},
+    "DSM5TR-L1": {"default_scale": "dsm5tr-l1.frequency_0_4"},
+    "DSM5TR-L2-Anger": {"default_scale": "dsm5tr-l2.promis_frequency_1_5"},
+    "DSM5TR-L2-Anxiety": {"default_scale": "dsm5tr-l2.promis_frequency_1_5"},
+    "DSM5TR-L2-Depression": {"default_scale": "dsm5tr-l2.promis_frequency_1_5"},
+    "DSM5TR-L2-Mania": {"default_scale": "dsm5tr-l2-mania.asrm_statement_0_4"},
+    "DSM5TR-L2-Repetitive": {"default_scale": "dsm5tr-l2-repetitive.foci_severity_0_4"},
+    "DSM5TR-L2-Sleep": {"default_scale": "dsm5tr-l2-sleep.intensity_1_5"},
+    "DSM5TR-L2-Somatic": {"default_scale": "dsm5tr-l2-somatic.phq15_0_2"},
+    "DSM5TR-L2-Substance": {"default_scale": "dsm5tr-l2-substance.assist_frequency_0_4"}
+  }
+}

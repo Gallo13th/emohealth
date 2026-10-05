@@ -1,0 +1,7 @@
+NEG-OK  | EN: Antidepressants are drugs that require continuous regular use, and are not used as "per needed". | ZH: 抗抑郁药需要持续规律服用，不按「需要时」使用。
+NEG-OK  | EN: Antidepressants can't be used in ages 0–6. | ZH: 抗抑郁药不能用于 0–6 岁。
+NEG-OK  | EN: It takes at least 4 to 6 weeks at full dose before the antidepressant medication is deemed non-efficacious. | ZH: 必须在足量服用至少 4 至 6 周后，才能判定该抗抑郁药无效。
+NEG-MISS | EN: It's difficult to predict which patient will respond to which antidepressant, so trials of several antidepressants may be necessary before an effective agent is found. | ZH: 很难预测哪位患者对哪种抗抑郁药有效，因此可能需要试过几种药才能找到有效的药物。
+NEG-MISS | EN: There are modalities of depression treatment other than medications. | ZH: 除药物外，抑郁还有其他治疗方式。
+NEG-OK  | EN: After long-term use of AI, I have become less inclined to think independently, preferring AI to do the work. | ZH: 长期使用 AI 后，我不太愿意独立思考，更愿意让 AI 来做。
+negative-polarity items checked: 6, missing Chinese negation: 2

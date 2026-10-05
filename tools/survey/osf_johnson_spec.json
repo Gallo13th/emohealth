@@ -1,0 +1,26 @@
+[
+  {"name": "IPIP-NEO-300_ScoringTool.xlsx", "dir": "scoring", "url": "https://osf.io/download/4w86n/"},
+  {"name": "IPIP-NEO-300_Questionnaire_printable.docx", "dir": "scoring", "url": "https://osf.io/download/xzje4/"},
+  {"name": "IPIP-NEO-120_ScoringTool.xls", "dir": "scoring", "url": "https://osf.io/download/qza3d/"},
+  {"name": "IPIP-NEO-120_Questionnaire_printable.docx", "dir": "scoring", "url": "https://osf.io/download/uf6dg/"},
+  {"name": "IPIP-NEO-ItemKey.xls", "dir": "scoring", "url": "https://osf.io/download/yk3fd/"},
+
+  {"name": "UK_Norms_FACETS_14to17.docx", "dir": "scoring/uk-norms", "url": "https://osf.io/download/xd2ab/"},
+  {"name": "UK_Norms_FACETS_18to29.docx", "dir": "scoring/uk-norms", "url": "https://osf.io/download/935hn/"},
+  {"name": "UK_Norms_FACETS_30plus.docx", "dir": "scoring/uk-norms", "url": "https://osf.io/download/zdcpy/"},
+  {"name": "UK_Norms_TRAITS_14to17.docx", "dir": "scoring/uk-norms", "url": "https://osf.io/download/cjt3e/"},
+  {"name": "UK_Norms_TRAITS_18to29.docx", "dir": "scoring/uk-norms", "url": "https://osf.io/download/b8gey/"},
+  {"name": "UK_Norms_TRAITS_30plus.docx", "dir": "scoring/uk-norms", "url": "https://osf.io/download/k43j6/"},
+
+  {"name": "DAT300_codebook.doc", "dir": "raw", "url": "https://osf.io/download/2kfhe/"},
+  {"name": "DAT120_codebook.doc", "dir": "raw", "url": "https://osf.io/download/hgm7n/"},
+  {"name": "IPIP300.dat", "dir": "raw", "url": "https://osf.io/download/jdu2v/"},
+  {"name": "IPIP120.dat", "dir": "raw", "url": "https://osf.io/download/q9jrh/"},
+  {"name": "IPIP300.por.zip", "dir": "raw", "url": "https://osf.io/download/87c6k/"},
+  {"name": "IPIP120.por.zip", "dir": "raw", "url": "https://osf.io/download/t4rms/"},
+
+  {"name": "DAT20993_codebook.doc", "dir": "validity", "url": "https://osf.io/download/dwgn8/"},
+  {"name": "ipip20993.dat", "dir": "validity", "url": "https://osf.io/download/2buhw/"},
+  {"name": "ipip20993.sav", "dir": "validity", "url": "https://osf.io/download/4sh5n/"},
+  {"name": "ipip20993.por", "dir": "validity", "url": "https://osf.io/download/p7fq9/"}
+]

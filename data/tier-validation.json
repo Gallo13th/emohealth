@@ -1,0 +1,65 @@
+{
+ "method": "拆半交叉验证：一半挑题、另一半评估",
+ "results": {
+  "1": {
+   "items": 30,
+   "fit_in_sample": 0.8899,
+   "holdout_A_to_B": 0.8893,
+   "holdout_B_to_A": 0.8873,
+   "natural_order": 0.8134,
+   "holdout_same_band": 63.7,
+   "holdout_within_1": 99.0,
+   "holdout_off_2plus": 1.0
+  },
+  "2": {
+   "items": 60,
+   "fit_in_sample": 0.9442,
+   "holdout_A_to_B": 0.943,
+   "holdout_B_to_A": 0.9425,
+   "natural_order": 0.8777,
+   "holdout_same_band": 73.4,
+   "holdout_within_1": 99.9,
+   "holdout_off_2plus": 0.1
+  },
+  "3": {
+   "items": 90,
+   "fit_in_sample": 0.9658,
+   "holdout_A_to_B": 0.9637,
+   "holdout_B_to_A": 0.9643,
+   "natural_order": 0.9119,
+   "holdout_same_band": 78.9,
+   "holdout_within_1": 100.0,
+   "holdout_off_2plus": 0.0
+  },
+  "5": {
+   "items": 150,
+   "fit_in_sample": 0.9834,
+   "holdout_A_to_B": 0.9826,
+   "holdout_B_to_A": 0.9824,
+   "natural_order": 0.9517,
+   "holdout_same_band": 85.2,
+   "holdout_within_1": 100.0,
+   "holdout_off_2plus": 0.0
+  },
+  "8": {
+   "items": 240,
+   "fit_in_sample": 0.9954,
+   "holdout_A_to_B": 0.9952,
+   "holdout_B_to_A": 0.995,
+   "natural_order": 0.9909,
+   "holdout_same_band": 92.3,
+   "holdout_within_1": 100.0,
+   "holdout_off_2plus": 0.0
+  },
+  "10": {
+   "items": 300,
+   "fit_in_sample": 1.0,
+   "holdout_A_to_B": 1.0,
+   "holdout_B_to_A": 1.0,
+   "natural_order": 1.0,
+   "holdout_same_band": 100.0,
+   "holdout_within_1": 100.0,
+   "holdout_off_2plus": 0.0
+  }
+ }
+}

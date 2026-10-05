@@ -1,0 +1,679 @@
+{
+ "_note": "追求成就（Achievement-Striving / C4）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.achievementstriving",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "追求成就",
+  "facet_name_en": "Achievement-Striving",
+  "facet_code": "C4",
+  "domain": "conscientiousness",
+  "domain_zh": "尽责性"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "设定高目标并为之努力的倾向：抱负的高低、对成就的渴望，以及是否愿意为出色而付出额外努力。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量实际成就或能力",
+   "不测量能否启动与坚持（属 C5 自律）",
+   "不测量是否相信自己做得到（属 C1 自我效能）",
+   "不测量是否追求**外部认可**——这里问的是**想达到什么水平**"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "selfdiscipline",
+    "against_facet_zh": "自律",
+    "distinction": "追求成就是**想要多高**；自律是**能不能做到**。**想拿第一却从不开始的人，追求成就高、自律低。**",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "selfefficacy",
+    "against_facet_zh": "自我效能",
+    "distinction": "追求成就是**抱负**；自我效能是**信心**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "assertiveness",
+    "against_facet_zh": "决断性",
+    "distinction": "追求成就是**对目标的驱动**；决断性是**在人群中的主导**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "excitementseeking",
+    "against_facet_zh": "追求刺激",
+    "distinction": "追求成就偏**长期目标**；追求刺激偏**即时唤起**。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "不太在意成就高低，觉得过得去就行",
+   "2": "有基本要求，但不追求出色",
+   "3": "希望能做好，但不会为此过度投入",
+   "4": "对自己要求较高，会为出色而额外努力",
+   "5": "目标定得很高，持续要求自己做到最好",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_278",
+   "ipip_neo_279",
+   "ipip_neo_280"
+  ],
+  "forward_items": [
+   "ipip_neo_271",
+   "ipip_neo_272",
+   "ipip_neo_273",
+   "ipip_neo_274",
+   "ipip_neo_275",
+   "ipip_neo_276",
+   "ipip_neo_277"
+  ],
+  "key_balance": "7 正向 / 3 反向",
+  "reverse_keyed_count": 3,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.78,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 3.28,
+   "reference_age_band": "18-29",
+   "sd_used": 7.0,
+   "alpha_used": 0.78,
+   "by_age_band": {
+    "14-17": {
+     "sd": 7.0,
+     "sem": 3.28
+    },
+    "18-29": {
+     "sd": 7.0,
+     "sem": 3.28
+    },
+    "30+": {
+     "sd": 7.0,
+     "sem": 3.28
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±6.4 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "45-50",
+    "High": "38-44",
+    "Average": "31-37",
+    "Low": "23-30",
+    "Very Low": "10-22"
+   },
+   "18-29": {
+    "Very High": "46-50",
+    "High": "39-45",
+    "Average": "32-38",
+    "Low": "25-31",
+    "Very Low": "10-24"
+   },
+   "30+": {
+    "Very High": "49-50",
+    "High": "42-48",
+    "Average": "35-41",
+    "Low": "28-34",
+    "Very Low": "10-27"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "236-300",
+    "High": "208-235",
+    "Average": "174-207",
+    "Low": "143-173",
+    "Very Low": "60-142"
+   },
+   "18-29": {
+    "Very High": "246-300",
+    "High": "215-245",
+    "Average": "184-214",
+    "Low": "153-183",
+    "Very Low": "60-152"
+   },
+   "30+": {
+    "Very High": "261-300",
+    "High": "231-260",
+    "Average": "200-230",
+    "Low": "169-199",
+    "Very Low": "60-168"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "**本面向与「成就焦虑」在题面上不易区分**：第 3 题（Work hard）与第 5 题（Do more than expected）指向努力，但难以分辨这份努力来自**抱负**还是**不安**。后者更接近神经质。",
+   "**分（成就）与「忙碌」在中文语境下常被混同**，作答者可能按「我是不是很忙」而非「我是不是想做到最好」作答。"
+  ],
+  "interpretation_caveats": [
+   "**这一面向问的是「你想达到多高的水平」，不是「你有多忙」，也不是「你已经做到了多少」。**",
+   "它与「自律」不同：**想拿第一，和真的开始去做，是两件事。**抱负很高却迟迟不动手，在这个量表里是常见的组合。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 4,
+  "chinese_project_translation": 6,
+  "chinese_overridden": 0,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 20,
+   "id": "ipip_neo_271",
+   "facet": "achievementstriving",
+   "key": 1,
+   "text_en": "Go straight for the goal.",
+   "text_master": "Go straight for the goal.",
+   "text_zh": "直奔目标",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.717,
+    "item_total_r": 0.469,
+    "missing_rate": 0.0065,
+    "neutral_rate": 0.277
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你做事是否会直指目标、不走弯路",
+    "key_term": {
+     "term": "straight for",
+     "sense_here": "直奔、不绕",
+     "not_this": "「有效率」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「直奔目标」当成「不顾他人」",
+      "correction": "本题问效率取向，不涉及待人方式。"
+     },
+     {
+      "misreading": "因为自己讲求过程而选低分",
+      "correction": "那确实是本题的低分。"
+     }
+    ],
+    "counts_as": [
+     "做事时会先明确目标再动手",
+     "不太在无关的事上花时间"
+    ],
+    "does_not_count_as": [
+     "享受过程本身（那是另一回事）"
+    ],
+    "edge_cases": "本题中立比例高，若你觉得「看情况」，可给 3 分。",
+    "localization_note": "中文「直奔目标」偏褒义（有效率）。本题问的是**取向**——是否以目标为先，不走旁枝。本题中立选项比例较高（.28），说明不少人觉得「视情况而定」。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「straight for」"
+   }
+  },
+  {
+   "administration_order": 50,
+   "id": "ipip_neo_272",
+   "facet": "achievementstriving",
+   "key": 1,
+   "text_en": "Work hard.",
+   "text_master": "Work hard.",
+   "text_zh": "工作努力",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.148,
+    "item_total_r": 0.6055,
+    "missing_rate": 0.0074,
+    "neutral_rate": 0.1428
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你在工作或学业上是否投入很多努力",
+    "key_term": {
+     "term": "work hard",
+     "sense_here": "投入努力的程度",
+     "not_this": "「觉得自己应该努力」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "按「我觉得应该努力」作答",
+      "correction": "请按实际投入。"
+     },
+     {
+      "misreading": "把「工时长短」当成努力",
+      "correction": "效率高但时间短也可以很努力。"
+     }
+    ],
+    "counts_as": [
+     "在任务上投入明显多于一般水平的时间和精力"
+    ],
+    "does_not_count_as": [
+     "因为方法高效而用时短（那不等于不努力）"
+    ],
+    "edge_cases": null,
+    "localization_note": "**中文「努力」是高度受赞许的词，社会称许性会抬高此题。** 判断时请按**相对自己周围人的投入程度**，而不是按「我是否认为自己应该努力」。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「work hard」"
+   }
+  },
+  {
+   "administration_order": 80,
+   "id": "ipip_neo_273",
+   "facet": "achievementstriving",
+   "key": 1,
+   "text_en": "Turn plans into actions.",
+   "text_master": "Turn plans into actions.",
+   "text_zh": "把计划变成行动",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.484,
+    "item_total_r": 0.4905,
+    "missing_rate": 0.0056,
+    "neutral_rate": 0.2485
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否能把定下的计划真正付诸执行",
+    "key_term": {
+     "term": "turn into actions",
+     "sense_here": "落地执行",
+     "not_this": "——"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与自律面向混同",
+      "correction": "两题确实重叠。"
+     },
+     {
+      "misreading": "认为「有计划」就等于「能执行」",
+      "correction": "两者可以分离。"
+     }
+    ],
+    "counts_as": [
+     "定下的计划多数会真正开始做"
+    ],
+    "does_not_count_as": [
+     "计划很多但落空的也多"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题与「自律」（C5）高度接近**——自律面向的 `Carry out my plans` 几乎是同义题。区别：本面向偏「追求成就」的驱动，自律面向偏「执行能力」。**两题答案通常会一致，这是量表里的冗余。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「turn into actions」"
+   }
+  },
+  {
+   "administration_order": 110,
+   "id": "ipip_neo_274",
+   "facet": "achievementstriving",
+   "key": 1,
+   "text_en": "Plunge into tasks with all my heart.",
+   "text_master": "Plunge into tasks with all my heart.",
+   "text_zh": "全身心投入任务",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.113,
+    "item_total_r": 0.526,
+    "missing_rate": 0.0048,
+    "neutral_rate": 0.2648
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "做事时你是否会全心投入",
+    "key_term": {
+     "term": "plunge into",
+     "sense_here": "一头扎进去、全力投入",
+     "not_this": "「忙碌」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「忙碌」混同",
+      "correction": "忙不等于投入。"
+     },
+     {
+      "misreading": "认为必须废寝忘食才算",
+      "correction": "专注投入即可。"
+     }
+    ],
+    "counts_as": [
+     "做事情时会沉浸其中、忘记时间"
+    ],
+    "does_not_count_as": [
+     "同时处理多件事而每件都不深"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「全身心投入」表达清楚。注意与「活跃度」（E4）的区别：那是**节奏快慢**，本题是**投入深度**。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「plunge into」"
+   }
+  },
+  {
+   "administration_order": 140,
+   "id": "ipip_neo_275",
+   "facet": "achievementstriving",
+   "key": 1,
+   "text_en": "Do more than what's expected of me.",
+   "text_master": "Do more than what's expected of me.",
+   "text_zh": "我会超出预期地完成任务或工作",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.06,
+    "item_total_r": 0.5906,
+    "missing_rate": 0.003,
+    "neutral_rate": 0.2299
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会做得比要求的多",
+    "key_term": {
+     "term": "more than expected",
+     "sense_here": "超过要求",
+     "not_this": "「无偿加班」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "只按「加班」理解",
+      "correction": "提高质量也算。"
+     },
+     {
+      "misreading": "因为不认同「内卷」而选低分",
+      "correction": "本题问的是自我标准，不是对环境的评价。"
+     }
+    ],
+    "counts_as": [
+     "常把事情做得比最低要求更完善"
+    ],
+    "does_not_count_as": [
+     "只在我认为值得的事上多做"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题在中文职场语境下容易被读成「是否会无偿加班」**，而原意更宽：指**主动把标准抬到要求之上**。若你在职责范围内做得更细致、更完善，也算「超出预期」，未必是延长时间。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「more than expected」"
+   }
+  },
+  {
+   "administration_order": 170,
+   "id": "ipip_neo_276",
+   "facet": "achievementstriving",
+   "key": 1,
+   "text_en": "Set high standards for myself and others.",
+   "text_master": "Set high standards for myself and others.",
+   "text_zh": "对自己和别人都设高标准",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.72,
+    "item_total_r": 0.4645,
+    "missing_rate": 0.0044,
+    "neutral_rate": 0.1422
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你对自己和他人是否都设定了高标准",
+    "key_term": {
+     "term": "for myself and others",
+     "sense_here": "包含对他人",
+     "not_this": "只有对自己"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "只按对自己的标准作答",
+      "correction": "请注意括号里的「和别人」。"
+     },
+     {
+      "misreading": "认为高标准就是苛刻",
+      "correction": "本题不含评价。"
+     }
+    ],
+    "counts_as": [
+     "会明确期待自己和他人达到较高水平"
+    ],
+    "does_not_count_as": [
+     "对自己严、对别人宽"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题的「and others」是关键**——它同时测量对自己和对别人的要求。中文「高标准」容易只被理解成对自己的要求。**若你对自己严格但对别人宽容，本题应给中等而非高分。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「for myself and others」"
+   }
+  },
+  {
+   "administration_order": 200,
+   "id": "ipip_neo_277",
+   "facet": "achievementstriving",
+   "key": 1,
+   "text_en": "Demand quality.",
+   "text_master": "Demand quality.",
+   "text_zh": "要求高质量",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.919,
+    "item_total_r": 0.346,
+    "missing_rate": 0.0051,
+    "neutral_rate": 0.1717
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会要求事情达到较高的质量",
+    "key_term": {
+     "term": "demand",
+     "sense_here": "要求、坚持",
+     "not_this": "「挑剔」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 6 题混同",
+      "correction": "设定 vs 坚持。"
+     },
+     {
+      "misreading": "认为这是挑剔",
+      "correction": "本题不含褒贬。"
+     }
+    ],
+    "counts_as": [
+     "会因质量不达标而要求返工"
+    ],
+    "does_not_count_as": [
+     "标准高但过程宽松"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 6 题（高标准）的区别：第 6 题是**设定标准**，本题是**在过程中坚持要求**。题目-总分相关 .35，在本面向偏低，可能与「质量」一词的宽泛有关。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「demand」"
+   }
+  },
+  {
+   "administration_order": 230,
+   "id": "ipip_neo_278",
+   "facet": "achievementstriving",
+   "key": -1,
+   "text_en": "Am not highly motivated to succeed.",
+   "text_master": "Am not highly motivated to succeed.",
+   "text_zh": "没有很强的成功动力",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.642,
+    "item_total_r": 0.4741,
+    "missing_rate": 0.0053,
+    "neutral_rate": 0.1387
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否有很强的成功动力",
+    "key_term": {
+     "term": "motivated to succeed",
+     "sense_here": "成功动机",
+     "not_this": "「功利」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "因为不想显得功利而选高分",
+      "correction": "请按真实动力作答。"
+     },
+     {
+      "misreading": "把「想成功」理解成「想出名或赚钱」",
+      "correction": "它可以是想把事做好。"
+     }
+    ],
+    "counts_as": [
+     "对达成目标有较强的渴望"
+    ],
+    "does_not_count_as": [
+     "只求安稳无过"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「成功」在当下语境里可能带功利色彩，让人不愿承认自己「想成功」。**本题问的是驱动力的强弱，不含价值判断。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「motivated to succeed」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 260,
+   "id": "ipip_neo_279",
+   "facet": "achievementstriving",
+   "key": -1,
+   "text_en": "Do just enough work to get by.",
+   "text_master": "Do just enough work to get by.",
+   "text_zh": "在工作或学习上，我不会多做，过得去就行",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.086,
+    "item_total_r": 0.5809,
+    "missing_rate": 0.0043,
+    "neutral_rate": 0.1377
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否只做够交差的程度",
+    "key_term": {
+     "term": "get by",
+     "sense_here": "过得去、勉强合格",
+     "not_this": "「不加班」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「不加班」当成「只做够」",
+      "correction": "关键在是否降低标准。"
+     },
+     {
+      "misreading": "与第 1 题方向搞混",
+      "correction": "本题是反向题。"
+     }
+    ],
+    "counts_as": [
+     "完成任务即止，不追求更好"
+    ],
+    "does_not_count_as": [
+     "高效完成但质量不降"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「过得去就行」很口语，贴近原意。**注意与「效率高」的区别**：高效完成且不加班，与「只做最低限度」不同——区别在于**是否主动降低标准**。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「get by」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 290,
+   "id": "ipip_neo_280",
+   "facet": "achievementstriving",
+   "key": -1,
+   "text_en": "Put little time and effort into my work.",
+   "text_master": "Put little time and effort into my work.",
+   "text_zh": "对工作或学业不怎么投入时间和精力",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.094,
+    "item_total_r": 0.5768,
+    "missing_rate": 0.0047,
+    "neutral_rate": 0.1088
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你在工作或学业上投入的时间和精力是否很少",
+    "key_term": {
+     "term": "little time and effort",
+     "sense_here": "时间与精力都少",
+     "not_this": "——"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "只按有薪工作理解",
+      "correction": "学业、家庭责任也算。"
+     },
+     {
+      "misreading": "与第 2 题方向搞混",
+      "correction": "本题是反向题。"
+     }
+    ],
+    "counts_as": [
+     "在主要职责上投入明显偏少"
+    ],
+    "does_not_count_as": [
+     "投入时间少但强度高（那不完全算少）"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 2 题（工作努力）是**正反配对**。**注意：「工作」在这里指主要职责活动**，包含学业、家务等你认为属于「正事」的内容，不限于有薪工作。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「little time and effort」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

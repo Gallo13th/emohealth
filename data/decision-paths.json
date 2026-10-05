@@ -1,0 +1,56 @@
+{
+ "source": "Johnson (2005) N=7325",
+ "citations": [
+  "Gonzalez, O. (2021). Psychometric and Machine Learning Approaches to Reduce the Length of Scales. Multivariate Behavioral Research, 56(6), 903-919."
+ ],
+ "question": "决策树能否用来定义「解锁路径」？",
+ "role_split": "预测用线性（已验证最优）；**结构**用树（本脚本验证对象）",
+ "stability": {
+  "stability_depth2": 0.53,
+  "stability_depth3": 0.4286,
+  "stability_depth4": 0.2857
+ },
+ "paths": {
+  "agreeableness": {
+   "n_leaves": 8,
+   "first_split_items": [
+    163
+   ],
+   "n_distinct_first_items": 1
+  },
+  "conscientiousness": {
+   "n_leaves": 8,
+   "first_split_items": [
+    174
+   ],
+   "n_distinct_first_items": 1
+  },
+  "extraversion": {
+   "n_leaves": 8,
+   "first_split_items": [
+    61
+   ],
+   "n_distinct_first_items": 1
+  },
+  "neuroticism": {
+   "n_leaves": 8,
+   "first_split_items": [
+    90
+   ],
+   "n_distinct_first_items": 1
+  },
+  "openness": {
+   "n_leaves": 8,
+   "first_split_items": [
+    157
+   ],
+   "n_distinct_first_items": 1
+  }
+ },
+ "coverage": {
+  "depth": 4,
+  "facet": "neuroticism",
+  "items_used": 9,
+  "leaves": 13
+ }
+}

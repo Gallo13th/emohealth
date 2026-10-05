@@ -1,0 +1,28 @@
+{
+ "schema_version": "1.0",
+ "record_kind": "descriptions_norms",
+ "instrument": "MMPI-2",
+ "code": "mmpi-2",
+ "status": "partial",
+ "interpretation_basis": "t_score",
+ "reference_sample": {
+  "n": 2600,
+  "composition": "1,462 名女性 + 1,138 名男性",
+  "recruitment": "重新标准化（restandardization）期间收集，样本从约 2,900 人中筛出；剔除约 300 人（人口学信息缺失、MMPI-AX 漏答 > 39 题、F 量表或实验量表分数过分偏离）",
+  "year": 1989,
+  "note": "样本按当时人口普查比例在年龄、教育、婚姻、地域等维度上做过匹配；Butcher 同时指出「与普查值相符并不能保证对所有子群体都是可靠标准」（如贫困内城、原住民、流动人口等）"
+ },
+ "detail_source": null,
+ "dimension_summary": {},
+ "source": {
+  "citation": "Butcher, J. N., Dahlstrom, W. G., Graham, J. R., Tellegen, A., & Kaemmer, B. (1989/2001). MMPI-2 Manual for Administration, Scoring, and Interpretation. University of Minnesota Press.",
+  "evidence": [
+   "https://media.wiley.com/product_data/excerpt/34/04713453/0471345334.pdf（Butcher《A Beginner's Guide to the MMPI-2》节选，含 2,600 样本构成与剔除规则）",
+   "https://www.upress.umn.edu/test-division/mmpi-2/"
+  ],
+  "license": "题项与计分材料受 UMN Press 版权保护；本项目不收录题项。"
+ },
+ "applicability_warning": "常模为 1989 年美国成人样本；跨文化与时代适用性需另行论证。",
+ "notes": "本记录只登记**可核对的样本级事实**；逐量表的常模表（各分量表在不同人群的均值/SD/百分位）在购买材料中，本项目不复制。",
+ "unavailable_reason": ""
+}

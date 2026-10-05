@@ -1,0 +1,227 @@
+{
+ "sections": [
+  {
+   "heading": "先说这一句：你自述的这一段，不该由这份测评来回应",
+   "text": "你在自述里写的是「最近一直觉得活着没什么意思，做什么都提不起劲」。这句话值得被当真，也值得被一个有资质的人当面听。这份测评做不到这件事，它也不打算假装做得到。它是一份自测陪伴材料，不是危机支持，也不是评估工具。请你把这件事交给专业渠道，它们是可以联系到的：中国大陆已开通全国统一的心理援助热线（号码为五位，可在当地卫生健康部门或医院官网查到）；也可以联系所在城市的心理援助热线、精神卫生中心，或综合医院的精神科／心理科门诊；如果有紧急的危险，请走急救通道，或直接前往最近的医院急诊，那里有值班人员。上面这几条是转介，不是我在这里做的干预——我不会替你评估你现在的状态，也不会替你判断该怎么办，更不会替你安排就诊。下面剩下的内容，是这份自测结果的表达整理，你可以在需要的时候再看。",
+   "grounded_in": [
+    "user_context",
+    "disclosures.1.text",
+    "disclosures.1.why",
+    "rules.forbidden"
+   ]  },
+  {
+   "heading": "这份结果是站在什么基础上说的",
+   "text": "你目前完成了一百五十道题，全卷三百道，完成度百分之五十，已完成五轮作答。也就是说，它是一份中途快照，不是一份收尾的结论。有三十个面向的题量已经够到可展示的门槛，因此会在解读里出现；没有任何面向因为题量不足被隐去。还有一条必须放在最前面的限制：这份结果的参照人群是英国样本，不是中国人群；源文件没有提供样本量、招募方式与采集年份，分带边界也是从常模表反推出来的。所以分数与分带的落点，在不同文化语境下都可能有偏移，请把它当作提示，而不是标尺。另外，这份结果不构成任何诊断，也不能替代专业评估——这不是客套话，而是这份工具的定位本身：它站在盲目自测与去精神科找专业医生之间，属于自测陪伴。",
+   "grounded_in": [
+    "coverage.items_answered",
+    "coverage.items_total",
+    "coverage.pct",
+    "coverage.rounds_done",
+    "facets_showable",
+    "facets_withheld",
+    "disclosures.0.text",
+    "disclosures.0.why",
+    "disclosures.1.text",
+    "disclosures.1.why"
+   ]
+  },
+  {
+   "heading": "有一件事需要先分开：这份结果里的「抑郁」，不是你认为的那个意思",
+   "text": "你自述的这一段，很容易让人直接去找「抑郁」那一个面向的分数。这个动作可以理解，但两者接不上，原因不是分数高低，而是这个面向本身的性质。第一，它不构成抑郁症的诊断或筛查——诊断需要临床评估与专门量表，而不是这样一份自评。第二，它不区分「情绪低落的原因」：因真实丧失（丧亲、失业、失恋）而悲伤的人，与因气质而长期低落的人，得分可能相同，量表无法分辨这两者。第三，它测量的只是低落与兴趣这类体验的强度，不测量焦虑与担忧，也不测量精力与活动量。第四，它甚至不去判断悲伤情绪是否「合理」——因真实丧失而悲伤同样计入。这几条合起来意味着：这个面向的分数既不能确认什么，也不能排除什么。它的精度在本卷里属于「完整」一档（可展示的三十个面向中，另有五个是这一档，其余二十五个是「较可靠」或「初步倾向」；它在本卷可展示面向里是精度最高的两个之一），但精度高指的是这个分数测它自己的目标时误差小，与「它能回答你的问题」是两件事。若你长期感到低落、失去兴趣，或出现伤害自己的念头，请直接寻求专业帮助，而不是依靠这份测评。",
+   "grounded_in": [
+    "user_context",
+    "facets.depression.name_zh",
+    "facets.depression.precision.tier",
+    "facets.depression.precision.advice",
+    "facets.depression.precision.r",
+    "facets.depression.does_not_measure",
+    "facets.depression.interpretation_caveats",
+    "facets_showable",
+    "disclosures.1.text"
+   ]
+  },
+  {
+   "heading": "关于「想达到什么水平」和「有没有动手」——这是两件事",
+   "text": "有一个组合在自评里很常见，值得单独说清楚，因为它只关乎题目问的是什么，与你是谁无关。「追求成就」这一面向问的是「你想达到多高的水平」，不是「你有多忙」，也不是「你已经做到了多少」；它与「自律」不是同一件事——想拿第一，和真的开始去做，是两件事，抱负很高却迟迟不动手，在这个量表里是常见的组合。同样地，「自我效能」问的是「你觉得自己行不行」，不是「你实际行不行」，它反映的是信心，不反映能力、成绩或经验；相信自己能把事做好，和真的会去做，也可以分开，自信却拖延在这个量表里同样常见。再加一条边界：这一组面向都不测量实际成就或能力，也不测量能否启动与坚持。所以当你觉得「提不起劲」的时候，这份结果里没有任何一个数字是在说明你有多少能力或多少意志。",
+   "grounded_in": [
+    "facets.achievementstriving.name_zh",
+    "facets.achievementstriving.interpretation_caveats",
+    "facets.achievementstriving.does_not_measure",
+    "facets.selfefficacy.interpretation_caveats",
+    "facets.selfefficacy.does_not_measure",
+    "facets.selfdiscipline.does_not_measure"
+   ]
+  },
+  {
+   "heading": "第 3 题、第 23 题、第 53 题：这几道题问的其实是「喜不喜欢想」",
+   "text": "第 3 题「有丰富的想象力」，问的是你脑子里是否常出现鲜明的画面与情境，也就是想象的活跃程度；它不问创意产出，中文里「想象力」常被等同于创造才能，但这个词在本卷里指的不是那个。第 23 题「喜欢解复杂的问题」，问的是你是否享受解决复杂问题；这里的「复杂」强调结构——需要多步骤、多因素权衡，而不是「困难」；重复性的苦活是困难但不复杂；这道题问的是兴趣，不是擅长。第 53 题「喜欢阅读有挑战性的材料」，问的是你是否喜欢读需要持续思考才能读懂的内容（学术、理论、思辨类），不是篇幅长或生词多的读物；若你的专业阅读已经是一种熟练劳动，它未必有挑战性。这三道题（以及下面几道）还有一个共同点：它们反映的是当时的作答，十二道题不足以说明一个人的稳定特质。本卷另有面向专门说明这一点：「思辨」这个面向不测量智力水平或学业成绩，也不测量知识储备；它测的是「你喜不喜欢思考」，不是「你有多聪明」。",
+   "grounded_in": [
+    "notable_items.0.order",
+    "notable_items.0.text_zh",
+    "notable_items.0.asks",
+    "notable_items.0.key_term.sense_here",
+    "notable_items.0.key_term.not_this",
+    "notable_items.0.localization_note",
+    "notable_items.1.order",
+    "notable_items.1.text_zh",
+    "notable_items.1.asks",
+    "notable_items.1.key_term.sense_here",
+    "notable_items.1.key_term.not_this",
+    "notable_items.1.localization_note",
+    "notable_items.4.order",
+    "notable_items.4.text_zh",
+    "notable_items.4.asks",
+    "notable_items.4.key_term.sense_here",
+    "notable_items.4.localization_note",
+    "facets.intellect.name_zh",
+    "facets.intellect.does_not_measure",
+    "notable_items.0.speak_neutrally"
+   ]
+  },
+  {
+   "heading": "第 27 题、第 57 题、第 87 题、第 117 题：这几道题问的是「有没有外溢」，不是「过得好不好」",
+   "text": "第 27 题「我的快乐会感染周围的人」，问的是你的愉快情绪是否会向外扩散、感染到别人；它不是在问你「自己开心吗」；如果你开心但不爱表现出来，这道题确实该给中等分，因为「向外散发」这一层它真的问了。第 57 题「生活里有很多好玩的事」，问的是生活整体是否让你感到有趣、愉快，偏的是乐趣而不是成就；它不是「生活顺利」，也不是问情绪本身。第 87 题「会表露出孩子般的快乐」，问的是你是否还会不加掩饰地、因小事而雀跃；「孩子般」在这里是中性的，不等于「幼稚」。第 117 题「一路笑着过日子」，问的是你是否以轻松的态度应对生活，它含有「即便有困难也能笑着过」的意味，不是「生活没烦恼」。这四道题放在一起时会显得彼此矛盾，是因为它们分属不同层面：有的问外溢，有的问乐趣，有的问态度。此外，「开朗」这个面向本身问的是你内心的情绪基调，不是你表现出多少；并且情绪会受到近期境遇的影响——若你最近经历了较大的好事或坏事，那个分数可能反映的是当下的处境，而不是一贯的你。",
+   "grounded_in": [
+    "notable_items.2.order",
+    "notable_items.2.text_zh",
+    "notable_items.2.asks",
+    "notable_items.2.key_term.sense_here",
+    "notable_items.5.order",
+    "notable_items.5.text_zh",
+    "notable_items.5.asks",
+    "notable_items.5.key_term.sense_here",
+    "notable_items.5.localization_note",
+    "notable_items.7.order",
+    "notable_items.7.text_zh",
+    "notable_items.7.asks",
+    "notable_items.7.key_term.sense_here",
+    "notable_items.7.key_term.not_this",
+    "notable_items.10.order",
+    "notable_items.10.text_zh",
+    "notable_items.10.asks",
+    "notable_items.10.localization_note",
+    "facets.cheerfulness.name_zh",
+    "facets.cheerfulness.interpretation_caveats"
+   ]
+  },
+  {
+   "heading": "第 46 题、第 66 题：两道容易被连起来看的题",
+   "text": "第 46 题「担心自己会做错事」，问的是你是否担心自己做错；这里的「做错」偏社交与规范意义上、会被他人否定的那种错，不是「怕影响结果」，也不等同于泛化的担忧。第 66 题「很容易心烦」，问的是你是否容易心烦、不悦——这道题在英文原词上的语义比其他题更宽，可指心烦、难过、不安，不完全是愤怒；中译保留了这种宽度，所以它可能混入神经质的其他成分，与构念的纯度不如同面向的其他题。两道题分开看会清楚一些：一道问的是社交评价情境里的担心，另一道问的是被激起的烦躁程度，而它们分别隶属的两个面向都不构成任何临床判断——「自我意识」这个面向在官方便携中文译本上的内部一致性偏低，请把它当作粗略提示，而非精确测量；「焦虑」这个面向也不构成焦虑障碍的诊断或筛查。",
+   "grounded_in": [
+    "notable_items.3.order",
+    "notable_items.3.text_zh",
+    "notable_items.3.asks",
+    "notable_items.3.key_term.sense_here",
+    "notable_items.3.key_term.not_this",
+    "notable_items.3.localization_note",
+    "notable_items.6.order",
+    "notable_items.6.text_zh",
+    "notable_items.6.asks",
+    "notable_items.6.localization_note",
+    "facets.selfconsciousness.interpretation_caveats",
+    "facets.anxiety.does_not_measure"
+   ]
+  },
+  {
+   "heading": "第 99 题、第 100 题、第 118 题：三道要被「如实」读的题",
+   "text": "第 99 题「会利用他人来达成自己的目的」是一道反向表述的题，问的是你是否会把他人的资源或关系当作工具来达成自己的目标；它与「合作」或「互相帮忙」不是一回事，工作中的协调资源也不等于把人当工具。这道题的空答率明显高于常态，说明有相当一部分人不愿意回答它——跳过也是有效的反应。第 100 题「喜欢有条有理」，问的是你是否喜欢秩序与规律；「条理」在这里包含时间安排上的规律性，不只是空间上的整齐，也不是「一成不变」。第 118 题「相信只有一种真正的宗教」同样是一道反向题，问的是信仰的排他性，即是否认为别的宗教是错的；它与「你有没有信仰」不是一回事，在中文语境里这类题的作答受社会情境影响较大。还有一个共通的限制：这三道题各自隶属的面向，构念都比名字窄得多——「道德」这个面向测的只是在利益面前是否诚实、是否操纵他人，不涉及人品、守法或价值立场，而且它极易受到「希望自己看起来是好人」这一倾向的影响；「条理性」只涉及环境与物品是否整齐，不是做事是否靠谱；「价值开放」问的不是政治立场属于哪一边，而是你在多大程度上愿意重新审视既有的传统、规范与权威，并且请把它当作一个很粗略的提示，而不是对你价值观的判断。",
+   "grounded_in": [
+    "notable_items.8.order",
+    "notable_items.8.text_zh",
+    "notable_items.8.asks",
+    "notable_items.8.key_term.sense_here",
+    "notable_items.8.key_term.not_this",
+    "notable_items.8.localization_note",
+    "notable_items.9.order",
+    "notable_items.9.text_zh",
+    "notable_items.9.asks",
+    "notable_items.9.key_term.sense_here",
+    "notable_items.9.key_term.not_this",
+    "notable_items.11.order",
+    "notable_items.11.text_zh",
+    "notable_items.11.asks",
+    "notable_items.11.key_term.sense_here",
+    "notable_items.11.key_term.not_this",
+    "notable_items.11.localization_note",
+    "facets.morality.interpretation_caveats",
+    "facets.orderliness.interpretation_caveats",
+    "facets.liberalism.interpretation_caveats"
+   ]
+  },
+  {
+   "heading": "还有些面向，读的时候需要知道它们各自笼着什么",
+   "text": "以下几条不是分数，而是「这个分数由什么构成」的说明，它们决定了一个数字能不能被当成一句话来读。「活跃度」是三十个面向里内部一致性最低的一个，它的题目混合了两类不同的东西：一部分问实际节奏与行为（忙碌、奔波、并行、反应快慢），另一部分问你对从容节奏的偏好（喜欢慢慢来、不慌不忙、向往悠闲、顺其自然）；如果你的实际节奏与内心偏好并不一致，这个总分无法同时描述这两件事。「自律」混合了「启动速度」与「持续执行」两个侧面，另有一道题问的是决策而非行动；若你在这几个侧面上差别很大，总分可能掩盖这一差异。「价值开放」和「审慎」的题目都以反向题为主，更容易受到「习惯性同意」这种作答倾向的干扰。「焦虑」里有一道题问的是情境适应，与其余题目的「担忧强度」主轴略有不同。「愤怒」含攻击性表述，社会赞许性会让一部分人低报。这些说明的意思是：本卷三十个面向里，只有少数几个可以按完整测量的精度看待，其余的都是方向大致可信、细节别当真的水平。",
+   "grounded_in": [
+    "facets.activitylevel.interpretation_caveats",
+    "facets.activitylevel.precision.r",
+    "facets.activitylevel.precision.advice",
+    "facets.selfdiscipline.interpretation_caveats",
+    "facets.liberalism.interpretation_caveats",
+    "facets.cautiousness.interpretation_caveats",
+    "facets.anxiety.interpretation_caveats",
+    "facets.anger.interpretation_caveats",
+    "facets_showable",
+    "facets.depression.precision.tier",
+    "facets.anger.precision.advice"
+   ]
+  },
+  {
+   "heading": "这些分数不意味着什么",
+   "text": "这一节要说的都是「不测量」，而它们和分数本身一样重要。这些面向不测量实际成就或能力，不测量能否启动与坚持，不测量是否相信自己做得到，也不测量是否追求外部认可；不测量风险承受能力或胆量，不测量旅行频率；不测量自己创作的能力，不测量是否懂艺术史或技法；不测量道德水平或人品，不测量共情能力，也不测量实际的付出量；不测量对强烈刺激的渴求，不测量社交中的主导性，不测量是否喜欢与人相处，不测量积极情绪的高低，不测量工作是否自律；不测量表达愤怒的社交技巧，也不测量攻击行为的实际发生；不测量抗压能力或依赖倾向，不测量对社交评价的在意；不构成焦虑障碍的诊断或筛查，不构成抑郁症的诊断或筛查；不测量精力与活动量，不测量悲伤情绪的合理性；不测量智力水平或学业成绩，不测量知识储备；不测量自尊或自我价值，不测量实际能力或过往成绩；不测量自己的共情准确性，不测量对他人动机的默认假设之外的更多东西；不测量实际的能力或资源——高负荷或突发情形下的主观应对感受才是它问的。此外，作答质量门这次没有触发任何协议偏离标志，只有一条说明：反义题一致性无法计算，这是作答范围限制，不是作答质量问题。",
+   "grounded_in": [
+    "facets.achievementstriving.does_not_measure",
+    "facets.adventurousness.does_not_measure",
+    "facets.aesthetic_appreciation_artistic_interests.does_not_measure",
+    "facets.morality.does_not_measure",
+    "facets.sympathy.does_not_measure",
+    "facets.altruism.does_not_measure",
+    "facets.excitementseeking.does_not_measure",
+    "facets.activitylevel.does_not_measure",
+    "facets.anger.does_not_measure",
+    "facets.anxiety.does_not_measure",
+    "facets.depression.does_not_measure",
+    "facets.intellect.does_not_measure",
+    "facets.selfefficacy.does_not_measure",
+    "facets.trust.does_not_measure",
+    "facets.vulnerability.does_not_measure",
+    "quality_gate.flags",
+    "quality_gate.notes",
+    "quality_gate.reliability_discount"
+   ]
+  },
+  {
+   "heading": "这一份不需要你反复对照",
+   "text": "最后说一句关于怎么用它的建议。这份结果覆盖了三十个面向，但它是一次中途快照：一百五十道题、五轮作答。它记录的是作答当时的自评，而自评会受到处境的牵动，所以它既不适合被当作长期不变的描述，也不适合被当作需要反复核对的清单。真正有信息量的，往往是你留意到自己最近的状态变化，而不是把某一个数字记住。关于要不要接着作答、分数会不会变、以及应该怎么处理现在的状况，这些都不在这一次解读的范围内——第一部分给出的那些求助渠道，比这两个问题都更值得优先处理。",
+   "grounded_in": [
+    "coverage.items_answered",
+    "coverage.rounds_done",
+    "facets_showable",
+    "rules.forbidden",
+    "disclosures.1.text",
+    "user_context"
+   ]
+  }
+ ],
+ "notable_items_surfaced": [
+  3,
+  23,
+  27,
+  46,
+  53,
+  57,
+  66,
+  87,
+  99,
+  100,
+  117,
+  118
+ ],
+ "disclosures_kept": [
+  "norm_sample",
+  "no_diagnosis",
+  "content_caveat",
+  "does_not_measure",
+  "crisis_referral"
+ ],
+ "refusals": []
+}

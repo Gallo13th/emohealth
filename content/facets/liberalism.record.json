@@ -1,0 +1,684 @@
+{
+ "_note": "价值开放（Liberalism / O6）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.liberalism",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "价值开放",
+  "facet_name_en": "Liberalism",
+  "facet_code": "O6",
+  "domain": "openness",
+  "domain_zh": "开放性"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "愿意重新审视既有价值、传统与权威的倾向：是否对不同的观念保持开放，以及是否倾向于挑战约定俗成。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量具体的政治立场（左/右、保守/自由）",
+   "不测量是否守法或有道德",
+   "不测量对新体验的兴趣（属 O4 冒险）",
+   "不测量批判性思维的能力"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "adventurousness",
+    "against_facet_zh": "冒险",
+    "distinction": "价值开放偏**观念与立场**；冒险偏**行为与体验**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "morality",
+    "against_facet_zh": "道德",
+    "distinction": "道德（A2）管的是**是否诚实守诺**；价值开放管的是**是否质疑既有规范**。可以非常诚实且非常反传统。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "dutifulness",
+    "against_facet_zh": "责任心",
+    "distinction": "责任心是**履行义务**；价值开放是**质疑义务的正当性**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "intellect",
+    "against_facet_zh": "思辨",
+    "distinction": "价值开放偏**立场**；思辨偏**思考过程**。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "倾向于维护既有的传统与规范，认为它们经得起检验",
+   "2": "大体认同传统，个别地方有保留",
+   "3": "视具体议题而定，没有一致的倾向",
+   "4": "常质疑约定俗成，愿意考虑不同的价值体系",
+   "5": "几乎总在重新审视既有规范，不认为传统本身构成理由",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_174",
+   "ipip_neo_175",
+   "ipip_neo_176",
+   "ipip_neo_177",
+   "ipip_neo_178",
+   "ipip_neo_179",
+   "ipip_neo_180"
+  ],
+  "forward_items": [
+   "ipip_neo_171",
+   "ipip_neo_172",
+   "ipip_neo_173"
+  ],
+  "key_balance": "3 正向 / 7 反向",
+  "reverse_keyed_count": 7,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.86,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 2.62,
+   "reference_age_band": "18-29",
+   "sd_used": 7.0,
+   "alpha_used": 0.86,
+   "by_age_band": {
+    "14-17": {
+     "sd": 7.0,
+     "sem": 2.62
+    },
+    "18-29": {
+     "sd": 7.0,
+     "sem": 2.62
+    },
+    "30+": {
+     "sd": 7.0,
+     "sem": 2.62
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±5.1 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "45-50",
+    "High": "35-40",
+    "Average": "29-34",
+    "Low": "23-28",
+    "Very Low": "10-22"
+   },
+   "18-29": {
+    "Very High": "43-50",
+    "High": "36-42",
+    "Average": "29-35",
+    "Low": "23-28",
+    "Very Low": "10-22"
+   },
+   "30+": {
+    "Very High": "44-50",
+    "High": "37-43",
+    "Average": "30-36",
+    "Low": "23-29",
+    "Very Low": "10-22"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "260-300",
+    "High": "234-259",
+    "Average": "208-233",
+    "Low": "182-207",
+    "Very Low": "60-181"
+   },
+   "18-29": {
+    "Very High": "263-300",
+    "High": "238-262",
+    "Average": "212-237",
+    "Low": "187-211",
+    "Very Low": "60-186"
+   },
+   "30+": {
+    "Very High": "266-300",
+    "High": "239-265",
+    "Average": "212-238",
+    "Low": "186-211",
+    "Very Low": "60-185"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "**本面向是全量表中最受文化语境影响的一个，也是政治色彩最重的一个。**在中文语境下，「自由」一词的联想与英文 liberalism 不完全对应，作答者可能按政治立场而非「对传统的开放度」作答。",
+   "**题目诊断显示本面向的计分键严重不平衡（3 正 / 7 反）**（见 `tools/check/validate_records.py` 的 V3 告警），这会放大默许倾向（acquiescence）的污染。",
+   "拆解自 NEO 的 O6 Values，但 IPIP 的题面较原始定义更直接地指向政治与宗教立场，构念外延在跨文化语境下不稳定。"
+  ],
+  "interpretation_caveats": [
+   "**这一面向是全部 30 个里最容易被误读的一个。** 它问的不是你的政治立场属于左还是右，而是**你在多大程度上愿意重新审视既有的传统、规范与权威**。",
+   "它同时受到**文化语境**的强烈影响：同样的题目，在不同社会里被理解成的「开放」并不相同。**请把这里的分数当作一个很粗略的提示，而不是对你价值观的判断。**",
+   "另外，本面向的计分方向以反向题为主（7 反 / 3 正），**更容易受到「习惯性同意」这种作答倾向的干扰**。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 2,
+  "chinese_project_translation": 8,
+  "chinese_overridden": 0,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 28,
+   "id": "ipip_neo_171",
+   "facet": "liberalism",
+   "key": 1,
+   "text_en": "Tend to vote for liberal political candidates.",
+   "text_master": "Tend to vote for liberal political candidates.",
+   "text_zh": "倾向于投票给立场开明的政治人物",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.613,
+    "item_total_r": 0.4917,
+    "missing_rate": 0.0066,
+    "neutral_rate": 0.3904
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "在选举中，你是否倾向支持立场较开明的候选人",
+    "key_term": {
+     "term": "liberal",
+     "sense_here": "政治光谱上偏**改革、少受传统约束**的一侧",
+     "not_this": "「自由散漫、不受约束」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「自由」理解成「不守规矩」",
+      "correction": "这里指政治立场偏改革。"
+     },
+     {
+      "misreading": "按「我是不是自由派」作答",
+      "correction": "这里只问投票倾向。"
+     }
+    ],
+    "counts_as": [
+     "会支持主张改革、减少传统约束的候选人"
+    ],
+    "does_not_count_as": [
+     "支持具体政策但不认同其立场倾向"
+    ],
+    "edge_cases": "**若你所在的政治环境里没有「开明 / 保守」这样的候选人类别，此题可跳过。**",
+    "localization_note": "**两重本地化风险**：(1) 中文「自由」的日常联想是「不受约束、随意」，而政治学意义的 liberal 是**支持改革与多元**；(2) **中国大陆没有这种候选人类别**，本题对内地作答者近乎无法作答。本卷译为「立场开明」以降低歧义，但仍请按「支持改革、少受传统约束」理解。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「liberal」"
+   }
+  },
+  {
+   "administration_order": 58,
+   "id": "ipip_neo_172",
+   "facet": "liberalism",
+   "key": 1,
+   "text_en": "Believe that there is no absolute right or wrong.",
+   "text_master": "Believe that there is no absolute right and wrong.",
+   "text_zh": "相信没有绝对的对错之分",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 1.684,
+    "item_total_r": 0.3717,
+    "missing_rate": 0.0062,
+    "neutral_rate": 0.1656
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否认为道德对错是相对的、依情境而定",
+    "key_term": {
+     "term": "absolute",
+     "sense_here": "绝对的、普适的",
+     "not_this": "「我没有是非观」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "读成「我做事没有底线」",
+      "correction": "这里问的是对道德性质的看法，不是行为准则。"
+     },
+     {
+      "misreading": "认为这是相对主义而反感",
+      "correction": "本题不含褒贬。"
+     }
+    ],
+    "counts_as": [
+     "认为对错要视情境与文化而定"
+    ],
+    "does_not_count_as": [
+     "没有自己的道德标准（那是另一回事）"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「没有绝对的对错」容易被读成**道德虚无**（一种负面评价）。本题问的其实是**是否认为道德判断依赖情境与文化**，属认识论立场，不是「你是不是个没原则的人」。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「absolute」"
+   }
+  },
+  {
+   "administration_order": 88,
+   "id": "ipip_neo_173",
+   "facet": "liberalism",
+   "key": 1,
+   "text_en": "Believe that criminals should receive help rather than punishment.",
+   "text_master": "Believe that criminals should receive help rather than punishment.",
+   "text_zh": "认为罪犯应得到帮助而不是惩罚",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.892,
+    "item_total_r": 0.4441,
+    "missing_rate": 0.0028,
+    "neutral_rate": 0.2522
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "对犯罪者，你更倾向矫治帮助还是惩罚",
+    "key_term": {
+     "term": "help rather than punishment",
+     "sense_here": "矫治优先于惩罚",
+     "not_this": "「不追究责任」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "认为这是「纵容犯罪」",
+      "correction": "本题问的是**处置方式偏好**，不涉及是否追究。"
+     },
+     {
+      "misreading": "认为必须二选一",
+      "correction": "可以是「先罚后帮」，本题问总体倾向。"
+     }
+    ],
+    "counts_as": [
+     "认为犯罪多与社会处境有关，应侧重矫治"
+    ],
+    "does_not_count_as": [
+     "认为责任必须追究（那是另一个维度）"
+    ],
+    "edge_cases": null,
+    "localization_note": null,
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「help rather than punishment」"
+   }
+  },
+  {
+   "administration_order": 118,
+   "id": "ipip_neo_174",
+   "facet": "liberalism",
+   "key": -1,
+   "text_en": "Believe in one true religion.",
+   "text_master": "Believe in one true religion.",
+   "text_zh": "相信只有一种真正的宗教",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.882,
+    "item_total_r": 0.3718,
+    "missing_rate": 0.005,
+    "neutral_rate": 0.1425
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否认为只有一种宗教是真的",
+    "key_term": {
+     "term": "one true religion",
+     "sense_here": "排他性的宗教信仰",
+     "not_this": "「有信仰」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「有信仰」当成「相信只有一种真宗教」",
+      "correction": "本题特指排他性。"
+     },
+     {
+      "misreading": "因为觉得这是个人隐私而不愿答",
+      "correction": "可跳过。"
+     }
+    ],
+    "counts_as": [
+     "认为只有自己信奉的宗教是正确的"
+    ],
+    "does_not_count_as": [
+     "有信仰但尊重其他宗教"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文语境里宗教问题的作答受**社会情境**影响较大。本题问的是**信仰的排他性**（是否认为别的宗教是错的），与「你有没有信仰」不是一回事。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「one true religion」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 148,
+   "id": "ipip_neo_175",
+   "facet": "liberalism",
+   "key": -1,
+   "text_en": "Tend to vote for conservative political candidates.",
+   "text_master": "Tend to vote for conservative political candidates.",
+   "text_zh": "倾向于投票给立场保守的政治人物",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.189,
+    "item_total_r": 0.5418,
+    "missing_rate": 0.0052,
+    "neutral_rate": 0.3784
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）在选举中，你是否倾向支持立场较保守的候选人",
+    "key_term": {
+     "term": "conservative",
+     "sense_here": "政治光谱上偏**维护传统与既有秩序**的一侧",
+     "not_this": "「胆小怕事、守旧」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「保守」理解成「胆小怕事」",
+      "correction": "这里指政治立场。"
+     },
+     {
+      "misreading": "与第 1 题方向搞混",
+      "correction": "本题是反向题。"
+     }
+    ],
+    "counts_as": [
+     "会支持主张维持传统与现有秩序的候选人"
+    ],
+    "does_not_count_as": [
+     "个人性格保守但不影响投票"
+    ],
+    "edge_cases": "**若你的政治环境里没有这类选项，可跳过。**",
+    "localization_note": "同第 1 题的本地化风险：**中国大陆没有这种候选人类别**。另外中文「保守」的日常含义（守旧、不开放）与政治学含义（维护传统秩序）不完全重合。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「conservative」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 178,
+   "id": "ipip_neo_176",
+   "facet": "liberalism",
+   "key": -1,
+   "text_en": "Believe that too much tax money goes to support artists.",
+   "text_master": "Believe that too much tax money goes to support artists.",
+   "text_zh": "认为太多税款被用来资助艺术家",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.94,
+    "item_total_r": 0.3459,
+    "missing_rate": 0.0061,
+    "neutral_rate": 0.3417
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否认为政府花在艺术上的钱太多",
+    "key_term": {
+     "term": "too much",
+     "sense_here": "过多",
+     "not_this": "「不该有任何公共文化支出」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "认为这是评价艺术价值",
+      "correction": "本题问财政分配，不是艺术本身。"
+     },
+     {
+      "misreading": "因为不了解相关政策而跳过",
+      "correction": "可按「公共资金该不该投向艺术」的一般态度作答。"
+     }
+    ],
+    "counts_as": [
+     "觉得公共资金投在艺术上的比例偏高"
+    ],
+    "does_not_count_as": [
+     "只是不喜欢某些具体作品"
+    ],
+    "edge_cases": null,
+    "localization_note": "公共财政对艺术的资助在各国差异极大，**中文作答者可能缺少这个政策语境**。本题实际在测**对非实用领域的公共投入是否反感**——可联系你所在环境里类似的公共文化开支来理解。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「too much」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 208,
+   "id": "ipip_neo_177",
+   "facet": "liberalism",
+   "key": -1,
+   "text_en": "Believe laws should be strictly enforced.",
+   "text_master": "Believe that laws should be strictly enforced.",
+   "text_zh": "认为法律应当严格执行",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.852,
+    "item_total_r": 0.4513,
+    "missing_rate": 0.0044,
+    "neutral_rate": 0.2605
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否主张法律必须不打折扣地执行",
+    "key_term": {
+     "term": "strictly enforced",
+     "sense_here": "严格执行",
+     "not_this": "「法律本身该更严」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「执行严格」当成「刑罚更重」",
+      "correction": "执行严格是照章办事，与罚多重无关。"
+     },
+     {
+      "misreading": "认为这显然正确所以选高分",
+      "correction": "本题会反向计分，高分降低价值开放得分，请按真实立场作答。"
+     }
+    ],
+    "counts_as": [
+     "认为法律该照字面执行、少留裁量空间"
+    ],
+    "does_not_count_as": [
+     "认为应允许个案裁量"
+    ],
+    "edge_cases": null,
+    "localization_note": "**关键区分**：本题问的是**执行**的严格程度，不是**条文**的严厉程度。中文「严打」容易把两者混起来。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「strictly enforced」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 238,
+   "id": "ipip_neo_178",
+   "facet": "liberalism",
+   "key": -1,
+   "text_en": "Believe that we coddle criminals too much.",
+   "text_master": "Believe that we coddle criminals too much.",
+   "text_zh": "认为我们对罪犯太纵容了",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.638,
+    "item_total_r": 0.4745,
+    "missing_rate": 0.0053,
+    "neutral_rate": 0.3205
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否认为社会对犯罪者过于宽容",
+    "key_term": {
+     "term": "coddle",
+     "sense_here": "溺爱、纵容",
+     "not_this": "「依法从轻」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「程序保障」当成「纵容」",
+      "correction": "那是法治原则，不是本题所指。"
+     },
+     {
+      "misreading": "与第 3 题（应得到帮助）方向对照理解",
+      "correction": "两题分别测惩罚与矫治两端。"
+     }
+    ],
+    "counts_as": [
+     "觉得对犯罪者的处置太软"
+    ],
+    "does_not_count_as": [
+     "认为程序正义优先"
+    ],
+    "edge_cases": null,
+    "localization_note": "「coddle」有**宠坏**的意味，比中文「纵容」更带情绪。请按「是否觉得对犯罪者太仁慈了」理解。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「coddle」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 268,
+   "id": "ipip_neo_179",
+   "facet": "liberalism",
+   "key": -1,
+   "text_en": "Believe that we should be tough on crime.",
+   "text_master": "Believe that we should be tough on crime.",
+   "text_zh": "认为我们应该严惩犯罪",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.08,
+    "item_total_r": 0.5317,
+    "missing_rate": 0.004,
+    "neutral_rate": 0.2015
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否主张对犯罪采取强硬态度",
+    "key_term": {
+     "term": "tough on crime",
+     "sense_here": "强硬路线",
+     "not_this": "「支持法治」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「严格执行法律」混同（那是第 7 题）",
+      "correction": "本题是**惩罚力度**的取向。"
+     },
+     {
+      "misreading": "认为必须二选一（严惩 vs 帮助）",
+      "correction": "可以两者兼有，本题问倾向。"
+     }
+    ],
+    "counts_as": [
+     "主张加重刑罚、减少宽容"
+    ],
+    "does_not_count_as": [
+     "只是主张依法办事"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 7、8 题（严格执行、太纵容）语义接近，**三题共同构成一组「惩罚取向」的题**。若作答时感到重复，按同一标准作答即可。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「tough on crime」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 298,
+   "id": "ipip_neo_180",
+   "facet": "liberalism",
+   "key": -1,
+   "text_en": "Like to stand during the national anthem.",
+   "text_master": "Like to stand during the national anthem.",
+   "text_zh": "愿意在奏国歌时起立",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 2.097,
+    "item_total_r": 0.3278,
+    "missing_rate": 0.0049,
+    "neutral_rate": 0.1842
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）奏国歌时你是否愿意起立",
+    "key_term": {
+     "term": "like to",
+     "sense_here": "**愿意起立**",
+     "not_this": "「爱不爱国」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它当作爱国心测试",
+      "correction": "本题在量表里归属「对传统的遵从」，不是爱国度量表。"
+     },
+     {
+      "misreading": "因为场合不同（如在家看电视）而犹豫",
+      "correction": "按你是否认同这一做法作答。"
+     }
+    ],
+    "counts_as": [
+     "认同并在场合中会起立"
+    ],
+    "does_not_count_as": [
+     "因为场合不便而没起立（那是情境，不是态度）"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题是典型的「文化特异」题。** 起立致意在不同国家的社会规范强度不同，且中文语境里「起立」与「爱国」的绑定较强，容易让人按政治态度而非「对传统仪式的遵从度」作答。本面向测的其实是**对既有传统与规范的遵从**。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「like to」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

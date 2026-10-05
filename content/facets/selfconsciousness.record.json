@@ -1,0 +1,683 @@
+{
+ "_note": "自我意识（Self-Consciousness / N4）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.selfconsciousness",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "自我意识",
+  "facet_name_en": "Self-Consciousness",
+  "facet_code": "N4",
+  "domain": "neuroticism",
+  "domain_zh": "神经质"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "在他人面前感到不自在、容易害羞与困窘的倾向：对他人评价的敏感程度，以及在社交场合中的舒适度。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量是否喜欢与人相处（属 E1 友好、E2 合群）",
+   "不测量一般性的担忧（属 N1 焦虑）",
+   "不测量社交技能的高低",
+   "不测量是否在意他人**看法本身**——这里问的是**在他人面前的自在程度**"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "anxiety",
+    "against_facet_zh": "焦虑",
+    "distinction": "自我意识特指社交情境中的不自在；焦虑是一般性的担忧。若担忧不限于社交场合，应归入焦虑。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "assertiveness",
+    "against_facet_zh": "决断性",
+    "distinction": "决断性管的是**在人群中主导**；自我意识管的是**在人群中是否自在**。安静但自在 ≠ 自我意识高。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "friendliness",
+    "against_facet_zh": "友好",
+    "distinction": "友好是主动亲近他人的意愿；自我意识是被注视时的不适。可以很想亲近人但一被注视就紧张。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "vulnerability",
+    "against_facet_zh": "脆弱性",
+    "distinction": "自我意识限于社交评价情境；脆弱性是广泛的应对困难。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "在他人面前很自在，不在意别人怎么看",
+   "2": "多数社交场合放松，偶有拘谨",
+   "3": "在陌生或正式场合会有点不自在",
+   "4": "经常在意别人的看法，在人前容易紧张",
+   "5": "几乎总在意他人评价，社交场合明显局促",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_037",
+   "ipip_neo_038",
+   "ipip_neo_039",
+   "ipip_neo_040"
+  ],
+  "forward_items": [
+   "ipip_neo_031",
+   "ipip_neo_032",
+   "ipip_neo_033",
+   "ipip_neo_034",
+   "ipip_neo_035",
+   "ipip_neo_036"
+  ],
+  "key_balance": "6 正向 / 4 反向",
+  "reverse_keyed_count": 4,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.8,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 3.35,
+   "reference_age_band": "18-29",
+   "sd_used": 7.5,
+   "alpha_used": 0.8,
+   "by_age_band": {
+    "14-17": {
+     "sd": 8.0,
+     "sem": 3.58
+    },
+    "18-29": {
+     "sd": 7.5,
+     "sem": 3.35
+    },
+    "30+": {
+     "sd": 8.0,
+     "sem": 3.58
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±6.6 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "43-50",
+    "High": "35-42",
+    "Average": "27-34",
+    "Low": "20-26",
+    "Very Low": "10-19"
+   },
+   "18-29": {
+    "Very High": "42-50",
+    "High": "34-41",
+    "Average": "27-33",
+    "Low": "19-26",
+    "Very Low": "10-18"
+   },
+   "30+": {
+    "Very High": "41-50",
+    "High": "33-40",
+    "Average": "25-32",
+    "Low": "17-24",
+    "Very Low": "10-16"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "242-300",
+    "High": "205-241",
+    "Average": "168-204",
+    "Low": "131-167",
+    "Very Low": "60-130"
+   },
+   "18-29": {
+    "Very High": "238-300",
+    "High": "200-237",
+    "Average": "163-199",
+    "Low": "125-162",
+    "Very Low": "60-124"
+   },
+   "30+": {
+    "Very High": "230-300",
+    "High": "190-229",
+    "Average": "149-189",
+    "Low": "109-148",
+    "Very Low": "60-108"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "**官方便携中文译本在本面向上的 α 仅 .602**（见 phase0_ipip_audit §4），为 N 维度内较低的一个，需在解读中说明。",
+   "本面向与 E1 友好、E3 决断性存在经验上的负相关，作答者可能把「不喜欢社交」误读为「在社交中不自在」。"
+  ],
+  "interpretation_caveats": [
+   "**本面向在官方便携中文译本上的内部一致性偏低（α=.602）**，意味着这几道题的中文表述可能没能统一地指向同一个构念。请把它当作粗略提示，而非精确测量。",
+   "这一面向问的是**在他人面前是否自在**，不是**是否喜欢与人相处**。如果你乐意和人交往、只是一被注视就紧张，这属于本面向；如果你单纯偏好独处而不紧张，则不属于。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 4,
+  "chinese_project_translation": 5,
+  "chinese_overridden": 1,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 16,
+   "id": "ipip_neo_031",
+   "facet": "selfconsciousness",
+   "key": 1,
+   "text_en": "Am easily intimidated.",
+   "text_master": "Am easily intimidated.",
+   "text_zh": "面对强势的人容易被压住（Am easily intimidated）",
+   "text_zh_source": "project_translation_override",
+   "translation_note": {
+    "defect": "语义偏移（A2 语法不等值）",
+    "reason": "原意是**在强势、有威慑力的人面前退缩、不敢坚持**，不是对危险或恐怖事物的恐惧。情境：面对严厉的上级或气场强的人，你会不自觉地缩小自己。"
+   },
+   "diagnostics": {
+    "priority_score": 0.108,
+    "item_total_r": 0.5543,
+    "missing_rate": 0.0054,
+    "neutral_rate": 0.2245
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "面对强势的人或场面，你是否容易感到被压住",
+    "key_term": {
+     "term": "intimidated",
+     "sense_here": "被威慑、被压住",
+     "not_this": "「被惊吓」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它理解成「容易被吓到」（如怕黑）",
+      "correction": "这里指人际情境中的被压制感。"
+     },
+     {
+      "misreading": "与「焦虑」面向混同",
+      "correction": "那是泛化的担忧。"
+     }
+    ],
+    "counts_as": [
+     "面对强势的人会明显退缩、不敢坚持"
+    ],
+    "does_not_count_as": [
+     "对具体危险感到害怕"
+    ],
+    "edge_cases": "**本题中译偏窄，请按上面的说明校准。**",
+    "localization_note": "中文「吓住」偏「被惊吓」，而 intimidated 更偏**面对强势者时的退缩与被压制感**。**本卷中译偏窄**（属 11 类错误中的语义偏移）。请按「面对强势的人时是否容易退缩」理解。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「intimidated」"
+   }
+  },
+  {
+   "administration_order": 46,
+   "id": "ipip_neo_032",
+   "facet": "selfconsciousness",
+   "key": 1,
+   "text_en": "Am afraid that I will do the wrong thing.",
+   "text_master": "Am afraid that I will do the wrong thing.",
+   "text_zh": "担心自己会做错事",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.661,
+    "item_total_r": 0.4742,
+    "missing_rate": 0.0063,
+    "neutral_rate": 0.1761
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会担心自己做错",
+    "key_term": {
+     "term": "the wrong thing",
+     "sense_here": "做错（**社交与规范意义上**的错）",
+     "not_this": "「怕影响结果」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与焦虑面向混同",
+      "correction": "本题限定在「做错」这一社交评价情境。"
+     },
+     {
+      "misreading": "把它理解成「怕犯错影响结果」",
+      "correction": "更偏怕被人评判。"
+     }
+    ],
+    "counts_as": [
+     "做事前会反复担心会不会不合规矩"
+    ],
+    "does_not_count_as": [
+     "对事情结果有担忧但不涉及他人评价"
+    ],
+    "edge_cases": null,
+    "localization_note": "与「焦虑」面向的区别：那是**泛化的担忧**，本题特指**担心自己的行为不合规范或被人否定**，属社交评价情境。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「the wrong thing」"
+   }
+  },
+  {
+   "administration_order": 76,
+   "id": "ipip_neo_033",
+   "facet": "selfconsciousness",
+   "key": 1,
+   "text_en": "Find it difficult to approach others.",
+   "text_master": "Find it difficult to approach others.",
+   "text_zh": "感觉自己很难接近别人",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.084,
+    "item_total_r": 0.6173,
+    "missing_rate": 0.0042,
+    "neutral_rate": 0.17
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否觉得主动接近别人有困难",
+    "key_term": {
+     "term": "approach",
+     "sense_here": "主动接近（**由你发起**）",
+     "not_this": "「不想接近」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「不想接近」当成「难以接近」",
+      "correction": "本题指想接近但有阻力。"
+     },
+     {
+      "misreading": "与「合群性」混同",
+      "correction": "那是想不想要人陪。"
+     }
+    ],
+    "counts_as": [
+     "想认识人时也迈不出第一步"
+    ],
+    "does_not_count_as": [
+     "不想接近人（那是偏好）"
+    ],
+    "edge_cases": null,
+    "localization_note": "与「友好」面向的区别：那是**对他人的温度**，本题是**主动接近时的阻力**。**很想亲近人但不敢主动**，是本题的高分、友好面向的高分。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「approach」"
+   }
+  },
+  {
+   "administration_order": 106,
+   "id": "ipip_neo_034",
+   "facet": "selfconsciousness",
+   "key": 1,
+   "text_en": "Am afraid to draw attention to myself.",
+   "text_master": "Am afraid to draw attention to myself.",
+   "text_zh": "害怕引起他人的注意",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.106,
+    "item_total_r": 0.5661,
+    "missing_rate": 0.0053,
+    "neutral_rate": 0.2016
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否害怕成为别人注意的对象",
+    "key_term": {
+     "term": "draw attention",
+     "sense_here": "引起注意（无论正面还是负面）",
+     "not_this": "「怕出丑」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "认为只有被批评才怕",
+      "correction": "被表扬、被注视同样计入。"
+     },
+     {
+      "misreading": "与「谦逊」面向混同",
+      "correction": "那是自我定位，本题是社交中的不适。"
+     }
+    ],
+    "counts_as": [
+     "会避免让别人注意到自己"
+    ],
+    "does_not_count_as": [
+     "喜欢低调但不怕被注意"
+    ],
+    "edge_cases": null,
+    "localization_note": "注意：**不只是怕出丑**——被正面关注（如表扬）也会让人不适，同样计入。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「draw attention」"
+   }
+  },
+  {
+   "administration_order": 136,
+   "id": "ipip_neo_035",
+   "facet": "selfconsciousness",
+   "key": 1,
+   "text_en": "Only feel comfortable with friends.",
+   "text_master": "Only feel comfortable with friends.",
+   "text_zh": "只有和朋友在一起的时候我才会感到自在",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.267,
+    "item_total_r": 0.5072,
+    "missing_rate": 0.0031,
+    "neutral_rate": 0.1769
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否只在熟人面前才自在",
+    "key_term": {
+     "term": "only",
+     "sense_here": "**只**在熟人面前",
+     "not_this": "「更放松」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「更放松」当成「才自在」",
+      "correction": "区别在于陌生场合是否基本可用。"
+     },
+     {
+      "misreading": "与「合群性」混同",
+      "correction": "本题问自在程度，不是想不想要人陪。"
+     }
+    ],
+    "counts_as": [
+     "在陌生场合会明显不自在"
+    ],
+    "does_not_count_as": [
+     "陌生人面前也能应付"
+    ],
+    "edge_cases": null,
+    "localization_note": "**「only」是关键**：不只是在熟人面前更放松，而是**只有在熟人面前才能自在**。若你在陌生人面前也基本自如，本题应给低分。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「only」"
+   }
+  },
+  {
+   "administration_order": 166,
+   "id": "ipip_neo_036",
+   "facet": "selfconsciousness",
+   "key": 1,
+   "text_en": "Stumble over my words.",
+   "text_master": "Stumble over my words.",
+   "text_zh": "说话会磕磕巴巴",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.395,
+    "item_total_r": 0.3982,
+    "missing_rate": 0.005,
+    "neutral_rate": 0.199
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你说话时是否会磕巴、不流畅",
+    "key_term": {
+     "term": "stumble over words",
+     "sense_here": "说话磕绊（**紧张所致**）",
+     "not_this": "「口才不好」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「口才不好」当成「紧张」",
+      "correction": "本题偏紧张所致的不流畅。"
+     },
+     {
+      "misreading": "与其余题混同",
+      "correction": "本题更偏表达层面。"
+     }
+    ],
+    "counts_as": [
+     "紧张时说话会打结"
+    ],
+    "does_not_count_as": [
+     "平时说话就不太流畅（那未必是紧张）"
+    ],
+    "edge_cases": "**本题可能混入了口语表达能力**，与社交不适的关联较弱。",
+    "localization_note": "**本题的题目-总分相关 .40，在本面向偏低**——「说话磕巴」可能是**语言表达习惯**或**口语能力**，不完全是「在他人面前的不自在」。**一个口头表达本就不流畅、但社交上很自在的人，会在本题得高分。** 这是本面向内容异质的一处。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「stumble over words」"
+   }
+  },
+  {
+   "administration_order": 196,
+   "id": "ipip_neo_037",
+   "facet": "selfconsciousness",
+   "key": -1,
+   "text_en": "Am not embarrassed easily.",
+   "text_master": "Am not embarrassed easily.",
+   "text_zh": "不容易感到尴尬",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.074,
+    "item_total_r": 0.5284,
+    "missing_rate": 0.0037,
+    "neutral_rate": 0.1344
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否不容易感到尴尬",
+    "key_term": {
+     "term": "embarrassed",
+     "sense_here": "尴尬、难为情",
+     "not_this": "「表现得不自在」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「装作没事」当成「不尴尬」",
+      "correction": "内心感受才是本题所问。"
+     },
+     {
+      "misreading": "与其余反向题混同",
+      "correction": "本题问情绪反应。"
+     }
+    ],
+    "counts_as": [
+     "出丑时也能很快过去"
+    ],
+    "does_not_count_as": [
+     "表面镇定但内心很难受"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「尴尬」是日常词，理解无障碍。**注意区分「感到尴尬」与「表现得不自在」**——本题问前者。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「embarrassed」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 226,
+   "id": "ipip_neo_038",
+   "facet": "selfconsciousness",
+   "key": -1,
+   "text_en": "Am comfortable in unfamiliar situations.",
+   "text_master": "Am comfortable in unfamiliar situations.",
+   "text_zh": "在陌生的场合也能自在",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.971,
+    "item_total_r": 0.4402,
+    "missing_rate": 0.0048,
+    "neutral_rate": 0.1814
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你在陌生场合是否也能自在",
+    "key_term": {
+     "term": "unfamiliar situations",
+     "sense_here": "陌生的情境（不限于社交）",
+     "not_this": "「复杂场合」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "只按社交场合理解",
+      "correction": "也包括新环境、新流程。"
+     },
+     {
+      "misreading": "与「焦虑」面向混同",
+      "correction": "那面向偏情绪紧张，本题偏自在程度。"
+     }
+    ],
+    "counts_as": [
+     "进入陌生环境能较快放松"
+    ],
+    "does_not_count_as": [
+     "表面应付但内心紧张"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题的 situations 比其余题更宽**——它不限于社交场合，也包括新环境、新流程。因此它同时与「焦虑」面向（适应新环境）有交叠。**这是本面向边界不干净的一处。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「unfamiliar situations」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 256,
+   "id": "ipip_neo_039",
+   "facet": "selfconsciousness",
+   "key": -1,
+   "text_en": "Am not bothered by difficult social situations.",
+   "text_master": "Am not bothered by difficult social situations.",
+   "text_zh": "不会被复杂的社交情境所困扰",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.188,
+    "item_total_r": 0.5167,
+    "missing_rate": 0.0039,
+    "neutral_rate": 0.1518
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）复杂的社交场合是否不会困扰你",
+    "key_term": {
+     "term": "difficult social situations",
+     "sense_here": "复杂的社交情境（多人、微妙、需察言观色）",
+     "not_this": "「陌生场合」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「陌生场合」混同（那是第 9 题）",
+      "correction": "本题强调复杂而非陌生。"
+     },
+     {
+      "misreading": "把「不喜欢应酬」当成「被困扰」",
+      "correction": "不喜欢与感到困扰不同。"
+     }
+    ],
+    "counts_as": [
+     "在复杂社交场合里也能自在应对"
+    ],
+    "does_not_count_as": [
+     "不喜欢但能应付"
+    ],
+    "edge_cases": null,
+    "localization_note": "**「复杂」是关键**——不是「陌生」，而是**需要处理多重人际关系信号的场合**（如多人应酬、微妙的场合）。不擅长这类场合不一定等于社交焦虑。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「difficult social situations」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 286,
+   "id": "ipip_neo_040",
+   "facet": "selfconsciousness",
+   "key": -1,
+   "text_en": "Am able to stand up for myself.",
+   "text_master": "Am able to stand up for myself.",
+   "text_zh": "能为自己争取",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.456,
+    "item_total_r": 0.4893,
+    "missing_rate": 0.0036,
+    "neutral_rate": 0.0875
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否能为自己的权益发声",
+    "key_term": {
+     "term": "stand up for myself",
+     "sense_here": "为自己据理力争",
+     "not_this": "「爱争」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「决断性」混同",
+      "correction": "主导 vs 维权。"
+     },
+     {
+      "misreading": "把它理解成「爱争」",
+      "correction": "本题指必要时能争取。"
+     }
+    ],
+    "counts_as": [
+     "被冒犯时会明确表达"
+    ],
+    "does_not_count_as": [
+     "只在原则问题上争（那也算）"
+    ],
+    "edge_cases": null,
+    "localization_note": "与「决断性」（E3）的区别：那是**在人群中主导**，本题是**维护自身立场**。可以不爱主导但很会为自己争取。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「stand up for myself」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

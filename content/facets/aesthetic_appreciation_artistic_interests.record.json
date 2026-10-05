@@ -1,0 +1,680 @@
+{
+ "_note": "审美（Artistic Interests / O2）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.aesthetic_appreciation_artistic_interests",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "审美",
+  "facet_name_en": "Artistic Interests",
+  "facet_code": "O2",
+  "domain": "openness",
+  "domain_zh": "开放性"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "被艺术与美打动的倾向：对音乐、绘画、文学、自然之美的敏感与投入，以及是否愿意为此花时间。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量自己创作的能力",
+   "不测量是否懂艺术史或技法",
+   "不测量想象力（属 O1 想象力）",
+   "不测量对娱乐内容的消费量（看剧刷视频不算审美）"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "imagination",
+    "against_facet_zh": "想象力",
+    "distinction": "审美是**被外物打动**；想象力是**自己生成画面**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "intellect",
+    "against_facet_zh": "思辨",
+    "distinction": "审美偏**感受与体验**；思辨偏**分析与推理**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "emotionality",
+    "against_facet_zh": "情感丰富",
+    "distinction": "审美有**对象**（作品、自然）；情感丰富是**一般性的情绪强度**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "adventurousness",
+    "against_facet_zh": "冒险",
+    "distinction": "审美是**感受**新体验；冒险是**去做**新事情。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "对艺术与自然之美基本无感，不太会为此停留",
+   "2": "偶尔被打动，但不主动去找",
+   "3": "会欣赏一些作品或风景，看心情",
+   "4": "经常被作品或自然打动，会主动去找来看或去体验",
+   "5": "艺术与美是我生活中重要的部分，几乎总在留意",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_136",
+   "ipip_neo_137",
+   "ipip_neo_138",
+   "ipip_neo_139",
+   "ipip_neo_140"
+  ],
+  "forward_items": [
+   "ipip_neo_131",
+   "ipip_neo_132",
+   "ipip_neo_133",
+   "ipip_neo_134",
+   "ipip_neo_135"
+  ],
+  "key_balance": "5 正向 / 5 反向",
+  "reverse_keyed_count": 5,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.84,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 2.6,
+   "reference_age_band": "18-29",
+   "sd_used": 6.5,
+   "alpha_used": 0.84,
+   "by_age_band": {
+    "14-17": {
+     "sd": 7.5,
+     "sem": 3.0
+    },
+    "18-29": {
+     "sd": 6.5,
+     "sem": 2.6
+    },
+    "30+": {
+     "sd": 7.0,
+     "sem": 2.8
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±5.1 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "49-50",
+    "High": "41-48",
+    "Average": "34-40",
+    "Low": "26-33",
+    "Very Low": "10-25"
+   },
+   "18-29": {
+    "Very High": "49-50",
+    "High": "43-48",
+    "Average": "36-42",
+    "Low": "29-35",
+    "Very Low": "10-28"
+   },
+   "30+": {
+    "Very High": "50",
+    "High": "43-49",
+    "Average": "36-42",
+    "Low": "30-35",
+    "Very Low": "10-29"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "260-300",
+    "High": "234-259",
+    "Average": "208-233",
+    "Low": "182-207",
+    "Very Low": "60-181"
+   },
+   "18-29": {
+    "Very High": "263-300",
+    "High": "238-262",
+    "Average": "212-237",
+    "Low": "187-211",
+    "Very Low": "60-186"
+   },
+   "30+": {
+    "Very High": "266-300",
+    "High": "239-265",
+    "Average": "212-238",
+    "Low": "186-211",
+    "Very Low": "60-185"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "**题目诊断显示本面向存在明显的天花板效应**：第 3 题（Like music）有 **75.7% 的作答者选了两端**（多为「非常符合」），第 5 题（Do not like concerts，反向）极端值比例也达 48%。这类题目几乎不区分个体，会拉低本面向的有效测量范围。",
+   "第 3 题（Like music）在当代几乎人人都会同意，作为测量题目的鉴别力极低——这是内容层面的问题，脚手架无法修复。"
+  ],
+  "interpretation_caveats": [
+   "**注意：「喜欢音乐」这类题在人群中几乎人人同意**，所以它对本面向的区分贡献很小。如果你的总分处在中间地带，可能只是因为部分题目本身区分度低，而不代表你的审美倾向「中庸」。",
+   "这一面向问的是**是否被作品与美打动**，不是**是否懂艺术**，也不是**消费了多少内容**。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 4,
+  "chinese_project_translation": 6,
+  "chinese_overridden": 0,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 8,
+   "id": "ipip_neo_131",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "key": 1,
+   "text_en": "Believe in the importance of art.",
+   "text_master": "Believe in the importance of art.",
+   "text_zh": "认为艺术是很重要的",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.088,
+    "item_total_r": 0.6302,
+    "missing_rate": 0.0044,
+    "neutral_rate": 0.1926
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否认为艺术在生活中有重要地位",
+    "key_term": {
+     "term": "importance of art",
+     "sense_here": "艺术的价值地位",
+     "not_this": "「懂艺术」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "只按美术理解",
+      "correction": "音乐、文学、影视都算。"
+     },
+     {
+      "misreading": "把「认为重要」当成「自己懂」",
+      "correction": "本题问价值判断，不问造诣。"
+     }
+    ],
+    "counts_as": [
+     "认为艺术值得投入公共资源与个人时间"
+    ],
+    "does_not_count_as": [
+     "懂技法但认为它不重要"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「艺术」在日常使用中常被窄化为「美术」，而英文 art 涵盖音乐、文学、戏剧、绘画等。**本题的 art 是广义的。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「importance of art」"
+   }
+  },
+  {
+   "administration_order": 38,
+   "id": "ipip_neo_132",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "key": 1,
+   "text_en": "Like music.",
+   "text_master": "Like music.",
+   "text_zh": "喜欢音乐",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 2.797,
+    "item_total_r": 0.3061,
+    "missing_rate": 0.0034,
+    "neutral_rate": 0.0346
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否喜欢听音乐",
+    "key_term": {
+     "term": "like",
+     "sense_here": "喜欢",
+     "not_this": "「懂音乐」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "认为必须懂乐理才算",
+      "correction": "只问喜欢与否。"
+     },
+     {
+      "misreading": "觉得自己只是「随便听听」而选低分",
+      "correction": "随便听也是喜欢的一种。"
+     }
+    ],
+    "counts_as": [
+     "会主动听音乐"
+    ],
+    "does_not_count_as": [
+     "完全不接触音乐"
+    ],
+    "edge_cases": "**本题区分度极低**——对总分影响很小，不必纠结。",
+    "localization_note": "**本题的诊断数据表明存在明显的天花板效应**：只有 3% 的人选「中立」，绝大多数选两端（以「非常符合」为主）。**在当代几乎人人都会同意这句话，所以它几乎不区分人。** 若你觉得这题「没什么好答的」，那正是它的问题。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「like」"
+   }
+  },
+  {
+   "administration_order": 68,
+   "id": "ipip_neo_133",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "key": 1,
+   "text_en": "See beauty in things that others might not notice.",
+   "text_master": "See beauty in things that others might not notice.",
+   "text_zh": "我能发现别人看不到的美",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.584,
+    "item_total_r": 0.4753,
+    "missing_rate": 0.003,
+    "neutral_rate": 0.1251
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会留意到别人忽略的美感",
+    "key_term": {
+     "term": "might not notice",
+     "sense_here": "**别人可能没注意到**",
+     "not_this": "「我的品味比别人好」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "读成「我的审美比一般人强」",
+      "correction": "本题不含优越感，只描述敏感度。"
+     },
+     {
+      "misreading": "觉得难判断而选中间",
+      "correction": "可回想是否有过「只有你注意到某个细节」的经历。"
+     }
+    ],
+    "counts_as": [
+     "常注意到光线、构图、声音里的细节"
+    ],
+    "does_not_count_as": [
+     "认为别人的品味不如自己"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文这句容易被读成**自我标榜审美优越**（别人看不到，我能看到）。本题是中性的描述：你对细节中的美感是否敏感。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「might not notice」"
+   }
+  },
+  {
+   "administration_order": 98,
+   "id": "ipip_neo_134",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "key": 1,
+   "text_en": "Love flowers.",
+   "text_master": "Love flowers.",
+   "text_zh": "喜欢花",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.957,
+    "item_total_r": 0.4428,
+    "missing_rate": 0.0054,
+    "neutral_rate": 0.1733
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否喜欢花",
+    "key_term": {
+     "term": "flowers",
+     "sense_here": "花",
+     "not_this": "——这是「审美」的具体化操作"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "因为「送花太俗」而不选高分",
+      "correction": "本题问你是否喜欢花本身。"
+     },
+     {
+      "misreading": "认为这只是某一性别的题",
+      "correction": "与性别无关。"
+     }
+    ],
+    "counts_as": [
+     "会因为花而感到愉悦"
+    ],
+    "does_not_count_as": [
+     "喜欢自然但不特别在意花"
+    ],
+    "edge_cases": "**本题只覆盖审美的一个窄侧面**，请与其余题目一起看。",
+    "localization_note": "**本题把「审美」具体化为「喜欢花」，操作化较窄。** 若你欣赏建筑、音乐、文字之美，但对花无感，本题会给低分——**但这不代表你审美低**。这是本面向题目覆盖不全的表现。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「flowers」"
+   }
+  },
+  {
+   "administration_order": 128,
+   "id": "ipip_neo_135",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "key": 1,
+   "text_en": "Enjoy the beauty of nature.",
+   "text_master": "Enjoy the beauty of nature.",
+   "text_zh": "享受自然之美",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.905,
+    "item_total_r": 0.4689,
+    "missing_rate": 0.0038,
+    "neutral_rate": 0.0618
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会因为自然景色而感到愉悦",
+    "key_term": {
+     "term": "beauty of nature",
+     "sense_here": "自然之美",
+     "not_this": "「喜欢户外活动」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「爱户外」当成「赏自然之美」",
+      "correction": "运动型户外与审美体验不同。"
+     },
+     {
+      "misreading": "因为不常出门而选低分",
+      "correction": "本题问感受能力，不是出行频率。"
+     }
+    ],
+    "counts_as": [
+     "会为日出、山林、海面停留"
+    ],
+    "does_not_count_as": [
+     "喜欢户外运动但不看风景"
+    ],
+    "edge_cases": null,
+    "localization_note": "与「冒险」面向的 `Like to visit new places` 不同：那是**去新地方**，本题是**被景色打动**。爱旅行但不在意风景的人，两题答案会不同。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「beauty of nature」"
+   }
+  },
+  {
+   "administration_order": 158,
+   "id": "ipip_neo_136",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "key": -1,
+   "text_en": "Do not like art.",
+   "text_master": "Do not like art.",
+   "text_zh": "不喜欢艺术",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.282,
+    "item_total_r": 0.6784,
+    "missing_rate": 0.006,
+    "neutral_rate": 0.1146
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否不喜欢艺术",
+    "key_term": {
+     "term": "art",
+     "sense_here": "广义的艺术（美术、音乐、文学、戏剧等）",
+     "not_this": "只指美术"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "只按美术理解",
+      "correction": "请按广义艺术。"
+     },
+     {
+      "misreading": "与第 1 题方向搞混",
+      "correction": "本题是反向题。"
+     }
+    ],
+    "counts_as": [
+     "对各类艺术作品都提不起兴趣"
+    ],
+    "does_not_count_as": [
+     "只是对某个门类无感"
+    ],
+    "edge_cases": null,
+    "localization_note": "同第 1 题：中文「艺术」易窄化为美术。**本面向共有 4 道题列举了不同艺术门类（美术、诗歌、音乐、舞蹈）**，若你只对其中某些门类有兴趣，这些题的答案会不一致——这是本面向的正常表现。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「art」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 188,
+   "id": "ipip_neo_137",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "key": -1,
+   "text_en": "Do not like poetry.",
+   "text_master": "Do not like poetry.",
+   "text_zh": "不喜欢诗歌",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.088,
+    "item_total_r": 0.5521,
+    "missing_rate": 0.0044,
+    "neutral_rate": 0.146
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否不喜欢诗歌",
+    "key_term": {
+     "term": "poetry",
+     "sense_here": "诗歌",
+     "not_this": "「读不读得懂」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「读不懂」当成「不喜欢」",
+      "correction": "本题问兴趣。"
+     },
+     {
+      "misreading": "因为应试经历而反感",
+      "correction": "那确实是不喜欢，可据实作答。"
+     }
+    ],
+    "counts_as": [
+     "不会主动去读诗"
+    ],
+    "does_not_count_as": [
+     "不常读但欣赏诗歌"
+    ],
+    "edge_cases": null,
+    "localization_note": "**诗歌在中国教育里是必修内容，很多人对它的态度是「学过」而非「喜欢」。** 本题问的是**主动的欣赏**，不是读不读得懂，也不是学得好不好。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「poetry」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 218,
+   "id": "ipip_neo_138",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "key": -1,
+   "text_en": "Do not enjoy going to art museums.",
+   "text_master": "Do not enjoy going to art museums.",
+   "text_zh": "不喜欢去美术馆",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.09,
+    "item_total_r": 0.6377,
+    "missing_rate": 0.0045,
+    "neutral_rate": 0.1418
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否不喜欢去美术馆",
+    "key_term": {
+     "term": "enjoy going",
+     "sense_here": "享受**去**的过程",
+     "not_this": "「认为美术馆重要」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "因为「觉得应该重视艺术」而否认",
+      "correction": "请按是否享受逛美术馆作答。"
+     },
+     {
+      "misreading": "把「很少去」当成「不喜欢」",
+      "correction": "可能是没机会，那不算。"
+     }
+    ],
+    "counts_as": [
+     "进了美术馆会想快点出来"
+    ],
+    "does_not_count_as": [
+     "很少去但每次都享受"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 1 题（认为艺术重要）的区别：那是**价值判断**，本题是**个人体验**。认为艺术重要但自己不爱逛美术馆，是完全一致的。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「enjoy going」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 248,
+   "id": "ipip_neo_139",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "key": -1,
+   "text_en": "Do not like concerts.",
+   "text_master": "Do not like concerts.",
+   "text_zh": "不喜欢音乐会",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 2.648,
+    "item_total_r": 0.2699,
+    "missing_rate": 0.0035,
+    "neutral_rate": 0.1188
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否不喜欢音乐会",
+    "key_term": {
+     "term": "concerts",
+     "sense_here": "现场音乐会（古典或流行演唱会均可）",
+     "not_this": "——"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「不喜欢人多」当成「不喜欢音乐」",
+      "correction": "两件事可以分开。"
+     },
+     {
+      "misreading": "与第 3 题（喜欢音乐）混同",
+      "correction": "家里听与现场听是两种偏好。"
+     }
+    ],
+    "counts_as": [
+     "不会主动去听现场演出"
+    ],
+    "does_not_count_as": [
+     "喜欢音乐但不喜欢现场氛围"
+    ],
+    "edge_cases": "**本题与「审美」的关联较弱**，可能混入了对人群与噪音的偏好。",
+    "localization_note": "**本题的题目-总分相关为 .27，是本面向最低的。** 原因很可能是：不喜欢去音乐会更接近**「不喜欢人多、不喜欢吵闹」**（属内向或感官敏感），而不完全是「审美低」。**若你觉得这题问的是另一个问题，你的感觉有依据。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「concerts」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 278,
+   "id": "ipip_neo_140",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "key": -1,
+   "text_en": "Do not enjoy watching dance performances.",
+   "text_master": "Do not enjoy watching dance performances.",
+   "text_zh": "不喜欢看舞蹈演出",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.667,
+    "item_total_r": 0.468,
+    "missing_rate": 0.0035,
+    "neutral_rate": 0.1345
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否不喜欢看舞蹈演出",
+    "key_term": {
+     "term": "dance performances",
+     "sense_here": "舞蹈演出（各类）",
+     "not_this": "——"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "只按某一舞种理解",
+      "correction": "请按整体。"
+     },
+     {
+      "misreading": "因为「看不懂」而选高分",
+      "correction": "本题问享受与否，与是否看懂无关。"
+     }
+    ],
+    "counts_as": [
+     "对舞蹈演出提不起兴趣"
+    ],
+    "does_not_count_as": [
+     "只看某一类舞蹈"
+    ],
+    "edge_cases": null,
+    "localization_note": "舞蹈在中文语境里涵盖民族舞、芭蕾、现代舞、街舞等，差别极大。**若你只对其中某类有兴趣，请按整体倾向作答。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「dance performances」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

@@ -1,0 +1,33 @@
+{
+ "sections": [
+  {
+   "heading": "先说清楚这是什么",
+   "text": "这份结果基于你答的 75 道题。其中 15 个面向已跨过精度门槛、可以解读，另外 15 个面向题量还不够，下面不会提到它们——不是它们「中等」，是我们还不知道。本结果不构成任何诊断，也不能替代专业评估。参照人群为英国样本，非中国人群。",
+   "grounded_in": [
+    "coverage.items_answered",
+    "facets_showable",
+    "facets_withheld"
+   ]
+  },
+  {
+   "heading": "有一道题想跟你多说一句",
+   "text": "你答的第 1 题是「为很多事情感到担心」。这道题问的其实是「你是否经常反复思虑各种事情、不容易停下来」。承重词 Worry 在这里指「反复的、难以主动停止的思虑」，而不是「日常语中的\"关心\"或\"在意\"（如关心家人健康）」。知道这一点，比知道分数更有用。",
+   "grounded_in": [
+    "notable_items.0.order",
+    "notable_items.0.asks",
+    "notable_items.0.key_term"
+   ]
+  }
+ ],
+ "notable_items_surfaced": [
+  1
+ ],
+ "disclosures_kept": [
+  "content_caveat",
+  "does_not_measure",
+  "no_diagnosis",
+  "norm_sample",
+  "precision"
+ ],
+ "refusals": []
+}

@@ -1,0 +1,128 @@
+{
+ "source": "Johnson (2005) N=7325；数据**已**反向重编码 —— 不要再翻转",
+ "question": "预测面向完整分时，非线性（树模型）比线性好多少？",
+ "method": "5 折交叉验证；全部指标取自留出折，不用训练集",
+ "citation": "Gonzalez, O. (2021). Psychometric and Machine Learning Approaches to Reduce the Length of Scales. Multivariate Behavioral Research, 56(6), 903-919.",
+ "caveat_from_literature": "和分完全由题目作答决定，只最小化预测误差的算法会把所有题都纳进来",
+ "results": [
+  {
+   "ring": 1,
+   "items": 30,
+   "model": "ols",
+   "r2_mean": 0.6596,
+   "r2_min": 0.486,
+   "seconds": 2.1
+  },
+  {
+   "ring": 1,
+   "items": 30,
+   "model": "ridge",
+   "r2_mean": 0.6596,
+   "r2_min": 0.486,
+   "seconds": 0.5
+  },
+  {
+   "ring": 1,
+   "items": 30,
+   "model": "gbt",
+   "r2_mean": 0.6579,
+   "r2_min": 0.4865,
+   "seconds": 264.7
+  },
+  {
+   "ring": 1,
+   "items": 30,
+   "model": "rf",
+   "r2_mean": 0.6407,
+   "r2_min": 0.4747,
+   "seconds": 63.2
+  },
+  {
+   "ring": 2,
+   "items": 60,
+   "model": "ols",
+   "r2_mean": 0.7814,
+   "r2_min": 0.6505,
+   "seconds": 23.5
+  },
+  {
+   "ring": 2,
+   "items": 60,
+   "model": "ridge",
+   "r2_mean": 0.7814,
+   "r2_min": 0.6505,
+   "seconds": 0.6
+  },
+  {
+   "ring": 2,
+   "items": 60,
+   "model": "gbt",
+   "r2_mean": 0.7764,
+   "r2_min": 0.6502,
+   "seconds": 445.3
+  },
+  {
+   "ring": 2,
+   "items": 60,
+   "model": "rf",
+   "r2_mean": 0.7554,
+   "r2_min": 0.6342,
+   "seconds": 82.1
+  },
+  {
+   "ring": 3,
+   "items": 90,
+   "model": "ols",
+   "r2_mean": 0.8397,
+   "r2_min": 0.733,
+   "seconds": 22.0
+  },
+  {
+   "ring": 3,
+   "items": 90,
+   "model": "ridge",
+   "r2_mean": 0.8397,
+   "r2_min": 0.733,
+   "seconds": 0.9
+  },
+  {
+   "ring": 3,
+   "items": 90,
+   "model": "gbt",
+   "r2_mean": 0.834,
+   "r2_min": 0.7265,
+   "seconds": 1313.3
+  },
+  {
+   "ring": 3,
+   "items": 90,
+   "model": "rf",
+   "r2_mean": 0.8115,
+   "r2_min": 0.6958,
+   "seconds": 211.6
+  }
+ ],
+ "nonlinear_gain": [
+  {
+   "ring": 1,
+   "items": 30,
+   "ols": 0.6596,
+   "best_nonlinear": 0.6579,
+   "gain": -0.0017
+  },
+  {
+   "ring": 2,
+   "items": 60,
+   "ols": 0.7814,
+   "best_nonlinear": 0.7764,
+   "gain": -0.005
+  },
+  {
+   "ring": 3,
+   "items": 90,
+   "ols": 0.8397,
+   "best_nonlinear": 0.834,
+   "gain": -0.0057
+  }
+ ]
+}

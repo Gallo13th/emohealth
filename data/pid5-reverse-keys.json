@@ -1,0 +1,57 @@
+{
+ "source": "archive/scales/PID-5/manual.pdf",
+ "extractor": "tools/build/build_pid5_scoring_keys.py",
+ "note": "手册 Step 1 正文原文：「Reverse the scores on the following items (i.e., 3 becomes 0, 2 becomes 1, 1 becomes 2, and 0 becomes 3): …」——该清单只有 14 题。但手册的 **facet 表**另把第 7、30 题标了 R。两处原文互相矛盾，本文件以**被数据裁决的一方**为准。",
+ "verbatim": "35, 58, 87, 90, 96, 97, 98, 131, 142, 155, 164, 177, 210, and 215",
+ "reverse_keyed": [
+  7,
+  30,
+  35,
+  58,
+  87,
+  90,
+  96,
+  97,
+  98,
+  131,
+  142,
+  155,
+  164,
+  177,
+  210,
+  215
+ ],
+ "reverse_source": "manual-facet-table-R",
+ "reverse_keyed_step1_verbatim": [
+  35,
+  58,
+  87,
+  90,
+  96,
+  97,
+  98,
+  131,
+  142,
+  155,
+  164,
+  177,
+  210,
+  215
+ ],
+ "evidence": {
+  "why_not_step1": "手册两处原文矛盾：Step 1 正文列 14 题，facet 表另把 7、30 标 R。必须裁决——反向键决定每题的计分方向，进而决定所有推断与常模对齐结果。",
+  "decision": "采用 facet 表的 16 题",
+  "evidence_1_item_text": "第 7 题「I avoid risky situations.」是 Risk Taking 的反向表述；第 30 题「I'm an energetic person.」是 Anhedonia 的反向表述。",
+  "evidence_2_data": "两份**独立**样本（CC-BY-4.0，见 archive/norms/pid-5-psychometrics/zenodo-extracted/data/），各自算「该题与同面向其余题之和」的相关，翻转前后各一次：第 7 题 donor −0.625→+0.625、SKID −0.617→+0.617；第 30 题 donor −0.516→+0.516、SKID −0.343→+0.343。对照组反转反而变差（第 4 题 +0.693→−0.693、第 100 题 +0.522→−0.522），说明该效应是这两个题特有的，不是方法假象。",
+  "evidence_3_reliability": "翻转后 Anhedonia α .842→.907、Risk Taking .838→.900。",
+  "sample_n": 2471,
+  "sample_note": "donor_kerber2022.csv（1243 人，0–3 计分）+ SKIDComMet_data.csv（1228 人，1–4 计分）；相关与 α 对整体平移不变，合并安全；均值/总分口径须先对齐。",
+  "cross_check": "同面向 25 个相关中「自己面向」最高者 218/220；25 面向 α 均值 0.860（已发表 0.87）、面向间相关均值 0.322（已发表 .33）——三项外部核对同时吻合。",
+  "survey_report": "research/pid5_psychometrics_survey.md"
+ },
+ "scale": {
+  "min": 0,
+  "max": 3,
+  "transform": "(min + max) - v"
+ }
+}

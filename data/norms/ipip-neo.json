@@ -1,0 +1,204 @@
+{
+ "schema_version": "1.0",
+ "record_kind": "descriptions_norms",
+ "instrument": "IPIP-NEO",
+ "code": "ipip-neo",
+ "status": "available",
+ "interpretation_basis": "percentile",
+ "reference_sample": {
+  "n": 145388,
+  "population": "IPIP 官网网络施测志愿者（国际样本，非概率抽样）",
+  "recruitment": "来源文件为 Johnson (2005) 公开数据集；本项目未获得独立的招募说明（见 evidence_gaps）",
+  "year": 2005,
+  "records_scanned": 307313
+ },
+ "detail_source": "data/norms/ipip-neo-300.json",
+ "dimension_summary": {
+  "achievementstriving": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 3.2931,
+   "sd": 0.348
+  },
+  "activitylevel": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 3.4469,
+   "sd": 0.3894
+  },
+  "adventurousness": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 3.3277,
+   "sd": 0.3917
+  },
+  "aesthetic_appreciation_artistic_interests": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 3.1613,
+   "sd": 0.3054
+  },
+  "altruism": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 2.9267,
+   "sd": 0.2871
+  },
+  "anger": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 2.9685,
+   "sd": 0.2997
+  },
+  "anxiety": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 3.1619,
+   "sd": 0.3363
+  },
+  "assertiveness": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 3.1014,
+   "sd": 0.3725
+  },
+  "cautiousness": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 3.1037,
+   "sd": 0.5577
+  },
+  "cheerfulness": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 3.398,
+   "sd": 0.5196
+  },
+  "cooperation": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 2.9212,
+   "sd": 0.522
+  },
+  "depression": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 2.8534,
+   "sd": 0.5017
+  },
+  "dutifulness": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 3.0,
+   "sd": 0.2675
+  },
+  "emotionality": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 3.1459,
+   "sd": 0.3988
+  },
+  "excitementseeking": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 3.0472,
+   "sd": 0.5625
+  },
+  "friendliness": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 3.1175,
+   "sd": 0.3002
+  },
+  "gregariousness": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 3.1636,
+   "sd": 0.3481
+  },
+  "imagination": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 3.1062,
+   "sd": 0.3234
+  },
+  "immoderation": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 3.0733,
+   "sd": 0.3804
+  },
+  "intellect": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 2.9762,
+   "sd": 0.3206
+  },
+  "liberalism": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 3.0339,
+   "sd": 0.411
+  },
+  "modesty_humility": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 2.9673,
+   "sd": 0.3918
+  },
+  "morality": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 2.5257,
+   "sd": 0.4978
+  },
+  "orderliness": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 3.2408,
+   "sd": 0.3943
+  },
+  "selfconsciousness": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 3.0724,
+   "sd": 0.3659
+  },
+  "selfdiscipline": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 3.0199,
+   "sd": 0.3342
+  },
+  "selfefficacy": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 3.2213,
+   "sd": 0.3059
+  },
+  "sympathy": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 2.9958,
+   "sd": 0.3499
+  },
+  "trust": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 3.142,
+   "sd": 0.3284
+  },
+  "vulnerability": {
+   "unit": "facet_mean_of_10_items",
+   "mean": 3.2476,
+   "sd": 0.3547
+  },
+  "agreeableness": {
+   "unit": "mean_of_6_facets",
+   "mean": 2.9131,
+   "sd": 0.2304
+  },
+  "conscientiousness": {
+   "unit": "mean_of_6_facets",
+   "mean": 3.1465,
+   "sd": 0.1998
+  },
+  "extraversion": {
+   "unit": "mean_of_6_facets",
+   "mean": 3.2124,
+   "sd": 0.2319
+  },
+  "neuroticism": {
+   "unit": "mean_of_6_facets",
+   "mean": 3.0628,
+   "sd": 0.2306
+  },
+  "openness": {
+   "unit": "mean_of_6_facets",
+   "mean": 3.1252,
+   "sd": 0.1778
+  }
+ },
+ "source": {
+  "citation": "Johnson, J. A. (2005). Ascertaining the validity of individual protocols from Web-based personality inventories. Journal of Research in Personality, 39(1), 103–129. 数据集见 OSF。",
+  "evidence": [
+   "archive/datasets/osf-johnson/raw/IPIP300.dat",
+   "archive/datasets/osf-johnson/scoring/IPIP-NEO-300_ScoringTool.xlsx",
+   "data/norms/ipip-neo-300.json"
+  ],
+  "license": "IPIP 题项与量表为公有领域；Johnson (2005) 数据集随论文公开（OSF）"
+ },
+ "applicability_warning": "常模来自国际网络样本（IPIP 官网志愿者），**不是中国人群常模**；且为「平时一贯」自评，与临床样本不可比。",
+ "notes": "逐 facet / 逐域的百分位表（1..99）与均值、SD 在 detail_source；本文档 §4.0 只摘要均值/SD，避免两个真相源。另有 UK 常模的求和分带（按 14-17/18-29/30+ 分带），来源与局限见 content/facets/*.record.json 的 norms 段。"
+}

@@ -1,0 +1,11 @@
+# 分析脚本（tools/ 里那些需要 sklearn / pandas 的）的依赖。
+#
+# 安装到项目内 vendor/，由 ./bootstrap.sh 完成：
+#     python3 -m pip install --target ./vendor -r requirements.txt
+#
+# ⚠️ 版本必须钉死：这些数字最终会被烘进 ui/*.js 的数据包，
+#    换版本可能改变数值结果，而数据包不记录生成它的库版本。
+scikit-learn==1.6.1
+pandas==2.3.3
+numpy==2.0.2
+scipy==1.13.1

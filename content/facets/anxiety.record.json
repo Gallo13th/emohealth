@@ -1,0 +1,700 @@
+{
+ "_note": "焦虑（Anxiety / N1）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.anxiety",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "焦虑",
+  "facet_name_en": "Anxiety",
+  "facet_code": "N1",
+  "domain": "neuroticism",
+  "domain_zh": "神经质"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "个体体验担忧、恐惧、紧张与神经过敏的倾向：对潜在威胁保持警觉，反复思虑尚未发生或已经过去的事，并在压力下感到绷紧。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量抑郁或低落（属 N3 抑郁）",
+   "不测量对社交评价的在意（属 N4 自我意识）",
+   "不测量抗压能力或依赖倾向（属 N6 脆弱性）",
+   "不测量易怒与挫败感（属 N2 愤怒）",
+   "不构成焦虑障碍的诊断或筛查"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "depression",
+    "against_facet_zh": "抑郁",
+    "distinction": "焦虑指向未来的威胁（\"万一……怎么办\"）；抑郁指向已发生的丧失或当下的低落（\"我不行了\"）。担心 ≠ 难过。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "selfconsciousness",
+    "against_facet_zh": "自我意识",
+    "distinction": "焦虑是对各类事情的一般性担忧；自我意识特指担心被他人注视、评价或羞辱。若担忧只出现在社交场合，应归入自我意识。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "vulnerability",
+    "against_facet_zh": "脆弱性",
+    "distinction": "焦虑是慢性的担忧与紧张；脆弱性是在压力下无法应对、容易慌乱或依赖他人。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "anger",
+    "against_facet_zh": "愤怒",
+    "distinction": "两者都属神经质且都伴随唤醒，但焦虑是警觉与畏惧，愤怒是烦躁与敌意。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "即使事情悬而未决也很少反复想，能轻易放下",
+   "2": "偶尔担心，但不占据注意力，很快转移",
+   "3": "会为一些事担心，通常在事情解决后停止",
+   "4": "经常担心，且不容易停止，身体常有绷紧感",
+   "5": "几乎持续处于担心状态，难以转移注意力",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_006",
+   "ipip_neo_007",
+   "ipip_neo_008",
+   "ipip_neo_009",
+   "ipip_neo_010"
+  ],
+  "forward_items": [
+   "ipip_neo_001",
+   "ipip_neo_002",
+   "ipip_neo_003",
+   "ipip_neo_004",
+   "ipip_neo_005"
+  ],
+  "key_balance": "5 正向 / 5 反向",
+  "reverse_keyed_count": 5,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.83,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 3.5,
+   "reference_age_band": "18-29",
+   "sd_used": 8.5,
+   "alpha_used": 0.83,
+   "by_age_band": {
+    "14-17": {
+     "sd": 8.0,
+     "sem": 3.3
+    },
+    "18-29": {
+     "sd": 8.5,
+     "sem": 3.5
+    },
+    "30+": {
+     "sd": 8.0,
+     "sem": 3.3
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±6.9 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "44-50",
+    "High": "36-43",
+    "Average": "28-35",
+    "Low": "20-27",
+    "Very Low": "10-19"
+   },
+   "18-29": {
+    "Very High": "44-50",
+    "High": "35-43",
+    "Average": "27-34",
+    "Low": "19-26",
+    "Very Low": "10-18"
+   },
+   "30+": {
+    "Very High": "42-50",
+    "High": "34-41",
+    "Average": "26-33",
+    "Low": "17-25",
+    "Very Low": "10-16"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "242-300",
+    "High": "205-241",
+    "Average": "168-204",
+    "Low": "131-167",
+    "Very Low": "60-130"
+   },
+   "18-29": {
+    "Very High": "238-300",
+    "High": "200-237",
+    "Average": "163-199",
+    "Low": "125-162",
+    "Very Low": "60-124"
+   },
+   "30+": {
+    "Very High": "230-300",
+    "High": "190-229",
+    "Average": "149-189",
+    "Low": "109-148",
+    "Very Low": "60-108"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "第 10 题（Adapt easily to new situations）语义偏「情境适应」，与本面向其余 9 题的「担忧强度」主轴略有不同。"
+  ],
+  "interpretation_caveats": [
+   "第 10 题（容易适应新环境）问的是**情境适应**，与其余 9 题的「担忧强度」主轴略有不同。若你「担忧程度不高、但进入新环境很吃力」，或相反，这个总分可能掩盖这一差异。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 4,
+  "chinese_project_translation": 6,
+  "chinese_overridden": 0,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 1,
+   "id": "ipip_neo_001",
+   "facet": "anxiety",
+   "key": 1,
+   "text_en": "Worry about things.",
+   "text_master": "Worry about things.",
+   "text_zh": "为很多事情感到担心",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.018,
+    "item_total_r": 0.6093,
+    "missing_rate": 0.0009,
+    "neutral_rate": 0.1342
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否经常反复思虑各种事情、不容易停下来",
+    "key_term": {
+     "term": "Worry",
+     "sense_here": "反复的、难以主动停止的思虑",
+     "not_this": "日常语中的\"关心\"或\"在意\"（如关心家人健康）"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把\"关心\"当成\"担心\"——认为凡是惦记着一件事就算",
+      "correction": "关键差别在于能否停下来。想一下就放下的是关心；反复想、放不下的是担心。"
+     },
+     {
+      "misreading": "认为只有\"大事\"才算担心",
+      "correction": "这里不区分事情大小，只看你花在思虑上的程度。为琐事反复想同样计入。"
+     }
+    ],
+    "counts_as": [
+     "事情还没发生就开始反复设想各种可能",
+     "事情已经过去，仍反复回想",
+     "需要刻意提醒自己\"别想了\"才能停止"
+    ],
+    "does_not_count_as": [
+     "面对正在发生的真实威胁而做出的即时应对（那是解决问题，不是担心）",
+     "想清楚一个具体问题后就放下、去行动"
+    ],
+    "edge_cases": "如果担心有充分理由、但你能在想清楚后自然停止，按\"频率\"而非\"强度\"作答。",
+    "localization_note": null,
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「Worry」"
+   }
+  },
+  {
+   "administration_order": 31,
+   "id": "ipip_neo_002",
+   "facet": "anxiety",
+   "key": 1,
+   "text_en": "Fear for the worst.",
+   "text_master": "Fear for the worst.",
+   "text_zh": "担心会发生最糟糕的情况",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.134,
+    "item_total_r": 0.5932,
+    "missing_rate": 0.0067,
+    "neutral_rate": 0.1981
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "面临不确定时，你是否习惯性预期最坏的结果",
+    "key_term": {
+     "term": "the worst",
+     "sense_here": "在结果未定时，自动倾向设想最坏的可能性",
+     "not_this": "对已有明确证据的坏消息感到难过"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它理解成\"遇到坏事会难过\"",
+      "correction": "这里问的是预期，不是反应。重点是在结果未定之前你倾向想什么。"
+     },
+     {
+      "misreading": "认为自己\"做准备\"也算预期最坏",
+      "correction": "为最坏情况做实际准备（如买保险）是行动；这里问的是心里是否自动浮现最坏画面。"
+     }
+    ],
+    "counts_as": [
+     "结果未定时，脑子里先出现最坏的画面",
+     "常对自己说\"肯定要出问题\""
+    ],
+    "does_not_count_as": [
+     "基于明确证据判断事情会变糟",
+     "为应对风险做实际准备"
+    ],
+    "edge_cases": "如果只在你确实处于高风险处境时这样想，属合理评估，不作高计分；若在一般日常中也如此，计入。",
+    "localization_note": null,
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「the worst」"
+   }
+  },
+  {
+   "administration_order": 61,
+   "id": "ipip_neo_003",
+   "facet": "anxiety",
+   "key": 1,
+   "text_en": "Am afraid of many things.",
+   "text_master": "Am afraid of many things.",
+   "text_zh": "对很多事情感到害怕",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.026,
+    "item_total_r": 0.5907,
+    "missing_rate": 0.0013,
+    "neutral_rate": 0.2007
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你感到害怕的对象是否比较广泛",
+    "key_term": {
+     "term": "many",
+     "sense_here": "害怕对象的**数量与范围**，而不是单一的强烈恐惧",
+     "not_this": "对某一件事（如飞行、演讲）有强烈恐惧"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "因为自己有某一个强烈的恐惧就选高分",
+      "correction": "这一题问的是广度。若只对一两件特定事物恐惧，即使很强烈，也不应据此题给高分。"
+     },
+     {
+      "misreading": "把\"谨慎\"当作害怕",
+      "correction": "评估风险后小心行事属谨慎；这里问的是情绪上的害怕感。"
+     }
+    ],
+    "counts_as": [
+     "害怕的对象种类较多，涉及多个生活领域",
+     "常因不同的事情感到不安或发怵"
+    ],
+    "does_not_count_as": [
+     "只对个别特定事物有恐惧",
+     "基于经验的合理谨慎"
+    ],
+    "edge_cases": "若恐惧集中在社交场合，请注意本量表另有\"自我意识\"面向；此处宜按一般性恐惧作答。",
+    "localization_note": null,
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「many」"
+   }
+  },
+  {
+   "administration_order": 91,
+   "id": "ipip_neo_004",
+   "facet": "anxiety",
+   "key": 1,
+   "text_en": "Get stressed out easily.",
+   "text_master": "Get stressed out easily.",
+   "text_zh": "我很容易觉得压力大",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.058,
+    "item_total_r": 0.69,
+    "missing_rate": 0.0029,
+    "neutral_rate": 0.1608
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "面对负荷时，你是否比别人更快感到吃不消",
+    "key_term": {
+     "term": "easily",
+     "sense_here": "达到压力状态的**门槛低、来得快**",
+     "not_this": "当前正处于高压处境因而感到压力（那是处境，不是特质）"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "因为自己最近事情多、确实很累就选高分",
+      "correction": "请按一贯情况作答。若你眼下正处于异常高压期，此处容易高估。"
+     },
+     {
+      "misreading": "把\"压力大\"理解成\"任务多\"",
+      "correction": "任务多不等于感到压力。这里问的是主观的绷紧与负荷感。"
+     }
+    ],
+    "counts_as": [
+     "同样的任务量下，你比别人更快感到绷紧",
+     "事情一多就明显感到吃不消"
+    ],
+    "does_not_count_as": [
+     "处于阶段性高压期（如赶工期）时的正常反应",
+     "任务本身确实超出合理负荷"
+    ],
+    "edge_cases": "请以\"平时的你\"为基准。若最近的你与平时的你差别很大，按平时作答。",
+    "localization_note": null,
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「easily」"
+   }
+  },
+  {
+   "administration_order": 121,
+   "id": "ipip_neo_005",
+   "facet": "anxiety",
+   "key": 1,
+   "text_en": "Get caught up in my problems.",
+   "text_master": "Get caught up in my problems.",
+   "text_zh": "被自己的问题困住",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.044,
+    "item_total_r": 0.6005,
+    "missing_rate": 0.0022,
+    "neutral_rate": 0.182
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否容易陷入对自身问题的反复思虑中难以脱身",
+    "key_term": {
+     "term": "caught up in",
+     "sense_here": "被卷入而难以脱身的状态，注意力被问题占据",
+     "not_this": "正在认真处理一个问题"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把\"有麻烦要解决\"当成\"被困住\"",
+      "correction": "有问题是客观处境；这里问的是你心里是否被它占住、难以抽离。"
+     },
+     {
+      "misreading": "与第 4 题（容易觉得压力大）混为一谈",
+      "correction": "第 4 题问压力来得快不快；这一题问陷入思虑后能不能出来。可以只有其一。"
+     }
+    ],
+    "counts_as": [
+     "反复想着自己的问题，做别的事时也走神",
+     "明知想下去没有帮助，仍停不下来"
+    ],
+    "does_not_count_as": [
+     "正在有计划地处理一个问题",
+     "问题解决后注意力自然转移"
+    ],
+    "edge_cases": null,
+    "localization_note": null,
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「caught up in」"
+   }
+  },
+  {
+   "administration_order": 151,
+   "id": "ipip_neo_006",
+   "facet": "anxiety",
+   "key": -1,
+   "text_en": "Am not easily bothered by things.",
+   "text_master": "Am not easily bothered by things.",
+   "text_zh": "不容易被事情打扰",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.086,
+    "item_total_r": 0.5885,
+    "missing_rate": 0.0043,
+    "neutral_rate": 0.1543
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否不容易被事情扰乱",
+    "key_term": {
+     "term": "bothered",
+     "sense_here": "被扰乱、心神不宁的程度",
+     "not_this": "被实际阻碍或妨碍（那是妨碍，不是打扰）"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "没注意这是反向题，按\"符合=高分\"作答后与本 facet 其他题矛盾",
+      "correction": "本题表述的是\"不焦虑\"。你越符合这句，说明焦虑越低。系统会自动反向计分，请照实作答即可。"
+     },
+     {
+      "misreading": "把\"不被打扰\"理解成\"不在意别人\"",
+      "correction": "这里只指情绪是否被搅动，与是否在意他人无关（那属宜人性）。"
+     }
+    ],
+    "counts_as": [
+     "遇到烦心事仍能保持平静",
+     "事情不顺时情绪起伏不明显"
+    ],
+    "does_not_count_as": [
+     "压抑或否认自己的情绪",
+     "对事情漠不关心"
+    ],
+    "edge_cases": null,
+    "localization_note": null,
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「bothered」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 181,
+   "id": "ipip_neo_007",
+   "facet": "anxiety",
+   "key": -1,
+   "text_en": "Am relaxed most of the time.",
+   "text_master": "Am relaxed most of the time.",
+   "text_zh": "大部分时间都很放松",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.08,
+    "item_total_r": 0.552,
+    "missing_rate": 0.004,
+    "neutral_rate": 0.1738
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你在大部分时间是否处于放松状态",
+    "key_term": {
+     "term": "most of the time",
+     "sense_here": "时间占比，强调\"大部分\"而非\"总是\"",
+     "not_this": "某个特定时刻的放松"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "因为\"偶尔也会紧张\"就选低分",
+      "correction": "这里问的是大部分时间的状态。偶尔紧张不影响你选\"比较符合\"。"
+     },
+     {
+      "misreading": "把\"放松\"等同于\"闲\"",
+      "correction": "忙但心里不绷紧，也可以是放松。这里问的是身心是否松下来。"
+     }
+    ],
+    "counts_as": [
+     "多数日子里身心是松的",
+     "不常感到绷紧或提着心"
+    ],
+    "does_not_count_as": [
+     "忙碌但心里安定（这仍算放松）",
+     "短暂的、情境性的放松"
+    ],
+    "edge_cases": null,
+    "localization_note": null,
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「most of the time」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 211,
+   "id": "ipip_neo_008",
+   "facet": "anxiety",
+   "key": -1,
+   "text_en": "Am not easily disturbed by events.",
+   "text_master": "Am not easily disturbed by events.",
+   "text_zh": "不容易被事件搅动",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.333,
+    "item_total_r": 0.5044,
+    "missing_rate": 0.005,
+    "neutral_rate": 0.2114
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）突发事件是否不容易打乱你的状态",
+    "key_term": {
+     "term": "disturbed",
+     "sense_here": "被打乱、失去原有状态",
+     "not_this": "被影响或改变了想法"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 6 题（不容易被事情打扰）视为同一题而给相同答案",
+      "correction": "第 6 题是一般性的\"事情\"，这一题强调\"事件\"——即突发、外来的变故。两者可以不同。"
+     },
+     {
+      "misreading": "把\"不被搅动\"当成\"没有情绪反应\"",
+      "correction": "有情绪反应但能较快回到原状态，仍算不被搅动。"
+     }
+    ],
+    "counts_as": [
+     "突发变故后能较快恢复常态",
+     "外界事件不易打乱你的节奏"
+    ],
+    "does_not_count_as": [
+     "对事件完全没有反应",
+     "强作镇定但内心已乱"
+    ],
+    "edge_cases": null,
+    "localization_note": null,
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「disturbed」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 241,
+   "id": "ipip_neo_009",
+   "facet": "anxiety",
+   "key": -1,
+   "text_en": "Don't worry about things that have already happened.",
+   "text_master": "Don't worry about things that have already happened.",
+   "text_zh": "不会为已经发生的事情担心",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.054,
+    "item_total_r": 0.5631,
+    "missing_rate": 0.0027,
+    "neutral_rate": 0.1055
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）事情过去之后，你是否不再反复回想",
+    "key_term": {
+     "term": "already happened",
+     "sense_here": "已经结束、无法改变的事",
+     "not_this": "正在发生、还可处理的事"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 1 题（为很多事情担心）混同",
+      "correction": "第 1 题不区分时间；这一题专门针对\"已经过去\"的事。若你对未发生的事担心、但对已发生的事能放下，两题答案应当不同。"
+     },
+     {
+      "misreading": "把\"不担心\"理解成\"不上心\"",
+      "correction": "这里指不反复回想，不等于不重视。"
+     }
+    ],
+    "counts_as": [
+     "事情过去后能自然放下，不再反复回想",
+     "不为无法改变的事耗费心神"
+    ],
+    "does_not_count_as": [
+     "从过去的事情中总结经验（那是反思，不是担心）",
+     "刻意压抑不去想"
+    ],
+    "edge_cases": null,
+    "localization_note": null,
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「already happened」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 271,
+   "id": "ipip_neo_010",
+   "facet": "anxiety",
+   "key": -1,
+   "text_en": "Adapt easily to new situations.",
+   "text_master": "Adapt easily to new situations.",
+   "text_zh": "容易适应新环境",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.025,
+    "item_total_r": 0.4336,
+    "missing_rate": 0.0042,
+    "neutral_rate": 0.1434
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）面对新情境时，你是否能较快安顿下来",
+    "key_term": {
+     "term": "adapt",
+     "sense_here": "在新情境中恢复到自在状态的速度",
+     "not_this": "喜欢新事物（那属开放性）"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把\"适应快\"理解成\"喜欢变化\"",
+      "correction": "这一题问的是能否安顿下来，与是否喜欢新事物无关。不喜欢变化但能很快适应，仍应选高分。"
+     },
+     {
+      "misreading": "与\"脆弱性\"面向混同",
+      "correction": "这一题属于焦虑面向，聚焦新情境带来的紧张；脆弱性面向聚焦压力下的应对能力。"
+     }
+    ],
+    "counts_as": [
+     "进入新环境后较快感到自在",
+     "不需要很长的调整期"
+    ],
+    "does_not_count_as": [
+     "对新事物感到兴奋或好奇",
+     "表面适应但内心持续紧张"
+    ],
+    "edge_cases": null,
+    "localization_note": null,
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「adapt」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

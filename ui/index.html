@@ -1,0 +1,2659 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EmoHealth · IPIP-NEO-300 自测陪伴</title>
+<style>
+  :root{
+    --bg:#faf8f5; --card:#fff; --ink:#2b2a28; --ink2:#6b6862; --ink3:#a19d95;
+    --line:#e8e4dd; --accent:#4a7c6f; --accent-soft:#e6efec;
+    --warm:#b5836a; --warm-soft:#f5ece7;
+    --locked:#dedad3; --shadow:0 1px 3px rgba(0,0,0,.05),0 8px 24px rgba(0,0,0,.04);
+    --tier1:#8fb8ac; --tier2:#4a7c6f; --tier3:#2f5d52;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.65 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+  .wrap{max-width:1440px;margin:0 auto;padding:20px 20px 80px}
+  h1{font-size:20px;font-weight:600;margin:0}
+  h2{font-size:16px;font-weight:600;margin:0 0 12px}
+  .top{display:flex;align-items:center;gap:16px;padding:16px 0 20px;flex-wrap:wrap}
+  .modes{display:flex;gap:6px;background:#efece6;padding:4px;border-radius:10px}
+  .modes button{border:0;background:transparent;padding:7px 16px;border-radius:7px;
+    cursor:pointer;font-size:14px;color:var(--ink2);font-weight:500}
+  .modes button.on{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.06)}
+  .spacer{flex:1}
+  .meta{font-size:13px;color:var(--ink3)}
+  /* ⚠️ 轨道必须写 `minmax(0, 1fr)`，不能只写 `1fr`：`1fr` 的最小值是内容的
+     **min-content**，于是「面板里的 5 列表格」（min-content ≈ 330px）会把卡片撑到
+     367.6px——在 360px 屏上被 `.layout{overflow-x:hidden}` **裁掉右侧约 24px**
+     （实测：360×640 下 `#stage` 367.6、SVG 右边界 366.6 全都超出视口）。
+     `minmax(0,1fr)` 让轨道可以缩到容器宽，宽内容改由**面板自己的** `overflow:auto`
+     承接（不是整页裁切）。移动端布局门 `tools/check/check_mobile_layout.js` 钉住这条。 */
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);
+    gap:20px;align-items:start}
+  @media(max-width:900px){.layout{grid-template-columns:minmax(0,1fr)}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    box-shadow:var(--shadow);padding:22px}
+  /* 进度 */
+  .bar{height:6px;background:#efece6;border-radius:3px;overflow:hidden}
+  .bar i{display:block;height:100%;background:var(--accent);transition:width .35s ease}
+  /* 情景条 */
+  .scenes{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+  .scene-chip{border:1px solid var(--line);background:#fff;border-radius:10px;
+    padding:8px 12px;cursor:pointer;font-size:13px;display:flex;gap:8px;align-items:center;
+    transition:.18s}
+  .scene-chip:hover{border-color:var(--accent);transform:translateY(-1px)}
+  .scene-chip.on{border-color:var(--accent);background:var(--accent-soft);
+    box-shadow:0 0 0 3px var(--accent-soft)}
+  .scene-chip.done{background:#f4f8f6;border-color:var(--tier1)}
+  .scene-chip .n{font-size:11px;color:var(--ink3);font-variant-numeric:tabular-nums}
+  .scene-chip.done .n{color:var(--accent)}
+  /* 题卡 */
+  .qhead{font-size:12px;letter-spacing:.06em;color:var(--ink3);text-transform:uppercase;
+    margin-bottom:10px}
+  .qtext{font-size:22px;line-height:1.5;font-weight:500;margin:6px 0 22px;min-height:66px}
+  .qtext .rev{display:inline-block;font-size:12px;color:var(--warm);background:var(--warm-soft);
+    border-radius:5px;padding:1px 7px;vertical-align:middle;margin-left:8px;font-weight:500}
+  .opts{display:grid;gap:8px}
+  .opt{display:flex;align-items:center;gap:12px;border:1px solid var(--line);background:#fff;
+    border-radius:10px;padding:13px 16px;cursor:pointer;text-align:left;font-size:15px;
+    color:var(--ink);transition:.14s;width:100%}
+  .opt:hover{border-color:var(--accent);background:var(--accent-soft)}
+  .opt .k{width:26px;height:26px;border-radius:7px;background:#f2efe9;display:grid;
+    place-items:center;font-size:13px;color:var(--ink2);font-weight:600;flex:none}
+  .opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+  .opt.sel .k{background:var(--accent);color:#fff}
+  .navrow{display:flex;gap:10px;margin-top:18px;align-items:center}
+  /* 「这题什么意思」——把 300 题脚手架递到用户手边 */
+  .why{margin-top:16px;border-top:1px dashed var(--line);padding-top:12px}
+  .why summary{cursor:pointer;font-size:13px;color:var(--accent);list-style:none;
+    display:inline-flex;align-items:center;gap:6px;user-select:none}
+  .why summary::-webkit-details-marker{display:none}
+  .why summary::before{content:"？";width:17px;height:17px;border-radius:50%;
+    background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;
+    font-size:11px;font-weight:700}
+  .why[open] summary::before{content:"−"}
+  .whybody{margin-top:12px;font-size:13.5px;line-height:1.75;color:var(--ink2)}
+  .whybody b{color:var(--ink)}
+  .whybody .k{background:#f6f3ee;border-radius:5px;padding:1px 6px;font-size:12.5px;
+    color:var(--ink)}
+  .whybody .mis{margin:8px 0 0;padding:0;list-style:none}
+  .whybody .mis li{padding:5px 0 5px 14px;position:relative;border-bottom:1px solid #f6f3ee}
+  .whybody .mis li:last-child{border-bottom:0}
+  .whybody .mis li::before{content:"×";position:absolute;left:0;color:var(--warm);
+    font-weight:700;font-size:12px}
+  .whybody .mis li em{font-style:normal;color:var(--accent)}
+  .whybody .cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+  .whybody .cols>div{background:#faf9f6;border-radius:8px;padding:9px 11px}
+  .whybody .cols h5{margin:0 0 5px;font-size:12px;color:var(--ink3);font-weight:600}
+  .whybody .cols ul{margin:0;padding-left:15px}
+  .whybody .loc{margin-top:10px;background:var(--warm-soft);border-radius:8px;
+    padding:9px 11px;color:#7a5a48;font-size:13px}
+  /* 结果里的面向详情 */
+  .facet{border:1px solid var(--line);border-radius:11px;padding:14px 16px;margin-bottom:10px}
+  .facet h4{margin:0 0 4px;font-size:14.5px}
+  .facet .band{font-size:12.5px;color:var(--ink3);margin-bottom:8px}
+  .facet .raw{font-variant-numeric:tabular-nums;font-weight:600;color:var(--accent)}
+  .facet .def{font-size:13.5px;color:var(--ink2);margin:8px 0}
+  .facet details{margin-top:8px;border-top:1px dashed var(--line);padding-top:8px}
+  .facet details summary{font-size:12.5px;color:var(--accent);cursor:pointer;
+    list-style:none}
+  .facet details summary::-webkit-details-marker{display:none}
+  .facet details summary::before{content:"▸ "}
+  .facet details[open] summary::before{content:"▾ "}
+  .facet details .d{font-size:13px;color:var(--ink2);line-height:1.7;margin-top:8px}
+  .facet details .d ul{margin:6px 0 0;padding-left:16px}
+  .btn{border:1px solid var(--line);background:#fff;border-radius:9px;padding:9px 18px;
+    cursor:pointer;font-size:14px;color:var(--ink);font-weight:500}
+  .btn:hover{border-color:var(--accent)}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .btn.primary:hover{opacity:.92}
+  .btn:disabled{opacity:.4;cursor:not-allowed}
+  /* 技能树 */
+  .dom{margin-bottom:14px}
+  .domname{font-size:11px;letter-spacing:.08em;color:var(--ink3);margin-bottom:6px;
+    text-transform:uppercase}
+  .sk{display:flex;align-items:center;gap:8px;padding:3px 0;font-size:13px}
+  .skname{flex:1;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .sk.locked .skname{color:var(--locked)}
+  .dots{display:flex;gap:2px;flex:none}
+  .dots i{width:5px;height:5px;border-radius:50%;background:var(--locked)}
+  .dots i.f{background:var(--accent)}
+  .dots i.f.t1{background:var(--tier1)} .dots i.f.t2{background:var(--tier2)}
+  .dots i.f.t3{background:var(--tier3)}
+  .badge{font-size:10px;padding:1px 6px;border-radius:4px;flex:none;
+    background:#f2efe9;color:var(--ink3);font-variant-numeric:tabular-nums}
+  .badge.u1{background:#eef4f2;color:#6f9c8f}
+  .badge.u2{background:#e3efeb;color:#417a6c}
+  .badge.u3{background:#d6e9e3;color:#2f5d52}
+  .legend{font-size:11.5px;color:var(--ink3);margin-top:14px;padding-top:12px;
+    border-top:1px solid var(--line);line-height:1.7}
+  /* 结果 */
+  .res h3{font-size:14px;margin:20px 0 8px;color:var(--ink)}
+  .res h3:first-child{margin-top:0}
+  .res .hint{font-size:12.5px;color:var(--ink3);margin:0 0 10px}
+  .res ul{list-style:none;padding:0;margin:0}
+  .res li{display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #f4f1ec;font-size:13.5px}
+  .res li:last-child{border-bottom:0}
+  .res .fi{color:var(--ink2);flex:none;width:104px;overflow:hidden;text-overflow:ellipsis;
+    white-space:nowrap}
+  .res .pct{flex:none;width:58px;text-align:right;font-variant-numeric:tabular-nums;
+    color:var(--accent);font-weight:600}
+  .res .pct.neg{color:var(--warm)}
+  .res .tx{color:var(--ink);flex:1}
+  .res .rv{color:var(--warm);font-size:11px;margin-right:3px}
+  .warn{background:var(--warm-soft);border-left:3px solid var(--warm);border-radius:0 8px 8px 0;
+    padding:11px 14px;font-size:13px;color:#7a5a48;margin-top:16px;line-height:1.6}
+  .note{font-size:12.5px;color:var(--ink3);margin-top:10px}
+  .empty{color:var(--ink3);font-size:14px;padding:40px 0;text-align:center}
+  .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);
+    background:#2f5d52;color:#fff;padding:11px 20px;border-radius:11px;font-size:14px;
+    opacity:0;pointer-events:none;transition:.3s;box-shadow:0 8px 28px rgba(0,0,0,.2);z-index:9}
+  .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+  /* 保存与导出 */
+  .io{display:flex;gap:8px;align-items:center;position:relative}
+  .io button{border:1px solid var(--line);background:#fff;border-radius:9px;
+    padding:7px 13px;cursor:pointer;font-size:13px;color:var(--ink);font-weight:500}
+  .io button:hover{border-color:var(--accent)}
+  .io button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .menu{position:absolute;top:110%;right:0;background:#fff;border:1px solid var(--line);
+    border-radius:11px;box-shadow:var(--shadow);padding:6px;min-width:240px;display:none;z-index:20}
+  .menu.on{display:block}
+  .menu button{display:block;width:100%;text-align:left;border:0;padding:9px 12px;
+    border-radius:7px;font-size:13.5px;background:transparent}
+  .menu button:hover{background:var(--accent-soft)}
+  .menu .sub{font-size:11.5px;color:var(--ink3);display:block;margin-top:2px;
+    font-weight:400;line-height:1.5}
+  .menu hr{border:0;border-top:1px solid var(--line);margin:5px 0}
+  .saved{font-size:12px;color:var(--ink3);white-space:nowrap}
+  /* ── 天赋树 ───────────────────────────────────────── */
+  /* 图是主角：给它尽可能宽的一列。原先面板列 400px 把 viewBox 1060 压成
+     ~665px 显示（缩放 0.63），节点半径与字号按比例一起缩水——
+     「看不看得清」直接取决于这一行的比例，而不是 font-size 写多少。 */
+  .tree{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:20px;align-items:start}
+  @media(max-width:1180px){.tree{grid-template-columns:1fr}}
+  /* 分级模式下天赋树是主角：主区通栏，右侧技能条收起 */
+  .layout.tier{grid-template-columns:minmax(0,1fr)}
+  .layout.tier #treecard{display:none}
+  .graphbox{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    box-shadow:var(--shadow);padding:10px;position:sticky;top:16px}
+  .graphbox svg{display:block;width:100%;height:auto}
+  .nd{cursor:pointer;transition:.15s}
+  .nd circle{transition:.2s}
+  .nd.locked{cursor:not-allowed}
+  .nd:not(.locked):hover circle{r:11}
+  .nd.rec circle{filter:drop-shadow(0 0 5px rgba(181,131,106,.45))}
+  .nd.sel circle{stroke-width:2.5}
+  .nd.ans circle{stroke:#fff;stroke-width:1.5}
+  .ringlbl{font-size:13px;fill:var(--ink3);font-variant-numeric:tabular-nums}
+  .ringlbl.cur{fill:var(--accent);font-weight:600}
+  .facetlbl{font-size:12px;fill:var(--ink3);pointer-events:none}
+  .facetlbl.on{fill:var(--ink2)}
+  .domlbl{font-size:15px;fill:var(--ink2);font-weight:600;letter-spacing:.04em}
+  .centerlbl{font-size:11px;fill:var(--ink3)}
+  .treelegend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--ink3);
+    padding:8px 6px 4px}
+  .treelegend i{display:inline-block;width:9px;height:9px;border-radius:50%;
+    margin-right:4px;vertical-align:-1px}
+  /* ── 窄屏 / 移动端 ────────────────────────────────────────────
+     SVG 的半径与字号随「viewBox→显示宽度」整体缩放，所以光靠 CSS 缩图会把
+     节点压到 4px、手指点不准。这里的做法是：**窄屏下把几何与字号放大**
+     （见 NR_OF()），同时减掉容不下的文字（支线名、图例的长说明），
+     只留「点节点作答」这一句提示。 */
+  .hhint{display:none;font-size:12.5px;color:var(--ink3);text-align:center;
+    padding:2px 6px 8px}
+  @media(max-width:700px){
+    .hhint{display:block}
+    .wrap{padding:10px 8px 60px}
+    /* 卡片的内边距要小：`.wrap` 与 `.card` 是**嵌套**的，14px+14px 一下吃掉 56px
+       宽度，而图是正方形、宽度直接决定高度——把卡片撑满，图才会真的变大（实测
+       图曾被卡在 300×300，就是因为 graphbox 只有 310 宽）。 */
+    .card{padding:8px}
+    .panel{padding:12px;min-height:0}
+    /* ── 作答区固定在屏幕底部（D109）──────────────────────────────
+       先试过「让图与作答区同屏」，但**数学上做不到**：390×844 上
+       页头 226 + 图 364 + 作答区 324 = 914 > 844。硬塞只有两条路——把图压到
+       100px（没法看）或把选项挤出屏幕（没法答）。
+       所以改成底部固定条：选中题后**选项永远在视野里**，页面只在「图 ↔ 结果」
+       之间滚。这正是要的效果——「不用每次上下划动」。
+       折起态、未选中题时它同时就是**推荐条**，所以「推荐常驻」也由它保证。
+       ⚠️ 两个测量出来的坑（别照直觉改）：
+       ① graphbox 必须给 `width:100%`，否则它的宽度由内容决定，svg 里的 `100%`
+          会解析成自己的内禀尺寸（900 单位被矮高度压成 300px），图永远是 300×300；
+       ② 所以 svg 用 `max-height` + `aspect-ratio` 而不是 `width:min(100%, …)`
+          （实验：min(100%, 374px) → 300px，而 calc(100dvh − 348px) 单独用 → 496px）。 */
+    #stage.tree{padding-bottom:0}
+    #stage.tree .graphbox{position:static;padding:4px;margin-bottom:0;min-height:0;
+      width:100%;height:auto}
+    #stage.tree .graphbox svg{display:block;margin:0 auto;width:100%;height:auto;
+      aspect-ratio:1 / 1;max-height:52dvh}
+    #stage.tree .panelwrap{position:static;margin-top:8px}
+    /* 常驻条：底部固定 + 自身可滚（内容多时不会顶穿屏幕；键盘弹出也不盖满屏） */
+    #stage.tree #nextq{position:fixed;left:0;right:0;bottom:0;z-index:30;
+      border-radius:14px 14px 0 0;border-bottom:0;margin:0;
+      max-height:56dvh;overflow:auto;
+      padding:12px 12px calc(12px + env(safe-area-inset-bottom, 0px));
+      box-shadow:0 -8px 24px rgba(0,0,0,.13)}
+    /* 给固定条让位，否则页面最后一段会被它永久遮住 */
+    body{padding-bottom:30dvh}
+    #stage.tree #nextq .qtext.nq{font-size:19px;margin:2px 0 12px}
+    #stage.tree #nextq .opt{padding:11px 14px}
+    #stage.tree #nextq .nqlist .nqpick:nth-child(n + 3){display:none}
+    #stage.tree #nextq .nqpick{padding:8px 10px}
+    #stage.tree #nextq .nqtxt{font-size:13px;line-height:1.35}
+    #stage.tree #nextq .nqmeta{font-size:11px}
+    /* 矮屏（≤700px 高）再收紧：360×640 上按上面的尺寸只放得下 3/5 个选项
+       （实测），而「不用滚动就能答」是这条设计的底线。
+       5 个选项改**两列**：高度直接减半，且手机上一列 5 个按钮本身也不好点。 */
+    @media(max-height:700px){
+      #stage.tree #nextq{max-height:54dvh;
+        padding:9px 10px calc(9px + env(safe-area-inset-bottom, 0px))}
+      #stage.tree #nextq .qtext.nq{font-size:17px;margin:0 0 8px}
+      #stage.tree #nextq .opts{grid-template-columns:1fr 1fr;gap:6px}
+      #stage.tree #nextq .opt{padding:8px 10px;font-size:13.5px;gap:8px}
+      #stage.tree #nextq .opt .k{width:21px;height:21px;font-size:11.5px}
+      #stage.tree #nextq .nqhead{font-size:12.5px;margin-bottom:4px}
+      /* 「这题什么意思」在矮屏是整条里最占地方的一块，折起来时压到一行 */
+      #stage.tree #nextq .why{margin-top:8px;padding-top:8px}
+      body{padding-bottom:26dvh}
+    }
+    /* 增益那段解释在常驻条里太占地方（判断依据已在卡片的「可消除 N%」上） */
+    .nqgain{display:none}
+    /* 图例是重复信息（颜色含义在常驻条里就够），窄屏收掉 */
+    .treelegend{display:none}
+    .ptoggle{margin:8px 0 0}
+    .nextq .qtext.nq{font-size:19px}
+    /* 图形的字号也必须放大：SVG 会整体缩放，390px 宽的卡片把 900 单位的图
+       压到 0.43 倍，13px 的字只剩 5.6px。这里是按缩放比例反向补偿。 */
+    .facetlbl{font-size:20px}
+    .domlbl{font-size:24px}
+    .confrow{font-size:12px;padding:6px 8px}
+    .confrow .cr{width:48px}
+    .conf{max-height:none}                   /* 手机上不嵌套滚动条 */
+    .qtext{font-size:19px}
+    .layout{overflow-x:hidden}
+  }
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    box-shadow:var(--shadow);padding:22px;min-height:280px}
+  .panel .ph{font-size:12px;letter-spacing:.06em;color:var(--ink3);margin-bottom:10px}
+  /* 面板可折起：窄屏上面板在图下方，图占满一屏更实用（D103） */
+  .panelwrap{min-width:0}
+  .ptoggle{display:block;width:100%;text-align:left;border:1px solid var(--line);
+    background:#fff;border-radius:12px;padding:11px 14px;font:inherit;font-size:13.5px;
+    color:var(--ink2);cursor:pointer;box-shadow:var(--shadow);margin-bottom:12px}
+  .ptoggle:hover{border-color:var(--accent)}
+  .ptoggle b{color:var(--accent)}
+  .ptoggle.on{border-color:var(--tier1);background:#f7fbf9}
+  /* ── 「下一题」常驻区 ───────────────────────────────────────────
+     用户要的是「不想在图上点圆圈时也能顺着答」，所以它放面板最上面，
+     而且不是折叠区——永远可见。 */
+  .nextq{border:1px solid var(--line);border-radius:12px;padding:14px;
+    background:linear-gradient(#fbfdfc,#fff);margin-bottom:16px}
+  /* ── 多量表：量表选择器与单量表分页作答 ───────────────────────── */
+  .instgroup{margin-bottom:18px}
+  .instgrouph{display:flex;justify-content:space-between;align-items:baseline;
+    font-size:13px;font-weight:600;color:var(--ink2);margin-bottom:8px;
+    padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .instgrid{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+  .instcard{display:grid;gap:3px;text-align:left;border:1px solid var(--line);
+    background:#fff;border-radius:10px;padding:10px 12px;cursor:pointer;
+    font:inherit;color:inherit;transition:border-color .15s,background .15s}
+  .instcard:hover{border-color:var(--accent);background:#f7fbf9}
+  .instname{font-size:13.5px;font-weight:600;line-height:1.35}
+  .instmeta{font-size:12px;color:var(--ink3)}
+  .instlic{font-size:11px;color:var(--accent);background:#eef5f2;border-radius:5px;
+    padding:1px 6px;justify-self:start}
+  .institems{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+  .institem{padding-bottom:12px;border-bottom:1px dashed var(--line)}
+  .institem:last-child{border-bottom:0}
+  .insttext{font-size:16px;line-height:1.5;margin-bottom:8px}
+  /* 英文原题：小一号、灰一点，保留是为了能随时对照（D112：中译必须与原文成对） */
+  .insten{font-size:12.5px;line-height:1.45;color:var(--ink3);margin:-4px 0 8px}
+  /* 情景块（schema 2.1 / D121）：题干下方的一句场景说明——「这句话在什么场景下成立」。
+     **答题必需 → 默认可见、不折叠**；与题干区分：左侧细色条 + 次级墨色 + 略小字号。
+     ⚠️ 色条**不用品牌色**（--accent 是提醒/注记用的），免得被误读成「警告」。
+     `overflow-wrap` 兜底：情景里若混有长英文串，320px 窄屏也不能横向溢出。 */
+  .scene{margin:0 0 10px;padding:6px 10px;font-size:13px;line-height:1.55;
+    color:var(--ink2);background:#fbfbfa;border-left:3px solid #cdd6d1;
+    border-radius:0 6px 6px 0;overflow-wrap:break-word;word-break:break-word}
+  /* 逐题注释：说明「这题实际在问什么」 */
+  .instnote{font-size:12.5px;line-height:1.5;color:var(--accent);
+    background:#f2f8f5;border-left:2px solid var(--accent);border-radius:0 6px 6px 0;
+    padding:6px 10px;margin:0 0 10px}
+  /* 作答指示语（非题项）：不参与计分，样式上明显区别于题项 */
+  .institem.instr{background:#fafafa;border-radius:8px;padding:10px 12px}
+  .institem.instr .insttext{font-weight:600;font-size:15px;margin-bottom:4px}
+  .inlinopts{display:flex;gap:8px;flex-wrap:wrap}
+  .inlinopts .opt{flex:1 1 0;min-width:64px;justify-content:center;padding:9px 10px}
+  /* ⚠️ 这里**不能** `display:none` 把分值藏掉：分值就是这一档的答案，
+     用户点的是「几分」。我一度因为把分值包进 <span class="k"> 而让按钮变成
+     空白圆角块——出图核对时才发现。统一作答格式的量表要显示分值，
+     每题自带文字选项的量表（.longopts）显示分值小圆标 + 文本。 */
+  .inlinopts .opt .k{font-weight:500}
+  /* 选项文本较长时（Mania 的整句陈述、Repetitive 的各题锚点）竖排，
+     并把分值显示成前面的小圆标签，方便对照。 */
+  .longopts{display:grid;gap:6px}
+  .longopts .opt{justify-content:flex-start;gap:10px;padding:10px 12px;
+    text-align:left;line-height:1.45}
+  .longopts .opt .k{flex:0 0 auto;min-width:22px;height:22px;border-radius:11px;
+    background:#eef5f2;color:var(--ink3);font-size:12px;display:flex;
+    align-items:center;justify-content:center}
+  .longopts .opt.sel .k{background:var(--accent);color:#fff}
+  .longopts .opt .ot{flex:1 1 auto}
+  /* ── 题面四字段（D117）────────────────────────────────────────────
+     `.ol` 把中英标签与选项情景说明竖排；`.ot` 仍是标签/整句陈述
+     （test_mania_options_ui.js 钉住它），`.oz` 中译，`.om` 情景说明，
+     `.omb` 依据类型小标（project_editorial 必须看得出来是「项目自撰」）。 */
+  .opt .ol{display:flex;flex-direction:column;gap:2px;flex:1 1 auto;
+    text-align:left;min-width:0}
+  .opt .oz{font-size:13.5px;font-weight:600}
+  .opt .om{font-size:12px;color:var(--ink2);line-height:1.45;white-space:normal}
+  .inlinopts .opt{align-items:flex-start;padding:9px 10px}
+  .insten .entag{font-size:10px;color:var(--ink3);border:1px solid var(--line);
+    border-radius:4px;padding:0 3px;margin-right:5px;vertical-align:1px}
+  /* 作答注记（notes_zh）：默认可见（作答指示/敏感提示不能藏在折叠里） */
+  .instnotes{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:4px}
+  .instnotes li{font-size:12.5px;line-height:1.5;color:var(--accent);
+    background:#f2f8f5;border-left:2px solid var(--accent);border-radius:0 6px 6px 0;
+    padding:6px 10px}
+  /* 来源可展开（硬规则③：每个数字/说明都能追到出处）。
+     D118：**默认全部关闭**，且统一样式——用户端默认视野里不该出现溯源与专业口径。 */
+  .srcfold{margin:2px 0 8px;font-size:11.5px;color:var(--ink3)}
+  .srcfold summary{cursor:pointer;color:var(--ink3)}
+  /* 「依据与出处」入口：低调但找得到（不抢作答视线） */
+  .devfold{margin-top:8px}
+  .devfold > summary{color:#9aa0a6}
+  .devfold > summary::marker{color:#c4c9ce}
+  /* 诚实性句子（估计≠已测得）：必须留在默认视野里，且要看得见 */
+  .estnote{color:var(--ink2)}
+  .srcbody{margin:4px 0 0;padding:5px 8px;background:#fafafa;border-radius:6px;
+    line-height:1.5;word-break:break-word}
+  /* 每题唯一「依据」折叠里的分块（原文来源 / 提醒来源 / 选项说明依据） */
+  .srcbody .srcline{padding:3px 0}
+  .srcbody .srcline + .srcline{border-top:1px dashed var(--line)}
+  /* 整册作答指示（每页一次）。⚠️ 不能叫 .insthead——那是子页头部（返回/导出）
+     D119：这是**量表级**提醒（作答指示 / 时间窗 / 反向计分 / 敏感提示 / 非诊断），
+     一册只说一次；锚点级说明在 .anchorguide，选项级语义在选项里。 */
+  .instrhead{background:#fafafa;border-radius:8px;padding:8px 11px;margin-bottom:12px;
+    font-size:12.5px;color:var(--ink2);display:grid;gap:3px}
+  /* 锚点级（每组尺子一次）：放在该组第一题上方，低调但可读 */
+  .anchorguide{background:#f7fbf9;border-left:3px solid var(--accent);
+    border-radius:0 8px 8px 0;padding:7px 10px;margin-bottom:10px;
+    font-size:12.5px;color:var(--ink2);display:grid;gap:3px}
+  .anchorguide .aglabel{font-size:11.5px;color:var(--ink3)}
+  .anchorguide .agnote{line-height:1.5}
+  .anchorguide .agquant{color:var(--ink3)}
+  /* 敏感内容提示（作答前必须看到）：与一般说明区分开 */
+  .instrhead .topicnote{border-left:3px solid var(--warm);padding-left:8px}
+  /* ── 各指标预测 + 置信度面板 ─────────────────────────────────────
+     ⚠️ **必须有高度上限**（`max-height` + 内部滚动）。否则 25 个维度 × 每行两行说明
+     会把面板撑到 ~2600px——实测（360×640）把「第一道题」推到页面顶端下方 **3356px**、
+     把天赋树图推到 **3674px**，即用户要滑 5 屏才看到题。面板是**仪表盘**，
+     不该吞掉作答区。移动端再收紧一档。 */
+  .infpanel{border:1px solid var(--line);border-radius:10px;padding:10px 12px;
+    margin:0 0 14px;background:#fcfdfc;
+    max-height:min(46vh, 420px);overflow-y:auto;overscroll-behavior:contain}
+  @media (max-width:700px){
+    .infpanel{max-height:min(38vh, 300px);padding:8px 10px}
+  }
+  .infpanel .rowline{margin-bottom:4px}
+  .infpanel table.inf{margin-top:6px}
+  .infpanel table.inf td{font-variant-numeric:tabular-nums}
+  .infpanel .infr{text-align:right}
+  .infpred{font-weight:600}
+  /* 「推断」徽章：推断值必须一眼看出不是官方分 */
+  .infbadge{font-size:10.5px;color:#8a6247;background:#fdf6ef;border:1px solid #f0e4d5;
+    border-radius:5px;padding:0 4px;margin-left:3px;white-space:nowrap}
+  .infpanel.loading{border-style:dashed;color:var(--ink3)}
+  .infpanel.off{background:#fafafa}
+  /* 未答维度收进折叠（D118 裁决⑤）：默认视野只留有状态的维度 */
+  .dimfold{margin-top:6px}
+  .dimfold > summary{color:var(--ink3)}
+  /* 页脚固定一行（D118 裁决①）：**授权署名要可见**（不只是「可查」），
+     细节仍在「授权与来源」折叠里。 */
+  .foot{margin-top:14px;padding:10px 2px 0;border-top:1px solid var(--line);
+    font-size:12px;color:var(--ink3);display:flex;gap:8px;flex-wrap:wrap;
+    align-items:baseline}
+  .foot .spacer{flex:1}
+  .instnav{display:flex;gap:8px;align-items:center;margin-top:16px;flex-wrap:wrap}
+  .instnav .spacer{flex:1}
+  /* 子页头部：返回 + 本量表自己的导出（用户要求「各自回答结果单独导出」） */
+  .insthead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    padding-bottom:10px;margin-bottom:12px;border-bottom:1px solid var(--line)}
+  .insthead .spacer{flex:1}
+  .instheadcode{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;
+    color:var(--ink3);background:#f3f5f4;border-radius:5px;padding:1px 6px}
+  .instback{border:1px solid var(--line);background:#fff;border-radius:8px;
+    padding:6px 11px;cursor:pointer;font:inherit;font-size:13px;color:inherit}
+  .instback:hover{border-color:var(--accent)}
+  .expwrap{position:relative;display:inline-block}
+  .expwrap>button{border:1px solid var(--line);background:#fff;border-radius:8px;
+    padding:6px 11px;cursor:pointer;font:inherit;font-size:13px;color:inherit}
+  .expwrap>button:disabled{opacity:.5;cursor:default}
+  .expwrap .expmenu{display:none;position:absolute;right:0;top:calc(100% + 6px);
+    z-index:30;background:#fff;border:1px solid var(--line);border-radius:10px;
+    box-shadow:0 8px 24px rgba(0,0,0,.08);padding:6px;min-width:210px}
+  .expwrap:hover .expmenu,.expwrap:focus-within .expmenu{display:block}
+  .expwrap .expmenu button{display:block;width:100%;text-align:left;border:0;
+    background:transparent;border-radius:7px;padding:8px 10px;cursor:pointer;
+    font:inherit;font-size:13px;color:inherit}
+  .expwrap .expmenu button:hover{background:#f2f8f5}
+  /* 结果页里的行内导出按钮 */
+  .linkbtn{border:1px solid var(--line);background:#fff;border-radius:7px;
+    padding:3px 9px;margin:0 2px;cursor:pointer;font:inherit;font-size:12.5px;
+    color:var(--accent)}
+  .linkbtn:hover{background:#f2f8f5}
+  /* 链路导航条：L1 → L2 → PID-5 的上下游跳转 */
+  .chainbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    background:#f7fbf9;border:1px solid var(--line);border-radius:10px;
+    padding:8px 12px;margin-bottom:12px}
+  .chainbar .spacer{flex:1}
+  .chainlabel{font-size:12px;font-weight:600;color:var(--accent);
+    background:var(--accent-soft);border-radius:6px;padding:2px 8px;
+    white-space:nowrap}
+  .chainbar .note{font-size:12.5px;color:var(--ink2);margin:0}
+  /* 作答方式切换（D114）：> 60 题的量表在「经典逐题」与「天赋树」之间切 */
+  .viewswitch{display:flex;gap:8px;margin:10px 0 4px;flex-wrap:wrap}
+  .viewswitch button{display:grid;gap:2px;text-align:left;border:1px solid var(--line);
+    background:#fff;border-radius:9px;padding:8px 12px;cursor:pointer;font:inherit;
+    font-size:13px;color:inherit}
+  .viewswitch button.on{border-color:var(--accent);background:#f2f8f5;font-weight:600}
+  .viewswitch button[disabled]{cursor:default}
+  .viewswitch .sub{font-size:11.5px;color:var(--ink3);font-weight:400}
+  /* 天赋树 */
+  .treewrap{display:flex;justify-content:center;margin:6px 0 4px}
+  .treesvg{width:100%;max-width:720px;height:auto;overflow:visible}
+  .treeedge{stroke:var(--line);stroke-width:1}
+  .treenode{fill:#fff;stroke:var(--line);stroke-width:1.4;cursor:pointer;
+    transition:fill .12s,stroke .12s}
+  /* 可答节点：**浅底 + 粗描边**，比「白底细边」显眼得多
+     （原来只靠描边，缩略看几乎与锁定节点分不出） */
+  .treenode.open{fill:var(--accent-soft);stroke:var(--accent);stroke-width:2.4}
+  .treenode.done{fill:var(--accent);stroke:var(--accent)}
+  .treenode.locked{fill:#eee;stroke:#e2e2e2;cursor:default}
+  .treenode.sel{fill:#fff;stroke:var(--warm);stroke-width:3.2}
+  /* 推荐的那一道另外描一圈虚线，避免在小图里被忽略 */
+  .treenode.next{stroke:var(--warm);stroke-width:2.6;stroke-dasharray:3 2}
+  /* 维度**已解锁**（置信度达标）：金色描边 + 暖底，与「可答」（浅绿底粗边）区分。
+     ⚠️ 本维度一道题都没答时**绝不**加这个类（硬规则，见 treeUnlockState）。 */
+  .treenode.ready{stroke:var(--warm);stroke-width:2.8}
+  .treenode.ready:not(.done){fill:#fff7e6}
+  .treenode.done.ready{stroke:var(--warm)}
+  .treelegend{display:flex;gap:12px;flex-wrap:wrap;font-size:11.5px;color:var(--ink3);
+    margin:2px 0 6px;line-height:1.7}
+  .treelegend i{display:inline-block;width:10px;height:10px;border-radius:50%;
+    margin-right:4px;border:1.6px solid var(--line);background:#fff;vertical-align:-1px}
+  .treelegend i.done{background:var(--accent);border-color:var(--accent)}
+  .treelegend i.ready{background:#fff7e6;border-color:var(--warm)}
+  .treelegend i.open{background:var(--accent-soft);border-color:var(--accent)}
+  .treelegend i.locked{background:#eee;border-color:#e2e2e2}
+  /* 下一题推荐卡：暖色左边框 + 浅底，与「推断面板」区分开 */
+  .treereco{border:1px solid var(--line);border-left:3px solid var(--warm);border-radius:10px;
+    padding:10px 12px;margin:8px 0 6px;background:#fffdf8}
+  .treereco b{font-size:14px}
+  .treeq{border:1px solid var(--line);border-radius:12px;padding:14px;
+    background:linear-gradient(#fbfdfc,#fff);margin-top:12px}
+  .instnav button{border:1px solid var(--line);background:#fff;border-radius:8px;
+    padding:8px 14px;cursor:pointer;font:inherit}
+  .instnav button:disabled{opacity:.45;cursor:default}
+  .insttable{width:100%;border-collapse:collapse;font-size:13.5px}
+  .insttable th{text-align:left;font-weight:600;color:var(--ink3);font-size:12px;
+    padding:6px 8px;border-bottom:1px solid var(--line)}
+  .insttable td{padding:6px 8px;border-bottom:1px dashed var(--line)}
+  .insttable .domrow td{font-weight:600;background:#f7fbf9}
+  .insttable .note{color:var(--ink3);font-size:12px}
+  .nextq .nqhead{display:flex;justify-content:space-between;align-items:baseline;
+    gap:10px;font-size:13.5px;margin-bottom:8px}
+  .nextq .nqhead b{font-weight:600}
+  .nextq .qtext.nq{font-size:20px;line-height:1.5;font-weight:500;margin:4px 0 14px;
+    min-height:0}
+  .nqlist{display:grid;gap:8px}
+  .nqpick{display:grid;gap:3px;text-align:left;border:1px solid var(--line);
+    background:#fff;border-radius:10px;padding:10px 12px;cursor:pointer;font:inherit;
+    transition:.15s}
+  .nqpick:hover{border-color:var(--accent);background:var(--accent-soft)}
+  .nqpick.first{border-color:#d9b79f;box-shadow:0 0 0 3px #f7efe9}
+  .nqpick .nqtxt{font-size:14px;color:var(--ink);line-height:1.45}
+  .nqpick .nqmeta{font-size:11.5px;color:var(--ink3)}
+  /* 结果折叠区 */
+  .peek{border:1px solid var(--line);border-radius:10px;margin-bottom:16px;overflow:hidden}
+  .peek.open{border-color:#b5836a}
+  .peekhead{width:100%;display:flex;justify-content:space-between;align-items:center;
+    padding:11px 14px;background:#faf8f4;border:0;font:inherit;font-size:13.5px;
+    color:var(--ink);cursor:pointer;text-align:left}
+  .peek.open .peekhead{background:#f6f1ea;color:#8a6247}
+  .peekchev{font-size:12px;color:var(--ink3)}
+  .peekbody{padding:12px 14px;border-top:1px solid var(--line)}
+  .peekrow{display:flex;justify-content:space-between;align-items:baseline;
+    padding:7px 0;border-bottom:1px solid #f2efe9;font-size:13px}
+  .peekrow:last-of-type{border-bottom:0}
+  .peeknm{font-weight:600}
+  .peekbd{color:var(--ink2);font-size:12.5px}
+  .coolbar{padding:9px 14px;background:#fdf6ef;border-top:1px solid #f0e4d5;
+    font-size:12.5px;color:#8a6247}
+  .coolbar.big{border-radius:10px;border:1px solid #f0e4d5;margin-bottom:14px;
+    text-align:center;font-size:13px}
+  /* 逐面向的可信度清单（取代旧的「环进度条」） */
+  .conf{max-height:298px;overflow:auto;border:1px solid var(--line);border-radius:10px}
+  .confrow{display:flex;align-items:baseline;gap:8px;padding:6px 10px;font-size:12.5px;
+    border-bottom:1px solid #f4f1ec}
+  .confrow:last-child{border-bottom:0}
+  .confrow .cn{flex:1;color:var(--ink2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .confrow .ck{flex:none;width:34px;text-align:right;color:var(--ink3);
+    font-variant-numeric:tabular-nums}
+  .confrow .cr{flex:none;width:54px;text-align:right;color:var(--ink3);
+    font-variant-numeric:tabular-nums}
+  .confrow .cb{flex:none;width:52px;text-align:right;font-size:11.5px}
+  .confrow.l0 .cb{color:var(--ink3)}
+  .confrow.l1 .cb{color:var(--tier1)}
+  .confrow.l2 .cb{color:var(--tier2)}
+  .confrow.l3 .cb{color:var(--tier3)}
+  .confrow.l2 .cn,.confrow.l3 .cn{color:var(--ink)}
+  .rowline{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .rowline b{font-size:13.5px;font-weight:600}
+  .rowline span{font-size:12px;color:var(--ink3);font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <h1>EmoHealth · 自测陪伴</h1>
+    <div class="modes" id="modes">
+      <!-- 最小 UI（D116）：只有一个入口——量表库。分级/情景/经典等顶层模式、
+           实时置信度推断与推荐答题已按用户要求从 UI 撤下。见 SCOPE-REDUCTION.md -->
+      <button data-m="inst" class="on">题库</button>
+    </div>
+    <div class="spacer"></div>
+    <div class="io">
+      <span class="saved" id="saved"></span>
+      <button id="btn-clear" title="清空本机保存的作答">重来</button>
+      <div style="position:relative">
+        <button class="primary" id="btn-export">导出 ▾</button>
+        <div class="menu" id="menu">
+        <div class="menu" id="menu">
+          <button data-x="md">报告（Markdown）
+            <span class="sub">分数、百分位与已答进度</span></button>
+          <hr>
+          <button data-x="json">存档（JSON）
+            <span class="sub">可续做：换设备或清空浏览器后导入，从断点继续</span></button>
+          <button data-x="import">导入存档…</button>
+          <hr>
+          <button data-x="csv">逐题作答（CSV）
+            <span class="sub">原始数据，供你自己分析或带给专业人士</span></button>
+        </div>
+      </div>
+    </div>
+    <input type="file" id="file" accept=".json" style="display:none">
+  </div>
+  <div class="meta" id="topmeta" style="padding-bottom:12px"></div>
+
+  <div class="layout" id="layout">
+    <div>
+      <div class="card" id="stage"></div>
+      <div class="card" id="resultcard" style="margin-top:20px;display:none"></div>
+    </div>
+    <div class="card" id="treecard"></div>
+  </div>
+  <footer class="foot" id="foot"></footer>
+</div>
+<div class="toast" id="toast"></div>
+<script src="catalog.js"></script>
+<script src="instruments.js"></script>
+<!-- 题面四字段与题级推断参数的**清单**（合计 < 1 KB）。真正的数据包
+     （ui/items-structured/*.js，最大 1.4 MB；ui/inference/*.js，最大 434 KB）
+     **只在进入某套量表的子页时注入**——首页不加载它们（实测 0 个脚本 / 0 条请求）。
+     仍然用注入 <script> 而不是 fetch：file:// 下 fetch 被同源策略拒绝。 -->
+<script src="items-structured.js"></script>
+<script src="inference.js"></script>
+<!-- 历史产物仍在磁盘上（emohealth-data.js / tier-data.js / net-layout.js），
+     由 tools/ui/pack_ui_data.py 的 --check 逐字节校验，供将来使用；首页不加载。 -->
+<script>
+"use strict";
+
+/* ══════════════════════════════════════════════════════════════════════
+   答题界面（D117）——两件：**题面四字段** 与 **各指标预测 + 置信度**
+
+   ① 题面四字段：`ui/items-structured/<code>.js`（由 pack_ui_data 打包
+      `data/items-structured/<code>.json`，606 题、四字段齐全率 100%）：
+        · `text_zh` 中译（主体）  · `text_en` 原文（并列可读）
+        · `response.options[].meaning_zh` 选它意味着什么（**选之前就要看到**）
+        · `notes_zh[]` 作答注记（默认可见；来源可展开）
+      每项都带来源（`text_zh_source` / `meaning_source` / 注记的 `source`），
+      界面上**可展开查证**——IPIP-NEO 的 1500 条选项说明是 `project_editorial`
+      （项目自撰），不得看起来像手册原文。
+
+   ② 预测 + 置信度：`ui/lib/inference.js`（纯函数，与 `engine/inference.py` 逐值
+      一致）＋ 按需注入的 `ui/inference/<code>.js`（由 pack_ui_data 调 engine 生成，
+      含 `pairB64` / `item_dim_corr` / `dim_ceiling(_cross)` / `ceiling_ratio(_cross)`）。
+      硬规则：**本维度一道题都没答 → 不展示该维度的预测与置信度**（只显示原因），
+      不得因为别的维度答得多就放行。
+      分层：`official`（量表声明口径，缺失不猜）与 `inferred`（一律标
+      `inferred=true`）**分开呈现，绝不混算**；推断值文案不得写得像已测准的分数。
+      ⚠️ 这与「作答中不给分值」的旧设计冲突（PLAN.md §2.5 防反刍）：用户本轮
+      明确要求「预测+置信度」，所以给；但只给**推断**，官方分仍只在「看结果」页。
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ══ 多量表：按需加载 ═══════════════════════════════════════════════════
+
+   为什么不能前置加载全部：现在有 40 套量表、2178 道题。全部前置要 0.9 MB 以上，
+   而用户一次只答一套。所以拆成「目录（33 KB）+ 每套一个包（最大 41 KB）」，
+   选中哪套才注入哪一个。
+
+   为什么用 <script> 注入而不是 fetch()：项目要求纯静态、离线可用
+   （ui/index.html 能 file:// 直接打开）。file:// 下 fetch 会被同源策略拒绝，
+   而 <script src> 不受影响——这也是现有 5 个数据包一直用 <script> 的原因。
+
+   数据包挂在 window.EMOHEALTH_INST_<CODE> 上（CODE 已正则化为标识符）。 */
+const CATALOG = window.EMOHEALTH_CATALOG;          // {groups, instruments:[…]}
+const INSTMAP = window.EMOHEALTH_INSTMAP;          // {code: 'instruments/xx.js'}
+const INST_CACHE = new Map();
+
+function instGlobal(code) {
+  return "EMOHEALTH_INST_" + code.replace(/[^A-Za-z0-9]/g, "_").toUpperCase();
+}
+
+/* 已加载过的量表直接返回；否则注入 <script> 再取。 */
+function loadInstrument(code) {
+  if (INST_CACHE.has(code)) return Promise.resolve(INST_CACHE.get(code));
+  const path = INSTMAP && INSTMAP[code];
+  if (!path) return Promise.reject(new Error("目录里没有量表 " + code));
+  return new Promise((resolve, reject) => {
+    const s = document.createElement("script");
+    s.src = path;
+    s.onload = () => {
+      const data = window[instGlobal(code)];
+      if (!data) { reject(new Error("数据包已加载但没有挂到 window：" + path)); return; }
+      INST_CACHE.set(code, data);
+      resolve(data);
+    };
+    s.onerror = () => reject(new Error("数据包加载失败：" + path));
+    document.head.appendChild(s);
+  });
+}
+
+/* 目录查询：按 code 取条目（界面要显示授权与来源，所以条目里保留这些字段）。 */
+function catalogEntry(code) {
+  return (CATALOG && CATALOG.instruments || []).find(x => x.code === code) || null;
+}
+
+/* ══ 题面四字段 / 题级推断参数：按需加载 ═══════════════════════════════
+
+   两份清单（`ui/items-structured.js`、`ui/inference.js`，合计 < 1 KB）随首页加载；
+   **数据包本身按需注入**（最大 1.4 MB / 434 KB）。与 `loadInstrument` 同一套做法：
+   · 注入 `<script>`（file:// 下 fetch 被拒）；包自己把数据挂到 window
+   · 带缓存 + **在途 Promise 去重**（重渲染会重复调用，没这张表会注入两次）
+   · 没有该量表的数据就 reject/静默降级——界面照常作答，只是少一块信息 */
+const STRUCTMAP = window.EMOHEALTH_STRUCTMAP || {};
+const INFMAP = window.EMOHEALTH_INFERMAP || {};
+const ONDEMAND = new Map();        // "kind|code" -> 数据
+const ONDEMAND_PENDING = new Map(); // "kind|code" -> Promise
+
+function ondemandGlobal(kind, code) {
+  const prefix = kind === "struct" ? "EMOHEALTH_STRUCT_" : "EMOHEALTH_INFER_";
+  return prefix + code.replace(/[^A-Za-z0-9]/g, "_").toUpperCase();
+}
+
+function loadOnDemand(kind, code) {
+  const key = kind + "|" + code;
+  if (ONDEMAND.has(key)) return Promise.resolve(ONDEMAND.get(key));
+  if (ONDEMAND_PENDING.has(key)) return ONDEMAND_PENDING.get(key);
+  const path = (kind === "struct" ? STRUCTMAP : INFMAP)[code];
+  if (!path) return Promise.reject(new Error("没有该量表的" +
+    (kind === "struct" ? "题面结构化数据" : "推断参数") + "：" + code));
+  const p = new Promise((resolve, reject) => {
+    const s = document.createElement("script");
+    s.src = path;
+    s.onload = () => {
+      const data = window[ondemandGlobal(kind, code)];
+      if (!data) { reject(new Error("包已加载但没挂到 window：" + path)); return; }
+      ONDEMAND.set(key, data);
+      resolve(data);
+    };
+    s.onerror = () => reject(new Error("加载失败：" + path));
+    document.head.appendChild(s);
+  });
+  ONDEMAND_PENDING.set(key, p);
+  return p;
+}
+const loadStructured = (code) => loadOnDemand("struct", code);
+const loadInference = (code) => loadOnDemand("inference", code);
+
+/* `ui/lib/inference.js`（20 KB 纯函数库）同样按需注入：
+   首页连它也不加载，保证「首页没有任何 inference 相关脚本」。 */
+let _INFER_LIB = null;
+function ensureInferenceLib() {
+  if (_INFER_LIB) return _INFER_LIB;
+  if (window.EmoHealthInference) { _INFER_LIB = Promise.resolve(window.EmoHealthInference); return _INFER_LIB; }
+  _INFER_LIB = new Promise((resolve, reject) => {
+    const s = document.createElement("script");
+    s.src = "lib/inference.js";
+    s.onload = () => window.EmoHealthInference
+      ? resolve(window.EmoHealthInference)
+      : reject(new Error("lib/inference.js 已加载但未挂到 window"));
+    s.onerror = () => reject(new Error("lib/inference.js 加载失败"));
+    document.head.appendChild(s);
+  });
+  return _INFER_LIB;
+}
+
+/* 当前量表的题面结构化记录（itemId → 记录）。没加载到就返回 null。 */
+function structIndex(code) {
+  const d = ONDEMAND.get("struct|" + code);
+  if (!d || !d.items) return null;
+  if (!d.__index) d.__index = new Map(d.items.map(it => [it.id, it]));
+  return d.__index;
+}
+/* 结构化包本身（schema 2.0：`instrument_guide` / `scale_guides` / `items`）。
+   ⚠️ **内部字段一律不上界面**：`scale_guides[*].source`、`label_source`、`options_source`、
+   `instrument_guide.*_source`、`quantification.source` 都是核对用的出处字符串，
+   用户点名不要（D119 / task-22 交接说明）。界面只读 `*_zh` / `label*` / `meaning_zh` /
+   `quantification.text_zh` 这类**给用户看**的字段。 */
+function structPayload(code) {
+  return ONDEMAND.get("struct|" + code) || null;
+}
+function scaleGuideOf(code, scaleId) {
+  const d = structPayload(code);
+  return (d && d.scale_guides && scaleId && d.scale_guides[scaleId]) || null;
+}
+/* 当前量表的推断参数包（{params, pairB64, …}）；没加载到返回 null。 */
+function inferencePayload(code) {
+  return ONDEMAND.get("inference|" + code) || null;
+}
+
+/* 进子页时按需把「题面四字段 + 推断参数 + 推断库」备好，**新加载到了**才重渲染一次。
+   ⚠️ 必须只在「这次真的去加载了」时回调：否则 `renderInstStage` →
+   `ensureItemData` → 回调 → `renderInstStage` 会无限循环（实测会把页面跑死、
+   浏览器测试直接挂住）。三者互不阻塞：缺哪个都不影响作答，只是少一块信息。 */
+function ensureItemData(code, onReady) {
+  const jobs = [];
+  if (STRUCTMAP[code] && !ONDEMAND.has("struct|" + code)) jobs.push(loadStructured(code));
+  if (INFMAP[code] && !ONDEMAND.has("inference|" + code)) {
+    jobs.push(ensureInferenceLib().then(() => loadInference(code)));
+  }
+  if (!jobs.length) return;
+  Promise.allSettled(jobs).then(results => {
+    if (!results.some(r => r.status === "fulfilled")) return;
+    if (S.mode !== "inst" || S.instCode !== code) return;
+    onReady();
+  });
+}
+
+/* ── 状态 ─────────────────────────────────────────────
+   只有一种模式：题库（一次答一套量表，量表内分页）。
+   上一版的 `resp/scene/result/tierSel/coolUntil/peekOpen/panelOpen` 等字段属于
+   分级/情景模式，已随该模式一并删除。 */
+const S = {
+  mode: "inst",
+  instCode: null,      // 选中的量表 code
+  instPage: 0,         // 单量表内的页码（0 起）
+  instResp: {},        // itemId -> 作答值
+  ansVer: 0,           // 作答版本号：每次作答 +1（推断结果缓存按它失效）
+  instResult: null,    // 该量表的计分结果（用户点「看结果」后才有）
+  instView: "classic", // 作答方式："classic"（经典逐题）| "tree"（天赋树，仅 > 60 题）
+  treeSel: null,       // 天赋树里选中的节点（题号）
+};
+const INST_PER_PAGE = 10;      // 单量表分页：每页 10 题
+/* 天赋树（D114）：**只有 > 60 题、且有布局数据的量表**提供。短表全答一遍本来就快，
+   天赋树的价值在长表上——用户不必手动翻 22 页。 */
+const TREE_MIN_ITEMS = 61;
+let TREE_NOW = null;           // 当前量表的树布局（从 ui/tree-layouts/ 按需加载）
+
+/* ── 最小 markdown 渲染 ───────────────────────────────────────
+   脚手架与 facet 档案的正文是按 markdown 写的，里面大量使用 **加粗**。
+   直接塞进 innerHTML 会把星号原样显示出来（实测踩过）。
+   只支持 **粗体** 一种——够用，且不会引入 XSS 面。            */
+function esc(t) {
+  return String(t == null ? "" : t)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+function md(t) {
+  return esc(t).replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>");
+}
+/* 页脚固定一行（D118 裁决①）：**授权署名可见**——
+   授权条款通常要求署名可见，而不只是「可查」。所以页脚常驻一行短标注；
+   完整授权（权利人/许可说明）在页内「授权」折叠里，导出的报告带完整版。
+   D120：不再指向具体折叠名（折叠名会随页面变化），也不再渲染内部来源路径。 */
+function renderFooter() {
+  const el = document.getElementById("foot");
+  if (!el) return;
+  const e = S.instCode ? catalogEntry(S.instCode) : null;
+  const lic = (e && e.license) ? (e.license.label || e.license.kind || "") : "";
+  el.innerHTML = (lic
+    ? `授权：${esc(lic)}`
+    : "本地离线运行 · 作答与结果都只留在本机") +
+    `<span class="spacer"></span><span>EmoHealth · 人格与心理测量自查工具</span>`;
+}
+
+/* 顶部一行：量表库里给题库总量；某套量表里给「正在答哪一套 + 已答/题数」。 */
+function renderTop() {
+  const el = document.getElementById("topmeta");
+  if (!S.instCode) {
+    el.textContent = `题库：${(CATALOG && CATALOG.count) || 0} 套量表 · `
+      + `${(CATALOG && CATALOG.total_items) || 0} 道题　｜　点任意一套进入它的子页`;
+    return;
+  }
+  const e = catalogEntry(S.instCode);
+  const total = INST_NOW ? INST_NOW.items.length : 0;
+  const n = INST_NOW ? INST_NOW.items.filter(it => it.id in S.instResp).length : 0;
+  el.textContent = `正在作答：${e ? esc(e.display_name) : S.instCode}`
+    + (total ? `　｜　已答 ${n}/${total} 题（${(n / total * 100).toFixed(1)}%）` : "");
+}
+let INST_NOW = null;          // 当前已加载的量表数据（避免重复取）
+
+function instAggregate(data, dimId, resp) {
+  const rule = data.scoring[dimId];
+  if (!rule) return null;
+  const lo = data.response_format.min, hi = data.response_format.max;
+  if (rule.scope === "dimensions") {
+    const subs = rule.of.map(s => instAggregate(data, s, resp)).filter(x => x && x.complete);
+    if (!subs.length) return null;
+    const vs = subs.map(x => x.value);
+    const value = rule.aggregation === "sum" ? vs.reduce((a, b) => a + b, 0)
+      : vs.reduce((a, b) => a + b, 0) / vs.length;
+    return {value, n_answered: subs.reduce((a, b) => a + b.n_answered, 0),
+            n_items: subs.reduce((a, b) => a + b.n_items, 0),
+            complete: subs.length === rule.of.length};
+  }
+  const byId = new Map(data.items.map(it => [it.id, it]));
+  const coded = [];
+  for (const iid of rule.of) {
+    const it = byId.get(iid);
+    if (!it || !(iid in resp)) continue;
+    const v = +resp[iid];
+    if (!(v >= lo && v <= hi)) continue;
+    coded.push(it.key === -1 ? (lo + hi) - v : v);
+  }
+  if (!coded.length) return null;
+  let value;
+  if (rule.aggregation === "sum") value = coded.reduce((a, b) => a + b, 0);
+  else if (rule.aggregation === "mean") value = coded.reduce((a, b) => a + b, 0) / coded.length;
+  else if (rule.aggregation === "max") value = Math.max(...coded);
+  else if (rule.aggregation === "count_true") {
+    // 「>0 的项数」。DSM-5-TR L2 物质使用册用这个口径——原文明确**不求和**，
+    // 而是逐项独立解释、以「几项 >0」表示严重度与复杂度。
+    value = coded.filter(v => v > 0).length;
+  } else throw new Error("未实现的聚合方式：" + rule.aggregation + "（仪表盘不支持，需先在引擎里加）");
+  return {value, n_answered: coded.length, n_items: rule.of.length,
+          complete: coded.length === rule.of.length};
+}
+
+function instScores(data, resp) {
+  const out = [];
+  for (const d of data.dimensions) {
+    if (d.children && d.children.length) continue;
+    const r = instAggregate(data, d.id, resp);
+    if (r) out.push({id: d.id, name: d.name, ...r});
+  }
+  // 上级维度（域）另算
+  for (const d of data.dimensions) {
+    if (!d.children || !d.children.length) continue;
+    const r = instAggregate(data, d.id, resp);
+    if (r) out.push({id: d.id, name: d.name, ...r, isDomain: true});
+  }
+  return out;
+}
+
+/* ── 量表选择器 ─────────────────────────────────────────── */
+function renderInstPicker(el) {
+  const cat = CATALOG;
+  if (!cat) { el.innerHTML = `<div class="note">目录未加载（catalog.js 缺失）。</div>`; return; }
+  let h = `<div class="ph">题库 · ${cat.count} 套量表 · ${cat.total_items} 道题</div>
+    <div class="note" style="margin-bottom:12px">一次只答一套。点进去会<b>分页</b>呈现，
+    答题过程中<b>不给分数</b>（会给出各维度的<b>粗略估计</b>，并标明是估计）；
+    答完后给出各维度分数（有常模时给百分位）。</div>`;
+  for (const g of cat.groups) {
+    // 分组可能很大（实测「其它」组一度有 285 套），所以每组内按题量降序，
+    // 让内容更丰富的量表排前面。
+    const codes = [...g.codes].sort((a, b) => {
+      const ea = catalogEntry(a), eb = catalogEntry(b);
+      return (eb ? eb.items : 0) - (ea ? ea.items : 0);
+    });
+    h += `<div class="instgroup"><div class="instgrouph">${esc(g.label)}
+      <span class="note">${codes.length} 套</span></div><div class="instgrid">`;
+    for (const code of codes) {
+      const e = catalogEntry(code);
+      if (!e) continue;
+      h += `<button class="instcard" data-inst="${esc(code)}">
+        <span class="instname">${esc(e.display_name)}</span>
+        <span class="instmeta">${e.items} 题 · ${e.dimensions} 个维度</span>
+        <span class="instlic">${esc(e.license.label)}</span>
+      </button>`;
+    }
+    h += `</div></div>`;
+  }
+  el.innerHTML = h;
+}
+
+/* ── 子页头部：返回 + 该量表自己的导出 ────────────────────
+   用户要求「各个问题的回答结果单独导出」→ 导出按**这一套量表**范围，
+   不混入其它量表的数据。全局导出仍在顶部「导出」菜单里保留。 */
+function instPageHeader(data, e) {
+  const n = data.items.filter(it => it.id in S.instResp).length;
+  const hasResult = !!S.instResult;
+  return `<div class="insthead">
+    <button class="instback" data-gohome="1">← 全部量表</button>
+    <span class="instheadcode">${esc(e.code)}</span>
+    <span class="spacer"></span>
+    <span class="note">已答 ${n}/${data.items.length}</span>
+    <span class="expwrap">
+      <button data-instexport="md" ${n ? "" : "disabled"}>导出本量表 ▾</button>
+      <span class="expmenu">
+        <button data-instexport="md">报告（Markdown）</button>
+        <button data-instexport="csv">逐题作答（CSV）</button>
+        <button data-instexport="json">存档（JSON，可续做）</button>
+        ${hasResult ? `<button data-instexport="result">结果明细（CSV）</button>` : ""}
+      </span>
+    </span>
+  </div>`;
+}
+
+/* 单量表导出：范围只含这一套。 */
+function instRows(data) {
+  return data.items.map(it => ({
+    order: it.order,
+    id: it.id,
+    dim: (it.dimensions || []).join("|"),
+    key: it.key === -1 ? -1 : 1,
+    en: it.text,
+    zh: it.zh || "",
+    note: it.note || "",
+    value: (it.id in S.instResp) ? S.instResp[it.id] : "",
+  }));
+}
+
+function instExportCSV(data, e) {
+  const esc2 = v => {
+    const s = String(v == null ? "" : v);
+    return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  };
+  const head = ["题号", "题项ID", "维度", "计分键", "英文原题", "中文题面",
+                "你的作答", "作答范围", "注释"];
+  const rf = data.response_format;
+  const rows = instRows(data).map(r => [
+    r.order, r.id, r.dim, r.key, r.en, r.zh, r.value,
+    `${rf.min}-${rf.max}`, r.note,
+  ]);
+  const csv = "\ufeff" + [head, ...rows].map(r => r.map(esc2).join(",")).join("\r\n");
+  download(`${e.code}-逐题作答-${stamp()}.csv`, csv, "text/csv");
+}
+
+function instExportJSON(data, e) {
+  const rows = instRows(data);
+  const payload = {
+    format: "emohealth.instrument.v1",
+    exported_at: new Date().toISOString(),
+    instrument: e.code,
+    display_name: data.display_name,
+    license: data.license,
+    citation: data.citation,
+    response_format: data.response_format,
+    norms_status: data.norms_status || null,
+    answered: rows.filter(r => r.value !== "").length,
+    total: rows.length,
+    // 作答按 itemId 存，续做与复核都靠它
+    responses: Object.fromEntries(rows.filter(r => r.value !== "")
+      .map(r => [r.id, r.value])),
+    responses_by_order: Object.fromEntries(rows.filter(r => r.value !== "")
+      .map(r => [r.order, r.value])),
+    scores: S.instResult ? S.instResult.rows.map(r => ({
+      dimension: r.name, value: r.value, answered: r.n_answered,
+      items: r.n_items, complete: r.complete, is_domain: !!r.isDomain,
+    })) : null,
+    items: rows,
+  };
+  download(`${e.code}-存档-${stamp()}.json`,
+           JSON.stringify(payload, null, 1), "application/json");
+}
+
+function instExportMD(data, e) {
+  const rows = instRows(data);
+  const n = rows.filter(r => r.value !== "").length;
+  let md = `# ${data.display_name}\n\n`;
+  md += `- 量表代码：\`${e.code}\`\n`;
+  md += `- 已答：${n}/${rows.length} 题\n`;
+  md += `- 作答范围：${data.response_format.min}–${data.response_format.max}\n`;
+  if (data.response_format.labels && data.response_format.labels.length) {
+    md += `- 选项含义：${data.response_format.labels.map((x, i) =>
+      `${data.response_format.min + i}=${x}`).join("，")}\n`;
+  }
+  md += `- 授权：${e.license.label || e.license.kind || ""}`;
+  if (data.license && data.license.holder) md += `（${data.license.holder}）`;
+  md += "\n";
+  if (data.citation) md += `- 引用：${data.citation}\n`;
+  md += "\n";
+
+  if (S.instResult) {
+    md += `## 结果\n\n| 维度 | 分数 | 已答/题数 | 口径 |\n|---|---|---|---|\n`;
+    const hasNorms = !!(data.norms && (data.norms.facets || data.norms.domains));
+    if (hasNorms) md = md.replace("| 维度 | 分数 | 已答/题数 | 口径 |\n|---|---|---|---|\n",
+                                  "| 维度 | 分数 | 百分位 | 已答/题数 | 口径 |\n|---|---|---|---|---|\n");
+    for (const r of S.instResult.rows) {
+      const rule = data.scoring[r.id] || {};
+      const pct = hasNorms ? instPercentile(data, r.name, r.value) : null;
+      md += hasNorms
+        ? `| ${r.name} | ${r.value.toFixed(2)} | ${pct == null ? "—" : pct + "%ile"} | ${r.n_answered}/${r.n_items} | ${rule.aggregation || ""} |\n`
+        : `| ${r.name} | ${r.value.toFixed(2)} | ${r.n_answered}/${r.n_items} | ${rule.aggregation || ""} |\n`;
+    }
+    md += hasNorms
+      ? `\n常模来源：${data.norms.source}（n=${data.norms.n}），${data.norms.percentile_method}\n`
+      : `\n该量表暂无可用常模，因此只给原始分，不给百分位，也不作「高于/低于常人」的判断。\n`;
+    md += "\n";
+  }
+
+  md += `## 逐题作答\n\n| 题号 | 维度 | 你的作答 | 中文题面 |\n|---|---|---|---|\n`;
+  const dimName = new Map((data.dimensions || []).map(d => [d.id, d.name]));
+  for (const r of rows) {
+    const d = r.dim.split("|").map(x => dimName.get(x) || x).join("、");
+    const v = r.value === "" ? "（未答）" : r.value;
+    md += `| ${r.order} | ${d} | ${v} | ${(r.zh || r.en).replace(/\|/g, "\\|")} |\n`;
+  }
+  md += `\n---\n\n本报告由 EmoHealth 生成，仅含「${e.code}」这一套量表的作答。\n`;
+  download(`${e.code}-报告-${stamp()}.md`, md, "text/markdown");
+}
+
+function instExportResultCSV(data, e) {
+  if (!S.instResult) return;
+  const head = ["维度", "分数", "百分位", "已答", "题数", "答完", "是否域", "口径"];
+  const hasNorms = !!(data.norms && (data.norms.facets || data.norms.domains));
+  const rows = S.instResult.rows.map(r => {
+    const rule = data.scoring[r.id] || {};
+    const pct = hasNorms ? instPercentile(data, r.name, r.value) : null;
+    return [r.name, r.value, pct == null ? "" : pct, r.n_answered, r.n_items,
+            r.complete ? "是" : "否", r.isDomain ? "是" : "否", rule.aggregation || ""];
+  });
+  const csv = "\ufeff" + [head, ...rows].map(r => r.map(v => {
+    const s = String(v == null ? "" : v);
+    return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  }).join(",")).join("\r\n");
+  download(`${e.code}-结果-${stamp()}.csv`, csv, "text/csv");
+}
+/* 该量表可用的作答方式：天赋树（> 60 题且已有布局数据）+ 经典逐题。
+   ⚠️ 上一版还有「分级模式」「情景模式」两种置信度驱动的界面，已按用户要求撤下；
+   这里**如实**反映现有能力，不列点了没反应的入口。 */
+function instModes(code, itemCount) {
+  const out = [];
+  if (itemCount > TREE_MIN_ITEMS && treeAvailable(code, itemCount)) {
+    out.push({id: "tree", label: "天赋树", sub: "按维度成簇的布局，挑着答"});
+  }
+  out.push({id: "classic", label: "经典逐题",
+            sub: `共 ${Math.ceil(itemCount / INST_PER_PAGE)} 页`});
+  return out;
+}
+/* ── 子页：作答方式切换条 ──────────────────────────────────
+   这是**子页内部**的控制，不是顶层模式（顶层那排只是快捷入口）。 */
+function instModeBar(code, itemCount) {
+  const modes = instModes(code, itemCount);
+  if (modes.length < 2) return "";
+  const cur = S.instView === "paged" ? "classic" : S.instView;
+  let h = `<div class="viewswitch">`;
+  for (const m of modes) {
+    h += m.id === cur
+      ? `<button class="on" disabled>${esc(m.label)}
+           <span class="sub">${esc(m.sub)}</span></button>`
+      : `<button data-instmode="${m.id}">${esc(m.label)}
+           <span class="sub">${esc(m.sub)}</span></button>`;
+  }
+  return h + `</div>`;
+}
+
+/* ══ 题面四字段的渲染（经典逐题与天赋树就地作答**共用**）══════════════════
+   数据源：`ui/items-structured/<code>.js`（结构化，权威）＋ 量表包（回退）。
+   四部分**并列且可区分**，不是混排：
+     · `.insttext` 中译（主体，data-f="text_zh"）
+     · `.insten`   英文原文（data-f="text_en"）
+     · `.opt .om`  选项情景说明 meaning_zh（data-f="meaning_zh"）——**选之前就可见**
+     · `.instnotes` 作答注记 notes_zh（data-f="notes_zh"）——默认展开可见
+   每一项的来源都可展开查证（`<details class="srcfold">`）：IPIP-NEO 的 1500 条
+   选项说明是 `project_editorial`（**项目自撰**），绝不能让界面看起来像手册原文。 */
+const BASIS_ZH = {
+  project_editorial: "项目自撰",
+  manual_labels: "手册锚点标签",
+  manual_verbatim: "手册原文逐字",
+};
+function basisZh(b) { return BASIS_ZH[b] || b || ""; }
+
+/* 每题不再有「依据/出处」折叠（D120 / task-24）。
+   原来每题都会渲染一行来源字符串（`text_zh_source` / `text_source` / 每条提醒的
+   `source`），例如「data/text-db/text-db.json（zh_source: AI 逐条复核 + 仲裁）」或
+   手册 PDF 的评分段落引用——那是**给审阅者核对的内部字段**，
+   用户读了不会改变作答或理解。数据仍在 `data/items-structured/*.js` 里，
+   可溯源由**数据层 + 文档层**承担；界面不承担。 */
+function itemBasisHtml() { return ""; }
+
+/* 题面（中译主体 + 原文并列 + 情景块 + 作答注记）。
+   ⚠️ schema 2.1（task-32）：每题**必填** `scenario_zh`（一句情景展示，20–60 汉字）——
+   它是「帮你理解这句话在什么场景下成立」的**答题必需**信息，所以
+   **默认可见、不做折叠**，且在视觉上与题干区分（`.scene`：细色条 + 次级墨色 + 略小字号；
+   用的不是品牌色——品牌色是提醒用的）。
+   ⚠️ `text_en_verbatim` / `text_en_repairs` 是**内部字段**（排版修复留痕），绝不上界面。
+   ⚠️ `notes_zh` 现在可能**不出现或为空数组**，这里已按 `|| []` 处理。 */
+function itemStemHtml(it, st) {
+  const zh = (st && st.text_zh) || it.zh || it.text || "";
+  const en = (st && st.text_en) || it.text || "";
+  let h = `<div class="insttext" data-f="text_zh">${esc(zh)}</div>`;
+  if (en && en !== zh) {
+    h += `<div class="insten" data-f="text_en"><span class="entag">EN</span>${esc(en)}</div>`;
+  }
+  /* 情景块：紧接题干之后、作答注记之前；纯展示，不参与计分/推断/导出 */
+  const scene = (st && typeof st.scenario_zh === "string") ? st.scenario_zh.trim() : "";
+  if (scene) {
+    h += `<div class="scene" data-f="scenario_zh">${md(scene)}</div>`;
+  }
+  const notes = (st && st.notes_zh) || [];
+  if (notes.length) {
+    h += `<ul class="instnotes" data-f="notes_zh">`;
+    for (const n of notes) h += `<li>${md(n.text || "")}</li>`;
+    h += `</ul>`;
+  } else if (it.note) {
+    h += `<div class="instnote">${esc(it.note)}</div>`;
+  }
+  return h;
+}
+
+/* ══ 三档提醒的分级显示（D119 / schema 2.0）═════════════════════════════════
+
+   用户点名的第一件事：**不要在每个选项里重复同一句注释**。数据层（task-22）已把说明
+   分成三级，界面按级**各说一次**：
+
+     · **量表级**（`instrument_guide`）：作答指示、时间窗、量表性质、非诊断声明、
+       按维度的敏感提示、反向计分说明 —— 每个量表/册渲染**一次**（作答区顶部）。
+     · **锚点级**（`scale_guides[scale_id]`）：这把尺子的共同说明
+       （`anchor_note_zh`）＋「没有统一标准、凭你自己判断」那句
+       （`quantification_note_zh`）—— **每组尺子渲染一次**：同一把尺子连续 10 题
+       只出现 1 次；换到另一把尺子（如 IPIP 换 facet）才出现新的一份。
+     · **选项级**（`scale_guides[*].options[].meaning_zh`，逐题锚点则在题上）：
+       就地写在该选项里，**不再重复**上面两级的句子。
+
+   ⚠️ 内部字段（`source` / `label_source` / `options_source` / `*_source`）一律不上界面。 */
+function instrumentGuideHtml(code) {
+  const d = structPayload(code);
+  const g = (d && d.instrument_guide) || null;
+  const first = (d && d.items && d.items.length) ? d.items[0] : null;
+  const r = (first && first.response) || {};
+  const instr = (g && g.instruction_zh) || r.question_head_zh || "";
+  const tf = (g && g.time_frame_zh) || r.time_frame_zh || "";
+  const what = (g && g.what_it_is_zh) || "";
+  const nondiag = (g && g.non_diagnostic_notice_zh) || "";
+  const rev = (g && g.reverse_keyed_note_zh) || "";
+  const topics = (g && g.topic_notices && typeof g.topic_notices === "object")
+    ? Object.keys(g.topic_notices).map(k => g.topic_notices[k]).filter(t => t && t.text) : [];
+  if (!instr && !tf && !what && !nondiag && !rev && !topics.length) return "";
+  let h = `<div class="instrhead" data-guide="instrument" data-code="${esc(code)}">`;
+  if (instr) h += `<b data-guide-part="instruction">${md(instr)}</b>`;
+  if (tf) h += `<span class="note" data-guide-part="time_frame">时间窗：${esc(tf)}</span>`;
+  if (what) h += `<div class="note">${md(what)}</div>`;
+  if (rev) h += `<div class="note" data-guide-part="reverse">${md(rev)}</div>`;
+  for (const t of topics) {
+    h += `<div class="note topicnote" data-guide-part="topic">${
+      t.topic ? `<b>${esc(t.topic)}</b>：` : ""}${md(t.text || "")}</div>`;
+  }
+  if (nondiag) h += `<div class="note" data-guide-part="non_diagnostic">${md(nondiag)}</div>`;
+  return h + `</div>`;
+}
+function anchorGuideHtml(code, scaleId) {
+  const g = scaleGuideOf(code, scaleId);
+  if (!g) return "";
+  const note = g.anchor_note_zh || "";
+  const quant = g.quantification_note_zh || "";
+  if (!note && !quant) return "";
+  return `<div class="anchorguide" data-guide="anchor" data-scale-id="${esc(scaleId || "")}${
+    g.scale_id && g.scale_id !== scaleId ? "" : ""}">
+    ${g.label ? `<span class="aglabel">${esc(g.label)}</span>` : ""}${
+    note ? `<div class="agnote" data-guide-part="anchor_note">${md(note)}</div>` : ""}${
+    quant ? `<div class="agnote agquant" data-guide-part="quantification_note">${md(quant)}</div>` : ""}
+  </div>`;
+}
+
+/* 选项：中英标签 + **情景说明就地可见**（选项级语义，不含上级句子）。
+   ⚠️ `.opt` 必须仍是 `<button>`、`.ot` 必须仍是「整句陈述/标签原文」——
+   `tools/check/test_mania_options_ui.js` 钉住这两条读取路径。
+   ⚠️ 不要在 `<button>` 里放 `<details>`（交互元素嵌套非法、点击会被吞）。
+   标签来源（schema 2.0）：`items[].response.options[]`（逐题锚点如 ASRM/FOCI 的陈述
+   也在题上）；选项语义：`scale_guides[scale_id].options[].meaning_zh`（有则优先）。 */
+function itemOptionsHtml(it, st, rf, cur, extraAttr) {
+  const code = S.instCode;
+  const own = it.options || null;
+  const sOpts = (st && st.response && st.response.options) || [];
+  const byV = new Map(sOpts.map(o => [+o.v, o]));
+  const sid = (st && st.response && st.response.scale_id) || "";
+  const guide = scaleGuideOf(code, sid);
+  const gOpts = new Map(((guide && guide.options) || []).map(o => [+o.v, o]));
+  const vList = own ? own.map(o => +o.v) : (() => {
+    const out = [];
+    for (let v = rf.min; v <= rf.max; v++) out.push(v);
+    return out;
+  })();
+  const long = vList.some(v => {
+    const g = gOpts.get(v) || {}, o = byV.get(v) || {};
+    const ownOpt = own ? own.find(x => +x.v === v) : null;
+    const t = (ownOpt && ownOpt.text) || o.label_zh || g.label_zh || o.label_en || "";
+    return String(t).length > 18 || !!(byV.get(v) || gOpts.get(v));
+  });
+  let h = `<div class="opts ${long ? "longopts" : "inlinopts"}">`;
+  for (const v of vList) {
+    const o = byV.get(v) || {};
+    const g = gOpts.get(v) || {};
+    const ownOpt = own ? own.find(x => +x.v === v) : null;
+    const ot = (ownOpt && ownOpt.text) || g.label_en || o.label_en || "";
+    const oz = o.label_zh || g.label_zh || "";
+    const meaning = g.meaning_zh || o.meaning_zh || "";
+    h += `<button class="opt${cur === v ? " sel" : ""}" data-v="${v}"${
+      extraAttr ? " " + extraAttr : ""}>
+      <span class="k">${v}</span><span class="ol">${
+      ot ? `<span class="ot" data-f="opt_label_en">${esc(ot)}</span>` : ""}${
+      oz ? `<span class="oz" data-f="opt_label_zh">${esc(oz)}</span>` : ""}${
+      meaning ? `<span class="om" data-f="meaning_zh">${md(meaning)}</span>` : ""}</span>
+    </button>`;
+  }
+  return h + `</div>`;
+}
+
+/* ══ 各指标的预测 + 置信度（用 ui/lib/inference.js，**不重写算法**）══════════
+
+   数据流：按需注入 `ui/lib/inference.js`（纯函数）＋ `ui/inference/<code>.js`
+   （engine 生成的参数包：`params` + `pairB64`）→ `predictFrom(payload, S.instResp)`。
+
+   三条硬规则（用户明确要求，逐条落到实处）：
+    ① **本维度一道题都没答 → 不展示该维度的预测与置信度**（`display_allowed=false`，
+       原因是 `NO_OWN_ITEM_ANSWERED`）。**不得**因为别的维度答得多就放行——
+       该行里连 r 都不出现，只写原因。
+    ② **严格分层**：官方分（量表声明口径，**缺失不猜**）与推断值分开两列，
+       推断值一律带 `inferred=true` 标记与「推断」徽章，绝不混算。
+    ③ 置信度不足门槛（`conf_r ≥ dim_ceiling × ceiling_ratio`）时**不给预测数**，
+       只给 r 与「已达上限 X%」；文案不让推断值看起来像已经测准的分数。
+   注意区分两个「上限」：门控分母是**本维度**的 `dim_ceiling × ceiling_ratio`，
+   而「已达上限 X%」的显示分母是**跨维度**上限 `dim_ceiling_cross`
+   （避免出现「已达上限 120%」这种荒谬读数的正是后者；`ceiling_pct` 由
+   `ui/lib/inference.js` 按 `conf_r ÷ dim_ceiling_cross` 直接算好，已夹在 [0,1]）。 */
+let _PRED = {key: null, res: null};      // 同一份作答只算一次（作答版本号做键）
+
+function dimNameOf(params, dim) {
+  return (params.dim_name && params.dim_name[dim]) || dim;
+}
+
+/* ══ 用户语言（D118）：把 conf_r / 门槛翻译成「能懂的分级」 ══════════════
+
+   用户需要知道「现在这个结果可不可信」，但**不需要**知道 `r=0.7132`、
+   门槛 `0.8132`、`ceiling_ratio=0.90`。所以默认视野里只给分级；
+   精确值、门槛、口径全部收进「依据与出处」折叠（R1：仍可查，只是不默认显示）。
+
+   ⚠️ 分级**只用于显示**：判据永远是库给的 `b.available`（= conf_r ≥ dim_ceiling×ratio），
+   这里不对任何数字做第二次判定。 */
+function confLevel(b) {
+  if (!b || !b.display_allowed) return {key: "none", zh: "还没答过"};
+  if (b.available) return {key: "ready", zh: "已可较可靠估计"};
+  const need = b.ceiling_need, r = b.confidence_r;
+  const ratio = (need && need > 0 && r != null) ? (r / need) : 0;
+  return ratio >= 0.9 ? {key: "near", zh: "快要能估计了"} : {key: "low", zh: "还不太可靠"};
+}
+
+function currentPrediction(code) {
+  const payload = inferencePayload(code);
+  const lib = window.EmoHealthInference;
+  if (!payload || !payload.params || !lib) return null;
+  const key = code + "|" + S.ansVer;
+  if (_PRED.key === key) return _PRED.res;
+  let res = null;
+  try {
+    res = lib.predictFrom(payload, S.instResp);
+  } catch (err) {
+    return {error: String(err && err.message || err)};
+  }
+  _PRED = {key, res};
+  return res;
+}
+
+function renderInferencePanel(data, e) {
+  if (!INFMAP[e.code]) {
+    return `<div class="infpanel off" data-code="${esc(e.code)}" data-display="na">
+      <b>各维度的目前估计：本量表不支持</b>
+      <div class="note">这套量表没有题级统计参数，所以<b>不做估计</b>——
+      只显示作答进度；答完后在「看结果」里给分数（有常模时给百分位）。</div></div>`;
+  }
+  const payload = inferencePayload(e.code);
+  if (!payload || !window.EmoHealthInference) {
+    return `<div class="infpanel loading" data-code="${esc(e.code)}" data-display="loading">
+      <b>各维度的目前估计</b>
+      <div class="note">正在准备估计所需的统计参数…（不影响作答）</div></div>`;
+  }
+  const pred = currentPrediction(e.code);
+  if (!pred || pred.error) {
+    return `<div class="infpanel off" data-code="${esc(e.code)}" data-display="error">
+      <b>各维度的目前估计：暂时算不出来</b>
+      <div class="note">这套量表的估计暂时不可用（不会用一个猜的数顶上）。</div></div>`;
+  }
+  const p = payload.params;
+  const dims = Object.keys(p.dim_items || {});
+  const rows = dims.map(dim => ({dim, b: (pred.inferred || {})[dim], o: (pred.official || {})[dim]}))
+    .filter(x => x.b);
+  const nm = x => (x.b && x.b.name) || dimNameOf(p, x.dim);
+  // 排序：能给估计的靠前 → 可显示但还不可靠 → 一题未答（硬规则）
+  const rank = x => x.b.display_allowed ? (x.b.available ? 0 : 1) : 2;
+  rows.sort((a, b) => rank(a) - rank(b) || String(nm(a)).localeCompare(String(nm(b))));
+  const nAllowed = rows.filter(x => x.b.display_allowed).length;
+  const nReady = rows.filter(x => x.b.available).length;
+  const nAnswered = data.items.filter(it => it.id in S.instResp).length;
+
+  /* ── 默认视野：只列「已有估计 / 已可估计」的维度 + 一行汇总 ────────────
+     D118（Lead 2026-10-05 裁决⑤）：未答的那 24 个维度逐行重复长句对真实用户
+     就是噪音（移动端尤甚）。所以默认表只放**有状态的维度**（`display_allowed`：
+     已答过该维度自己的题），未答维度收进**默认折叠**的「其余 N 个维度」里——
+     **折叠表里的每一行仍然带完整 `data-*` 契约，且被挡维度依旧没有
+     `data-r`/`data-pred`**（硬规则不因折叠而破）。
+     精确 r、门槛、口径、样本量另在下面的「依据与出处」。 */
+  const shownDims = rows.filter(x => x.b.display_allowed);
+  const otherDims = rows.filter(x => !x.b.display_allowed);
+  const dimRow = (x, blocked) => {
+    const b = x.b, o = x.o || {};
+    const own = b.n_answered_own || 0, need = b.n_items || (p.dim_items[x.dim] || []).length;
+    const official = o.complete
+      ? `<b>${(+o.value).toFixed(2)}</b>`
+      : `<span class="note">答满后给出（还差 ${Math.max(0, need - own)} 题）</span>`;
+    if (blocked) {
+      // 硬规则①：连 r 都不显示，只写原因（原话保留在 data-reason 与依据折叠里）
+      return `<tr data-dim="${esc(x.dim)}" data-display="blocked"
+        data-status="${esc(b.status || "")}" data-available="0"
+        data-reason="${esc(b.reason || "")}">
+        <td>${esc(nm(x))}</td>
+        <td>${official}</td>
+        <td colspan="3" class="note">这个维度你<b>还没答过题</b>，
+          所以先不给估计与可信程度（答它里面任意一题就会开始出现）。</td></tr>`;
+    }
+    const pct = (b.ceiling_pct == null) ? null : Math.max(0, Math.min(1, b.ceiling_pct));
+    const lvl = confLevel(b);
+    const valCell = b.available
+      ? `<span class="infpred" data-pred="${b.predicted_score}"
+           data-r="${b.confidence_r}">约 ${(+b.predicted_score).toFixed(2)}</span>
+         <span class="infbadge" title="根据已答题目做的估计，不是已测出来的得分">估计</span>`
+      : `<span class="note">还需要再答这个维度的一些题</span>`;
+    return `<tr data-dim="${esc(x.dim)}" data-display="allowed" data-inferred="true"
+      data-available="${b.available ? 1 : 0}" data-status="${esc(b.status || "")}"
+      data-r="${b.confidence_r}"${b.available ? ` data-pred="${b.predicted_score}"` : ""}>
+      <td>${esc(nm(x))}</td>
+      <td>${official}</td>
+      <td>${valCell}</td>
+      <td data-level="${lvl.key}">${lvl.zh}</td>
+      <td>${pct == null ? "—" : `${(pct * 100).toFixed(0)}%`}</td>
+    </tr>`;
+  };
+
+  let h = `<div class="infpanel" data-code="${esc(e.code)}" data-display="ok"
+    data-inferred="true" data-n="${nAnswered}" data-ready="${nReady}"
+    data-shown="${shownDims.length}" data-others="${otherDims.length}">
+    <div class="rowline"><b>各维度的目前估计</b>
+      <span>已答 ${nAnswered}/${data.items.length} 题${
+        nReady ? ` · ${nReady} 个维度已可较可靠估计` : ""}</span></div>
+    <div class="note estnote">这些是<b>根据你已答的题目做出的估计</b>，<b>不是已经测出来的得分</b>；
+      答完后在「看结果」里给正式得分。</div>`;
+  if (shownDims.length) {
+    h += `<table class="insttable inf"><thead><tr>
+      <th>维度</th><th>完整得分</th><th>目前的估计</th><th>可信程度</th><th>信息充分度</th>
+    </tr></thead><tbody>`;
+    for (const x of shownDims) h += dimRow(x, false);
+    h += `</tbody></table>`;
+  } else {
+    h += `<div class="note">还没有维度能给出估计——先答某个维度自己的题。</div>`;
+  }
+  if (otherDims.length) {
+    h += `<details class="srcfold dimfold" data-dimfold="1">
+      <summary>另有 ${otherDims.length} 个维度你还没答过题（点开看）</summary>
+      <div class="srcbody">
+      <div class="note">这些维度你还没答过题——答其中任意一题就会开始出现估计。</div>
+      <table class="insttable inf"><thead><tr>
+        <th>维度</th><th>完整得分</th><th>目前的估计</th>
+      </tr></thead><tbody>`;
+    for (const x of otherDims) h += dimRow(x, true);
+    h += `</tbody></table></div></details>`;
+  }
+  /* ⚠️ D120（task-24）：这里原来有一个「依据」折叠，渲染了判据公式、模型名、
+     `BLUP/回归`、`item_dim_corr_kind`、题级均值/SD 来源、门控比例、`ceiling_*note`、
+     `N=` 样本量、`quality.basis`/`sample_note`、逐维度精确 `conf_r`/门槛……
+     **全部删除**：用户来做测评，读这些不会改变他的作答或理解；可溯源是**项目内部**
+     要求（文档层 + 数据层），界面不承担。精确数值仍在对用户不可见的 `data-*` 里。 */
+  return h + `</div>`;
+}
+
+/* 只重绘推断面板（作答后调用；不整块重绘作答区，避免跳回顶部/节点失效） */
+function refreshInferencePanel() {
+  if (!INST_NOW || !S.instCode) return;
+  const box = document.querySelector(".infpanel");
+  if (!box) return;
+  const e = catalogEntry(S.instCode);
+  const host = document.createElement("div");
+  host.innerHTML = renderInferencePanel(INST_NOW, e);
+  const fresh = host.firstElementChild;
+  if (fresh) box.replaceWith(fresh);
+}
+
+/* ── 单量表：分页作答 ───────────────────────────────────── */function renderInstStage(el) {
+  const e = catalogEntry(S.instCode);
+  if (!e) { renderInstPicker(el); return; }
+  const data = INST_NOW;
+  if (!data || data.instrument !== S.instCode) {
+    el.innerHTML = `<div class="note">正在加载「${esc(e.display_name)}」…</div>`;
+    loadInstrument(S.instCode).then(d => {
+      if (S.mode !== "inst" || S.instCode !== e.code) return;   // 用户已切走
+      INST_NOW = d;
+      S.instPage = 0;
+      renderTop(); renderInstStage(el);
+    }).catch(err => {
+      el.innerHTML = `<div class="note">加载失败：${esc(err.message)}</div>`;
+    });
+    return;
+  }
+  if (S.instResult) { renderInstResult(el, data, e); return; }
+
+  /* 题面四字段与推断参数**按需加载**：进了这套量表的子页才注入
+     （ui/items-structured/<code>.js 最大 1.4 MB、ui/inference/<code>.js 最大 434 KB、
+     ui/lib/inference.js 20 KB）。不阻塞首屏：先按量表包渲染，到位后再重渲染一次。 */
+  ensureItemData(e.code, () => {
+    if (S.mode !== "inst" || S.instCode !== e.code) return;
+    renderInstStage(el);
+  });
+
+  /* 作答方式分发。`paged` 是历史写法，等同 `classic`。 */
+  const view = S.instView === "paged" ? "classic" : S.instView;
+  const canTree = treeAvailable(e.code, data.items.length);
+  if (view === "tree" && canTree) {
+    if (!TREE_NOW || TREE_NOW.__code !== e.code) {
+      el.innerHTML = `<div class="note">正在加载天赋树布局…</div>`;
+      loadTreeLayout(e.code).then(() => {
+        if (S.mode !== "inst" || S.instCode !== e.code) return;
+        renderTop(); renderInstStage(el);
+      }).catch(err => {
+        el.innerHTML = `<div class="note">天赋树加载失败：${esc(err.message)}</div>`;
+      });
+      return;
+    }
+    renderInstTree(el);
+    return;
+  }
+
+  const items = data.items;
+  const pages = Math.ceil(items.length / INST_PER_PAGE);
+  const page = Math.max(0, Math.min(S.instPage, pages - 1));
+  const slice = items.slice(page * INST_PER_PAGE, (page + 1) * INST_PER_PAGE);
+  const done = items.filter(it => it.id in S.instResp).length;
+  const rf = data.response_format;
+
+  let h = withChainBar(instPageHeader(data, e), data, e);
+  h += `<div class="ph">${esc(data.display_name)}</div>
+    <div class="nqhead"><b>第 ${page + 1}/${pages} 页</b>
+      <span class="note">已答 ${done}/${items.length} 题</span></div>
+    <div class="bar" style="margin:2px 0 6px">
+      <i style="width:${done / items.length * 100}%"></i></div>`;
+
+  // 作答方式切换条（子页内部）
+  h += instModeBar(e.code, items.length);
+
+  /* 题面四字段：结构化数据按需加载（进了本页才注入 ui/items-structured/<code>.js） */
+  const stMap = structIndex(e.code);
+  /* 量表级提醒（每册一次）：作答指示 / 时间窗 / 量表性质 / 反向计分 / 敏感提示 / 非诊断 */
+  h += instrumentGuideHtml(e.code);
+  /* 各指标预测 + 置信度（硬规则：本维度一题未答 → 不展示该维度的预测与置信度） */
+  h += renderInferencePanel(data, e);
+
+  // ⚠️ 答题中**不显示官方分值**（硬规则 ④）：不给维度分、不给中间量。
+  //    本轮按用户要求新增的「预测 + 置信度」是**推断**，在上面的面板里单独标注
+  //    （inferred=true），与官方分分层呈现、绝不混算。
+  //
+  //    选项文本有三种来源，优先级从具体到笼统：
+  //      ① 该题自己的选项（`items[].options`）——Mania 的选项是整句陈述，
+  //         Repetitive 每题锚点不同；
+  //      ② 结构化数据 `response.options[]`（含中英标签 + 情景说明）；
+  //      ③ 量表的统一标签（response_format.labels）；都没有时退化为分值数字。
+  //    ⚠️ 2026-10-04：本题自己的选项已从 `provenance.item_options`（旧镜像）
+  //       切到**规范位置 `items[].options`**，镜像已删除。
+  //       底部图例只在「整册都用统一标签」时才有意义。
+  const hasOwnOpts = slice.some(it => it.options && it.options.length);
+  h += `<ol class="institems">`;
+  /* 锚点级提醒：**同一把尺子只出现一次**。本页内按 `response.scale_id` 分段，
+     每段第一题前面放一次；换尺子（如 IPIP 换 facet）才出现新的一份。 */
+  let prevSid = null;
+  for (const it of slice) {
+    const cur = S.instResp[it.id];
+    const st = stMap ? stMap.get(it.id) : null;
+    const sid = (st && st.response && st.response.scale_id) || "";
+    const isNewRun = sid !== prevSid;
+    prevSid = sid;
+    // 作答指示语（kind=instruction）只当中文引导语，不当作题项。
+    const isInstr = it.kind === "instruction";
+    h += `<li class="institem${isInstr ? " instr" : ""}" data-item="${esc(it.id)}">`;
+    if (isNewRun) h += anchorGuideHtml(e.code, sid);
+    h += itemStemHtml(it, st);
+    h += itemOptionsHtml(it, st, rf, cur, "");
+    h += itemBasisHtml(st);
+    h += `</li>`;
+  }
+  h += `</ol>`;
+  // 只有「整册都用统一标签」时才在底部给图例；每题独立锚点的量表已在选项里写明。
+  if (!hasOwnOpts && !stMap) {
+    h += `<div class="note" style="margin-top:8px">${esc(rf.labels.map((x, i) =>
+      `${rf.min + i}=${x}`).join("　"))}</div>`;
+  }
+  // 授权用**数据包里的完整版**（含权利人、许可说明）。
+  // D120（task-24）：**不再渲染 `license.evidence` 这类内部来源路径**
+  // （档案路径是审阅者用的）。留下的「授权 + 权利人」是用户/传播需要的署名信息，
+  // 也是页脚那行授权标注的落点。
+  const lic = data.license || e.license || {};
+  h += `<div class="instnav">
+      <button data-page="${page - 1}" ${page === 0 ? "disabled" : ""}>上一页</button>
+      <button data-page="${page + 1}" ${page >= pages - 1 ? "disabled" : ""}>下一页</button>
+      <span class="spacer"></span>
+      <button class="primary" data-instdone="1"
+        ${done < items.length ? "disabled" : ""}>看结果</button>
+      <button data-instback="1">换一套</button>
+    </div>
+    <details class="srcfold devfold" data-dev="license"><summary>授权</summary>
+      <div class="srcbody">授权：${esc(lic.label || lic.kind || "")}${
+      lic.holder ? " · " + esc(lic.holder) : ""}${
+      lic.notes ? "。" + esc(lic.notes) : ""}</div></details>`;
+  el.innerHTML = h;
+}
+/* 原始分 → 百分位。两种常模结构都要支持：
+     · IPIP-NEO 形态：`facets`/`domains` 各带 1..99 的百分位表 → 线性插值
+     · PID-5 形态：**条件常模**（按性别×年龄分层），来源直接给出逐 raw 的百分位
+       → 查表 + 相邻点插值，并把「外推」标记一并带出
+   ⚠️ 没有常模时返回 null——界面必须显示「无参照」，不能编一个百分位出来。 */
+function instPercentileDetail(data, name, value, cell) {
+  const nrm = data && data.norms;
+  if (!nrm) return null;
+  // 条件常模
+  if (nrm.scales) {
+    const id = (nrm.scale_names && Object.entries(nrm.scale_names)
+      .find(([, v]) => v === name) || [])[0];
+    const sc = id && nrm.scales[id];
+    if (!sc) return null;
+    const use = (cell && sc.cells[cell]) ? cell
+      : (nrm.cells || Object.keys(sc.cells))[0];
+    const tbl = sc.cells[use] || sc.cells[Object.keys(sc.cells)[0]];
+    if (!tbl) return null;
+    const pts = Object.entries(tbl)
+      .map(([k, v]) => [parseFloat(k), v])
+      .sort((a, b) => a[0] - b[0]);
+    if (!pts.length) return null;
+    const pick = p => ({pctl: Math.round(p.pctl), T: p.T, extrap: p.extrap,
+                        cell: use});
+    if (value <= pts[0][0]) return pick(pts[0][1]);
+    if (value >= pts[pts.length - 1][0]) return pick(pts[pts.length - 1][1]);
+    for (let i = 1; i < pts.length; i++) {
+      const [x0, a] = pts[i - 1], [x1, b] = pts[i];
+      if (value <= x1) {
+        const k = x1 === x0 ? 0 : (value - x0) / (x1 - x0);
+        return {pctl: Math.round(a.pctl + (b.pctl - a.pctl) * k),
+                T: Math.round((a.T + (b.T - a.T) * k) * 10) / 10,
+                extrap: false, cell: use};
+      }
+    }
+    return null;
+  }
+  // 百分位表形态：常模按**面向 id** 索引，结果页拿到的是**面向显示名**，要过桥
+  const idOf = {};
+  for (const [fid, fname] of Object.entries(nrm.facet_names || {})) idOf[fname] = fid;
+  const cand = [name, idOf[name]].filter(Boolean);
+  let t = null;
+  for (const key of cand) {
+    t = (nrm.facets && nrm.facets[key]) || (nrm.domains && nrm.domains[key]);
+    if (t) break;
+  }
+  if (!t || !t.percentiles) return null;
+  const ps = t.percentiles;
+  const pts = [];
+  for (let p = 1; p <= 99; p++) if (ps[String(p)] != null) pts.push([ps[String(p)], p]);
+  if (!pts.length) return null;
+  if (value <= pts[0][0]) return {pctl: pts[0][1], T: null, extrap: false};
+  if (value >= pts[pts.length - 1][0])
+    return {pctl: pts[pts.length - 1][1], T: null, extrap: false};
+  for (let i = 1; i < pts.length; i++) {
+    const [x0, p0] = pts[i - 1], [x1, p1] = pts[i];
+    if (value <= x1) {
+      const k = x1 === x0 ? 0 : (value - x0) / (x1 - x0);
+      return {pctl: Math.round(p0 + (p1 - p0) * k), T: null, extrap: false};
+    }
+  }
+  return null;
+}
+
+function instPercentile(data, name, value, cell) {
+  const d = instPercentileDetail(data, name, value, cell);
+  return d ? d.pctl : null;
+}
+/* ══ 路由（hash）══════════════════════════════════════════════════════
+
+   ``#/``                       量表库首页（所有量表的入口）
+   ``#/scale/<code>``           某套量表的子页（默认作答方式）
+   ``#/scale/<code>/classic``   该量表子页 · 经典逐题
+   ``#/scale/<code>/tree``      该量表子页 · 天赋树（仅 > 60 题且有布局）
+   ``#/scale/<code>/result``    该量表子页 · 结果
+
+   为什么用 hash：``file://`` 直接双击打开是本项目硬约束，
+   history.pushState 在 file:// 下会被同源策略挡住，hash 不受影响。 */
+const INSTR_MODES = ["classic", "tree"];
+
+function parseHash() {
+  const h = (location.hash || "").replace(/^#\/?/, "");
+  const parts = h.split("/").filter(Boolean);
+  if (!parts.length) return {view: "home"};
+  if (parts[0] === "scale" && parts[1]) {
+    const code = decodeURIComponent(parts[1]);
+    const sub = parts[2] || "";
+    if (sub === "result") return {view: "scale", code, result: true};
+    if (INSTR_MODES.includes(sub)) return {view: "scale", code, mode: sub};
+    return {view: "scale", code};
+  }
+  // 其余（含已撤下的 #/tier、#/scene）一律回到量表库
+  return {view: "home"};
+}
+
+/* 没有指定作答方式时，按量表特性选默认：
+   · > 60 题且已有布局数据 → 天赋树（正是这些长表才需要挑着答）
+   · 其余 → 经典逐题 */
+function defaultModeFor(code) {
+  const ce = catalogEntry(code);
+  if (ce && ce.items > TREE_MIN_ITEMS && treeAvailable(code, ce.items)) return "tree";
+  return "classic";
+}
+
+function go(hash, replace) {
+  if (location.hash === hash) return;
+  if (replace) location.replace(location.pathname + location.search + hash);
+  else location.hash = hash;
+}
+
+/* 把路由应用到状态。**同一个函数**既处理首次加载、也处理后续 hash 变化，
+   避免「进得去出不来」这类只在某一条路径上出现的 bug。 */
+function applyRoute() {
+  const r = parseHash();
+  if (r.view === "scale") {
+    const changed = S.instCode !== r.code;
+    S.mode = "inst";
+    S.instCode = r.code;
+    if (changed) {
+      S.instResp = {};
+      S.instResult = null;
+      S.instPage = 0;
+      S.treeSel = null;
+      INST_NOW = null;
+      TREE_NOW = null;      // 树布局也跟着量表走
+    }
+    if (r.mode) S.instView = r.mode;
+    else if (changed || !S.instView) S.instView = defaultModeFor(r.code);
+    // 直接进结果视图时数据可能还没加载，交给 renderInstStage 处理加载态
+    S.instResult = r.result ? (S.instResult || null) : null;
+  } else {
+    S.mode = "inst";
+    S.instCode = null;
+    S.instResult = null;
+    S.treeSel = null;
+  }
+  syncModeButtons();
+  renderTop(); renderStage();
+}
+
+/* 顶层只有一个入口「题库」：在子页里点它回量表库。 */
+function syncModeButtons() {
+  for (const b of document.querySelectorAll("#modes button")) {
+    b.classList.toggle("on", b.dataset.m === "inst" && !S.instCode);
+  }
+}
+/* ══ 天赋树（> 60 题且有布局数据的量表）═══════════════════════════════
+
+   数据来自通用布局（``ui/tree-layouts/<code>.js``，由 tools/build/build_tree_layouts.py
+   生成，布局数据与生成脚本**按用户要求保留**）：
+     · 节点 = 一道题，位置按「同维度的题聚在一起」排布
+     · 深度 = 第几环；每环从每个维度各取一题
+     · 可答性 = 支撑边上的邻居已答（答了才解锁），最内环始终可答
+
+   ⚠️ 布局依据必须如实标注：这些量表没有作答数据，布局是**按维度成簇的结构性排布**，
+      不是实证的题间相关。界面不得声称它是相关性（硬规则 ③）。
+
+   点节点 → 就地展开该题作答；答完节点变色，邻居解锁。 */
+function treeAvailable(code, itemCount) {
+  return itemCount > 60 && !!(window.EMOHEALTH_TREEMAP || {})[code];
+}
+
+function loadTreeLayout(code) {
+  if (TREE_NOW && TREE_NOW.__code === code) return Promise.resolve(TREE_NOW);
+  const path = (window.EMOHEALTH_TREEMAP || {})[code];
+  if (!path) return Promise.reject(new Error("该量表没有天赋树布局"));
+  return new Promise((resolve, reject) => {
+    const s = document.createElement("script");
+    s.src = path;
+    s.onload = () => {
+      const g = "EMOHEALTH_TREE_" + code.replace(/[^A-Za-z0-9]/g, "_").toUpperCase();
+      const data = window[g];
+      if (!data) { reject(new Error("树布局没有挂到 window：" + path)); return; }
+      data.__code = code;
+      TREE_NOW = data;
+      resolve(data);
+    };
+    s.onerror = () => reject(new Error("树布局加载失败：" + path));
+    document.head.appendChild(s);
+  });
+}
+/* ══ 天赋树：维度解锁状态 + 下一题推荐 ══════════════════════════════════════
+
+   ① **解锁判据不自创**：直接用 `currentPrediction()` 的 `available`
+      （= `conf_r ≥ dim_ceiling × ceiling_ratio(0.90)`，与预测面板、与
+      `data/inference/*.json` 的 `ceiling_note` 完全同一套）。
+   ② **硬规则**：本维度一道题都没答 → 面板里 `display_allowed=false`、
+      `confidence_r=null`；这里据此**绝不给节点点亮**，也不显示它的 r。
+      「别的维度答满、跨维度 conf_r 很高」**不放行**（单独测试）。
+   ③ 推荐用 `ui/lib/inference.js` 的 `forecastGains`（信息增益前瞻，
+      闭式秩一增量，见该文件注释），**同一套 conf_r**，不另立算法。 */
+let _TREE_DIM = {code: null, map: null};
+function treeDimOfOrder(layout) {
+  const code = (layout && layout.meta && layout.meta.instrument) || null;
+  if (_TREE_DIM.code === code && _TREE_DIM.map) return _TREE_DIM.map;
+  const m = new Map();
+  for (const c of ((layout && layout.clusters) || [])) {
+    for (const o of (c.items || [])) m.set(+o, c.id);
+  }
+  _TREE_DIM = {code, map: m};
+  return m;
+}
+
+let _UNLOCK = {key: null, res: null};
+/* 每个维度的解锁状态（按作答版本号缓存；与预测面板同源） */
+function treeUnlockState() {
+  const code = S.instCode;
+  if (!code) return null;
+  const payload0 = inferencePayload(code);
+  /* ⚠️ 缓存键必须含「参数包/推断库是否已就绪」：按需加载是异步的，
+     第一次渲染时它们多半还没到，若只按 ansVer 缓存就会一直返回「未就绪」的状态，
+     加载完成后也不会变（实测会表现为节点永远不点亮、推荐永远走兜底）。 */
+  const key = code + "|" + S.ansVer + "|" + (payload0 ? 1 : 0) + "|" +
+    (window.EmoHealthInference ? 1 : 0);
+  if (_UNLOCK.key === key) return _UNLOCK.res;
+  const res = {ok: false, ready: new Set(), dims: {}, nReady: 0, nDisplay: 0,
+               nDims: 0, reason: ""};
+  const payload = payload0;
+  const pred = currentPrediction(code);
+  if (payload && payload.params && pred && !pred.error) {
+    const dims = Object.keys(payload.params.dim_items || {});
+    res.nDims = dims.length;
+    for (const d of dims) {
+      const b = (pred.inferred || {})[d];
+      if (!b) continue;
+      res.dims[d] = {
+        name: b.name || dimNameOf(payload.params, d),
+        display_allowed: !!b.display_allowed,
+        available: !!b.available,
+        // 硬规则：未答维度连 r 都不留（不是留 0）
+        confidence_r: b.display_allowed ? b.confidence_r : null,
+        n_own: b.n_answered_own || 0, n_items: b.n_items || 0,
+        ceiling: b.ceiling, ceiling_cross: b.ceiling_cross,
+        need: b.ceiling_need, pct: b.ceiling_pct, status: b.status || "",
+        reason: b.reason || "",
+      };
+      if (b.display_allowed) res.nDisplay++;
+      if (b.available) { res.nReady++; res.ready.add(d); }
+    }
+    res.ok = true;
+  } else {
+    res.reason = (pred && pred.error) ? String(pred.error)
+      : (payload && payload.params ? "推断库未就绪（按需加载中）" : "本量表暂无题级推断参数");
+  }
+  _UNLOCK = {key, res};
+  return res;
+}
+
+let _RECO = {key: null, res: null, why: "", heuristic: null};
+/* 「为什么是它」：把前瞻的结构化结果翻成一句可复核的话（数字都能追到出处）。
+   ⚠️ 硬规则的延伸：**本维度当前一题未答时，不写它的 r / 增量数字**——那时连面板都
+   不给数，推荐文案也不能变相给出（只定性说「答它之后该维度才首次具备可展示的置信度」）。
+   可显示的数字只统计**当前已可展示**的维度（`gain_total_displayable`）。 */
+function recoWhy(res) {
+  const best = res.best;
+  if (!best) return "";
+  const payload = inferencePayload(S.instCode);
+  const nmOf = d => (payload && d) ? dimNameOf(payload.params, d) : (d || "");
+  const conf = best.confirmed || {};
+  const ranked = Object.keys(conf).filter(d => conf[d].gain > 0)
+    .sort((a, b) => conf[b].gain - conf[a].gain);
+  const parts = [];
+  const shown = ranked.filter(d => conf[d].before != null);
+  if (shown.length) {
+    const d = shown[0], c = conf[d];
+    parts.push(`预计对「${nmOf(d)}」的置信度提升最大：r ${(+c.before).toFixed(2)} → ${
+      (+c.after).toFixed(2)}（信息增益 +${(+c.gain).toFixed(3)}）`);
+  }
+  const blockedBenef = best.blocked_beneficiaries || 0;
+  if (blockedBenef) {
+    parts.push(`会让 ${blockedBenef} 个**本维度还没答**的维度（如「${
+      nmOf(best.own_dim)}」）首次具备可展示的置信度——按硬规则，它们现在的数值不显示`);
+  }
+  if (best.unlocks && best.unlocks.length) {
+    parts.push(`并让「${best.unlocks.map(nmOf).join("、")}」跨过可给结果的门槛`);
+  } else if (!blockedBenef) {
+    parts.push("还不足以让任何维度跨过门槛，但它是当前信息增益最大的题");
+  }
+  parts.push(shown.length
+    ? `当前已可展示维度的信息增益合计 +${(+(best.gain_total_displayable || 0)).toFixed(3)}`
+    : "当前没有任何维度达到可展示条件，这一步的价值是把某个维度从「不可展示」推进过去");
+  return parts.join("；");
+}
+/* 旧启发式（task-10 版）：挑「可答且已答题数最少的维度」里的题——作为对照保留 */
+function heuristicTreeItem(layout, data, openOrders) {
+  const dimOf = new Map();
+  for (const c of (layout.clusters || [])) for (const o of (c.items || [])) dimOf.set(o, c.id);
+  const answeredPerDim = new Map();
+  for (const c of (layout.clusters || [])) answeredPerDim.set(c.id, 0);
+  for (const it of data.items) {
+    if (it.id in S.instResp) {
+      const d = dimOf.get(it.order);
+      if (d) answeredPerDim.set(d, (answeredPerDim.get(d) || 0) + 1);
+    }
+  }
+  const pool = openOrders.slice().sort((a, b) => {
+    const da = answeredPerDim.get(dimOf.get(a)) ?? 0;
+    const db = answeredPerDim.get(dimOf.get(b)) ?? 0;
+    return da - db || a - b;
+  });
+  return pool.length ? pool[0] : null;
+}
+
+/* 节点状态：已答 / 可答 / 未解锁 —— **结构性**规则（纯布局语义，不做推断）：
+     · 已答 → done
+     · 最内环（depth 0）始终可答 —— 保留「从中心往外长」的方向感
+     · 任一支撑边邻居已答 → 可答 —— 保留「答了才解锁」的推进感
+   「维度已解锁（置信度达标）」是**另一根轴**，由 `treeUnlockState()` 决定并作为
+   `ready` 类叠加在上面（已答节点也可以属于已解锁维度）。 */
+function treeNodeState(layout, order, respById) {
+  const key = String(order);
+  const id = TREE_NOW_ID.get(order);
+  if (id && id in S.instResp) return "done";
+  if ((layout.depth[key] ?? 0) === 0) return "open";     // 最内环
+  const sup = layout.support[key] || [];
+  const done = sup.some(o => {
+    const iid = TREE_NOW_ID.get(+o);
+    return iid && iid in S.instResp;
+  });
+  return done ? "open" : "locked";
+}
+let TREE_NOW_ID = new Map();       // order -> itemId（每次渲染前重建）
+let _TREE_GUIDE = {code: null, sid: null};   // 天赋树里「这把尺子已经说过一次了」的记忆
+function renderInstTree(el) {
+  const e = catalogEntry(S.instCode);
+  const data = INST_NOW;
+  const layout = TREE_NOW;
+  if (!data || !layout) { el.innerHTML = `<div class="note">正在加载天赋树…</div>`; return; }
+
+  const items = new Map(data.items.map(it => [it.order, it]));
+  TREE_NOW_ID = new Map(data.items.map(it => [it.order, it.id]));
+  const done = data.items.filter(it => it.id in S.instResp).length;
+  const rings = layout.rings || 10;
+
+  // 归一化坐标到视图框
+  const xs = data.items.map(it => (layout.xy[String(it.order)] || [0, 0])[0]);
+  const ys = data.items.map(it => (layout.xy[String(it.order)] || [0, 0])[1]);
+  const minX = Math.min(...xs), maxX = Math.max(...xs);
+  const minY = Math.min(...ys), maxY = Math.max(...ys);
+  const W = 720, H = 620, PAD = 34;
+  const sx = v => PAD + (v - minX) / (maxX - minX || 1) * (W - 2 * PAD);
+  const sy = v => PAD + (v - minY) / (maxY - minY || 1) * (H - 2 * PAD);
+
+  const sel = S.treeSel;
+  let h = withChainBar(instPageHeader(data, e), data, e);
+  h += `<div class="ph">${esc(data.display_name)} · 天赋树</div>
+    <div class="nqhead"><b>已答 ${done}/${data.items.length} 题</b>
+      <span class="note">共 ${rings} 环 · ${layout.meta.clusters} 个维度</span></div>
+    <div class="bar" style="margin:2px 0 10px"><i style="width:${done / data.items.length * 100}%"></i></div>`;
+  h += instModeBar(e.code, data.items.length);
+  /* 量表级提醒（每册一次）：作答指示 / 时间窗 / 量表性质 / 反向计分 / 敏感提示 / 非诊断 */
+  h += instrumentGuideHtml(e.code);
+  /* 各指标预测 + 置信度（与经典逐题页同一个面板、同一条硬规则） */
+  h += renderInferencePanel(data, e);
+  /* ── 下一题推荐（信息增益）+ 解锁图例：与面板同一套 conf_r ── */
+  const unlock = treeUnlockState();
+  const dimOf = treeDimOfOrder(layout);
+  const recoOrder = recommendTreeItem(layout, data);
+  h += renderTreeReco(layout, data, unlock, recoOrder);
+  h += `<div class="treewrap"><svg class="treesvg" viewBox="0 0 ${W} ${H}" role="img"
+        aria-label="答题进度图">`;
+
+  // 支撑边（先画，压在节点下面）
+  for (const it of data.items) {
+    const to = layout.xy[String(it.order)];
+    if (!to) continue;
+    for (const sup of (layout.support[String(it.order)] || [])) {
+      const from = layout.xy[String(sup)];
+      if (!from) continue;
+      h += `<line class="treeedge" x1="${sx(from[0]).toFixed(1)}" y1="${sy(from[1]).toFixed(1)}"
+        x2="${sx(to[0]).toFixed(1)}" y2="${sy(to[1]).toFixed(1)}"/>`;
+    }
+  }
+  // 节点：结构状态（done/open/locked）× 维度解锁（ready，叠加）
+  for (const it of data.items) {
+    const p = layout.xy[String(it.order)];
+    if (!p) continue;
+    const st = treeNodeState(layout, it.order, S.instResp);
+    const dim = dimOf.get(it.order);
+    const u = (dim && unlock && unlock.ok) ? unlock.dims[dim] : null;
+    /* 硬规则：本维度一道题都没答 → u.display_allowed=false ⇒ **不点亮** */
+    const ready = !!(u && u.available);
+    const r = st === "done" ? 9 : ready ? 11 : st === "open" ? 10 : 6;
+    /* 悬停文字（D118）：只给用户语言。精确 r / 门槛不再出现在 `title` 里
+       （它们仍在 `data-unlocked`、解锁依据表与「依据与出处」里，可查）。 */
+    const ttl = u
+      ? `${(it.zh || it.text).slice(0, 50)}｜维度 ${u.name}｜${
+          u.display_allowed ? `可信程度：${confLevel(u).zh}`
+            : "这个维度你还没答过题（先不给估计）"}`
+      : `${(it.zh || it.text).slice(0, 50)}`;
+    h += `<circle class="treenode ${st}${ready ? " ready" : ""}${
+      recoOrder === it.order && sel !== it.order ? " next" : ""}${
+      sel === it.order ? " sel" : ""}"
+      data-node="${it.order}" data-dim="${esc(dim || "")}"
+      data-unlocked="${ready ? 1 : 0}" data-ready="${ready ? 1 : 0}"
+      cx="${sx(p[0]).toFixed(1)}" cy="${sy(p[1]).toFixed(1)}" r="${r}">
+      <title>${esc(ttl)}</title></circle>`;
+  }
+  h += `</svg></div>`;
+  h += renderTreeUnlockBasis(unlock, e, data, layout);
+
+  // 就地作答：选中节点后展开该题（题面四字段与经典页共用同一套渲染）
+  if (sel && items.has(sel)) {
+    const it = items.get(sel);
+    const stMap = structIndex(e.code);
+    const st = stMap ? stMap.get(it.id) : null;
+    const sid = (st && st.response && st.response.scale_id) || "";
+    /* 锚点级提醒在天赋树里的规则：**换尺子才说一次**。
+       （同一 facet 里连点几题不再重复那把尺子的说明；换到别的 facet 才给新的。）
+       按量表+scale_id 记忆，切量表时失效。 */
+    if (_TREE_GUIDE.code !== e.code) _TREE_GUIDE = {code: e.code, sid: null};
+    const showAnchor = _TREE_GUIDE.sid !== sid;
+    _TREE_GUIDE.sid = sid;
+    h += `<div class="treeq" id="treeq">`;
+    if (showAnchor) h += anchorGuideHtml(e.code, sid);
+    h += itemStemHtml(it, st);
+    h += itemOptionsHtml(it, st, data.response_format, S.instResp[it.id], 'data-treeopt="1"');
+    h += itemBasisHtml(st);
+    h += `<div class="instnav">
+      <button data-treenext="1">推荐下一题</button>
+      <span class="spacer"></span>
+      <button class="primary" data-instdone="1"
+        ${done < data.items.length ? "disabled" : ""}>看结果</button>
+      <button data-instback="1">换一套</button></div></div>`;
+  } else {
+    h += `<div class="note" style="margin-top:10px">点任意一个<b>亮着的</b>节点开始作答；
+      虚线相连的节点会在你答完当前题后解锁。</div>
+      <div class="instnav">
+        <button data-treepick="1">推荐下一题</button>
+        <span class="spacer"></span>
+        <button class="primary" data-instdone="1"
+          ${done < data.items.length ? "disabled" : ""}>看结果</button>
+        <button data-instback="1">换一套</button></div>`;
+  }
+
+  // 如实标注布局依据 + 授权：**移出答题主视野**，收进下面「依据与出处」的折叠里
+  // （`test_tree_mode.js` 用 stage.textContent 断言「布局依据」仍在——折叠内容计入
+  //  textContent，所以断言照过，但用户默认看不到；这是 D118 的处置方式。）
+  el.innerHTML = h;
+}
+/* 推荐框 + 节点图例（放在天赋树上方）。
+   · 「为什么是它」直接给数字：预计提升哪个维度、提升多少、会不会解锁；
+   · 同时列出**旧启发式**（答得最少的维度）会选哪道题——证明两者不是同一套；
+   · `data-reco*` 属性供浏览器测试断言。 */
+function renderTreeReco(layout, data, unlock, recoOrder) {
+  const nmOf = d => {
+    const p = inferencePayload(S.instCode);
+    return (p && p.params && d) ? dimNameOf(p.params, d) : (d || "");
+  };
+  const itemOf = o => data.items.find(it => it.order === o);
+  const res = _RECO.res;
+  const it = (recoOrder != null) ? itemOf(recoOrder) : null;
+  /* 图例（D118）：只留用户能懂的四类状态。判据/门槛句子移进「依据与出处」
+     （`test_tree_unlock.js` 只数 `.treelegend i` 的个数＝4，所以照过）。 */
+  let h = `<div class="treelegend">
+    <span><i class="done"></i>已答</span>
+    <span><i class="ready"></i>已可估计</span>
+    <span><i class="open"></i>可答</span>
+    <span><i class="locked"></i>未解锁</span>
+  </div>`;
+  if (!it) {
+    h += `<div class="treereco" data-reco="0"><b>下一题推荐</b>
+      <div class="note">${data.items.every(x => x.id in S.instResp)
+        ? "全部题目都答完了，可点「看结果」。"
+        : (unlock && !unlock.ok
+            ? `暂无推荐：${esc(unlock.reason || "推断参数未就绪")}（不影响作答）`
+            : "没有结构性可答的节点。")}</div></div>`;
+    return h;
+  }
+  const ownDim = res && res.best ? res.best.own_dim : null;
+  const unlocks = (res && res.best && res.best.unlocks) || [];
+  const ms = res && res.ms != null ? res.ms : null;
+  /* 硬规则延伸：目标维度当前未答时，连「效用」这种间接数字也**不写出来**——
+     它等于该维度 Δ 的加权和，写出来等于把未答维度的置信度信息泄出去。
+     ⚠️ 不只是**可见文案**要 gate：`data-reco-utility` 这个**机器可读属性**同样要 gate。
+     否则将来加导出/API/截图分析时，它就变成未答维度置信度信息的泄漏口
+     （Lead 2026-10-04 裁定：代价 1 行，就做彻底）。`data-reco-unlocks` 是**数量**、
+     `data-reco-dim` 是维度**名**，按同一裁定属合规（不是数值）。 */
+  const ownShown = !!(unlock && unlock.ok && ownDim && unlock.dims[ownDim]
+    && unlock.dims[ownDim].display_allowed);
+  const utilAttr = (res && res.best && ownShown)
+    ? ` data-reco-utility="${(+res.best.utility).toFixed(4)}"` : "";
+  /* 用户语言（D118）：默认视野只说「为什么值得答这一题」，**不带任何数字**
+     （功效/信息增益/耗时/对照启发式全部收进下面的「推荐依据」折叠）。
+     `test_tree_unlock.js` 用 `box.textContent` 断言含「信息增益 / 预计 / 启发式」，
+     折叠内容计入 textContent ⇒ 断言照过，用户默认看不到。 */
+  const whyUser = !ownDim ? "答它会补充新的信息。"
+    : (unlock.dims[ownDim] && unlock.dims[ownDim].display_allowed
+        ? `答这一题最能提高对「${nmOf(ownDim)}」的把握。`
+        : `答这一题，你就能第一次估计「${nmOf(ownDim)}」。`);
+  h += `<div class="treereco" data-reco="1" data-reco-item="${esc(it.id)}"
+      data-reco-order="${it.order}" data-reco-dim="${esc(ownDim || "")}"
+      data-reco-unlocks="${unlocks.length}"${utilAttr}
+      data-reco-own-display="${ownShown ? 1 : 0}"
+      data-reco-ms="${ms == null ? "" : (+ms).toFixed(1)}">
+    <b>建议下一题：${esc((it.zh || it.text).slice(0, 32))}</b>${
+      ownDim ? `<span class="note">（${esc(nmOf(ownDim))}）</span>` : ""}
+    <div class="note">${esc(whyUser)}</div>
+    <div class="instnav" style="margin-top:6px">
+      <button class="primary" data-treepick="1">答这一题</button>
+    </div></div>`;
+  return h;
+}
+
+/* 天赋树页唯一的折叠（D120 / task-24 重写）：「这张图是什么意思」+「授权」。
+   原来这里还有：判据公式（`conf_r ≥ dim_ceiling × ceiling_ratio`）、`ceiling_cross`、
+   逐维度精确 `conf_r` / 门槛表、`tools/check/calibrate_*.py`、`research/*.md` 出处……
+   **全部删除**（用户不需要）。留下的两句是用户真会用到/会影响理解的白话：
+     · 这张图是按维度分组的示意，不是根据答题数据画的相关性图（诚实性）；
+     · 授权标注（谁的数据/许可）。
+   精确解锁状态仍在对用户不可见的节点 `data-unlocked` 上（机器可读 + 测试契约）。 */
+function renderTreeUnlockBasis(unlock, e, data, layout) {
+  if (!unlock) return "";
+  const lic = (data && data.license) || e.license || {};
+  const basisNote = (layout && layout.meta)
+    ? (layout.meta.basis_note || layout.meta.layout_basis || "") : "";
+  /* 布局性质说明：数据层的 basis_note 是给审阅者的长文（含「结构性排布/非实证」等
+     方法学措辞），这里**不直接渲染它**，只用一句白话（数据仍留在 ui/tree-layouts）。 */
+  const plainBasis = "这张图按维度分组排布，用来提示先答哪些题；"
+    + "它不是根据答题数据算出来的相关性图。";
+  let h = `<details class="srcfold devfold" data-unlock-fold="1" data-dev="tree-basis">`
+    + `<summary>这张图与授权</summary>
+    <div class="srcbody">
+    <div class="note">${plainBasis}</div>
+    <div class="note">授权：${esc(lic.label || lic.kind || "")}${
+    lic.holder ? " · " + esc(lic.holder) : ""}</div>
+    </div></details>`;
+  return h;
+}
+
+/* 推荐下一题：**信息增益最大化**（不是「答得最少的维度」）。
+   候选池 = 结构性可答（`treeNodeState === "open"`）且未答的题；对每个候选题用
+   `ui/lib/inference.js` 的 `forecastGains()` 做前瞻（只用 pairB64 与「答了哪些题」，
+   **不看任何作答值**），取 utility 最大者。utility 与数学推导见该函数注释：
+       Δ_f(x) = (b_fᵀt − c_x)² / (1 − sᵀt)，  t = Σ_AA⁻¹s
+   —— 即「答了 x 之后该维度判据置信度平方的精确增量」= 信息增益。
+   兜底：本量表没有推断参数（如 DSM Level 2）、或推断库还没加载好时，
+   退回 task-10 的确定性启发式（答得最少的维度），保证天赋树永远可用。 */
+function recommendTreeItem(layout, data) {
+  const openOrders = data.items.map(it => it.order)
+    .filter(o => treeNodeState(layout, o, S.instResp) === "open");
+  if (!openOrders.length) return null;
+  const idOfOrder = TREE_NOW_ID;
+  const cands = openOrders.map(o => idOfOrder.get(o)).filter(Boolean);
+  const payload = inferencePayload(S.instCode);
+  const lib = window.EmoHealthInference;
+  const heuristic = heuristicTreeItem(layout, data, openOrders);
+  if (payload && payload.params && lib && typeof lib.forecastGains === "function" && cands.length) {
+    const answered = data.items.filter(it => it.id in S.instResp).map(it => it.id);
+    const key = (S.instCode || "") + "|" + S.ansVer + "|" + cands.length + "|" +
+      (answered.length ? 1 : 0);
+    if (_RECO.key !== key) {
+      let res = null;
+      try { res = lib.forecastGains(payload, answered, cands); }
+      catch (e) { res = {error: String(e && e.message || e)}; }
+      _RECO = {key, res, why: "", heuristic};
+    }
+    const res = _RECO.res;
+    if (res && res.best && !res.error) {
+      _RECO.heuristic = heuristic;
+      _RECO.why = recoWhy(res);
+      let found = null;
+      idOfOrder.forEach((id, o) => { if (id === res.best.item) found = o; });
+      if (found != null) return found;
+    }
+  }
+  _RECO = {key: null, res: null, why: "", heuristic};
+  return heuristic;
+}
+/* ── 门槛型判读（DSM-5-TR Level 1）────────────────────────
+   Level 1 **不是常模量表**：手册给的是一句触发规则，不是分数带。
+   所以这里**不显示百分位**（那会是编造的），只显示「哪些域达到门槛、
+   建议就该域做进一步评估」。规则全部来自手册 Table 1（可溯源），
+   与 PID-5 的接口标为**推论**并注明依据。 */
+function renderThresholdResult(data) {
+  const it = data.interpretation || {};
+  const rows = S.instResult.rows;
+  const byName = new Map(rows.map(r => [r.name, r]));
+  let h = `<div class="note" style="margin-bottom:10px">本量表<b>不是常模量表</b>：
+    它给的是「是否需要就该域做更细评估」的门槛，因此这里<b>不给百分位、不给分数带</b>。
+    计分方式：${esc((it.scoring || "").replace(/\*\*/g, ""))}</div>
+    <table class="insttable"><thead><tr>
+      <th>域</th><th>域分</th><th>门槛</th><th>判定</th><th>建议</th>
+    </tr></thead><tbody>`;
+  let hit = 0;
+  for (const d of (it.domains || [])) {
+    const r = byName.get(d.domain);
+    const v = r ? r.value : null;
+    const reached = v != null && v >= d.threshold;
+    if (reached) hit++;
+    h += `<tr${reached ? ' class="domrow"' : ""}>
+      <td>${esc(d.domain)}</td>
+      <td>${v == null ? "—" : v.toFixed(0)}</td>
+      <td class="note">≥${d.threshold} ${esc(d.threshold_label || "")}</td>
+      <td>${v == null ? "未答" : (reached ? "达到门槛" : "未达到")}</td>
+      <td class="note">${reached
+        ? (d.level2
+            ? `建议做 <button class="linkbtn" data-goscale="${esc(d.level2)}"
+                 >${esc(d.level2.replace("DSM5TR-L2-", "Level 2—"))}</button>`
+            : (d.domain === "Personality Functioning"
+                ? `建议进一步评估 → <button class="linkbtn" data-goscale="PID-5"
+                     >PID-5</button>`
+                : "建议进一步评估（无对应 Level 2）"))
+        : "—"}</td></tr>`;
+  }
+  h += `</tbody></table>
+    <div class="note" style="margin-top:10px">共 ${hit} 个域达到门槛。
+    ${(it.domains || []).some(d => d.threshold === 1)
+      ? "<b>注意</b>：自杀意念、精神病性、物质使用这三个域的门槛是 <b>≥1</b>（比其余更低）——"
+        + "因为漏报的代价高于误报。"
+      : ""}</div>`;
+  // 与 PID-5 的接口：**明确标注是推论**
+  const p = it.pid5_interface;
+  if (p && p.status === "inferred") {
+    const pf = byName.get(p.from_domain);
+    const reached = pf && pf.value != null && pf.value >= 2;
+    /* D120（task-24）：原来这里还有个「依据」折叠写着「这条衔接是依 DSM-5 架构推出的
+       接口，不是这册手册的原文（手册正文没有提到 PID-5）＋依据路径」——**已删除**
+       （来源性质与核查过程是内部说明）。用户需要的只有这一句：「这个域没有 Level 2 册，
+       人格功能用 PID-5」。来源状态另在不可见的 `data-link-status` 上（机器可读）。 */
+    h += `<div class="note" style="margin-top:10px"
+      data-link-status="${esc(p.status || "")}">
+      <b>与 PID-5 的衔接${reached ? "" : "（本域未达门槛）"}</b>：
+      「${esc(p.from_domain)}」域没有对应的 Level 2 细评册——
+      人格功能的细评工具是 DSM-5 Section III 的 <b>PID-5</b>。</div>`;
+  }
+  h += `<div class="note" style="margin-top:10px">${esc((it.disclaimer || "").replace(/\*\*/g, ""))}</div>`;
+  return h;
+}
+
+/* ── 链路导航条：让用户知道自己在链路的哪一段、并能走上下游 ──────
+   手册把 Level 1/2 设计成一条「筛查 → 细评」的链路，PID-5 与之人格功能
+   相接。只在结果页给出文字建议是不够的——用户点不进去。 */
+function instChainBar(data, e) {
+  const L = data.linkage || {};
+  if (!L.role) return "";
+  let h = `<div class="chainbar">`;
+  if (L.role === "screener") {
+    const downs = (L.downstream || []).filter(d => d.to);
+    h += `<span class="chainlabel">链路起点</span>
+      <span class="note">${esc(L.label || "")}｜下游可评估 ${downs.length} 个域</span>`;
+    if (L.inferred_route) {
+      /* D119：来源性质（「推论」）不再显示给用户，只留机器可读的 `data-link-status`
+         （测试与外部核对用）。用户只需要「可以往哪走」这个导航信息。 */
+      h += `<span class="spacer"></span>
+        <button class="linkbtn" data-goscale="${esc(L.inferred_route.to)}"
+          data-link-status="inferred"
+          >→ ${esc(L.inferred_route.to)}（${esc(L.inferred_route.domain)} 域）</button>`;
+    }
+  } else if (L.role === "level2") {
+    const up = L.upstream || {};
+    h += `<span class="chainlabel">链路 · 细评</span>
+      <span class="note">本册是 Level 1「${esc(up.domain)}」域（${esc(up.domain_roman || "")}）
+      达到门槛（≥${up.threshold} ${esc(up.threshold_label || "")}）后的细评工具</span>
+      <span class="spacer"></span>
+      <button class="linkbtn" data-goscale="DSM5TR-L1">← 回到 Level 1</button>`;
+  } else if (L.role === "pid5") {
+    const r = L.related || {};
+    /* D119（用户点名）：删掉「（推论，非手册原文）」——那是我们内部对来源性质的说明，
+       用户不需要。链路导航本身保留。来源性质改为机器可读的 `data-link-status`。 */
+    h += `<span class="chainlabel">链路 · 人格障碍特质</span>
+      <span class="note" data-link-status="${esc(r.status || "")}"
+        >${esc(L.label || "")}｜与 Level 1「${esc(r.domain)}」域相接</span>
+      <span class="spacer"></span>
+      <button class="linkbtn" data-goscale="DSM5TR-L1">← 回到 Level 1</button>`;
+  }
+  return h + `</div>`;
+}
+
+/* 把链路导航条插到子页头部之后（所有视图共用）。 */
+function withChainBar(html, data, e) {
+  const bar = (data && e) ? instChainBar(data, e) : "";
+  if (!bar) return html;
+  const i = html.indexOf("</div>");
+  // instPageHeader 以 </div> 结束，插在它后面
+  return html.slice(0, i + 6) + bar + html.slice(i + 6);
+}
+
+/* ── 分界/分带型判读（DSM-5-TR Level 2 里的 5 册）─────────────
+   八册口径**互不相同**，所以按 `criteria.kind` 分别呈现，不能一律当分数带：
+     · cutoff            → 是否达到分界（ASRM ≥6、FOCI ≥8）
+     · severity_bands    → 落在哪个严重度带（PHQ-15 四带）
+     · per_item          → **不求和**，逐项独立 + >0 项数（物质使用）
+     · t_score 且无转换表 → 只给原始分，如实说明「T 分表待补」
+   口径全部来自各册手册的 Scoring and Interpretation 段（可溯源）。 */
+function renderCriteriaResult(data) {
+  const cr = data.criteria || {};
+  const rows = S.instResult.rows;
+  const kv = rows.length === 1 ? rows[0].value : null;
+  const n = rows.length === 1 ? rows[0].n_answered : 0;
+  let h = "";
+
+  if (cr.kind === "per_item") {
+    h += `<div class="note" style="margin-bottom:10px"><b>本册不计算总分。</b>
+      各项应<b>独立</b>解释，因为每一项对应一种不同的物质；
+      多项 >0 表示严重度与复杂度更高。所以这里显示的是逐项频率与「>0 的项数」。</div>`;
+    h += `<table class="insttable"><thead><tr><th>项</th><th>物质</th>
+      <th>作答</th><th>是否 >0</th></tr></thead><tbody>`;
+    for (const it of (INST_NOW.items || [])) {
+      const v = S.instResp[it.id];
+      h += `<tr${(v > 0) ? ' class="domrow"' : ""}>
+        <td>${it.order}</td><td>${esc(it.zh || it.text)}</td>
+        <td>${v == null ? "未答" : v}</td>
+        <td>${v > 0 ? "是" : (v == null ? "—" : "否")}</td></tr>`;
+    }
+    h += `</tbody></table>
+      <div class="note" style="margin-top:10px">${
+        esc(cr.aggregate_label || "")}：<b>${kv == null ? "—" : kv}</b>
+      （共 ${n} 项已答）。⚠️ 这不是总分，也不能用来做「严重程度分级」。</div>`;
+    return h;
+  }
+
+  if (cr.kind === "severity_bands" || cr.kind === "cutoff") {
+    const band = (cr.bands || []).find(b => kv != null && kv >= b.lo && kv <= b.hi);
+    const rows2 = (cr.bands || []).map(b => {
+      const on = band === b;
+      return `<tr${on ? ' class="domrow"' : ""}>
+        <td>${b.lo}–${b.hi}</td><td>${esc(b.label)}</td>
+        <td>${on ? "← 你的分数在此" : ""}</td></tr>`;
+    }).join("");
+    h += `<div class="note" style="margin-bottom:10px">本册是 <b>${
+      esc(cr.scale || "")}</b>，原始分求和范围 ${
+      (cr.sum_range || []).join("–")}。下面按区间给出判读。</div>
+      <table class="insttable"><thead><tr><th>分数区间</th><th>判读</th>
+        <th></th></tr></thead><tbody>${rows2}</tbody></table>`;
+    if (kv != null) {
+      h += `<div class="note" style="margin-top:10px">你的原始分：<b>${kv.toFixed(0)}</b>${
+        band ? `　→　<b>${esc(band.label)}</b>` : "　（不在任何区间内）"}
+        ${cr.cutoff ? `<br>分界值：<b>≥${cr.cutoff}</b>` : ""}</div>`;
+    }
+    if (cr.notes) h += `<div class="note">${esc(cr.notes)}</div>`;
+    return h;
+  }
+
+  if (cr.kind === "t_score") {
+    h += `<div class="note" style="margin-bottom:10px">本册是 <b>${esc(cr.scale || "")}</b>。
+      原始分（范围 ${(cr.sum_range || []).join("–")}）需经 <b>T 分转换表</b>
+      换算为 T 分（美国一般人群 M=50, SD=10）。</div>`;
+    if (!cr.tscore_table) {
+      /* D120（task-24）：研究过程（已核查 / 官方 scoring manual / 取到再补）**已删除**；
+         只留用户要知道的那一句：现在只给原始分、不做近似换算。 */
+      h += `<div class="note" style="border-left:3px solid var(--warm);
+        padding-left:10px">⚠️ <b>目前只给原始分</b>：本册的 <b>T 分转换表</b>尚未取得，
+        所以不做任何近似换算。</div>`;
+    }
+    return h;
+  }
+  return h;
+}
+
+/* ── 单量表：结果 ───────────────────────────────────────── */
+function renderInstResult(el, data, e) {
+  const rows = S.instResult.rows;
+  // 门槛型判读（DSM-5-TR Level 1）：走专门呈现，**不显示百分位**
+  if ((data.interpretation || {}).kind === "threshold") {
+    el.innerHTML = withChainBar(instPageHeader(data, e), data, e)
+      + `<div class="ph">${esc(data.display_name)} · 结果</div>`
+      + renderThresholdResult(data)
+      + instResultFooter(data, e);
+    return;
+  }
+  const nrm = data.norms;
+  // 分界/分带/逐项/T 分型判读（DSM-5-TR Level 2 各册）：走专门呈现
+  if ((data.criteria || {}).kind) {
+    el.innerHTML = withChainBar(instPageHeader(data, e), data, e)
+      + `<div class="ph">${esc(data.display_name)} · 结果</div>`
+      + renderCriteriaResult(data)
+      + instResultFooter(data, e);
+    return;
+  }
+  // 常模有两种结构：百分位表 或 条件常模（PID-5 的 scales）
+  const hasNorms = !!(nrm && (nrm.facets || nrm.domains || nrm.scales));
+  let h = withChainBar(instPageHeader(data, e), data, e);
+  /* D120（task-24）：结果页默认视野只留用户要判断的东西（分数 + 百分位 + 作答进度）。
+     计分口径（sum/mean/max）、常模来源、`n=`、样本说明、百分位换算方式**全部删掉**；
+     「跟谁比」只用一句白话（把样本量取整到千位，不给字段名/DOI/样本构成）。 */
+  const nRounded = (hasNorms && nrm && nrm.n)
+    ? Math.max(100, Math.round(nrm.n / 1000) * 1000) : null;
+  h += `<div class="ph">${esc(data.display_name)} · 结果</div>
+    <div class="note" style="margin-bottom:10px">共 ${rows.length} 个维度。${hasNorms
+      ? `百分位表示你的分数与一个约 ${nRounded ? nRounded.toLocaleString("en-US") : "参考"}`
+        + ` 人规模的样本相比的位置。`
+      : `<b>该量表暂无可用常模</b>，所以只给原始分，不给百分位，
+         也不作「高于/低于常人」的判断。`}</div>
+    <table class="insttable"><thead><tr><th>维度</th><th>分数</th>
+      ${hasNorms ? "<th>百分位</th>" : ""}<th>已答/题数</th></tr></thead><tbody>`;
+  for (const r of rows) {
+    const rule = data.scoring[r.id] || {};
+    const pct = hasNorms ? instPercentile(data, r.name, r.value) : null;
+    h += `<tr${r.isDomain ? ' class="domrow"' : ""} data-dim-row="${esc(r.id)}"
+      data-agg="${esc(rule.aggregation || "")}">
+      <td>${esc(r.name)}</td>
+      <td><b>${r.value.toFixed(2)}</b></td>
+      ${hasNorms ? `<td>${pct == null ? "—" : pct + "%ile"}</td>` : ""}
+      <td>${r.n_answered}/${r.n_items}${r.complete ? "" : "（未答完）"}</td></tr>`;
+  }
+  h += `</tbody></table>`;
+  /* ⚠️ D120（task-24）：原来这里有一个「依据」折叠，渲染了**逐维度计分口径**
+     （sum/mean/max）、**常模来源**、`n=`、样本说明、**百分位换算方式**——
+     全部是内部字段/方法学说明，**已删除**。用户要的「分数跟谁比」已经用一句白话
+     写在表头附近（见上方 hasNorms 分支），不给 DOI、不给样本构成、不给字段名。 */
+  h += instResultFooter(data, e);
+  el.innerHTML = h;
+}
+
+/* 结果页尾部：授权、引用、操作按钮。抽出来是为了让「门槛型结果」
+   与「常模型结果」共用，避免两处各写一份而走样。
+   D120：**授权与引用保留**（报告元数据：谁的数据、许可、该引哪篇文献），
+   但**不再渲染 `license.evidence` 这类内部来源路径**。 */
+function instResultFooter(data, e) {
+  return `<details class="srcfold devfold" data-dev="license"><summary>授权与引用</summary>
+    <div class="srcbody">授权：${esc(e.license.label)}${
+    e.license.holder ? " · " + esc(e.license.holder) : ""}${
+    e.license.notes ? "。" + esc(e.license.notes) : ""}<br>
+    引用：${esc(data.citation || "(见目录)")}</div></details>
+    <div class="note" style="margin-top:8px">导出这一套的结果：
+      <button data-instexport="md" class="linkbtn">报告(MD)</button>
+      <button data-instexport="result" class="linkbtn">结果明细(CSV)</button>
+      <button data-instexport="csv" class="linkbtn">逐题作答(CSV)</button>
+      <button data-instexport="json" class="linkbtn">存档(JSON)</button></div>
+    <div class="instnav"><button data-instback="1">换一套</button>
+      <button data-instredo="1">重答这一套</button></div>`;
+}
+
+/* 只刷新「进度条 / 已答计数 / 看结果按钮」，不重建作答区。
+   作答区的 DOM 保持不变，用户的滚动位置与焦点都不会丢。 */
+function instRefreshProgress() {
+  if (S.mode !== "inst" || !INST_NOW) return;
+  const items = INST_NOW.items;
+  const done = items.filter(it => it.id in S.instResp).length;
+  const bar = document.querySelector("#stage .bar > i");
+  if (bar) bar.style.width = (done / items.length * 100) + "%";
+  const note = document.querySelector("#stage .nqhead .note");
+  if (note) note.textContent = `已答 ${done}/${items.length} 题`;
+  const btn = document.querySelector("[data-instdone]");
+  if (btn) btn.disabled = done < items.length;
+  renderTop();
+}
+/* 渲染作答区。最小 UI 只有一种模式（题库），所以这里不再按 S.mode 分支。 */
+function renderStage() {
+  renderFooter();
+  const layout = document.getElementById("layout");
+  layout.classList.remove("tier");
+  // 右侧「技能条」属于已撤下的分级模式：隐藏，不再渲染内容
+  const tc = document.getElementById("treecard");
+  if (tc) tc.style.display = "none";
+  document.getElementById("resultcard").style.display = "none";
+  const el = document.getElementById("stage");
+  el.className = "card";
+  el.style.display = "";
+  renderInstStage(el);
+}
+/* ── 本机保存（只存「答到哪了」）──────────────────────────────
+   最小 UI 的存档就是「哪套量表 + 逐题作答 + 页码 + 作答方式」。 */
+const STORE = "emohealth.inst.v1";
+
+function saveLocal() {
+  try {
+    localStorage.setItem(STORE, JSON.stringify({
+      v: 1, instCode: S.instCode, instResp: S.instResp, instView: S.instView,
+      instPage: S.instPage, at: Date.now(),
+    }));
+    const d = new Date();
+    document.getElementById("saved").textContent =
+      `已存在本机 ${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}`;
+  } catch (e) {
+    document.getElementById("saved").textContent = "本机保存不可用";
+  }
+}
+function loadLocal() {
+  try {
+    const o = JSON.parse(localStorage.getItem(STORE) || "null");
+    if (!o || o.v !== 1 || !o.instResp) return null;
+    return o;
+  } catch (e) { return null; }
+}
+function clearLocal() { try { localStorage.removeItem(STORE); } catch (e) {} }
+/* ── 导出 ───────────────────────────────────────────────────── */
+function download(name, text, mime) {
+  const b = new Blob([text], {type: mime + ";charset=utf-8"});
+  const u = URL.createObjectURL(b);
+  const a = document.createElement("a");
+  a.href = u; a.download = name; document.body.appendChild(a); a.click();
+  a.remove(); setTimeout(() => URL.revokeObjectURL(u), 2000);
+}
+function stamp() {
+  const d = new Date(), p = x => String(x).padStart(2, "0");
+  return `${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}-`
+       + `${p(d.getHours())}${p(d.getMinutes())}`;
+}
+/* 导入存档：只认本工具「单量表存档」(emohealth.instrument.v1)，
+   按存档里的 instrument 回到那套量表的子页。 */
+function importJSON(file) {
+  const fr = new FileReader();
+  fr.onload = () => {
+    try {
+      const o = JSON.parse(fr.result);
+      if (o.format !== "emohealth.instrument.v1" || !o.responses)
+        throw new Error("不是本工具导出的「单量表存档」（emohealth.instrument.v1）");
+      if (!INSTMAP[o.instrument]) throw new Error("存档里的量表不在当前题库：" + o.instrument);
+      S.instResp = {};
+      for (const [k, v] of Object.entries(o.responses)) S.instResp[k] = +v;
+      S.instResult = null; S.instPage = 0; S.treeSel = null;
+      S.instCode = null;                 // 让 applyRoute 认为「换了一套」，走完整加载
+      go("#/scale/" + encodeURIComponent(o.instrument));
+      toast(`已导入「${o.instrument}」的 ${Object.keys(S.instResp).length} 题作答`);
+    } catch (e) { toast("导入失败：" + e.message); }
+  };
+  fr.readAsText(file, "utf-8");
+}
+/* ── 交互 ───────────────────────────────────────────── */
+function toast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg; t.classList.add("on");
+  clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("on"), 2600);
+}
+/* ── 交互（只有题库这一套）────────────────────────────── */
+document.addEventListener("click", (e) => {
+  if (S.mode !== "inst") return;
+  /* 子页导航与导出（每套量表一个子页、各自导出） */
+  if (e.target.closest("[data-gohome]")) { go("#/"); return; }
+  // 链路跳转：L1 → L2 → PID-5 之间互达
+  const gs = e.target.closest("[data-goscale]");
+  if (gs) { go("#/scale/" + encodeURIComponent(gs.dataset.goscale)); return; }
+  const ex = e.target.closest("[data-instexport]");
+  if (ex && !ex.disabled && INST_NOW) {
+    const ce = catalogEntry(S.instCode);
+    const kind = ex.dataset.instexport;
+    if (kind === "md") instExportMD(INST_NOW, ce);
+    else if (kind === "csv") instExportCSV(INST_NOW, ce);
+    else if (kind === "json") instExportJSON(INST_NOW, ce);
+    else if (kind === "result") instExportResultCSV(INST_NOW, ce);
+    toast("已导出本量表的" + ({md: "报告", csv: "逐题作答",
+      json: "存档", result: "结果明细"}[kind] || kind));
+    return;
+  }
+  const pick = e.target.closest("[data-inst]");
+  if (pick) {
+    // 点卡片 = **导航到该量表的子页**（不改状态，由路由统一处理，
+    // 这样刷新/后退/直接粘贴 URL 走的是同一条代码路径）
+    go("#/scale/" + encodeURIComponent(pick.dataset.inst));
+    return;
+  }
+  if (e.target.closest("[data-instback]")) {
+    S.instCode = null; S.instResult = null; INST_NOW = null;
+    S.instView = "classic"; S.treeSel = null;
+    renderTop(); renderStage();
+    return;
+  }
+  if (e.target.closest("[data-instredo]")) {
+    S.instResp = {}; S.instResult = null; S.instPage = 0; S.treeSel = null;
+    renderTop(); renderStage();
+    return;
+  }
+  /* 子页内的作答方式切换 */
+  const mdl = e.target.closest("[data-instmode]");
+  if (mdl) {
+    const m = mdl.dataset.instmode;
+    if (S.instCode) go(`#/scale/${encodeURIComponent(S.instCode)}/${m}`);
+    return;
+  }
+  // 兼容旧的 data-instview（保留以免遗漏调用点）
+  const vs = e.target.closest("[data-instview]");
+  if (vs) {
+    const m = vs.dataset.instview;
+    if (S.instCode) go(`#/scale/${encodeURIComponent(S.instCode)}/${m}`);
+    return;
+  }
+  const nd = e.target.closest("[data-node]");
+  if (nd) {
+    const order = +nd.dataset.node;
+    if (TREE_NOW) {
+      const st = treeNodeState(TREE_NOW, order, S.instResp);
+      if (st !== "locked") {
+        S.treeSel = order;
+        renderStage();
+      }
+    }
+    return;
+  }
+  const topt = e.target.closest("[data-treeopt]");
+  if (topt) {
+    if (TREE_NOW && S.treeSel != null) {
+      const id = TREE_NOW_ID.get(S.treeSel);
+      if (id) {
+        S.instResp[id] = +topt.dataset.v;
+        S.ansVer++;                    // 推断缓存按作答版本失效
+        saveLocal();
+        // 答完自动跳到推荐的下一个可答题，省一次点击
+        // （推荐只按「已答最少的维度」排，不含任何推断）
+        const nxt = recommendTreeItem(TREE_NOW, INST_NOW);
+        S.treeSel = nxt;
+        renderTop(); renderStage();
+      }
+    }
+    return;
+  }
+  if (e.target.closest("[data-treepick]") || e.target.closest("[data-treenext]")) {
+    if (TREE_NOW) {
+      const nxt = recommendTreeItem(TREE_NOW, INST_NOW);
+      S.treeSel = nxt;
+      renderTop(); renderStage();
+    }
+    return;
+  }
+  if (e.target.closest("[data-instdone]")) {
+    if (INST_NOW) {
+      // 计分只在**用户主动点「看结果」**时跑一次。这与硬规则 ④
+      //（答题中不显示分值）是同一件事的两面：中间过程不产出分数。
+      S.instResult = {rows: instScores(INST_NOW, S.instResp)};
+      saveLocal(); renderTop(); renderStage();
+    }
+    return;
+  }
+  const pg = e.target.closest("[data-page]");
+  if (pg && !pg.disabled) {
+    S.instPage = Math.max(0, +pg.dataset.page);
+    renderTop(); renderStage();
+    return;
+  }
+  const opt = e.target.closest(".institem .opt");
+  if (opt) {
+    const li = opt.closest(".institem");
+    if (li) {
+      S.instResp[li.dataset.item] = +opt.dataset.v;
+      S.ansVer++;                      // 推断缓存按作答版本失效
+      saveLocal();
+      /* ⚠️ 这里**只更新变化的部分**，不整块重绘作答区。
+         整块重绘有两个实际问题：① 用户正在填的表单会跳回顶部（分页 10 题时
+         每答一题都跳一次）；② 上一行的 DOM 节点失效，连续作答会失灵
+         （浏览器测试正是这样发现问题的——点完第 1 题后其余节点已脱离 DOM）。
+         ⚠️ 但「各指标预测与置信度」面板必须跟着更新：它是可见信息，
+         不刷新就与已答进度不一致（用户会以为推断坏了）。所以只重绘面板。 */
+      li.querySelectorAll(".opt").forEach(b =>
+        b.classList.toggle("sel", +b.dataset.v === +opt.dataset.v));
+      instRefreshProgress();
+      refreshInferencePanel();
+    }
+    return;
+  }
+});
+
+/* ── 保存与导出的交互 ───────────────────────────────── */
+(function wireIO() {
+  const menu = document.getElementById("menu");
+  document.getElementById("btn-export").addEventListener("click", (e) => {
+    e.stopPropagation(); menu.classList.toggle("on");
+  });
+  document.addEventListener("click", () => menu.classList.remove("on"));
+  menu.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-x]"); if (!b) return;
+    menu.classList.remove("on");
+    const x = b.dataset.x;
+    if (x === "import") { document.getElementById("file").click(); return; }
+    const ce = S.instCode ? catalogEntry(S.instCode) : null;
+    if (!INST_NOW || !ce) { toast("先进入一套量表的子页再导出"); return; }
+    if (x === "md") { instExportMD(INST_NOW, ce); toast("报告已导出"); }
+    else if (x === "json") { instExportJSON(INST_NOW, ce); toast("存档已导出——可在另一台设备导入继续"); }
+    else if (x === "csv") { instExportCSV(INST_NOW, ce); toast("逐题作答已导出"); }
+  });
+  document.getElementById("file").addEventListener("change", (e) => {
+    if (e.target.files && e.target.files[0]) importJSON(e.target.files[0]);
+    e.target.value = "";
+  });
+  document.getElementById("btn-clear").addEventListener("click", () => {
+    const n = Object.keys(S.instResp).length;
+    if (!n) { toast("还没有作答"); return; }
+    if (!confirm(`清空本机保存的 ${n} 题作答？此操作不可撤销。\n`
+      + `（若想留底，请先「导出 → 存档」）`)) return;
+    S.instResp = {}; S.instResult = null; S.treeSel = null; clearLocal();
+    document.getElementById("saved").textContent = "";
+    renderTop(); renderStage();
+    toast("已清空");
+  });
+})();
+
+/* 顶层只有一个入口按钮：回量表库。 */
+document.getElementById("modes").addEventListener("click", () => go("#/"));
+
+/* 路由：hash 变化 → 应用。浏览器后退/前进也走这里，不需要自己维护历史栈。 */
+window.addEventListener("hashchange", applyRoute);
+/* ── 启动：先看本机有没有未完成的作答 ─────────────────── */
+(function boot() {
+  const saved = loadLocal();
+  const nSaved = saved ? Object.keys(saved.instResp || {}).length : 0;
+  if (nSaved) {
+    S.instResp = saved.instResp;
+    if (typeof saved.instPage === "number") S.instPage = saved.instPage;
+    if (saved.instView) S.instView = saved.instView;
+    if (saved.instCode && INSTMAP[saved.instCode]) {
+      S.instCode = saved.instCode;
+      document.getElementById("saved").textContent = `已恢复上次未完成的作答（${nSaved} 题）`;
+      // 没有指定 URL 时，直接回到上次那套量表（有 URL 时以 URL 为准）。
+      // ⚠️ 不能先调 applyRoute()：那会把 instCode 清成 null，随后的 hashchange
+      //    会看到 changed=true 而**清掉刚恢复的作答**。
+      if (!location.hash) { go("#/scale/" + encodeURIComponent(S.instCode)); return; }
+    }
+  }
+  renderTop(); renderStage();
+  // 路由最后应用：它会按 URL 决定进首页还是某个量表的子页
+  applyRoute();
+})();
+</script>
+</body>
+</html>

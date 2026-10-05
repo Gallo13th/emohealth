@@ -1,0 +1,709 @@
+{
+ "_note": "合作（Cooperation / A4）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.cooperation",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "合作",
+  "facet_name_en": "Cooperation",
+  "facet_code": "A4",
+  "domain": "agreeableness",
+  "domain_zh": "宜人性"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "面对分歧与冲突时让步、避免对抗的倾向：是否愿意妥协、是否轻易与人争执，以及是否记仇。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量是否愿意帮助他人（属 A3 利他）",
+   "不测量是否容易发火（属 N2 愤怒）",
+   "不测量谈判或博弈能力",
+   "不测量是否有原则——这里问的是**冲突时的行为倾向**"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "anger",
+    "against_facet_zh": "愤怒",
+    "distinction": "愤怒是**情绪是否被点燃**；合作是**冲突时是否让步**。可以很生气但最终退让。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "altruism",
+    "against_facet_zh": "利他",
+    "distinction": "合作是**不争**；利他是**给予**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "assertiveness",
+    "against_facet_zh": "决断性",
+    "distinction": "合作是**退让**；决断性是**主导**。这两者常反向。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "morality",
+    "against_facet_zh": "道德",
+    "distinction": "合作是**在冲突中让不让步**；道德是**在利益面前诚不诚实**。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "坚持自己的立场，很少在分歧中退让",
+   "2": "多数时候会争，必要时才让",
+   "3": "看情形，重要的事会争，小事会让",
+   "4": "倾向息事宁人，多数分歧中愿意让步",
+   "5": "几乎总在避免冲突，宁可自己吃亏也不愿争执",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_214",
+   "ipip_neo_215",
+   "ipip_neo_216",
+   "ipip_neo_217",
+   "ipip_neo_218",
+   "ipip_neo_219",
+   "ipip_neo_220"
+  ],
+  "forward_items": [
+   "ipip_neo_211",
+   "ipip_neo_212",
+   "ipip_neo_213"
+  ],
+  "key_balance": "3 正向 / 7 反向",
+  "reverse_keyed_count": 7,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.73,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 3.64,
+   "reference_age_band": "18-29",
+   "sd_used": 7.0,
+   "alpha_used": 0.73,
+   "by_age_band": {
+    "14-17": {
+     "sd": 7.5,
+     "sem": 3.9
+    },
+    "18-29": {
+     "sd": 7.0,
+     "sem": 3.64
+    },
+    "30+": {
+     "sd": 7.0,
+     "sem": 3.64
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±7.1 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "43-50",
+    "High": "35-42",
+    "Average": "28-34",
+    "Low": "21-27",
+    "Very Low": "10-20"
+   },
+   "18-29": {
+    "Very High": "45-50",
+    "High": "38-44",
+    "Average": "31-37",
+    "Low": "24-30",
+    "Very Low": "10-23"
+   },
+   "30+": {
+    "Very High": "46-50",
+    "High": "39-45",
+    "Average": "32-38",
+    "Low": "26-31",
+    "Very Low": "10-25"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "247-300",
+    "High": "217-246",
+    "Average": "187-216",
+    "Low": "157-186",
+    "Very Low": "60-156"
+   },
+   "18-29": {
+    "Very High": "253-300",
+    "High": "224-252",
+    "Average": "195-223",
+    "Low": "166-194",
+    "Very Low": "60-165"
+   },
+   "30+": {
+    "Very High": "254-300",
+    "High": "227-253",
+    "Average": "200-226",
+    "Low": "174-199",
+    "Very Low": "60-173"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "**本面向是全量表优先级排名第二的 facet**（`data/item-diagnostics.json`）。第 6 题（Get back at others）**空答率 15.3%，为全库最高**——这类带有报复意味的表述会让相当一部分作答者拒绝回答。",
+   "**「合作」在中文里偏正面，而本面向的低分端实际是「好争、记仇」**，名称与低分端的行为描述不匹配，作答者可能按「我是不是个愿意合作的人」作答。",
+   "第 1 题（Am easy to satisfy）指向的是**知足**而非**让步**，与其余题目的构念略有偏移。"
+  ],
+  "interpretation_caveats": [
+   "**这一面向的名字（「合作」）与它实际测的东西有落差。**它测的不是「团队协作能力」，而是**在分歧和冲突中是否倾向于让步**。",
+   "低分不代表「不合作」，而是**更愿意坚持自己的立场**——这在很多情境下是必要的，不是缺点。",
+   "另需留意：其中含有带报复意味的表述，**如果让你不愿意作答，跳过也是有效的反应**。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 3,
+  "chinese_project_translation": 6,
+  "chinese_overridden": 1,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 19,
+   "id": "ipip_neo_211",
+   "facet": "cooperation",
+   "key": 1,
+   "text_en": "Am easy to satisfy.",
+   "text_master": "Am easy to satisfy.",
+   "text_zh": "容易满足",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 2.478,
+    "item_total_r": 0.2893,
+    "missing_rate": 0.0047,
+    "neutral_rate": 0.2123
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "别人提出的方案或条件，你是否容易接受",
+    "key_term": {
+     "term": "satisfied",
+     "sense_here": "对别人给的条件、做法是否容易接受",
+     "not_this": "「知足常乐」那种对生活状态的满足感"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它读成「我是一个知足的人」",
+      "correction": "这里问的是**别人跟你意见不同时你会不会很快接受**，不是生活态度。"
+     },
+     {
+      "misreading": "认为「容易满足」是贬义（没主见）",
+      "correction": "本题不含褒贬，只描述让步的门槛高低。"
+     }
+    ],
+    "counts_as": [
+     "别人提出不同方案时，你通常很快接受",
+     "很少为条件来回拉扯"
+    ],
+    "does_not_count_as": [
+     "对生活现状感觉知足（那是另一回事）",
+     "表面接受但心里另有打算"
+    ],
+    "edge_cases": "如果对方是权威（上级、长辈）你才不争，而同辈之间会争，按更常出现的情形作答。",
+    "localization_note": "中文「容易满足」极易被读成「知足」——一种对生活现状的态度。但本题问的是**在与人交涉时是否容易接受对方的方案**。这是本题最大的本地化陷阱。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「satisfied」"
+   }
+  },
+  {
+   "administration_order": 49,
+   "id": "ipip_neo_212",
+   "facet": "cooperation",
+   "key": 1,
+   "text_en": "Can't stand confrontations.",
+   "text_master": "Can't stand confrontations.",
+   "text_zh": "受不了当面冲突",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 2.081,
+    "item_total_r": 0.3312,
+    "missing_rate": 0.0058,
+    "neutral_rate": 0.191
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "当面的对立或争执，是否让你难以忍受",
+    "key_term": {
+     "term": "confrontations",
+     "sense_here": "面对面的、当场的对立",
+     "not_this": "「背后有意见」或「暗中较劲」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「不当面争」当成「受得了冲突」",
+      "correction": "回避不等于承受。"
+     },
+     {
+      "misreading": "认为「受不了冲突」＝软弱",
+      "correction": "本题只描述感受，不含评价。"
+     }
+    ],
+    "counts_as": [
+     "有人当面质问你时会明显不适、想尽快结束",
+     "会因为担心起冲突而改口或让步"
+    ],
+    "does_not_count_as": [
+     "不喜欢冲突但能平静应对（那是应对能力）",
+     "只是不喜欢吵架这种形式"
+    ],
+    "edge_cases": "与陌生人冲突能忍，与家人一触即发——按占多数的情形作答。",
+    "localization_note": "「当面」二字是关键。中文语境里冲突常以间接方式发生（冷处理、找第三方），**不当面 ≠ 不冲突**。若你只是不把冲突摆到台面上，但内心对抗强烈，本题应给中等而非高分。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「confrontations」"
+   }
+  },
+  {
+   "administration_order": 79,
+   "id": "ipip_neo_213",
+   "facet": "cooperation",
+   "key": 1,
+   "text_en": "Hate to seem pushy.",
+   "text_master": "Hate to seem pushy.",
+   "text_zh": "讨厌显得咄咄逼人",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.753,
+    "item_total_r": 0.361,
+    "missing_rate": 0.0043,
+    "neutral_rate": 0.132
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否极力避免给别人「强势、逼人」的印象",
+    "key_term": {
+     "term": "pushy",
+     "sense_here": "给别人施加压力、逼人接受",
+     "not_this": "「有主见」「坚持立场」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「有主见」当成「咄咄逼人」",
+      "correction": "坚持立场但给对方留余地，不算。"
+     },
+     {
+      "misreading": "以为这只是在意别人怎么看（那是自我意识）",
+      "correction": "本题问的是**行为上是否避免施压**。"
+     }
+    ],
+    "counts_as": [
+     "提要求时会先铺垫、给对方退路",
+     "会因为怕对方为难而放弃自己的诉求"
+    ],
+    "does_not_count_as": [
+     "在意别人对自己的评价（那属自我意识）",
+     "只是说话客气"
+    ],
+    "edge_cases": "工作中需要推进度时会施压，生活中不会——按你更常出现的那种作答。",
+    "localization_note": "「咄咄逼人」在中文里语气较重，而 pushy 的程度更轻，接近「让人有压力、强人所难」。**若你只是坚持自己的看法，但不给对方压力，不算 pushy。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「pushy」"
+   }
+  },
+  {
+   "administration_order": 109,
+   "id": "ipip_neo_214",
+   "facet": "cooperation",
+   "key": -1,
+   "text_en": "Have a sharp tongue.",
+   "text_master": "Have a sharp tongue.",
+   "text_zh": "说话很刻薄",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.527,
+    "item_total_r": 0.4866,
+    "missing_rate": 0.0058,
+    "neutral_rate": 0.1909
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你说话是否尖刻、容易伤人",
+    "key_term": {
+     "term": "sharp tongue",
+     "sense_here": "言语尖刻、不留情面",
+     "not_this": "「说话直接、不绕弯子」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「说话直」当成「说话刻薄」",
+      "correction": "直率但不伤人 ≠ 刻薄。"
+     },
+     {
+      "misreading": "没注意是反向题",
+      "correction": "越符合「说话刻薄」，本面向得分越低。"
+     }
+    ],
+    "counts_as": [
+     "会用带刺的话回应别人",
+     "常被人说「话说得太重」"
+    ],
+    "does_not_count_as": [
+     "直接指出问题但不带贬损",
+     "只是不爱说客套话"
+    ],
+    "edge_cases": "只有在被激怒时才刻薄，平时不——按平时作答。",
+    "localization_note": "中文里「直率」与「刻薄」的界限常被模糊。判断标准是**对方是否因此受伤**，而不是你说的是不是实话。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「sharp tongue」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 139,
+   "id": "ipip_neo_215",
+   "facet": "cooperation",
+   "key": -1,
+   "text_en": "Contradict others.",
+   "text_master": "Contradict others.",
+   "text_zh": "会反驳别人",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.708,
+    "item_total_r": 0.4681,
+    "missing_rate": 0.0056,
+    "neutral_rate": 0.3043
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否习惯性地反驳别人的说法",
+    "key_term": {
+     "term": "contradict",
+     "sense_here": "针对对方说法本身提出反对",
+     "not_this": "「补充一个不同角度」或「就事论事地提意见」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「提出不同意见」当成「反驳」",
+      "correction": "补充观点不算。"
+     },
+     {
+      "misreading": "工作里必要的质疑算不算",
+      "correction": "若只在该质疑时质疑，不算「习惯性」反驳。"
+     }
+    ],
+    "counts_as": [
+     "别人刚说完就忍不住指出问题",
+     "常被认为「爱抬杠」"
+    ],
+    "does_not_count_as": [
+     "有依据地质疑（那属审慎）",
+     "只是表达自己的看法"
+    ],
+    "edge_cases": "与熟人之间爱抬杠，正式场合不会——按出现更多的场合作答。",
+    "localization_note": "中文语境里「就事论事地提出不同意见」与「逢人必反」是两回事。本题指后者倾向。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「contradict」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 169,
+   "id": "ipip_neo_216",
+   "facet": "cooperation",
+   "key": -1,
+   "text_en": "Love a good fight.",
+   "text_master": "Love a good fight.",
+   "text_zh": "享受一场痛快的争辩（Love a good fight）",
+   "text_zh_source": "project_translation_override",
+   "text_zh_official_ref": "喜欢和别人比试",
+   "translation_note": {
+    "defect": "习语（B4）+ 强度不同（B5）",
+    "reason": "a good fight 指**一场精彩的观点交锋**，不是肢体冲突，也不是竞技比赛。「比试」在中文偏运动竞技或切磋，会让人把它答成「我喜欢比赛」。情境：与人就一个话题激烈辩论，你会觉得过瘾。"
+   },
+   "diagnostics": {
+    "priority_score": 0.496,
+    "item_total_r": 0.4873,
+    "missing_rate": 0.0046,
+    "neutral_rate": 0.1593
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否享受与人争辩或较量",
+    "key_term": {
+     "term": "fight",
+     "sense_here": "争辩、对抗性的较量（a good fight = 一场精彩的交锋）",
+     "not_this": "肢体冲突，也不等于「喜欢竞争」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「喜欢竞争」当成「喜欢争斗」",
+      "correction": "竞争（比成绩）与对抗（争对错）不同。"
+     },
+     {
+      "misreading": "喜欢运动比赛算不算",
+      "correction": "若你不享受争辩本身，不算。"
+     }
+    ],
+    "counts_as": [
+     "会主动挑起争论并乐在其中",
+     "觉得观点交锋很有意思"
+    ],
+    "does_not_count_as": [
+     "喜欢体育竞技或游戏对抗",
+     "为了原则不得不争"
+    ],
+    "edge_cases": "本题中译「比试」偏中性，请按上面的说明校准你的理解。",
+    "localization_note": "中文「比试」可指**竞技、切磋**（中性甚至正面），而英文 a good fight 更偏**对抗性的争辩**。**若你的「喜欢比试」指运动竞技或棋类切磋，不算本题高分。** 这是本卷最易失真的本地化点之一（属 11 类错误中的「强度不同」）。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「fight」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 199,
+   "id": "ipip_neo_217",
+   "facet": "cooperation",
+   "key": -1,
+   "text_en": "Yell at people.",
+   "text_master": "Yell at people.",
+   "text_zh": "会冲人大喊大叫",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.227,
+    "item_total_r": 0.512,
+    "missing_rate": 0.0035,
+    "neutral_rate": 0.136
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会对别人吼叫",
+    "key_term": {
+     "term": "yell",
+     "sense_here": "对着人提高音量吼叫",
+     "not_this": "「天生嗓门大」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「嗓门大」当成「冲人喊」",
+      "correction": "本题指**对着人发火式地喊**。"
+     },
+     {
+      "misreading": "只在极端情况喊过一次",
+      "correction": "按频率作答，而不是按有没有发生过。"
+     }
+    ],
+    "counts_as": [
+     "生气时会提高音量吼出来",
+     "有过被人提醒「别喊」的经历"
+    ],
+    "does_not_count_as": [
+     "天生嗓门大",
+     "只在自己独处时发泄"
+    ],
+    "edge_cases": null,
+    "localization_note": null,
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「yell」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 229,
+   "id": "ipip_neo_218",
+   "facet": "cooperation",
+   "key": -1,
+   "text_en": "Insult people.",
+   "text_master": "Insult people.",
+   "text_zh": "侮辱他人",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.098,
+    "item_total_r": 0.5679,
+    "missing_rate": 0.0049,
+    "neutral_rate": 0.1378
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会说出贬损、侮辱别人的话",
+    "key_term": {
+     "term": "insult",
+     "sense_here": "贬损对方**本人**的话",
+     "not_this": "「批评对方做的事」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「批评对方做的事」当成「侮辱对方」",
+      "correction": "针对行为 vs 针对人。"
+     },
+     {
+      "misreading": "心里想过但没说出口",
+      "correction": "本题问的是说出口的话。"
+     }
+    ],
+    "counts_as": [
+     "会说贬损对方人格的话",
+     "生气时用侮辱性的称呼"
+    ],
+    "does_not_count_as": [
+     "严厉批评具体行为",
+     "只在心里有负面评价"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「侮辱」语气很重，而英文 insult 的程度略轻，可包括「说难听话」。判断标准是**你针对的是对方本人，还是他做的事**。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「insult」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 259,
+   "id": "ipip_neo_219",
+   "facet": "cooperation",
+   "key": -1,
+   "text_en": "Get back at others.",
+   "text_master": "Get back at others.",
+   "text_zh": "报复别人",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 3.06,
+    "item_total_r": 0.5621,
+    "missing_rate": 0.153,
+    "neutral_rate": 0.0
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）别人得罪你之后，你是否会找机会回敬",
+    "key_term": {
+     "term": "get back at",
+     "sense_here": "主动回敬、讨回来",
+     "not_this": "「不再与之来往」或「心里有数」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「不再信任某人」当成「报复」",
+      "correction": "疏远不等于回敬。"
+     },
+     {
+      "misreading": "认为「想过报复」就算",
+      "correction": "本题问的是是否付诸行动。"
+     }
+    ],
+    "counts_as": [
+     "会找机会让对方也吃点亏",
+     "记着这笔账并等待时机"
+    ],
+    "does_not_count_as": [
+     "只是不再与之来往",
+     "心里想过但没有行动"
+    ],
+    "edge_cases": "**本题含报复意味的表述，可能让人不愿作答——跳过也是有效的反应。**",
+    "localization_note": "**本题空答率 15.3%，是全库平均（约 0.4%）的 38 倍**——说明相当一部分作答者**拒绝回答**，而不是回答「不符合」。若此题让你不愿作答，**跳过也是有效的反应**。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「get back at」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 289,
+   "id": "ipip_neo_220",
+   "facet": "cooperation",
+   "key": -1,
+   "text_en": "Hold a grudge.",
+   "text_master": "Hold a grudge.",
+   "text_zh": "会记仇",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.355,
+    "item_total_r": 0.4034,
+    "missing_rate": 0.0056,
+    "neutral_rate": 0.1601
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）别人伤害过你之后，你是否长期记着",
+    "key_term": {
+     "term": "grudge",
+     "sense_here": "长期怀有的怨恨",
+     "not_this": "「记得这件事」或「长记性」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「吸取教训、保持距离」当成「记仇」",
+      "correction": "长记性是行为调整，记仇是情绪持续。"
+     },
+     {
+      "misreading": "认为「记得」就是「记仇」",
+      "correction": "记得事实不等于怀恨。"
+     }
+    ],
+    "counts_as": [
+     "很久以后想起来仍会生气",
+     "会因此长期对某人保持敌意"
+    ],
+    "does_not_count_as": [
+     "记得教训并调整相处方式",
+     "事情过去后情绪也过去了"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「记仇」与「长记性」不同：前者是**情绪性的怨恨**，后者是**经验性的防备**。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「grudge」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

@@ -1,0 +1,682 @@
+{
+ "_note": "审慎（Cautiousness / C6）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.cautiousness",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "审慎",
+  "facet_name_en": "Cautiousness",
+  "facet_code": "C6",
+  "domain": "conscientiousness",
+  "domain_zh": "尽责性"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "行动前思考与权衡的倾向：是否先想再做、是否回避仓促决定，以及对自己冲动行事的克制程度。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量是否焦虑或担忧（属 N1 焦虑）",
+   "不测量能否抵抗诱惑（属 N5 放纵）",
+   "不测量是否保守（属 O6 价值开放）",
+   "不测量决断的速度——这里问的是**想不想就做**，不是**做得快不快**"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "selfdiscipline",
+    "against_facet_zh": "自律",
+    "distinction": "审慎是**动手前的思考**；自律是**思考后的执行**。过度审慎会拖慢启动，但动机不同。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "immoderation",
+    "against_facet_zh": "放纵",
+    "distinction": "审慎是**认知上的权衡**；放纵是**欲望上的克制**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "anxiety",
+    "against_facet_zh": "焦虑",
+    "distinction": "审慎是**主动的评估**；焦虑是**被动的担忧**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "adventurousness",
+    "against_facet_zh": "冒险",
+    "distinction": "审慎是**行动前的谨慎**；冒险是**对新颖的偏好**。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "想到就做，很少事先权衡",
+   "2": "多数时候凭直觉行动，重要的事才会想",
+   "3": "重要决定会先想，日常的事直接做",
+   "4": "习惯先权衡再行动，不太做没把握的事",
+   "5": "几乎总要先想清楚，极少仓促决定",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_294",
+   "ipip_neo_295",
+   "ipip_neo_296",
+   "ipip_neo_297",
+   "ipip_neo_298",
+   "ipip_neo_299",
+   "ipip_neo_300"
+  ],
+  "forward_items": [
+   "ipip_neo_291",
+   "ipip_neo_292",
+   "ipip_neo_293"
+  ],
+  "key_balance": "3 正向 / 7 反向",
+  "reverse_keyed_count": 7,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.76,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 3.67,
+   "reference_age_band": "18-29",
+   "sd_used": 7.5,
+   "alpha_used": 0.76,
+   "by_age_band": {
+    "14-17": {
+     "sd": 7.5,
+     "sem": 3.67
+    },
+    "18-29": {
+     "sd": 7.5,
+     "sem": 3.67
+    },
+    "30+": {
+     "sd": 7.5,
+     "sem": 3.67
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±7.2 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "40-50",
+    "High": "32-39",
+    "Average": "25-31",
+    "Low": "18-24",
+    "Very Low": "10-17"
+   },
+   "18-29": {
+    "Very High": "42-50",
+    "High": "34-41",
+    "Average": "27-33",
+    "Low": "19-26",
+    "Very Low": "10-18"
+   },
+   "30+": {
+    "Very High": "45-50",
+    "High": "37-44",
+    "Average": "30-36",
+    "Low": "22-29",
+    "Very Low": "10-21"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "236-300",
+    "High": "208-235",
+    "Average": "174-207",
+    "Low": "143-173",
+    "Very Low": "60-142"
+   },
+   "18-29": {
+    "Very High": "246-300",
+    "High": "215-245",
+    "Average": "184-214",
+    "Low": "153-183",
+    "Very Low": "60-152"
+   },
+   "30+": {
+    "Very High": "261-300",
+    "High": "231-260",
+    "Average": "200-230",
+    "Low": "169-199",
+    "Very Low": "60-168"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "**「审慎」与「犹豫不决」在题面上不易区分。**第 6 题（Jump into things without thinking，反向）与第 5 题（Make rash decisions，反向）都指向冲动，但难以分辨**有意的权衡**与**因焦虑而无法决定**。后者更接近神经质。",
+   "本面向的计分键为 3 正 / 7 反，方向不平衡，会放大默许倾向（见 `tools/check/validate_records.py` V3 告警）。"
+  ],
+  "interpretation_caveats": [
+   "**这一面向问的是「你会不会先想再做」，不是「你会不会做不了决定」。**有意的权衡（想清楚后就行动）是这一面向；因为担心而迟迟无法决定，那更接近「焦虑」，不属于这里。",
+   "另需留意：本面向的题目以反向题为主（7 反 / 3 正），**更容易受到「习惯性同意」这种作答倾向的干扰**。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 3,
+  "chinese_project_translation": 7,
+  "chinese_overridden": 0,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 30,
+   "id": "ipip_neo_291",
+   "facet": "cautiousness",
+   "key": 1,
+   "text_en": "Avoid mistakes.",
+   "text_master": "Avoid mistakes.",
+   "text_zh": "避免犯错",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.985,
+    "item_total_r": 0.3384,
+    "missing_rate": 0.0046,
+    "neutral_rate": 0.2441
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会主动采取措施避免出错",
+    "key_term": {
+     "term": "avoid mistakes",
+     "sense_here": "事前规避",
+     "not_this": "「不犯错」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "按「我很少犯错」作答",
+      "correction": "本题问你是否主动去防。"
+     },
+     {
+      "misreading": "与「完美主义」混同",
+      "correction": "完美主义是标准高，本题是防错。"
+     }
+    ],
+    "counts_as": [
+     "做事前会想有哪些可能出错的地方"
+    ],
+    "does_not_count_as": [
+     "出错了再补救（那是另一回事）"
+    ],
+    "edge_cases": null,
+    "localization_note": "本题的「避免」是**主动行为**（反复检查、预留时间），不是「运气好没出错」。中文容易把结果当成倾向。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「avoid mistakes」"
+   }
+  },
+  {
+   "administration_order": 60,
+   "id": "ipip_neo_292",
+   "facet": "cautiousness",
+   "key": 1,
+   "text_en": "Choose my words with care.",
+   "text_master": "Choose my words with care.",
+   "text_zh": "说话前会斟酌用词",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.85,
+    "item_total_r": 0.3559,
+    "missing_rate": 0.0066,
+    "neutral_rate": 0.1997
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否在说话前会仔细选择用词",
+    "key_term": {
+     "term": "with care",
+     "sense_here": "谨慎、斟酌",
+     "not_this": "「说话慢」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「怕说错所以少说」当成斟酌",
+      "correction": "那是社交焦虑。"
+     },
+     {
+      "misreading": "认为自己说话直就是不审慎",
+      "correction": "直率也可以是深思后的选择。"
+     }
+    ],
+    "counts_as": [
+     "会想好措辞再开口"
+    ],
+    "does_not_count_as": [
+     "因为担心被评价而沉默（那属自我意识）"
+    ],
+    "edge_cases": null,
+    "localization_note": "与「自我意识」（N4）的区别：那是**担心别人怎么看**，本题是**为了准确而斟酌**。因为怕说错而不敢说，与因为想说准而斟酌，动机不同。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「with care」"
+   }
+  },
+  {
+   "administration_order": 90,
+   "id": "ipip_neo_293",
+   "facet": "cautiousness",
+   "key": 1,
+   "text_en": "Stick to my chosen path.",
+   "text_master": "Stick to my chosen path.",
+   "text_zh": "坚持自己选定的路",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 2.507,
+    "item_total_r": 0.2852,
+    "missing_rate": 0.0041,
+    "neutral_rate": 0.2645
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会坚持自己选定的方向",
+    "key_term": {
+     "term": "stick to",
+     "sense_here": "坚持",
+     "not_this": "——**注意：本题问的是「坚持」而非「事前思考」**"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "按「我很坚持」作答",
+      "correction": "请注意本面向测的是行动前的思考，本题是其中的异类。"
+     },
+     {
+      "misreading": "与「自律」面向混同",
+      "correction": "两题分属不同维度。"
+     }
+    ],
+    "counts_as": [
+     "定下方向后不容易被劝动"
+    ],
+    "does_not_count_as": [
+     "根据新信息调整方向"
+    ],
+    "edge_cases": "**本题内容与本面向核心不一致，是内容层面的问题。**",
+    "localization_note": "**本题的题目-总分相关仅 .29，是本面向最低的，且它的内容与本面向核心（行动前思考）并不一致**——「坚持已选的路」更接近**决心或固执**，而不是「审慎」。**若你觉得这题和其余题不像在问同一件事，你的判断与数据一致。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「stick to」"
+   }
+  },
+  {
+   "administration_order": 120,
+   "id": "ipip_neo_294",
+   "facet": "cautiousness",
+   "key": -1,
+   "text_en": "Jump into things without thinking.",
+   "text_master": "Jump into things without thinking.",
+   "text_zh": "会不经过思考就开始行动",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.09,
+    "item_total_r": 0.7038,
+    "missing_rate": 0.0045,
+    "neutral_rate": 0.1892
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会不假思索就开始行动",
+    "key_term": {
+     "term": "jump into",
+     "sense_here": "直接跳进去",
+     "not_this": "「行动力强、果断」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「果断」当成「不假思索」",
+      "correction": "果断是想过之后快速决定。"
+     },
+     {
+      "misreading": "与「决断性」（E3）混同",
+      "correction": "那是社交主导，与本题无关。"
+     }
+    ],
+    "counts_as": [
+     "常在没有充分评估的情况下就开始"
+    ],
+    "does_not_count_as": [
+     "想清楚后快速行动"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「不经过思考就开始行动」容易被读成**行动力强、果断**（褒义）。**但本题在审慎面向里是负面的**——它指缺少事前评估。请按「是否常常没想清楚就动手」作答。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「jump into」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 150,
+   "id": "ipip_neo_295",
+   "facet": "cautiousness",
+   "key": -1,
+   "text_en": "Make rash decisions.",
+   "text_master": "Make rash decisions.",
+   "text_zh": "会做出草率的决定",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.124,
+    "item_total_r": 0.6523,
+    "missing_rate": 0.0062,
+    "neutral_rate": 0.2215
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会做出草率的决定",
+    "key_term": {
+     "term": "rash",
+     "sense_here": "草率、轻率",
+     "not_this": "「快速」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「决定得快」当成「草率」",
+      "correction": "关键在是否评估过。"
+     },
+     {
+      "misreading": "与第 4 题（不假思索）混同",
+      "correction": "两题接近，都测事前思考的缺失。"
+     }
+    ],
+    "counts_as": [
+     "事后常发现当初考虑不周"
+    ],
+    "does_not_count_as": [
+     "信息足够时快速决定"
+    ],
+    "edge_cases": null,
+    "localization_note": "与「决断性」不同：决断性是**在人群中主导**，本题是**决策时的慎重程度**。快速但慎重的决定不算 rash。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「rash」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 180,
+   "id": "ipip_neo_296",
+   "facet": "cautiousness",
+   "key": -1,
+   "text_en": "Like to act on a whim.",
+   "text_master": "Like to act on a whim.",
+   "text_zh": "喜欢凭一时兴起行动",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.12,
+    "item_total_r": 0.5536,
+    "missing_rate": 0.006,
+    "neutral_rate": 0.2739
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否喜欢凭一时兴起做事",
+    "key_term": {
+     "term": "on a whim",
+     "sense_here": "一时兴起、无预先计划",
+     "not_this": "——"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "因为「偶尔也会」而选中间",
+      "correction": "可按频率判断：偶尔 vs 经常。"
+     },
+     {
+      "misreading": "把「随性」当成「不审慎」",
+      "correction": "本题就是问随性程度。"
+     }
+    ],
+    "counts_as": [
+     "常临时决定做什么"
+    ],
+    "does_not_count_as": [
+     "有计划但偶尔灵活"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题中立选项比例偏高（.27）**，说明不少人觉得难以定位——「偶尔一时兴起」与「经常如此」的界线不清晰。请按**频率**作答，不按是否有过。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「on a whim」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 210,
+   "id": "ipip_neo_297",
+   "facet": "cautiousness",
+   "key": -1,
+   "text_en": "Rush into things.",
+   "text_master": "Rush into things.",
+   "text_zh": "仓促行事",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.104,
+    "item_total_r": 0.687,
+    "missing_rate": 0.0052,
+    "neutral_rate": 0.2149
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会仓促行事",
+    "key_term": {
+     "term": "rush into",
+     "sense_here": "仓促投入",
+     "not_this": "「效率高」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「做事快」当成「仓促」",
+      "correction": "关键在事前有没有评估。"
+     },
+     {
+      "misreading": "与第 4、5 题混同",
+      "correction": "三题高度重叠。"
+     }
+    ],
+    "counts_as": [
+     "常事后才发现当初太急"
+    ],
+    "does_not_count_as": [
+     "快但事前有数"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 4、5 题共同测「事前思考的缺失」。**本面向共 7 道反向题，其中 5 道都在问「是否不假思索」**——存在明显的题目冗余。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「rush into」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 240,
+   "id": "ipip_neo_298",
+   "facet": "cautiousness",
+   "key": -1,
+   "text_en": "Do crazy things.",
+   "text_master": "Do crazy things.",
+   "text_zh": "会做疯狂的事",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.225,
+    "item_total_r": 0.519,
+    "missing_rate": 0.0069,
+    "neutral_rate": 0.1932
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会做疯狂的事",
+    "key_term": {
+     "term": "crazy",
+     "sense_here": "疯狂、出格",
+     "not_this": "「有趣、爱玩」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「有趣的出格」当成「疯狂」",
+      "correction": "本面向指不计后果。"
+     },
+     {
+      "misreading": "与「追求刺激」面向混同",
+      "correction": "那面向问是否**渴望**刺激。"
+     }
+    ],
+    "counts_as": [
+     "会做出事后自己也觉得不可思议的事"
+    ],
+    "does_not_count_as": [
+     "只是爱玩"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「疯狂的事」范围很宽（从冒险旅行到失控行为）。**在审慎面向里，它指「不计后果的行为」。** 注意与「追求刺激」面向的题目区分。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「crazy」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 270,
+   "id": "ipip_neo_299",
+   "facet": "cautiousness",
+   "key": -1,
+   "text_en": "Act without thinking.",
+   "text_master": "Act without thinking.",
+   "text_zh": "不假思索就行动",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.086,
+    "item_total_r": 0.7269,
+    "missing_rate": 0.0043,
+    "neutral_rate": 0.1613
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否经常不假思索就行动",
+    "key_term": {
+     "term": "without thinking",
+     "sense_here": "未加思考",
+     "not_this": "「凭直觉」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 4 题视为同一题",
+      "correction": "两题几乎同义，这是冗余。"
+     },
+     {
+      "misreading": "把「凭直觉」当成「不思考」",
+      "correction": "直觉也可以是经验的快速调用。"
+     }
+    ],
+    "counts_as": [
+     "常脱口而出或立刻行动，事后才想"
+    ],
+    "does_not_count_as": [
+     "快速反应但有经验支撑"
+    ],
+    "edge_cases": null,
+    "localization_note": "本题的题目-总分相关为 .73，**是本面向最能区分人的题**——它直接命中「事前思考」这一构念核心。相对地，第 3 题（坚持已选的路）几乎不相关。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「without thinking」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 300,
+   "id": "ipip_neo_300",
+   "facet": "cautiousness",
+   "key": -1,
+   "text_en": "Often make last-minute plans.",
+   "text_master": "Often make last-minute plans.",
+   "text_zh": "常常临时才定计划",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.758,
+    "item_total_r": 0.4651,
+    "missing_rate": 0.0066,
+    "neutral_rate": 0.1447
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否常在最后一刻才做计划",
+    "key_term": {
+     "term": "last-minute",
+     "sense_here": "最后一刻",
+     "not_this": "「灵活」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「自律」混同",
+      "correction": "计划晚定 ≠ 执行差。"
+     },
+     {
+      "misreading": "把「灵活」当成「临时」",
+      "correction": "灵活是有多种预案。"
+     }
+    ],
+    "counts_as": [
+     "常拖到临近才安排"
+    ],
+    "does_not_count_as": [
+     "有计划但保留调整空间"
+    ],
+    "edge_cases": null,
+    "localization_note": "与「自律」（C5）的区别：自律是**能不能开始做**，本题是**什么时候定计划**。临时定计划但仍按时执行的人，自律不低而审慎低。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「last-minute」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

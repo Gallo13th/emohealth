@@ -1,0 +1,949 @@
+{
+ "total_pending": 2283,
+ "batch_size": 25,
+ "batches": [
+  {
+   "file": "batch-000.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "ADAK22",
+    "AIDEP"
+   ]
+  },
+  {
+   "file": "batch-001.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "AIDEP",
+    "CESD"
+   ]
+  },
+  {
+   "file": "batch-002.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "CESD",
+    "DASSY"
+   ]
+  },
+  {
+   "file": "batch-003.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "DASSY",
+    "DISS"
+   ]
+  },
+  {
+   "file": "batch-004.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "DISS",
+    "DSM5TR-L1"
+   ]
+  },
+  {
+   "file": "batch-005.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "DSM5TR-L1",
+    "DSM5TR-L2-Anger",
+    "DSM5TR-L2-Anxiety",
+    "DSM5TR-L2-Depression"
+   ]
+  },
+  {
+   "file": "batch-006.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "DSM5TR-L2-Mania",
+    "DSM5TR-L2-Repetitive",
+    "DSM5TR-L2-Sleep",
+    "DSM5TR-L2-Somatic"
+   ]
+  },
+  {
+   "file": "batch-007.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "DSM5TR-L2-Somatic",
+    "DSM5TR-L2-Substance",
+    "EWS"
+   ]
+  },
+  {
+   "file": "batch-008.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "EWS",
+    "IPIP-16PF"
+   ]
+  },
+  {
+   "file": "batch-009.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-16PF"
+   ]
+  },
+  {
+   "file": "batch-010.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-16PF"
+   ]
+  },
+  {
+   "file": "batch-011.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-16PF",
+    "IPIP-6FPQ-AG",
+    "IPIP-6FPQ-AG1"
+   ]
+  },
+  {
+   "file": "batch-012.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-6FPQ-AG2",
+    "IPIP-6FPQ-AG3",
+    "IPIP-6FPQ-EX",
+    "IPIP-6FPQ-EX2",
+    "IPIP-6FPQ-EX3"
+   ]
+  },
+  {
+   "file": "batch-013.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-6FPQ-ME",
+    "IPIP-6FPQ-ME1",
+    "IPIP-6FPQ-ME3",
+    "IPIP-6FPQ-OP2",
+    "IPIP-7FACTOR-AGR"
+   ]
+  },
+  {
+   "file": "batch-014.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-AB5C-Emp",
+    "IPIP-AB5C-Frl",
+    "IPIP-AB5C-Hap",
+    "IPIP-AB5C-Img",
+    "IPIP-AB5C-Ing"
+   ]
+  },
+  {
+   "file": "batch-015.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-AB5C-Stb",
+    "IPIP-AB5C-Sym",
+    "IPIP-AB5C-Tgh",
+    "IPIP-AB5C-Tnd",
+    "IPIP-AB5C-Trq"
+   ]
+  },
+  {
+   "file": "batch-016.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-BFAS",
+    "IPIP-BIDR",
+    "IPIP-BISBAS",
+    "IPIP-Big5-100",
+    "IPIP-BriefSelfControl"
+   ]
+  },
+  {
+   "file": "batch-017.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-BriefSelfControl",
+    "IPIP-CATPD"
+   ]
+  },
+  {
+   "file": "batch-018.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-CATPD"
+   ]
+  },
+  {
+   "file": "batch-019.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-CATPD"
+   ]
+  },
+  {
+   "file": "batch-020.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-CATPD"
+   ]
+  },
+  {
+   "file": "batch-021.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-CATPD"
+   ]
+  },
+  {
+   "file": "batch-022.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-CATPD"
+   ]
+  },
+  {
+   "file": "batch-023.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-CATPD"
+   ]
+  },
+  {
+   "file": "batch-024.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-CATPD",
+    "IPIP-CPI-Ai",
+    "IPIP-CPI-Stb",
+    "IPIP-Chapman",
+    "IPIP-EI-Attention-to-Emotions"
+   ]
+  },
+  {
+   "file": "batch-025.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-EI-Negative-Expressivity",
+    "IPIP-EI-Positive-Expressivity",
+    "IPIP-EI-Responsive-Distress",
+    "IPIP-EI-Responsive-Joy"
+   ]
+  },
+  {
+   "file": "batch-026.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-EI-Responsive-Joy",
+    "IPIP-Foa2002",
+    "IPIP-HEXACO"
+   ]
+  },
+  {
+   "file": "batch-027.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-HEXACO"
+   ]
+  },
+  {
+   "file": "batch-028.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-HEXACO"
+   ]
+  },
+  {
+   "file": "batch-029.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-HEXACO",
+    "IPIP-NEO5-20-Agreeableness",
+    "IPIP-VIA",
+    "IPIP-VIA-App",
+    "IPIP-VIA-Bra"
+   ]
+  },
+  {
+   "file": "batch-030.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-VIA-Bra",
+    "IPIP-VIA-Cap",
+    "IPIP-VIA-Cit",
+    "IPIP-VIA-Crt"
+   ]
+  },
+  {
+   "file": "batch-031.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-VIA-Crt",
+    "IPIP-VIA-Cur",
+    "IPIP-VIA-Equ",
+    "IPIP-VIA-For"
+   ]
+  },
+  {
+   "file": "batch-032.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-VIA-For",
+    "IPIP-VIA-Gra",
+    "IPIP-VIA-Hon",
+    "IPIP-VIA-Hop"
+   ]
+  },
+  {
+   "file": "batch-033.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-VIA-Hop",
+    "IPIP-VIA-Hum",
+    "IPIP-VIA-Ind",
+    "IPIP-VIA-Jud"
+   ]
+  },
+  {
+   "file": "batch-034.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-VIA-Jud",
+    "IPIP-VIA-Kin",
+    "IPIP-VIA-Lea",
+    "IPIP-VIA-Lov"
+   ]
+  },
+  {
+   "file": "batch-035.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-VIA-Lov",
+    "IPIP-VIA-Mod",
+    "IPIP-VIA-Pru",
+    "IPIP-VIA-Sel"
+   ]
+  },
+  {
+   "file": "batch-036.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-VIA-Sel",
+    "IPIP-VIA-Soc",
+    "IPIP-VIA-Spi",
+    "IPIP-VIA-Wis"
+   ]
+  },
+  {
+   "file": "batch-037.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-VIA-Wis",
+    "IPIP-VIA-Zes",
+    "PAS",
+    "PCI"
+   ]
+  },
+  {
+   "file": "batch-038.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "PCI"
+   ]
+  },
+  {
+   "file": "batch-039.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "PCI"
+   ]
+  },
+  {
+   "file": "batch-040.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "PCI",
+    "PCOPE",
+    "PID-5"
+   ]
+  },
+  {
+   "file": "batch-041.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "PID-5"
+   ]
+  },
+  {
+   "file": "batch-042.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "PID-5"
+   ]
+  },
+  {
+   "file": "batch-043.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "PID-5"
+   ]
+  },
+  {
+   "file": "batch-044.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "PID-5"
+   ]
+  },
+  {
+   "file": "batch-045.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "PID-5"
+   ]
+  },
+  {
+   "file": "batch-046.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "PID-5"
+   ]
+  },
+  {
+   "file": "batch-047.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "PID-5"
+   ]
+  },
+  {
+   "file": "batch-048.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "PID-5",
+    "PROCR"
+   ]
+  },
+  {
+   "file": "batch-049.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "PROCR",
+    "RNSS"
+   ]
+  },
+  {
+   "file": "batch-050.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "RNSS",
+    "SMS"
+   ]
+  },
+  {
+   "file": "batch-051.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "SMS",
+    "SRS",
+    "SVDS"
+   ]
+  },
+  {
+   "file": "batch-052.json",
+   "count": 25,
+   "tier": 1,
+   "instruments": [
+    "IPIP-6FPQ-AG",
+    "SVDS",
+    "TSES"
+   ]
+  },
+  {
+   "file": "batch-053.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-6FPQ-AG",
+    "IPIP-6FPQ-AG1",
+    "IPIP-6FPQ-AG2",
+    "IPIP-6FPQ-AG3",
+    "IPIP-6FPQ-EX"
+   ]
+  },
+  {
+   "file": "batch-054.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-6FPQ-IP",
+    "IPIP-6FPQ-IP1",
+    "IPIP-6FPQ-IP2",
+    "IPIP-6FPQ-IP3",
+    "IPIP-6FPQ-IT"
+   ]
+  },
+  {
+   "file": "batch-055.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-6FPQ-IT",
+    "IPIP-6FPQ-IT1",
+    "IPIP-6FPQ-IT2",
+    "IPIP-6FPQ-IT3",
+    "IPIP-6FPQ-ME"
+   ]
+  },
+  {
+   "file": "batch-056.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-6FPQ-OP",
+    "IPIP-6FPQ-OP1",
+    "IPIP-6FPQ-OP2",
+    "IPIP-6FPQ-OP3",
+    "IPIP-7FACTOR-ATT"
+   ]
+  },
+  {
+   "file": "batch-057.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-AB5C-Ast",
+    "IPIP-AB5C-Cau",
+    "IPIP-AB5C-Cht",
+    "IPIP-AB5C-Clm",
+    "IPIP-AB5C-Cmp"
+   ]
+  },
+  {
+   "file": "batch-058.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-AB5C-Con",
+    "IPIP-AB5C-Coo",
+    "IPIP-AB5C-Crt",
+    "IPIP-AB5C-Dep",
+    "IPIP-AB5C-Dut"
+   ]
+  },
+  {
+   "file": "batch-059.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-AB5C-Emp",
+    "IPIP-AB5C-Imp",
+    "IPIP-AB5C-Ing",
+    "IPIP-AB5C-Int",
+    "IPIP-AB5C-Isp"
+   ]
+  },
+  {
+   "file": "batch-060.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-AB5C-Mor",
+    "IPIP-AB5C-Nur",
+    "IPIP-AB5C-Ord",
+    "IPIP-AB5C-Org",
+    "IPIP-AB5C-Pls"
+   ]
+  },
+  {
+   "file": "batch-061.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-AB5C-Qck",
+    "IPIP-AB5C-Rat",
+    "IPIP-AB5C-Ref",
+    "IPIP-AB5C-Sdc",
+    "IPIP-AB5C-Soc"
+   ]
+  },
+  {
+   "file": "batch-062.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-AB5C-Tgh",
+    "IPIP-AB5C-Tlk",
+    "IPIP-AB5C-Tnd",
+    "IPIP-AB5C-Trq",
+    "IPIP-AB5C-Und"
+   ]
+  },
+  {
+   "file": "batch-063.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-BIDR",
+    "IPIP-BISBAS"
+   ]
+  },
+  {
+   "file": "batch-064.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-BISBAS",
+    "IPIP-Big5-31"
+   ]
+  },
+  {
+   "file": "batch-065.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-Big5-31",
+    "IPIP-BriefSelfControl",
+    "IPIP-Buss"
+   ]
+  },
+  {
+   "file": "batch-066.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-CPI-Ac",
+    "IPIP-CPI-Ai",
+    "IPIP-CPI-Clm",
+    "IPIP-CPI-Cpx",
+    "IPIP-CPI-Dep"
+   ]
+  },
+  {
+   "file": "batch-067.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-CPI-Fx",
+    "IPIP-CPI-Gi",
+    "IPIP-CPI-Hap",
+    "IPIP-CPI-Hop",
+    "IPIP-CPI-Ie"
+   ]
+  },
+  {
+   "file": "batch-068.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-CPI-Pol",
+    "IPIP-CPI-Re",
+    "IPIP-CPI-Sdi",
+    "IPIP-CPI-Sef",
+    "IPIP-CPI-Snt"
+   ]
+  },
+  {
+   "file": "batch-069.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-Chapman",
+    "IPIP-Depression"
+   ]
+  },
+  {
+   "file": "batch-070.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-Depression",
+    "IPIP-Foa2002"
+   ]
+  },
+  {
+   "file": "batch-071.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-Foa2002",
+    "IPIP-HPI-Qck",
+    "IPIP-HPI-Tgh",
+    "IPIP-HPIHIC-Ach",
+    "IPIP-HPIHIC-Clm"
+   ]
+  },
+  {
+   "file": "batch-072.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-JPI-Cpr",
+    "IPIP-JPI-Emp",
+    "IPIP-JPI-Rkt",
+    "IPIP-JPI-Rsy",
+    "IPIP-JPI-Sas"
+   ]
+  },
+  {
+   "file": "batch-073.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-MPQ-UV",
+    "IPIP-NEO5-20-Agreeableness",
+    "IPIP-NEO5-20-Openness-To-Experience",
+    "IPIP-ORAIS-Appearance-Consciousness",
+    "IPIP-ORAIS-Creativity-Originality"
+   ]
+  },
+  {
+   "file": "batch-074.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-ORAIS-Gregariousness",
+    "IPIP-ORAIS-Interest-in-Children",
+    "IPIP-ORAIS-Interest-in-Collecting",
+    "IPIP-ORAIS-Interest-in-Computing",
+    "IPIP-ORAIS-Interest-in-Drinking"
+   ]
+  },
+  {
+   "file": "batch-075.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-ORAIS-Interest-in-Drinking",
+    "IPIP-ORAIS-Interest-in-Environmentalism",
+    "IPIP-ORAIS-Interest-in-Exercise",
+    "IPIP-ORAIS-Interest-in-Food",
+    "IPIP-ORAIS-Interest-in-Gambling"
+   ]
+  },
+  {
+   "file": "batch-076.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-ORAIS-Interest-in-Gambling",
+    "IPIP-ORAIS-Interest-in-Game-Playing",
+    "IPIP-ORAIS-Interest-in-Gardening",
+    "IPIP-ORAIS-Interest-in-Home-Making",
+    "IPIP-ORAIS-Interest-in-Journaling"
+   ]
+  },
+  {
+   "file": "batch-077.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-ORAIS-Interest-in-Journaling",
+    "IPIP-ORAIS-Interest-in-Money",
+    "IPIP-ORAIS-Interest-in-Music",
+    "IPIP-ORAIS-Interest-in-Outdoor-Activities",
+    "IPIP-ORAIS-Interest-in-Pets"
+   ]
+  },
+  {
+   "file": "batch-078.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-ORAIS-Interest-in-Pets",
+    "IPIP-ORAIS-Interest-in-Political-Activism",
+    "IPIP-ORAIS-Interest-in-Romance",
+    "IPIP-ORAIS-Interest-in-Self-Improvement",
+    "IPIP-ORAIS-Interest-in-Shopping"
+   ]
+  },
+  {
+   "file": "batch-079.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-ORAIS-Interest-in-Shopping",
+    "IPIP-ORAIS-Interest-in-Social-Media",
+    "IPIP-ORAIS-Interest-in-Sports",
+    "IPIP-ORAIS-Interest-in-Travel",
+    "IPIP-ORAIS-Interest-in-Vehicles"
+   ]
+  },
+  {
+   "file": "batch-080.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-ORAIS-Interest-in-Watching-Television",
+    "IPIP-ORAIS-Love-of-Learning",
+    "IPIP-ORAIS-Love-of-Reading",
+    "IPIP-ORAIS-Reclusiveness",
+    "IPIP-ORAIS-Spirituality-Religiousness"
+   ]
+  },
+  {
+   "file": "batch-081.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "IPIP-ORAIS-Spirituality-Religiousness",
+    "IPIP-SelfEsteem",
+    "IPIP-TCI-C1",
+    "IPIP-TCI-C3",
+    "IPIP-TCI-C4"
+   ]
+  },
+  {
+   "file": "batch-082.json",
+   "count": 25,
+   "tier": 2,
+   "instruments": [
+    "AAQ-AHL",
+    "IPIP-TCI-RD4",
+    "IPIP-TCI-S1",
+    "IPIP-TCI-S2",
+    "IPIP-TCI-S3"
+   ]
+  },
+  {
+   "file": "batch-083.json",
+   "count": 25,
+   "tier": 3,
+   "instruments": [
+    "AAQ-AHL",
+    "AAQ-TTM",
+    "ADAI10"
+   ]
+  },
+  {
+   "file": "batch-084.json",
+   "count": 25,
+   "tier": 3,
+   "instruments": [
+    "AOTE",
+    "BSS-NS",
+    "BSS-PS"
+   ]
+  },
+  {
+   "file": "batch-085.json",
+   "count": 25,
+   "tier": 3,
+   "instruments": [
+    "BSS-PS",
+    "CFSR",
+    "CORE10",
+    "DADS"
+   ]
+  },
+  {
+   "file": "batch-086.json",
+   "count": 25,
+   "tier": 3,
+   "instruments": [
+    "DADS",
+    "ESS-DCP",
+    "ESS-ITS",
+    "MAntAS"
+   ]
+  },
+  {
+   "file": "batch-087.json",
+   "count": 25,
+   "tier": 3,
+   "instruments": [
+    "MAntAS",
+    "MFQL",
+    "MHI5"
+   ]
+  },
+  {
+   "file": "batch-088.json",
+   "count": 25,
+   "tier": 3,
+   "instruments": [
+    "MHI5",
+    "PSBS",
+    "PSWQ"
+   ]
+  },
+  {
+   "file": "batch-089.json",
+   "count": 25,
+   "tier": 3,
+   "instruments": [
+    "PSWQ",
+    "PedsQL-23"
+   ]
+  },
+  {
+   "file": "batch-090.json",
+   "count": 25,
+   "tier": 3,
+   "instruments": [
+    "PedsQL-23",
+    "RSES",
+    "SDRS5",
+    "SECS"
+   ]
+  },
+  {
+   "file": "batch-091.json",
+   "count": 8,
+   "tier": 3,
+   "instruments": [
+    "SECS"
+   ]
+  }
+ ]
+}

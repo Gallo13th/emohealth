@@ -1,0 +1,683 @@
+{
+ "_note": "开朗（Cheerfulness / E6）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.cheerfulness",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "开朗",
+  "facet_name_en": "Cheerfulness",
+  "facet_code": "E6",
+  "domain": "extraversion",
+  "domain_zh": "外向性"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "体验与表达积极情绪的倾向：快乐、热情、满足的基线水平，以及是否容易感到高兴。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量情绪低落的程度（属 N3 抑郁，但两者是同一维度的两端）",
+   "不测量幽默感或社交风趣",
+   "不测量生活境遇的好坏",
+   "不测量是否爱笑（那是表达习惯，不是情绪体验）"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "depression",
+    "against_facet_zh": "抑郁",
+    "distinction": "两者是同一情绪维度的两端。开朗高分通常对应抑郁低分，但不必完全互补——可以既常感快乐又偶有低落。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "activitylevel",
+    "against_facet_zh": "活跃度",
+    "distinction": "开朗是**情绪的高涨**；活跃度是**行为的速率**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "friendliness",
+    "against_facet_zh": "友好",
+    "distinction": "开朗是**自己的情绪状态**；友好是**对他人的温度**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "excitementseeking",
+    "against_facet_zh": "追求刺激",
+    "distinction": "开朗是**积极情绪的基线**；追求刺激是**对唤起的需要**。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "很少感到高兴，情绪基调偏平或偏灰",
+   "2": "有开心的时候，但不算频繁",
+   "3": "情绪大致平稳，有起有落",
+   "4": "多数时候心情不错，容易因为小事高兴",
+   "5": "几乎总是精神饱满、心情愉快，常感染身边的人",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_119",
+   "ipip_neo_120"
+  ],
+  "forward_items": [
+   "ipip_neo_111",
+   "ipip_neo_112",
+   "ipip_neo_113",
+   "ipip_neo_114",
+   "ipip_neo_115",
+   "ipip_neo_116",
+   "ipip_neo_117",
+   "ipip_neo_118"
+  ],
+  "key_balance": "8 正向 / 2 反向",
+  "reverse_keyed_count": 2,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.81,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 3.05,
+   "reference_age_band": "18-29",
+   "sd_used": 7.0,
+   "alpha_used": 0.81,
+   "by_age_band": {
+    "14-17": {
+     "sd": 7.5,
+     "sem": 3.27
+    },
+    "18-29": {
+     "sd": 7.0,
+     "sem": 3.05
+    },
+    "30+": {
+     "sd": 7.0,
+     "sem": 3.05
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±6.0 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "49-50",
+    "High": "41-48",
+    "Average": "34-40",
+    "Low": "27-33",
+    "Very Low": "10-26"
+   },
+   "18-29": {
+    "Very High": "48-50",
+    "High": "41-47",
+    "Average": "34-40",
+    "Low": "27-33",
+    "Very Low": "10-26"
+   },
+   "30+": {
+    "Very High": "47-50",
+    "High": "40-46",
+    "Average": "33-39",
+    "Low": "26-32",
+    "Very Low": "10-25"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "254-300",
+    "High": "220-253",
+    "Average": "186-219",
+    "Low": "153-185",
+    "Very Low": "60-152"
+   },
+   "18-29": {
+    "Very High": "252-300",
+    "High": "219-251",
+    "Average": "186-218",
+    "Low": "153-185",
+    "Very Low": "60-152"
+   },
+   "30+": {
+    "Very High": "248-300",
+    "High": "214-247",
+    "Average": "180-213",
+    "Low": "146-179",
+    "Very Low": "60-145"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "**开朗与「是否表达情绪」容易混淆**：有些人内心常感愉快但不外露。IPIP 的题目混有体验类（Am often in a good mood）与表达类（Express my joy），本面向的 α 因此受一定影响。",
+   "**开朗与生活境遇高度纠缠**：处在顺境中的人开朗分自然较高，但这未必反映稳定的特质。官方指导语要求按「一贯的自己」作答，实际操作中难以保证。"
+  ],
+  "interpretation_caveats": [
+   "这一面向问的是**你内心的情绪基调**，不是**你表现出多少**。如果你常感愉快但不爱外露，请按内心状态作答。",
+   "同时请留意：**情绪会受到近期境遇的影响**。若你最近经历了较大的好事或坏事，这个分数可能反映的是当下的处境，而不是一贯的你。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 3,
+  "chinese_project_translation": 6,
+  "chinese_overridden": 1,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 27,
+   "id": "ipip_neo_111",
+   "facet": "cheerfulness",
+   "key": 1,
+   "text_en": "Radiate joy.",
+   "text_master": "Radiate joy.",
+   "text_zh": "我的快乐会感染周围的人",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.152,
+    "item_total_r": 0.572,
+    "missing_rate": 0.0076,
+    "neutral_rate": 0.3058
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你的愉快情绪是否会感染周围的人",
+    "key_term": {
+     "term": "radiate",
+     "sense_here": "向外散发的、能感染他人",
+     "not_this": "「自己开心」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "只按「我是否开心」作答",
+      "correction": "本题问愉快是否向外扩散。"
+     },
+     {
+      "misreading": "因为不爱外露而选低分",
+      "correction": "那确实是本题的低分，但请与第 2 题（生活快乐）区别看待。"
+     }
+    ],
+    "counts_as": [
+     "情绪好时身边人能感觉到",
+     "常有人说和你在一起很轻松"
+    ],
+    "does_not_count_as": [
+     "内心愉快但不形于色"
+    ],
+    "edge_cases": null,
+    "localization_note": "**「Radiate」强调的是外溢与感染**，不只是自己愉快。本题中立选项比例较高（.31，本面向最高），说明不少人觉得「我开心但不会表现出来」——**那种情形应给中等分，因为本题确实问了外溢这一层。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「radiate」"
+   }
+  },
+  {
+   "administration_order": 57,
+   "id": "ipip_neo_112",
+   "facet": "cheerfulness",
+   "key": 1,
+   "text_en": "Have a lot of fun.",
+   "text_master": "Have a lot of fun.",
+   "text_zh": "生活里有很多好玩的事（Have a lot of fun）",
+   "text_zh_source": "project_translation_override",
+   "text_zh_official_ref": "我的生活很快乐",
+   "translation_note": {
+    "defect": "语义偏移（A6）",
+    "reason": "原意偏**生活中的乐趣与有意思的事多**，而不只是情绪上的快乐。情境：你的日常里有不少让你觉得好玩、想去做的事。"
+   },
+   "diagnostics": {
+    "priority_score": 0.17,
+    "item_total_r": 0.6442,
+    "missing_rate": 0.0085,
+    "neutral_rate": 0.1951
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你的生活是否让你感到快乐",
+    "key_term": {
+     "term": "a lot of fun",
+     "sense_here": "生活整体有趣、愉快",
+     "not_this": "「生活顺利」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「生活顺利」当成「生活有趣」",
+      "correction": "本题偏乐趣。"
+     },
+     {
+      "misreading": "因为近期遇到挫折而选低分",
+      "correction": "请按一贯情况作答。"
+     }
+    ],
+    "counts_as": [
+     "生活里常有让你觉得有意思的时刻"
+    ],
+    "does_not_count_as": [
+     "生活平稳但缺少乐趣"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题的「fun」指乐趣而非成就。** 中译「我的生活很快乐」略偏情绪，而英文更偏**生活中有很多好玩、有意思的事**。若你生活安稳但平淡，本题可能给中等分。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「a lot of fun」"
+   }
+  },
+  {
+   "administration_order": 87,
+   "id": "ipip_neo_113",
+   "facet": "cheerfulness",
+   "key": 1,
+   "text_en": "Express childlike joy.",
+   "text_master": "Express childlike joy.",
+   "text_zh": "会表露出孩子般的快乐",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.764,
+    "item_total_r": 0.4611,
+    "missing_rate": 0.0049,
+    "neutral_rate": 0.1661
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会表露出孩子般的快乐",
+    "key_term": {
+     "term": "childlike joy",
+     "sense_here": "孩子般的、无拘束的快乐",
+     "not_this": "「幼稚」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它理解成「幼稚」",
+      "correction": "这里指无拘束的快乐，不含贬义。"
+     },
+     {
+      "misreading": "因为觉得自己「成熟稳重」而选低分",
+      "correction": "本题问是否还有这种快乐。"
+     }
+    ],
+    "counts_as": [
+     "会为小事而雀跃、不加掩饰"
+    ],
+    "does_not_count_as": [
+     "只是稳重不爱表现"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「孩子般的快乐」容易被读成**幼稚、不成熟**（负面）。**本题是中性的**：指那种不加掩饰、因小事而雀跃的快乐。本卷中译贴近原意，但请勿按「幼稚」理解。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「childlike joy」"
+   }
+  },
+  {
+   "administration_order": 117,
+   "id": "ipip_neo_114",
+   "facet": "cheerfulness",
+   "key": 1,
+   "text_en": "Laugh my way through life.",
+   "text_master": "Laugh my way through life.",
+   "text_zh": "一路笑着过日子",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.12,
+    "item_total_r": 0.5728,
+    "missing_rate": 0.006,
+    "neutral_rate": 0.226
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否以轻松的态度度过生活",
+    "key_term": {
+     "term": "laugh my way through",
+     "sense_here": "以笑着的方式应对生活",
+     "not_this": "「生活没烦恼」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「生活顺利」当成「笑着过日子」",
+      "correction": "本题偏态度。"
+     },
+     {
+      "misreading": "因为遇到困难时笑不出来而选低分",
+      "correction": "可考虑一般情形。"
+     }
+    ],
+    "counts_as": [
+     "遇到麻烦也能保持轻松心态"
+    ],
+    "does_not_count_as": [
+     "顺境时开心、逆境时低落"
+    ],
+    "edge_cases": null,
+    "localization_note": "**「laugh my way through」含有「即便有困难也能笑着过」的意味**，不只是「生活顺利」。本题测的是**应对生活的态度**，不只是情绪水平。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「laugh my way through」"
+   }
+  },
+  {
+   "administration_order": 147,
+   "id": "ipip_neo_115",
+   "facet": "cheerfulness",
+   "key": 1,
+   "text_en": "Love life.",
+   "text_master": "Love life.",
+   "text_zh": "热爱生活",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.098,
+    "item_total_r": 0.5417,
+    "missing_rate": 0.0049,
+    "neutral_rate": 0.1521
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否热爱生活",
+    "key_term": {
+     "term": "love life",
+     "sense_here": "对生活的整体热爱",
+     "not_this": "「生活满意」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「生活满意度」混同",
+      "correction": "本题偏热情。"
+     },
+     {
+      "misreading": "因为现状不理想而选低分",
+      "correction": "热爱是对生活本身的态度。"
+     }
+    ],
+    "counts_as": [
+     "对生活整体抱有热情"
+    ],
+    "does_not_count_as": [
+     "只是过得还行"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「热爱生活」表达清楚，但**它接近整体的生活态度，与「满意度」略有差别**。若你生活满意度一般但对生活本身有热情，本题仍可给高分。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「love life」"
+   }
+  },
+  {
+   "administration_order": 177,
+   "id": "ipip_neo_116",
+   "facet": "cheerfulness",
+   "key": 1,
+   "text_en": "Look at the bright side of life.",
+   "text_master": "Look at the bright side of life.",
+   "text_zh": "看到生活中好的一面",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.15,
+    "item_total_r": 0.5563,
+    "missing_rate": 0.0075,
+    "neutral_rate": 0.1789
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否倾向看到生活中好的一面",
+    "key_term": {
+     "term": "bright side",
+     "sense_here": "好的一面、积极面",
+     "not_this": "「否认问题」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它理解成「否认困难」",
+      "correction": "本题不要求无视问题。"
+     },
+     {
+      "misreading": "与「解脱感」混同",
+      "correction": "那是应对方式。"
+     }
+    ],
+    "counts_as": [
+     "遇到不顺时会注意到还有哪些是好的"
+    ],
+    "does_not_count_as": [
+     "只讲积极面而不面对问题"
+    ],
+    "edge_cases": null,
+    "localization_note": "**关键区分**：看到好的一面 ≠ 无视问题。**本题测的是在承认问题的前提下是否仍能看到积极面。** 盲目的乐观主义不算本题的高分。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「bright side」"
+   }
+  },
+  {
+   "administration_order": 207,
+   "id": "ipip_neo_117",
+   "facet": "cheerfulness",
+   "key": 1,
+   "text_en": "Laugh aloud.",
+   "text_master": "Laugh aloud.",
+   "text_zh": "会大声笑出来",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.085,
+    "item_total_r": 0.5528,
+    "missing_rate": 0.0038,
+    "neutral_rate": 0.0725
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会大声笑出来",
+    "key_term": {
+     "term": "laugh aloud",
+     "sense_here": "出声地笑",
+     "not_this": "「内心愉悦」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「不笑出声」当成「不快乐」",
+      "correction": "本题问表达，第 2 题问体验。"
+     },
+     {
+      "misreading": "与「开朗」其余题混同",
+      "correction": "本题偏行为表现。"
+     }
+    ],
+    "counts_as": [
+     "觉得好笑时会笑出声"
+    ],
+    "does_not_count_as": [
+     "内心觉得好笑但不表现"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题测的是「表达」而非「体验」**——它是本面向少数几道偏行为的题。**内心常感愉快但不笑出声的人，本题会给低分**，但第 2 题（生活快乐）会给出高分。两题不矛盾。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「laugh aloud」"
+   }
+  },
+  {
+   "administration_order": 237,
+   "id": "ipip_neo_118",
+   "facet": "cheerfulness",
+   "key": 1,
+   "text_en": "Amuse my friends.",
+   "text_master": "Amuse my friends.",
+   "text_zh": "能把朋友逗乐",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.635,
+    "item_total_r": 0.478,
+    "missing_rate": 0.0069,
+    "neutral_rate": 0.1031
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否能把朋友逗乐",
+    "key_term": {
+     "term": "amuse",
+     "sense_here": "逗乐他人",
+     "not_this": "「自己开心」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「自己开心」当成「能逗乐别人」",
+      "correction": "本题问对他人的作用。"
+     },
+     {
+      "misreading": "因为性格不外向而选低分",
+      "correction": "本题偏幽默表达，与是否外向有关但不等同。"
+     }
+    ],
+    "counts_as": [
+     "常能逗得朋友大笑"
+    ],
+    "does_not_count_as": [
+     "自己爱笑但不擅长逗别人"
+    ],
+    "edge_cases": "**本题偏幽默能力，与情绪基调略有偏移。**",
+    "localization_note": "**本题偏「社交中的幽默能力」**，与本面向的「积极情绪基线」不是同一件事。一个情绪愉快但不擅长逗人笑的人，本题会得低分。这是本面向内容异质性的一处。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「amuse」"
+   }
+  },
+  {
+   "administration_order": 267,
+   "id": "ipip_neo_119",
+   "facet": "cheerfulness",
+   "key": -1,
+   "text_en": "Am not easily amused.",
+   "text_master": "Am not easily amused.",
+   "text_zh": "不容易被逗乐",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.497,
+    "item_total_r": 0.4892,
+    "missing_rate": 0.0056,
+    "neutral_rate": 0.0966
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否不容易被逗乐",
+    "key_term": {
+     "term": "amused",
+     "sense_here": "被逗乐、觉得好笑",
+     "not_this": "「不快乐」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「不容易被逗乐」当成「不快乐」",
+      "correction": "两件事不同。"
+     },
+     {
+      "misreading": "与「抑郁」面向混同",
+      "correction": "那是情绪基调。"
+     }
+    ],
+    "counts_as": [
+     "别人觉得好笑的事你常觉得一般"
+    ],
+    "does_not_count_as": [
+     "只是笑点比较特殊"
+    ],
+    "edge_cases": null,
+    "localization_note": "**注意区分「不容易被逗乐」与「情绪低落」**：前者是幽默反应的门槛，后者是情绪基调。本题测的是前者。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「amused」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 297,
+   "id": "ipip_neo_120",
+   "facet": "cheerfulness",
+   "key": -1,
+   "text_en": "Seldom joke around.",
+   "text_master": "Seldom joke around.",
+   "text_zh": "很少开玩笑",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.918,
+    "item_total_r": 0.4479,
+    "missing_rate": 0.006,
+    "neutral_rate": 0.0701
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否很少开玩笑",
+    "key_term": {
+     "term": "joke around",
+     "sense_here": "开玩笑、说笑",
+     "not_this": "「不爱说话」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「外向性」的其他面向混同",
+      "correction": "本题偏幽默表达。"
+     },
+     {
+      "misreading": "把「不爱开玩笑」当成「不快乐」",
+      "correction": "两件事不同。"
+     }
+    ],
+    "counts_as": [
+     "平时很少说笑打趣"
+    ],
+    "does_not_count_as": [
+     "只是场合不对时才不开玩笑"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 7 题（大声笑）共同偏**行为表达**。**内向或严肃的人可能开得少但有积极情绪**——两题不矛盾。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「joke around」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

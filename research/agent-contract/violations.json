@@ -1,0 +1,354 @@
+[
+ {
+  "check": "C2 路径接地",
+  "desc": "引用了一个输入里不存在的路径（＝引入新论断）",
+  "output": {
+   "sections": [
+    {
+     "heading": "先说清楚这是什么",
+     "text": "这份结果基于你答的 75 道题。其中 15 个面向已跨过精度门槛、可以解读，另外 15 个面向题量还不够，下面不会提到它们——不是它们「中等」，是我们还不知道。本结果不构成任何诊断，也不能替代专业评估。参照人群为英国样本，非中国人群。",
+     "grounded_in": [
+      "coverage.items_answered",
+      "facets_showable",
+      "facets_withheld",
+      "facets.anxiety.score.raw"
+     ]
+    },
+    {
+     "heading": "有一道题想跟你多说一句",
+     "text": "你答的第 1 题是「为很多事情感到担心」。这道题问的其实是「你是否经常反复思虑各种事情、不容易停下来」。承重词 Worry 在这里指「反复的、难以主动停止的思虑」，而不是「日常语中的\"关心\"或\"在意\"（如关心家人健康）」。知道这一点，比知道分数更有用。",
+     "grounded_in": [
+      "notable_items.0.order",
+      "notable_items.0.asks",
+      "notable_items.0.key_term"
+     ]
+    }
+   ],
+   "notable_items_surfaced": [
+    1
+   ],
+   "disclosures_kept": [
+    "content_caveat",
+    "does_not_measure",
+    "no_diagnosis",
+    "norm_sample",
+    "precision"
+   ],
+   "refusals": []
+  },
+  "verdict": {
+   "ok": false,
+   "failures": [
+    "[C2] sections[0] grounded_in 路径不存在：'facets.anxiety.score.raw' （写不存在的路径等同于引入新论断）"
+   ],
+   "warnings": []
+  }
+ },
+ {
+  "check": "C3 数字接地",
+  "desc": "正文里出现输入中没有的数字 42",
+  "output": {
+   "sections": [
+    {
+     "heading": "先说清楚这是什么",
+     "text": "这份结果基于你答的 75 道题。其中 15 个面向已跨过精度门槛、可以解读，另外 15 个面向题量还不够，下面不会提到它们——不是它们「中等」，是我们还不知道。本结果不构成任何诊断，也不能替代专业评估。参照人群为英国样本，非中国人群。综合来看你的整体心理年龄约为 42 岁。",
+     "grounded_in": [
+      "coverage.items_answered",
+      "facets_showable",
+      "facets_withheld"
+     ]
+    },
+    {
+     "heading": "有一道题想跟你多说一句",
+     "text": "你答的第 1 题是「为很多事情感到担心」。这道题问的其实是「你是否经常反复思虑各种事情、不容易停下来」。承重词 Worry 在这里指「反复的、难以主动停止的思虑」，而不是「日常语中的\"关心\"或\"在意\"（如关心家人健康）」。知道这一点，比知道分数更有用。",
+     "grounded_in": [
+      "notable_items.0.order",
+      "notable_items.0.asks",
+      "notable_items.0.key_term"
+     ]
+    }
+   ],
+   "notable_items_surfaced": [
+    1
+   ],
+   "disclosures_kept": [
+    "content_caveat",
+    "does_not_measure",
+    "no_diagnosis",
+    "norm_sample",
+    "precision"
+   ],
+   "refusals": []
+  },
+  "verdict": {
+   "ok": false,
+   "failures": [
+    "[C3] sections[0] 出现输入里没有的数字 42——改写措辞可以，改分数不行"
+   ],
+   "warnings": []
+  }
+ },
+ {
+  "check": "C4 声明存活",
+  "desc": "把「不构成诊断」这条声明删掉了",
+  "output": {
+   "sections": [
+    {
+     "heading": "先说清楚这是什么",
+     "text": "这份结果基于你答的 75 道题。其中 15 个面向已跨过精度门槛、可以解读，另外 15 个面向题量还不够，下面不会提到它们——不是它们「中等」，是我们还不知道。本结果不构成任何诊断，也不能替代专业评估。参照人群为英国样本，非中国人群。",
+     "grounded_in": [
+      "coverage.items_answered",
+      "facets_showable",
+      "facets_withheld"
+     ]
+    },
+    {
+     "heading": "有一道题想跟你多说一句",
+     "text": "你答的第 1 题是「为很多事情感到担心」。这道题问的其实是「你是否经常反复思虑各种事情、不容易停下来」。承重词 Worry 在这里指「反复的、难以主动停止的思虑」，而不是「日常语中的\"关心\"或\"在意\"（如关心家人健康）」。知道这一点，比知道分数更有用。",
+     "grounded_in": [
+      "notable_items.0.order",
+      "notable_items.0.asks",
+      "notable_items.0.key_term"
+     ]
+    }
+   ],
+   "notable_items_surfaced": [
+    1
+   ],
+   "disclosures_kept": [
+    "content_caveat",
+    "does_not_measure",
+    "norm_sample",
+    "precision"
+   ],
+   "refusals": []
+  },
+  "verdict": {
+   "ok": false,
+   "failures": [
+    "[C4] 必须存活的声明被丢了：['no_diagnosis']"
+   ],
+   "warnings": []
+  }
+ },
+ {
+  "check": "C5 禁忌措辞",
+  "desc": "出现诊断与分型式表述",
+  "output": {
+   "sections": [
+    {
+     "heading": "先说清楚这是什么",
+     "text": "这份结果基于你答的 75 道题。其中 15 个面向已跨过精度门槛、可以解读，另外 15 个面向题量还不够，下面不会提到它们——不是它们「中等」，是我们还不知道。本结果不构成任何诊断，也不能替代专业评估。参照人群为英国样本，非中国人群。这说明你很可能有社交焦虑症，属于回避型人格。",
+     "grounded_in": [
+      "coverage.items_answered",
+      "facets_showable",
+      "facets_withheld"
+     ]
+    },
+    {
+     "heading": "有一道题想跟你多说一句",
+     "text": "你答的第 1 题是「为很多事情感到担心」。这道题问的其实是「你是否经常反复思虑各种事情、不容易停下来」。承重词 Worry 在这里指「反复的、难以主动停止的思虑」，而不是「日常语中的\"关心\"或\"在意\"（如关心家人健康）」。知道这一点，比知道分数更有用。",
+     "grounded_in": [
+      "notable_items.0.order",
+      "notable_items.0.asks",
+      "notable_items.0.key_term"
+     ]
+    }
+   ],
+   "notable_items_surfaced": [
+    1
+   ],
+   "disclosures_kept": [
+    "content_caveat",
+    "does_not_measure",
+    "no_diagnosis",
+    "norm_sample",
+    "precision"
+   ],
+   "refusals": []
+  },
+  "verdict": {
+   "ok": false,
+   "failures": [
+    "[C5] 命中禁忌（分型式表述）：「属于回避型人格」"
+   ],
+   "warnings": []
+  }
+ },
+ {
+  "check": "C5 禁忌措辞",
+  "desc": "过度确定的断言",
+  "output": {
+   "sections": [
+    {
+     "heading": "先说清楚这是什么",
+     "text": "这份结果基于你答的 75 道题。其中 15 个面向已跨过精度门槛、可以解读，另外 15 个面向题量还不够，下面不会提到它们——不是它们「中等」，是我们还不知道。本结果不构成任何诊断，也不能替代专业评估。参照人群为英国样本，非中国人群。你一定是内向的人，这毫无疑问。",
+     "grounded_in": [
+      "coverage.items_answered",
+      "facets_showable",
+      "facets_withheld"
+     ]
+    },
+    {
+     "heading": "有一道题想跟你多说一句",
+     "text": "你答的第 1 题是「为很多事情感到担心」。这道题问的其实是「你是否经常反复思虑各种事情、不容易停下来」。承重词 Worry 在这里指「反复的、难以主动停止的思虑」，而不是「日常语中的\"关心\"或\"在意\"（如关心家人健康）」。知道这一点，比知道分数更有用。",
+     "grounded_in": [
+      "notable_items.0.order",
+      "notable_items.0.asks",
+      "notable_items.0.key_term"
+     ]
+    }
+   ],
+   "notable_items_surfaced": [
+    1
+   ],
+   "disclosures_kept": [
+    "content_caveat",
+    "does_not_measure",
+    "no_diagnosis",
+    "norm_sample",
+    "precision"
+   ],
+   "refusals": []
+  },
+  "verdict": {
+   "ok": false,
+   "failures": [
+    "[C5] 命中禁忌（过度确定的推断）：「一定是」"
+   ],
+   "warnings": []
+  }
+ },
+ {
+  "check": "C6 越界主题",
+  "desc": "对未解锁面向作了表述（「大概中等」也是编造）",
+  "output": {
+   "sections": [
+    {
+     "heading": "先说清楚这是什么",
+     "text": "这份结果基于你答的 75 道题。其中 15 个面向已跨过精度门槛、可以解读，另外 15 个面向题量还不够，下面不会提到它们——不是它们「中等」，是我们还不知道。本结果不构成任何诊断，也不能替代专业评估。参照人群为英国样本，非中国人群。至于「追求成就」，大概是中等水平。",
+     "grounded_in": [
+      "coverage.items_answered",
+      "facets_showable",
+      "facets_withheld"
+     ]
+    },
+    {
+     "heading": "有一道题想跟你多说一句",
+     "text": "你答的第 1 题是「为很多事情感到担心」。这道题问的其实是「你是否经常反复思虑各种事情、不容易停下来」。承重词 Worry 在这里指「反复的、难以主动停止的思虑」，而不是「日常语中的\"关心\"或\"在意\"（如关心家人健康）」。知道这一点，比知道分数更有用。",
+     "grounded_in": [
+      "notable_items.0.order",
+      "notable_items.0.asks",
+      "notable_items.0.key_term"
+     ]
+    }
+   ],
+   "notable_items_surfaced": [
+    1
+   ],
+   "disclosures_kept": [
+    "content_caveat",
+    "does_not_measure",
+    "no_diagnosis",
+    "norm_sample",
+    "precision"
+   ],
+   "refusals": []
+  },
+  "verdict": {
+   "ok": false,
+   "failures": [
+    "[C6] 对未解锁面向「追求成就」作了表述——没数据就不能说，说「大概中等」也是编造"
+   ],
+   "warnings": []
+  }
+ },
+ {
+  "check": "C6 越界主题",
+  "desc": "把「误读」安到用户头上",
+  "output": {
+   "sections": [
+    {
+     "heading": "先说清楚这是什么",
+     "text": "这份结果基于你答的 75 道题。其中 15 个面向已跨过精度门槛、可以解读，另外 15 个面向题量还不够，下面不会提到它们——不是它们「中等」，是我们还不知道。本结果不构成任何诊断，也不能替代专业评估。参照人群为英国样本，非中国人群。你可能误读了自己在某道题上的作答。",
+     "grounded_in": [
+      "coverage.items_answered",
+      "facets_showable",
+      "facets_withheld"
+     ]
+    },
+    {
+     "heading": "有一道题想跟你多说一句",
+     "text": "你答的第 1 题是「为很多事情感到担心」。这道题问的其实是「你是否经常反复思虑各种事情、不容易停下来」。承重词 Worry 在这里指「反复的、难以主动停止的思虑」，而不是「日常语中的\"关心\"或\"在意\"（如关心家人健康）」。知道这一点，比知道分数更有用。",
+     "grounded_in": [
+      "notable_items.0.order",
+      "notable_items.0.asks",
+      "notable_items.0.key_term"
+     ]
+    }
+   ],
+   "notable_items_surfaced": [
+    1
+   ],
+   "disclosures_kept": [
+    "content_caveat",
+    "does_not_measure",
+    "no_diagnosis",
+    "norm_sample",
+    "precision"
+   ],
+   "refusals": []
+  },
+  "verdict": {
+   "ok": false,
+   "failures": [
+    "[C6] 把「误读」安到用户头上：「你可能误读了」——可以说这题问的是什么，但不能揣测用户怎么想的"
+   ],
+   "warnings": []
+  }
+ },
+ {
+  "check": "C6 越界主题",
+  "desc": "澄清了脚手架里没标记过的题",
+  "output": {
+   "sections": [
+    {
+     "heading": "先说清楚这是什么",
+     "text": "这份结果基于你答的 75 道题。其中 15 个面向已跨过精度门槛、可以解读，另外 15 个面向题量还不够，下面不会提到它们——不是它们「中等」，是我们还不知道。本结果不构成任何诊断，也不能替代专业评估。参照人群为英国样本，非中国人群。",
+     "grounded_in": [
+      "coverage.items_answered",
+      "facets_showable",
+      "facets_withheld"
+     ]
+    },
+    {
+     "heading": "有一道题想跟你多说一句",
+     "text": "你答的第 1 题是「为很多事情感到担心」。这道题问的其实是「你是否经常反复思虑各种事情、不容易停下来」。承重词 Worry 在这里指「反复的、难以主动停止的思虑」，而不是「日常语中的\"关心\"或\"在意\"（如关心家人健康）」。知道这一点，比知道分数更有用。",
+     "grounded_in": [
+      "notable_items.0.order",
+      "notable_items.0.asks",
+      "notable_items.0.key_term"
+     ]
+    }
+   ],
+   "notable_items_surfaced": [
+    999
+   ],
+   "disclosures_kept": [
+    "content_caveat",
+    "does_not_measure",
+    "no_diagnosis",
+    "norm_sample",
+    "precision"
+   ],
+   "refusals": []
+  },
+  "verdict": {
+   "ok": false,
+   "failures": [
+    "[C6] 澄清了第 999 题，但它不在 notable_items 里——题目澄清必须来自脚手架，不能自行挑选"
+   ],
+   "warnings": []
+  }
+ }
+]

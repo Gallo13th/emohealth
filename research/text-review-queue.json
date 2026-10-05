@@ -1,0 +1,2636 @@
+{
+ "am not easily frustrated": {
+  "en": "Am not easily frustrated.",
+  "zh": "我不容易感到挫败。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "am out for my own personal gain": {
+  "en": "Am out for my own personal gain.",
+  "zh": "我图的是自己的个人利益。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "avoiding situations that make you anxious?": {
+  "en": "Avoiding situations that make you anxious?",
+  "zh": "回避让你感到焦虑的情境？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "back pain": {
+  "en": "Back pain",
+  "zh": "背痛",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Somatic"
+  ]
+ },
+ "being rude and unfriendly is just a part of who i am": {
+  "en": "Being rude and unfriendly is just a part of who I am.",
+  "zh": "粗鲁和不友好就是我这个人的一部分。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "can say things beautifully": {
+  "en": "Can say things beautifully.",
+  "zh": "能把话说得很漂亮。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "carry the conversation to a higher level": {
+  "en": "Carry the conversation to a higher level.",
+  "zh": "我能把谈话引向更高的层次。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "chest pain": {
+  "en": "Chest pain",
+  "zh": "胸痛",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Somatic"
+  ]
+ },
+ "club drugs (like ecstasy)": {
+  "en": "Club drugs (like ecstasy)",
+  "zh": "俱乐部毒品（如摇头丸）",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Substance"
+  ]
+ },
+ "cocaine or crack": {
+  "en": "Cocaine or crack",
+  "zh": "可卡因或快克",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Substance"
+  ]
+ },
+ "constipation, loose bowels, or diarrhea": {
+  "en": "Constipation, loose bowels, or diarrhea",
+  "zh": "便秘、大便稀溏或腹泻",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Somatic"
+  ]
+ },
+ "cut others to pieces": {
+  "en": "Cut others to pieces.",
+  "zh": "把别人批得体无完肤（Cut others to pieces）。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "dizziness": {
+  "en": "Dizziness",
+  "zh": "头晕",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Somatic"
+  ]
+ },
+ "don't put my mind on the task at hand": {
+  "en": "Don't put my mind on the task at hand.",
+  "zh": "我不会把心思放在手头的事情上。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "don't see things through": {
+  "en": "Don't see things through.",
+  "zh": "做事不能有始有终。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "drinking at least 4 drinks of any kind of alcohol in a single day?": {
+  "en": "Drinking at least 4 drinks of any kind of alcohol in a single day?",
+  "zh": "一天之内至少喝4杯任何种类的酒？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "drinkingat least 4 drinks of any kind of alcohol in a single day?": {
+  "en": "Drinkingat least 4 drinks of any kind of alcohol in a single day?",
+  "zh": "一天之内至少喝4杯任何种类的酒？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "enjoy hearing new ideas": {
+  "en": "Enjoy hearing new ideas.",
+  "zh": "我喜欢听新想法。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "even though i know better, i can't stop making rash decisions": {
+  "en": "Even though I know better, I can’t stop making rash decisions.",
+  "zh": "即使明知不该如此，我还是忍不住做出草率的决定。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "even though it drives other people crazy, i insist on absolute perfection in everything i do": {
+  "en": "Even though it drives other people crazy, I insist on absolute perfection in everything I do.",
+  "zh": "即使这让别人受不了，我凡事都坚持做到绝对完美。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "everything seems pointless to me": {
+  "en": "Everything seems pointless to me.",
+  "zh": "在我看来，一切都没有意义。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "fainting spells": {
+  "en": "Fainting spells",
+  "zh": "晕厥发作",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Somatic"
+  ]
+ },
+ "feeling detached or distant from yourself, your body, your physical surroundings, or your memories?": {
+  "en": "Feeling detached or distant from yourself, your body, your physical surroundings, or your memories?",
+  "zh": "感觉自己与自己、自己的身体、周围环境或记忆疏离或有距离感？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "feeling detached or distant from yourself, yourbody, yourphysical surroundings, or yourmemories?": {
+  "en": "Feeling detached or distant from yourself, yourbody, yourphysical surroundings, or yourmemories?",
+  "zh": "感觉自己与自己、自己的身体、周围环境或记忆疏离或有距离感？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "feeling down, depressed, or hopeless?": {
+  "en": "Feeling down, depressed, or hopeless?",
+  "zh": "感到情绪低落、抑郁或绝望？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "feeling driven to perform certain behaviors or mental acts over and over again?": {
+  "en": "Feeling driven to perform certain behaviors or mental acts over and over again?",
+  "zh": "感到被驱使着反复做某些行为或心理活动？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "feeling driven to perform certain behaviors ormental acts over and over again?": {
+  "en": "Feeling driven to perform certain behaviors ormental acts over and over again?",
+  "zh": "感到被驱使着反复做某些行为或心理活动？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "feeling more irritated, grouchy, or angry than usual?": {
+  "en": "Feeling more irritated, grouchy, or angry than usual?",
+  "zh": "比平时更容易烦躁、发脾气或生气？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "feeling nervous, anxious, frightened, worried, or on edge?": {
+  "en": "Feeling nervous, anxious, frightened, worried, or on edge?",
+  "zh": "感到紧张、焦虑、害怕、担心或坐立不安？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "feeling panic or being frightened?": {
+  "en": "Feeling panic or being frightened?",
+  "zh": "感到惊恐或害怕？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "feeling that someone could hear your thoughts, or that you could hear what another person was thinking?": {
+  "en": "Feeling that someone could hear your thoughts, or that you could hear what another person was thinking?",
+  "zh": "感觉别人能听到你的想法，或你能听到别人在想什么？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "feeling that your illnesses are not being taken seriously enough?": {
+  "en": "Feeling that your illnesses are not being taken seriously enough?",
+  "zh": "感到你的病没有得到足够的重视？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "feeling tired or having low energy": {
+  "en": "Feeling tired or having low energy",
+  "zh": "感到疲倦或精力不足",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Somatic"
+  ]
+ },
+ "feeling your heart pound or race": {
+  "en": "Feeling your heart pound or race",
+  "zh": "感到心跳剧烈或心跳加速",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Somatic"
+  ]
+ },
+ "finish what i start": {
+  "en": "Finish what I start.",
+  "zh": "把开始做的事情做完。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "follow through with my plans": {
+  "en": "Follow through with my plans.",
+  "zh": "把计划贯彻到底。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "get excited by new ideas": {
+  "en": "Get excited by new ideas.",
+  "zh": "新想法会让我兴奋。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "hallucinogens (like lsd)": {
+  "en": "Hallucinogens (like LSD)",
+  "zh": "致幻剂（如麦角酸二乙酰胺，LSD）",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Substance"
+  ]
+ },
+ "headaches": {
+  "en": "Headaches",
+  "zh": "头痛",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Somatic"
+  ]
+ },
+ "hearing things other people couldn't hear, such as voices even when no one was around?": {
+  "en": "Hearing things other people couldn’t hear, such as voices even when no one was around?",
+  "zh": "听到别人听不到的声音，例如周围无人时听到说话声？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "hearing things other people couldn'thear, such as voices even when no one was around?": {
+  "en": "Hearing things other people couldn’thear, such as voices even when no one was around?",
+  "zh": "听到别人听不到的声音，例如周围无人时听到说话声？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "heroin": {
+  "en": "Heroin",
+  "zh": "海洛因",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Substance"
+  ]
+ },
+ "how hard is it for you to control these thoughts or behaviors?": {
+  "en": "How hard is it for you to control these thoughts or behaviors?",
+  "zh": "你控制这些想法或行为有多困难？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Repetitive"
+  ]
+ },
+ "how much distress do these thoughts or behaviors cause you?": {
+  "en": "How much distress do these thoughts or behaviors cause you?",
+  "zh": "这些想法或行为给你带来多大的痛苦？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Repetitive"
+  ]
+ },
+ "how much do these thoughts or behaviors cause you to avoid doing anything, going anyplace, or being with anyone?": {
+  "en": "How much do these thoughts or behaviors cause you to avoid doing anything, going anyplace, or being with anyone?",
+  "zh": "这些想法或行为在多大程度上使你回避做任何事、去任何地方或与任何人相处？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Repetitive"
+  ]
+ },
+ "how much do these thoughts or behaviors cause you to feel interfered with or unable to do things?": {
+  "en": "How much do these thoughts or behaviors cause you to feel interfered with or unable to do things?",
+  "zh": "这些想法或行为在多大程度上让你感到受干扰或无法做事？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Repetitive"
+  ]
+ },
+ "i almost never enjoylife": {
+  "en": "I almost never enjoylife.",
+  "zh": "我几乎从不享受生活。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i almost never feel happy about my day to day activities": {
+  "en": "I almost never feel happy about my day-to-day activities.",
+  "zh": "我几乎从不为自己日常的活动感到高兴。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i always do things on the spur of the moment": {
+  "en": "I always do things on the spur of the moment.",
+  "zh": "我做事总是凭一时的冲动。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i always expect the worst to happen": {
+  "en": "I always expect the worst to happen.",
+  "zh": "我总是预料最坏的情况会发生。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i always make sure i get back at people who wrong me": {
+  "en": "I always make sure I get back at people who wrong me.",
+  "zh": "我总是要让得罪我的人付出代价。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i am a very anxiousperson": {
+  "en": "I am a very anxiousperson.",
+  "zh": "我是个非常焦虑的人。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i am easily angered": {
+  "en": "I am easily angered.",
+  "zh": "我很容易被激怒。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i am easily distracted": {
+  "en": "I am easily distracted.",
+  "zh": "我很容易分心。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i am usually pretty hostile": {
+  "en": "I am usually pretty hostile.",
+  "zh": "我通常相当有敌意。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i am very impulsive": {
+  "en": "I am very impulsive.",
+  "zh": "我非常冲动。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i ama highly emotional person": {
+  "en": "I ama highly emotional person.",
+  "zh": "我是个情绪非常强烈的人。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i avoid anything that might be even a little bit dangerous": {
+  "en": "I avoid anything that might be even a little bit dangerous.",
+  "zh": "我会避开任何可能有一点危险的事情。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i avoid risky situations": {
+  "en": "I avoid risky situations.",
+  "zh": "我会避开有风险的情境。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i avoid risky sports and activities": {
+  "en": "I avoid risky sports and activities.",
+  "zh": "我会避开有风险的运动和活动。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i avoid social events": {
+  "en": "I avoid social events.",
+  "zh": "我会避开社交活动。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i believe that some people can move things with their minds": {
+  "en": "I believe that some people can move things with their minds.",
+  "zh": "我相信有些人能用意念移动物体。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i break off relationships if they start to get close": {
+  "en": "I break off relationships if they start to get close.",
+  "zh": "如果关系开始变得亲密，我就会中断它。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i can be mean when i need to be": {
+  "en": "I can be mean when I need to be.",
+  "zh": "必要时我可以很刻薄。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i can be sneaky if it means getting what i want": {
+  "en": "I can be sneaky if it means getting what I want.",
+  "zh": "如果能得到我想要的，我可以偷偷摸摸的。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i can certainly turn on the charm if i need to get my way": {
+  "en": "I can certainly turn on the charm if I need to get my way.",
+  "zh": "如果我需要达到目的，我完全能施展魅力。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i can have trouble telling the difference between dreams and waking life": {
+  "en": "I can have trouble telling the difference between dreams and waking life.",
+  "zh": "我有时会分不清梦境和清醒时的生活。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i can't achieve goals because other things capture my attention": {
+  "en": "I can’t achieve goals because other things capture my attention.",
+  "zh": "我无法达成目标，因为别的事情会吸引我的注意。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i can't concentrate on anything": {
+  "en": "I can’t concentrate on anything.",
+  "zh": "我什么事都无法集中注意力。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i can't focus on things for very long": {
+  "en": "I can’t focus on things for very long.",
+  "zh": "我无法长时间专注于事情。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i can't stand being left alone, even for a few hours": {
+  "en": "I can’t stand being left alone, even for a few hours.",
+  "zh": "我无法忍受被独自留下，哪怕只有几个小时。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i change what i do depending on what others want": {
+  "en": "I change what I do depending on what others want.",
+  "zh": "我会根据别人的意愿改变自己的做法。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i check things several times to make sure they are perfect": {
+  "en": "I check things several times to make sure they are perfect.",
+  "zh": "我会反复检查好几遍，以确保完美无缺。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i crave attention": {
+  "en": "I crave attention.",
+  "zh": "我渴望得到关注。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i deserve special treatment": {
+  "en": "I deserve special treatment.",
+  "zh": "我理应受到特殊对待。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i do a lot of things that others consider risky": {
+  "en": "I do a lot of things that others consider risky.",
+  "zh": "我做的很多事情在别人看来很冒险。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i do things so that people just have to admire me": {
+  "en": "I do things so that people just have to admire me.",
+  "zh": "我做事就是为了让别人不得不钦佩我。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i do things to makesure people notice me": {
+  "en": "I do things to makesure people notice me.",
+  "zh": "我做事是为了让别人注意到我（I do things to makesure people notice me）。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i do what i want regardless of how unsafe it might be": {
+  "en": "I do what I want regardless of how unsafe it might be.",
+  "zh": "我想做什么就做什么，不管那有多不安全。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i do what other people tell me to do": {
+  "en": "I do what other people tell me to do.",
+  "zh": "别人让我做什么，我就做什么。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i don't care about other people's feelings": {
+  "en": "I don’t care about other people’s feelings.",
+  "zh": "我不在乎别人的感受。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i don't care about other peoples'problems": {
+  "en": "I don’t care about other peoples’problems.",
+  "zh": "我不在乎别人的问题（I don't care about other peoples'problems）。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i don't care if my actions hurt others": {
+  "en": "I don’t care if my actions hurt others.",
+  "zh": "我不在乎自己的行为是否伤害到别人。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i don't deal with people unless i have to": {
+  "en": "I don’t deal with people unless I have to.",
+  "zh": "除非不得已，我不与人打交道。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i don't get as much pleasure out of things as others seem to": {
+  "en": "I don’t get as much pleasure out of things as others seem to.",
+  "zh": "我从事情中获得的乐趣不如别人多。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i don't get emotional": {
+  "en": "I don’t get emotional.",
+  "zh": "我不会情绪化。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i don't have very long lasting emotional reactions to things": {
+  "en": "I don’t have very long-lasting emotional reactions to things.",
+  "zh": "我对事情的情绪反应不会持续很久。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i don't hesitate to cheat if it gets me ahead": {
+  "en": "I don’t hesitate to cheat if it gets me ahead.",
+  "zh": "如果能让我占上风，我会毫不犹豫地作弊。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i don't like spending time with others": {
+  "en": "I don’t like spending time with others.",
+  "zh": "我不喜欢和别人一起消磨时间。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i don't like to get too close to people": {
+  "en": "I don’t like to get too close to people.",
+  "zh": "我不喜欢与人过于亲近。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i don't mind a little risk now and then": {
+  "en": "I don’t mind a little risk now and then.",
+  "zh": "我不介意偶尔冒一点风险。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i don't react much to things that seem to make others emotional": {
+  "en": "I don’t react much to things that seem to make others emotional.",
+  "zh": "对那些似乎会让别人动感情的事，我没什么反应。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i don't see the point in feeling guilty about things i've done that have hurt other people": {
+  "en": "I don’t see the point in feeling guilty about things I’ve done that have hurt other people.",
+  "zh": "对自己做过伤害别人的事，我看不出有什么必要感到内疚。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i don't show emotions strongly": {
+  "en": "I don’t show emotions strongly.",
+  "zh": "我不强烈地表露自己的情绪。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i don't think about getting hurt when i'm doing things that might be dangerous": {
+  "en": "I don’t think about getting hurt when I’m doing things that might be dangerous.",
+  "zh": "做可能危险的事时，我不会去想自己会受伤。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i dread being without someone to love me": {
+  "en": "I dread being without someone to love me.",
+  "zh": "我害怕身边没有爱我的人。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i enjoy being in love": {
+  "en": "I enjoy being in love.",
+  "zh": "我喜欢恋爱时的感觉。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i enjoy making people in control look stupid": {
+  "en": "I enjoy making people in control look stupid.",
+  "zh": "我喜欢让掌权的人显得愚蠢。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i fear being alone inlife more than anything else": {
+  "en": "I fear being alone inlife more than anything else.",
+  "zh": "我最害怕的就是孤身一人地生活。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i feel compelled to go on with things even when it makes little sense to do so": {
+  "en": "I feel compelled to go on with things even when it makes little sense to do so.",
+  "zh": "即使继续下去已没多大意义，我也觉得非做下去不可。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i feel guilty much of the time": {
+  "en": "I feel guilty much of the time.",
+  "zh": "我很多时候都感到内疚。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i feel like i act totally on impulse": {
+  "en": "I feel like I act totally on impulse.",
+  "zh": "我觉得自己做事完全是凭一时冲动。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i felt angry": {
+  "en": "I felt angry",
+  "zh": "我感到愤怒。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Anger"
+  ]
+ },
+ "i felt annoyed": {
+  "en": "I felt annoyed",
+  "zh": "我感到恼怒。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Anger"
+  ]
+ },
+ "i felt anxious": {
+  "en": "I felt anxious",
+  "zh": "我感到焦虑。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Anxiety"
+  ]
+ },
+ "i felt depressed": {
+  "en": "I felt depressed",
+  "zh": "我感到抑郁。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Depression"
+  ]
+ },
+ "i felt fearful": {
+  "en": "I felt fearful",
+  "zh": "我感到害怕。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Anxiety"
+  ]
+ },
+ "i felt helpless": {
+  "en": "I felt helpless",
+  "zh": "我感到无助。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Depression"
+  ]
+ },
+ "i felt hopeless": {
+  "en": "I felt hopeless",
+  "zh": "我感到无望。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Depression"
+  ]
+ },
+ "i felt like a failure": {
+  "en": "I felt like a failure",
+  "zh": "我觉得自己是个失败者。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Depression"
+  ]
+ },
+ "i felt like i was ready to explode": {
+  "en": "I felt like I was ready to explode",
+  "zh": "我感到自己快要爆发了。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Anger"
+  ]
+ },
+ "i felt nervous": {
+  "en": "I felt nervous",
+  "zh": "我感到紧张。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Anxiety"
+  ]
+ },
+ "i felt sad": {
+  "en": "I felt sad",
+  "zh": "我感到悲伤。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Depression"
+  ]
+ },
+ "i felt tense": {
+  "en": "I felt tense",
+  "zh": "我感到身体紧绷。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Anxiety"
+  ]
+ },
+ "i felt that i had nothing to look forward to": {
+  "en": "I felt that I had nothing to look forward to",
+  "zh": "我觉得没有什么可期待的了。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Depression"
+  ]
+ },
+ "i felt uneasy": {
+  "en": "I felt uneasy",
+  "zh": "我感到不安。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Anxiety"
+  ]
+ },
+ "i felt unhappy": {
+  "en": "I felt unhappy",
+  "zh": "我感到不快乐。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Depression"
+  ]
+ },
+ "i felt worried": {
+  "en": "I felt worried",
+  "zh": "我感到担忧。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Anxiety"
+  ]
+ },
+ "i felt worthless": {
+  "en": "I felt worthless",
+  "zh": "我感到自己没有价值。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Depression"
+  ]
+ },
+ "i feltuneasy": {
+  "en": "I feltuneasy",
+  "zh": "我感到不安。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "i follow through on commitments": {
+  "en": "I follow through on commitments.",
+  "zh": "我会把自己承诺的事情做到底。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i found it hard to focus on anything other than my anxiety": {
+  "en": "I found it hard to focus on anything other than my anxiety",
+  "zh": "我很难把注意力集中在焦虑以外的任何事情上。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Anxiety"
+  ]
+ },
+ "i get emotional easily, often for very little reason": {
+  "en": "I get emotional easily, often for very little reason.",
+  "zh": "我很容易情绪化，常常没什么理由就这样。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i get emotional over every little thing": {
+  "en": "I get emotional over every little thing.",
+  "zh": "一丁点小事都会让我情绪波动。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i get fixated on certain things and can't stop": {
+  "en": "I get fixated on certain things and can’t stop.",
+  "zh": "我会对某些事情钻进去出不来，停不下来。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i get irritated easily by all sorts of things": {
+  "en": "I get irritated easily by all sorts of things.",
+  "zh": "各种各样的事情都很容易让我恼火。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i get pulled off task by even minor distractions": {
+  "en": "I get pulled off-task by even minor distractions.",
+  "zh": "哪怕是很小的干扰，也会让我从手头的事上分心。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i get stuck on one way of doing things, even when it's clear it won't work": {
+  "en": "I get stuck on one way of doing things, even when it’s clear it won’t work.",
+  "zh": "我会死守一种做事方式，即使明知那样行不通。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i get stuck on things a lot": {
+  "en": "I get stuck on things a lot.",
+  "zh": "我经常在一些事情上卡住、出不来。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i get very nervous when i think about the future": {
+  "en": "I get very nervous when I think about the future.",
+  "zh": "一想到未来，我就非常紧张。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i go out of my way to avoid any kind of group activity": {
+  "en": "I go out of my way to avoid any kind of group activity.",
+  "zh": "我会特意设法避开任何形式的集体活动。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i got enough sleep": {
+  "en": "I got enough sleep",
+  "zh": "我睡眠充足",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Sleep"
+  ]
+ },
+ "i had difficulty falling asleep": {
+  "en": "I had difficulty falling asleep",
+  "zh": "我入睡困难",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Sleep"
+  ]
+ },
+ "i had trouble sleeping": {
+  "en": "I had trouble sleeping",
+  "zh": "我睡得不好",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Sleep"
+  ]
+ },
+ "i had trouble staying asleep": {
+  "en": "I had trouble staying asleep",
+  "zh": "我难以保持睡眠。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Sleep"
+  ]
+ },
+ "i had trouble staying asleep. \u0000 \u0000 \u0000 \u0000": {
+  "en": "I had trouble staying asleep. \u0000 \u0000 \u0000 \u0000",
+  "zh": "我难以保持睡眠。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "i hate to take chances": {
+  "en": "I hate to take chances.",
+  "zh": "我讨厌冒险。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i have a strict way of doing things": {
+  "en": "I have a strict way of doing things.",
+  "zh": "我做事有一套严格的方式。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i have a very short temper": {
+  "en": "I have a very short temper.",
+  "zh": "我脾气很急。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i have much stronger emotional reactions than almost everyone else": {
+  "en": "I have much stronger emotional reactions than almost everyone else.",
+  "zh": "我的情绪反应比几乎所有人都强烈得多。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i have no limits when it comes to doing dangerous things": {
+  "en": "I have no limits when it comes to doing dangerous things.",
+  "zh": "在冒险做危险的事情上，我毫无底线。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i have no worth as a person": {
+  "en": "I have no worth as a person.",
+  "zh": "我作为一个人毫无价值。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i have outstanding qualities that few others possess": {
+  "en": "I have outstanding qualities that few others possess.",
+  "zh": "我拥有少数人才具备的出众特质。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i have periods in which i feel disconnected from the world or from myself": {
+  "en": "I have periods in which I feel disconnected from the world or from myself.",
+  "zh": "我有时会感到与世界或与自己脱节。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i have several habits that others find eccentric or strange": {
+  "en": "I have several habits that others find eccentric or strange.",
+  "zh": "我有几个别人觉得古怪或奇怪的习惯。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i have some unusual abilities, like sometimes knowing exactly what someone is thinking": {
+  "en": "I have some unusual abilities, like sometimes knowing exactly what someone is thinking.",
+  "zh": "我有些不同寻常的能力，比如有时能准确知道别人在想什么。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i have trouble changing how i'm doing something even if what i'm doing isn't going well": {
+  "en": "I have trouble changing how I’m doing something even if what I’m doing isn’t going well.",
+  "zh": "即使我做事的方式进展不顺，我也很难改变它。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i have trouble keeping my mind focused on what needs to be done": {
+  "en": "I have trouble keeping my mind focused on what needs to be done.",
+  "zh": "我很难把注意力集中在需要完成的事情上。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i have trouble pursuing specific goals even for short periods of time": {
+  "en": "I have trouble pursuing specific goals even for short periods of time.",
+  "zh": "即使只是短时间内，我也很难坚持追求具体目标。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i just skip appointments or meetings if i'm not in the mood": {
+  "en": "I just skip appointments or meetings if I’m not in the mood.",
+  "zh": "如果没心情，我就会直接不去赴约或开会。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i keep approaching things the same way, even when it isn't working": {
+  "en": "I keep approaching things the same way, even when it isn’t working.",
+  "zh": "即使这种做法不管用，我还是用同样的方式处理事情。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i keep to myself": {
+  "en": "I keep to myself.",
+  "zh": "我不与人来往。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i keep trying to make things perfect, even when i've gotten them as good as they're likely to get": {
+  "en": "I keep trying to make things perfect, even when I’ve gotten them as good as they’re likely to get.",
+  "zh": "即使事情已经做到能达到的最好程度，我仍不断试图让它完美。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i know i'll commit suicide sooner or later": {
+  "en": "I know I’ll commit suicide sooner or later.",
+  "zh": "我知道自己迟早会自杀。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i like being a person who gets noticed": {
+  "en": "I like being a person who gets noticed.",
+  "zh": "我喜欢做一个受人注意的人。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i like standing out in a crowd": {
+  "en": "I like standing out in a crowd.",
+  "zh": "我喜欢在人群中引人注目。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i like to draw attention to myself": {
+  "en": "I like to draw attention to myself.",
+  "zh": "我喜欢把别人的注意力吸引到自己身上。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i like to take risks": {
+  "en": "I like to take risks.",
+  "zh": "我喜欢冒险。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i lose track of conversations because other things catch my attention": {
+  "en": "I lose track of conversations because other things catch my attention.",
+  "zh": "我会因为其他事物吸引我的注意而跟不上谈话。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i love getting the attention of other people": {
+  "en": "I love getting the attention of other people.",
+  "zh": "我很喜欢得到别人的关注。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i make promises that i don't really intendto keep": {
+  "en": "I make promises that I don’t really intendto keep.",
+  "zh": "我会做出自己其实并不打算兑现的承诺。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i make up stories about things that happened that are totally untrue": {
+  "en": "I make up stories about things that happened that are totally untrue.",
+  "zh": "我会就发生过的事编造完全不符合事实的说法。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i never know where my emotions will go from moment to moment": {
+  "en": "I never know where my emotions will go from moment to moment.",
+  "zh": "我从不知道自己的情绪下一刻会转向哪里",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i never show emotions to others": {
+  "en": "I never show emotions to others.",
+  "zh": "我从不对他人表露情绪（I never show emotions to others.）",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i never take risks": {
+  "en": "I never take risks.",
+  "zh": "我从不冒险（I never take risks.）",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i never want tobe alone": {
+  "en": "I never want tobe alone.",
+  "zh": "我从不想独自一人",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i often \"zone out\"and then suddenly come to and realize that a lot of timehas passed": {
+  "en": "I often “zone out”and then suddenly come to and realize that a lot of timehas passed.",
+  "zh": "我常常“走神”，然后突然回过神来，发现已经过去了很多时间",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i often can't control what i think about": {
+  "en": "I often can’t control what I think about.",
+  "zh": "我常常无法控制自己在想什么",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i often feel just miserable": {
+  "en": "I often feel just miserable.",
+  "zh": "我常常感到十分痛苦",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i often feel like a failure": {
+  "en": "I often feel like a failure.",
+  "zh": "我常常觉得自己是个失败者",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i often feel like nothing i do really matters": {
+  "en": "I often feel like nothing I do really matters.",
+  "zh": "我常常觉得我做什么都无关紧要",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i often forget to pay my bills": {
+  "en": "I often forget to pay my bills.",
+  "zh": "我常常忘记付账单",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i often get into physical fights": {
+  "en": "I often get into physical fights.",
+  "zh": "我常常和别人动手打架",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i often have ideas that are too unusual to explain to anyone": {
+  "en": "I often have ideas that are too unusual to explain to anyone.",
+  "zh": "我常常有一些离奇得无法向任何人解释的想法（I often have ideas that are too unusual to explain to anyone.）",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i often have thoughts that make sense to me but that other people say are strange": {
+  "en": "I often have thoughts that make sense to me but that other people say are strange.",
+  "zh": "我常常有一些自己觉得有道理、别人却说很奇怪的想法",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i often have to deal with people who are less important than me": {
+  "en": "I often have to deal with people who are less important than me.",
+  "zh": "我常常不得不与不如我重要的人打交道",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i often have unusual experiences, such as sensing the presence of someone who isn't actually there": {
+  "en": "I often have unusual experiences, such as sensing the presence of someone who isn’t actually there.",
+  "zh": "我常常有不同寻常的体验，比如感到有某人在场，其实那人并不在（I often have unusual experiences, such as sensing the presence of someone who isn’t actually there.）",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i often make up things about myself to help me get what i want": {
+  "en": "I often make up things about myself to help me get what I want.",
+  "zh": "我常常编造关于自己的事来帮我得到想要的东西",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i often say things that others find odd or strange": {
+  "en": "I often say things that others find odd or strange.",
+  "zh": "我常常说些别人觉得古怪或奇怪的话",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i often see unusual connections between things that most people miss": {
+  "en": "I often see unusual connections between things that most people miss.",
+  "zh": "我常常看出事物之间大多数人没注意到的奇特联系（I often see unusual connections between things that most people miss.）",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i often see vivid dream like images when i'm falling asleep or waking up": {
+  "en": "I often see vivid dream-like images when I’m falling asleep or waking up.",
+  "zh": "我在快睡着或刚醒来时常常看到生动的、像梦一样的画面",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i often worry that something bad will happen due to mistakes i made in the past": {
+  "en": "I often worry that something bad will happen due to mistakes I made in the past.",
+  "zh": "我常常担心因为自己过去犯的错会发生不好的事",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i prefer being alone to having a close romantic partner": {
+  "en": "I prefer being alone to having a close romantic partner.",
+  "zh": "比起有亲密的恋人，我更愿意独处（I prefer being alone to having a close romantic partner.）",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i prefer not to get too close to people": {
+  "en": "I prefer not to get too close to people.",
+  "zh": "我宁愿不和别人走得太近",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i prefer to keep romance out of my life": {
+  "en": "I prefer to keep romance out of my life.",
+  "zh": "我宁愿把恋爱排除在我的生活之外",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i prefer to play it safe rather than take unnecessary chances": {
+  "en": "I prefer to play it safe rather than take unnecessary chances.",
+  "zh": "我宁愿稳妥行事，也不去冒不必要的风险",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i rarely feel that people i know are trying to take advantage of me": {
+  "en": "I rarely feel that people I know are trying to take advantage of me.",
+  "zh": "我很少觉得我认识的人想占我便宜（I rarely feel that people I know are trying to take advantage of me.）",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i rarely get enthusiastic about anything": {
+  "en": "I rarely get enthusiastic about anything.",
+  "zh": "我很少对任何事情产生热情。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i rarely worry about things": {
+  "en": "I rarely worry about things.",
+  "zh": "我很少为事情担忧。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i really don't care if i make other people suffer": {
+  "en": "I really don’t care if I make other people suffer.",
+  "zh": "我完全不在乎自己是否会让别人受苦（I really don’t care if I make other people suffer）。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i really live life to the fullest": {
+  "en": "I really live life to the fullest.",
+  "zh": "我确实把生活过得充实而尽兴（I really live life to the fullest）。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i resent being told what to do, even by people in charge": {
+  "en": "I resent being told what to do, even by people in charge.",
+  "zh": "我讨厌别人告诉我该做什么，即使是掌权的人也不例外。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i say as little as possible when dealing with people": {
+  "en": "I say as little as possible when dealing with people.",
+  "zh": "与人打交道时，我尽量少说话。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i simply won't put up with things being out of their proper places": {
+  "en": "I simply won’t put up with things being out of their proper places.",
+  "zh": "我就是无法容忍东西不在它们该在的位置（I simply won’t put up with things being out of their proper places）。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i snap at people when they do little things that irritate me": {
+  "en": "I snap at people when they do little things that irritate me.",
+  "zh": "别人做了惹恼我的小事时，我会厉声呵斥他们（I snap at people when they do little things that irritate me）。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i sometimes have heard things that others couldn't hear": {
+  "en": "I sometimes have heard things that others couldn’t hear.",
+  "zh": "我有时会听到别人听不到的声音。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i sometimes hit people to remind them who's in charge": {
+  "en": "I sometimes hit people to remind them who’s in charge",
+  "zh": "我有时会打人，提醒他们谁说了算（I sometimes hit people to remind them who’s in charge）。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i steer clear of romantic relationships": {
+  "en": "I steer clear of romantic relationships.",
+  "zh": "我会避开恋爱关系。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i suspect that even my so called \"friends\"betray me a lot": {
+  "en": "I suspect that even my so-called “friends”betray me a lot.",
+  "zh": "我怀疑就连我所谓的“朋友”也常常背叛我（I suspect that even my so-called “friends”betray me a lot）。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i talk about suicide a lot": {
+  "en": "I talk about suicide a lot.",
+  "zh": "我经常谈论自杀。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i think about things in odd ways that don't make sense to most people": {
+  "en": "I think about things in odd ways that don’t make sense to most people.",
+  "zh": "我思考事情的方式很古怪，多数人觉得说不通。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i try to do what others want me to do": {
+  "en": "I try to do what others want me to do.",
+  "zh": "我会努力去做别人希望我做的事。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i try to tell the truth even when it's hard": {
+  "en": "I try to tell the truth even when it’s hard.",
+  "zh": "即使很难，我也会努力说实话。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i use people to get what i want": {
+  "en": "I use people to get what I want.",
+  "zh": "我会利用别人来得到我想要的东西。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i usually do things on impulse without thinking about what might happen as a result": {
+  "en": "I usually do things on impulse without thinking about what might happen as a result.",
+  "zh": "我通常凭一时冲动做事，不去想可能带来什么后果。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i usually do what others think i should do": {
+  "en": "I usually do what others think I should do.",
+  "zh": "我通常按别人认为我应该做的去做。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i usually think before i act": {
+  "en": "I usually think before I act.",
+  "zh": "我通常会三思而后行。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i was grouchy": {
+  "en": "I was grouchy",
+  "zh": "我脾气很坏／爱发牢骚。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Anger"
+  ]
+ },
+ "i was irritated more than people knew": {
+  "en": "I was irritated more than people knew",
+  "zh": "我比别人所知道的更容易被激惹。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Anger"
+  ]
+ },
+ "i was satisfied with my sleep": {
+  "en": "I was satisfied with my sleep",
+  "zh": "我对自己的睡眠感到满意",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Sleep"
+  ]
+ },
+ "i worry a lot about being alone": {
+  "en": "I worry a lot about being alone.",
+  "zh": "我非常担心自己会独自一人。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i worry a lot about terrible things that might happen": {
+  "en": "I worry a lot about terrible things that might happen.",
+  "zh": "我非常担心可能发生的可怕事情。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i worry about almost everything": {
+  "en": "I worry about almost everything.",
+  "zh": "我几乎什么都担心。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i would never harm another person": {
+  "en": "I would never harm another person.",
+  "zh": "我绝不会伤害他人。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i'd rather be in a bad relationship than be alone": {
+  "en": "I’d rather be in a bad relationship than be alone.",
+  "zh": "我宁愿待在一段糟糕的关系里，也不愿独自一人。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i'll do just about anything to keep someone from abandoning me": {
+  "en": "I’ll do just about anything to keep someone from abandoning me.",
+  "zh": "为了不让别人抛弃我，我几乎什么都愿意做。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i'll stretch the truth if it's to my advantage": {
+  "en": "I’ll stretch the truth if it’s to my advantage.",
+  "zh": "如果对我有利，我会把事实说得夸张些。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i'm always fearful or on edge about bad things that might happen": {
+  "en": "I’m always fearful or on edge about bad things that might happen.",
+  "zh": "我总是害怕或紧张不安，担心可能发生不好的事。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i'm always on my guard for someone trying to trick or harm me": {
+  "en": "I’m always on my guard for someone trying to trick or harm me.",
+  "zh": "我总是提防着有人想欺骗或伤害我。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i'm always worrying about something": {
+  "en": "I’m always worrying about something.",
+  "zh": "我总是为某些事担心。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i'm an energetic person": {
+  "en": "I’m an energetic person.",
+  "zh": "我是个精力充沛的人。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i'm better than almost everyone else": {
+  "en": "I’m better than almost everyone else.",
+  "zh": "我比几乎所有人都强。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i'm good at conning people": {
+  "en": "I’m good at conning people.",
+  "zh": "我擅长骗人。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i'm good at making people do what i want them to do": {
+  "en": "I’m good at making people do what I want them to do.",
+  "zh": "我擅长让别人按我的意思去做。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i'm just not very interested in having sexual relationships": {
+  "en": "I’m just not very interested in having sexual relationships.",
+  "zh": "我就是对发生性关系不太感兴趣。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i'm nasty and short to anybody who deserves it": {
+  "en": "I’m nasty and short to anybody who deserves it.",
+  "zh": "对活该如此的人，我就又凶又冲。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i'm not good at planning ahead": {
+  "en": "I’m not good at planning ahead.",
+  "zh": "我不擅长提前做计划。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i'm not interested in making friends": {
+  "en": "I’m not interested in making friends.",
+  "zh": "我对交朋友不感兴趣。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i'm often pretty careless with my own and others'things": {
+  "en": "I’m often pretty careless with my own and others’things.",
+  "zh": "我常常对自己和别人的东西相当粗心。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i'm so ashamed by how i've let people down in lotsof little ways": {
+  "en": "I’m so ashamed by how I’ve let people down in lotsof little ways.",
+  "zh": "我因为在许多小事上让人失望而深感羞愧。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i'm useless as a person": {
+  "en": "I’m useless as a person.",
+  "zh": "我这个人毫无用处。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i'm very dissatisfied with myself": {
+  "en": "I’m very dissatisfied with myself.",
+  "zh": "我对自己很不满意。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i've achieved far more than almost anyone i know": {
+  "en": "I’ve achieved far more than almost anyone I know.",
+  "zh": "我取得的成就远超我认识的几乎所有人。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i've been told more than once that i have a number of odd quirks or habits": {
+  "en": "I’ve been told more than once that I have a number of odd quirks or habits.",
+  "zh": "别人不止一次跟我说过，我有些古怪的怪癖或习惯。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i've been told that i spend too much time making sure things are exactly in place": {
+  "en": "I’ve been told that I spend too much time making sure things are exactly in place.",
+  "zh": "别人说过我花太多时间确认东西都摆在精确的位置上。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i've had some really weird experiences that are very difficult to explain": {
+  "en": "I’ve had some really weird experiences that are very difficult to explain.",
+  "zh": "我有过一些非常怪异、很难解释的经历。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i've missed out on things becausei was busy trying to get something i was doing exactly right": {
+  "en": "I’ve missed out on things becauseI was busy trying to get something I was doing exactly right.",
+  "zh": "我错过了一些事，因为当时我正忙着把在做的事做到分毫不差。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "i've skippedtown to avoid responsibilities": {
+  "en": "I’ve skippedtown to avoid responsibilities.",
+  "zh": "我曾为了逃避责任而一走了之。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "if something i do isn't absolutely perfect, it's simply not acceptable": {
+  "en": "If something I do isn’t absolutely perfect, it’s simply not acceptable.",
+  "zh": "如果我做的事不是绝对完美，那就根本不能接受。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "ihave seen things that weren't really there": {
+  "en": "Ihave seen things that weren’t really there.",
+  "zh": "我见过实际上并不存在的东西。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "ikeep my distance from people": {
+  "en": "Ikeep my distance from people.",
+  "zh": "我与他人保持距离。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "inhalants or solvents (like glue)": {
+  "en": "Inhalants or solvents (like glue)",
+  "zh": "吸入剂或溶剂（如胶水）",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Substance"
+  ]
+ },
+ "it doesn't really bother me to see other people get hurt": {
+  "en": "It doesn’t really bother me to see other people get hurt.",
+  "zh": "看到别人受到伤害，我并不真的在意。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "it is easy for me to take advantage of others": {
+  "en": "It is easy for me to take advantage of others.",
+  "zh": "我很容易占别人的便宜。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "it is hard for me to stop an activity, even when it's time to do so": {
+  "en": "It is hard for me to stop an activity, even when it’s time to do so.",
+  "zh": "即使到了该停下的时候，我也很难停止一项活动。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "it is hard forme to shift from one activityto another": {
+  "en": "It is hard forme to shift from one activityto another.",
+  "zh": "我很难从一项活动转换到另一项活动。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "it is important to me that things are done in a certain way": {
+  "en": "It is important to me that things are done in a certain way.",
+  "zh": "事情必须按某种特定的方式来做，这对我很重要。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "it makes me really angry when people insult mein even a minor way": {
+  "en": "It makes me really angry when people insult mein even a minor way.",
+  "zh": "即使别人只是稍微冒犯我，我也会非常生气。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "it seems like i'm always getting a \"raw deal\"from others": {
+  "en": "It seems like I’m always getting a “raw deal”from others.",
+  "zh": "我似乎总是被别人“亏待”。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "it's no big deal if i hurt other peoples'feelings": {
+  "en": "It’s no big deal if I hurt other peoples’feelings.",
+  "zh": "如果我伤了别人的感情，那也没什么大不了。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "it's weird, but sometimes ordinary objects seem to be a different shape than usual": {
+  "en": "It’s weird, but sometimes ordinary objects seem to be a different shape than usual.",
+  "zh": "说来奇怪，有时普通物体的形状看起来和平时不一样。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "leave things unfinished": {
+  "en": "Leave things unfinished.",
+  "zh": "把事情留着不做完",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "life looks pretty bleak to me": {
+  "en": "Life looks pretty bleak to me.",
+  "zh": "在我看来，生活相当黯淡。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "little interest or pleasure in doing things?": {
+  "en": "Little interest or pleasure in doing things?",
+  "zh": "做事情时兴趣或乐趣很少？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "lying comes easily to me": {
+  "en": "Lying comes easily to me.",
+  "zh": "我说谎很自然。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "make demands on others": {
+  "en": "Make demands on others.",
+  "zh": "我向别人提出要求（Make demands on others.）",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "marijuana": {
+  "en": "Marijuana",
+  "zh": "大麻",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Substance"
+  ]
+ },
+ "menstrual cramps or other problems with your periods women only": {
+  "en": "Menstrual cramps or other problems with your periods WOMEN ONLY",
+  "zh": "痛经或月经其他问题（仅限女性）",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Somatic"
+  ]
+ },
+ "menstrual cramps orother problems with your periods women only": {
+  "en": "Menstrual cramps orother problems with your periods WOMEN ONLY",
+  "zh": "痛经或月经其他问题（仅限女性）",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "mess things up": {
+  "en": "Mess things up.",
+  "zh": "把事情搞砸。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "methamphetamine (like speed)": {
+  "en": "Methamphetamine (like speed)",
+  "zh": "甲基苯丙胺（如斯皮德）",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Substance"
+  ]
+ },
+ "most of the time i don't see the point in being friendly": {
+  "en": "Most of the time I don’t see the point in being friendly.",
+  "zh": "大多数时候，我看不出对人友好有什么意义。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "my behavior is often bold and grabs peoples'attention": {
+  "en": "My behavior is often bold and grabs peoples’attention.",
+  "zh": "我的行为常常很大胆，会吸引别人的注意。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "my emotions are unpredictable": {
+  "en": "My emotions are unpredictable.",
+  "zh": "我的情绪难以预测。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "my emotions sometimes change for no good reason": {
+  "en": "My emotions sometimes change for no good reason.",
+  "zh": "我的情绪有时会毫无缘由地变化。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "my sleep quality was": {
+  "en": "My sleep quality was",
+  "zh": "我的睡眠质量是",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Sleep"
+  ]
+ },
+ "my sleep was refreshing": {
+  "en": "My sleep was refreshing",
+  "zh": "我的睡眠让我感到恢复精力",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Sleep"
+  ]
+ },
+ "my sleep was restless": {
+  "en": "My sleep was restless",
+  "zh": "我的睡眠是不安稳的。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Sleep"
+  ]
+ },
+ "my sleep was restless. \u0000 \u0000 \u0000 \u0000": {
+  "en": "My sleep was restless. \u0000 \u0000 \u0000 \u0000",
+  "zh": "我的睡眠是不安稳的。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "my thoughts are strange and unpredictable": {
+  "en": "My thoughts are strange and unpredictable.",
+  "zh": "我的想法古怪且难以预测。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "my thoughts often don't make sense to others": {
+  "en": "My thoughts often don’t make sense to others.",
+  "zh": "我的想法常常让别人觉得没有道理。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "my thoughts often go off in odd or unusual directions": {
+  "en": "My thoughts often go off in odd or unusual directions.",
+  "zh": "我的思绪常常拐向古怪或不寻常的方向。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "nausea, gas, or indigestion": {
+  "en": "Nausea, gas, or indigestion",
+  "zh": "恶心、胀气或消化不良",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Somatic"
+  ]
+ },
+ "not feeling close to other people or enjoying your relationships with them?": {
+  "en": "Not feeling close to other people or enjoying your relationships with them?",
+  "zh": "感觉与他人不亲近，或无法享受与他们的关系？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "not knowing who you really are or what you want out of life?": {
+  "en": "Not knowing who you really are or what you want out of life?",
+  "zh": "不知道自己真正是谁，或不知道自己想从生活中得到什么？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "nothing seems to interest me very much": {
+  "en": "Nothing seems to interest me very much.",
+  "zh": "似乎没有什么能让我很感兴趣。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "nothing seems to make me feel good": {
+  "en": "Nothing seems to make me feel good.",
+  "zh": "似乎没有什么能让我感觉良好。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "on average, how much time is occupied by these thoughts or behaviors each day?": {
+  "en": "On average, how much time is occupied by these thoughts or behaviors each day?",
+  "zh": "平均而言，这些想法或行为每天占用你多少时间？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Repetitive"
+  ]
+ },
+ "other people seem to think my behavior is weird": {
+  "en": "Other people seem to think my behavior is weird.",
+  "zh": "在别人看来，我的行为似乎很奇怪。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "others see me as irresponsible": {
+  "en": "Others see me as irresponsible.",
+  "zh": "别人认为我不负责任。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "others seem to think i'm quite odd or unusual": {
+  "en": "Others seem to think I’m quite odd or unusual.",
+  "zh": "别人似乎觉得我相当古怪或与众不同。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "others would take advantage of me if they could": {
+  "en": "Others would take advantage of me if they could.",
+  "zh": "如果有机会，别人就会占我的便宜。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "pain in your arms, legs, or joints (knees, hips, etc.)": {
+  "en": "Pain in your arms, legs, or joints (knees, hips, etc.)",
+  "zh": "手臂、腿部或关节（膝盖、髋部等）的疼痛",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Somatic"
+  ]
+ },
+ "pain or problems during sexual intercourse": {
+  "en": "Pain or problems during sexual intercourse",
+  "zh": "性交时的疼痛或问题",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Somatic"
+  ]
+ },
+ "painkillers (like vicodin)": {
+  "en": "Painkillers (like Vicodin)",
+  "zh": "止痛药（如维柯丁）",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Substance"
+  ]
+ },
+ "people are basically trustworthy": {
+  "en": "People are basically trustworthy.",
+  "zh": "人们基本上是值得信任的。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "people complain about my need to have everything all arranged": {
+  "en": "People complain about my need to have everything all arranged.",
+  "zh": "人们抱怨我非要把一切都安排得妥妥当当。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "people don't realize that i'm flattering them to get something": {
+  "en": "People don’t realize that I’m flattering them to get something.",
+  "zh": "人们没有意识到，我奉承他们是为了得到些什么。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "people have told me that i think about things in a really strange way": {
+  "en": "People have told me that I think about things in a really strange way.",
+  "zh": "有人告诉过我，我思考事情的方式非常奇怪。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "people often look at me as if i'd said something really weird": {
+  "en": "People often look at me as if I’d said something really weird.",
+  "zh": "人们常常看着我，那神情像是我说了什么非常古怪的话。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "people often talk about me doing things i don't remember at all": {
+  "en": "People often talk about me doing things I don’t remember at all.",
+  "zh": "人们常常说起我做过一些我完全不记得的事。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "people tell me it's difficult to know what i'm feeling": {
+  "en": "People tell me it’s difficult to know what I’m feeling.",
+  "zh": "人们告诉我，很难看出我有什么感受。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "people tell me that i focus too much on minor details": {
+  "en": "People tell me that I focus too much on minor details.",
+  "zh": "人们告诉我，我太关注细枝末节了。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "people would describe me as reckless": {
+  "en": "People would describe me as reckless.",
+  "zh": "人们会说我这人做事鲁莽。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "plenty of people are out to get me": {
+  "en": "Plenty of people are out to get me.",
+  "zh": "很多人都想害我。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "problems with memory (e.g., learning new information) or with location (e.g., finding your way home)?": {
+  "en": "Problems with memory (e.g., learning new information) or with location (e.g., finding your way home)?",
+  "zh": "记忆方面有问题（例如学习新信息），或地点定向方面有问题（例如找不到回家的路）？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "problems with memory (e.g., learning new information)or with location (e.g., finding your way home)?": {
+  "en": "Problems with memory (e.g., learning new information)or with location (e.g., finding your way home)?",
+  "zh": "记忆方面有问题（例如学习新信息），或地点定向方面有问题（例如找不到回家的路）？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "problems with sleep that affected your sleep quality over all?": {
+  "en": "Problems with sleep that affected your sleep quality over all?",
+  "zh": "睡眠问题影响了您总体的睡眠质量？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "rarely look for a deeper meaning in things": {
+  "en": "Rarely look for a deeper meaning in things.",
+  "zh": "很少探究事物更深层的含义",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "respect others": {
+  "en": "Respect others.",
+  "zh": "尊重他人。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "retreat from others": {
+  "en": "Retreat from others.",
+  "zh": "回避他人。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "sedatives or tranquilizers (like sleeping pills or valium)": {
+  "en": "Sedatives or tranquilizers (like sleeping pills or Valium)",
+  "zh": "镇静剂或安定剂（如安眠药或地西泮）",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Substance"
+  ]
+ },
+ "shortness of breath": {
+  "en": "Shortness of breath",
+  "zh": "气短",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Somatic"
+  ]
+ },
+ "sleeping less than usual, but still have a lot of energy?": {
+  "en": "Sleeping less than usual, but still have a lot of energy?",
+  "zh": "比平时睡得少，但仍有很多精力？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "smoking any cigarettes, a cigar, or pipe, or using snuff or chewing tobacco?": {
+  "en": "Smoking any cigarettes, a cigar, or pipe, or using snuff or chewing tobacco?",
+  "zh": "吸香烟、雪茄或烟斗，或使用鼻烟或嚼烟？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "smokingany cigarettes, a cigar, or pipe,or usingsnuff or chewingtobacco?": {
+  "en": "Smokingany cigarettes, a cigar, or pipe,or usingsnuff or chewingtobacco?",
+  "zh": "吸香烟、雪茄或烟斗，或使用鼻烟或嚼烟？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "sometimes i can influence other people just by sending my thoughts to them": {
+  "en": "Sometimes I can influence other people just by sending my thoughts to them.",
+  "zh": "有时我只要把自己的想法发送给他们，就能影响别人。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "sometimes i feel \"controlled\"by thoughts that belong to someone else": {
+  "en": "Sometimes I feel “controlled”by thoughts that belong to someone else.",
+  "zh": "有时我感到自己被属于别人的想法“控制”着。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "sometimes i get this weird feeling that parts of my body feel like they're dead or not really me": {
+  "en": "Sometimes I get this weird feeling that parts of my body feel like they’re dead or not really me.",
+  "zh": "有时我有种奇怪的感觉，好像身体的某些部分已经死了，或者不真的是我自己的。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "sometimes i think someone else is removing thoughts from my head": {
+  "en": "Sometimes I think someone else is removing thoughts from my head.",
+  "zh": "有时我认为有别人在从我的脑袋里把想法拿走。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "sometimes when i look at a familiar object, it's somehow like i'm seeing it for the first time": {
+  "en": "Sometimes when I look at a familiar object, it’s somehow like I’m seeing it for the first time.",
+  "zh": "有时我看着一件熟悉的东西，却莫名其妙像是第一次见到它。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "sometimes you need to exaggerate to get ahead": {
+  "en": "Sometimes you need to exaggerate to get ahead.",
+  "zh": "有时候，为了出人头地就得夸大其词。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "starting lots more projects than usual or doing more risky things than usual?": {
+  "en": "Starting lots more projects than usual or doing more risky things than usual?",
+  "zh": "比平时开始多得多的项目，或比平时做更多冒险的事？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "starting lotsmore projects than usual or doing more risky things than usual?": {
+  "en": "Starting lotsmore projects than usual or doing more risky things than usual?",
+  "zh": "比平时开始多得多的项目，或比平时做更多冒险的事？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "stimulants (like ritalin, adderall)": {
+  "en": "Stimulants (like Ritalin, Adderall)",
+  "zh": "兴奋剂（如利他林、阿德拉）",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Substance"
+  ]
+ },
+ "stomach pain": {
+  "en": "Stomach pain",
+  "zh": "胃痛",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Somatic"
+  ]
+ },
+ "sweet talking others helps me get what i want": {
+  "en": "Sweet-talking others helps me get what I want.",
+  "zh": "对别人说好话，能帮我得到自己想要的东西。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "the future looks really hopeless to me": {
+  "en": "The future looks really hopeless to me.",
+  "zh": "在我看来，未来真的很没有希望。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "the world would be better off if i were dead": {
+  "en": "The world would be better off if I were dead.",
+  "zh": "如果我死了，世界会更好。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "things around me often feel unreal, or more real than usual": {
+  "en": "Things around me often feel unreal, or more real than usual.",
+  "zh": "我周围的事物常常感觉不真实，或者比平时更真实。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "thoughts of actually hurting yourself?": {
+  "en": "Thoughts of actually hurting yourself?",
+  "zh": "想过真的要伤害自己？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "to behonest, i'm just more important than other people": {
+  "en": "To behonest, I’m just more important than other people.",
+  "zh": "说实话，我就是比别人更重要。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "treat all people equally": {
+  "en": "Treat all people equally.",
+  "zh": "我平等对待所有人。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "trouble sleeping": {
+  "en": "Trouble sleeping",
+  "zh": "睡眠困难",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Somatic"
+  ]
+ },
+ "unexplained aches and pains (e.g., head, back, joints, abdomen, legs)?": {
+  "en": "Unexplained aches and pains (e.g., head, back, joints, abdomen, legs)?",
+  "zh": "原因不明的疼痛和酸痛（例如：头部、背部、关节、腹部、腿部）？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "unexplained aches and pains (e.g.,head, back, joints, abdomen, legs)?": {
+  "en": "Unexplained aches and pains (e.g.,head, back, joints, abdomen, legs)?",
+  "zh": "原因不明的疼痛和酸痛（例如：头部、背部、关节、腹部、腿部）？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "unpleasant thoughts, urges, or images that repeatedly enter your mind?": {
+  "en": "Unpleasant thoughts, urges, or images that repeatedly enter your mind?",
+  "zh": "反复闯入您脑海的令人不快的想法、冲动或画面？",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "using any of the following medicines on your own, that is, without a doctor's prescription, in greater amounts or longer than prescribed [e.g., painkillers (like vicodin), stimulants (like ritalin or adderall), sedatives or tranquilizers (like sleeping pills or valium), or drugs like marijuana, cocaine or crack, club drugs (like ecstasy), hallucinogens (like lsd), heroin, inhalants or solvents (like glue), or methamphetamine (like speed)]?": {
+  "en": "Using any of the following medicines ON YOUR OWN, that is, without a doctor’s prescription, in greater amounts or longer than prescribed [e.g., painkillers (like Vicodin), stimulants (like Ritalin or Adderall), sedatives or tranquilizers (like sleeping pills or Valium), or drugs like marijuana, cocaine or crack, club drugs (like ecstasy), hallucinogens (like LSD), heroin, inhalants or solvents (like glue), or methamphetamine (like speed)]?",
+  "zh": "自行使用下列任何一种药物，即没有医生处方，或用量超过处方、或用药时间超过处方规定〔例如：止痛药（如维柯丁）、兴奋剂（如利他林或阿德拉）、镇静剂或安定剂（如安眠药或安定）、或大麻、可卡因或快克、俱乐部药物（如摇头丸）、致幻剂（如 LSD）、海洛因、吸入剂或溶剂（如胶水），或甲基苯丙胺（如冰毒）〕？",
+  "zh_source": "subagent 重译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L1"
+  ]
+ },
+ "usingany of the following medicines on your own, that is, without a doctor's prescription, in greater amounts or.g., painkillers (like vicodin), stimulants (like ritalin or adderall), sedatives or tranquilizers (like sleeping pills or valium), or drugs like marijuana, cocaine or crack, club drugs (like ecstasy), hallucinogens (like lsd), heroin, inhalants or solvents (like glue), or m copyright © 2013 american psychiatric association. all rights reserved. this material can be reproduced without permission by researchers and by clinicians for use with their patients": {
+  "en": "Usingany of the following medicines ON YOUR OWN, that is, without a doctor’s prescription, in greater amounts or.g., painkillers (like Vicodin), stimulants (like Ritalin or Adderall), sedatives or tranquilizers (like sleeping pills or Valium), or drugs like marijuana, cocaine or crack, club drugs (like ecstasy), hallucinogens (like LSD), heroin, inhalants or solvents (like glue), or m Copyright © 2013 American Psychiatric Association. All Rights Reserved. This material can be reproduced without permission by researchers and by clinicians for use with their patients",
+  "zh": "自行使用下列任何一种药物，即没有医生处方，或用量超过……例如：止痛药（如维柯丁）、兴奋剂（如利他林或阿德拉）、镇静剂或安眠药（如安眠药片或安定），或大麻、可卡因或快克等毒品、俱乐部毒品（如摇头丸）、致幻剂（如LSD）、海洛因、吸入剂或溶剂（如胶水），或m……（Copyright © 2013 American Psychiatric Association. All Rights Reserved. This material can be reproduced without permission by researchers and by clinicians for use with their patients）",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": []
+ },
+ "when i want to do something, i don't let the possibility that it might be risky stop me": {
+  "en": "When I want to do something, I don’t let the possibility that it might be risky stop me.",
+  "zh": "当我想做一件事时，不会因为可能有风险就停下不做。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "when it comes to my emotions, people tell me i'm a \"cold fish\"": {
+  "en": "When it comes to my emotions, people tell me I’m a “cold fish”.",
+  "zh": "说到情绪时，人们说我是个“冷血的人”（cold fish）。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "you need to step on some toes to get what you want in life": {
+  "en": "You need to step on some toes to get what you want in life.",
+  "zh": "在生活中，你必须踩到一些人的脚趾，才能得到自己想要的（You need to step on some toes to get what you want in life.）。",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "PID-5"
+  ]
+ },
+ "第 1 组：选出最符合你的一句": {
+  "en": "第 1 组：选出最符合你的一句",
+  "zh": "第 1 组：选出最符合你的一句",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Mania"
+  ]
+ },
+ "第 2 组：选出最符合你的一句": {
+  "en": "第 2 组：选出最符合你的一句",
+  "zh": "第 2 组：选出最符合你的一句",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Mania"
+  ]
+ },
+ "第 3 组：选出最符合你的一句": {
+  "en": "第 3 组：选出最符合你的一句",
+  "zh": "第 3 组：选出最符合你的一句",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Mania"
+  ]
+ },
+ "第 4 组：选出最符合你的一句": {
+  "en": "第 4 组：选出最符合你的一句",
+  "zh": "第 4 组：选出最符合你的一句",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Mania"
+  ]
+ },
+ "第 5 组：选出最符合你的一句": {
+  "en": "第 5 组：选出最符合你的一句",
+  "zh": "第 5 组：选出最符合你的一句",
+  "zh_source": "subagent 初译（待人工复核）",
+  "instruments": [
+   "DSM5TR-L2-Mania"
+  ]
+ }
+}

@@ -1,0 +1,24 @@
+{
+ "schema_version": "1.0",
+ "record_kind": "descriptions_norms",
+ "instrument": "DSM5TR-L1",
+ "code": "dsm5tr-l1",
+ "status": "unavailable",
+ "interpretation_basis": "threshold",
+ "reference_sample": null,
+ "detail_source": null,
+ "dimension_summary": {},
+ "source": {
+  "citation": "American Psychiatric Association. DSM-5-TR Self-Rated Level 1 Cross-Cutting Symptom Measure—Adult.",
+  "evidence": [
+   "archive/scales/DSM5TR-L1/manual.pdf",
+   "archive/scales/DSM5TR-L1/source.json",
+   "data/linkage/dsm5tr-chain.json"
+  ],
+  "url": "https://www.psychiatry.org/getmedia/e0b4b299-95b3-407b-b8c2-caa871ca218d/APA-DSM5TR-Level1MeasureAdult.pdf",
+  "license": "APA 版权；允许研究人员/临床医生为患者使用而复制，**不得修改**"
+ },
+ "applicability_warning": "门槛值来自 APA 手册原文，适用于该量表的设计用途（初诊筛查与进程监测），不构成诊断阈值。",
+ "notes": "逐域门槛（含 level2 对照）见 data/linkage/dsm5tr-chain.json；本记录不复制门槛表，避免第二个真相源。",
+ "unavailable_reason": "APA 把本册设计为**门槛型筛查**而非常模参照量表：手册不提供常模表、百分位或 T 分，只提供每域的门槛。因此不存在「可溯源的常模」可供本项目使用；若强行套用一般人群分布，会给出手册没有授权、也没有数据支撑的百分位。"
+}

@@ -1,0 +1,675 @@
+{
+ "_note": "友好（Friendliness / E1）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.friendliness",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "友好",
+  "facet_name_en": "Friendliness",
+  "facet_code": "E1",
+  "domain": "extraversion",
+  "domain_zh": "外向性"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "对他人抱有 warmth 与亲近意愿的倾向：是否容易对人产生好感、是否乐意花时间与他人相处、以及是否让身边的人感到被接纳。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量社交场合的数量（属 E2 合群性）",
+   "不测量在人群中的自在程度（属 N4 自我意识）",
+   "不测量社交技巧或人际能力",
+   "不测量是否对陌生人保持警惕（那可能属于审慎）"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "gregariousness",
+    "against_facet_zh": "合群性",
+    "distinction": "友好是**对具体他人的温度**；合群性是**对人群数量的需求**。一个喜欢与一两位密友深谈、但回避大群体的人，友好高、合群性低。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "altruism",
+    "against_facet_zh": "利他",
+    "distinction": "友好是**情感上的接纳**；利他是**行动上的帮助**。可以对人温暖但不主动做事。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "selfconsciousness",
+    "against_facet_zh": "自我意识",
+    "distinction": "友好是主动亲近的意愿；自我意识是**被注视时的不适**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "trust",
+    "against_facet_zh": "信任",
+    "distinction": "友好是情感温度；信任是对他人动机的**判断**。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "对他人保持距离，很少有亲近感",
+   "2": "对大多数人客气但不太亲近",
+   "3": "对熟悉的人温暖，对陌生人一般",
+   "4": "容易对人产生好感，乐意花时间陪伴",
+   "5": "对多数人都抱有明显善意，常主动让人感到被接纳",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_066",
+   "ipip_neo_067",
+   "ipip_neo_068",
+   "ipip_neo_069",
+   "ipip_neo_070"
+  ],
+  "forward_items": [
+   "ipip_neo_061",
+   "ipip_neo_062",
+   "ipip_neo_063",
+   "ipip_neo_064",
+   "ipip_neo_065"
+  ],
+  "key_balance": "5 正向 / 5 反向",
+  "reverse_keyed_count": 5,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.87,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 2.7,
+   "reference_age_band": "18-29",
+   "sd_used": 7.5,
+   "alpha_used": 0.87,
+   "by_age_band": {
+    "14-17": {
+     "sd": 8.0,
+     "sem": 2.88
+    },
+    "18-29": {
+     "sd": 7.5,
+     "sem": 2.7
+    },
+    "30+": {
+     "sd": 8.0,
+     "sem": 2.88
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±5.3 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "47-50",
+    "High": "39-46",
+    "Average": "31-38",
+    "Low": "23-30",
+    "Very Low": "10-22"
+   },
+   "18-29": {
+    "Very High": "47-50",
+    "High": "39-46",
+    "Average": "32-38",
+    "Low": "24-31",
+    "Very Low": "10-23"
+   },
+   "30+": {
+    "Very High": "47-50",
+    "High": "39-46",
+    "Average": "31-38",
+    "Low": "23-30",
+    "Very Low": "10-22"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "254-300",
+    "High": "220-253",
+    "Average": "186-219",
+    "Low": "153-185",
+    "Very Low": "60-152"
+   },
+   "18-29": {
+    "Very High": "252-300",
+    "High": "219-251",
+    "Average": "186-218",
+    "Low": "153-185",
+    "Very Low": "60-152"
+   },
+   "30+": {
+    "Very High": "248-300",
+    "High": "214-247",
+    "Average": "180-213",
+    "Low": "146-179",
+    "Very Low": "60-145"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "`friendliness` 在模型里对应 NEO 的 E1 Warmth，但 IPIP 的题面偏「友好行为」（Make friends easily、Make people feel welcome），与**情感温度**的原始定义略有偏移。",
+   "第 5 题（Am interested in people）与第 1 题（Make friends easily）分别指向兴趣与行为，侧面不完全一致。"
+  ],
+  "interpretation_caveats": [
+   "这一面向问的是**对他人是否有温度**，不是**社交数量**，也不是**社交能力**。如果你只与少数人深交、但关系很暖，这里仍应给高分。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 4,
+  "chinese_project_translation": 6,
+  "chinese_overridden": 0,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 2,
+   "id": "ipip_neo_061",
+   "facet": "friendliness",
+   "key": 1,
+   "text_en": "Make friends easily.",
+   "text_master": "Make friends easily.",
+   "text_zh": "很容易交到朋友",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.03,
+    "item_total_r": 0.6759,
+    "missing_rate": 0.0015,
+    "neutral_rate": 0.1504
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否容易交到朋友",
+    "key_term": {
+     "term": "make friends easily",
+     "sense_here": "建立友谊的容易程度",
+     "not_this": "「社交技巧好」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它等同于「社交技巧」",
+      "correction": "本题问关系的建立，不只技巧。"
+     },
+     {
+      "misreading": "因为朋友少而选低分",
+      "correction": "朋友少可能是选择（E2 低），不等于难交。"
+     }
+    ],
+    "counts_as": [
+     "到了新环境能较快交到朋友"
+    ],
+    "does_not_count_as": [
+     "只是不主动扩展社交圈"
+    ],
+    "edge_cases": null,
+    "localization_note": "**与「合群性」（E2）的区别**：本题问**能否建立关系**，E2 问**想不想要人陪**。一个朋友不多但每一段都很深的人，本题可以得中等分而 E2 得低分。与「自我意识」（N4）的区别：那是在人前的不适，本题是建立关系的顺畅度。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「make friends easily」"
+   }
+  },
+  {
+   "administration_order": 32,
+   "id": "ipip_neo_062",
+   "facet": "friendliness",
+   "key": 1,
+   "text_en": "Warm up quickly to others.",
+   "text_master": "Warm up quickly to others.",
+   "text_zh": "很快就能和别人熟络起来",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.114,
+    "item_total_r": 0.6305,
+    "missing_rate": 0.0057,
+    "neutral_rate": 0.2097
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否很快就能和别人熟络起来",
+    "key_term": {
+     "term": "warm up quickly",
+     "sense_here": "升温快、缩短距离感",
+     "not_this": "「话多」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「话多」当成「熟络快」",
+      "correction": "本题问关系距离，不是言语量。"
+     },
+     {
+      "misreading": "与「决断性」混同",
+      "correction": "那是主导，本题是亲近。"
+     }
+    ],
+    "counts_as": [
+     "刚认识不久就能自然相处"
+    ],
+    "does_not_count_as": [
+     "需要较长时间才放得开"
+    ],
+    "edge_cases": null,
+    "localization_note": "**「Warm up」指关系的亲密感升温**，与说话多少无关。安静的人也可以很快与人建立亲近感。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「warm up quickly」"
+   }
+  },
+  {
+   "administration_order": 62,
+   "id": "ipip_neo_063",
+   "facet": "friendliness",
+   "key": 1,
+   "text_en": "Feel comfortable around people.",
+   "text_master": "Feel comfortable around people.",
+   "text_zh": "和其他人待在一起时，我觉得很自在",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.028,
+    "item_total_r": 0.7305,
+    "missing_rate": 0.0014,
+    "neutral_rate": 0.1693
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "和别人待在一起时你是否觉得自在",
+    "key_term": {
+     "term": "comfortable around people",
+     "sense_here": "与人相处时的自在感",
+     "not_this": "「喜欢人多」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「自我意识」面向混同",
+      "correction": "两面向在此确有交叠。"
+     },
+     {
+      "misreading": "把「自在」当成「喜欢」",
+      "correction": "自在与偏好不同。"
+     }
+    ],
+    "counts_as": [
+     "和多数人相处时是放松的"
+    ],
+    "does_not_count_as": [
+     "喜欢独处但与人相处也不紧张（那也算）"
+    ],
+    "edge_cases": null,
+    "localization_note": "**注意：本题与「自我意识」（N4）面向的题高度接近**（那面向测的也是人际中的不适）。区别在于本面向整体偏**主动亲近的意愿**，N4 偏**被评价时的不适**。两面向在人际舒适度上确有交叠——这是量表本身的边界模糊。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「comfortable around people」"
+   }
+  },
+  {
+   "administration_order": 92,
+   "id": "ipip_neo_064",
+   "facet": "friendliness",
+   "key": 1,
+   "text_en": "Act comfortably with others.",
+   "text_master": "Act comfortably with others.",
+   "text_zh": "和别人相处时很自在",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.096,
+    "item_total_r": 0.7031,
+    "missing_rate": 0.0048,
+    "neutral_rate": 0.1613
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你和别人相处时是否自在",
+    "key_term": {
+     "term": "act comfortably",
+     "sense_here": "行为上的自在（不局促）",
+     "not_this": "「内心自在」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 3 题混同",
+      "correction": "内心 vs 表现。"
+     },
+     {
+      "misreading": "把「外向」当成「自在」",
+      "correction": "内向的人也可以很自在。"
+     }
+    ],
+    "counts_as": [
+     "与人相处时举止自然不局促"
+    ],
+    "does_not_count_as": [
+     "内心紧张但外表如常"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 3 题的区别：第 3 题偏**内心感受**，本题偏**外在行为是否自然**。内心紧张但外表自然，两题答案会不同。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「act comfortably」"
+   }
+  },
+  {
+   "administration_order": 122,
+   "id": "ipip_neo_065",
+   "facet": "friendliness",
+   "key": 1,
+   "text_en": "Cheer people up.",
+   "text_master": "Cheer people up.",
+   "text_zh": "能让别人开心起来",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.102,
+    "item_total_r": 0.5241,
+    "missing_rate": 0.0033,
+    "neutral_rate": 0.1389
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否能让别人开心起来",
+    "key_term": {
+     "term": "cheer people up",
+     "sense_here": "使他人情绪转好",
+     "not_this": "「自己开心」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「自己开心」当成「让别人开心」",
+      "correction": "本题问对他人的作用。"
+     },
+     {
+      "misreading": "与「开朗」面向混同",
+      "correction": "两题语义接近。"
+     }
+    ],
+    "counts_as": [
+     "在别人低落时能让他们好受些"
+    ],
+    "does_not_count_as": [
+     "自己情绪好但不擅长安慰"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题偏「对他人的情绪影响」**，与「开朗」（E6）面向的「能把朋友逗乐」语义接近。两题分属不同维度但都在测**你对他人的积极影响**——这是量表里的一处交叠。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「cheer people up」"
+   }
+  },
+  {
+   "administration_order": 152,
+   "id": "ipip_neo_066",
+   "facet": "friendliness",
+   "key": -1,
+   "text_en": "Am hard to get to know.",
+   "text_master": "Am hard to get to know.",
+   "text_zh": "别人很难了解我",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.086,
+    "item_total_r": 0.595,
+    "missing_rate": 0.0043,
+    "neutral_rate": 0.1315
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）别人是否很难了解你",
+    "key_term": {
+     "term": "hard to get to know",
+     "sense_here": "不易被人了解",
+     "not_this": "「话少」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「话少」当成「难以了解」",
+      "correction": "话少但愿意谈自己也还好了解。"
+     },
+     {
+      "misreading": "与「合群性」混同",
+      "correction": "那是想不想要陪伴。"
+     }
+    ],
+    "counts_as": [
+     "很少向人透露自己的想法"
+    ],
+    "does_not_count_as": [
+     "只是不主动但被问会讲"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题偏「自我表露的开放度」**，不完全是「对他人的温度」。**一个对人友善但极少谈自己的人，本题会得高分。** 这是本面向内容异质性的一处。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「hard to get to know」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 182,
+   "id": "ipip_neo_067",
+   "facet": "friendliness",
+   "key": -1,
+   "text_en": "Often feel uncomfortable around others.",
+   "text_master": "Often feel uncomfortable around others.",
+   "text_zh": "在别人身边常感到不自在",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.08,
+    "item_total_r": 0.6336,
+    "missing_rate": 0.004,
+    "neutral_rate": 0.1715
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否在别人身边常感到不自在",
+    "key_term": {
+     "term": "uncomfortable",
+     "sense_here": "不自在、局促",
+     "not_this": "「不喜欢」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 3、4 题方向搞混",
+      "correction": "第 3、4 题正向、本题反向，系统会自动反向计分。"
+     }
+    ],
+    "counts_as": [
+     "与人相处时经常感到局促"
+    ],
+    "does_not_count_as": [
+     "不喜欢但很放松"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 3、4 题是**正反配对**。**注意：「不喜欢」与「不自在」不同**——不喜欢社交但很自在的人，本题应给低分。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「uncomfortable」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 212,
+   "id": "ipip_neo_068",
+   "facet": "friendliness",
+   "key": -1,
+   "text_en": "Avoid contacts with others.",
+   "text_master": "Avoid contacts with others.",
+   "text_zh": "避免和他人接触",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.108,
+    "item_total_r": 0.6759,
+    "missing_rate": 0.0054,
+    "neutral_rate": 0.1565
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会避免和他人接触",
+    "key_term": {
+     "term": "avoid contacts",
+     "sense_here": "主动回避接触",
+     "not_this": "「需要独处时间」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「需要独处恢复」当成「回避接触」",
+      "correction": "独处需求与回避不同。"
+     },
+     {
+      "misreading": "与「合群性」面向混同",
+      "correction": "那是想不想要陪伴。"
+     }
+    ],
+    "counts_as": [
+     "会尽量避开需要与人打交道的场合"
+    ],
+    "does_not_count_as": [
+     "喜欢独处但正常的接触没问题"
+    ],
+    "edge_cases": null,
+    "localization_note": "**关键区分**：需要独处时间恢复（内向）≠ 主动回避接触。本题指**持续地、主动地避开人际接触**。一个高内向但仍有温暖关系的人，不应在本题得高分。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「avoid contacts」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 242,
+   "id": "ipip_neo_069",
+   "facet": "friendliness",
+   "key": -1,
+   "text_en": "Am not really interested in others.",
+   "text_master": "Am not really interested in others.",
+   "text_zh": "对别人其实不太感兴趣",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.4,
+    "item_total_r": 0.3951,
+    "missing_rate": 0.0037,
+    "neutral_rate": 0.1031
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你对别人是否其实不太感兴趣",
+    "key_term": {
+     "term": "not really interested",
+     "sense_here": "对他人本身缺乏兴趣",
+     "not_this": "「不喜欢热闹」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「合群性」混同",
+      "correction": "那是想不想要陪伴。"
+     },
+     {
+      "misreading": "把「不爱八卦」当成「不感兴趣」",
+      "correction": "本题指对他人本身。"
+     }
+    ],
+    "counts_as": [
+     "对别人的事通常提不起兴趣"
+    ],
+    "does_not_count_as": [
+     "关心但不爱打听"
+    ],
+    "edge_cases": "**本题偏「对人是否好奇」，与「情感温度」略有偏移。**",
+    "localization_note": "**本题的题目-总分相关 .40，在本面向最低**——「对别人不感兴趣」更接近**对人缺乏好奇**（与「利他」面向的关心他人对照），而不完全是「对他人的温度」。**一个关心他人但不爱社交的人，本题会得高分。** 这是本面向内容异质性的一处。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「not really interested」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 272,
+   "id": "ipip_neo_070",
+   "facet": "friendliness",
+   "key": -1,
+   "text_en": "Keep others at a distance.",
+   "text_master": "Keep others at a distance.",
+   "text_zh": "和他人保持距离",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.09,
+    "item_total_r": 0.6458,
+    "missing_rate": 0.0045,
+    "neutral_rate": 0.1781
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否和他人保持距离",
+    "key_term": {
+     "term": "keep at a distance",
+     "sense_here": "保持距离",
+     "not_this": "「有边界感」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「有边界感」当成「保持距离」",
+      "correction": "两者动机不同。"
+     },
+     {
+      "misreading": "因为它与「友好」的关系而困惑",
+      "correction": "本题是反向题，高分意味着友好面向低分。"
+     }
+    ],
+    "counts_as": [
+     "在情感上不让人接近"
+    ],
+    "does_not_count_as": [
+     "尊重边界但关系亲密"
+    ],
+    "edge_cases": null,
+    "localization_note": "**中文「保持距离」与「有边界感」容易混同**：边界感是保护自己的精力与隐私（健康），保持距离是**在情感上不让人靠近**。本题偏后者。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「keep at a distance」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

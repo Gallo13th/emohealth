@@ -1,0 +1,45 @@
+```json
+{
+  "sections": [
+    {
+      "heading": "情绪基调：时常感到忧郁",
+      "text": "你在回答「时常感到忧郁」这道题时选择了最高分，这表明你可能经常感受到一种情绪低落的状态。需要注意的是，这道题问的是你的情绪基调，而不是对具体事件的反应。也就是说，即使你最近遇到了一些难过的事情，也应该根据你一贯的情绪基调来作答。此外，本题不构成任何抑郁筛查，如果你长期感到低落或失去兴趣，请直接寻求专业帮助。",
+      "grounded_in": ["notable_items.0.asks", "notable_items.0.common_misreadings.0.correction", "notable_items.0.common_misreadings.1.correction"],
+      "citations": []
+    },
+    {
+      "heading": "追求目标的取向",
+      "text": "在回答「做事是否会直指目标、不走弯路」这道题时，你也选择了最高分。这表明你在做事时倾向于直接追求目标，不绕弯子。需要注意的是，这道题问的是你的取向，而不是你是否有效率或是否考虑到了他人的感受。因此，即使你认为自己在过程中会考虑更多因素，这道题的高分仍然反映了你对目标的直接追求。",
+      "grounded_in": ["notable_items.1.asks", "notable_items.1.common_misreadings.0.correction", "notable_items.1.common_misreadings.1.correction"],
+      "citations": []
+    },
+    {
+      "heading": "情绪体验的强度",
+      "text": "对于「情绪体验是否鲜明、强烈」这道题，你选择了最低分。这表明你的情绪体验可能不如一些人那么强烈。需要注意的是，这道题问的是情绪的强度，而不是情绪的波动。也就是说，即使你的情绪波动不大，但情绪体验本身可能并不强烈。此外，这道题不含褒贬，只是描述了你的情绪体验特点。",
+      "grounded_in": ["notable_items.2.asks", "notable_items.2.common_misreadings.0.correction", "notable_items.2.common_misreadings.1.correction"],
+      "citations": []
+    },
+    {
+      "heading": "对他人的信任",
+      "text": "在回答「是否信任他人」这道题时，你选择了最低分。这表明你可能不太信任他人。需要注意的是，这道题问的是你对他人动机与可靠性的默认假设，而不是你是否幼稚或轻信。因此，即使你认为自己应该更加信任他人，这道题的低分仍然反映了你的真实默认假设。",
+      "grounded_in": ["notable_items.3.asks", "notable_items.3.common_misreadings.0.correction", "notable_items.3.common_misreadings.1.correction"],
+      "citations": []
+    },
+    {
+      "heading": "对刺激的追求",
+      "text": "对于「是否喜欢刺激、兴奋的体验」这道题，你选择了中等偏低的分数。这表明你可能不太喜欢追求刺激和兴奋的体验。需要注意的是，这道题问的是你对强烈唤起的需要，而不是你的情绪基线水平。也就是说，即使你的情绪愉快但不需要刺激，这道题的低分仍然反映了你对刺激的需要程度。",
+      "grounded_in": ["notable_items.4.asks", "notable_items.4.common_misreadings.0.correction", "notable_items.4.common_misreadings.1.correction"],
+      "citations": []
+    },
+    {
+      "heading": "让别人感到被欢迎",
+      "text": "在回答「是否会让别人感到被欢迎」这道题时，你选择了中等偏低的分数。这表明你可能不太主动让别人感到被欢迎。需要注意的是，这道题问的是你是否会让来者感到被接纳，而不是你是否礼貌。因此，即使你认为自己应该更加礼貌，这道题的低分仍然反映了你是否主动做出接纳行为。",
+      "grounded_in": ["notable_items.5.asks", "notable_items.5.common_misreadings.0.correction", "notable_items.5.common_misreadings.1.correction"],
+      "citations": []
+    }
+  ],
+  "notable_items_surfaced": [11, 20, 13, 4, 22, 14],
+  "disclosures_kept": ["norm_sample", "no_diagnosis", "precision"],
+  "refusals": []
+}
+```

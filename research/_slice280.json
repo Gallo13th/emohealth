@@ -1,0 +1,196 @@
+[
+ {
+  "idx": 280,
+  "key": "others seem to think i'm quite odd or unusual",
+  "en": "Others seem to think I’m quite odd or unusual.",
+  "zh": "别人似乎觉得我相当古怪或与众不同。",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "idx": 281,
+  "key": "others would take advantage of me if they could",
+  "en": "Others would take advantage of me if they could.",
+  "zh": "如果有机会，别人就会占我的便宜。",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "idx": 282,
+  "key": "pain in your arms, legs, or joints (knees, hips, etc.)",
+  "en": "Pain in your arms, legs, or joints (knees, hips, etc.)",
+  "zh": "手臂、腿部或关节（膝盖、髋部等）的疼痛",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "DSM5TR-L2-Somatic"
+  ]
+ },
+ {
+  "idx": 283,
+  "key": "pain or problems during sexual intercourse",
+  "en": "Pain or problems during sexual intercourse",
+  "zh": "性交时的疼痛或问题",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "DSM5TR-L2-Somatic"
+  ]
+ },
+ {
+  "idx": 284,
+  "key": "painkillers (like vicodin)",
+  "en": "Painkillers (like Vicodin)",
+  "zh": "止痛药（如维柯丁）",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "DSM5TR-L2-Substance"
+  ]
+ },
+ {
+  "idx": 285,
+  "key": "people are basically trustworthy",
+  "en": "People are basically trustworthy.",
+  "zh": "人们基本上是值得信任的。",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "idx": 286,
+  "key": "people complain about my need to have everything all arranged",
+  "en": "People complain about my need to have everything all arranged.",
+  "zh": "人们抱怨我非要把一切都安排得妥妥当当。",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "idx": 287,
+  "key": "people don't realize that i'm flattering them to get something",
+  "en": "People don’t realize that I’m flattering them to get something.",
+  "zh": "人们没有意识到，我奉承他们是为了得到些什么。",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "idx": 288,
+  "key": "people have told me that i think about things in a really strange way",
+  "en": "People have told me that I think about things in a really strange way.",
+  "zh": "有人告诉过我，我思考事情的方式非常奇怪。",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "idx": 289,
+  "key": "people often look at me as if i'd said something really weird",
+  "en": "People often look at me as if I’d said something really weird.",
+  "zh": "人们常常看着我，那神情像是我说了什么非常古怪的话。",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "idx": 290,
+  "key": "people often talk about me doing things i don't remember at all",
+  "en": "People often talk about me doing things I don’t remember at all.",
+  "zh": "人们常常说起我做过一些我完全不记得的事。",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "idx": 291,
+  "key": "people tell me it's difficult to know what i'm feeling",
+  "en": "People tell me it’s difficult to know what I’m feeling.",
+  "zh": "人们告诉我，很难看出我有什么感受。",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "idx": 292,
+  "key": "people tell me that i focus too much on minor details",
+  "en": "People tell me that I focus too much on minor details.",
+  "zh": "人们告诉我，我太关注细枝末节了。",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "idx": 293,
+  "key": "people would describe me as reckless",
+  "en": "People would describe me as reckless.",
+  "zh": "人们会说我这人做事鲁莽。",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "idx": 294,
+  "key": "plenty of people are out to get me",
+  "en": "Plenty of people are out to get me.",
+  "zh": "很多人都想害我。",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "PID-5"
+  ]
+ },
+ {
+  "idx": 295,
+  "key": "problems with memory (e.g., learning new information) or with location (e.g., finding your way home)?",
+  "en": "Problems with memory (e.g., learning new information) or with location (e.g., finding your way home)?",
+  "zh": "记忆方面有问题（例如学习新信息），或地点定向方面有问题（例如找不到回家的路）？",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "DSM5TR-L1"
+  ]
+ },
+ {
+  "idx": 296,
+  "key": "problems with memory (e.g., learning new information)or with location (e.g., finding your way home)?",
+  "en": "Problems with memory (e.g., learning new information)or with location (e.g., finding your way home)?",
+  "zh": "记忆方面有问题（例如学习新信息），或地点定向方面有问题（例如找不到回家的路）？",
+  "src": "subagent 初译（待人工复核）",
+  "inst": []
+ },
+ {
+  "idx": 297,
+  "key": "problems with sleep that affected your sleep quality over all?",
+  "en": "Problems with sleep that affected your sleep quality over all?",
+  "zh": "睡眠问题影响了您总体的睡眠质量？",
+  "src": "subagent 初译（待人工复核）",
+  "inst": [
+   "DSM5TR-L1"
+  ]
+ },
+ {
+  "idx": 298,
+  "key": "rarely look for a deeper meaning in things",
+  "en": "Rarely look for a deeper meaning in things.",
+  "zh": "很少探究事物更深层的含义",
+  "src": "subagent 初译（待人工复核）",
+  "inst": []
+ },
+ {
+  "idx": 299,
+  "key": "respect others",
+  "en": "Respect others.",
+  "zh": "尊重他人。",
+  "src": "subagent 初译（待人工复核）",
+  "inst": []
+ }
+]

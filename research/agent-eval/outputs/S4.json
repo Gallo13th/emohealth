@@ -1,0 +1,901 @@
+{
+ "sections": [
+  {
+   "heading": "这份解读覆盖了什么",
+   "text": "契约版本 1.0，模式为 classic。本次作答 300 题，总题量 300 题，完成度 100.0，已完成 10 轮。\n\n输入列出的可展示面向共 30 个，未解锁面向 0 个。\n\n一个必须先说清楚的事实：本次输入的 facets 字段里只有精度、「不测量什么」与「内容提醒」，**没有面向分数**。所以这份解读不会给出任何面向的高低，也不会用单题去补这个空缺。",
+   "grounded_in": [
+    "contract_version",
+    "mode",
+    "coverage.items_answered",
+    "coverage.items_total",
+    "coverage.pct",
+    "coverage.rounds_done",
+    "facets_showable",
+    "facets_withheld"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "测量精度：哪些面向到了可展示的精度",
+   "text": "输入里的 30 个面向，每一个的精度都是 k=10、of=10、r=1.0，层级为「完整」，随附说明是「可以按完整测量的精度看待」。也就是说，就题量与覆盖而言，这一份没有因题量不足而需要按下不表的面向。\n\n精度足够，不等于内容没有边界：每个面向的「不测量什么」与「内容提醒」都在下面逐条列出。",
+   "grounded_in": [
+    "facets_showable",
+    "facets.achievementstriving.precision.k",
+    "facets.achievementstriving.precision.of",
+    "facets.achievementstriving.precision.r",
+    "facets.achievementstriving.precision.tier",
+    "facets.achievementstriving.precision.advice"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "作答质量：协议偏离标志与可靠性折扣",
+   "text": "quality_gate 给出了一条标志（照录原文）：「ANTONYMS: 反义题一致性 -0.24 低于参照样本 p5=0.1294」，可靠性折扣为 0.35。\n\n这条标志说的是：本卷中成对的反义题，作答一致性为 -0.24，低于参照样本第 5 百分位的临界值 0.1294。这类指标反映的是整卷作答层面的一个信号，不指向任何单个面向；本次输入只给出了这条标志本身，没有给出可以进一步定位的分项，所以这里不推断它是怎么产生的。",
+   "grounded_in": [
+    "quality_gate.flags",
+    "quality_gate.notes",
+    "quality_gate.reliability_discount"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "常模：分数能不能被当真，先看参照人群",
+   "text": "参照人群为英国样本，非中国人群；源文件未提供样本量、招募方式与采集年份，且分带边界来自对常模表的反推。这四条限制直接决定分数能不能被当真，所以放在面向内容之前说。换到别的常模人群里，同样的作答未必落在同样的位置。",
+   "grounded_in": [
+    "disclosures.0",
+    "disclosures.0.id",
+    "disclosures.0.text",
+    "disclosures.0.why",
+    "disclosures.0.must_survive"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "这份结果不是什么",
+   "text": "本结果不构成任何诊断，也不能替代专业评估。它是一份自测陪伴式的自我观察材料，不是筛查工具。如果你希望对自己的状态得到一个可靠的判断，那需要的是临床评估与专门量表，而不是这份测评——本次作答里的焦虑与抑郁两个面向，在「不测量什么」里也各自写明不构成筛查。",
+   "grounded_in": [
+    "disclosures.1",
+    "disclosures.1.id",
+    "disclosures.1.text",
+    "disclosures.1.why",
+    "disclosures.1.must_survive",
+    "facets.anxiety.does_not_measure",
+    "facets.depression.does_not_measure"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "题目层面的澄清：这一批是怎么挑出来的",
+   "text": "下面这一批条目来自 notable_items。它们是在本次作答中选项位置落在两端、且脚手架记录了常见误读的题。每条只做一件事：说明**这道题问的是什么**，以及常见的另一种读法会滑到哪里。\n\n边界写在前面：单题不构成特质。单题与完整测量的相关最差只有 0.51，所以下面任何一条都不用来反推这个人在量表之外是什么样的，也不用来说这个人的作答说明或意味着什么。",
+   "grounded_in": [
+    "notable_items",
+    "rules.forbidden",
+    "rules.numeric_grounding",
+    "rules.grounding"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「追求成就」（尽责性）：不测量什么、要提醒什么",
+   "text": "面向「追求成就」属于尽责性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量实际成就或能力\n- 不测量能否启动与坚持（属 C5 自律）\n- 不测量是否相信自己做得到（属 C1 自我效能）\n- 不测量是否追求**外部认可**——这里问的是**想达到什么水平**\n\n这个面向自身的内容提醒，共 2 条，逐条照录：\n- **这一面向问的是「你想达到多高的水平」，不是「你有多忙」，也不是「你已经做到了多少」。**\n- 它与「自律」不同：**想拿第一，和真的开始去做，是两件事。**抱负很高却迟迟不动手，在这个量表里是常见的组合。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.achievementstriving.name_zh",
+    "facets.achievementstriving.domain_zh",
+    "facets.achievementstriving.precision.k",
+    "facets.achievementstriving.precision.of",
+    "facets.achievementstriving.precision.r",
+    "facets.achievementstriving.precision.tier",
+    "facets.achievementstriving.precision.advice",
+    "facets.achievementstriving.does_not_measure",
+    "facets.achievementstriving.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「活跃度」（外向性）：不测量什么、要提醒什么",
+   "text": "面向「活跃度」属于外向性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 5 条，逐条照录：\n- 不测量对强烈刺激的渴求（属 E5 追求刺激）\n- 不测量社交中的主导性（属 E3 决断性）\n- 不测量是否喜欢与人相处（属 E1 友好、E2 合群）\n- 不测量积极情绪的高低（属 E6 开朗）\n- 不测量工作是否自律（属 C5 自律）\n\n这个面向自身的内容提醒，共 2 条，逐条照录：\n- **本面向的题目混合了两类不同的东西**：第 1–5、10 题问的是你的**实际节奏与行为**（忙碌、奔波、并行、反应快慢），而第 6–9 题问的是你对从容节奏的**偏好**（喜欢慢慢来、不慌不忙、向往悠闲、顺其自然）。\n- 这是本量表内部一致性最低的面向（α=.71，其余多为 .80 以上）。**如果你的实际节奏与内心偏好并不一致（例如「实际很快，但向往从容」），这个总分无法同时描述这两件事**——请分别看上述两类题目。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.activitylevel.name_zh",
+    "facets.activitylevel.domain_zh",
+    "facets.activitylevel.precision.k",
+    "facets.activitylevel.precision.of",
+    "facets.activitylevel.precision.r",
+    "facets.activitylevel.precision.tier",
+    "facets.activitylevel.precision.advice",
+    "facets.activitylevel.does_not_measure",
+    "facets.activitylevel.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「冒险」（开放性）：不测量什么、要提醒什么",
+   "text": "面向「冒险」属于开放性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量对强烈刺激的渴求（属 E5 追求刺激）\n- 不测量对新观念的兴趣（属 O6 价值开放）\n- 不测量风险承受能力或胆量\n- 不测量旅行频率（受经济条件限制）\n\n这个面向自身的内容提醒，共 2 条，逐条照录：\n- 这一面向问的是**你愿不愿意尝试没做过的事**，与**胆量、风险承受力**无关，也与**能不能去**（时间、金钱、身体条件）无关。请按意愿作答，不按条件作答。\n- 它与「追求刺激」不同：追求刺激要的是**心跳加速**，这一面向要的是**新鲜感**。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.adventurousness.name_zh",
+    "facets.adventurousness.domain_zh",
+    "facets.adventurousness.precision.k",
+    "facets.adventurousness.precision.of",
+    "facets.adventurousness.precision.r",
+    "facets.adventurousness.precision.tier",
+    "facets.adventurousness.precision.advice",
+    "facets.adventurousness.does_not_measure",
+    "facets.adventurousness.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「审美」（开放性）：不测量什么、要提醒什么",
+   "text": "面向「审美」属于开放性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量自己创作的能力\n- 不测量是否懂艺术史或技法\n- 不测量想象力（属 O1 想象力）\n- 不测量对娱乐内容的消费量（看剧刷视频不算审美）\n\n这个面向自身的内容提醒，共 2 条，逐条照录：\n- **注意：「喜欢音乐」这类题在人群中几乎人人同意**，所以它对本面向的区分贡献很小。如果总分处在中间地带，可能只是因为部分题目本身区分度低，而不代表审美倾向「中庸」。\n- 这一面向问的是**是否被作品与美打动**，不是**是否懂艺术**，也不是**消费了多少内容**。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.aesthetic_appreciation_artistic_interests.name_zh",
+    "facets.aesthetic_appreciation_artistic_interests.domain_zh",
+    "facets.aesthetic_appreciation_artistic_interests.precision.k",
+    "facets.aesthetic_appreciation_artistic_interests.precision.of",
+    "facets.aesthetic_appreciation_artistic_interests.precision.r",
+    "facets.aesthetic_appreciation_artistic_interests.precision.tier",
+    "facets.aesthetic_appreciation_artistic_interests.precision.advice",
+    "facets.aesthetic_appreciation_artistic_interests.does_not_measure",
+    "facets.aesthetic_appreciation_artistic_interests.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「利他」（宜人性）：不测量什么、要提醒什么",
+   "text": "面向「利他」属于宜人性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量是否喜欢与人相处（属 E1 友好、E2 合群）\n- 不测量道德水平（属 A2 道德）\n- 不测量共情能力（属 A6 同情）\n- 不测量的实际付出量（受资源与处境限制）\n\n这个面向自身的内容提醒，共 2 条，逐条照录：\n- 这一面向问的是**你愿不愿意为他人付出**，不是**你实际付出了多少**。请按意愿作答，不要因为「最近太忙没顾上」而压低分数。\n- 它与「同情」不同：同情是**感受到**别人的处境，这一面向是**为此做点什么**。两者可以不一致。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.altruism.name_zh",
+    "facets.altruism.domain_zh",
+    "facets.altruism.precision.k",
+    "facets.altruism.precision.of",
+    "facets.altruism.precision.r",
+    "facets.altruism.precision.tier",
+    "facets.altruism.precision.advice",
+    "facets.altruism.does_not_measure",
+    "facets.altruism.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「愤怒」（神经质）：不测量什么、要提醒什么",
+   "text": "面向「愤怒」属于神经质。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量担忧与紧张（属 N1 焦虑）\n- 不测量表达愤怒的社交技巧\n- 不测量攻击行为的实际发生（那是行为，不是特质）\n- 不测量对外界不满的合理表达\n\n这个面向自身的内容提醒，共 1 条，逐条照录：\n- 本面向含攻击性表述，**社会赞许性会让一部分人低报**。若你作答时感到「不太想说真话」，这个分数可能偏低。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.anger.name_zh",
+    "facets.anger.domain_zh",
+    "facets.anger.precision.k",
+    "facets.anger.precision.of",
+    "facets.anger.precision.r",
+    "facets.anger.precision.tier",
+    "facets.anger.precision.advice",
+    "facets.anger.does_not_measure",
+    "facets.anger.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「焦虑」（神经质）：不测量什么、要提醒什么",
+   "text": "面向「焦虑」属于神经质。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 5 条，逐条照录：\n- 不测量抑郁或低落（属 N3 抑郁）\n- 不测量对社交评价的在意（属 N4 自我意识）\n- 不测量抗压能力或依赖倾向（属 N6 脆弱性）\n- 不测量易怒与挫败感（属 N2 愤怒）\n- 不构成焦虑障碍的诊断或筛查\n\n这个面向自身的内容提醒，共 1 条，逐条照录：\n- 第 10 题（容易适应新环境）问的是**情境适应**，与其余 9 题的「担忧强度」主轴略有不同。若你「担忧程度不高、但进入新环境很吃力」，或相反，这个总分可能掩盖这一差异。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.anxiety.name_zh",
+    "facets.anxiety.domain_zh",
+    "facets.anxiety.precision.k",
+    "facets.anxiety.precision.of",
+    "facets.anxiety.precision.r",
+    "facets.anxiety.precision.tier",
+    "facets.anxiety.precision.advice",
+    "facets.anxiety.does_not_measure",
+    "facets.anxiety.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「决断性」（外向性）：不测量什么、要提醒什么",
+   "text": "面向「决断性」属于外向性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量是否喜欢与人相处（属 E1 友好、E2 合群）\n- 不测量攻击性或支配欲（那更接近 N2 愤怒或 A 维度的对立面）\n- 不测量领导能力或职位\n- 不测量能否坚持己见（那属 C6 审慎的对立面）\n\n这个面向自身的内容提醒，共 1 条，逐条照录：\n- 这一面向问的是**是否主动表达与主导**，**不是攻击性，也不是爱出风头**。它可以表现为「在需要有人拍板时站出来」，而不等于是强势。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.assertiveness.name_zh",
+    "facets.assertiveness.domain_zh",
+    "facets.assertiveness.precision.k",
+    "facets.assertiveness.precision.of",
+    "facets.assertiveness.precision.r",
+    "facets.assertiveness.precision.tier",
+    "facets.assertiveness.precision.advice",
+    "facets.assertiveness.does_not_measure",
+    "facets.assertiveness.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「审慎」（尽责性）：不测量什么、要提醒什么",
+   "text": "面向「审慎」属于尽责性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量是否焦虑或担忧（属 N1 焦虑）\n- 不测量能否抵抗诱惑（属 N5 放纵）\n- 不测量是否保守（属 O6 价值开放）\n- 不测量决断的速度——这里问的是**想不想就做**，不是**做得快不快**\n\n这个面向自身的内容提醒，共 2 条，逐条照录：\n- **这一面向问的是「你会不会先想再做」，不是「你会不会做不了决定」。**有意的权衡（想清楚后就行动）是这一面向；因为担心而迟迟无法决定，那更接近「焦虑」，不属于这里。\n- 另需留意：本面向的题目以反向题为主（7 反 / 3 正），**更容易受到「习惯性同意」这种作答倾向的干扰**。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.cautiousness.name_zh",
+    "facets.cautiousness.domain_zh",
+    "facets.cautiousness.precision.k",
+    "facets.cautiousness.precision.of",
+    "facets.cautiousness.precision.r",
+    "facets.cautiousness.precision.tier",
+    "facets.cautiousness.precision.advice",
+    "facets.cautiousness.does_not_measure",
+    "facets.cautiousness.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「开朗」（外向性）：不测量什么、要提醒什么",
+   "text": "面向「开朗」属于外向性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量情绪低落的程度（属 N3 抑郁，但两者是同一维度的两端）\n- 不测量幽默感或社交风趣\n- 不测量生活境遇的好坏\n- 不测量是否爱笑（那是表达习惯，不是情绪体验）\n\n这个面向自身的内容提醒，共 2 条，逐条照录：\n- 这一面向问的是**你内心的情绪基调**，不是**你表现出多少**。如果你常感愉快但不爱外露，请按内心状态作答。\n- 同时请留意：**情绪会受到近期境遇的影响**。若你最近经历了较大的好事或坏事，这个分数可能反映的是当下的处境，而不是一贯的你。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.cheerfulness.name_zh",
+    "facets.cheerfulness.domain_zh",
+    "facets.cheerfulness.precision.k",
+    "facets.cheerfulness.precision.of",
+    "facets.cheerfulness.precision.r",
+    "facets.cheerfulness.precision.tier",
+    "facets.cheerfulness.precision.advice",
+    "facets.cheerfulness.does_not_measure",
+    "facets.cheerfulness.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「合作」（宜人性）：不测量什么、要提醒什么",
+   "text": "面向「合作」属于宜人性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量是否愿意帮助他人（属 A3 利他）\n- 不测量是否容易发火（属 N2 愤怒）\n- 不测量谈判或博弈能力\n- 不测量是否有原则——这里问的是**冲突时的行为倾向**\n\n这个面向自身的内容提醒，共 3 条，逐条照录：\n- **这一面向的名字（「合作」）与它实际测的东西有落差。**它测的不是「团队协作能力」，而是**在分歧和冲突中是否倾向于让步**。\n- 低分不代表「不合作」，而是**更愿意坚持自己的立场**——这在很多情境下是必要的，不是缺点。\n- 另需留意：其中含有带报复意味的表述，**如果让你不愿意作答，跳过也是有效的反应**。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.cooperation.name_zh",
+    "facets.cooperation.domain_zh",
+    "facets.cooperation.precision.k",
+    "facets.cooperation.precision.of",
+    "facets.cooperation.precision.r",
+    "facets.cooperation.precision.tier",
+    "facets.cooperation.precision.advice",
+    "facets.cooperation.does_not_measure",
+    "facets.cooperation.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「抑郁」（神经质）：不测量什么、要提醒什么",
+   "text": "面向「抑郁」属于神经质。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不构成抑郁症的诊断或筛查（那需要临床评估与专门量表）\n- 不测量焦虑与担忧（属 N1 焦虑）\n- 不测量精力与活动量（属 E4 活跃度）\n- 不测量悲伤情绪的**合理性**——因真实丧失而悲伤同样计入\n\n这个面向自身的内容提醒，共 2 条，逐条照录：\n- **这个面向不区分「情绪低落的原因」。** 因真实丧失（丧亲、失业、失恋）而悲伤的人，与因气质而长期低落的人，得分可能相同——量表无法分辨这两者。\n- 本面向**不构成抑郁筛查**。若你长期感到低落、失去兴趣或出现伤害自己的念头，请直接寻求专业帮助，而不是依靠这份测评。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.depression.name_zh",
+    "facets.depression.domain_zh",
+    "facets.depression.precision.k",
+    "facets.depression.precision.of",
+    "facets.depression.precision.r",
+    "facets.depression.precision.tier",
+    "facets.depression.precision.advice",
+    "facets.depression.does_not_measure",
+    "facets.depression.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「责任心」（尽责性）：不测量什么、要提醒什么",
+   "text": "面向「责任心」属于尽责性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量任务能否及时启动（属 C5 自律）\n- 不测量道德诚信（属 A2 道德）\n- 不测量是否盲从——这里问的是**对自己认同的义务的履行**\n- 不测量工作能力\n\n这个面向自身的内容提醒，共 2 条，逐条照录：\n- **这一面向问的是「你有多重视承诺与规范」，不是「你有多能干」，也不是「你有多善良」。**\n- 其中含有「我会打破规则」「我会违背承诺」这类表述——**如果你想到的是某些不合理的规矩，请按你平日里对「承诺」的一般态度作答**，而不是按某个具体情境。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.dutifulness.name_zh",
+    "facets.dutifulness.domain_zh",
+    "facets.dutifulness.precision.k",
+    "facets.dutifulness.precision.of",
+    "facets.dutifulness.precision.r",
+    "facets.dutifulness.precision.tier",
+    "facets.dutifulness.precision.advice",
+    "facets.dutifulness.does_not_measure",
+    "facets.dutifulness.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「情感丰富」（开放性）：不测量什么、要提醒什么",
+   "text": "面向「情感丰富」属于开放性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量情绪的**强度**或波动（那属神经质）\n- 不测量对他人的共情（属 A6 同情）\n- 不测量情绪表达能力\n- 不测量心理反思的习惯（那更接近 O5 思辨）\n\n这个面向自身的内容提醒，共 2 条，逐条照录：\n- 这一面向问的是**你对情绪的敏感度与重视程度**，**与情绪是正面还是负面无关，也与情绪波动大小无关**。一个情绪稳定但对自己的感受很敏感的人，这一面向可以很高。\n- 注意其中一题问的是「喜欢审视自己与自己的生活」——那更接近**自我探索的兴趣**，与本面向的「情绪觉察」并不完全等同。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.emotionality.name_zh",
+    "facets.emotionality.domain_zh",
+    "facets.emotionality.precision.k",
+    "facets.emotionality.precision.of",
+    "facets.emotionality.precision.r",
+    "facets.emotionality.precision.tier",
+    "facets.emotionality.precision.advice",
+    "facets.emotionality.does_not_measure",
+    "facets.emotionality.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「追求刺激」（外向性）：不测量什么、要提醒什么",
+   "text": "面向「追求刺激」属于外向性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量日常活动量（属 E4 活跃度）\n- 不测量是否喜欢与人相处（属 E1/E2）\n- 不测量风险判断能力\n- 不测量对刺激的实际承受力\n\n这个面向自身的内容提醒，共 2 条，逐条照录：\n- **这一面向描述的是对强烈体验的偏好，不含褒贬**——它既不等于勇敢，也不等于不负责任。\n- 它与「活跃度」不是一回事：活跃度问的是**节奏快慢与活动量**，这一面向问的是**是否需要强烈的唤起**。工作高效但从不冒险的人，活跃度可以很高而这一面向很低。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.excitementseeking.name_zh",
+    "facets.excitementseeking.domain_zh",
+    "facets.excitementseeking.precision.k",
+    "facets.excitementseeking.precision.of",
+    "facets.excitementseeking.precision.r",
+    "facets.excitementseeking.precision.tier",
+    "facets.excitementseeking.precision.advice",
+    "facets.excitementseeking.does_not_measure",
+    "facets.excitementseeking.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「友好」（外向性）：不测量什么、要提醒什么",
+   "text": "面向「友好」属于外向性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量社交场合的数量（属 E2 合群性）\n- 不测量在人群中的自在程度（属 N4 自我意识）\n- 不测量社交技巧或人际能力\n- 不测量是否对陌生人保持警惕（那可能属于审慎）\n\n这个面向自身的内容提醒，共 1 条，逐条照录：\n- 这一面向问的是**对他人是否有温度**，不是**社交数量**，也不是**社交能力**。如果你只与少数人深交、但关系很暖，这里仍应给高分。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.friendliness.name_zh",
+    "facets.friendliness.domain_zh",
+    "facets.friendliness.precision.k",
+    "facets.friendliness.precision.of",
+    "facets.friendliness.precision.r",
+    "facets.friendliness.precision.tier",
+    "facets.friendliness.precision.advice",
+    "facets.friendliness.does_not_measure",
+    "facets.friendliness.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「合群性」（外向性）：不测量什么、要提醒什么",
+   "text": "面向「合群性」属于外向性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量对具体他人的情感温度（属 E1 友好）\n- 不测量在社交中的自在程度（属 N4 自我意识）\n- 不测量社交能力或受欢迎程度\n- 不测量是否喜欢安静的活动（那属 O 开放性）\n\n这个面向自身的内容提醒，共 1 条，逐条照录：\n- 这一面向问的是**想不想要人陪、喜不喜欢热闹**，与**和人处得好不好**无关。如果你朋友不多但每一段关系都很深，这里仍可能给低分——那是偏好，不是缺陷。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.gregariousness.name_zh",
+    "facets.gregariousness.domain_zh",
+    "facets.gregariousness.precision.k",
+    "facets.gregariousness.precision.of",
+    "facets.gregariousness.precision.r",
+    "facets.gregariousness.precision.tier",
+    "facets.gregariousness.precision.advice",
+    "facets.gregariousness.does_not_measure",
+    "facets.gregariousness.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「想象力」（开放性）：不测量什么、要提醒什么",
+   "text": "面向「想象力」属于开放性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量创造力或艺术才能\n- 不测量是否务实（那更接近 C 维度的对立面）\n- 不测量对艺术的兴趣（属 O2 审美）\n- 不测量思维的深度（属 O5 思辨）\n\n这个面向自身的内容提醒，共 1 条，逐条照录：\n- 这一面向问的是**你是否主动使用想象**，与**有没有艺术才能或创造力**无关。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.imagination.name_zh",
+    "facets.imagination.domain_zh",
+    "facets.imagination.precision.k",
+    "facets.imagination.precision.of",
+    "facets.imagination.precision.r",
+    "facets.imagination.precision.tier",
+    "facets.imagination.precision.advice",
+    "facets.imagination.does_not_measure",
+    "facets.imagination.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「放纵」（神经质）：不测量什么、要提醒什么",
+   "text": "面向「放纵」属于神经质。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量是否自律地推进任务（属 C5 自律）——自律管的是**该做的事做不做**，放纵管的是**想做的事停不停**\n- 不测量成瘾行为（那是临床范畴）\n- 不测量是否享受美食或消费\n- 不测量情绪性的愤怒冲动（属 N2 愤怒）\n\n这个面向自身的内容提醒，共 2 条，逐条照录：\n- **「放纵」的具体行为在不同人身上差别很大**（饮食、消费、娱乐、拖延…），而题目并未固定在某一种。这个总分只能粗略反映「是否容易在诱惑前让步」的总体倾向。\n- 这一面向问的是**想做的事能不能停**，与**该做的事做不做**（属「自律」）是两件事。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.immoderation.name_zh",
+    "facets.immoderation.domain_zh",
+    "facets.immoderation.precision.k",
+    "facets.immoderation.precision.of",
+    "facets.immoderation.precision.r",
+    "facets.immoderation.precision.tier",
+    "facets.immoderation.precision.advice",
+    "facets.immoderation.does_not_measure",
+    "facets.immoderation.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「思辨」（开放性）：不测量什么、要提醒什么",
+   "text": "面向「思辨」属于开放性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量智力水平或学业成绩\n- 不测量知识储备\n- 不测量想象力（属 O1 想象力）\n- 不测量是否爱读书（那可能只是习惯）\n\n这个面向自身的内容提醒，共 2 条，逐条照录：\n- **这一面向的名字容易误导。它测的是「你喜不喜欢思考」，不是「你有多聪明」。**它不反映智力水平、学历或知识储备。\n- 如果你只是**必要的时候**能把复杂问题想清楚，但并不享受这个过程，这里应给中等分数；享受过程本身才是高分。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.intellect.name_zh",
+    "facets.intellect.domain_zh",
+    "facets.intellect.precision.k",
+    "facets.intellect.precision.of",
+    "facets.intellect.precision.r",
+    "facets.intellect.precision.tier",
+    "facets.intellect.precision.advice",
+    "facets.intellect.does_not_measure",
+    "facets.intellect.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「价值开放」（开放性）：不测量什么、要提醒什么",
+   "text": "面向「价值开放」属于开放性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量具体的政治立场（左/右、保守/自由）\n- 不测量是否守法或有道德\n- 不测量对新体验的兴趣（属 O4 冒险）\n- 不测量批判性思维的能力\n\n这个面向自身的内容提醒，共 3 条，逐条照录：\n- **这一面向是全部 30 个里最容易被误读的一个。** 它问的不是你的政治立场属于左还是右，而是**你在多大程度上愿意重新审视既有的传统、规范与权威**。\n- 它同时受到**文化语境**的强烈影响：同样的题目，在不同社会里被理解成的「开放」并不相同。**请把这里的分数当作一个很粗略的提示，而不是对你价值观的判断。**\n- 另外，本面向的计分方向以反向题为主（7 反 / 3 正），**更容易受到「习惯性同意」这种作答倾向的干扰**。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.liberalism.name_zh",
+    "facets.liberalism.domain_zh",
+    "facets.liberalism.precision.k",
+    "facets.liberalism.precision.of",
+    "facets.liberalism.precision.r",
+    "facets.liberalism.precision.tier",
+    "facets.liberalism.precision.advice",
+    "facets.liberalism.does_not_measure",
+    "facets.liberalism.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「谦逊」（宜人性）：不测量什么、要提醒什么",
+   "text": "面向「谦逊」属于宜人性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量实际的能力或成就水平\n- 不测量自尊高低（低自尊属神经质）\n- 不测量是否愿意帮助他人（属 A3 利他）\n- 不测量社交中的拘谨（属 N4 自我意识）\n\n这个面向自身的内容提醒，共 3 条，逐条照录：\n- **这一面向问的是「你会不会抬高自己」，不是「你自不自信」。**它不测量自我价值感，也不测量实际能力。\n- **它与自信可以并存**：一个人完全可以在心里清楚自己的水平，同时不主动炫耀。两件事在题目里不总能分开，所以这个分数只作粗略参考。\n- 其中一题使用了英文习语（toot my own horn），在翻译时最容易失去原意——若你觉得那题的意思不好把握，可以跳过。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.modesty_humility.name_zh",
+    "facets.modesty_humility.domain_zh",
+    "facets.modesty_humility.precision.k",
+    "facets.modesty_humility.precision.of",
+    "facets.modesty_humility.precision.r",
+    "facets.modesty_humility.precision.tier",
+    "facets.modesty_humility.precision.advice",
+    "facets.modesty_humility.does_not_measure",
+    "facets.modesty_humility.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「道德」（宜人性）：不测量什么、要提醒什么",
+   "text": "面向「道德」属于宜人性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量道德水平或人品（这是自我报告，且构念窄得多）\n- 不测量是否守法\n- 不测量对他人的信任（属 A1 信任）\n- 不测量政治或价值立场（属 O6 价值开放）\n\n这个面向自身的内容提醒，共 3 条，逐条照录：\n- **这一面向的名字（「道德」）比它实际测的东西大得多。**它测的只是**在利益面前是否诚实、是否操纵他人**，不涉及你的人品、守法或价值立场。\n- **它极易受到「希望自己看起来是好人」这一倾向的影响**，所以分数普遍偏高，区分度有限。请把它当作很粗略的提示。\n- 另需留意：其中有题目（如「会利用他人达成自己的目的」）会让人不愿意作答——**跳过不答也是有效的反应**，不必勉强。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.morality.name_zh",
+    "facets.morality.domain_zh",
+    "facets.morality.precision.k",
+    "facets.morality.precision.of",
+    "facets.morality.precision.r",
+    "facets.morality.precision.tier",
+    "facets.morality.precision.advice",
+    "facets.morality.does_not_measure",
+    "facets.morality.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「条理性」（尽责性）：不测量什么、要提醒什么",
+   "text": "面向「条理性」属于尽责性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量任务能否按时完成（属 C5 自律）\n- 不测量是否守规矩（属 C3 责任心）\n- 不测量工作能力\n- 不测量对秩序的**需求强度**——这里问的是**实际的有序程度与偏好**\n\n这个面向自身的内容提醒，共 2 条，逐条照录：\n- **注意：「条理」在这里只指「环境与物品是否整齐」，不是「做事是否靠谱」。**一个桌面很乱但工作推进得很好的人，这一面向可以很低，而「自律」很高。\n- 另需留意：**本面向的一题在原始机读数据中缺失正文**，我们是用官方问卷补齐的——如果那题的表述让你觉得不太通顺，原因在此。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.orderliness.name_zh",
+    "facets.orderliness.domain_zh",
+    "facets.orderliness.precision.k",
+    "facets.orderliness.precision.of",
+    "facets.orderliness.precision.r",
+    "facets.orderliness.precision.tier",
+    "facets.orderliness.precision.advice",
+    "facets.orderliness.does_not_measure",
+    "facets.orderliness.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「自我意识」（神经质）：不测量什么、要提醒什么",
+   "text": "面向「自我意识」属于神经质。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量是否喜欢与人相处（属 E1 友好、E2 合群）\n- 不测量一般性的担忧（属 N1 焦虑）\n- 不测量社交技能的高低\n- 不测量是否在意他人**看法本身**——这里问的是**在他人面前的自在程度**\n\n这个面向自身的内容提醒，共 2 条，逐条照录：\n- **本面向在官方便携中文译本上的内部一致性偏低（α=.602）**，意味着这几道题的中文表述可能没能统一地指向同一个构念。请把它当作粗略提示，而非精确测量。\n- 这一面向问的是**在他人面前是否自在**，不是**是否喜欢与人相处**。如果你乐意和人交往、只是一被注视就紧张，这属于本面向；如果你单纯偏好独处而不紧张，则不属于。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.selfconsciousness.name_zh",
+    "facets.selfconsciousness.domain_zh",
+    "facets.selfconsciousness.precision.k",
+    "facets.selfconsciousness.precision.of",
+    "facets.selfconsciousness.precision.r",
+    "facets.selfconsciousness.precision.tier",
+    "facets.selfconsciousness.precision.advice",
+    "facets.selfconsciousness.does_not_measure",
+    "facets.selfconsciousness.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「自律」（尽责性）：不测量什么、要提醒什么",
+   "text": "面向「自律」属于尽责性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 5 条，逐条照录：\n- 不测量环境是否整洁有序（属 C2 条理性）\n- 不测量是否守规矩、尽义务（属 C3 责任心）\n- 不测量抱负高低与成就动机（属 C4 追求成就）\n- 不测量对自己能力的信心（属 C1 自我效能）\n- 不测量能否抵抗诱惑（属 N5 放纵）\n\n这个面向自身的内容提醒，共 1 条，逐条照录：\n- 本面向的题目混合了「**启动速度**」（第 3、4 题）与「**持续执行**」（第 5 题）两个侧面，第 10 题问的则是**决策**而非行动。α=.85 尚可接受，但若你在这几个侧面上差别很大，总分可能掩盖这一差异。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.selfdiscipline.name_zh",
+    "facets.selfdiscipline.domain_zh",
+    "facets.selfdiscipline.precision.k",
+    "facets.selfdiscipline.precision.of",
+    "facets.selfdiscipline.precision.r",
+    "facets.selfdiscipline.precision.tier",
+    "facets.selfdiscipline.precision.advice",
+    "facets.selfdiscipline.does_not_measure",
+    "facets.selfdiscipline.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「自我效能」（尽责性）：不测量什么、要提醒什么",
+   "text": "面向「自我效能」属于尽责性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量实际能力或过往成绩\n- 不测量是否自律地推进（属 C5 自律）\n- 不测量自尊或自我价值（那属神经质）\n- 不测量是否喜欢思考（属 O5 思辨）\n\n这个面向自身的内容提醒，共 2 条，逐条照录：\n- **这一面向问的是「你觉得自己行不行」，不是「你实际行不行」。**它反映的是信心，不反映能力、成绩或经验。\n- 它与「自律」是两件事：**相信自己能把事做好，和真的会去做，可以分开。**自信却拖延，是这个量表里很常见的一种组合。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.selfefficacy.name_zh",
+    "facets.selfefficacy.domain_zh",
+    "facets.selfefficacy.precision.k",
+    "facets.selfefficacy.precision.of",
+    "facets.selfefficacy.precision.r",
+    "facets.selfefficacy.precision.tier",
+    "facets.selfefficacy.precision.advice",
+    "facets.selfefficacy.does_not_measure",
+    "facets.selfefficacy.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「同情」（宜人性）：不测量什么、要提醒什么",
+   "text": "面向「同情」属于宜人性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量是否实际提供帮助（属 A3 利他）\n- 不测量对自己情绪的觉察（属 O3 情感丰富）\n- 不测量道德水平（属 A2 道德）\n- 不测量的共情准确性——这里问的是**被打动的程度**\n\n这个面向自身的内容提醒，共 2 条，逐条照录：\n- **这一面向测的是「你会不会被别人的困难打动」，不是「你有多善良」，也不是「你会不会去帮」。** 它只覆盖共情中的**情感反应**那一半——能理解他人处境但情绪不被牵动的人，这里会得低分，但这不等于缺乏共情能力。\n- 低分尤其容易被自我评判为「冷漠」。**请把它当作一个描述，而不是评价。**\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.sympathy.name_zh",
+    "facets.sympathy.domain_zh",
+    "facets.sympathy.precision.k",
+    "facets.sympathy.precision.of",
+    "facets.sympathy.precision.r",
+    "facets.sympathy.precision.tier",
+    "facets.sympathy.precision.advice",
+    "facets.sympathy.does_not_measure",
+    "facets.sympathy.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「信任」（宜人性）：不测量什么、要提醒什么",
+   "text": "面向「信任」属于宜人性。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量是否容易亲近他人（属 E1 友好）\n- 不测量是否天真或缺乏判断力\n- 不测量实际的被骗经历\n- 不测量是否愿意帮助他人（属 A3 利他）\n\n这个面向自身的内容提醒，共 2 条，逐条照录：\n- 这一面向描述的是**你对他人动机的默认假设**，不含褒贬——它既不是「天真」，低分也不是「成熟」。\n- 它与「是否愿意帮助别人」（属「利他」）不是一回事：可以信任所有人但不主动付出。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.trust.name_zh",
+    "facets.trust.domain_zh",
+    "facets.trust.precision.k",
+    "facets.trust.precision.of",
+    "facets.trust.precision.r",
+    "facets.trust.precision.tier",
+    "facets.trust.precision.advice",
+    "facets.trust.does_not_measure",
+    "facets.trust.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向「脆弱性」（神经质）：不测量什么、要提醒什么",
+   "text": "面向「脆弱性」属于神经质。在本次输入里，它的精度是 k=10、of=10、r=1.0，层级为「完整」，随附的说明是「可以按完整测量的精度看待」。\n\n这个面向**不测量**什么，共 4 条，逐条照录：\n- 不测量日常的担忧（属 N1 焦虑）\n- 不测量情绪低落（属 N3 抑郁）\n- 不测量实际的能力或资源——这里问的是**主观的应对感受**\n- 不测量独立性与依赖需求的整体倾向\n\n这个面向自身的内容提醒，共 2 条，逐条照录：\n- **「脆弱性」一词听起来像负面评价，但这里描述的是压力反应，不是能力评价。** 它问的是在高负荷或突发情形下会不会慌，与你的实际能力、资源、经验都无关。\n- 这一面向问的是**压力下的承受**，与**平时的担忧**（属「焦虑」）不同。平时不焦虑但一遇高压就慌，属于本面向。\n\n以上两类内容属于「我们对自己工具的批评」，在本次输出里不做删减，也不改写成立场更弱或更强的说法——它们是这份分数能不能被当真的前提。",
+   "grounded_in": [
+    "facets.vulnerability.name_zh",
+    "facets.vulnerability.domain_zh",
+    "facets.vulnerability.precision.k",
+    "facets.vulnerability.precision.of",
+    "facets.vulnerability.precision.r",
+    "facets.vulnerability.precision.tier",
+    "facets.vulnerability.precision.advice",
+    "facets.vulnerability.does_not_measure",
+    "facets.vulnerability.interpretation_caveats"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "题目澄清：第 8 题「认为艺术是很重要的」",
+   "text": "这道题是全卷第 8 题，题干是「认为艺术是很重要的」，出现在「开放性」维度下的「审美」面向。本次作答在这道题上的选项值是 5，对应选项位置 100.0。\n\n**这道题问的是**：你是否认为艺术在生活中有重要地位。\n\n承重词是「importance of art」，在这里的意思是：艺术的价值地位。它不是：「懂艺术」。\n\n常见的另一种读法，以及它的边界：\n- 只按美术理解 → 音乐、文学、影视都算。\n- 把「认为重要」当成「自己懂」 → 本题问价值判断，不问造诣。\n\n关于表述本身：中文「艺术」在日常使用中常被窄化为「美术」，而英文 art 涵盖音乐、文学、戏剧、绘画等。**本题的 art 是广义的。**\n\n这一条只说明这道题问的是什么。单题的作答位置不构成对这个人在量表之外的任何推断——单题与完整测量的相关最差只有 0.51。也不把分数说成证明了什么。",
+   "grounded_in": [
+    "notable_items.0.order",
+    "notable_items.0.text_zh",
+    "notable_items.0.facet",
+    "notable_items.0.response",
+    "notable_items.0.percentile",
+    "notable_items.0.asks",
+    "notable_items.0.key_term.term",
+    "notable_items.0.key_term.sense_here",
+    "notable_items.0.key_term.not_this",
+    "notable_items.0.common_misreadings.0.misreading",
+    "notable_items.0.common_misreadings.0.correction",
+    "notable_items.0.common_misreadings.1.misreading",
+    "notable_items.0.common_misreadings.1.correction",
+    "notable_items.0.localization_note",
+    "facets.aesthetic_appreciation_artistic_interests.name_zh",
+    "facets.aesthetic_appreciation_artistic_interests.domain_zh",
+    "rules.forbidden"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "题目澄清：第 52 题「喜欢冒险」",
+   "text": "这道题是全卷第 52 题，题干是「喜欢冒险」，出现在「外向性」维度下的「追求刺激」面向。本次作答在这道题上的选项值是 5，对应选项位置 100.0。\n\n**这道题问的是**：你是否喜欢冒险。\n\n承重词是「adventure」，在这里的意思是：冒险性活动（带不确定性与风险）。它不是：「尝试新事物」。\n\n常见的另一种读法，以及它的边界：\n- 与「冒险」（O4）面向混同 → 新颖性 vs 风险与刺激。\n- 把「旅行」一律算入 → 轻松旅行未必有冒险成分。\n\n关于表述本身：**与「冒险」（O4 面向）的关键区别**：O4 偏**尝试新事物**（新地方、新食物、新观念），本题偏**带有风险或刺激的活动**。去一家没吃过的餐厅是 O4 高、本题不一定高；蹦极是两者都高。\n\n这一条只说明这道题问的是什么。单题的作答位置不构成对这个人在量表之外的任何推断——单题与完整测量的相关最差只有 0.51。也不把分数说成证明了什么。",
+   "grounded_in": [
+    "notable_items.1.order",
+    "notable_items.1.text_zh",
+    "notable_items.1.facet",
+    "notable_items.1.response",
+    "notable_items.1.percentile",
+    "notable_items.1.asks",
+    "notable_items.1.key_term.term",
+    "notable_items.1.key_term.sense_here",
+    "notable_items.1.key_term.not_this",
+    "notable_items.1.common_misreadings.0.misreading",
+    "notable_items.1.common_misreadings.0.correction",
+    "notable_items.1.common_misreadings.1.misreading",
+    "notable_items.1.common_misreadings.1.correction",
+    "notable_items.1.localization_note",
+    "facets.excitementseeking.name_zh",
+    "facets.excitementseeking.domain_zh",
+    "rules.forbidden"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "题目澄清：第 60 题「说话前会斟酌用词」",
+   "text": "这道题是全卷第 60 题，题干是「说话前会斟酌用词」，出现在「尽责性」维度下的「审慎」面向。本次作答在这道题上的选项值是 5，对应选项位置 100.0。\n\n**这道题问的是**：你是否在说话前会仔细选择用词。\n\n承重词是「with care」，在这里的意思是：谨慎、斟酌。它不是：「说话慢」。\n\n常见的另一种读法，以及它的边界：\n- 把「怕说错所以少说」当成斟酌 → 那是社交焦虑。\n- 认为自己说话直就是不审慎 → 直率也可以是深思后的选择。\n\n关于表述本身：与「自我意识」（N4）的区别：那是**担心别人怎么看**，本题是**为了准确而斟酌**。因为怕说错而不敢说，与因为想说准而斟酌，动机不同。\n\n这一条只说明这道题问的是什么。单题的作答位置不构成对这个人在量表之外的任何推断——单题与完整测量的相关最差只有 0.51。也不把分数说成证明了什么。",
+   "grounded_in": [
+    "notable_items.2.order",
+    "notable_items.2.text_zh",
+    "notable_items.2.facet",
+    "notable_items.2.response",
+    "notable_items.2.percentile",
+    "notable_items.2.asks",
+    "notable_items.2.key_term.term",
+    "notable_items.2.key_term.sense_here",
+    "notable_items.2.key_term.not_this",
+    "notable_items.2.common_misreadings.0.misreading",
+    "notable_items.2.common_misreadings.0.correction",
+    "notable_items.2.common_misreadings.1.misreading",
+    "notable_items.2.common_misreadings.1.correction",
+    "notable_items.2.localization_note",
+    "facets.cautiousness.name_zh",
+    "facets.cautiousness.domain_zh",
+    "rules.forbidden"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "题目澄清：第 69 题「会靠奉承往上爬」",
+   "text": "这道题是全卷第 69 题，题干是「会靠奉承往上爬」，出现在「宜人性」维度下的「道德」面向。本次作答在这道题上的选项值是 1，对应选项位置 100.0。\n\n**这道题问的是**：（反向题）你是否会靠说好话来获取好处。\n\n承重词是「flattery」，在这里的意思是：言不由衷的恭维。它不是：「会说话、情商高」。\n\n常见的另一种读法，以及它的边界：\n- 把「礼貌、客气」当成奉承 → 真心或不伤人的客气不算。\n- 认为职场里难免 → 本题问的是你是否会**以此作为手段**。\n\n关于表述本身：中文「奉承」与「会做人」的边界常被模糊。**判断标准是「说的是不是真心话」**，而不是「会不会说话」。\n\n这一条只说明这道题问的是什么。单题的作答位置不构成对这个人在量表之外的任何推断——单题与完整测量的相关最差只有 0.51。也不把分数说成证明了什么。",
+   "grounded_in": [
+    "notable_items.3.order",
+    "notable_items.3.text_zh",
+    "notable_items.3.facet",
+    "notable_items.3.response",
+    "notable_items.3.percentile",
+    "notable_items.3.asks",
+    "notable_items.3.key_term.term",
+    "notable_items.3.key_term.sense_here",
+    "notable_items.3.key_term.not_this",
+    "notable_items.3.common_misreadings.0.misreading",
+    "notable_items.3.common_misreadings.0.correction",
+    "notable_items.3.common_misreadings.1.misreading",
+    "notable_items.3.common_misreadings.1.correction",
+    "notable_items.3.localization_note",
+    "facets.morality.name_zh",
+    "facets.morality.domain_zh",
+    "rules.forbidden"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "题目澄清：第 70 题「希望一切都「刚刚好」」",
+   "text": "这道题是全卷第 70 题，题干是「希望一切都「刚刚好」」，出现在「尽责性」维度下的「条理性」面向。本次作答在这道题上的选项值是 5，对应选项位置 100.0。\n\n**这道题问的是**：你是否希望一切都「刚刚好」。\n\n承重词是「just right」，在这里的意思是：恰到好处、分毫不差。它不是：「追求完美」。\n\n常见的另一种读法，以及它的边界：\n- 把它理解为强迫症状 → 本题只是偏好描述，不构成任何筛查。\n- 因为「差不多就行」而选低分 → 那确实是本题的低分。\n\n关于表述本身：**这是本项目修复过的源缺陷题**——它在机读数据里缺失正文（悬空引用），由官方问卷第 70 题补齐（见 本项目文档 §1.1）。**「just right」在英文里带有完美主义意味**，可能与强迫倾向接近而非单纯的条理性。题目-总分相关 .39，在本面向偏低。**若这题让你感到不安或反复检查，请注意它测的是偏好而非症状。**\n\n这一条只说明这道题问的是什么。单题的作答位置不构成对这个人在量表之外的任何推断——单题与完整测量的相关最差只有 0.51。也不把分数说成证明了什么。",
+   "grounded_in": [
+    "notable_items.4.order",
+    "notable_items.4.text_zh",
+    "notable_items.4.facet",
+    "notable_items.4.response",
+    "notable_items.4.percentile",
+    "notable_items.4.asks",
+    "notable_items.4.key_term.term",
+    "notable_items.4.key_term.sense_here",
+    "notable_items.4.key_term.not_this",
+    "notable_items.4.common_misreadings.0.misreading",
+    "notable_items.4.common_misreadings.0.correction",
+    "notable_items.4.common_misreadings.1.misreading",
+    "notable_items.4.common_misreadings.1.correction",
+    "notable_items.4.localization_note",
+    "facets.orderliness.name_zh",
+    "facets.orderliness.domain_zh",
+    "rules.forbidden"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "题目澄清：第 73 题「会为某种事业投入热情」",
+   "text": "这道题是全卷第 73 题，题干是「会为某种事业投入热情」，出现在「开放性」维度下的「情感丰富」面向。本次作答在这道题上的选项值是 5，对应选项位置 100.0。\n\n**这道题问的是**：你是否会为某个理念或事业投入强烈的感情。\n\n承重词是「causes」，在这里的意思是：某种主张、事业、理念。它不是：「爱好」或「职业」。\n\n常见的另一种读法，以及它的边界：\n- 把「对工作投入」当成「为事业投入热情」 → 这里指理念、议题，不是职业。\n- 认为必须有具体行动才算 → 本题问的是**感情投入**，不是行动。\n\n关于表述本身：中文「事业」多指职业，而 causes 指**某种主张或社会议题**。本卷译为「某种事业」偏含糊，**请按「某个你认同的主张或理念」理解**。\n\n这一条只说明这道题问的是什么。单题的作答位置不构成对这个人在量表之外的任何推断——单题与完整测量的相关最差只有 0.51。也不把分数说成证明了什么。",
+   "grounded_in": [
+    "notable_items.5.order",
+    "notable_items.5.text_zh",
+    "notable_items.5.facet",
+    "notable_items.5.response",
+    "notable_items.5.percentile",
+    "notable_items.5.asks",
+    "notable_items.5.key_term.term",
+    "notable_items.5.key_term.sense_here",
+    "notable_items.5.key_term.not_this",
+    "notable_items.5.common_misreadings.0.misreading",
+    "notable_items.5.common_misreadings.0.correction",
+    "notable_items.5.common_misreadings.1.misreading",
+    "notable_items.5.common_misreadings.1.correction",
+    "notable_items.5.localization_note",
+    "facets.emotionality.name_zh",
+    "facets.emotionality.domain_zh",
+    "rules.forbidden"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "题目澄清：第 91 题「我很容易觉得压力大」",
+   "text": "这道题是全卷第 91 题，题干是「我很容易觉得压力大」，出现在「神经质」维度下的「焦虑」面向。本次作答在这道题上的选项值是 5，对应选项位置 100.0。\n\n**这道题问的是**：面对负荷时，你是否比别人更快感到吃不消。\n\n承重词是「easily」，在这里的意思是：达到压力状态的**门槛低、来得快**。它不是：当前正处于高压处境因而感到压力（那是处境，不是特质）。\n\n常见的另一种读法，以及它的边界：\n- 因为自己最近事情多、确实很累就选高分 → 请按一贯情况作答。若你眼下正处于异常高压期，此处容易高估。\n- 把\"压力大\"理解成\"任务多\" → 任务多不等于感到压力。这里问的是主观的绷紧与负荷感。\n\n这一条只说明这道题问的是什么。单题的作答位置不构成对这个人在量表之外的任何推断——单题与完整测量的相关最差只有 0.51。也不把分数说成证明了什么。",
+   "grounded_in": [
+    "notable_items.6.order",
+    "notable_items.6.text_zh",
+    "notable_items.6.facet",
+    "notable_items.6.response",
+    "notable_items.6.percentile",
+    "notable_items.6.asks",
+    "notable_items.6.key_term.term",
+    "notable_items.6.key_term.sense_here",
+    "notable_items.6.key_term.not_this",
+    "notable_items.6.common_misreadings.0.misreading",
+    "notable_items.6.common_misreadings.0.correction",
+    "notable_items.6.common_misreadings.1.misreading",
+    "notable_items.6.common_misreadings.1.correction",
+    "facets.anxiety.name_zh",
+    "facets.anxiety.domain_zh",
+    "rules.forbidden"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "题目澄清：第 107 题「能同时处理很多事情」",
+   "text": "这道题是全卷第 107 题，题干是「能同时处理很多事情」，出现在「外向性」维度下的「活跃度」面向。本次作答在这道题上的选项值是 5，对应选项位置 100.0。\n\n**这道题问的是**：你能否同时处理好几件事。\n\n承重词是「at the same time」，在这里的意思是：并行处理的容量。它不是：不是\"被迫多线程\"。\n\n常见的另一种读法，以及它的边界：\n- 把\"被迫同时应付\"当成\"擅长并行\" → 被逼着多线程且手忙脚乱，不符合这一题。这里问的是能不能应付得来。\n- 与第 1 题（忙碌）混同 → 忙碌是量，并行是容量。有人事很多但只能一件件做。\n\n这一条只说明这道题问的是什么。单题的作答位置不构成对这个人在量表之外的任何推断——单题与完整测量的相关最差只有 0.51。也不把分数说成证明了什么。",
+   "grounded_in": [
+    "notable_items.7.order",
+    "notable_items.7.text_zh",
+    "notable_items.7.facet",
+    "notable_items.7.response",
+    "notable_items.7.percentile",
+    "notable_items.7.asks",
+    "notable_items.7.key_term.term",
+    "notable_items.7.key_term.sense_here",
+    "notable_items.7.key_term.not_this",
+    "notable_items.7.common_misreadings.0.misreading",
+    "notable_items.7.common_misreadings.0.correction",
+    "notable_items.7.common_misreadings.1.misreading",
+    "notable_items.7.common_misreadings.1.correction",
+    "facets.activitylevel.name_zh",
+    "facets.activitylevel.domain_zh",
+    "rules.forbidden"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "题目澄清：第 114 题「很少自我吹嘘（Seldom toot my own horn）」",
+   "text": "这道题是全卷第 114 题，题干是「很少自我吹嘘（Seldom toot my own horn）」，出现在「宜人性」维度下的「谦逊」面向。本次作答在这道题上的选项值是 1，对应选项位置 0.0。\n\n**这道题问的是**：你是否很少主动夸耀自己的成绩或优点。\n\n承重词是「toot my own horn」，在这里的意思是：英文习语，指**主动张扬自己的优点**（直译「吹自己的号角」不通）。它不是：「不自信」。\n\n常见的另一种读法，以及它的边界：\n- 把「不自夸」当成「不自信」 → 本题只问**是否对外宣扬**，与内心怎么评价自己无关。\n- 认为「陈述事实」也算自夸 → 如实回答别人的询问不算。\n\n关于表述本身：**这是本卷含英文习语的题之一，翻译最容易失真**（属 11 类错误中的「习语」）。本卷译为「很少自夸」，请按「是否主动对外宣扬自己的优点」理解。**本题空答率 5.2%，明显高于常态（约 0.5%）**，可能与此有关。\n\n这一条只说明这道题问的是什么。单题的作答位置不构成对这个人在量表之外的任何推断——单题与完整测量的相关最差只有 0.51。也不把分数说成证明了什么。",
+   "grounded_in": [
+    "notable_items.8.order",
+    "notable_items.8.text_zh",
+    "notable_items.8.facet",
+    "notable_items.8.response",
+    "notable_items.8.percentile",
+    "notable_items.8.asks",
+    "notable_items.8.key_term.term",
+    "notable_items.8.key_term.sense_here",
+    "notable_items.8.key_term.not_this",
+    "notable_items.8.common_misreadings.0.misreading",
+    "notable_items.8.common_misreadings.0.correction",
+    "notable_items.8.common_misreadings.1.misreading",
+    "notable_items.8.common_misreadings.1.correction",
+    "notable_items.8.localization_note",
+    "facets.modesty_humility.name_zh",
+    "facets.modesty_humility.domain_zh",
+    "rules.forbidden"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "题目澄清：第 118 题「相信只有一种真正的宗教」",
+   "text": "这道题是全卷第 118 题，题干是「相信只有一种真正的宗教」，出现在「开放性」维度下的「价值开放」面向。本次作答在这道题上的选项值是 1，对应选项位置 100.0。\n\n**这道题问的是**：（反向题）你是否认为只有一种宗教是真的。\n\n承重词是「one true religion」，在这里的意思是：排他性的宗教信仰。它不是：「有信仰」。\n\n常见的另一种读法，以及它的边界：\n- 把「有信仰」当成「相信只有一种真宗教」 → 本题特指排他性。\n- 因为觉得这是个人隐私而不愿答 → 可跳过。\n\n关于表述本身：中文语境里宗教问题的作答受**社会情境**影响较大。本题问的是**信仰的排他性**（是否认为别的宗教是错的），与「你有没有信仰」不是一回事。\n\n这一条只说明这道题问的是什么。单题的作答位置不构成对这个人在量表之外的任何推断——单题与完整测量的相关最差只有 0.51。也不把分数说成证明了什么。",
+   "grounded_in": [
+    "notable_items.9.order",
+    "notable_items.9.text_zh",
+    "notable_items.9.facet",
+    "notable_items.9.response",
+    "notable_items.9.percentile",
+    "notable_items.9.asks",
+    "notable_items.9.key_term.term",
+    "notable_items.9.key_term.sense_here",
+    "notable_items.9.key_term.not_this",
+    "notable_items.9.common_misreadings.0.misreading",
+    "notable_items.9.common_misreadings.0.correction",
+    "notable_items.9.common_misreadings.1.misreading",
+    "notable_items.9.common_misreadings.1.correction",
+    "notable_items.9.localization_note",
+    "facets.liberalism.name_zh",
+    "facets.liberalism.domain_zh",
+    "rules.forbidden"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "题目澄清：第 129 题「懂得怎么绕开规则」",
+   "text": "这道题是全卷第 129 题，题干是「懂得怎么绕开规则」，出现在「宜人性」维度下的「道德」面向。本次作答在这道题上的选项值是 1，对应选项位置 100.0。\n\n**这道题问的是**：（反向题）你是否知道如何规避规则的限制。\n\n承重词是「get around」，在这里的意思是：绕过、规避。它不是：「理解规则」或「寻求合规替代」。\n\n常见的另一种读法，以及它的边界：\n- 把「找到规则允许的做法」当成绕开 → 只要不违反，那叫合规。\n- 认为这是能力而自豪 → 本题在道德面向里会反向计分。\n\n关于表述本身：中文「绕开规则」与「灵活处理」界限模糊。**判断标准是：规则是否明确禁止，而你是否故意规避。**\n\n这一条只说明这道题问的是什么。单题的作答位置不构成对这个人在量表之外的任何推断——单题与完整测量的相关最差只有 0.51。也不把分数说成证明了什么。",
+   "grounded_in": [
+    "notable_items.10.order",
+    "notable_items.10.text_zh",
+    "notable_items.10.facet",
+    "notable_items.10.response",
+    "notable_items.10.percentile",
+    "notable_items.10.asks",
+    "notable_items.10.key_term.term",
+    "notable_items.10.key_term.sense_here",
+    "notable_items.10.key_term.not_this",
+    "notable_items.10.common_misreadings.0.misreading",
+    "notable_items.10.common_misreadings.0.correction",
+    "notable_items.10.common_misreadings.1.misreading",
+    "notable_items.10.common_misreadings.1.correction",
+    "notable_items.10.localization_note",
+    "facets.morality.name_zh",
+    "facets.morality.domain_zh",
+    "rules.forbidden"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "题目澄清：第 159 题「为了领先别人，我会采用作弊的方式」",
+   "text": "这道题是全卷第 159 题，题干是「为了领先别人，我会采用作弊的方式」，出现在「宜人性」维度下的「道德」面向。本次作答在这道题上的选项值是 1，对应选项位置 100.0。\n\n**这道题问的是**：（反向题）为了取得优势，你是否会作弊。\n\n承重词是「cheat」，在这里的意思是：作弊、欺骗。它不是：「竞争」。\n\n常见的另一种读法，以及它的边界：\n- 把「利用规则空间」当成作弊 → 作弊是违反明确规则。\n- 认为「想想而已」也算 → 本题问的是是否做了。\n\n关于表述本身：**本题是最直白的自陈不诚信的题目**，社会赞许性与自我形象保护会强烈压低承认度。这是本面向最难获得真实作答的题之一。\n\n这一条只说明这道题问的是什么。单题的作答位置不构成对这个人在量表之外的任何推断——单题与完整测量的相关最差只有 0.51。也不把分数说成证明了什么。",
+   "grounded_in": [
+    "notable_items.11.order",
+    "notable_items.11.text_zh",
+    "notable_items.11.facet",
+    "notable_items.11.response",
+    "notable_items.11.percentile",
+    "notable_items.11.asks",
+    "notable_items.11.key_term.term",
+    "notable_items.11.key_term.sense_here",
+    "notable_items.11.key_term.not_this",
+    "notable_items.11.common_misreadings.0.misreading",
+    "notable_items.11.common_misreadings.0.correction",
+    "notable_items.11.common_misreadings.1.misreading",
+    "notable_items.11.common_misreadings.1.correction",
+    "notable_items.11.localization_note",
+    "facets.morality.name_zh",
+    "facets.morality.domain_zh",
+    "rules.forbidden"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向自身的内容局限（不可删减）",
+   "text": "输入把 30 个面向的内容提醒逐条列了出来，并在披露条目里写明「不可删减——删掉它们等于把「我们对自己工具的批评」藏起来」。这些提醒的作用是标出每个面向的名字与实际所测之间的落差：例如「合作」测的是分歧中是否倾向让步，「道德」只覆盖利益面前的诚实与操纵，「思辨」测的是喜不喜欢思考而不是有多聪明，「价值开放」问的是愿不愿意重新审视传统、规范与权威，「脆弱性」描述的是压力反应而不是能力评价。\n\n它们不是免责话术，而是这份结果的使用说明：哪些说法是这份分数支持不了的，哪些说法只是名字听起来像。下面每一个面向都逐条照录，不做删减。",
+   "grounded_in": [
+    "disclosures.2",
+    "disclosures.2.id",
+    "disclosures.2.text",
+    "disclosures.2.why",
+    "disclosures.2.must_survive"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "这些分数不意味着什么（不可删减）",
+   "text": "输入同样逐条列出了每个面向「不测量什么」，条目文本为「这些分数不意味着什么」。它防的是把分数用过头：一个面向的名字往往比它实际覆盖的构念大得多，而每一条「不测量」都在划这条边界。\n\n这类条目在实际使用里最容易被省略，因为它们读起来像在削弱结论。但省略它们不会让结论变强，只会让结论失去适用范围。下面同样逐条照录。",
+   "grounded_in": [
+    "disclosures.3",
+    "disclosures.3.id",
+    "disclosures.3.text",
+    "disclosures.3.must_survive"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "本次没有可结合的处境，也没有可引用的文献",
+   "text": "user_context 为空字符串，knowledge_refs 为空数组，scene_results 为 null，模式为 classic。因此这份解读没有结合用户自述的处境来组织语言，也没有引用任何文献——按规则，引用必须给出可核查的出处，无出处的断言不得出现，所以这里宁可不引。",
+   "grounded_in": [
+    "user_context",
+    "knowledge_refs",
+    "scene_results",
+    "mode",
+    "rules.citation"
+   ],
+   "citations": []
+  }
+ ],
+ "notable_items_surfaced": [
+  8,
+  52,
+  60,
+  69,
+  70,
+  73,
+  91,
+  107,
+  114,
+  118,
+  129,
+  159
+ ],
+ "disclosures_kept": [
+  "norm_sample",
+  "no_diagnosis",
+  "content_caveat",
+  "does_not_measure"
+ ],
+ "refusals": []
+}

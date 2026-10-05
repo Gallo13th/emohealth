@@ -1,0 +1,1417 @@
+{
+ "IPIP-NEO": {
+  "own_only": [
+   {
+    "ratio": 0.85,
+    "cross": 0,
+    "exhaustive": true,
+    "median_k": 2,
+    "max_k": 3,
+    "never": 0,
+    "dist": {
+     "1": 4,
+     "2": 22,
+     "3": 4
+    }
+   },
+   {
+    "ratio": 0.9,
+    "cross": 0,
+    "exhaustive": true,
+    "median_k": 3,
+    "max_k": 4,
+    "never": 0,
+    "dist": {
+     "2": 9,
+     "3": 20,
+     "4": 1
+    }
+   },
+   {
+    "ratio": 0.95,
+    "cross": 0,
+    "exhaustive": true,
+    "median_k": 4,
+    "max_k": 5,
+    "never": 0,
+    "dist": {
+     "3": 6,
+     "4": 14,
+     "5": 10
+    }
+   },
+   {
+    "ratio": 1.0,
+    "cross": 0,
+    "exhaustive": true,
+    "median_k": 10,
+    "max_k": 10,
+    "never": 14,
+    "dist": {
+     "10": 16
+    }
+   },
+   {
+    "ratio": 1.05,
+    "cross": 0,
+    "exhaustive": true,
+    "median_k": null,
+    "max_k": null,
+    "never": 30,
+    "dist": {}
+   }
+  ],
+  "cross_rows": [
+   {
+    "n_own": 1,
+    "n_cross": 0,
+    "conf_mean": 0.5572,
+    "own_only_mean": 0.5572,
+    "unlock90": 0,
+    "n_dims": 30
+   },
+   {
+    "n_own": 1,
+    "n_cross": 5,
+    "conf_mean": 0.629007251118217,
+    "own_only_mean": 0.5572,
+    "unlock90": 0,
+    "n_dims": 30
+   },
+   {
+    "n_own": 1,
+    "n_cross": 10,
+    "conf_mean": 0.6758246709409526,
+    "own_only_mean": 0.5572,
+    "unlock90": 2,
+    "n_dims": 30
+   },
+   {
+    "n_own": 1,
+    "n_cross": 20,
+    "conf_mean": 0.7089863816687859,
+    "own_only_mean": 0.5572,
+    "unlock90": 4,
+    "n_dims": 30
+   },
+   {
+    "n_own": 1,
+    "n_cross": 30,
+    "conf_mean": 0.7374336465212404,
+    "own_only_mean": 0.5572,
+    "unlock90": 13,
+    "n_dims": 30
+   },
+   {
+    "n_own": 1,
+    "n_cross": null,
+    "conf_mean": 0.8546553343678398,
+    "own_only_mean": 0.5572,
+    "unlock90": 30,
+    "n_dims": 30
+   },
+   {
+    "n_own": 2,
+    "n_cross": 0,
+    "conf_mean": 0.6524863871411235,
+    "own_only_mean": 0.6524863871411235,
+    "unlock90": 2,
+    "n_dims": 30
+   },
+   {
+    "n_own": 2,
+    "n_cross": 5,
+    "conf_mean": 0.6865407803506293,
+    "own_only_mean": 0.6524863871411235,
+    "unlock90": 5,
+    "n_dims": 30
+   },
+   {
+    "n_own": 2,
+    "n_cross": 10,
+    "conf_mean": 0.7190127783143587,
+    "own_only_mean": 0.6524863871411235,
+    "unlock90": 6,
+    "n_dims": 30
+   },
+   {
+    "n_own": 2,
+    "n_cross": 20,
+    "conf_mean": 0.7429579095582057,
+    "own_only_mean": 0.6524863871411235,
+    "unlock90": 15,
+    "n_dims": 30
+   },
+   {
+    "n_own": 2,
+    "n_cross": 30,
+    "conf_mean": 0.7746194988594638,
+    "own_only_mean": 0.6524863871411235,
+    "unlock90": 20,
+    "n_dims": 30
+   },
+   {
+    "n_own": 2,
+    "n_cross": null,
+    "conf_mean": 0.8624148122389975,
+    "own_only_mean": 0.6524863871411235,
+    "unlock90": 30,
+    "n_dims": 30
+   },
+   {
+    "n_own": 3,
+    "n_cross": 0,
+    "conf_mean": 0.7015661803475279,
+    "own_only_mean": 0.7015661803475279,
+    "unlock90": 5,
+    "n_dims": 30
+   },
+   {
+    "n_own": 3,
+    "n_cross": 5,
+    "conf_mean": 0.7306737303786907,
+    "own_only_mean": 0.7015661803475279,
+    "unlock90": 10,
+    "n_dims": 30
+   },
+   {
+    "n_own": 3,
+    "n_cross": 10,
+    "conf_mean": 0.747649532792742,
+    "own_only_mean": 0.7015661803475279,
+    "unlock90": 15,
+    "n_dims": 30
+   },
+   {
+    "n_own": 3,
+    "n_cross": 20,
+    "conf_mean": 0.7747229509358712,
+    "own_only_mean": 0.7015661803475279,
+    "unlock90": 24,
+    "n_dims": 30
+   },
+   {
+    "n_own": 3,
+    "n_cross": 30,
+    "conf_mean": 0.7853910504523486,
+    "own_only_mean": 0.7015661803475279,
+    "unlock90": 24,
+    "n_dims": 30
+   },
+   {
+    "n_own": 3,
+    "n_cross": null,
+    "conf_mean": 0.8665905910762426,
+    "own_only_mean": 0.7015661803475279,
+    "unlock90": 30,
+    "n_dims": 30
+   },
+   {
+    "n_own": 5,
+    "n_cross": 0,
+    "conf_mean": 0.7691206577894208,
+    "own_only_mean": 0.7691206577894208,
+    "unlock90": 22,
+    "n_dims": 30
+   },
+   {
+    "n_own": 5,
+    "n_cross": 5,
+    "conf_mean": 0.7842869338781079,
+    "own_only_mean": 0.7691206577894208,
+    "unlock90": 25,
+    "n_dims": 30
+   },
+   {
+    "n_own": 5,
+    "n_cross": 10,
+    "conf_mean": 0.7932721198053578,
+    "own_only_mean": 0.7691206577894208,
+    "unlock90": 29,
+    "n_dims": 30
+   },
+   {
+    "n_own": 5,
+    "n_cross": 20,
+    "conf_mean": 0.8075377141968558,
+    "own_only_mean": 0.7691206577894208,
+    "unlock90": 30,
+    "n_dims": 30
+   },
+   {
+    "n_own": 5,
+    "n_cross": 30,
+    "conf_mean": 0.816991940403282,
+    "own_only_mean": 0.7691206577894208,
+    "unlock90": 30,
+    "n_dims": 30
+   },
+   {
+    "n_own": 5,
+    "n_cross": null,
+    "conf_mean": 0.8730544605071617,
+    "own_only_mean": 0.7691206577894208,
+    "unlock90": 30,
+    "n_dims": 30
+   }
+  ],
+  "ratio_rows": [
+   {
+    "ratio": 0.85,
+    "cross": 0,
+    "exhaustive": true,
+    "median_k": 2,
+    "max_k": 3,
+    "never": 0,
+    "dist": {
+     "1": 4,
+     "2": 22,
+     "3": 4
+    }
+   },
+   {
+    "ratio": 0.85,
+    "cross": 10,
+    "exhaustive": false,
+    "median_k": 2,
+    "max_k": 5,
+    "never": 0,
+    "dist": {
+     "1": 10,
+     "2": 10,
+     "3": 4,
+     "4": 4,
+     "5": 2
+    }
+   },
+   {
+    "ratio": 0.85,
+    "cross": 30,
+    "exhaustive": false,
+    "median_k": 1,
+    "max_k": 4,
+    "never": 0,
+    "dist": {
+     "1": 20,
+     "2": 6,
+     "3": 2,
+     "4": 2
+    }
+   },
+   {
+    "ratio": 0.85,
+    "cross": null,
+    "exhaustive": false,
+    "median_k": 1,
+    "max_k": 1,
+    "never": 0,
+    "dist": {
+     "1": 30
+    }
+   },
+   {
+    "ratio": 0.9,
+    "cross": 0,
+    "exhaustive": true,
+    "median_k": 3,
+    "max_k": 4,
+    "never": 0,
+    "dist": {
+     "2": 9,
+     "3": 20,
+     "4": 1
+    }
+   },
+   {
+    "ratio": 0.9,
+    "cross": 10,
+    "exhaustive": false,
+    "median_k": 3,
+    "max_k": 6,
+    "never": 0,
+    "dist": {
+     "1": 2,
+     "2": 9,
+     "3": 7,
+     "4": 6,
+     "5": 4,
+     "6": 2
+    }
+   },
+   {
+    "ratio": 0.9,
+    "cross": 30,
+    "exhaustive": false,
+    "median_k": 1,
+    "max_k": 5,
+    "never": 0,
+    "dist": {
+     "1": 16,
+     "2": 4,
+     "3": 5,
+     "4": 3,
+     "5": 2
+    }
+   },
+   {
+    "ratio": 0.9,
+    "cross": null,
+    "exhaustive": false,
+    "median_k": 1,
+    "max_k": 1,
+    "never": 0,
+    "dist": {
+     "1": 30
+    }
+   },
+   {
+    "ratio": 0.95,
+    "cross": 0,
+    "exhaustive": true,
+    "median_k": 4,
+    "max_k": 5,
+    "never": 0,
+    "dist": {
+     "3": 6,
+     "4": 14,
+     "5": 10
+    }
+   },
+   {
+    "ratio": 0.95,
+    "cross": 10,
+    "exhaustive": false,
+    "median_k": 6,
+    "max_k": 7,
+    "never": 0,
+    "dist": {
+     "2": 2,
+     "3": 3,
+     "4": 4,
+     "5": 5,
+     "6": 14,
+     "7": 2
+    }
+   },
+   {
+    "ratio": 0.95,
+    "cross": 30,
+    "exhaustive": false,
+    "median_k": 4,
+    "max_k": 7,
+    "never": 0,
+    "dist": {
+     "1": 3,
+     "2": 7,
+     "3": 5,
+     "4": 7,
+     "5": 2,
+     "6": 4,
+     "7": 2
+    }
+   },
+   {
+    "ratio": 0.95,
+    "cross": null,
+    "exhaustive": false,
+    "median_k": 1,
+    "max_k": 3,
+    "never": 0,
+    "dist": {
+     "1": 27,
+     "2": 2,
+     "3": 1
+    }
+   },
+   {
+    "ratio": 1.0,
+    "cross": 0,
+    "exhaustive": true,
+    "median_k": 10,
+    "max_k": 10,
+    "never": 14,
+    "dist": {
+     "10": 16
+    }
+   },
+   {
+    "ratio": 1.0,
+    "cross": 10,
+    "exhaustive": false,
+    "median_k": 9,
+    "max_k": 10,
+    "never": 0,
+    "dist": {
+     "7": 2,
+     "8": 7,
+     "9": 16,
+     "10": 5
+    }
+   },
+   {
+    "ratio": 1.0,
+    "cross": 30,
+    "exhaustive": false,
+    "median_k": 7,
+    "max_k": 10,
+    "never": 0,
+    "dist": {
+     "2": 1,
+     "3": 1,
+     "5": 2,
+     "6": 6,
+     "7": 9,
+     "8": 5,
+     "9": 5,
+     "10": 1
+    }
+   },
+   {
+    "ratio": 1.0,
+    "cross": null,
+    "exhaustive": false,
+    "median_k": 1,
+    "max_k": 7,
+    "never": 0,
+    "dist": {
+     "1": 20,
+     "2": 1,
+     "3": 1,
+     "4": 1,
+     "5": 5,
+     "6": 1,
+     "7": 1
+    }
+   },
+   {
+    "ratio": 1.05,
+    "cross": 0,
+    "exhaustive": true,
+    "median_k": null,
+    "max_k": null,
+    "never": 30,
+    "dist": {}
+   },
+   {
+    "ratio": 1.05,
+    "cross": 10,
+    "exhaustive": false,
+    "median_k": null,
+    "max_k": null,
+    "never": 30,
+    "dist": {}
+   },
+   {
+    "ratio": 1.05,
+    "cross": 30,
+    "exhaustive": false,
+    "median_k": null,
+    "max_k": null,
+    "never": 30,
+    "dist": {}
+   },
+   {
+    "ratio": 1.05,
+    "cross": null,
+    "exhaustive": false,
+    "median_k": 1,
+    "max_k": 9,
+    "never": 13,
+    "dist": {
+     "1": 10,
+     "5": 3,
+     "6": 1,
+     "8": 2,
+     "9": 1
+    }
+   }
+  ],
+  "ceiling_cross": [
+   {
+    "dim": "achievementstriving",
+    "dim_ceiling": 0.8293,
+    "dim_ceiling_cross": 0.8823865665426559,
+    "ratio_old": 1.0640137061891426
+   },
+   {
+    "dim": "activitylevel",
+    "dim_ceiling": 0.7286,
+    "dim_ceiling_cross": 0.8030368880816978,
+    "ratio_old": 1.1021642713171806
+   },
+   {
+    "dim": "adventurousness",
+    "dim_ceiling": 0.8245,
+    "dim_ceiling_cross": 0.8653340199463333,
+    "ratio_old": 1.0495257973879117
+   },
+   {
+    "dim": "aesthetic_appreciation_artistic_interests",
+    "dim_ceiling": 0.8247,
+    "dim_ceiling_cross": 0.8555430073537224,
+    "ratio_old": 1.0373990631183732
+   },
+   {
+    "dim": "altruism",
+    "dim_ceiling": 0.8366,
+    "dim_ceiling_cross": 0.905295369244958,
+    "ratio_old": 1.0821125618514917
+   },
+   {
+    "dim": "anger",
+    "dim_ceiling": 0.9203,
+    "dim_ceiling_cross": 0.9365418716901953,
+    "ratio_old": 1.0176484534284422
+   },
+   {
+    "dim": "anxiety",
+    "dim_ceiling": 0.8693,
+    "dim_ceiling_cross": 0.9162740466668401,
+    "ratio_old": 1.0540366348404926
+   },
+   {
+    "dim": "assertiveness",
+    "dim_ceiling": 0.8672,
+    "dim_ceiling_cross": 0.9156584377568018,
+    "ratio_old": 1.0558791948302604
+   },
+   {
+    "dim": "cautiousness",
+    "dim_ceiling": 0.8518,
+    "dim_ceiling_cross": 0.9042526138279587,
+    "ratio_old": 1.061578555797087
+   },
+   {
+    "dim": "cheerfulness",
+    "dim_ceiling": 0.8392,
+    "dim_ceiling_cross": 0.8819693524179008,
+    "ratio_old": 1.0509644332911114
+   },
+   {
+    "dim": "cooperation",
+    "dim_ceiling": 0.7904,
+    "dim_ceiling_cross": 0.8650886487210326,
+    "ratio_old": 1.0944947478758005
+   },
+   {
+    "dim": "depression",
+    "dim_ceiling": 0.9169,
+    "dim_ceiling_cross": 0.9396629295378752,
+    "ratio_old": 1.0248259674314268
+   },
+   {
+    "dim": "dutifulness",
+    "dim_ceiling": 0.7915,
+    "dim_ceiling_cross": 0.8872566413569158,
+    "ratio_old": 1.1209812272355222
+   },
+   {
+    "dim": "emotionality",
+    "dim_ceiling": 0.8068,
+    "dim_ceiling_cross": 0.8643694706621872,
+    "ratio_old": 1.0713553181236828
+   },
+   {
+    "dim": "excitementseeking",
+    "dim_ceiling": 0.8607,
+    "dim_ceiling_cross": 0.9033701228105152,
+    "ratio_old": 1.0495760692581797
+   },
+   {
+    "dim": "friendliness",
+    "dim_ceiling": 0.8947,
+    "dim_ceiling_cross": 0.9300840723050132,
+    "ratio_old": 1.0395485328098952
+   },
+   {
+    "dim": "gregariousness",
+    "dim_ceiling": 0.8865,
+    "dim_ceiling_cross": 0.9166617297156894,
+    "ratio_old": 1.0340233837740433
+   },
+   {
+    "dim": "imagination",
+    "dim_ceiling": 0.8574,
+    "dim_ceiling_cross": 0.8771620480799007,
+    "ratio_old": 1.023048808117449
+   },
+   {
+    "dim": "immoderation",
+    "dim_ceiling": 0.7809,
+    "dim_ceiling_cross": 0.8255257895321063,
+    "ratio_old": 1.057146612283399
+   },
+   {
+    "dim": "intellect",
+    "dim_ceiling": 0.8463,
+    "dim_ceiling_cross": 0.883635848399933,
+    "ratio_old": 1.0441165643388077
+   },
+   {
+    "dim": "liberalism",
+    "dim_ceiling": 0.7752,
+    "dim_ceiling_cross": 0.810709471730206,
+    "ratio_old": 1.045806852077149
+   },
+   {
+    "dim": "modesty_humility",
+    "dim_ceiling": 0.7768,
+    "dim_ceiling_cross": 0.8516221132772136,
+    "ratio_old": 1.0963209491210266
+   },
+   {
+    "dim": "morality",
+    "dim_ceiling": 0.8029,
+    "dim_ceiling_cross": 0.8875286790565005,
+    "ratio_old": 1.1054037601899371
+   },
+   {
+    "dim": "orderliness",
+    "dim_ceiling": 0.8668,
+    "dim_ceiling_cross": 0.8844878357457602,
+    "ratio_old": 1.0204059018755887
+   },
+   {
+    "dim": "selfconsciousness",
+    "dim_ceiling": 0.8309,
+    "dim_ceiling_cross": 0.9005927346340369,
+    "ratio_old": 1.0838762000650342
+   },
+   {
+    "dim": "selfdiscipline",
+    "dim_ceiling": 0.8931,
+    "dim_ceiling_cross": 0.9192294530515369,
+    "ratio_old": 1.0292570295056958
+   },
+   {
+    "dim": "selfefficacy",
+    "dim_ceiling": 0.8191,
+    "dim_ceiling_cross": 0.8981740510794236,
+    "ratio_old": 1.0965377256494
+   },
+   {
+    "dim": "sympathy",
+    "dim_ceiling": 0.7889,
+    "dim_ceiling_cross": 0.8624286949298654,
+    "ratio_old": 1.0932040752058123
+   },
+   {
+    "dim": "trust",
+    "dim_ceiling": 0.8866,
+    "dim_ceiling_cross": 0.9026388307808384,
+    "ratio_old": 1.0180902670661385
+   },
+   {
+    "dim": "vulnerability",
+    "dim_ceiling": 0.8613,
+    "dim_ceiling_cross": 0.9207823732123295,
+    "ratio_old": 1.0690611554769878
+   }
+  ]
+ },
+ "PID-5": {
+  "own_only": [
+   {
+    "ratio": 0.85,
+    "cross": 0,
+    "exhaustive": true,
+    "median_k": 2,
+    "max_k": 2,
+    "never": 0,
+    "dist": {
+     "1": 10,
+     "2": 15
+    }
+   },
+   {
+    "ratio": 0.9,
+    "cross": 0,
+    "exhaustive": true,
+    "median_k": 2,
+    "max_k": 3,
+    "never": 0,
+    "dist": {
+     "1": 2,
+     "2": 14,
+     "3": 9
+    }
+   },
+   {
+    "ratio": 0.95,
+    "cross": 0,
+    "exhaustive": true,
+    "median_k": 3,
+    "max_k": 5,
+    "never": 0,
+    "dist": {
+     "2": 4,
+     "3": 9,
+     "4": 9,
+     "5": 3
+    }
+   },
+   {
+    "ratio": 1.0,
+    "cross": 0,
+    "exhaustive": true,
+    "median_k": 8,
+    "max_k": 14,
+    "never": 12,
+    "dist": {
+     "4": 1,
+     "6": 2,
+     "7": 3,
+     "8": 2,
+     "10": 2,
+     "12": 1,
+     "13": 1,
+     "14": 1
+    }
+   },
+   {
+    "ratio": 1.05,
+    "cross": 0,
+    "exhaustive": true,
+    "median_k": null,
+    "max_k": null,
+    "never": 25,
+    "dist": {}
+   }
+  ],
+  "cross_rows": [
+   {
+    "n_own": 1,
+    "n_cross": 0,
+    "conf_mean": 0.594936,
+    "own_only_mean": 0.594936,
+    "unlock90": 0,
+    "n_dims": 25
+   },
+   {
+    "n_own": 1,
+    "n_cross": 5,
+    "conf_mean": 0.6591654747949633,
+    "own_only_mean": 0.594936,
+    "unlock90": 0,
+    "n_dims": 25
+   },
+   {
+    "n_own": 1,
+    "n_cross": 10,
+    "conf_mean": 0.7138190897242771,
+    "own_only_mean": 0.594936,
+    "unlock90": 3,
+    "n_dims": 25
+   },
+   {
+    "n_own": 1,
+    "n_cross": 20,
+    "conf_mean": 0.7336068324921284,
+    "own_only_mean": 0.594936,
+    "unlock90": 9,
+    "n_dims": 25
+   },
+   {
+    "n_own": 1,
+    "n_cross": 30,
+    "conf_mean": 0.7468390332201551,
+    "own_only_mean": 0.594936,
+    "unlock90": 10,
+    "n_dims": 25
+   },
+   {
+    "n_own": 1,
+    "n_cross": null,
+    "conf_mean": 0.8440418509163714,
+    "own_only_mean": 0.594936,
+    "unlock90": 24,
+    "n_dims": 25
+   },
+   {
+    "n_own": 2,
+    "n_cross": 0,
+    "conf_mean": 0.7093577355088639,
+    "own_only_mean": 0.7093577355088639,
+    "unlock90": 3,
+    "n_dims": 25
+   },
+   {
+    "n_own": 2,
+    "n_cross": 5,
+    "conf_mean": 0.7441527769363379,
+    "own_only_mean": 0.7093577355088639,
+    "unlock90": 7,
+    "n_dims": 25
+   },
+   {
+    "n_own": 2,
+    "n_cross": 10,
+    "conf_mean": 0.7646940668750554,
+    "own_only_mean": 0.7093577355088639,
+    "unlock90": 15,
+    "n_dims": 25
+   },
+   {
+    "n_own": 2,
+    "n_cross": 20,
+    "conf_mean": 0.7820659912515359,
+    "own_only_mean": 0.7093577355088639,
+    "unlock90": 21,
+    "n_dims": 25
+   },
+   {
+    "n_own": 2,
+    "n_cross": 30,
+    "conf_mean": 0.7971646456635694,
+    "own_only_mean": 0.7093577355088639,
+    "unlock90": 20,
+    "n_dims": 25
+   },
+   {
+    "n_own": 2,
+    "n_cross": null,
+    "conf_mean": 0.8576874039622764,
+    "own_only_mean": 0.7093577355088639,
+    "unlock90": 24,
+    "n_dims": 25
+   },
+   {
+    "n_own": 3,
+    "n_cross": 0,
+    "conf_mean": 0.7678887045816036,
+    "own_only_mean": 0.7678887045816036,
+    "unlock90": 13,
+    "n_dims": 25
+   },
+   {
+    "n_own": 3,
+    "n_cross": 5,
+    "conf_mean": 0.7902699928839759,
+    "own_only_mean": 0.7678887045816036,
+    "unlock90": 19,
+    "n_dims": 25
+   },
+   {
+    "n_own": 3,
+    "n_cross": 10,
+    "conf_mean": 0.8022965029872752,
+    "own_only_mean": 0.7678887045816036,
+    "unlock90": 22,
+    "n_dims": 25
+   },
+   {
+    "n_own": 3,
+    "n_cross": 20,
+    "conf_mean": 0.8104333710531826,
+    "own_only_mean": 0.7678887045816036,
+    "unlock90": 22,
+    "n_dims": 25
+   },
+   {
+    "n_own": 3,
+    "n_cross": 30,
+    "conf_mean": 0.820235255813545,
+    "own_only_mean": 0.7678887045816036,
+    "unlock90": 23,
+    "n_dims": 25
+   },
+   {
+    "n_own": 3,
+    "n_cross": null,
+    "conf_mean": 0.8669464736596736,
+    "own_only_mean": 0.7678887045816036,
+    "unlock90": 25,
+    "n_dims": 25
+   },
+   {
+    "n_own": 5,
+    "n_cross": 0,
+    "conf_mean": 0.8184199045351908,
+    "own_only_mean": 0.8184199045351908,
+    "unlock90": 23,
+    "n_dims": 24
+   },
+   {
+    "n_own": 5,
+    "n_cross": 5,
+    "conf_mean": 0.8295406708628247,
+    "own_only_mean": 0.8184199045351908,
+    "unlock90": 24,
+    "n_dims": 24
+   },
+   {
+    "n_own": 5,
+    "n_cross": 10,
+    "conf_mean": 0.835346792806797,
+    "own_only_mean": 0.8184199045351908,
+    "unlock90": 24,
+    "n_dims": 24
+   },
+   {
+    "n_own": 5,
+    "n_cross": 20,
+    "conf_mean": 0.8423491731881904,
+    "own_only_mean": 0.8184199045351908,
+    "unlock90": 24,
+    "n_dims": 24
+   },
+   {
+    "n_own": 5,
+    "n_cross": 30,
+    "conf_mean": 0.8491443321954985,
+    "own_only_mean": 0.8184199045351908,
+    "unlock90": 24,
+    "n_dims": 24
+   },
+   {
+    "n_own": 5,
+    "n_cross": null,
+    "conf_mean": 0.8805335864397116,
+    "own_only_mean": 0.8184199045351908,
+    "unlock90": 24,
+    "n_dims": 24
+   }
+  ],
+  "ratio_rows": [
+   {
+    "ratio": 0.85,
+    "cross": 0,
+    "exhaustive": true,
+    "median_k": 2,
+    "max_k": 2,
+    "never": 0,
+    "dist": {
+     "1": 10,
+     "2": 15
+    }
+   },
+   {
+    "ratio": 0.85,
+    "cross": 10,
+    "exhaustive": false,
+    "median_k": 2,
+    "max_k": 4,
+    "never": 0,
+    "dist": {
+     "1": 10,
+     "2": 10,
+     "3": 4,
+     "4": 1
+    }
+   },
+   {
+    "ratio": 0.85,
+    "cross": 30,
+    "exhaustive": false,
+    "median_k": 1,
+    "max_k": 4,
+    "never": 0,
+    "dist": {
+     "1": 19,
+     "2": 4,
+     "3": 1,
+     "4": 1
+    }
+   },
+   {
+    "ratio": 0.85,
+    "cross": null,
+    "exhaustive": false,
+    "median_k": 1,
+    "max_k": 2,
+    "never": 0,
+    "dist": {
+     "1": 24,
+     "2": 1
+    }
+   },
+   {
+    "ratio": 0.9,
+    "cross": 0,
+    "exhaustive": true,
+    "median_k": 2,
+    "max_k": 3,
+    "never": 0,
+    "dist": {
+     "1": 2,
+     "2": 14,
+     "3": 9
+    }
+   },
+   {
+    "ratio": 0.9,
+    "cross": 10,
+    "exhaustive": false,
+    "median_k": 2,
+    "max_k": 5,
+    "never": 0,
+    "dist": {
+     "1": 4,
+     "2": 9,
+     "3": 8,
+     "4": 3,
+     "5": 1
+    }
+   },
+   {
+    "ratio": 0.9,
+    "cross": 30,
+    "exhaustive": false,
+    "median_k": 2,
+    "max_k": 5,
+    "never": 0,
+    "dist": {
+     "1": 10,
+     "2": 10,
+     "3": 4,
+     "5": 1
+    }
+   },
+   {
+    "ratio": 0.9,
+    "cross": null,
+    "exhaustive": false,
+    "median_k": 1,
+    "max_k": 3,
+    "never": 0,
+    "dist": {
+     "1": 24,
+     "3": 1
+    }
+   },
+   {
+    "ratio": 0.95,
+    "cross": 0,
+    "exhaustive": true,
+    "median_k": 3,
+    "max_k": 5,
+    "never": 0,
+    "dist": {
+     "2": 4,
+     "3": 9,
+     "4": 9,
+     "5": 3
+    }
+   },
+   {
+    "ratio": 0.95,
+    "cross": 10,
+    "exhaustive": false,
+    "median_k": 4,
+    "max_k": 7,
+    "never": 0,
+    "dist": {
+     "2": 2,
+     "3": 9,
+     "4": 6,
+     "5": 5,
+     "6": 2,
+     "7": 1
+    }
+   },
+   {
+    "ratio": 0.95,
+    "cross": 30,
+    "exhaustive": false,
+    "median_k": 3,
+    "max_k": 6,
+    "never": 0,
+    "dist": {
+     "1": 2,
+     "2": 7,
+     "3": 8,
+     "4": 5,
+     "5": 2,
+     "6": 1
+    }
+   },
+   {
+    "ratio": 0.95,
+    "cross": null,
+    "exhaustive": false,
+    "median_k": 1,
+    "max_k": 6,
+    "never": 0,
+    "dist": {
+     "1": 19,
+     "2": 4,
+     "3": 1,
+     "6": 1
+    }
+   },
+   {
+    "ratio": 1.0,
+    "cross": 0,
+    "exhaustive": true,
+    "median_k": 8,
+    "max_k": 14,
+    "never": 12,
+    "dist": {
+     "4": 1,
+     "6": 2,
+     "7": 3,
+     "8": 2,
+     "10": 2,
+     "12": 1,
+     "13": 1,
+     "14": 1
+    }
+   },
+   {
+    "ratio": 1.0,
+    "cross": 10,
+    "exhaustive": false,
+    "median_k": 7,
+    "max_k": 14,
+    "never": 0,
+    "dist": {
+     "3": 2,
+     "4": 3,
+     "5": 1,
+     "6": 5,
+     "7": 2,
+     "8": 2,
+     "9": 4,
+     "10": 3,
+     "13": 2,
+     "14": 1
+    }
+   },
+   {
+    "ratio": 1.0,
+    "cross": 30,
+    "exhaustive": false,
+    "median_k": 7,
+    "max_k": 14,
+    "never": 0,
+    "dist": {
+     "2": 1,
+     "3": 3,
+     "4": 3,
+     "5": 1,
+     "6": 4,
+     "7": 3,
+     "8": 5,
+     "9": 2,
+     "10": 1,
+     "12": 1,
+     "14": 1
+    }
+   },
+   {
+    "ratio": 1.0,
+    "cross": null,
+    "exhaustive": false,
+    "median_k": 1,
+    "max_k": 11,
+    "never": 0,
+    "dist": {
+     "1": 13,
+     "3": 2,
+     "4": 1,
+     "5": 4,
+     "6": 2,
+     "8": 1,
+     "10": 1,
+     "11": 1
+    }
+   },
+   {
+    "ratio": 1.05,
+    "cross": 0,
+    "exhaustive": true,
+    "median_k": null,
+    "max_k": null,
+    "never": 25,
+    "dist": {}
+   },
+   {
+    "ratio": 1.05,
+    "cross": 10,
+    "exhaustive": false,
+    "median_k": null,
+    "max_k": null,
+    "never": 25,
+    "dist": {}
+   },
+   {
+    "ratio": 1.05,
+    "cross": 30,
+    "exhaustive": false,
+    "median_k": 6,
+    "max_k": 6,
+    "never": 23,
+    "dist": {
+     "4": 1,
+     "6": 1
+    }
+   },
+   {
+    "ratio": 1.05,
+    "cross": null,
+    "exhaustive": false,
+    "median_k": 3,
+    "max_k": 6,
+    "never": 18,
+    "dist": {
+     "1": 2,
+     "3": 2,
+     "5": 1,
+     "6": 2
+    }
+   }
+  ],
+  "ceiling_cross": [
+   {
+    "dim": "pid5_anhedonia",
+    "dim_ceiling": 0.9036,
+    "dim_ceiling_cross": 0.930653115774216,
+    "ratio_old": 1.0299392604849669
+   },
+   {
+    "dim": "pid5_anxiousness",
+    "dim_ceiling": 0.9213,
+    "dim_ceiling_cross": 0.9354299691894763,
+    "ratio_old": 1.0153369903283147
+   },
+   {
+    "dim": "pid5_attention_seeking",
+    "dim_ceiling": 0.8687,
+    "dim_ceiling_cross": 0.898788036815303,
+    "ratio_old": 1.034635704863938
+   },
+   {
+    "dim": "pid5_callousness",
+    "dim_ceiling": 0.876,
+    "dim_ceiling_cross": 0.9119320448784191,
+    "ratio_old": 1.0410183160712547
+   },
+   {
+    "dim": "pid5_deceitfulness",
+    "dim_ceiling": 0.8626,
+    "dim_ceiling_cross": 0.897628384773341,
+    "ratio_old": 1.0406079118633675
+   },
+   {
+    "dim": "pid5_depressivity",
+    "dim_ceiling": 0.9519,
+    "dim_ceiling_cross": 0.9609142894092025,
+    "ratio_old": 1.0094697861216542
+   },
+   {
+    "dim": "pid5_distractibility",
+    "dim_ceiling": 0.9,
+    "dim_ceiling_cross": 0.9185260819576392,
+    "ratio_old": 1.020584535508488
+   },
+   {
+    "dim": "pid5_eccentricity",
+    "dim_ceiling": 0.9411,
+    "dim_ceiling_cross": 0.9475992257409692,
+    "ratio_old": 1.0069059884613423
+   },
+   {
+    "dim": "pid5_emotional_lability",
+    "dim_ceiling": 0.8564,
+    "dim_ceiling_cross": 0.8930532115283498,
+    "ratio_old": 1.0427991727327766
+   },
+   {
+    "dim": "pid5_grandiosity",
+    "dim_ceiling": 0.7914,
+    "dim_ceiling_cross": 0.8488818254857471,
+    "ratio_old": 1.0726330875483283
+   },
+   {
+    "dim": "pid5_hostility",
+    "dim_ceiling": 0.855,
+    "dim_ceiling_cross": 0.8946026401542642,
+    "ratio_old": 1.0463188773734085
+   },
+   {
+    "dim": "pid5_impulsivity",
+    "dim_ceiling": 0.8156,
+    "dim_ceiling_cross": 0.8560182966943387,
+    "ratio_old": 1.0495565187522544
+   },
+   {
+    "dim": "pid5_intimacy_avoidance",
+    "dim_ceiling": 0.8539,
+    "dim_ceiling_cross": 0.8724036564549967,
+    "ratio_old": 1.0216695824511028
+   },
+   {
+    "dim": "pid5_irresponsibility",
+    "dim_ceiling": 0.7432,
+    "dim_ceiling_cross": 0.8246291164110108,
+    "ratio_old": 1.1095655495304235
+   },
+   {
+    "dim": "pid5_manipulativeness",
+    "dim_ceiling": 0.7495,
+    "dim_ceiling_cross": 0.8575133177169507,
+    "ratio_old": 1.1441138328444973
+   },
+   {
+    "dim": "pid5_perceptual_dysregulation",
+    "dim_ceiling": 0.8795,
+    "dim_ceiling_cross": 0.9171128547180805,
+    "ratio_old": 1.0427661793269818
+   },
+   {
+    "dim": "pid5_perseveration",
+    "dim_ceiling": 0.8323,
+    "dim_ceiling_cross": 0.885772049615653,
+    "ratio_old": 1.0642461247334531
+   },
+   {
+    "dim": "pid5_restricted_affectivity",
+    "dim_ceiling": 0.8128,
+    "dim_ceiling_cross": 0.8594439481155635,
+    "ratio_old": 1.0573867471894236
+   },
+   {
+    "dim": "pid5_rigid_perfectionism",
+    "dim_ceiling": 0.8666,
+    "dim_ceiling_cross": 0.8891687294063213,
+    "ratio_old": 1.0260428449184413
+   },
+   {
+    "dim": "pid5_risk_taking",
+    "dim_ceiling": 0.8996,
+    "dim_ceiling_cross": 0.9075152463217088,
+    "ratio_old": 1.0087986286368484
+   },
+   {
+    "dim": "pid5_separation_insecurity",
+    "dim_ceiling": 0.8391,
+    "dim_ceiling_cross": 0.8632481951978598,
+    "ratio_old": 1.0287786857321652
+   },
+   {
+    "dim": "pid5_submissiveness",
+    "dim_ceiling": 0.8093,
+    "dim_ceiling_cross": 0.8325337593792715,
+    "ratio_old": 1.0287084633377876
+   },
+   {
+    "dim": "pid5_suspiciousness",
+    "dim_ceiling": 0.7906,
+    "dim_ceiling_cross": 0.8358283316818645,
+    "ratio_old": 1.0572076039487284
+   },
+   {
+    "dim": "pid5_unusual_beliefs_experiences",
+    "dim_ceiling": 0.8145,
+    "dim_ceiling_cross": 0.859484600410876,
+    "ratio_old": 1.0552297119838872
+   },
+   {
+    "dim": "pid5_withdrawal",
+    "dim_ceiling": 0.9228,
+    "dim_ceiling_cross": 0.9331307984493703,
+    "ratio_old": 1.0111950568372023
+   }
+  ]
+ }
+}

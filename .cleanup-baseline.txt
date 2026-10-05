@@ -1,0 +1,23 @@
+﻿# 清理前基线（验收对照用）
+日期: 2026-10-03
+
+## Python 测试
+test_catalog                 ❌=0
+test_pid5_instrument         ❌=0
+test_l1_instrument           ❌=0
+test_scoring                 ❌=0
+test_schema_roundtrip        ❌=0
+check_l2_criteria            ❌=0
+check_l2_fields_persist      ❌=0
+check_dimension_coverage     ❌=0
+check_css_vars               ❌=0
+
+## 清单
+核心 1028 个文件 → MANIFEST.sha256 / MANIFEST.txt
+清单里 1028 个，实际 1028 个
+
+## 工具引用测量
+tools/ 共 159 个脚本：**无引用（可安全移动）95 个**，被引用 64 个
+
+## archive 哈希（清理绝不能改变这些）
+archive 文件数: 1987  总字节: 670295616

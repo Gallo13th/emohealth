@@ -1,0 +1,3082 @@
+{
+ "instrument": "IPIP-NEO-300",
+ "version": "1.0",
+ "citation": "Goldberg, L. R. (1999). A broad-bandwidth, public domain, personality inventory measuring the lower-level facets of several five-factor models. In Personality Psychology in Europe (Vol. 7, pp. 7-28). Tilburg University Press.",
+ "license": "Public Domain",
+ "license_evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'",
+ "structure": {
+  "domains": 5,
+  "facets": 30,
+  "items": 300,
+  "items_per_facet": 10,
+  "reverse_keyed_items": 148,
+  "administration_order": "interleaved_30_facet_cycle",
+  "estimated_duration_min": 35
+ },
+ "facet_alphas": {
+  "anxiety": 0.83,
+  "anger": 0.88,
+  "depression": 0.88,
+  "selfconsciousness": 0.8,
+  "immoderation": 0.77,
+  "vulnerability": 0.82,
+  "friendliness": 0.87,
+  "gregariousness": 0.79,
+  "assertiveness": 0.84,
+  "activitylevel": 0.71,
+  "excitementseeking": 0.78,
+  "cheerfulness": 0.81,
+  "imagination": 0.83,
+  "aesthetic_appreciation_artistic_interests": 0.84,
+  "emotionality": 0.81,
+  "adventurousness": 0.77,
+  "intellect": 0.86,
+  "liberalism": 0.86,
+  "trust": 0.82,
+  "morality": 0.75,
+  "altruism": 0.77,
+  "cooperation": 0.73,
+  "modesty_humility": 0.77,
+  "sympathy": 0.75,
+  "selfefficacy": 0.78,
+  "orderliness": 0.82,
+  "dutifulness": 0.71,
+  "achievementstriving": 0.78,
+  "selfdiscipline": 0.85,
+  "cautiousness": 0.76
+ },
+ "sources": {
+  "administration_form": "archive/datasets/osf-johnson/scoring/IPIP-NEO-300_Questionnaire_printable.docx",
+  "machine_readable_structure": "archive/ipip/data/OpenScales/scales/ipip/IPIP-NEO/IPIP-NEO.osd",
+  "item_text_master": "archive/ipip/data/OpenScales/scales/ipip/ipip_item_codes.json",
+  "scoring_keys": "archive/datasets/osf-johnson/scoring/IPIP-NEO-300_ScoringTool.xlsx",
+  "norms": "archive/datasets/osf-johnson/scoring/uk-norms/"
+ },
+ "known_defects_repaired": [
+  "osd text_key 'ipip_E11' 为悬空引用；其正文由官方问卷 #70 提供",
+  "text_key 需剥离 'ipip_' 前缀且部分含尾随空格",
+  "OpenScales README 报 'Items: 0' 为元数据错误"
+ ],
+ "validation": {
+  "items": 300,
+  "facets": 30,
+  "reverse_keyed": 148,
+  "items_missing_text": [],
+  "problems": []
+ },
+ "build_log": [
+  "docx 解析题目数：300",
+  "osd  解析题目数：300",
+  "文本精确匹配：293 / 300",
+  "措辞变体：docx #58「Believe that there is no absolute right or wrong.」 vs 主表「Believe that there is no absolute right and wrong.」（facet=liberalism，osd=ipip_neo_172）",
+  "修复机读缺陷：docx #70 补齐 osd ipip_neo_253 的悬空引用 key=E11（facet=orderliness）",
+  "措辞变体：docx #78「Interested in many things.」 vs 主表「Am interested in many things.」（facet=adventurousness，osd=ipip_neo_153）",
+  "措辞变体：docx #81「Do things I later regret.」 vs 主表「Do things that I later regret.」（facet=immoderation，osd=ipip_neo_043）",
+  "措辞变体：docx #202「Willing to try anything once.」 vs 主表「Am willing to try anything once.」（facet=excitementseeking，osd=ipip_neo_107）",
+  "措辞变体：docx #208「Believe laws should be strictly enforced.」 vs 主表「Believe that laws should be strictly enforced.」（facet=liberalism，osd=ipip_neo_177）",
+  "措辞变体：docx #269「Believe people should fend for themselves.」 vs 主表「Believe that people should fend for themselves.」（facet=sympathy，osd=ipip_neo_239）",
+  "结构补全项：7"
+ ],
+ "items": [
+  {
+   "order": 1,
+   "id": "ipip_neo_001",
+   "code": "H1157",
+   "facet": "anxiety",
+   "key": 1,
+   "text": "Worry about things.",
+   "text_master": "Worry about things.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 2,
+   "id": "ipip_neo_061",
+   "code": "H29",
+   "facet": "friendliness",
+   "key": 1,
+   "text": "Make friends easily.",
+   "text_master": "Make friends easily.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 3,
+   "id": "ipip_neo_121",
+   "code": "X14",
+   "facet": "imagination",
+   "key": 1,
+   "text": "Have a vivid imagination.",
+   "text_master": "Have a vivid imagination.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 4,
+   "id": "ipip_neo_181",
+   "code": "H113",
+   "facet": "trust",
+   "key": 1,
+   "text": "Trust others.",
+   "text_master": "Trust others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 5,
+   "id": "ipip_neo_241",
+   "code": "H1285",
+   "facet": "selfefficacy",
+   "key": 1,
+   "text": "Complete tasks successfully.",
+   "text_master": "Complete tasks successfully.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 6,
+   "id": "ipip_neo_011",
+   "code": "H754",
+   "facet": "anger",
+   "key": 1,
+   "text": "Get angry easily.",
+   "text_master": "Get angry easily.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 7,
+   "id": "ipip_neo_071",
+   "code": "H78",
+   "facet": "gregariousness",
+   "key": 1,
+   "text": "Love large parties.",
+   "text_master": "Love large parties.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 8,
+   "id": "ipip_neo_131",
+   "code": "X123",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "key": 1,
+   "text": "Believe in the importance of art.",
+   "text_master": "Believe in the importance of art.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 9,
+   "id": "ipip_neo_191",
+   "code": "X136",
+   "facet": "morality",
+   "key": 1,
+   "text": "Would never cheat on my taxes.",
+   "text_master": "Would never cheat on my taxes.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 10,
+   "id": "ipip_neo_251",
+   "code": "X118",
+   "facet": "orderliness",
+   "key": 1,
+   "text": "Like order.",
+   "text_master": "Like order.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 11,
+   "id": "ipip_neo_021",
+   "code": "X74",
+   "facet": "depression",
+   "key": 1,
+   "text": "Often feel blue.",
+   "text_master": "Often feel blue.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 12,
+   "id": "ipip_neo_081",
+   "code": "H334",
+   "facet": "assertiveness",
+   "key": 1,
+   "text": "Take charge.",
+   "text_master": "Take charge.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 13,
+   "id": "ipip_neo_141",
+   "code": "X92",
+   "facet": "emotionality",
+   "key": 1,
+   "text": "Experience my emotions intensely.",
+   "text_master": "Experience my emotions intensely.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 14,
+   "id": "ipip_neo_201",
+   "code": "H30",
+   "facet": "altruism",
+   "key": 1,
+   "text": "Make people feel welcome.",
+   "text_master": "Make people feel welcome.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 15,
+   "id": "ipip_neo_261",
+   "code": "X150",
+   "facet": "dutifulness",
+   "key": 1,
+   "text": "Try to follow the rules.",
+   "text_master": "Try to follow the rules.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 16,
+   "id": "ipip_neo_031",
+   "code": "H991",
+   "facet": "selfconsciousness",
+   "key": 1,
+   "text": "Am easily intimidated.",
+   "text_master": "Am easily intimidated.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 17,
+   "id": "ipip_neo_091",
+   "code": "H58",
+   "facet": "activitylevel",
+   "key": 1,
+   "text": "Am always busy.",
+   "text_master": "Am always busy.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 18,
+   "id": "ipip_neo_151",
+   "code": "X204",
+   "facet": "adventurousness",
+   "key": 1,
+   "text": "Prefer variety to routine.",
+   "text_master": "Prefer variety to routine.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 19,
+   "id": "ipip_neo_211",
+   "code": "H882",
+   "facet": "cooperation",
+   "key": 1,
+   "text": "Am easy to satisfy.",
+   "text_master": "Am easy to satisfy.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 20,
+   "id": "ipip_neo_271",
+   "code": "H365",
+   "facet": "achievementstriving",
+   "key": 1,
+   "text": "Go straight for the goal.",
+   "text_master": "Go straight for the goal.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 21,
+   "id": "ipip_neo_041",
+   "code": "X145",
+   "facet": "immoderation",
+   "key": 1,
+   "text": "Often eat too much.",
+   "text_master": "Often eat too much.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 22,
+   "id": "ipip_neo_101",
+   "code": "H438",
+   "facet": "excitementseeking",
+   "key": 1,
+   "text": "Love excitement.",
+   "text_master": "Love excitement.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 23,
+   "id": "ipip_neo_161",
+   "code": "X201",
+   "facet": "intellect",
+   "key": 1,
+   "text": "Like to solve complex problems.",
+   "text_master": "Like to solve complex problems.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 24,
+   "id": "ipip_neo_221",
+   "code": "X169",
+   "facet": "modesty_humility",
+   "key": 1,
+   "text": "Dislike being the center of attention.",
+   "text_master": "Dislike being the center of attention.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 25,
+   "id": "ipip_neo_281",
+   "code": "E119",
+   "facet": "selfdiscipline",
+   "key": 1,
+   "text": "Get chores done right away.",
+   "text_master": "Get chores done right away.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 26,
+   "id": "ipip_neo_051",
+   "code": "H948",
+   "facet": "vulnerability",
+   "key": 1,
+   "text": "Panic easily.",
+   "text_master": "Panic easily.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 27,
+   "id": "ipip_neo_111",
+   "code": "H32",
+   "facet": "cheerfulness",
+   "key": 1,
+   "text": "Radiate joy.",
+   "text_master": "Radiate joy.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 28,
+   "id": "ipip_neo_171",
+   "code": "X218",
+   "facet": "liberalism",
+   "key": 1,
+   "text": "Tend to vote for liberal political candidates.",
+   "text_master": "Tend to vote for liberal political candidates.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 29,
+   "id": "ipip_neo_231",
+   "code": "X259",
+   "facet": "sympathy",
+   "key": 1,
+   "text": "Sympathize with the homeless.",
+   "text_master": "Sympathize with the homeless.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 30,
+   "id": "ipip_neo_291",
+   "code": "H252",
+   "facet": "cautiousness",
+   "key": 1,
+   "text": "Avoid mistakes.",
+   "text_master": "Avoid mistakes.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 31,
+   "id": "ipip_neo_002",
+   "code": "H999",
+   "facet": "anxiety",
+   "key": 1,
+   "text": "Fear for the worst.",
+   "text_master": "Fear for the worst.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 32,
+   "id": "ipip_neo_062",
+   "code": "H52",
+   "facet": "friendliness",
+   "key": 1,
+   "text": "Warm up quickly to others.",
+   "text_master": "Warm up quickly to others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 33,
+   "id": "ipip_neo_122",
+   "code": "X238",
+   "facet": "imagination",
+   "key": 1,
+   "text": "Enjoy wild flights of fantasy.",
+   "text_master": "Enjoy wild flights of fantasy.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 34,
+   "id": "ipip_neo_182",
+   "code": "H549",
+   "facet": "trust",
+   "key": 1,
+   "text": "Believe that others have good intentions.",
+   "text_master": "Believe that others have good intentions.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 35,
+   "id": "ipip_neo_242",
+   "code": "H1174",
+   "facet": "selfefficacy",
+   "key": 1,
+   "text": "Excel in what I do.",
+   "text_master": "Excel in what I do.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 36,
+   "id": "ipip_neo_012",
+   "code": "H761",
+   "facet": "anger",
+   "key": 1,
+   "text": "Get irritated easily.",
+   "text_master": "Get irritated easily.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 37,
+   "id": "ipip_neo_072",
+   "code": "X83",
+   "facet": "gregariousness",
+   "key": 1,
+   "text": "Talk to a lot of different people at parties.",
+   "text_master": "Talk to a lot of different people at parties.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 38,
+   "id": "ipip_neo_132",
+   "code": "X81",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "key": 1,
+   "text": "Like music.",
+   "text_master": "Like music.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 39,
+   "id": "ipip_neo_192",
+   "code": "H294",
+   "facet": "morality",
+   "key": 1,
+   "text": "Stick to the rules.",
+   "text_master": "Stick to the rules.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 40,
+   "id": "ipip_neo_252",
+   "code": "H244",
+   "facet": "orderliness",
+   "key": 1,
+   "text": "Like to tidy up.",
+   "text_master": "Like to tidy up.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 41,
+   "id": "ipip_neo_022",
+   "code": "X15",
+   "facet": "depression",
+   "key": 1,
+   "text": "Dislike myself.",
+   "text_master": "Dislike myself.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 42,
+   "id": "ipip_neo_082",
+   "code": "H524",
+   "facet": "assertiveness",
+   "key": 1,
+   "text": "Try to lead others.",
+   "text_master": "Try to lead others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 43,
+   "id": "ipip_neo_142",
+   "code": "E136",
+   "facet": "emotionality",
+   "key": 1,
+   "text": "Feel others' emotions.",
+   "text_master": "Feel others' emotions.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 44,
+   "id": "ipip_neo_202",
+   "code": "E124",
+   "facet": "altruism",
+   "key": 1,
+   "text": "Anticipate the needs of others.",
+   "text_master": "Anticipate the needs of others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 45,
+   "id": "ipip_neo_262",
+   "code": "H149",
+   "facet": "dutifulness",
+   "key": 1,
+   "text": "Keep my promises.",
+   "text_master": "Keep my promises.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 46,
+   "id": "ipip_neo_032",
+   "code": "H905",
+   "facet": "selfconsciousness",
+   "key": 1,
+   "text": "Am afraid that I will do the wrong thing.",
+   "text_master": "Am afraid that I will do the wrong thing.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 47,
+   "id": "ipip_neo_092",
+   "code": "H54",
+   "facet": "activitylevel",
+   "key": 1,
+   "text": "Am always on the go.",
+   "text_master": "Am always on the go.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 48,
+   "id": "ipip_neo_152",
+   "code": "X104",
+   "facet": "adventurousness",
+   "key": 1,
+   "text": "Like to visit new places.",
+   "text_master": "Like to visit new places.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 49,
+   "id": "ipip_neo_212",
+   "code": "X206",
+   "facet": "cooperation",
+   "key": 1,
+   "text": "Can't stand confrontations.",
+   "text_master": "Can't stand confrontations.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 50,
+   "id": "ipip_neo_272",
+   "code": "H1206",
+   "facet": "achievementstriving",
+   "key": 1,
+   "text": "Work hard.",
+   "text_master": "Work hard.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 51,
+   "id": "ipip_neo_042",
+   "code": "E57",
+   "facet": "immoderation",
+   "key": 1,
+   "text": "Don't know why I do some of the things I do.",
+   "text_master": "Don't know why I do some of the things I do.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 52,
+   "id": "ipip_neo_102",
+   "code": "H446",
+   "facet": "excitementseeking",
+   "key": 1,
+   "text": "Seek adventure.",
+   "text_master": "Seek adventure.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 53,
+   "id": "ipip_neo_162",
+   "code": "X211",
+   "facet": "intellect",
+   "key": 1,
+   "text": "Love to read challenging material.",
+   "text_master": "Love to read challenging material.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 54,
+   "id": "ipip_neo_222",
+   "code": "X212",
+   "facet": "modesty_humility",
+   "key": 1,
+   "text": "Dislike talking about myself.",
+   "text_master": "Dislike talking about myself.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 55,
+   "id": "ipip_neo_282",
+   "code": "X87",
+   "facet": "selfdiscipline",
+   "key": 1,
+   "text": "Am always prepared.",
+   "text_master": "Am always prepared.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 56,
+   "id": "ipip_neo_052",
+   "code": "H959",
+   "facet": "vulnerability",
+   "key": 1,
+   "text": "Become overwhelmed by events.",
+   "text_master": "Become overwhelmed by events.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 57,
+   "id": "ipip_neo_112",
+   "code": "H1094",
+   "facet": "cheerfulness",
+   "key": 1,
+   "text": "Have a lot of fun.",
+   "text_master": "Have a lot of fun.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 58,
+   "id": "ipip_neo_172",
+   "code": "X184",
+   "facet": "liberalism",
+   "key": 1,
+   "text": "Believe that there is no absolute right or wrong.",
+   "text_master": "Believe that there is no absolute right and wrong.",
+   "text_source": "questionnaire_docx(差异化)"
+  },
+  {
+   "order": 59,
+   "id": "ipip_neo_232",
+   "code": "E115",
+   "facet": "sympathy",
+   "key": 1,
+   "text": "Feel sympathy for those who are worse off than myself.",
+   "text_master": "Feel sympathy for those who are worse off than myself.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 60,
+   "id": "ipip_neo_292",
+   "code": "H673",
+   "facet": "cautiousness",
+   "key": 1,
+   "text": "Choose my words with care.",
+   "text_master": "Choose my words with care.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 61,
+   "id": "ipip_neo_003",
+   "code": "H968",
+   "facet": "anxiety",
+   "key": 1,
+   "text": "Am afraid of many things.",
+   "text_master": "Am afraid of many things.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 62,
+   "id": "ipip_neo_063",
+   "code": "X112",
+   "facet": "friendliness",
+   "key": 1,
+   "text": "Feel comfortable around people.",
+   "text_master": "Feel comfortable around people.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 63,
+   "id": "ipip_neo_123",
+   "code": "X71",
+   "facet": "imagination",
+   "key": 1,
+   "text": "Love to daydream.",
+   "text_master": "Love to daydream.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 64,
+   "id": "ipip_neo_183",
+   "code": "E157",
+   "facet": "trust",
+   "key": 1,
+   "text": "Trust what people say.",
+   "text_master": "Trust what people say.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 65,
+   "id": "ipip_neo_243",
+   "code": "H1354",
+   "facet": "selfefficacy",
+   "key": 1,
+   "text": "Handle tasks smoothly.",
+   "text_master": "Handle tasks smoothly.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 66,
+   "id": "ipip_neo_013",
+   "code": "X95",
+   "facet": "anger",
+   "key": 1,
+   "text": "Get upset easily.",
+   "text_master": "Get upset easily.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 67,
+   "id": "ipip_neo_073",
+   "code": "H2016",
+   "facet": "gregariousness",
+   "key": 1,
+   "text": "Enjoy being part of a group.",
+   "text_master": "Enjoy being part of a group.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 68,
+   "id": "ipip_neo_133",
+   "code": "E105",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "key": 1,
+   "text": "See beauty in things that others might not notice.",
+   "text_master": "See beauty in things that others might not notice.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 69,
+   "id": "ipip_neo_193",
+   "code": "X91",
+   "facet": "morality",
+   "key": -1,
+   "text": "Use flattery to get ahead.",
+   "text_master": "Use flattery to get ahead.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 70,
+   "id": "ipip_neo_253",
+   "code": "E11",
+   "facet": "orderliness",
+   "key": 1,
+   "text": "Want everything to be \"just right.\"",
+   "text_master": null,
+   "text_source": "questionnaire_docx(补全机读缺陷)"
+  },
+  {
+   "order": 71,
+   "id": "ipip_neo_023",
+   "code": "H640",
+   "facet": "depression",
+   "key": 1,
+   "text": "Am often down in the dumps.",
+   "text_master": "Am often down in the dumps.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 72,
+   "id": "ipip_neo_083",
+   "code": "H1137",
+   "facet": "assertiveness",
+   "key": 1,
+   "text": "Can talk others into doing things.",
+   "text_master": "Can talk others into doing things.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 73,
+   "id": "ipip_neo_143",
+   "code": "E174",
+   "facet": "emotionality",
+   "key": 1,
+   "text": "Am passionate about causes.",
+   "text_master": "Am passionate about causes.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 74,
+   "id": "ipip_neo_203",
+   "code": "H1108",
+   "facet": "altruism",
+   "key": 1,
+   "text": "Love to help others.",
+   "text_master": "Love to help others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 75,
+   "id": "ipip_neo_263",
+   "code": "X127",
+   "facet": "dutifulness",
+   "key": 1,
+   "text": "Pay my bills on time.",
+   "text_master": "Pay my bills on time.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 76,
+   "id": "ipip_neo_033",
+   "code": "H592",
+   "facet": "selfconsciousness",
+   "key": 1,
+   "text": "Find it difficult to approach others.",
+   "text_master": "Find it difficult to approach others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 77,
+   "id": "ipip_neo_093",
+   "code": "H79",
+   "facet": "activitylevel",
+   "key": 1,
+   "text": "Do a lot in my spare time.",
+   "text_master": "Do a lot in my spare time.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 78,
+   "id": "ipip_neo_153",
+   "code": "H2021",
+   "facet": "adventurousness",
+   "key": 1,
+   "text": "Interested in many things.",
+   "text_master": "Am interested in many things.",
+   "text_source": "questionnaire_docx(差异化)"
+  },
+  {
+   "order": 79,
+   "id": "ipip_neo_213",
+   "code": "E31",
+   "facet": "cooperation",
+   "key": 1,
+   "text": "Hate to seem pushy.",
+   "text_master": "Hate to seem pushy.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 80,
+   "id": "ipip_neo_273",
+   "code": "H402",
+   "facet": "achievementstriving",
+   "key": 1,
+   "text": "Turn plans into actions.",
+   "text_master": "Turn plans into actions.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 81,
+   "id": "ipip_neo_043",
+   "code": "E24",
+   "facet": "immoderation",
+   "key": 1,
+   "text": "Do things I later regret.",
+   "text_master": "Do things that I later regret.",
+   "text_source": "questionnaire_docx(差异化)"
+  },
+  {
+   "order": 82,
+   "id": "ipip_neo_103",
+   "code": "H67",
+   "facet": "excitementseeking",
+   "key": 1,
+   "text": "Love action.",
+   "text_master": "Love action.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 83,
+   "id": "ipip_neo_163",
+   "code": "H1276",
+   "facet": "intellect",
+   "key": 1,
+   "text": "Have a rich vocabulary.",
+   "text_master": "Have a rich vocabulary.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 84,
+   "id": "ipip_neo_223",
+   "code": "X125",
+   "facet": "modesty_humility",
+   "key": 1,
+   "text": "Consider myself an average person.",
+   "text_master": "Consider myself an average person.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 85,
+   "id": "ipip_neo_283",
+   "code": "H511",
+   "facet": "selfdiscipline",
+   "key": 1,
+   "text": "Start tasks right away.",
+   "text_master": "Start tasks right away.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 86,
+   "id": "ipip_neo_053",
+   "code": "H954",
+   "facet": "vulnerability",
+   "key": 1,
+   "text": "Feel that I'm unable to deal with things.",
+   "text_master": "Feel that I'm unable to deal with things.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 87,
+   "id": "ipip_neo_113",
+   "code": "H66",
+   "facet": "cheerfulness",
+   "key": 1,
+   "text": "Express childlike joy.",
+   "text_master": "Express childlike joy.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 88,
+   "id": "ipip_neo_173",
+   "code": "X219",
+   "facet": "liberalism",
+   "key": 1,
+   "text": "Believe that criminals should receive help rather than punishment.",
+   "text_master": "Believe that criminals should receive help rather than punishment.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 89,
+   "id": "ipip_neo_233",
+   "code": "X240",
+   "facet": "sympathy",
+   "key": 1,
+   "text": "Value cooperation over competition.",
+   "text_master": "Value cooperation over competition.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 90,
+   "id": "ipip_neo_293",
+   "code": "H367",
+   "facet": "cautiousness",
+   "key": 1,
+   "text": "Stick to my chosen path.",
+   "text_master": "Stick to my chosen path.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 91,
+   "id": "ipip_neo_004",
+   "code": "X107",
+   "facet": "anxiety",
+   "key": 1,
+   "text": "Get stressed out easily.",
+   "text_master": "Get stressed out easily.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 92,
+   "id": "ipip_neo_064",
+   "code": "H41",
+   "facet": "friendliness",
+   "key": 1,
+   "text": "Act comfortably with others.",
+   "text_master": "Act comfortably with others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 93,
+   "id": "ipip_neo_124",
+   "code": "E163",
+   "facet": "imagination",
+   "key": 1,
+   "text": "Like to get lost in thought.",
+   "text_master": "Like to get lost in thought.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 94,
+   "id": "ipip_neo_184",
+   "code": "X189",
+   "facet": "trust",
+   "key": 1,
+   "text": "Believe that people are basically moral.",
+   "text_master": "Believe that people are basically moral.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 95,
+   "id": "ipip_neo_244",
+   "code": "H352",
+   "facet": "selfefficacy",
+   "key": 1,
+   "text": "Am sure of my ground.",
+   "text_master": "Am sure of my ground.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 96,
+   "id": "ipip_neo_014",
+   "code": "X84",
+   "facet": "anger",
+   "key": 1,
+   "text": "Am often in a bad mood.",
+   "text_master": "Am often in a bad mood.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 97,
+   "id": "ipip_neo_074",
+   "code": "H1106",
+   "facet": "gregariousness",
+   "key": 1,
+   "text": "Involve others in what I am doing.",
+   "text_master": "Involve others in what I am doing.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 98,
+   "id": "ipip_neo_134",
+   "code": "X140",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "key": 1,
+   "text": "Love flowers.",
+   "text_master": "Love flowers.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 99,
+   "id": "ipip_neo_194",
+   "code": "H416",
+   "facet": "morality",
+   "key": -1,
+   "text": "Use others for my own ends.",
+   "text_master": "Use others for my own ends.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 100,
+   "id": "ipip_neo_254",
+   "code": "H309",
+   "facet": "orderliness",
+   "key": 1,
+   "text": "Love order and regularity.",
+   "text_master": "Love order and regularity.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 101,
+   "id": "ipip_neo_024",
+   "code": "H646",
+   "facet": "depression",
+   "key": 1,
+   "text": "Have a low opinion of myself.",
+   "text_master": "Have a low opinion of myself.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 102,
+   "id": "ipip_neo_084",
+   "code": "H773",
+   "facet": "assertiveness",
+   "key": 1,
+   "text": "Seek to influence others.",
+   "text_master": "Seek to influence others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 103,
+   "id": "ipip_neo_144",
+   "code": "E133",
+   "facet": "emotionality",
+   "key": 1,
+   "text": "Enjoy examining myself and my life.",
+   "text_master": "Enjoy examining myself and my life.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 104,
+   "id": "ipip_neo_204",
+   "code": "H1100",
+   "facet": "altruism",
+   "key": 1,
+   "text": "Am concerned about others.",
+   "text_master": "Am concerned about others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 105,
+   "id": "ipip_neo_264",
+   "code": "H145",
+   "facet": "dutifulness",
+   "key": 1,
+   "text": "Tell the truth.",
+   "text_master": "Tell the truth.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 106,
+   "id": "ipip_neo_034",
+   "code": "H655",
+   "facet": "selfconsciousness",
+   "key": 1,
+   "text": "Am afraid to draw attention to myself.",
+   "text_master": "Am afraid to draw attention to myself.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 107,
+   "id": "ipip_neo_094",
+   "code": "H457",
+   "facet": "activitylevel",
+   "key": 1,
+   "text": "Can manage many things at the same time.",
+   "text_master": "Can manage many things at the same time.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 108,
+   "id": "ipip_neo_154",
+   "code": "H441",
+   "facet": "adventurousness",
+   "key": 1,
+   "text": "Like to begin new things.",
+   "text_master": "Like to begin new things.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 109,
+   "id": "ipip_neo_214",
+   "code": "H917",
+   "facet": "cooperation",
+   "key": -1,
+   "text": "Have a sharp tongue.",
+   "text_master": "Have a sharp tongue.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 110,
+   "id": "ipip_neo_274",
+   "code": "H69",
+   "facet": "achievementstriving",
+   "key": 1,
+   "text": "Plunge into tasks with all my heart.",
+   "text_master": "Plunge into tasks with all my heart.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 111,
+   "id": "ipip_neo_044",
+   "code": "X133",
+   "facet": "immoderation",
+   "key": 1,
+   "text": "Go on binges.",
+   "text_master": "Go on binges.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 112,
+   "id": "ipip_neo_104",
+   "code": "E56",
+   "facet": "excitementseeking",
+   "key": 1,
+   "text": "Enjoy being part of a loud crowd.",
+   "text_master": "Enjoy being part of a loud crowd.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 113,
+   "id": "ipip_neo_164",
+   "code": "H1322",
+   "facet": "intellect",
+   "key": 1,
+   "text": "Can handle a lot of information.",
+   "text_master": "Can handle a lot of information.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 114,
+   "id": "ipip_neo_224",
+   "code": "X247",
+   "facet": "modesty_humility",
+   "key": 1,
+   "text": "Seldom toot my own horn.",
+   "text_master": "Seldom toot my own horn.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 115,
+   "id": "ipip_neo_284",
+   "code": "H517",
+   "facet": "selfdiscipline",
+   "key": 1,
+   "text": "Get to work at once.",
+   "text_master": "Get to work at once.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 116,
+   "id": "ipip_neo_054",
+   "code": "H901",
+   "facet": "vulnerability",
+   "key": 1,
+   "text": "Can't make up my mind.",
+   "text_master": "Can't make up my mind.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 117,
+   "id": "ipip_neo_114",
+   "code": "H23",
+   "facet": "cheerfulness",
+   "key": 1,
+   "text": "Laugh my way through life.",
+   "text_master": "Laugh my way through life.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 118,
+   "id": "ipip_neo_174",
+   "code": "X35",
+   "facet": "liberalism",
+   "key": -1,
+   "text": "Believe in one true religion.",
+   "text_master": "Believe in one true religion.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 119,
+   "id": "ipip_neo_234",
+   "code": "H988",
+   "facet": "sympathy",
+   "key": 1,
+   "text": "Suffer from others' sorrows.",
+   "text_master": "Suffer from others' sorrows.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 120,
+   "id": "ipip_neo_294",
+   "code": "E46",
+   "facet": "cautiousness",
+   "key": -1,
+   "text": "Jump into things without thinking.",
+   "text_master": "Jump into things without thinking.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 121,
+   "id": "ipip_neo_005",
+   "code": "X120",
+   "facet": "anxiety",
+   "key": 1,
+   "text": "Get caught up in my problems.",
+   "text_master": "Get caught up in my problems.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 122,
+   "id": "ipip_neo_065",
+   "code": "H1151",
+   "facet": "friendliness",
+   "key": 1,
+   "text": "Cheer people up.",
+   "text_master": "Cheer people up.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 123,
+   "id": "ipip_neo_125",
+   "code": "H1119",
+   "facet": "imagination",
+   "key": 1,
+   "text": "Indulge in my fantasies.",
+   "text_master": "Indulge in my fantasies.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 124,
+   "id": "ipip_neo_185",
+   "code": "H114",
+   "facet": "trust",
+   "key": 1,
+   "text": "Believe in human goodness.",
+   "text_master": "Believe in human goodness.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 125,
+   "id": "ipip_neo_245",
+   "code": "H2009",
+   "facet": "selfefficacy",
+   "key": 1,
+   "text": "Come up with good solutions.",
+   "text_master": "Come up with good solutions.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 126,
+   "id": "ipip_neo_015",
+   "code": "H755",
+   "facet": "anger",
+   "key": 1,
+   "text": "Lose my temper.",
+   "text_master": "Lose my temper.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 127,
+   "id": "ipip_neo_075",
+   "code": "E55",
+   "facet": "gregariousness",
+   "key": 1,
+   "text": "Love surprise parties.",
+   "text_master": "Love surprise parties.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 128,
+   "id": "ipip_neo_135",
+   "code": "W15",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "key": 1,
+   "text": "Enjoy the beauty of nature.",
+   "text_master": "Enjoy the beauty of nature.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 129,
+   "id": "ipip_neo_195",
+   "code": "H1327",
+   "facet": "morality",
+   "key": -1,
+   "text": "Know how to get around the rules.",
+   "text_master": "Know how to get around the rules.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 130,
+   "id": "ipip_neo_255",
+   "code": "H1351",
+   "facet": "orderliness",
+   "key": 1,
+   "text": "Do things according to a plan.",
+   "text_master": "Do things according to a plan.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 131,
+   "id": "ipip_neo_025",
+   "code": "E92",
+   "facet": "depression",
+   "key": 1,
+   "text": "Have frequent mood swings.",
+   "text_master": "Have frequent mood swings.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 132,
+   "id": "ipip_neo_085",
+   "code": "H325",
+   "facet": "assertiveness",
+   "key": 1,
+   "text": "Take control of things.",
+   "text_master": "Take control of things.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 133,
+   "id": "ipip_neo_145",
+   "code": "E123",
+   "facet": "emotionality",
+   "key": 1,
+   "text": "Try to understand myself.",
+   "text_master": "Try to understand myself.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 134,
+   "id": "ipip_neo_205",
+   "code": "H22",
+   "facet": "altruism",
+   "key": 1,
+   "text": "Have a good word for everyone.",
+   "text_master": "Have a good word for everyone.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 135,
+   "id": "ipip_neo_265",
+   "code": "H153",
+   "facet": "dutifulness",
+   "key": 1,
+   "text": "Listen to my conscience.",
+   "text_master": "Listen to my conscience.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 136,
+   "id": "ipip_neo_035",
+   "code": "H656",
+   "facet": "selfconsciousness",
+   "key": 1,
+   "text": "Only feel comfortable with friends.",
+   "text_master": "Only feel comfortable with friends.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 137,
+   "id": "ipip_neo_095",
+   "code": "H1324",
+   "facet": "activitylevel",
+   "key": 1,
+   "text": "React quickly.",
+   "text_master": "React quickly.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 138,
+   "id": "ipip_neo_155",
+   "code": "X30",
+   "facet": "adventurousness",
+   "key": -1,
+   "text": "Prefer to stick with things that I know.",
+   "text_master": "Prefer to stick with things that I know.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 139,
+   "id": "ipip_neo_215",
+   "code": "H808",
+   "facet": "cooperation",
+   "key": -1,
+   "text": "Contradict others.",
+   "text_master": "Contradict others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 140,
+   "id": "ipip_neo_275",
+   "code": "H2014",
+   "facet": "achievementstriving",
+   "key": 1,
+   "text": "Do more than what's expected of me.",
+   "text_master": "Do more than what's expected of me.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 141,
+   "id": "ipip_neo_045",
+   "code": "H2029",
+   "facet": "immoderation",
+   "key": 1,
+   "text": "Love to eat.",
+   "text_master": "Love to eat.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 142,
+   "id": "ipip_neo_105",
+   "code": "E35",
+   "facet": "excitementseeking",
+   "key": 1,
+   "text": "Enjoy being reckless.",
+   "text_master": "Enjoy being reckless.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 143,
+   "id": "ipip_neo_165",
+   "code": "E145",
+   "facet": "intellect",
+   "key": 1,
+   "text": "Enjoy thinking about things.",
+   "text_master": "Enjoy thinking about things.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 144,
+   "id": "ipip_neo_225",
+   "code": "H736",
+   "facet": "modesty_humility",
+   "key": -1,
+   "text": "Believe that I am better than others.",
+   "text_master": "Believe that I am better than others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 145,
+   "id": "ipip_neo_285",
+   "code": "H258",
+   "facet": "selfdiscipline",
+   "key": 1,
+   "text": "Carry out my plans.",
+   "text_master": "Carry out my plans.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 146,
+   "id": "ipip_neo_055",
+   "code": "H950",
+   "facet": "vulnerability",
+   "key": 1,
+   "text": "Get overwhelmed by emotions.",
+   "text_master": "Get overwhelmed by emotions.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 147,
+   "id": "ipip_neo_115",
+   "code": "H33",
+   "facet": "cheerfulness",
+   "key": 1,
+   "text": "Love life.",
+   "text_master": "Love life.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 148,
+   "id": "ipip_neo_175",
+   "code": "X126",
+   "facet": "liberalism",
+   "key": -1,
+   "text": "Tend to vote for conservative political candidates.",
+   "text_master": "Tend to vote for conservative political candidates.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 149,
+   "id": "ipip_neo_235",
+   "code": "X227",
+   "facet": "sympathy",
+   "key": -1,
+   "text": "Am not interested in other people's problems.",
+   "text_master": "Am not interested in other people's problems.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 150,
+   "id": "ipip_neo_295",
+   "code": "H853",
+   "facet": "cautiousness",
+   "key": -1,
+   "text": "Make rash decisions.",
+   "text_master": "Make rash decisions.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 151,
+   "id": "ipip_neo_006",
+   "code": "X138",
+   "facet": "anxiety",
+   "key": -1,
+   "text": "Am not easily bothered by things.",
+   "text_master": "Am not easily bothered by things.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 152,
+   "id": "ipip_neo_066",
+   "code": "H596",
+   "facet": "friendliness",
+   "key": -1,
+   "text": "Am hard to get to know.",
+   "text_master": "Am hard to get to know.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 153,
+   "id": "ipip_neo_126",
+   "code": "X114",
+   "facet": "imagination",
+   "key": 1,
+   "text": "Spend time reflecting on things.",
+   "text_master": "Spend time reflecting on things.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 154,
+   "id": "ipip_neo_186",
+   "code": "H43",
+   "facet": "trust",
+   "key": 1,
+   "text": "Think that all will be well.",
+   "text_master": "Think that all will be well.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 155,
+   "id": "ipip_neo_246",
+   "code": "H1333",
+   "facet": "selfefficacy",
+   "key": 1,
+   "text": "Know how to get things done.",
+   "text_master": "Know how to get things done.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 156,
+   "id": "ipip_neo_016",
+   "code": "X265",
+   "facet": "anger",
+   "key": -1,
+   "text": "Rarely get irritated.",
+   "text_master": "Rarely get irritated.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 157,
+   "id": "ipip_neo_076",
+   "code": "H587",
+   "facet": "gregariousness",
+   "key": -1,
+   "text": "Prefer to be alone.",
+   "text_master": "Prefer to be alone.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 158,
+   "id": "ipip_neo_136",
+   "code": "X86",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "key": -1,
+   "text": "Do not like art.",
+   "text_master": "Do not like art.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 159,
+   "id": "ipip_neo_196",
+   "code": "X198",
+   "facet": "morality",
+   "key": -1,
+   "text": "Cheat to get ahead.",
+   "text_master": "Cheat to get ahead.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 160,
+   "id": "ipip_neo_256",
+   "code": "X82",
+   "facet": "orderliness",
+   "key": -1,
+   "text": "Often forget to put things back in their proper place.",
+   "text_master": "Often forget to put things back in their proper place.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 161,
+   "id": "ipip_neo_026",
+   "code": "H947",
+   "facet": "depression",
+   "key": 1,
+   "text": "Feel desperate.",
+   "text_master": "Feel desperate.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 162,
+   "id": "ipip_neo_086",
+   "code": "H976",
+   "facet": "assertiveness",
+   "key": -1,
+   "text": "Wait for others to lead the way.",
+   "text_master": "Wait for others to lead the way.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 163,
+   "id": "ipip_neo_146",
+   "code": "X29",
+   "facet": "emotionality",
+   "key": -1,
+   "text": "Seldom get emotional.",
+   "text_master": "Seldom get emotional.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 164,
+   "id": "ipip_neo_206",
+   "code": "H1136",
+   "facet": "altruism",
+   "key": -1,
+   "text": "Look down on others.",
+   "text_master": "Look down on others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 165,
+   "id": "ipip_neo_266",
+   "code": "H1346",
+   "facet": "dutifulness",
+   "key": -1,
+   "text": "Break rules.",
+   "text_master": "Break rules.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 166,
+   "id": "ipip_neo_036",
+   "code": "H1205",
+   "facet": "selfconsciousness",
+   "key": 1,
+   "text": "Stumble over my words.",
+   "text_master": "Stumble over my words.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 167,
+   "id": "ipip_neo_096",
+   "code": "E113",
+   "facet": "activitylevel",
+   "key": -1,
+   "text": "Like to take it easy.",
+   "text_master": "Like to take it easy.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 168,
+   "id": "ipip_neo_156",
+   "code": "H1063",
+   "facet": "adventurousness",
+   "key": -1,
+   "text": "Dislike changes.",
+   "text_master": "Dislike changes.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 169,
+   "id": "ipip_neo_216",
+   "code": "H453",
+   "facet": "cooperation",
+   "key": -1,
+   "text": "Love a good fight.",
+   "text_master": "Love a good fight.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 170,
+   "id": "ipip_neo_276",
+   "code": "E140",
+   "facet": "achievementstriving",
+   "key": 1,
+   "text": "Set high standards for myself and others.",
+   "text_master": "Set high standards for myself and others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 171,
+   "id": "ipip_neo_046",
+   "code": "X181",
+   "facet": "immoderation",
+   "key": -1,
+   "text": "Rarely overindulge.",
+   "text_master": "Rarely overindulge.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 172,
+   "id": "ipip_neo_106",
+   "code": "H871",
+   "facet": "excitementseeking",
+   "key": 1,
+   "text": "Act wild and crazy.",
+   "text_master": "Act wild and crazy.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 173,
+   "id": "ipip_neo_166",
+   "code": "X228",
+   "facet": "intellect",
+   "key": -1,
+   "text": "Am not interested in abstract ideas.",
+   "text_master": "Am not interested in abstract ideas.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 174,
+   "id": "ipip_neo_226",
+   "code": "H2043",
+   "facet": "modesty_humility",
+   "key": -1,
+   "text": "Think highly of myself.",
+   "text_master": "Think highly of myself.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 175,
+   "id": "ipip_neo_286",
+   "code": "H1171",
+   "facet": "selfdiscipline",
+   "key": -1,
+   "text": "Find it difficult to get down to work.",
+   "text_master": "Find it difficult to get down to work.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 176,
+   "id": "ipip_neo_056",
+   "code": "X79",
+   "facet": "vulnerability",
+   "key": -1,
+   "text": "Remain calm under pressure.",
+   "text_master": "Remain calm under pressure.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 177,
+   "id": "ipip_neo_116",
+   "code": "H42",
+   "facet": "cheerfulness",
+   "key": 1,
+   "text": "Look at the bright side of life.",
+   "text_master": "Look at the bright side of life.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 178,
+   "id": "ipip_neo_176",
+   "code": "X20",
+   "facet": "liberalism",
+   "key": -1,
+   "text": "Believe that too much tax money goes to support artists.",
+   "text_master": "Believe that too much tax money goes to support artists.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 179,
+   "id": "ipip_neo_236",
+   "code": "E121",
+   "facet": "sympathy",
+   "key": -1,
+   "text": "Tend to dislike soft-hearted people.",
+   "text_master": "Tend to dislike soft-hearted people.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 180,
+   "id": "ipip_neo_296",
+   "code": "E122",
+   "facet": "cautiousness",
+   "key": -1,
+   "text": "Like to act on a whim.",
+   "text_master": "Like to act on a whim.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 181,
+   "id": "ipip_neo_007",
+   "code": "E141",
+   "facet": "anxiety",
+   "key": -1,
+   "text": "Am relaxed most of the time.",
+   "text_master": "Am relaxed most of the time.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 182,
+   "id": "ipip_neo_067",
+   "code": "H909",
+   "facet": "friendliness",
+   "key": -1,
+   "text": "Often feel uncomfortable around others.",
+   "text_master": "Often feel uncomfortable around others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 183,
+   "id": "ipip_neo_127",
+   "code": "X135",
+   "facet": "imagination",
+   "key": -1,
+   "text": "Seldom daydream.",
+   "text_master": "Seldom daydream.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 184,
+   "id": "ipip_neo_187",
+   "code": "H1195",
+   "facet": "trust",
+   "key": -1,
+   "text": "Distrust people.",
+   "text_master": "Distrust people.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 185,
+   "id": "ipip_neo_247",
+   "code": "H1395",
+   "facet": "selfefficacy",
+   "key": -1,
+   "text": "Misjudge situations.",
+   "text_master": "Misjudge situations.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 186,
+   "id": "ipip_neo_017",
+   "code": "X231",
+   "facet": "anger",
+   "key": -1,
+   "text": "Seldom get mad.",
+   "text_master": "Seldom get mad.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 187,
+   "id": "ipip_neo_077",
+   "code": "H660",
+   "facet": "gregariousness",
+   "key": -1,
+   "text": "Want to be left alone.",
+   "text_master": "Want to be left alone.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 188,
+   "id": "ipip_neo_137",
+   "code": "X45",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "key": -1,
+   "text": "Do not like poetry.",
+   "text_master": "Do not like poetry.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 189,
+   "id": "ipip_neo_197",
+   "code": "H774",
+   "facet": "morality",
+   "key": -1,
+   "text": "Put people under pressure.",
+   "text_master": "Put people under pressure.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 190,
+   "id": "ipip_neo_257",
+   "code": "H822",
+   "facet": "orderliness",
+   "key": -1,
+   "text": "Leave a mess in my room.",
+   "text_master": "Leave a mess in my room.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 191,
+   "id": "ipip_neo_027",
+   "code": "X205",
+   "facet": "depression",
+   "key": 1,
+   "text": "Feel that my life lacks direction.",
+   "text_master": "Feel that my life lacks direction.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 192,
+   "id": "ipip_neo_087",
+   "code": "H154",
+   "facet": "assertiveness",
+   "key": -1,
+   "text": "Keep in the background.",
+   "text_master": "Keep in the background.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 193,
+   "id": "ipip_neo_147",
+   "code": "X202",
+   "facet": "emotionality",
+   "key": -1,
+   "text": "Am not easily affected by my emotions.",
+   "text_master": "Am not easily affected by my emotions.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 194,
+   "id": "ipip_neo_207",
+   "code": "X203",
+   "facet": "altruism",
+   "key": -1,
+   "text": "Am indifferent to the feelings of others.",
+   "text_master": "Am indifferent to the feelings of others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 195,
+   "id": "ipip_neo_267",
+   "code": "H1018",
+   "facet": "dutifulness",
+   "key": -1,
+   "text": "Break my promises.",
+   "text_master": "Break my promises.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 196,
+   "id": "ipip_neo_037",
+   "code": "X242",
+   "facet": "selfconsciousness",
+   "key": -1,
+   "text": "Am not embarrassed easily.",
+   "text_master": "Am not embarrassed easily.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 197,
+   "id": "ipip_neo_097",
+   "code": "X111",
+   "facet": "activitylevel",
+   "key": -1,
+   "text": "Like to take my time.",
+   "text_master": "Like to take my time.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 198,
+   "id": "ipip_neo_157",
+   "code": "H910",
+   "facet": "adventurousness",
+   "key": -1,
+   "text": "Don't like the idea of change.",
+   "text_master": "Don't like the idea of change.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 199,
+   "id": "ipip_neo_217",
+   "code": "H809",
+   "facet": "cooperation",
+   "key": -1,
+   "text": "Yell at people.",
+   "text_master": "Yell at people.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 200,
+   "id": "ipip_neo_277",
+   "code": "H288",
+   "facet": "achievementstriving",
+   "key": 1,
+   "text": "Demand quality.",
+   "text_master": "Demand quality.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 201,
+   "id": "ipip_neo_047",
+   "code": "X274",
+   "facet": "immoderation",
+   "key": -1,
+   "text": "Easily resist temptations.",
+   "text_master": "Easily resist temptations.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 202,
+   "id": "ipip_neo_107",
+   "code": "X3",
+   "facet": "excitementseeking",
+   "key": 1,
+   "text": "Willing to try anything once.",
+   "text_master": "Am willing to try anything once.",
+   "text_source": "questionnaire_docx(差异化)"
+  },
+  {
+   "order": 203,
+   "id": "ipip_neo_167",
+   "code": "X248",
+   "facet": "intellect",
+   "key": -1,
+   "text": "Avoid philosophical discussions.",
+   "text_master": "Avoid philosophical discussions.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 204,
+   "id": "ipip_neo_227",
+   "code": "H738",
+   "facet": "modesty_humility",
+   "key": -1,
+   "text": "Have a high opinion of myself.",
+   "text_master": "Have a high opinion of myself.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 205,
+   "id": "ipip_neo_287",
+   "code": "H1186",
+   "facet": "selfdiscipline",
+   "key": -1,
+   "text": "Waste my time.",
+   "text_master": "Waste my time.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 206,
+   "id": "ipip_neo_057",
+   "code": "H470",
+   "facet": "vulnerability",
+   "key": -1,
+   "text": "Can handle complex problems.",
+   "text_master": "Can handle complex problems.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 207,
+   "id": "ipip_neo_117",
+   "code": "H12",
+   "facet": "cheerfulness",
+   "key": 1,
+   "text": "Laugh aloud.",
+   "text_master": "Laugh aloud.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 208,
+   "id": "ipip_neo_177",
+   "code": "X178",
+   "facet": "liberalism",
+   "key": -1,
+   "text": "Believe laws should be strictly enforced.",
+   "text_master": "Believe that laws should be strictly enforced.",
+   "text_source": "questionnaire_docx(差异化)"
+  },
+  {
+   "order": 209,
+   "id": "ipip_neo_237",
+   "code": "X173",
+   "facet": "sympathy",
+   "key": -1,
+   "text": "Believe in an eye for an eye.",
+   "text_master": "Believe in an eye for an eye.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 210,
+   "id": "ipip_neo_297",
+   "code": "H862",
+   "facet": "cautiousness",
+   "key": -1,
+   "text": "Rush into things.",
+   "text_master": "Rush into things.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 211,
+   "id": "ipip_neo_008",
+   "code": "H1046",
+   "facet": "anxiety",
+   "key": -1,
+   "text": "Am not easily disturbed by events.",
+   "text_master": "Am not easily disturbed by events.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 212,
+   "id": "ipip_neo_068",
+   "code": "H648",
+   "facet": "friendliness",
+   "key": -1,
+   "text": "Avoid contacts with others.",
+   "text_master": "Avoid contacts with others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 213,
+   "id": "ipip_neo_128",
+   "code": "X272",
+   "facet": "imagination",
+   "key": -1,
+   "text": "Do not have a good imagination.",
+   "text_master": "Do not have a good imagination.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 214,
+   "id": "ipip_neo_188",
+   "code": "H604",
+   "facet": "trust",
+   "key": -1,
+   "text": "Suspect hidden motives in others.",
+   "text_master": "Suspect hidden motives in others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 215,
+   "id": "ipip_neo_248",
+   "code": "H1438",
+   "facet": "selfefficacy",
+   "key": -1,
+   "text": "Don't understand things.",
+   "text_master": "Don't understand things.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 216,
+   "id": "ipip_neo_018",
+   "code": "X23",
+   "facet": "anger",
+   "key": -1,
+   "text": "Am not easily annoyed.",
+   "text_master": "Am not easily annoyed.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 217,
+   "id": "ipip_neo_078",
+   "code": "X99",
+   "facet": "gregariousness",
+   "key": -1,
+   "text": "Don't like crowded events.",
+   "text_master": "Don't like crowded events.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 218,
+   "id": "ipip_neo_138",
+   "code": "X235",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "key": -1,
+   "text": "Do not enjoy going to art museums.",
+   "text_master": "Do not enjoy going to art museums.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 219,
+   "id": "ipip_neo_198",
+   "code": "X113",
+   "facet": "morality",
+   "key": -1,
+   "text": "Pretend to be concerned for others.",
+   "text_master": "Pretend to be concerned for others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 220,
+   "id": "ipip_neo_258",
+   "code": "H823",
+   "facet": "orderliness",
+   "key": -1,
+   "text": "Leave my belongings around.",
+   "text_master": "Leave my belongings around.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 221,
+   "id": "ipip_neo_028",
+   "code": "X156",
+   "facet": "depression",
+   "key": -1,
+   "text": "Seldom feel blue.",
+   "text_master": "Seldom feel blue.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 222,
+   "id": "ipip_neo_088",
+   "code": "H1039",
+   "facet": "assertiveness",
+   "key": -1,
+   "text": "Have little to say.",
+   "text_master": "Have little to say.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 223,
+   "id": "ipip_neo_148",
+   "code": "X10",
+   "facet": "emotionality",
+   "key": -1,
+   "text": "Rarely notice my emotional reactions.",
+   "text_master": "Rarely notice my emotional reactions.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 224,
+   "id": "ipip_neo_208",
+   "code": "H607",
+   "facet": "altruism",
+   "key": -1,
+   "text": "Make people feel uncomfortable.",
+   "text_master": "Make people feel uncomfortable.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 225,
+   "id": "ipip_neo_268",
+   "code": "H1084",
+   "facet": "dutifulness",
+   "key": -1,
+   "text": "Get others to do my duties.",
+   "text_master": "Get others to do my duties.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 226,
+   "id": "ipip_neo_038",
+   "code": "X197",
+   "facet": "selfconsciousness",
+   "key": -1,
+   "text": "Am comfortable in unfamiliar situations.",
+   "text_master": "Am comfortable in unfamiliar situations.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 227,
+   "id": "ipip_neo_098",
+   "code": "X226",
+   "facet": "activitylevel",
+   "key": -1,
+   "text": "Like a leisurely lifestyle.",
+   "text_master": "Like a leisurely lifestyle.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 228,
+   "id": "ipip_neo_158",
+   "code": "H1460",
+   "facet": "adventurousness",
+   "key": -1,
+   "text": "Am a creature of habit.",
+   "text_master": "Am a creature of habit.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 229,
+   "id": "ipip_neo_218",
+   "code": "H1103",
+   "facet": "cooperation",
+   "key": -1,
+   "text": "Insult people.",
+   "text_master": "Insult people.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 230,
+   "id": "ipip_neo_278",
+   "code": "X110",
+   "facet": "achievementstriving",
+   "key": -1,
+   "text": "Am not highly motivated to succeed.",
+   "text_master": "Am not highly motivated to succeed.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 231,
+   "id": "ipip_neo_048",
+   "code": "X251",
+   "facet": "immoderation",
+   "key": -1,
+   "text": "Am able to control my cravings.",
+   "text_master": "Am able to control my cravings.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 232,
+   "id": "ipip_neo_108",
+   "code": "H894",
+   "facet": "excitementseeking",
+   "key": 1,
+   "text": "Seek danger.",
+   "text_master": "Seek danger.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 233,
+   "id": "ipip_neo_168",
+   "code": "X176",
+   "facet": "intellect",
+   "key": -1,
+   "text": "Have difficulty understanding abstract ideas.",
+   "text_master": "Have difficulty understanding abstract ideas.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 234,
+   "id": "ipip_neo_228",
+   "code": "H1267",
+   "facet": "modesty_humility",
+   "key": -1,
+   "text": "Know the answers to many questions.",
+   "text_master": "Know the answers to many questions.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 235,
+   "id": "ipip_neo_288",
+   "code": "H969",
+   "facet": "selfdiscipline",
+   "key": -1,
+   "text": "Need a push to get started.",
+   "text_master": "Need a push to get started.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 236,
+   "id": "ipip_neo_058",
+   "code": "H1281",
+   "facet": "vulnerability",
+   "key": -1,
+   "text": "Know how to cope.",
+   "text_master": "Know how to cope.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 237,
+   "id": "ipip_neo_118",
+   "code": "H1093",
+   "facet": "cheerfulness",
+   "key": 1,
+   "text": "Amuse my friends.",
+   "text_master": "Amuse my friends.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 238,
+   "id": "ipip_neo_178",
+   "code": "X130",
+   "facet": "liberalism",
+   "key": -1,
+   "text": "Believe that we coddle criminals too much.",
+   "text_master": "Believe that we coddle criminals too much.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 239,
+   "id": "ipip_neo_238",
+   "code": "E166",
+   "facet": "sympathy",
+   "key": -1,
+   "text": "Try not to think about the needy.",
+   "text_master": "Try not to think about the needy.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 240,
+   "id": "ipip_neo_298",
+   "code": "H870",
+   "facet": "cautiousness",
+   "key": -1,
+   "text": "Do crazy things.",
+   "text_master": "Do crazy things.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 241,
+   "id": "ipip_neo_009",
+   "code": "E150",
+   "facet": "anxiety",
+   "key": -1,
+   "text": "Don't worry about things that have already happened.",
+   "text_master": "Don't worry about things that have already happened.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 242,
+   "id": "ipip_neo_069",
+   "code": "X165",
+   "facet": "friendliness",
+   "key": -1,
+   "text": "Am not really interested in others.",
+   "text_master": "Am not really interested in others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 243,
+   "id": "ipip_neo_129",
+   "code": "X175",
+   "facet": "imagination",
+   "key": -1,
+   "text": "Seldom get lost in thought.",
+   "text_master": "Seldom get lost in thought.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 244,
+   "id": "ipip_neo_189",
+   "code": "H1001",
+   "facet": "trust",
+   "key": -1,
+   "text": "Am wary of others.",
+   "text_master": "Am wary of others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 245,
+   "id": "ipip_neo_249",
+   "code": "H1032",
+   "facet": "selfefficacy",
+   "key": -1,
+   "text": "Have little to contribute.",
+   "text_master": "Have little to contribute.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 246,
+   "id": "ipip_neo_019",
+   "code": "X191",
+   "facet": "anger",
+   "key": -1,
+   "text": "Keep my cool.",
+   "text_master": "Keep my cool.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 247,
+   "id": "ipip_neo_079",
+   "code": "H650",
+   "facet": "gregariousness",
+   "key": -1,
+   "text": "Avoid crowds.",
+   "text_master": "Avoid crowds.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 248,
+   "id": "ipip_neo_139",
+   "code": "X144",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "key": -1,
+   "text": "Do not like concerts.",
+   "text_master": "Do not like concerts.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 249,
+   "id": "ipip_neo_199",
+   "code": "H427",
+   "facet": "morality",
+   "key": -1,
+   "text": "Take advantage of others.",
+   "text_master": "Take advantage of others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 250,
+   "id": "ipip_neo_259",
+   "code": "E100",
+   "facet": "orderliness",
+   "key": -1,
+   "text": "Am not bothered by messy people.",
+   "text_master": "Am not bothered by messy people.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 251,
+   "id": "ipip_neo_029",
+   "code": "X129",
+   "facet": "depression",
+   "key": -1,
+   "text": "Feel comfortable with myself.",
+   "text_master": "Feel comfortable with myself.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 252,
+   "id": "ipip_neo_089",
+   "code": "X68",
+   "facet": "assertiveness",
+   "key": -1,
+   "text": "Don't like to draw attention to myself.",
+   "text_master": "Don't like to draw attention to myself.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 253,
+   "id": "ipip_neo_149",
+   "code": "X267",
+   "facet": "emotionality",
+   "key": -1,
+   "text": "Experience very few emotional highs and lows.",
+   "text_master": "Experience very few emotional highs and lows.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 254,
+   "id": "ipip_neo_209",
+   "code": "H1430",
+   "facet": "altruism",
+   "key": -1,
+   "text": "Turn my back on others.",
+   "text_master": "Turn my back on others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 255,
+   "id": "ipip_neo_269",
+   "code": "H497",
+   "facet": "dutifulness",
+   "key": -1,
+   "text": "Do the opposite of what is asked.",
+   "text_master": "Do the opposite of what is asked.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 256,
+   "id": "ipip_neo_039",
+   "code": "X209",
+   "facet": "selfconsciousness",
+   "key": -1,
+   "text": "Am not bothered by difficult social situations.",
+   "text_master": "Am not bothered by difficult social situations.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 257,
+   "id": "ipip_neo_099",
+   "code": "E84",
+   "facet": "activitylevel",
+   "key": -1,
+   "text": "Let things proceed at their own pace.",
+   "text_master": "Let things proceed at their own pace.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 258,
+   "id": "ipip_neo_159",
+   "code": "E36",
+   "facet": "adventurousness",
+   "key": -1,
+   "text": "Dislike new foods.",
+   "text_master": "Dislike new foods.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 259,
+   "id": "ipip_neo_219",
+   "code": "H699",
+   "facet": "cooperation",
+   "key": -1,
+   "text": "Get back at others.",
+   "text_master": "Get back at others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 260,
+   "id": "ipip_neo_279",
+   "code": "X115",
+   "facet": "achievementstriving",
+   "key": -1,
+   "text": "Do just enough work to get by.",
+   "text_master": "Do just enough work to get by.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 261,
+   "id": "ipip_neo_049",
+   "code": "X216",
+   "facet": "immoderation",
+   "key": -1,
+   "text": "Never spend more than I can afford.",
+   "text_master": "Never spend more than I can afford.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 262,
+   "id": "ipip_neo_109",
+   "code": "X250",
+   "facet": "excitementseeking",
+   "key": -1,
+   "text": "Would never go hang gliding or bungee jumping.",
+   "text_master": "Would never go hang-gliding or bungee-jumping.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 263,
+   "id": "ipip_neo_169",
+   "code": "X239",
+   "facet": "intellect",
+   "key": -1,
+   "text": "Am not interested in theoretical discussions.",
+   "text_master": "Am not interested in theoretical discussions.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 264,
+   "id": "ipip_neo_229",
+   "code": "H746",
+   "facet": "modesty_humility",
+   "key": -1,
+   "text": "Boast about my virtues.",
+   "text_master": "Boast about my virtues.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 265,
+   "id": "ipip_neo_289",
+   "code": "H621",
+   "facet": "selfdiscipline",
+   "key": -1,
+   "text": "Have difficulty starting tasks.",
+   "text_master": "Have difficulty starting tasks.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 266,
+   "id": "ipip_neo_059",
+   "code": "H44",
+   "facet": "vulnerability",
+   "key": -1,
+   "text": "Readily overcome setbacks.",
+   "text_master": "Readily overcome setbacks.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 267,
+   "id": "ipip_neo_119",
+   "code": "X180",
+   "facet": "cheerfulness",
+   "key": -1,
+   "text": "Am not easily amused.",
+   "text_master": "Am not easily amused.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 268,
+   "id": "ipip_neo_179",
+   "code": "X157",
+   "facet": "liberalism",
+   "key": -1,
+   "text": "Believe that we should be tough on crime.",
+   "text_master": "Believe that we should be tough on crime.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 269,
+   "id": "ipip_neo_239",
+   "code": "X70",
+   "facet": "sympathy",
+   "key": -1,
+   "text": "Believe people should fend for themselves.",
+   "text_master": "Believe that people should fend for themselves.",
+   "text_source": "questionnaire_docx(差异化)"
+  },
+  {
+   "order": 270,
+   "id": "ipip_neo_299",
+   "code": "H846",
+   "facet": "cautiousness",
+   "key": -1,
+   "text": "Act without thinking.",
+   "text_master": "Act without thinking.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 271,
+   "id": "ipip_neo_010",
+   "code": "H2000",
+   "facet": "anxiety",
+   "key": -1,
+   "text": "Adapt easily to new situations.",
+   "text_master": "Adapt easily to new situations.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 272,
+   "id": "ipip_neo_070",
+   "code": "H704",
+   "facet": "friendliness",
+   "key": -1,
+   "text": "Keep others at a distance.",
+   "text_master": "Keep others at a distance.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 273,
+   "id": "ipip_neo_130",
+   "code": "H1382",
+   "facet": "imagination",
+   "key": -1,
+   "text": "Have difficulty imagining things.",
+   "text_master": "Have difficulty imagining things.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 274,
+   "id": "ipip_neo_190",
+   "code": "X80",
+   "facet": "trust",
+   "key": -1,
+   "text": "Believe that people are essentially evil.",
+   "text_master": "Believe that people are essentially evil.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 275,
+   "id": "ipip_neo_250",
+   "code": "H1393",
+   "facet": "selfefficacy",
+   "key": -1,
+   "text": "Don't see the consequences of things.",
+   "text_master": "Don't see the consequences of things.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 276,
+   "id": "ipip_neo_020",
+   "code": "E120",
+   "facet": "anger",
+   "key": -1,
+   "text": "Rarely complain.",
+   "text_master": "Rarely complain.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 277,
+   "id": "ipip_neo_080",
+   "code": "H602",
+   "facet": "gregariousness",
+   "key": -1,
+   "text": "Seek quiet.",
+   "text_master": "Seek quiet.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 278,
+   "id": "ipip_neo_140",
+   "code": "X243",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "key": -1,
+   "text": "Do not enjoy watching dance performances.",
+   "text_master": "Do not enjoy watching dance performances.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 279,
+   "id": "ipip_neo_200",
+   "code": "H494",
+   "facet": "morality",
+   "key": -1,
+   "text": "Obstruct others' plans.",
+   "text_master": "Obstruct others' plans.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 280,
+   "id": "ipip_neo_260",
+   "code": "E7",
+   "facet": "orderliness",
+   "key": -1,
+   "text": "Am not bothered by disorder.",
+   "text_master": "Am not bothered by disorder.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 281,
+   "id": "ipip_neo_030",
+   "code": "H737",
+   "facet": "depression",
+   "key": -1,
+   "text": "Am very pleased with myself.",
+   "text_master": "Am very pleased with myself.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 282,
+   "id": "ipip_neo_090",
+   "code": "H679",
+   "facet": "assertiveness",
+   "key": -1,
+   "text": "Hold back my opinions.",
+   "text_master": "Hold back my opinions.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 283,
+   "id": "ipip_neo_150",
+   "code": "E156",
+   "facet": "emotionality",
+   "key": -1,
+   "text": "Don't understand people who get emotional.",
+   "text_master": "Don't understand people who get emotional.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 284,
+   "id": "ipip_neo_210",
+   "code": "H918",
+   "facet": "altruism",
+   "key": -1,
+   "text": "Take no time for others.",
+   "text_master": "Take no time for others.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 285,
+   "id": "ipip_neo_270",
+   "code": "H1182",
+   "facet": "dutifulness",
+   "key": -1,
+   "text": "Misrepresent the facts.",
+   "text_master": "Misrepresent the facts.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 286,
+   "id": "ipip_neo_040",
+   "code": "H1197",
+   "facet": "selfconsciousness",
+   "key": -1,
+   "text": "Am able to stand up for myself.",
+   "text_master": "Am able to stand up for myself.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 287,
+   "id": "ipip_neo_100",
+   "code": "H631",
+   "facet": "activitylevel",
+   "key": -1,
+   "text": "React slowly.",
+   "text_master": "React slowly.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 288,
+   "id": "ipip_neo_160",
+   "code": "H312",
+   "facet": "adventurousness",
+   "key": -1,
+   "text": "Am attached to conventional ways.",
+   "text_master": "Am attached to conventional ways.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 289,
+   "id": "ipip_neo_220",
+   "code": "X217",
+   "facet": "cooperation",
+   "key": -1,
+   "text": "Hold a grudge.",
+   "text_master": "Hold a grudge.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 290,
+   "id": "ipip_neo_280",
+   "code": "X167",
+   "facet": "achievementstriving",
+   "key": -1,
+   "text": "Put little time and effort into my work.",
+   "text_master": "Put little time and effort into my work.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 291,
+   "id": "ipip_neo_050",
+   "code": "E30",
+   "facet": "immoderation",
+   "key": -1,
+   "text": "Never splurge.",
+   "text_master": "Never splurge.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 292,
+   "id": "ipip_neo_110",
+   "code": "X215",
+   "facet": "excitementseeking",
+   "key": -1,
+   "text": "Dislike loud music.",
+   "text_master": "Dislike loud music.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 293,
+   "id": "ipip_neo_170",
+   "code": "X109",
+   "facet": "intellect",
+   "key": -1,
+   "text": "Avoid difficult reading material.",
+   "text_master": "Avoid difficult reading material.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 294,
+   "id": "ipip_neo_230",
+   "code": "H535",
+   "facet": "modesty_humility",
+   "key": -1,
+   "text": "Make myself the center of attention.",
+   "text_master": "Make myself the center of attention.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 295,
+   "id": "ipip_neo_290",
+   "code": "H1180",
+   "facet": "selfdiscipline",
+   "key": -1,
+   "text": "Postpone decisions.",
+   "text_master": "Postpone decisions.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 296,
+   "id": "ipip_neo_060",
+   "code": "E64",
+   "facet": "vulnerability",
+   "key": -1,
+   "text": "Am calm even in tense situations.",
+   "text_master": "Am calm even in tense situations.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 297,
+   "id": "ipip_neo_120",
+   "code": "X137",
+   "facet": "cheerfulness",
+   "key": -1,
+   "text": "Seldom joke around.",
+   "text_master": "Seldom joke around.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 298,
+   "id": "ipip_neo_180",
+   "code": "X254",
+   "facet": "liberalism",
+   "key": -1,
+   "text": "Like to stand during the national anthem.",
+   "text_master": "Like to stand during the national anthem.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 299,
+   "id": "ipip_neo_240",
+   "code": "E78",
+   "facet": "sympathy",
+   "key": -1,
+   "text": "Can't stand weak people.",
+   "text_master": "Can't stand weak people.",
+   "text_source": "questionnaire_docx"
+  },
+  {
+   "order": 300,
+   "id": "ipip_neo_300",
+   "code": "E66",
+   "facet": "cautiousness",
+   "key": -1,
+   "text": "Often make last-minute plans.",
+   "text_master": "Often make last-minute plans.",
+   "text_source": "questionnaire_docx"
+  }
+ ]
+}

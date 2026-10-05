@@ -1,0 +1,685 @@
+{
+ "_note": "同情（Sympathy / A6）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.sympathy",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "同情",
+  "facet_name_en": "Sympathy",
+  "facet_code": "A6",
+  "domain": "agreeableness",
+  "domain_zh": "宜人性"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "对他人的处境与情绪产生共鸣、并被其打动的倾向：是否容易被他人的困难触动，以及是否关心他人的福祉。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量是否实际提供帮助（属 A3 利他）",
+   "不测量对自己情绪的觉察（属 O3 情感丰富）",
+   "不测量道德水平（属 A2 道德）",
+   "不测量的共情准确性——这里问的是**被打动的程度**"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "altruism",
+    "against_facet_zh": "利他",
+    "distinction": "同情是**感受到**；利他是**做出来**。可以很受触动但不行动。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "emotionality",
+    "against_facet_zh": "情感丰富",
+    "distinction": "情感丰富是**对自己情绪**的觉察（属开放性）；同情是**对他人处境**的共鸣。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "friendliness",
+    "against_facet_zh": "友好",
+    "distinction": "友好是**对人的温度**；同情是**对困境的反应**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "trust",
+    "against_facet_zh": "信任",
+    "distinction": "同情是**情感反应**；信任是**认知判断**。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "别人的困难不太能打动我，我更关注自己的事",
+   "2": "会同情，但通常不太深",
+   "3": "遇到明显的困难会关心，但不会持续挂心",
+   "4": "容易被他人的处境打动，会替他们难过",
+   "5": "对他人的困难非常敏感，常因此心里放不下",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_235",
+   "ipip_neo_236",
+   "ipip_neo_237",
+   "ipip_neo_238",
+   "ipip_neo_239",
+   "ipip_neo_240"
+  ],
+  "forward_items": [
+   "ipip_neo_231",
+   "ipip_neo_232",
+   "ipip_neo_233",
+   "ipip_neo_234"
+  ],
+  "key_balance": "4 正向 / 6 反向",
+  "reverse_keyed_count": 6,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.75,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 3.5,
+   "reference_age_band": "18-29",
+   "sd_used": 7.0,
+   "alpha_used": 0.75,
+   "by_age_band": {
+    "14-17": {
+     "sd": 6.5,
+     "sem": 3.25
+    },
+    "18-29": {
+     "sd": 7.0,
+     "sem": 3.5
+    },
+    "30+": {
+     "sd": 6.5,
+     "sem": 3.25
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±6.9 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "45-50",
+    "High": "38-44",
+    "Average": "32-37",
+    "Low": "25-31",
+    "Very Low": "10-24"
+   },
+   "18-29": {
+    "Very High": "46-50",
+    "High": "39-45",
+    "Average": "32-38",
+    "Low": "26-31",
+    "Very Low": "10-25"
+   },
+   "30+": {
+    "Very High": "46-50",
+    "High": "40-45",
+    "Average": "33-39",
+    "Low": "27-32",
+    "Very Low": "10-26"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "247-300",
+    "High": "217-246",
+    "Average": "187-216",
+    "Low": "157-186",
+    "Very Low": "60-156"
+   },
+   "18-29": {
+    "Very High": "253-300",
+    "High": "224-252",
+    "Average": "195-223",
+    "Low": "166-194",
+    "Very Low": "60-165"
+   },
+   "30+": {
+    "Very High": "254-300",
+    "High": "227-253",
+    "Average": "200-226",
+    "Low": "174-199",
+    "Very Low": "60-173"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "**共情包含「情感共鸣」与「认知理解」两个成分，本面向只覆盖前者。**一个能准确理解他人处境但情绪不被牵动的人，在此得分会偏低，但这不代表他缺乏共情能力。",
+   "**社会赞许性同样威胁本面向**：承认「别人的困难不太打动我」在道德上不讨喜。"
+  ],
+  "interpretation_caveats": [
+   "**这一面向测的是「你会不会被别人的困难打动」，不是「你有多善良」，也不是「你会不会去帮」。** 它只覆盖共情中的**情感反应**那一半——能理解他人处境但情绪不被牵动的人，这里会得低分，但这不等于缺乏共情能力。",
+   "低分尤其容易被自我评判为「冷漠」。**请把它当作一个描述，而不是评价。**"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 4,
+  "chinese_project_translation": 5,
+  "chinese_overridden": 1,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 29,
+   "id": "ipip_neo_231",
+   "facet": "sympathy",
+   "key": 1,
+   "text_en": "Sympathize with the homeless.",
+   "text_master": "Sympathize with the homeless.",
+   "text_zh": "同情流浪汉",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.084,
+    "item_total_r": 0.5578,
+    "missing_rate": 0.0042,
+    "neutral_rate": 0.2101
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "对无家可归者，你是否会感到同情",
+    "key_term": {
+     "term": "sympathize",
+     "sense_here": "情感上的同情",
+     "not_this": "「是否愿意给钱」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「不赞成给钱」当成「不同情」",
+      "correction": "是否给钱是行动判断，本题问情感。"
+     },
+     {
+      "misreading": "因为「可能是骗子」而选低分",
+      "correction": "那是对具体情形的判断，请按一般的情感反应作答。"
+     }
+    ],
+    "counts_as": [
+     "看到他们会感到难过"
+    ],
+    "does_not_count_as": [
+     "不认同乞讨行为但仍有同情"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题在中国语境下有一层特殊性**：街头流浪者多为职业乞讨或精神障碍者，社会对其的看法较复杂，「同情」与「警惕」常并存。本题只问**情感反应**那一面。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「sympathize」"
+   }
+  },
+  {
+   "administration_order": 59,
+   "id": "ipip_neo_232",
+   "facet": "sympathy",
+   "key": 1,
+   "text_en": "Feel sympathy for those who are worse off than myself.",
+   "text_master": "Feel sympathy for those who are worse off than myself.",
+   "text_zh": "我同情那些处境不如自己的人",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.114,
+    "item_total_r": 0.5621,
+    "missing_rate": 0.0057,
+    "neutral_rate": 0.1233
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "对处境不如你的人，你是否会感到同情",
+    "key_term": {
+     "term": "worse off",
+     "sense_here": "处境更差",
+     "not_this": "「能力更弱」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "因为不想显得居高临下而否认",
+      "correction": "请按真实感受作答。"
+     },
+     {
+      "misreading": "把「同情」理解成「施舍」",
+      "correction": "同情是情感，施舍是行为。"
+     }
+    ],
+    "counts_as": [
+     "会为处境困难的人感到难过"
+    ],
+    "does_not_count_as": [
+     "认为要尊重对方而不流露同情"
+    ],
+    "edge_cases": null,
+    "localization_note": "**「处境不如自己」这个比较框架在中文语境里可能让人不适**（显得居高临下）。本题是中性的描述，不含优越感。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「worse off」"
+   }
+  },
+  {
+   "administration_order": 89,
+   "id": "ipip_neo_233",
+   "facet": "sympathy",
+   "key": 1,
+   "text_en": "Value cooperation over competition.",
+   "text_master": "Value cooperation over competition.",
+   "text_zh": "看重合作胜过竞争",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.843,
+    "item_total_r": 0.3514,
+    "missing_rate": 0.004,
+    "neutral_rate": 0.1774
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "在合作与竞争之间，你是否更看重合作",
+    "key_term": {
+     "term": "value",
+     "sense_here": "看重、优先选择",
+     "not_this": "「不竞争」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "认为必须二选一",
+      "correction": "本题问的是**优先级**。"
+     },
+     {
+      "misreading": "与「合作」面向（A4）混同",
+      "correction": "A4 管「冲突时让不让步」，本题管「价值排序」。"
+     }
+    ],
+    "counts_as": [
+     "更愿意选择共同获益的方式"
+    ],
+    "does_not_count_as": [
+     "竞争环境中也会全力竞争"
+    ],
+    "edge_cases": "**本题与本面向其余题的构念略有偏移**（更偏价值观）。",
+    "localization_note": "**本题的题目-总分相关为 .35，在本面向里偏低**——因为「合作 vs 竞争」更像价值观取向（接近价值开放面向），而不完全是「对他人处境的情感共鸣」。这是本面向的内容异质性之一。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「value」"
+   }
+  },
+  {
+   "administration_order": 119,
+   "id": "ipip_neo_234",
+   "facet": "sympathy",
+   "key": 1,
+   "text_en": "Suffer from others' sorrows.",
+   "text_master": "Suffer from others' sorrows.",
+   "text_zh": "会为他人的悲伤而难受",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.112,
+    "item_total_r": 0.4297,
+    "missing_rate": 0.0066,
+    "neutral_rate": 0.237
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "别人难过时，你是否也会感到难受",
+    "key_term": {
+     "term": "suffer from",
+     "sense_here": "**自己也感到难受**",
+     "not_this": "「知道对方难过」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「理解对方难过」当成「自己也难受」",
+      "correction": "本题强调**自身的情绪代价**。"
+     },
+     {
+      "misreading": "与「利他」混同",
+      "correction": "那是行动。"
+     }
+    ],
+    "counts_as": [
+     "别人哭你也会难受"
+    ],
+    "does_not_count_as": [
+     "能安慰对方但自己不受影响"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「为他人的悲伤而难受」表达清楚，翻译风险低。注意与「情感丰富」面向的 Feel others' emotions 的区别：那是**感受到**，本题是**因此受苦**。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「suffer from」"
+   }
+  },
+  {
+   "administration_order": 149,
+   "id": "ipip_neo_235",
+   "facet": "sympathy",
+   "key": -1,
+   "text_en": "Am not interested in other people's problems.",
+   "text_master": "Am not interested in other people's problems.",
+   "text_zh": "对别人遇到的麻烦事不感兴趣",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.687,
+    "item_total_r": 0.4664,
+    "missing_rate": 0.0037,
+    "neutral_rate": 0.1329
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）别人遇到麻烦时，你是否不太关心",
+    "key_term": {
+     "term": "interested",
+     "sense_here": "关心、想了解",
+     "not_this": "「不去干涉」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「不干涉别人私事」当成不感兴趣",
+      "correction": "尊重边界 ≠ 冷漠。"
+     },
+     {
+      "misreading": "没注意是反向题",
+      "correction": "越符合「不关心」，同情得分越低。"
+     }
+    ],
+    "counts_as": [
+     "别人讲自己的困难时会走神或想换话题"
+    ],
+    "does_not_count_as": [
+     "关心但不主动插手"
+    ],
+    "edge_cases": null,
+    "localization_note": "注意区分「不感兴趣」（情感冷淡）与「尊重边界、不干涉」（一种修养）。**后者不是本题的低分。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「interested」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 179,
+   "id": "ipip_neo_236",
+   "facet": "sympathy",
+   "key": -1,
+   "text_en": "Tend to dislike soft-hearted people.",
+   "text_master": "Tend to dislike soft-hearted people.",
+   "text_zh": "不太喜欢心软的人",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.582,
+    "item_total_r": 0.4799,
+    "missing_rate": 0.0052,
+    "neutral_rate": 0.1565
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否不太欣赏容易心软的人",
+    "key_term": {
+     "term": "soft-hearted",
+     "sense_here": "容易被打动、心软",
+     "not_this": "「善良」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「不喜欢心软」理解成「不喜欢善良」",
+      "correction": "这里指**容易妥协、缺少原则**那一面。"
+     },
+     {
+      "misreading": "因为自己心软而选低分",
+      "correction": "本题问的是对**他人**的评价。"
+     }
+    ],
+    "counts_as": [
+     "觉得太容易心软的人缺少原则"
+    ],
+    "does_not_count_as": [
+     "欣赏善良但认为要有底线"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「心软」偏中性甚至带褒义，而 dislike 表达的是**负面评价**。本题问的是你是否**看不上**动不动就心软的人。**这是本题最容易理解偏差的地方。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「soft-hearted」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 209,
+   "id": "ipip_neo_237",
+   "facet": "sympathy",
+   "key": -1,
+   "text_en": "Believe in an eye for an eye.",
+   "text_master": "Believe in an eye for an eye.",
+   "text_zh": "相信以眼还眼",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 2.105,
+    "item_total_r": 0.324,
+    "missing_rate": 0.0034,
+    "neutral_rate": 0.1994
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否认同「以眼还眼」的报复性正义",
+    "key_term": {
+     "term": "eye for an eye",
+     "sense_here": "同态复仇",
+     "not_this": "「追求公平」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「要求公平」当成以眼还眼",
+      "correction": "公平可以是补偿性的，不必然是报复性的。"
+     },
+     {
+      "misreading": "与 A4 的报复题混同",
+      "correction": "行为 vs 观念。"
+     }
+    ],
+    "counts_as": [
+     "认为做错事就该承受相应的痛苦"
+    ],
+    "does_not_count_as": [
+     "主张修复性正义"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「以眼还眼」是成语，理解无障碍。**与「道德」面向的 Get back at others（报复别人）的区别**：那是个人行为倾向，本题是**正义观**。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「eye for an eye」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 239,
+   "id": "ipip_neo_238",
+   "facet": "sympathy",
+   "key": -1,
+   "text_en": "Try not to think about the needy.",
+   "text_master": "Try not to think about the needy.",
+   "text_zh": "我尽量不去想那些需要帮助的人",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.736,
+    "item_total_r": 0.4651,
+    "missing_rate": 0.0055,
+    "neutral_rate": 0.2351
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会刻意回避去想那些需要帮助的人",
+    "key_term": {
+     "term": "try not to think",
+     "sense_here": "**主动回避**",
+     "not_this": "「没想到」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「没注意到」当成「回避」",
+      "correction": "回避是有意识的。"
+     },
+     {
+      "misreading": "因为无力感而回避算不算",
+      "correction": "算，本题问的就是行为。"
+     }
+    ],
+    "counts_as": [
+     "看到求助信息会主动划过去"
+    ],
+    "does_not_count_as": [
+     "关心但觉得帮不上而暂时放下"
+    ],
+    "edge_cases": null,
+    "localization_note": "本题问的是**主动的回避行为**——不是「我没注意到」，而是「我刻意不去想」。这比单纯的「不关心」更具体。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「try not to think」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 269,
+   "id": "ipip_neo_239",
+   "facet": "sympathy",
+   "key": -1,
+   "text_en": "Believe people should fend for themselves.",
+   "text_master": "Believe that people should fend for themselves.",
+   "text_zh": "认为人该自己解决自己的问题（Believe people should fend for themselves）",
+   "text_zh_source": "project_translation_override",
+   "translation_note": {
+    "defect": "强度不同（B5）",
+    "reason": "fend for themselves 在英文里可指**自立**这一中性甚至正面的价值；「自己顾自己」在中文更冷。本题真正测的是**对他人困境的不关切**——若你的立场是「鼓励自立」，不应给高分。情境：有人求助时，你倾向于觉得「这是他自己的事」。"
+   },
+   "diagnostics": {
+    "priority_score": 0.872,
+    "item_total_r": 0.4497,
+    "missing_rate": 0.0046,
+    "neutral_rate": 0.2542
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否认为每个人都该自己解决自己的问题",
+    "key_term": {
+     "term": "fend for themselves",
+     "sense_here": "自己顾自己",
+     "not_this": "「主张独立」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「鼓励自立」当成「不该帮人」",
+      "correction": "本题的低分端是**认为别人不该被帮助**。"
+     },
+     {
+      "misreading": "认为这是社会达尔文主义而反感",
+      "correction": "按真实立场作答。"
+     }
+    ],
+    "counts_as": [
+     "认为求助的人该自己想办法"
+    ],
+    "does_not_count_as": [
+     "主张自立但也认同在困难时互助"
+    ],
+    "edge_cases": null,
+    "localization_note": "**这是「强度不同」的一个实例**：中文「自己顾自己」比英文 fend for themselves 更冷（英文可指「自立」这一中性甚至正面的价值）。**若你的立场是「鼓励自立」，本题不应给高分**——本题测的是对他人困境的**不关切**。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「fend for themselves」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 299,
+   "id": "ipip_neo_240",
+   "facet": "sympathy",
+   "key": -1,
+   "text_en": "Can't stand weak people.",
+   "text_master": "Can't stand weak people.",
+   "text_zh": "受不了软弱的人",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.29,
+    "item_total_r": 0.4077,
+    "missing_rate": 0.0045,
+    "neutral_rate": 0.2268
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否对软弱的人感到难以忍受",
+    "key_term": {
+     "term": "weak",
+     "sense_here": "软弱",
+     "not_this": "「能力不足」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它理解成对能力弱的人",
+      "correction": "这里指意志、性格层面的「弱」。"
+     },
+     {
+      "misreading": "与「同情」的对立面混同",
+      "correction": "本题就是同情的反向。"
+     }
+    ],
+    "counts_as": [
+     "看到别人退缩、妥协会觉得不耐烦"
+    ],
+    "does_not_count_as": [
+     "对能力暂时不足的人有耐心"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「软弱」偏性格层面（没骨气），与英文 weak 更宽泛的含义（能力弱、身体弱）不同。**本题指对「缺乏意志力的人」的不耐烦。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「weak」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

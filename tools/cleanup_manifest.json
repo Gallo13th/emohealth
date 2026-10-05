@@ -1,0 +1,1251 @@
+{
+ "generated": "2026-10-03",
+ "purpose": "T2–T5 迁移的回滚依据：每个被移动文件的旧路径 / 新路径 / 移动前 sha256。",
+ "rollback": "按 moves 逐条把 new 移回 old；再用 sha256 逐字节校验。manifest 本身与 docs 的引用改动不在回滚范围内。",
+ "counts": {
+  "analyze": 10,
+  "build": 46,
+  "check": 50,
+  "legacy": 4,
+  "survey": 28,
+  "ui": 15
+ },
+ "kept_flat": [
+  "tools/_root.py",
+  "tools/check_architecture.py",
+  "tools/README.md",
+  "tools/package.sh",
+  "tools/pdftext.py",
+  "tools/build_scales.py",
+  "tools/item_coding.py",
+  "tools/survey_refs.py",
+  "tools/survey_tools_layout.py"
+ ],
+ "reclassified": [
+  {
+   "file": "build_tier_layout.py",
+   "index_says": "build",
+   "actual": "ui",
+   "reason": "它读 data/*.json 与 ui/tier-data.js、ui/adaptive-data.js、ui/unlock-data.js，写 ui/net-layout.js——完全在前端层内部工作，不碰 archive/。放 tools/build/ 会实测违反 C3（数据层读前端）；按契约（而非前缀）定案为 tools/ui/。"
+  }
+ ],
+ "moves": [
+  {
+   "old": "tools/analyze_block_and_network.py",
+   "new": "tools/analyze/analyze_block_and_network.py",
+   "sha256": "52996bb0848bbabdb2c7dbfacf69f36d3a511c11d5f2504e75a8ab84560efc68",
+   "sha256_now": "f723a4c0b841c4e72254a17a0b1299cddb1793a63c248bbe83dee64ba7117893",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/analyze_correlation_network.py",
+   "new": "tools/analyze/analyze_correlation_network.py",
+   "sha256": "49913bef00c084a2781b5404f97207b66d0363c059f6f3644c5859fe8884600f",
+   "sha256_now": "4b3d09e94c1ad2f7b1d12fb8ef2aee818b290001bc133575e2d427be87044fa9",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/analyze_decision_paths.py",
+   "new": "tools/analyze/analyze_decision_paths.py",
+   "sha256": "27fbae0a66416a9c26d422e5a5e6f8de60c5c15e01271b27be7ebaca11ea09bc",
+   "sha256_now": "b0fbe356721a3f0a2b6ede2e3b8a37645b62590f496bdc88ed4ad30ac321a08f",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/analyze_partial_administration.py",
+   "new": "tools/analyze/analyze_partial_administration.py",
+   "sha256": "78d8805edc6d336f28d7e1e87ef03bcb57ac6632bd1bda40918c2fafdd752b84",
+   "sha256_now": "c16bad488b5d133077a9347f3904b8324990b35d72e103b3e61eeb821df80c43",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/analyze_scene_precision.py",
+   "new": "tools/analyze/analyze_scene_precision.py",
+   "sha256": "be4c32692a4fbe267c079445ba38943e3992ace9a1b0093520ec7e8226b9ac99",
+   "sha256_now": "9938754e5a74e7001c72bccef9029ecfdb403887c92b8b01d5f3bf23422a50ca",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/analyze_tiered_unlock.py",
+   "new": "tools/analyze/analyze_tiered_unlock.py",
+   "sha256": "8a27404501a120581c3a844c130c1cae4a9011441818fb1903b4617fc0e41eb6",
+   "sha256_now": "6629df0f8bfbf9e0ca5ac326477d908b905013e511a4e6425e15c1c2d45aa993",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/archive_apa_manuals.py",
+   "new": "tools/survey/archive_apa_manuals.py",
+   "sha256": "c6b9a97a460fb698c76ec6333ad6c1c88f8edb5e5ce9730bc70a70fdbbb0c7f6",
+   "sha256_now": "3d49143928e6e89494dc2e9f7e313bbcf34404926fbfeabb408dd0d1dd9c7a28",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/archive_dsm5tr_measures.py",
+   "new": "tools/survey/archive_dsm5tr_measures.py",
+   "sha256": "2469a9e7a6abf372cc4808dfcfbcc29a934fe7b06fb62f15179c92103e9eb6c9",
+   "sha256_now": "dd74a3b8388c5b4628b7c137b49fb836f10cdae8a487a3f643d8e0bbaac24b63",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/attach_linkage.py",
+   "new": "tools/build/attach_linkage.py",
+   "sha256": "39062e3b4696a5228def255e961e3183db35a77df7e1b993f9b4d8faf2daefb0",
+   "sha256_now": "b83058b002e7ac7ca578abd6dff2972099b01f46e34980c516d48f5b4fd4ebbb",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/attach_norms.py",
+   "new": "tools/build/attach_norms.py",
+   "sha256": "3a475abfdf2b6021e5e826b35043407c3444e1c484edfc972fe90e49520b4280",
+   "sha256_now": "bf561e971cfb3d9851412c8cd66dbad1985fa718cf5622b1edad00dfdf4a9ef2",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/audit_capabilities.py",
+   "new": "tools/check/audit_capabilities.py",
+   "sha256": "ff3997855f3229e16eb2b076b145a89d18358acdeaa7fe45a52c1f39ac08d5cf",
+   "sha256_now": "0a7f29375cd832242cfa26dd82022edb26100863bbb7b8a4f3383b782a4f5d86",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/audit_scene_noise.py",
+   "new": "tools/analyze/audit_scene_noise.py",
+   "sha256": "c7d77c97daaaeba95fed7ccd35bab3c29ee44f2849d305cb1e767725a672c0cb",
+   "sha256_now": "b509f1387cdaaf9353fa55b7f64cab9c5153f030688c0387ef8223ea9ab414c6",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/batch_convert_ipip.py",
+   "new": "tools/build/batch_convert_ipip.py",
+   "sha256": "1e35afe90e6ce9dd1aa17d8e5db3976589a98eb9681eb4deb8c48aaa5a415680",
+   "sha256_now": "69bbc37b864b1541be17512ec5f6e65e8616fbbe0eac012b4a396de939c522d6",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_adaptive_data.py",
+   "new": "tools/build/build_adaptive_data.py",
+   "sha256": "6c95e359e2e43d68f754197009cee403a82562bc21305298ad029d3390e70ff7",
+   "sha256_now": "98f4f7c6b9b53ad166f55bd5a8ae33fc2503dbea5aee4800f428ccbf5eba761f",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_agent_eval_set.py",
+   "new": "tools/build/build_agent_eval_set.py",
+   "sha256": "c84cada13e096ec2b2722bc279aa9fcbfbe7d4928820794e8cc17e3c8204d120",
+   "sha256_now": "f40f2083f754c362b874ce14c158a8bf6704d2810b80e50837568ee96efba602",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_all_facets.py",
+   "new": "tools/build/build_all_facets.py",
+   "sha256": "9a1258c448532de06b6d826b7f76f46c7bf0012edaca381b556b7fd65e577df7",
+   "sha256_now": "5685c07fa7b4c7fc0e2219f0120a5819e3b28981904555d38198cae92166d684",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_catalog.py",
+   "new": "tools/build/build_catalog.py",
+   "sha256": "b53ac9514d9b52fbe18653b24a2d2a191ea6868b19f9095320fb586bc6ca6a80",
+   "sha256_now": "9e0f0e680e9729a854e11e4e24d26f5df4e1dada849abc05d8cea1ab2c872c27",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_catpd_reverse_keys.py",
+   "new": "tools/build/build_catpd_reverse_keys.py",
+   "sha256": "fd1a2cfe13c8e2d9eacd6abc9df600e2332d051d2aaf2529ef457e863995248d",
+   "sha256_now": "719e0ddbf6a50aedbe49f819d46ba49d0ce250486ccc3d59dcf9a069ca32c7fe",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_dsm5tr_chain.py",
+   "new": "tools/build/build_dsm5tr_chain.py",
+   "sha256": "619820399916c552487be5f87e31ade6f3d5249c98725e4c358ed3c6dc90c625",
+   "sha256_now": "6011f7840bf931b57206bd4c693dba7d50095488b1e9362b8047feb892e5b663",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_hexaco_direction_evidence.py",
+   "new": "tools/build/build_hexaco_direction_evidence.py",
+   "sha256": "10f137de77f9fc53171bb6a96365316e033421bd231fd564ababd1ab8cdd9f49",
+   "sha256_now": "947c522bd445aade31ff4b2c9ba09a8ae792e3bd3431fb4c5575f769e3a55fcd",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_ipip_neo300.py",
+   "new": "tools/build/build_ipip_neo300.py",
+   "sha256": "8c2fe45b5598c3643345bfd506e498c00cffb0fab6eb8fc8658893be9b499981",
+   "sha256_now": "3f180b55bff6ae85edd6a3b903c439ff955c22382ced6a8e9c2d6472f1953489",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_item_norms.py",
+   "new": "tools/build/build_item_norms.py",
+   "sha256": "c8ca24dabb9ece5758b1935bf6bdbac0d0c8be8b5fc44842bc248532f7c2dbc3",
+   "sha256_now": "c59962136128fd3ef14ace1c860c2b1d233797d7f9fab2371a5774b3e988bfc1",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_l1_instrument.py",
+   "new": "tools/build/build_l1_instrument.py",
+   "sha256": "2db3205adfe49381ea2138dabe7988495046f667b4edcfa8acd2e6da60a5e7ed",
+   "sha256_now": "5b27fcba81f6e36d53422b8f88881a8fcad93444566854a9d65fc685f44b77ef",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_l1_items.py",
+   "new": "tools/build/build_l1_items.py",
+   "sha256": "f7fd637635f8a8c0fa2975989d062a1564006191cc8711c5bd0c68df7ebafb73",
+   "sha256_now": "cd7c0beb609e926f7cddaff46675cd3db7b489fe11b6b041de82ee4e536f5750",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_l2_criteria.py",
+   "new": "tools/build/build_l2_criteria.py",
+   "sha256": "5eb6966622b1d332fc1ef3ccfe70ac8a718c8d8793706a34b4cad735330c6e30",
+   "sha256_now": "68b9e57378025ea8dd4aeb54d55ef5c0bd28d2b3780433c7f92d0696e4ef8a7a",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_l2_instruments.py",
+   "new": "tools/build/build_l2_instruments.py",
+   "sha256": "91681fdf5eb9bfa663b74b66e6d01821c192c40a8628309c3e8b9417d7282dd7",
+   "sha256_now": "063ac98ba4cbe9ab7f604c0c956b12943e4669c8b4799fea8d496439968edea1",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_l2_items.py",
+   "new": "tools/build/build_l2_items.py",
+   "sha256": "b7f5c69a5ebd8219bd7e8310e925d718acabd2249742d9322ee427eda6c29ec3",
+   "sha256_now": "bb1119e9796bc682c4a495dd4b3d745c4b28f024e20bbdb7c31bff5165a93d61",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_l2_items_rest.py",
+   "new": "tools/build/build_l2_items_rest.py",
+   "sha256": "6a75b0a57d95658ecd9b1bb159e495fd056402e782bfbcb095cc5026ac386007",
+   "sha256_now": "1bf4efd22747ed79e81181decfd908289b175cfeb05428c14747e53e95bb5c77",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_mandarin_baseline.py",
+   "new": "tools/build/build_mandarin_baseline.py",
+   "sha256": "fa3ff74b86b8cf15998e1365e860e35615ee6807d86a7e18c6a194d038321123",
+   "sha256_now": "f82d48ce859bacee3fc29e08c7fa0e120da738926803489faf23b63c47a0435c",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_manifest.py",
+   "new": "tools/build/build_manifest.py",
+   "sha256": "27cbcc4571a817594da132b51cf2a489c677382341730b7a46f05c9e8a4d0cf3",
+   "sha256_now": "e4876698cfd0830cdd9d3ab3213932c9615653a359000b3a8ef9abbddaaabba3",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_norms_ipip300.py",
+   "new": "tools/build/build_norms_ipip300.py",
+   "sha256": "98c0575a88deb634a98c07dbc82bb601a56244658799a45d2244ef5277267d82",
+   "sha256_now": "bbafbaeea487d98dbf720a9a340d38122cd5832b910eb20e1a28feeed8baee86",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_norms_pid5.py",
+   "new": "tools/build/build_norms_pid5.py",
+   "sha256": "410fc94bb91b5bf3a34ff4e2c9a75f0595637b9f535a6197e14221ce3a8f36fd",
+   "sha256_now": "e9bd6b7ea348aa2878aff9cf86b9980aed674e3fa24e92f38d96c2ceac2e62ff",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_pid5_instrument.py",
+   "new": "tools/build/build_pid5_instrument.py",
+   "sha256": "108bbd6f8d47d9c59d374442a5cb747ada27e2cf8d0da9492249b2a30a1406f3",
+   "sha256_now": "44f42fb877aed77af8952a90475ab741b1b8f0b22c40e3867330c8cef7cabae0",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_pid5_items.py",
+   "new": "tools/build/build_pid5_items.py",
+   "sha256": "cf97d213e94d94fc94be3f8603be378b7386c5fd03ff9a36345c16ce681fc3fa",
+   "sha256_now": "9391df8ecb9965c29dc80097842d5c8933dd71d07f79bdf8864059811c34d7ad",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_pid5_scoring_keys.py",
+   "new": "tools/build/build_pid5_scoring_keys.py",
+   "sha256": "82ab13fac25c7ed4d7813c122b4e0dc029f64fc5d19604e80f07b092027842e0",
+   "sha256_now": "5480123653811f17645155cf71626f09454a42b94a59fcf29d4ea1b2742e5201",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_quality_gate.py",
+   "new": "tools/build/build_quality_gate.py",
+   "sha256": "0e3e1e716a130900fb953c091e8290621f2e6029bcbcacde5d562ade8a73644c",
+   "sha256_now": "f49e56e5afcef308d049047ac56139dcee16a94799b67df07b8071b0bd2d7af4",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_remaining_slices.py",
+   "new": "tools/build/build_remaining_slices.py",
+   "sha256": "e9a5b1d0b35306b5060af830296ec39eb2648f98a41e98db9076438a57db0f41",
+   "sha256_now": "e057e342105083ad1f904747dba8f708989477ada90fc61f02accc37327910b3",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_scene_taxonomy.py",
+   "new": "tools/build/build_scene_taxonomy.py",
+   "sha256": "0aa8d330eadb1a253f5011d118d09f977a8af852aa6d32427fd0730cb4007fdb",
+   "sha256_now": "092422ce9fcae745978dfbe8e82cfea40b7a61d5d4c5f0be4dca2bd5596b7ca9",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_text_db.py",
+   "new": "tools/build/build_text_db.py",
+   "sha256": "818077ab7ae927e53e3a766405178e06c539d1dac9103c5add9c6613a247c52c",
+   "sha256_now": "8764b8a8a5e0aa8aa01e5a44bb5857dba22362999050256bb8e60ea771515af5",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_tier_ladder.py",
+   "new": "tools/build/build_tier_ladder.py",
+   "sha256": "ca51ff954cc7a9d189351a7a67a3d09fa45701d5d1fa1fd330f6b1d2cf1cdda4",
+   "sha256_now": "e5f7c5b5d22c0fe9796d7955190bba9819916edaf9b07e09019dee1290055fc8",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_tier_layout.py",
+   "new": "tools/ui/build_tier_layout.py",
+   "sha256": "47e315e922a4c49cca1c5c63b1f7cddab5e663e03d5bf55a3f030c51b3d40010",
+   "sha256_now": "b4bb1436e802015e704985137f5eb857344ad6d5a8685c248e8924a91277a057",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_tier_ui_data.py",
+   "new": "tools/build/build_tier_ui_data.py",
+   "sha256": "e6d4ba0c4a87b8afe7d98d48b7a32a84440f5f447a453ba8f2f38f952ff18f50",
+   "sha256_now": "28b696559613e8eb567a8276dd555ce367e362ed061d909ab52104e4dac97bd3",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_tree_layouts.py",
+   "new": "tools/build/build_tree_layouts.py",
+   "sha256": "9a9a09e49cb71f3b3d1159772f0d8d3a604f25197249abfca4c8cf8ae93c1aad",
+   "sha256_now": "f7dbf4ceb8c1e888548cdb0c48a42979db22e60d8f2537000adb144ff9b2eb9c",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_ui_bundle.py",
+   "new": "tools/ui/build_ui_bundle.py",
+   "sha256": "62cf8f4b16fac4804dd482ae727f7e9ca1521384680ec4ab9deba447272e4a39",
+   "sha256_now": "b5944f3750607b87cefcfbd76379653cecc3730a2dcc26ca6786e9bbc47c9b52",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_ui_instruments.py",
+   "new": "tools/ui/build_ui_instruments.py",
+   "sha256": "287e7727c743fc47d2501794112aafedd7c9c87b3ab45f878c543c505b3e596f",
+   "sha256_now": "b037d060a78ab904de67bd329579f33134a8bcfcf61884e7d531be658225c2f5",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/build_unlock_network.py",
+   "new": "tools/build/build_unlock_network.py",
+   "sha256": "da5444d7e7948a8e401e142eda39de871e7ed26de900bf89813702ac0fd71792",
+   "sha256_now": "c621445ed13d5facb710c544b871b1a50be8012f21a60892aa4763b3345a15c5",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/check_css_vars.py",
+   "new": "tools/check/check_css_vars.py",
+   "sha256": "5b179640193be730119d9d6def34fe648ff4c01b91f1d25515e821e449091ea1",
+   "sha256_now": "d705ccb98c61c6a3f4e92162c6f7ffa51a2bdeea0df667158846e928cbb96c8e",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/check_deploy.js",
+   "new": "tools/check/check_deploy.js",
+   "sha256": "892de424d2b13c36424b5390b1d261a3a8e598bb0cd19b1725a938cc3e4a4a4f",
+   "sha256_now": "892de424d2b13c36424b5390b1d261a3a8e598bb0cd19b1725a938cc3e4a4a4f",
+   "edited_after_move": false
+  },
+  {
+   "old": "tools/check_dimension_coverage.py",
+   "new": "tools/check/check_dimension_coverage.py",
+   "sha256": "cba46f5445852e351688370f364fd0aa13ba874fd5d602dd142505dd61c3f6be",
+   "sha256_now": "79ea68253b56bd624bcce9088f9af4ac298c22cc558fc6adc902ed5b194501d9",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/check_item_language.py",
+   "new": "tools/check/check_item_language.py",
+   "sha256": "df28fb626a7e637ab18499c60ec24deab4094f9366deb8783907990aa4538e35",
+   "sha256_now": "c3772e5e86645eb04976794345f0604b0cf4b959b0d685780d625e68eeb84bbc",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/check_item_truncation.py",
+   "new": "tools/check/check_item_truncation.py",
+   "sha256": "50aff6a0e925b29300f66e7efa25c3335cc2c3c56ba3d3db8c7368e9b003d9cc",
+   "sha256_now": "0022da3eabfc20cf33f967a2d8dc74f84766ea3e7d65b4c5840eaae577d55ca6",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/check_l1_interpretation.py",
+   "new": "tools/check/check_l1_interpretation.py",
+   "sha256": "6b5c43a192bb4dd31f8b514b2eddd6339296d92e2c4f116dac45b4cd27830de6",
+   "sha256_now": "05acdb963693c840607947b6a4fc76d339e8f2194a42a8ada39f3e5bb88a2d4f",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/check_l2_criteria.py",
+   "new": "tools/check/check_l2_criteria.py",
+   "sha256": "b6aa9424c4aa3e9d45583186b0645dd8d3564ef81627a612afc5a574381bc39b",
+   "sha256_now": "09041ee30f1f198edd24c68836970645dcc9366a799d37cf8e419f6a58eb9d11",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/check_l2_fields_persist.py",
+   "new": "tools/check/check_l2_fields_persist.py",
+   "sha256": "36ac0fd10b8ecfccfa5859abeeb4ec3c9ea6550945cb45fd45b7b0ba12b8d1b2",
+   "sha256_now": "80b7448894170d0d79f3aeb18e093ce10cee8f4f651a3ff9d980d7767443961b",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/check_l2_glyphs.py",
+   "new": "tools/check/check_l2_glyphs.py",
+   "sha256": "81c3403480edafffa180c6b4b49367b51ad9d8cac28e4d50b84712b5ff9e8df7",
+   "sha256_now": "e1a642783fcb35fc382245be6fc544f1495bbc436792cd6937e954043fd60587",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/check_missing_format.py",
+   "new": "tools/check/check_missing_format.py",
+   "sha256": "da2bc3d2480326adb5bd9207a3708556cc244ef223c155fda34aedddcfa0401c",
+   "sha256_now": "28ec426c3daac67ef98ff7947d384f5c6b09ea8ede02e83361f48612b8d8a3fb",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/check_mobile_layout.js",
+   "new": "tools/check/check_mobile_layout.js",
+   "sha256": "f03331c64cec200d002d3242e1ae3457aa03d91be7aef695bf3927cc9a717592",
+   "sha256_now": "cd0307fbaddf012a8cd7e0e62c04cb131caccb643574ffee4494f30d4904d27b",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/check_norms.py",
+   "new": "tools/check/check_norms.py",
+   "sha256": "c6197833167f206265826210e58bb3efe8aff7671a6eb0a4ff25040776048f9f",
+   "sha256_now": "1cf13cb7b4c18c1e6578f15ccb5b81e6b57e687bbacb665682d88785f329cb22",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/check_text_db.py",
+   "new": "tools/check/check_text_db.py",
+   "sha256": "93d9b73511ee65f51afb238c0c44e900ba970bcf81113e37f058cbafa9a87daa",
+   "sha256_now": "c24cf55dd07e3b8c34c14653cd54bad938c047879a5b0eedf581a202484fdd2a",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/check_tree_geometry.py",
+   "new": "tools/check/check_tree_geometry.py",
+   "sha256": "d3c7b1b94e6eb86c70a9718638d9df38814adea3d7e6d31df4d503e96ae79c55",
+   "sha256_now": "25313a466455d686a81af3e70c48a7b82a13bd7afca1df1de7b167d9d241468e",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/clean_l2_glyphs.py",
+   "new": "tools/build/clean_l2_glyphs.py",
+   "sha256": "3b79b9e6deb6cd7d3a5e90247b067fc923d16c555beb541235ea17431909f994",
+   "sha256_now": "3d3aa35b5eb3d69754842a2ebfccd398e57960c4ccd61132e4686e10ee15cecf",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/collect_translations.py",
+   "new": "tools/build/collect_translations.py",
+   "sha256": "2e6cdd6f82095fbf9dd9af2c5aafe16e81ace0997dcaf58a3fe9c6afc9cb83d6",
+   "sha256_now": "b21e2c58ec6e5f1943135452d8d3f69bde56af7a7b12dc6e44e0319561a8da6a",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/collect_translations_from_disk.py",
+   "new": "tools/build/collect_translations_from_disk.py",
+   "sha256": "53ff85fd034ee097182de647cf817d2f6c7c2ade978fe77ddc719d592a4d3d45",
+   "sha256_now": "1155b4e3be679a9c8839a8a64f7bb4ad72034dab9e5249baa14368c6e94b91b3",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/compare_linear_vs_tree.py",
+   "new": "tools/analyze/compare_linear_vs_tree.py",
+   "sha256": "dd5066df78eec4553d423fdc44ff9f22ec2028e499bfeda829a14d5dac058e40",
+   "sha256_now": "c95aced569c84da87ab16139dd386f89c808d7175d4bf11cbc23f7cdddfc8d61",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/crosscheck_promis_tables.py",
+   "new": "tools/survey/crosscheck_promis_tables.py",
+   "sha256": "a7d56b956a3b73736b74749ba5c8a976dc53f5cca79279fd4d7febe96171974b",
+   "sha256_now": "3bfc16785226443e3269d0597582f5e521cc9d989e3441b3c6f984abaaf07d47",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/demo_agent_contract.py",
+   "new": "tools/legacy/demo_agent_contract.py",
+   "sha256": "3987ba11eff1de632f4174ef5affbc5c7b6b3b92f8b30045d45d6b1c7a111996",
+   "sha256_now": "687a309fc97d7dd84138d043fee1eaac5f0e8e783e29c86c3fb9952809eaf725",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/demo_assessment.py",
+   "new": "tools/legacy/demo_assessment.py",
+   "sha256": "2d5550db5068af1bb76246b10a9d9cb52ad051faf6a1d3680959d9e8f157e194",
+   "sha256_now": "57382f041eac2db26e697a98cf5eceb4606878e34f7c300a78cb7f779ffb18d8",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/demo_profile.py",
+   "new": "tools/legacy/demo_profile.py",
+   "sha256": "4a08fe5c7daef6c816c4c167fc01c7c7c35e5aae4cd1de4e32a69d7129a8555e",
+   "sha256_now": "5118bdadbdc6ca8839e6ecb450b8ebea4352bcf3bbf4b39d426749f8a431338e",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/demo_scene.py",
+   "new": "tools/legacy/demo_scene.py",
+   "sha256": "2abe7e413a1d4825b55867773dc67ab1e2096ebc54f004f43a15322df6e2edcc",
+   "sha256_now": "5fd02fca4a68df7959cd5cc7e37696a5601e708f8de93ef73481ae231d97f189",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/derive_antonyms.py",
+   "new": "tools/build/derive_antonyms.py",
+   "sha256": "5ae07204b3a37e2c91aa6e0c0eaef21f04855f5957317e7e1ab68275fb509565",
+   "sha256_now": "b08850afc228735a307bf617c05327d36edf29bd821a19b0f25a2f597863aaff",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/dev_check_render.js",
+   "new": "tools/ui/dev_check_render.js",
+   "sha256": "200a360f618fa6755024b5e718621f6218a4f5680f1cf7ab8e55a5bcb0553d9f",
+   "sha256_now": "90aaab6095ab2fd2d8952a60837d4877957200eaa3d34ebc18a847ac0ead1aa2",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/dev_probe.js",
+   "new": "tools/ui/dev_probe.js",
+   "sha256": "0a3ba2d92d461dd868172e110a2ef49207abcb5b36c6e2deb1a824467879125d",
+   "sha256_now": "e5fa45b324eb7c54f0327ed67fcc6abbfeea39105bd431079fc05b7cbd1db695",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/diagnose_items.py",
+   "new": "tools/analyze/diagnose_items.py",
+   "sha256": "8f49b3310db4dabc2047e9906808e98589062063a56762ffcaf5901efa5e470a",
+   "sha256_now": "303e3969a3f3253a12046a33a77d15cb11e14cd97346e0cfe8ebd6859fcc71bd",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/exclude_non_english.py",
+   "new": "tools/build/exclude_non_english.py",
+   "sha256": "81b10cf23dd9a1cf8d3e5e504b2d492e9204de7e4ac844b0b5cc2796077f01de",
+   "sha256_now": "9882219164672e117f490b9bc94017ce403f4ae6ff3d0f938b41875e73100310",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/export_pending_translations.py",
+   "new": "tools/build/export_pending_translations.py",
+   "sha256": "e73e9bdab73c4475d7378d4b7fbf2c10cdc160acfe0bc7e04164510aa930542b",
+   "sha256_now": "6292d133663589871eecbc7515310ae6278e16e8f423d858f451d7d71ab2f988",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/extract_dsm5tr_rules.py",
+   "new": "tools/survey/extract_dsm5tr_rules.py",
+   "sha256": "44d543e8be9765733350a5e9f7cb10630251233b6cfd3ef91780441827c3fa12",
+   "sha256_now": "ae1eb588cf3bf2ff48953c4e5797f068b6f64648910a27dfa58fd4380d720b30",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/extract_l1_table1.py",
+   "new": "tools/survey/extract_l1_table1.py",
+   "sha256": "fe44ea1a620b14e1e7b345b97121edee5b6598040ad99904cd7b5d22f06ac809",
+   "sha256_now": "02abf6d16313100151a57ff2388903d460b5a5c1e7b6da24cdd048f20e4660da",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/extract_l2_criteria.py",
+   "new": "tools/survey/extract_l2_criteria.py",
+   "sha256": "688f62ee954ad4954f9324dfd2a5bb5b7c0fc934b591c9c38a27232311a3c346",
+   "sha256_now": "e44cfa0a8c425a9016b44f29112b58772931f7a9423dc827d56019665d2baa49",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/extract_workflow_results.py",
+   "new": "tools/build/extract_workflow_results.py",
+   "sha256": "824ceee3fe8425ec1f0bb1c73632f1126eda50d8b5fc11ba36d74cf74a8e73a8",
+   "sha256_now": "f0b4e3c221cfc5e3c37a6ef83a19df1a8c31d13a06910a6b7ed440d4bfd058f3",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/fetch_assets.py",
+   "new": "tools/survey/fetch_assets.py",
+   "sha256": "28e3891f76c3fab4356b9ab7b3f0ce479e30685705413b4b37daf21250ae0f2b",
+   "sha256_now": "8820cacba20f5f2325295ec2bb9ef27686bb46a6041a6dda9286608834d58062",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/fetch_hexaco_keys.py",
+   "new": "tools/survey/fetch_hexaco_keys.py",
+   "sha256": "fcdf64612472903b4a6d83e0bc73f81f133371790ac8912e9e80e24d8e57b416",
+   "sha256_now": "4d33f7f31c55a8d725d56e0455b7452a50235e19a889dd32603e4e726a06e232",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/fetch_pid5_norms.py",
+   "new": "tools/survey/fetch_pid5_norms.py",
+   "sha256": "a975bbb1d4ccdbacbd9b2f1cb4c3412242dca80e40ec79aaec70d83bf8310e9d",
+   "sha256_now": "6e56ba79be17117d7c187dd90fd61fbd96dbd50d18a75f0974d24376f3b78fbf",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/fetch_promis_manuals.py",
+   "new": "tools/survey/fetch_promis_manuals.py",
+   "sha256": "34e34d1b4ea12ec15130815956f71725b9f6e3162236604ba89b8a47657f43fa",
+   "sha256_now": "85dd19a77b164a0982571dce3aac2ebc9604aca2474f4a439ddfb5f6d2fc2e9b",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/find_missing_zh.py",
+   "new": "tools/check/find_missing_zh.py",
+   "sha256": "cb2a22093d3ef06c40d368b5f2596aa11331d872829fa28f714a2c3f53a56759",
+   "sha256_now": "9ec3bf767408096edc3bf6827a5ed6165a0c7aaef492856894ef442f9536e880",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/fix_dsm5tr_licenses.py",
+   "new": "tools/build/fix_dsm5tr_licenses.py",
+   "sha256": "8c141ebb6380e168f5fd275aa9cdd59b060513e76b7a2358c4b681beb9dafb92",
+   "sha256_now": "ea6501c1fd1ec9b60d8dc5dcb4cd56f5214c9704a107cf1984108a73c311b8e3",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/fix_neo_item_text.py",
+   "new": "tools/build/fix_neo_item_text.py",
+   "sha256": "09cd3eb2845a25d5d2df0eaefbbd9f46e1933c64e6ed91999bb1ddcaf78cdc65",
+   "sha256_now": "81565ce4fb67a040ad133c623164eec6fc8e867e2a3053302e43f8baaecd5529",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/label_items_by_scene.py",
+   "new": "tools/build/label_items_by_scene.py",
+   "sha256": "64b85a45b848a2e2ccb90420e19dfbc75992d92d1b7677f4cdd0a69a1279aaf3",
+   "sha256_now": "1fab1f9bb88782661efa07471b1759f1e3791d04f76ba20c6fa7f5e019a0b2ef",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/list_apa_measures.py",
+   "new": "tools/survey/list_apa_measures.py",
+   "sha256": "514b7d48fe26fa054c799f4683b4c0683c1a0edb5f01badc29e7ba9b6078f8a1",
+   "sha256_now": "9f77817783308a05eaef8813a6fbfc3888977aeea124259fca069abe8e0a5163",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/list_missing_batches.py",
+   "new": "tools/survey/list_missing_batches.py",
+   "sha256": "00530cf49811166702c0e2a91513b02b1623aa0d28347b685d41ba13cf1abc99",
+   "sha256_now": "54329a0732c680a0e3977d9c5ca1e235a372c2942055488a3b6dcd0f6f25a53e",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/list_tree_scales.py",
+   "new": "tools/survey/list_tree_scales.py",
+   "sha256": "0319b0cf109565ae906c26af4375bda86def5c5aa4bc0113ef2e0ca6b506d359",
+   "sha256_now": "0eae9a66e6f9b07dab9d040bf207497e537d8481046a85be859f0237e315e575",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/merge_translations.py",
+   "new": "tools/build/merge_translations.py",
+   "sha256": "59bddeeb8ba007967bf51f1fe8e324b239d4f6ab693749853a9e508602f5653c",
+   "sha256_now": "2fa80e61c0c203f2050b8c0d90eb9105a97d4f214b8118b4c1fdf9891464eaa0",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/mirror_site.py",
+   "new": "tools/survey/mirror_site.py",
+   "sha256": "3b9776a95a2375e624905480365269074f307dff6372c07cb86814f20e6d0be0",
+   "sha256_now": "292b3717104477913ae96e4d07e74d35506555dcf259c4ecac0038cb0f7c6c6a",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/optimize_tier_design.py",
+   "new": "tools/analyze/optimize_tier_design.py",
+   "sha256": "23f3e84576349e58a0385b647c0ec285082d0bd9dce27f331ef9c7533e8bca47",
+   "sha256_now": "cb437ca0abe3e4bf3e445ca0fc32285ba5196698271bf8cc661b644dce7f4600",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/osf_johnson_spec.json",
+   "new": "tools/survey/osf_johnson_spec.json",
+   "sha256": "f586230fd35aa8c3d3a0d9ca7f41974d89b11717f3c6a9b8439093214958f353",
+   "sha256_now": "f586230fd35aa8c3d3a0d9ca7f41974d89b11717f3c6a9b8439093214958f353",
+   "edited_after_move": false
+  },
+  {
+   "old": "tools/parse_uk_norms.py",
+   "new": "tools/build/parse_uk_norms.py",
+   "sha256": "7488aa8eef51f71643bd5bde0f93a0ed1c8feaf2bb92a8dd2c24dd9dc35e0515",
+   "sha256_now": "5cf6b687651b2c475f134d0d35aaa907996196920cbb11b46a2a58d032ed2dcb",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/probe_crosscheck_tables.py",
+   "new": "tools/survey/probe_crosscheck_tables.py",
+   "sha256": "424ca8afb12cd57c5a5d53f1cfc1b7aec95a6da80af5d541839961e2ee2a9ec1",
+   "sha256_now": "51218f78224554d15a4649145dc45947ce74e8bbe507cc615d0b1ab7796c3028",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/probe_en_pool.py",
+   "new": "tools/survey/probe_en_pool.py",
+   "sha256": "ccdf02a739ada80fc6ccc9ee71523bea8fcb1701e1bafdea472ff128c1c05869",
+   "sha256_now": "c132dc72c5c0dbbae65521e365b107cc4e8ed45617eb23df642542af60f9e6ae",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/probe_ipip300_itemkey.py",
+   "new": "tools/survey/probe_ipip300_itemkey.py",
+   "sha256": "cfc9e314fc4dabc738457ab2197a304fc21dd20687974dee71050cabf7b9ce2c",
+   "sha256_now": "2ce79738fc6e7f5c739712603646a9910ba689f4f8b04f71c4b9fab943cc50b4",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/probe_ipip300_layout.py",
+   "new": "tools/survey/probe_ipip300_layout.py",
+   "sha256": "f114584d6f663fa81d455405584fc60da7f2d94d7d659179d5792f0e13f5f51d",
+   "sha256_now": "330edbff8379b3620715840f835dc712823fb88d8e7778cdd391d27ee5204e46",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/probe_mixed_language.py",
+   "new": "tools/survey/probe_mixed_language.py",
+   "sha256": "a7db06de37d78a1383d54930cf02cae540aaf8b95414368cfc179c9b5e72d954",
+   "sha256_now": "8a4933175827ae7932687dddee0aa8e1da704c5b3d95868cf0e30616105f09bc",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/probe_pid5_norm_source.py",
+   "new": "tools/survey/probe_pid5_norm_source.py",
+   "sha256": "b8a6d2796dbeb88b8423ed737d299c1e4ab5fb2fa756b83fa72da2780da2d3c7",
+   "sha256_now": "b8a6d2796dbeb88b8423ed737d299c1e4ab5fb2fa756b83fa72da2780da2d3c7",
+   "edited_after_move": false
+  },
+  {
+   "old": "tools/probe_promis_tscore.py",
+   "new": "tools/survey/probe_promis_tscore.py",
+   "sha256": "c915f0157647ef1d7a749386033a71dbadbb76d76925260da8d3646233f5a045",
+   "sha256_now": "3e6e77dd26e3c0045fca0376cd221803c2e2e92a38040cdcb4b2e7be2fbed449",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/run_agent_eval.py",
+   "new": "tools/check/run_agent_eval.py",
+   "sha256": "8b69647b72f5ccab9830391010532f03e74e18851205b20b2250997ec60dccf9",
+   "sha256_now": "002f3e565b680f1958f8846c9f1961ab34d9ee1960dc4b657512e43e390fe165",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/serve_dist.js",
+   "new": "tools/ui/serve_dist.js",
+   "sha256": "ef0276bdeca7f1eae020ff86536ce4886faa82fc780abd5e32ddc976f05bcb87",
+   "sha256_now": "55e4aca6b92c7c4f15481a08deaa7df17645891d3656591adb50d26c7a323ff5",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/serve_local.js",
+   "new": "tools/ui/serve_local.js",
+   "sha256": "e2e033af32842e9e06e43edb7cccdd218914c7dae26dbb65c04845aad4d27a96",
+   "sha256_now": "5a904e5411ef5865a960a82198521dde2571ba2146fb99aefa3b74141d7afece",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/shoot_ei_tree.js",
+   "new": "tools/ui/shoot_ei_tree.js",
+   "sha256": "08c7648c2a8c4c47e36d5a7018ff9eb5d214572f86214a2ff5254e9ce41c5e87",
+   "sha256_now": "08c7648c2a8c4c47e36d5a7018ff9eb5d214572f86214a2ff5254e9ce41c5e87",
+   "edited_after_move": false
+  },
+  {
+   "old": "tools/shoot_mania.js",
+   "new": "tools/ui/shoot_mania.js",
+   "sha256": "c43b6e221862babf34d2ccc3543681a3c39ba03ad12d9d96477a605a4011cbfe",
+   "sha256_now": "4aa3de83255c54f49abe38d3c635c12614bf330940d7bc49dfed01f0c5da6835",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/shoot_multiscale.js",
+   "new": "tools/ui/shoot_multiscale.js",
+   "sha256": "5a2a9232cd4be689c3a1473e963773e717dbac06b857ae30486816100cd21513",
+   "sha256_now": "051fbccd498765f94a848dab9bf0411df675842b41042a01edbee39b0659afe6",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/shoot_norms_result.js",
+   "new": "tools/ui/shoot_norms_result.js",
+   "sha256": "870d2d45267c6cd93b2a4fc4d8d6bda0c4ebc36791604351fe48e278b0078c96",
+   "sha256_now": "4dafbd82bc4a1e68a5dc35b1a5238a3f6270347ae9b9bf0e1120a305399e221b",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/shoot_subpage.js",
+   "new": "tools/ui/shoot_subpage.js",
+   "sha256": "ef8ab5366df60579be42234ac6c709ecc174dfede38a6a1a38598c125db9d094",
+   "sha256_now": "68fa1f8aac52b23213cf1a372d81e5d60e1e375ab5b393e94468b27958b23f26",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/shoot_tree.js",
+   "new": "tools/ui/shoot_tree.js",
+   "sha256": "38a8f519d0b00a7de5540ea859e55ca46ccb73e3b432dd69dd9e447f4aff2e1e",
+   "sha256_now": "2aa3eed92ab619c0b7c3eb90dfc7ad66057b0121f2d2654bc12f5ad03ae823a2",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/shoot_ui.js",
+   "new": "tools/ui/shoot_ui.js",
+   "sha256": "f7da358e83d9a6a6e54dec462a51c89f69342881f1f33350de447aaaa5bfcab6",
+   "sha256_now": "81ee8e881d5018667fa90102b4fcce3c81454aa52d49097820441775cd24049b",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/show_archive_licenses.py",
+   "new": "tools/check/show_archive_licenses.py",
+   "sha256": "839a330cbd3d698f1e71b58006b2472cc184fe4aa4cf51f0a2c749a4c4dd8f8e",
+   "sha256_now": "9e00d9cfde6ddadfb090620597270490dd103d5bf7402c93472599c8e85c618e",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/show_instruments.py",
+   "new": "tools/check/show_instruments.py",
+   "sha256": "5c665f3f01f8df7d89171b870c8abebfebf2c0c177e0b1e99c302289e8999271",
+   "sha256_now": "b91eab45a88eed1e446ae0750eeb687f74c680d1fb7a893063507182ba593291",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/show_missing_zh.py",
+   "new": "tools/check/show_missing_zh.py",
+   "sha256": "313b3758f17f6b32ef3b67e5fada4438c47847ec739cd4030e9ca5df819b93fa",
+   "sha256_now": "5dfaa66affac3e3db2cd68a1f5b7c2c5284677e56c2296111efedf49a45c8896",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/survey_candidates.js",
+   "new": "tools/survey/survey_candidates.js",
+   "sha256": "470bd22c0f43ea79abad7affcaa1e4f7242a6007f772b94088620544490ffebb",
+   "sha256_now": "470bd22c0f43ea79abad7affcaa1e4f7242a6007f772b94088620544490ffebb",
+   "edited_after_move": false
+  },
+  {
+   "old": "tools/survey_ipip_conversion.py",
+   "new": "tools/survey/survey_ipip_conversion.py",
+   "sha256": "1d6c28bdb6b681995713d5f2becc17c0a4be0f40886aa31cfa1ef29225a83b0d",
+   "sha256_now": "3c5e36fda3ec96343979ea7cd2f8fac5fd6eb7a9bd055a96a0dcf6b9e5fd42a7",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/survey_item_language.py",
+   "new": "tools/survey/survey_item_language.py",
+   "sha256": "ae61538a53475d087abe80601deb288f7e06d8958cc12abe66ddb41de15de9f0",
+   "sha256_now": "5d33302aa30fa010e49bbf8ea3877df21e643d5e34528d443a073bcaf7837452",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/survey_neo_family.py",
+   "new": "tools/survey/survey_neo_family.py",
+   "sha256": "31f59de04c062058abd37416c4f3523476a57c8333e0a9140d1be08384e4a54c",
+   "sha256_now": "8e83645ba936b4609d12603f2ec76e3e05b294d261cac5c10f26dd934ce8f884",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/survey_scales.js",
+   "new": "tools/survey/survey_scales.js",
+   "sha256": "f69124a2f1c4916d4bd3799e0f318ac90a855cbfb8dfa5e7440d4830db26c7e0",
+   "sha256_now": "47b9ef83c52b3f1eff9630622b633931b6995c2db094f69c46a8dc885dae2acf",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/survey_variants.py",
+   "new": "tools/survey/survey_variants.py",
+   "sha256": "e853ca95eafec841d1bba17b47284e20506e4f17bf00dda232b197a3cb20a48a",
+   "sha256_now": "52c01fb1fcf67981338a715334ce8866526ceace25bd12659f943510dca95f64",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/sync_blog.js",
+   "new": "tools/ui/sync_blog.js",
+   "sha256": "470d273ece2ee8499bf791153c35c6e868590c2b4cb92f452c90380a9a5a0e2d",
+   "sha256_now": "7c0431db810d7d6242c87fc2c34847fda0a7133f20e577cc286371bcedad90d6",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/test_agent_contract.py",
+   "new": "tools/check/test_agent_contract.py",
+   "sha256": "ba2121e231a597c369d2a07ec8ec43a9999bb947fbaca3538a16ba367444bddf",
+   "sha256_now": "e87e1ba78ebe3db4e88f893edb0c2fe6c9eecf5da313372f3816001d084ba6cb",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/test_all_instruments.py",
+   "new": "tools/check/test_all_instruments.py",
+   "sha256": "de70fe6c54f097a51eca3421e8596b5ef9aea63d6eb2090b127397a9d89f40b3",
+   "sha256_now": "7d07004382e0243f6dd4409f04fc253098ec06eb0f01fbe12ed1a9f9fc497981",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/test_catalog.py",
+   "new": "tools/check/test_catalog.py",
+   "sha256": "a76f74f791c78149504d1f57c312af370df7b1a3e7b77bc085dd52a179a59d06",
+   "sha256_now": "3a95fdb9d80645af8131a55bae1bf06836a94aca0d75a464862b48149201cf59",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/test_chain_nav.js",
+   "new": "tools/check/test_chain_nav.js",
+   "sha256": "b0184e4a62bd9f55d6a18bab7124d230eddeeb42dfd70823cafa1057673fbeef",
+   "sha256_now": "b0184e4a62bd9f55d6a18bab7124d230eddeeb42dfd70823cafa1057673fbeef",
+   "edited_after_move": false
+  },
+  {
+   "old": "tools/test_item_coding.py",
+   "new": "tools/check/test_item_coding.py",
+   "sha256": "a02583ace7cc18c3c3842a824a5e793b863e1d968b36ecd37ba2251239465204",
+   "sha256_now": "00ec9a9372290d1032b87ee9cbed21802904267bd45de3d068abac28a584ef46",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/test_l1_instrument.py",
+   "new": "tools/check/test_l1_instrument.py",
+   "sha256": "f564f1f22abf50d505249e9eecc07b98b78381ed08996509c098c4bdc39164be",
+   "sha256_now": "2e33ccda8878776cec1d417700c95e284a1870bcea81d03eda4fdee3adb86593",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/test_l1_threshold_ui.js",
+   "new": "tools/check/test_l1_threshold_ui.js",
+   "sha256": "13b2490ff25a25961ce74728a83bc5cdaa7b796b4432404cd3c98ae3fd612215",
+   "sha256_now": "13b2490ff25a25961ce74728a83bc5cdaa7b796b4432404cd3c98ae3fd612215",
+   "edited_after_move": false
+  },
+  {
+   "old": "tools/test_l2_criteria_ui.js",
+   "new": "tools/check/test_l2_criteria_ui.js",
+   "sha256": "d1fdbc17e1464d79653a1cdc05c78838ce0673d775bb324df9c3f513ce0fde8b",
+   "sha256_now": "d1fdbc17e1464d79653a1cdc05c78838ce0673d775bb324df9c3f513ce0fde8b",
+   "edited_after_move": false
+  },
+  {
+   "old": "tools/test_local_file.js",
+   "new": "tools/check/test_local_file.js",
+   "sha256": "6403120a1793204d639015988c37b8f131718df108fd6c7314b34c003e894b65",
+   "sha256_now": "9abe76f9354957049add7fa0f95b31002a7214316cd31d20641463d28b593a22",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/test_multiscale_fetch.js",
+   "new": "tools/check/test_multiscale_fetch.js",
+   "sha256": "18cc7df8ab914ab07fc15fc5ba79d26a43d1bf8ebddff28769f4571f53780141",
+   "sha256_now": "18cc7df8ab914ab07fc15fc5ba79d26a43d1bf8ebddff28769f4571f53780141",
+   "edited_after_move": false
+  },
+  {
+   "old": "tools/test_pid5_instrument.py",
+   "new": "tools/check/test_pid5_instrument.py",
+   "sha256": "08b6e97503385e76d27f4fe5558b8a9b56044c3ef0a7e86bba22f7cacbcfdc2e",
+   "sha256_now": "3cf7c8b06da9d11a683c8266958f625884d3b5654d8fef39751915bb557dc78b",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/test_pid5_norms_ui.js",
+   "new": "tools/check/test_pid5_norms_ui.js",
+   "sha256": "ebfbcea92fa8d050ddf1663361d8a57ae0de568eb01cc515cec101e581346a9c",
+   "sha256_now": "ebfbcea92fa8d050ddf1663361d8a57ae0de568eb01cc515cec101e581346a9c",
+   "edited_after_move": false
+  },
+  {
+   "old": "tools/test_scale_export.js",
+   "new": "tools/check/test_scale_export.js",
+   "sha256": "9c63d4ccf6e840d8a8f8fd0ba8c7a1447434c76e9a1d718c7686699d9ff41693",
+   "sha256_now": "9c63d4ccf6e840d8a8f8fd0ba8c7a1447434c76e9a1d718c7686699d9ff41693",
+   "edited_after_move": false
+  },
+  {
+   "old": "tools/test_scale_pages.js",
+   "new": "tools/check/test_scale_pages.js",
+   "sha256": "dcfe97ea1d5bc57190cc77a262b1745d539dd29113ccb813d316b5808508571b",
+   "sha256_now": "dcfe97ea1d5bc57190cc77a262b1745d539dd29113ccb813d316b5808508571b",
+   "edited_after_move": false
+  },
+  {
+   "old": "tools/test_scene.py",
+   "new": "tools/check/test_scene.py",
+   "sha256": "eac7c1277e6728ae6a5de689e69352372b0b2e32938e78393e3b8a0e8fd73258",
+   "sha256_now": "fc02286d3f73249d1fb2444b98818b69209a07aebc800d83131c2fa4df7d0527",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/test_schema_roundtrip.py",
+   "new": "tools/check/test_schema_roundtrip.py",
+   "sha256": "3393b73bff55e27c0db1d83cd0033b35128f73755e51eaa7404de10c28236aef",
+   "sha256_now": "2a8da3bf16fa30759374fdf34233065b2841bac8619c5e0141c2519139480dca",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/test_scoring.py",
+   "new": "tools/check/test_scoring.py",
+   "sha256": "a8059e42aa7185e07749aa27fd25b19febc5c176b37be3095adcf04e0246d060",
+   "sha256_now": "759df7a2913f9df95175d0a7074f58be9d05debb03a5d91f5b65038ca20aba34",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/test_tree_mode.js",
+   "new": "tools/check/test_tree_mode.js",
+   "sha256": "41788086d8171d8dd7a746f88ca8345feee4dfebfc76a3bf9c2108ad280dc94e",
+   "sha256_now": "41788086d8171d8dd7a746f88ca8345feee4dfebfc76a3bf9c2108ad280dc94e",
+   "edited_after_move": false
+  },
+  {
+   "old": "tools/test_ui_adapt.js",
+   "new": "tools/check/test_ui_adapt.js",
+   "sha256": "456e18754dc8fd9cc0b1d1cd36317c7ff57e1543826e9478835a028f22b30697",
+   "sha256_now": "2514a4185bdf80be089ef5b06c977abed3ab638b125b6726991447f223cd086a",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/test_ui_block.js",
+   "new": "tools/check/test_ui_block.js",
+   "sha256": "af954c7abc5c015b6b03e5a7d19e503a1499da7d69c04e651f941e8bac93a014",
+   "sha256_now": "22da6a43af1f26c1080123f24a55c6a6b8348bdd93554488dc95a4a67ef7fb0c",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/test_ui_export.js",
+   "new": "tools/check/test_ui_export.js",
+   "sha256": "bcaf23b57a1cac832372d57eec4b1094ae18c3b272872bae0ff654390dd43ad8",
+   "sha256_now": "9cf243da917cb7e3f7ea47e8b3e1363077a38e7fa1a6fbc913707a3e446b7fe8",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/test_ui_tier.js",
+   "new": "tools/check/test_ui_tier.js",
+   "sha256": "2e0d6577d6414dfc9d03a35124eb42bbe64e242df141b15d87faecc94d0fd93e",
+   "sha256_now": "4dfbdbd163c5fabc6a6cd0fef5536e8f7ea1e4742ddae537b3a94bf8b15309cf",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/test_ui_tree.js",
+   "new": "tools/check/test_ui_tree.js",
+   "sha256": "8d84894d2589f2919b83ff4dc36aebefd4657f94f443965b2a5192f69e9b3aa6",
+   "sha256_now": "89161306982fb84ce380ac3e14de7f0f6c63bb5d1135f391de24235b9ae8b8eb",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/test_ui_unlock.js",
+   "new": "tools/check/test_ui_unlock.js",
+   "sha256": "d2fb7c05ee8132e0f459b61f3b9a724d4e23db49b130cfc97cda402f33034fa5",
+   "sha256_now": "f565ff3149c299880e627fe6d29473785b07331f13cb2b4eac7c83f5c1bf31c8",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/translate_prompt.md",
+   "new": "tools/build/translate_prompt.md",
+   "sha256": "07a4478bfcae56ac0383b92788ce1f3ca6e2d53626cbd4af1a5856b79183dd6b",
+   "sha256_now": "07a4478bfcae56ac0383b92788ce1f3ca6e2d53626cbd4af1a5856b79183dd6b",
+   "edited_after_move": false
+  },
+  {
+   "old": "tools/validate_records.py",
+   "new": "tools/check/validate_records.py",
+   "sha256": "8932149c6998deca92b023ed343f763cd630a1ea172404cd9a00b330cd846772",
+   "sha256_now": "a500f8e7a015d40f0be411c38b702f3145dcb12fdb4516e2acbb2d5379a4cf32",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/validate_tier_design.py",
+   "new": "tools/check/validate_tier_design.py",
+   "sha256": "8fe492c792a123cfd5dbeb4157f8a3f8b39ec4f927c799fd5818380ab338689e",
+   "sha256_now": "8540b3d8308a2d57f0520f6c761f5bfb4c5ae742d5da58dd9f52f609cb410913",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/verify_agent_output.py",
+   "new": "tools/check/verify_agent_output.py",
+   "sha256": "0520617ff75287721e41322de0022eb66007a172d8ae92610518910ebd8cdda4",
+   "sha256_now": "1a682aac22b0cb3d4b74a227e4aa382981e51c2b2764037ec3259bcc38e0924e",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/verify_archive.py",
+   "new": "tools/check/verify_archive.py",
+   "sha256": "f74ee1ae528e2dc9d17b60739191d0718ddfa0b0600a6852215157feca5c0733",
+   "sha256_now": "5dab6bbbdb19fd634ed2001c3c10a10a1ded140a4fe85ccf7441674f239c474f",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/verify_norms_item_alignment.py",
+   "new": "tools/check/verify_norms_item_alignment.py",
+   "sha256": "0f1c79dd30c06b051c4e4be4a3cca285108121ac1f7066bce451a5c958bb8bed",
+   "sha256_now": "c013bc2d1e84e50c0e5880f379ab22038b22b0a87ae3516c8b401eefc456aacf",
+   "edited_after_move": true
+  },
+  {
+   "old": "tools/verify_pid5_norm_keys.py",
+   "new": "tools/check/verify_pid5_norm_keys.py",
+   "sha256": "d59a3eb4a8dafac92f9d16f43b9691672360d6628fd3a61922ad21c24f459d56",
+   "sha256_now": "5d1efb222a23a4b03c1c87f8e24aa305633894f03392609bb397b0f3c4239108",
+   "edited_after_move": true
+  }
+ ],
+ "post_move_edits": {
+  "why": "搬家后必须做的两类修复（都属于 T5「修引用」，不是重构）：① 根定位改为 find_root()/tools/_root.js；② tools/<name> → tools/<cat>/<name> 的引用点（含点号包路径 from tools.X import）。",
+  "sha256 字段": "移动前哈希（证明搬家逐字节无损）；sha256_now 为当前哈希。",
+  "edited_count": 139,
+  "edited_files": [
+   "tools/analyze/analyze_block_and_network.py",
+   "tools/analyze/analyze_correlation_network.py",
+   "tools/analyze/analyze_decision_paths.py",
+   "tools/analyze/analyze_partial_administration.py",
+   "tools/analyze/analyze_scene_precision.py",
+   "tools/analyze/analyze_tiered_unlock.py",
+   "tools/survey/archive_apa_manuals.py",
+   "tools/survey/archive_dsm5tr_measures.py",
+   "tools/build/attach_linkage.py",
+   "tools/build/attach_norms.py",
+   "tools/check/audit_capabilities.py",
+   "tools/analyze/audit_scene_noise.py",
+   "tools/build/batch_convert_ipip.py",
+   "tools/build/build_adaptive_data.py",
+   "tools/build/build_agent_eval_set.py",
+   "tools/build/build_all_facets.py",
+   "tools/build/build_catalog.py",
+   "tools/build/build_catpd_reverse_keys.py",
+   "tools/build/build_dsm5tr_chain.py",
+   "tools/build/build_hexaco_direction_evidence.py",
+   "tools/build/build_ipip_neo300.py",
+   "tools/build/build_item_norms.py",
+   "tools/build/build_l1_instrument.py",
+   "tools/build/build_l1_items.py",
+   "tools/build/build_l2_criteria.py",
+   "tools/build/build_l2_instruments.py",
+   "tools/build/build_l2_items.py",
+   "tools/build/build_l2_items_rest.py",
+   "tools/build/build_mandarin_baseline.py",
+   "tools/build/build_manifest.py",
+   "tools/build/build_norms_ipip300.py",
+   "tools/build/build_norms_pid5.py",
+   "tools/build/build_pid5_instrument.py",
+   "tools/build/build_pid5_items.py",
+   "tools/build/build_pid5_scoring_keys.py",
+   "tools/build/build_quality_gate.py",
+   "tools/build/build_remaining_slices.py",
+   "tools/build/build_scene_taxonomy.py",
+   "tools/build/build_text_db.py",
+   "tools/build/build_tier_ladder.py",
+   "tools/ui/build_tier_layout.py",
+   "tools/build/build_tier_ui_data.py",
+   "tools/build/build_tree_layouts.py",
+   "tools/ui/build_ui_bundle.py",
+   "tools/ui/build_ui_instruments.py",
+   "tools/build/build_unlock_network.py",
+   "tools/check/check_css_vars.py",
+   "tools/check/check_dimension_coverage.py",
+   "tools/check/check_item_language.py",
+   "tools/check/check_item_truncation.py",
+   "tools/check/check_l1_interpretation.py",
+   "tools/check/check_l2_criteria.py",
+   "tools/check/check_l2_fields_persist.py",
+   "tools/check/check_l2_glyphs.py",
+   "tools/check/check_missing_format.py",
+   "tools/check/check_mobile_layout.js",
+   "tools/check/check_norms.py",
+   "tools/check/check_text_db.py",
+   "tools/check/check_tree_geometry.py",
+   "tools/build/clean_l2_glyphs.py",
+   "tools/build/collect_translations.py",
+   "tools/build/collect_translations_from_disk.py",
+   "tools/analyze/compare_linear_vs_tree.py",
+   "tools/survey/crosscheck_promis_tables.py",
+   "tools/legacy/demo_agent_contract.py",
+   "tools/legacy/demo_assessment.py",
+   "tools/legacy/demo_profile.py",
+   "tools/legacy/demo_scene.py",
+   "tools/build/derive_antonyms.py",
+   "tools/ui/dev_check_render.js",
+   "tools/ui/dev_probe.js",
+   "tools/analyze/diagnose_items.py",
+   "tools/build/exclude_non_english.py",
+   "tools/build/export_pending_translations.py",
+   "tools/survey/extract_dsm5tr_rules.py",
+   "tools/survey/extract_l1_table1.py",
+   "tools/survey/extract_l2_criteria.py",
+   "tools/build/extract_workflow_results.py",
+   "tools/survey/fetch_assets.py",
+   "tools/survey/fetch_hexaco_keys.py",
+   "tools/survey/fetch_pid5_norms.py",
+   "tools/survey/fetch_promis_manuals.py",
+   "tools/check/find_missing_zh.py",
+   "tools/build/fix_dsm5tr_licenses.py",
+   "tools/build/fix_neo_item_text.py",
+   "tools/build/label_items_by_scene.py",
+   "tools/survey/list_apa_measures.py",
+   "tools/survey/list_missing_batches.py",
+   "tools/survey/list_tree_scales.py",
+   "tools/build/merge_translations.py",
+   "tools/survey/mirror_site.py",
+   "tools/analyze/optimize_tier_design.py",
+   "tools/build/parse_uk_norms.py",
+   "tools/survey/probe_crosscheck_tables.py",
+   "tools/survey/probe_en_pool.py",
+   "tools/survey/probe_ipip300_itemkey.py",
+   "tools/survey/probe_ipip300_layout.py",
+   "tools/survey/probe_mixed_language.py",
+   "tools/survey/probe_promis_tscore.py",
+   "tools/check/run_agent_eval.py",
+   "tools/ui/serve_dist.js",
+   "tools/ui/serve_local.js",
+   "tools/ui/shoot_mania.js",
+   "tools/ui/shoot_multiscale.js",
+   "tools/ui/shoot_norms_result.js",
+   "tools/ui/shoot_subpage.js",
+   "tools/ui/shoot_tree.js",
+   "tools/ui/shoot_ui.js",
+   "tools/check/show_archive_licenses.py",
+   "tools/check/show_instruments.py",
+   "tools/check/show_missing_zh.py",
+   "tools/survey/survey_ipip_conversion.py",
+   "tools/survey/survey_item_language.py",
+   "tools/survey/survey_neo_family.py",
+   "tools/survey/survey_scales.js",
+   "tools/survey/survey_variants.py",
+   "tools/ui/sync_blog.js",
+   "tools/check/test_agent_contract.py",
+   "tools/check/test_all_instruments.py",
+   "tools/check/test_catalog.py",
+   "tools/check/test_item_coding.py",
+   "tools/check/test_l1_instrument.py",
+   "tools/check/test_local_file.js",
+   "tools/check/test_pid5_instrument.py",
+   "tools/check/test_scene.py",
+   "tools/check/test_schema_roundtrip.py",
+   "tools/check/test_scoring.py",
+   "tools/check/test_ui_adapt.js",
+   "tools/check/test_ui_block.js",
+   "tools/check/test_ui_export.js",
+   "tools/check/test_ui_tier.js",
+   "tools/check/test_ui_tree.js",
+   "tools/check/test_ui_unlock.js",
+   "tools/check/validate_records.py",
+   "tools/check/validate_tier_design.py",
+   "tools/check/verify_agent_output.py",
+   "tools/check/verify_archive.py",
+   "tools/check/verify_norms_item_alignment.py",
+   "tools/check/verify_pid5_norm_keys.py"
+  ]
+ }
+}

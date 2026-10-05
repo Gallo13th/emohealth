@@ -1,0 +1,217 @@
+{
+  "sections": [
+    {
+      "heading": "先看清楚：哪些话现在有资格说，哪些没有",
+      "text": "这次你一共作答了一百一十二道题，完整题库是三百道，覆盖约百分之三十七点三；完成的场景只有一个，就是「不分场合的你自己」。能说多少话，不取决于覆盖了多少题，而取决于某一个面向被多少道题作答过。所以本次交付分成两块：一块是已经可以拿来看的面向，一块是本次不作任何表述的面向——不是「大概是中等」，而是现在还不能说。",
+      "grounded_in": [
+        "coverage.items_answered",
+        "coverage.items_total",
+        "coverage.pct",
+        "coverage.scenes_complete",
+        "scene_results.0.name_zh",
+        "facets_showable",
+        "facets_withheld",
+        "disclosures.4.id"
+      ]
+    },
+    {
+      "heading": "面板里的名次是「单题位置」，不是「面向分数」",
+      "text": "面板按单题的名次排出了偏高与偏低的题。这里的名次说的是这一道题的位置，和「这个面向测得怎么样」是两件事：单题与完整测量的相关最差只有零点五一。以第 3 题「有丰富的想象力」为例，这道题问的是想象的活跃程度——脑子里是否常出现鲜明的画面与情境——不是「有没有创造力」，也不是创意产出。常见的另一种读法是把它当创造力测试，或者因为觉得自己「没创意」而给低分；这两种读法对应的都不是本题在问的东西。所以这道题的名次再高，也不构成对任何面向的结论。",
+      "grounded_in": [
+        "notable_items.0.order",
+        "notable_items.0.text_zh",
+        "notable_items.0.asks",
+        "notable_items.0.key_term.sense_here",
+        "notable_items.0.common_misreadings.0.misreading",
+        "notable_items.0.common_misreadings.1.misreading",
+        "notable_items.0.localization_note",
+        "facets.imagination.precision.advice",
+        "scene_results.0.panel_a_high",
+        "scene_results.0.panel_a_low"
+      ]
+    },
+    {
+      "heading": "几道题的澄清：这题问的是这个，不是那个",
+      "text": "下面这几道题值得单独说清楚，说的只是题目本身在问什么。第 10 题「喜欢秩序」问的是你是否偏好事物井然有序，指的是环境与物品的有序，不指「做事靠谱」，也不等于日常说的自我约束。第 100 题「喜欢有条有理」问的是秩序与规律，除了空间上的整齐，也包含时间安排上的规律；它不是「一成不变」，和「凡事要先想清楚再动」也不是一回事。第 84 题「觉得自己是个普通人」问的是你私下如何看待自己的整体水平，是否认为与大多数人差不多；这里的「普通」是与一般人相当，不含情绪色彩，也不是「自卑」或故意自谦——它是内心真实的自我定位，不是对外客套的说法。第 104 题「关心他人」问的是你是否关心、挂念他人，不是「对人有兴趣」，也不看你是否擅长把关心表达出来。第 102 题「喜欢影响别人」问的是你是否愿意主动去带动他人的想法或做法，是中性的，不含「控制别人」的意思；也请按实际的意愿作答，不必因为觉得「不该影响别人」而压低。第 257 题「让事情按自己的节奏进行」是一道反向题，问的是你是否倾向让事情按它们自己的节奏发展，也就是不主动加速、不额外推动；这不等于「不管」——事情仍在推进，只是不加力，它也可以和计划性并存。第 275 题「看不到事情的后果」同样是反向题，问你平时是否常看不到事情的后果，落在预见后果这件事上。第 245 题与第 284 题都是反向题：前者问的是在讨论或共同做事时你是否觉得自己拿不出什么，后者问的是你是否不愿为他人花费时间，落点在「意愿」——忙得抽不出时间和「不愿」不是同一件事。第 267 题「不容易被逗乐」问的是你是否不容易被逗乐，说的是好笑这件事的门槛，不是「不快乐」，也不是情绪基调。第 219 题「会假装关心别人」是反向题，问的是你是否会做出关心的样子而内心并不在意，不指礼貌性的问候。以上都是对题目在问什么的说明，不是对你怎么想的揣测。",
+      "grounded_in": [
+        "notable_items.1.order",
+        "notable_items.1.asks",
+        "notable_items.1.key_term.not_this",
+        "notable_items.1.common_misreadings.0.misreading",
+        "notable_items.1.localization_note",
+        "notable_items.3.order",
+        "notable_items.3.asks",
+        "notable_items.3.key_term.sense_here",
+        "notable_items.3.key_term.not_this",
+        "notable_items.3.common_misreadings.1.misreading",
+        "notable_items.2.order",
+        "notable_items.2.asks",
+        "notable_items.2.key_term.sense_here",
+        "notable_items.2.key_term.not_this",
+        "notable_items.2.localization_note",
+        "notable_items.5.order",
+        "notable_items.5.asks",
+        "notable_items.5.key_term.not_this",
+        "notable_items.4.order",
+        "notable_items.4.asks",
+        "notable_items.4.key_term.sense_here",
+        "notable_items.4.key_term.not_this",
+        "notable_items.4.common_misreadings.1.correction",
+        "notable_items.6.order",
+        "notable_items.6.asks",
+        "notable_items.6.key_term.sense_here",
+        "notable_items.6.key_term.not_this",
+        "notable_items.6.common_misreadings.0.correction",
+        "notable_items.6.common_misreadings.1.correction",
+        "notable_items.7.order",
+        "notable_items.7.asks",
+        "notable_items.7.key_term.sense_here",
+        "notable_items.9.order",
+        "notable_items.9.asks",
+        "notable_items.9.key_term.term",
+        "notable_items.8.order",
+        "notable_items.8.asks",
+        "notable_items.8.key_term.sense_here",
+        "notable_items.8.localization_note",
+        "notable_items.11.order",
+        "notable_items.11.asks",
+        "notable_items.11.key_term.not_this",
+        "notable_items.11.localization_note",
+        "notable_items.10.order",
+        "notable_items.10.asks",
+        "notable_items.10.key_term.sense_here",
+        "notable_items.0.speak_neutrally"
+      ]
+    },
+    {
+      "heading": "面向自身的内容局限有哪些",
+      "text": "这一段是产品对自己内容的自查，删掉它等于把我们对自家工具的批评藏起来，所以它必须原样在场。以下每一条都对应一个已经可以拿来看的面向。活跃度：这个面向的题目混合了两类不同的东西，其中一批问的是实际节奏与行为，忙碌、奔波、并行、反应快慢；另一批问的是对从容节奏的偏好，比如喜欢慢慢来、不慌不忙、向往悠闲、顺其自然。它也是本量表内部一致性最低的面向，其余多为更高。如果你的实际节奏与内心偏好并不一致，这个总分无法同时描述这两件事，请分别看这两类题目。冒险：它问的是你愿不愿意尝试没做过的事，与胆量、风险承受力无关，也与能不能去无关；和「追求刺激」不同，那要的是心跳加速，这里要的是新鲜感。审美：像「喜欢音乐」这类题在人群中几乎人人同意，对本面向的区分贡献很小；如果你的总分处在中间地带，可能只是因为部分题目本身区分度低，不代表你的审美倾向「中庸」。它问的是是否被作品与美打动，不是是否懂艺术，也不是消费了多少内容。利他：它问的是你愿不愿意为他人付出，不是你实际付出了多少，所以不要因为「最近太忙没顾上」而压低分数；它和「同情」不同，同情是感受到别人的处境，这里是为之做点什么，两者可以不一致。愤怒：本面向含攻击性表述，社会赞许性会让一部分人低报，若作答时感到「不太想说真话」，分数可能偏低。焦虑：其中第 10 题问的是情境适应，与其余 9 题的「担忧强度」主轴略有不同，如果你的担忧程度与进入新环境的吃力程度不一致，这个总分可能掩盖这一差异。决断性：它问的是是否主动表达与主导，不是攻击性，也不是爱出风头，它可以表现为「在需要有人拍板时站出来」，其表现不一定要强势。审慎：它问的是你会不会先想再做，不是你会不会做不了决定；有意的权衡属于这里，因为担心而迟迟无法决定更接近「焦虑」。另需留意，本面向的题目以反向题为主，更容易受到「习惯性同意」这种作答倾向的干扰。开朗：它问的是你内心的情绪基调，不是你表现出多少；情绪也会受近期境遇影响，近期经历较大的好事或坏事，分数可能反映当下处境，而不是一贯的你。责任心：它问的是你有多重视承诺与规范，不是你有多能干，也不是你有多善良；其中含「我会打破规则」「我会违背承诺」这类表述，如果你想到的是某些不合理的规矩，请按平日里对「承诺」的一般态度作答，而不是按某个具体情境。情感丰富：它问的是你对情绪的敏感度与重视程度，与情绪是正面还是负面无关，也与波动大小无关；一个情绪稳定但对自己的感受很敏感的人，这一面向可以很高。其中一题问的是喜不喜欢审视自己与自己的生活，那更接近自我探索的兴趣，与本面向的情绪觉察并不完全等同。追求刺激：它描述的是对强烈体验的偏好，不含褒贬，既不等于勇敢，也不等于不负责任；它和「活跃度」不是一回事，活跃度问的是节奏快慢与活动量，这里问的是是否需要强烈的唤起。想象力：它问的是你是否主动使用想象，与有没有艺术才能或创造力无关。放纵：「放纵」的具体行为在不同人身上差别很大，饮食、消费、娱乐、拖延都算，而题目并未固定在某一种，这个总分只能粗略反映「是否容易在诱惑前让步」；它问的是想做的事能不能停。谦逊：它问的是你会不会抬高自己，不是自不自信，不测量自我价值感，也不测量实际能力；它与自信可以并存，一个人完全可以在心里清楚自己的水平，同时不主动炫耀，两件事在题目里不总能分开，所以这个分数只作粗略参考。其中一题使用了英文习语，在翻译时最容易失去原意，若你觉得那题的意思不好把握，可以跳过。条理性：「条理」在这里只指环境与物品是否整齐，不是做事是否靠谱；一个桌面很乱但工作推进得很好的人，这一面向可以很低，而自我约束很高。另需留意，本面向的一题在原始机读数据中缺失正文，我们是用官方问卷补齐的，如果那题的表述让你觉得不太通顺，原因在此。自我效能：它问的是你觉得自己行不行，不是你实际行不行，反映的是信心，不反映能力、成绩或经验；它和「自我约束」是两件事，相信自己能把事做好，和真的会去做，可以分开，自信却拖延是这个量表里很常见的一种组合。同情：它测的是你会不会被别人的困难打动，不是你有没有善心，也不是你会不会去帮；它只覆盖共情中的情感反应那一半，能理解他人处境但情绪不被牵动的人，这里会得低分，但这不等于缺乏共情能力。低分尤其容易被自我评判为「冷漠」，请把它当作一个描述，而不是评价。信任：它描述的是你对他人动机的默认假设，不含褒贬，既不是「天真」，低分也不是「成熟」；它和是否愿意帮助别人不是一回事，可以信任所有人但不主动为他人付出。",
+      "grounded_in": [
+        "disclosures.2.id",
+        "disclosures.2.text",
+        "disclosures.2.items.0.text",
+        "disclosures.2.items.1.text",
+        "disclosures.2.items.2.text",
+        "disclosures.2.items.3.text",
+        "disclosures.2.items.4.text",
+        "disclosures.2.items.5.text",
+        "disclosures.2.items.6.text",
+        "disclosures.2.items.7.text",
+        "disclosures.2.items.8.text",
+        "disclosures.2.items.9.text",
+        "disclosures.2.items.10.text",
+        "disclosures.2.items.11.text",
+        "disclosures.2.items.12.text",
+        "disclosures.2.items.13.text",
+        "disclosures.2.items.14.text",
+        "disclosures.2.items.15.text",
+        "disclosures.2.items.16.text",
+        "disclosures.2.items.17.text",
+        "disclosures.2.items.18.text",
+        "disclosures.2.items.19.text",
+        "disclosures.2.items.20.text",
+        "disclosures.2.items.21.text",
+        "disclosures.2.items.22.text",
+        "disclosures.2.items.23.text",
+        "disclosures.2.items.24.text",
+        "disclosures.2.items.25.text",
+        "disclosures.2.items.26.text",
+        "disclosures.2.items.27.text",
+        "disclosures.2.items.28.text",
+        "disclosures.2.items.29.text",
+        "disclosures.2.items.30.text",
+        "disclosures.2.items.31.text",
+        "disclosures.2.items.32.text",
+        "disclosures.2.items.33.text"
+      ]
+    },
+    {
+      "heading": "这些分数不意味着什么",
+      "text": "上面每个面向都标注了它不覆盖什么，这些标注同样必须原样在场。合起来看，这些分数不测量你的实际能力、成绩或经验，不测量你实际付出了多少，不测量你懂不懂艺术或有没有艺术才能，不测量你处于什么境遇、情绪是好是坏，也不测量你有哪些具体行为发生；面向名字比它实际覆盖的范围往往大得多。所以请把这里的一切当作描述，而不是评价；也不要把任何一项当作关于你的证明。",
+      "grounded_in": [
+        "disclosures.3.id",
+        "disclosures.3.text",
+        "disclosures.3.items.0.text",
+        "disclosures.3.items.14.text",
+        "disclosures.3.items.16.text",
+        "disclosures.3.items.9.text",
+        "disclosures.3.items.35.text",
+        "disclosures.3.items.19.text",
+        "facets.sympathy.interpretation_caveats.1",
+        "facets.anger.does_not_measure.2"
+      ]
+    },
+    {
+      "heading": "本次不作任何表述的面向",
+      "text": "有 11 个面向因题量不足尚未解锁，本次不对它们作任何表述。这里不作表述的意思是：连「大概是中等」这样的话也不说——没数据就不能说，那不是保守，而是不编造。",
+      "grounded_in": [
+        "disclosures.4.id",
+        "disclosures.4.text",
+        "disclosures.4.why",
+        "facets_withheld"
+      ]
+    },
+    {
+      "heading": "参照人群与适用范围",
+      "text": "先说清楚这份分数站在什么人群上：参照人群为英国样本，非中国人群；源文件未提供样本量、招募方式与采集年份，且分带边界来自对常模表的反推。常模适用性直接决定分数能不能被当真，所以这一条不能省。同时，本结果不构成任何诊断，也不能替代专业评估——产品定位是自测陪伴，不是筛查工具。",
+      "grounded_in": [
+        "disclosures.0.id",
+        "disclosures.0.text",
+        "disclosures.0.why",
+        "disclosures.1.id",
+        "disclosures.1.text",
+        "disclosures.1.why"
+      ]
+    },
+    {
+      "heading": "为什么这次没有「情景中的你」与「平时的你」的对比",
+      "text": "情景面板这一步的状态是还需要更多数据：要比较「情景中的你」与「平时的你」，先得有「平时的你」。现在已有的场景是一个，还需要三个。这一块不是暂时省略，而是条件没到。",
+      "grounded_in": [
+        "scene_results.0.panel_b.status",
+        "scene_results.0.panel_b.need_scenes",
+        "scene_results.0.panel_b.have_scenes",
+        "scene_results.0.panel_b.why",
+        "coverage.scenes_complete"
+      ]
+    },
+    {
+      "heading": "作答质量方面的一点交代",
+      "text": "质量门这次没有触发任何标记。需要一并说明的是：情景模式的作答顺序与常模施测顺序不同，部分质量指标不适用；本次的可信度折扣为 1.0。这些数字同样来自输入，不是新的判断。",
+      "grounded_in": [
+        "quality_gate.flags",
+        "quality_gate.notes.0",
+        "quality_gate.reliability_discount"
+      ]
+    }
+  ],
+  "notable_items_surfaced": [3, 10, 100, 84, 104, 102, 257, 275, 245, 284, 267, 219],
+  "disclosures_kept": [
+    "norm_sample",
+    "no_diagnosis",
+    "content_caveat",
+    "does_not_measure",
+    "precision"
+  ],
+  "refusals": [
+    {
+      "asked": "要求给出结论性判断，例如判断是否患有某种障碍、属于哪种类型或人格类型。",
+      "why": "这超出表达层润色的边界：本结果不构成任何诊断，也不能替代专业评估，我不得诊断、分型或贴标签。"
+    },
+    {
+      "asked": "要求把某个面向的分数改一改、重新算一算，或者调整分带与名次。",
+      "why": "我只能改变表达形式，不能改变任何数字：分数、名次、精度与题量都来自已经确定的测量结果。"
+    },
+    {
+      "asked": "要求说明那些本次未解锁的面向大致处于什么水平。",
+      "why": "题量不足的面向本次不作任何表述，连「大概中等」也不说；没有数据时给出的位置就是编造。"
+    },
+    {
+      "asked": "要求由某一道题或某一次作答反推这个人的性格特点、日常习惯或人际状况。",
+      "why": "单题与完整测量的相关最差只有零点五一，依据单题只能说明这道题问的是什么，不能由一题反推这个人。"
+    },
+    {
+      "asked": "要求给出医疗方面的安排，例如是否用药、增减药量或就诊安排。",
+      "why": "这属于医疗建议，不在本产品的边界内；若长期感到困扰，请寻求专业人士的帮助。"
+    }
+  ]
+}

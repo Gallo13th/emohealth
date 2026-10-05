@@ -1,0 +1,17 @@
+# 本项目**以字节为准**，因此禁止 git 做任何行尾/编码转换。
+#
+# 为什么必须这样（不是洁癖，是这个仓库的硬约束）：
+#   * `MANIFEST.sha256` 逐文件记录 sha256，`build_manifest.py --check` 逐文件比对；
+#   * `archive/**` 是证据底本，`verify_archive.py` 逐字节校验；
+#   * `tools/ui/pack_ui_data.py --check` 要求 23 个前端产物**逐字节**一致；
+#   * `check_size_regression.py` 按 MANIFEST 记录的大小比对。
+# 只要 checkout/clone 时把 LF 换成 CRLF（或反过来），上述哈希**全部立刻失效**——
+# 而且看起来只是"文件都改了"，极难归因。
+#
+# `* -text` 的含义：所有文件一律按**二进制**处理，git 不碰一个字节。
+# 代价与替代：
+#   * `git diff` / `git log -p` 默认不显示内容差异（因为文件被判为二进制）；
+#   * 需要看差异时加 `--text`：`git diff --text`、`git log -p --text`；
+#   * 也可以用 `git show HEAD:path > /tmp/a && diff /tmp/a path`。
+# 这个取舍是**有意**的：字节安全 > diff 便利，因为字节错乱是静默的，diff 不方便是显式的。
+* -text

@@ -1,0 +1,704 @@
+{
+ "_note": "情感丰富（Emotionality / O3）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.emotionality",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "情感丰富",
+  "facet_name_en": "Emotionality",
+  "facet_code": "O3",
+  "domain": "openness",
+  "domain_zh": "开放性"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "对自己内在情绪体验的敏感与重视：能否清晰地觉察情绪、是否认为情绪本身值得关注与探索。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量情绪的**强度**或波动（那属神经质）",
+   "不测量对他人的共情（属 A6 同情）",
+   "不测量情绪表达能力",
+   "不测量心理反思的习惯（那更接近 O5 思辨）"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "imagination",
+    "against_facet_zh": "想象力",
+    "distinction": "情感丰富是**对情绪的觉察**；想象力是**对场景的构建**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "intellect",
+    "against_facet_zh": "思辨",
+    "distinction": "情感丰富偏**感受**；思辨偏**概念分析**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "sympathy",
+    "against_facet_zh": "同情",
+    "distinction": "情感丰富是**对自己情绪**的觉察；同情是**对他人处境**的关切。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "depression",
+    "against_facet_zh": "抑郁",
+    "distinction": "抑郁是**情绪基调偏低**；情感丰富是**对情绪的敏感度**，与情绪是正还是负无关。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "很少留意自己的情绪，觉得那不重要",
+   "2": "偶尔会想想自己的感受",
+   "3": "对自己情绪有一定觉察，必要时会关注",
+   "4": "经常留意并思考自己的情绪，认为它值得关注",
+   "5": "我的情绪体验非常丰富，且我持续地在觉察与理解它",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_146",
+   "ipip_neo_147",
+   "ipip_neo_148",
+   "ipip_neo_149",
+   "ipip_neo_150"
+  ],
+  "forward_items": [
+   "ipip_neo_141",
+   "ipip_neo_142",
+   "ipip_neo_143",
+   "ipip_neo_144",
+   "ipip_neo_145"
+  ],
+  "key_balance": "5 正向 / 5 反向",
+  "reverse_keyed_count": 5,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.81,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 2.83,
+   "reference_age_band": "18-29",
+   "sd_used": 6.5,
+   "alpha_used": 0.81,
+   "by_age_band": {
+    "14-17": {
+     "sd": 7.0,
+     "sem": 3.05
+    },
+    "18-29": {
+     "sd": 6.5,
+     "sem": 2.83
+    },
+    "30+": {
+     "sd": 6.5,
+     "sem": 2.83
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±5.5 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "48-50",
+    "High": "41-47",
+    "Average": "34-40",
+    "Low": "28-33",
+    "Very Low": "10-27"
+   },
+   "18-29": {
+    "Very High": "48-50",
+    "High": "41-47",
+    "Average": "35-40",
+    "Low": "28-34",
+    "Very Low": "10-27"
+   },
+   "30+": {
+    "Very High": "48-50",
+    "High": "41-47",
+    "Average": "35-40",
+    "Low": "28-34",
+    "Very Low": "10-27"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "260-300",
+    "High": "234-259",
+    "Average": "208-233",
+    "Low": "182-207",
+    "Very Low": "60-181"
+   },
+   "18-29": {
+    "Very High": "263-300",
+    "High": "238-262",
+    "Average": "212-237",
+    "Low": "187-211",
+    "Very Low": "60-186"
+   },
+   "30+": {
+    "Very High": "266-300",
+    "High": "239-265",
+    "Average": "212-238",
+    "Low": "186-211",
+    "Very Low": "60-185"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "**题目诊断显示第 1 题（Enjoy examining myself and my life）的题目-总分相关为全库最低（r=.213）**，说明这一题在中文/英文语境下都可能被读成「自省」或「自我分析」，与本面向的「情绪觉察」不是同一件事。这是本面向最需要在脚手架中澄清的题。",
+   "本面向的题目混合了**情绪觉察**（Feel others' emotions 除外）与**自我探索兴趣**（Enjoy examining myself），侧面并不单一。"
+  ],
+  "interpretation_caveats": [
+   "这一面向问的是**你对情绪的敏感度与重视程度**，**与情绪是正面还是负面无关，也与情绪波动大小无关**。一个情绪稳定但对自己的感受很敏感的人，这一面向可以很高。",
+   "注意其中一题问的是「喜欢审视自己与自己的生活」——那更接近**自我探索的兴趣**，与本面向的「情绪觉察」并不完全等同。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 4,
+  "chinese_project_translation": 5,
+  "chinese_overridden": 1,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 13,
+   "id": "ipip_neo_141",
+   "facet": "emotionality",
+   "key": 1,
+   "text_en": "Experience my emotions intensely.",
+   "text_master": "Experience my emotions intensely.",
+   "text_zh": "能强烈感受到自己的情绪",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.104,
+    "item_total_r": 0.61,
+    "missing_rate": 0.0052,
+    "neutral_rate": 0.1705
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你的情绪体验是否鲜明、强烈",
+    "key_term": {
+     "term": "intensely",
+     "sense_here": "**强度**",
+     "not_this": "「波动大」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「情绪强烈」当成「情绪不稳」",
+      "correction": "强烈是强度，不稳定是波动（属神经质）。"
+     },
+     {
+      "misreading": "因为觉得「情感丰富」是好事而选高分",
+      "correction": "本题不含褒贬。"
+     }
+    ],
+    "counts_as": [
+     "高兴或难过时感受都很鲜明",
+     "看电影容易被打动"
+    ],
+    "does_not_count_as": [
+     "情绪波动大但每次很快过去（那是波动）",
+     "只是容易说出来（那是表达）"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「情感丰富」偏褒义，容易被读成「有情怀、有情调」。本题实际是**中性的描述**：情绪来得强烈与否。**它与「情绪稳不稳定」不是一回事。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「intensely」"
+   }
+  },
+  {
+   "administration_order": 43,
+   "id": "ipip_neo_142",
+   "facet": "emotionality",
+   "key": 1,
+   "text_en": "Feel others' emotions.",
+   "text_master": "Feel others' emotions.",
+   "text_zh": "能感受到他人的情绪",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 1.034,
+    "item_total_r": 0.4343,
+    "missing_rate": 0.005,
+    "neutral_rate": 0.1284
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否能感受到别人正在经历的情绪",
+    "key_term": {
+     "term": "feel",
+     "sense_here": "情绪上的共鸣",
+     "not_this": "「推断出来」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「会看人脸色」当成「感受到情绪」",
+      "correction": "那是判断，不是共鸣。"
+     },
+     {
+      "misreading": "认为这就是「同情」",
+      "correction": "同情属宜人性；本题属开放性，问的是**体验**而非**关切**。"
+     }
+    ],
+    "counts_as": [
+     "别人难过时你也会跟着难受",
+     "能感到房间里气氛的变化"
+    ],
+    "does_not_count_as": [
+     "能推断出别人的情绪但自己不受影响",
+     "出于责任去关心（那属利他）"
+    ],
+    "edge_cases": "本题与「同情」面向的题目语义接近，两面向的边界在题面上并不干净。",
+    "localization_note": "共情有「情感共鸣」与「认知理解」两半，**本题只涉及前者**。能准确判断别人在想什么、但自己不被牵动，不算本题高分。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「feel」"
+   }
+  },
+  {
+   "administration_order": 73,
+   "id": "ipip_neo_143",
+   "facet": "emotionality",
+   "key": 1,
+   "text_en": "Am passionate about causes.",
+   "text_master": "Am passionate about causes.",
+   "text_zh": "会为某种事业投入热情",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 2.218,
+    "item_total_r": 0.3127,
+    "missing_rate": 0.0034,
+    "neutral_rate": 0.2551
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会为某个理念或事业投入强烈的感情",
+    "key_term": {
+     "term": "causes",
+     "sense_here": "某种主张、事业、理念",
+     "not_this": "「爱好」或「职业」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「对工作投入」当成「为事业投入热情」",
+      "correction": "这里指理念、议题，不是职业。"
+     },
+     {
+      "misreading": "认为必须有具体行动才算",
+      "correction": "本题问的是**感情投入**，不是行动。"
+     }
+    ],
+    "counts_as": [
+     "会为某个议题或理念明显激动",
+     "觉得某些事值得你投入很深"
+    ],
+    "does_not_count_as": [
+     "只是职业上认真",
+     "只是有爱好"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「事业」多指职业，而 causes 指**某种主张或社会议题**。本卷译为「某种事业」偏含糊，**请按「某个你认同的主张或理念」理解**。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「causes」"
+   }
+  },
+  {
+   "administration_order": 103,
+   "id": "ipip_neo_144",
+   "facet": "emotionality",
+   "key": 1,
+   "text_en": "Enjoy examining myself and my life.",
+   "text_master": "Enjoy examining myself and my life.",
+   "text_zh": "喜欢审视自己与自己的生活",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 3.231,
+    "item_total_r": 0.2126,
+    "missing_rate": 0.004,
+    "neutral_rate": 0.1652
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否喜欢反观和琢磨自己以及自己的生活",
+    "key_term": {
+     "term": "examining",
+     "sense_here": "主动地审视、探究",
+     "not_this": "「自我批评」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它读成「自我批评」",
+      "correction": "审视是探究，不含贬损。"
+     },
+     {
+      "misreading": "认为必须得出什么结论",
+      "correction": "只是喜欢琢磨的过程。"
+     }
+    ],
+    "counts_as": [
+     "会花时间反观自己的想法与人生走向",
+     "觉得了解自己是有意思的事"
+    ],
+    "does_not_count_as": [
+     "反复自责（那属抑郁面向）",
+     "只是偶尔想想"
+    ],
+    "edge_cases": "本题与第 4 题（试着理解自己）语义接近，两题都偏「自我探索」而非「情绪觉察」。",
+    "localization_note": "**本题的题目-总分相关为全库最低（.213）**，说明它很可能没在测本面向的核心——它更像「自省倾向」或「对自我探索的兴趣」，而本面向测的是「对情绪的觉察与敏感」。**若你觉得这题和其余题不像在问同一件事，你的判断与数据一致。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「examining」"
+   }
+  },
+  {
+   "administration_order": 133,
+   "id": "ipip_neo_145",
+   "facet": "emotionality",
+   "key": 1,
+   "text_en": "Try to understand myself.",
+   "text_master": "Try to understand myself.",
+   "text_zh": "试着理解自己",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 2.1,
+    "item_total_r": 0.3267,
+    "missing_rate": 0.0043,
+    "neutral_rate": 0.0833
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会主动去弄明白自己的感受与动机",
+    "key_term": {
+     "term": "understand",
+     "sense_here": "弄清楚、想明白",
+     "not_this": "「接纳自己」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「接纳自己」当成「理解自己」",
+      "correction": "接纳是态度，理解是过程。"
+     },
+     {
+      "misreading": "认为需要有方法或工具",
+      "correction": "日常的琢磨也算。"
+     }
+    ],
+    "counts_as": [
+     "遇到自己的情绪反应会去想为什么",
+     "会主动梳理自己的动机"
+    ],
+    "does_not_count_as": [
+     "只是接受了现在的自己",
+     "通过看书学习心理学（那是兴趣）"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 3 题（喜欢审视自己）语义接近，两题共同偏「自我探索」；而本面向其余题目偏「情绪觉察」。**这里是本面向内部两股不同内容的交界处。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「understand」"
+   }
+  },
+  {
+   "administration_order": 163,
+   "id": "ipip_neo_146",
+   "facet": "emotionality",
+   "key": -1,
+   "text_en": "Seldom get emotional.",
+   "text_master": "Seldom get emotional.",
+   "text_zh": "很少被情绪带动（Seldom get emotional）",
+   "text_zh_source": "project_translation_override",
+   "translation_note": {
+    "defect": "语义偏移（A6）",
+    "reason": "原意是**被情绪激发、情绪上来**。「动感情」在中文偏恋爱语境的动心。情境：遇到触动人的场面，你会不会明显被打动。"
+   },
+   "diagnostics": {
+    "priority_score": 0.094,
+    "item_total_r": 0.5807,
+    "missing_rate": 0.0047,
+    "neutral_rate": 0.1478
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否很少被情绪牵动",
+    "key_term": {
+     "term": "get emotional",
+     "sense_here": "被情绪**牵动起来**",
+     "not_this": "「冷静理性」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "读成「很少动心」",
+      "correction": "本题与恋爱无关，指是否容易被情绪带动。"
+     },
+     {
+      "misreading": "把「理性」当成「不动感情」",
+      "correction": "理性是决策方式，本题是情绪反应。"
+     }
+    ],
+    "counts_as": [
+     "遇到触动的事也不太有情绪起伏",
+     "常被人说冷静"
+    ],
+    "does_not_count_as": [
+     "心里有波动但没表现出来",
+     "只是做事讲道理"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「动感情」容易被理解成「动心、动情」（偏恋爱语境），而这里指**被情绪激发**。**这是译法上的本地化风险点。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「get emotional」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 193,
+   "id": "ipip_neo_147",
+   "facet": "emotionality",
+   "key": -1,
+   "text_en": "Am not easily affected by my emotions.",
+   "text_master": "Am not easily affected by my emotions.",
+   "text_zh": "不容易被自己的情绪影响",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.1,
+    "item_total_r": 0.5806,
+    "missing_rate": 0.005,
+    "neutral_rate": 0.1303
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你的情绪是否不太会左右你的状态",
+    "key_term": {
+     "term": "affected",
+     "sense_here": "被影响、被左右",
+     "not_this": "「没有情绪」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 6 题（很少动感情）混同",
+      "correction": "第 6 题问情绪**有没有被激发**；本题问激发后**会不会被左右**。"
+     },
+     {
+      "misreading": "把「压抑」当成「不受影响」",
+      "correction": "压下去但内心已被搅动，不算。"
+     }
+    ],
+    "counts_as": [
+     "情绪起来后仍能按原计划行事",
+     "心情不好时判断力不受影响"
+    ],
+    "does_not_count_as": [
+     "情绪不强烈（那是第 6 题）",
+     "硬撑着但节奏已乱"
+    ],
+    "edge_cases": null,
+    "localization_note": "**关键区分**：可以有很强烈的情绪，但不被它影响（这是本题高分）；也可以情绪不强，但一有就被带走。**两者是独立的。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「affected」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 223,
+   "id": "ipip_neo_148",
+   "facet": "emotionality",
+   "key": -1,
+   "text_en": "Rarely notice my emotional reactions.",
+   "text_master": "Rarely notice my emotional reactions.",
+   "text_zh": "很少察觉到自己的情绪反应",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.384,
+    "item_total_r": 0.5007,
+    "missing_rate": 0.0057,
+    "neutral_rate": 0.1363
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否很少留意到自己正在产生情绪",
+    "key_term": {
+     "term": "notice",
+     "sense_here": "觉察到",
+     "not_this": "「没有情绪」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「没表现出来」当成「没察觉到」",
+      "correction": "觉察是内在的，与表达无关。"
+     },
+     {
+      "misreading": "认为「情绪来了当然知道」",
+      "correction": "很多人是事后才意识到。"
+     }
+    ],
+    "counts_as": [
+     "常常事后才发现自己刚才在生气",
+     "需要别人提醒才注意到自己的状态"
+    ],
+    "does_not_count_as": [
+     "有情绪但压着不说",
+     "只是不擅长表达"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题是本面向最核心的题**——它直接对应「情绪觉察」这一构念本身。相对地，第 3、4 题（审视自己、理解自己）偏「自我探索」。**本面向较低的一致性，与这两股内容的混合有关。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「notice」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 253,
+   "id": "ipip_neo_149",
+   "facet": "emotionality",
+   "key": -1,
+   "text_en": "Experience very few emotional highs and lows.",
+   "text_master": "Experience very few emotional highs and lows.",
+   "text_zh": "很少有大起大落的情绪",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.447,
+    "item_total_r": 0.4894,
+    "missing_rate": 0.0032,
+    "neutral_rate": 0.1543
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你的情绪起伏是否很小",
+    "key_term": {
+     "term": "highs and lows",
+     "sense_here": "**起伏、波动范围**",
+     "not_this": "「强度」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 1 题（能强烈感受到情绪）混同",
+      "correction": "强烈 ≠ 起伏大。可以情绪很强但一直稳定。"
+     },
+     {
+      "misreading": "把「情绪平稳」当成「情感不丰富」",
+      "correction": "两者在构念上分属不同维度。"
+     }
+    ],
+    "counts_as": [
+     "情绪长期处于相近水平",
+     "很少从高兴突然转为低落"
+    ],
+    "does_not_count_as": [
+     "情绪强烈但稳定（那是第 1 题的高分）",
+     "刻意控制不外露"
+    ],
+    "edge_cases": null,
+    "localization_note": "**这一题测的是「波动」而非「强度」，与第 1 题不是同一件事**——波动更接近神经质维度。本面向收入这题，是本面向与神经质边界模糊的地方。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「highs and lows」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 283,
+   "id": "ipip_neo_150",
+   "facet": "emotionality",
+   "key": -1,
+   "text_en": "Don't understand people who get emotional.",
+   "text_master": "Don't understand people who get emotional.",
+   "text_zh": "不理解那些情绪化的人",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.088,
+    "item_total_r": 0.5313,
+    "missing_rate": 0.0044,
+    "neutral_rate": 0.1144
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否难以理解容易被情绪带动的人",
+    "key_term": {
+     "term": "get emotional",
+     "sense_here": "被情绪带动",
+     "not_this": "「情绪化」这个带贬义的说法"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「不理解情绪化的人」答成「我讨厌情绪化的人」",
+      "correction": "本题问的是**理解与否**，不是喜恶。"
+     },
+     {
+      "misreading": "认为理性的人当然不理解",
+      "correction": "本题实际在测**你自己对情绪的熟悉程度**。"
+     }
+    ],
+    "counts_as": [
+     "看到别人因情绪做决定时会觉得难以理解",
+     "觉得情绪不该影响判断"
+    ],
+    "does_not_count_as": [
+     "能理解但自己不这样",
+     "只是不喜欢情绪失控"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「情绪化」带贬义，而这里的中性含义是「容易被情绪带动的人」。**若你把「情绪化」理解为「无理取闹」，本题会被答成对他人的评价，而不是对自己的描述。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「get emotional」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

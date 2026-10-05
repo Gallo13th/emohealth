@@ -1,0 +1,234 @@
+{
+ "sections": [
+  {
+   "heading": "先说清楚：这次能说什么，靠什么决定",
+   "text": "这次作答了 231 道题，完整题库为 300 道，覆盖 77.0%，完成 4 个情景。能说多少话，不取决于覆盖了多少题，而取决于某一个面向被多少道题作答过：同一份结果里，有的面向拿到 10 道题、有的拿到 9 道、有的只有 1 道或 2 道。所以下面把「已经可以拿来看的面向」和「本次不作任何表述的面向」分开写。不作表述的意思是：连「大概是中等水平」这样的话也不说——题目没答够就没数据，没数据时给出的位置是编造，不是保守。",
+   "grounded_in": [
+    "coverage.items_answered",
+    "coverage.items_total",
+    "coverage.pct",
+    "coverage.scenes_complete",
+    "facets_showable",
+    "facets_withheld"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "你的作答模式：同一批题的两个方向，与四个情景各自的极端位置",
+   "text": "面板按单题在参照样本中的名次，把位置靠前的题与位置靠后的题分别排了出来。四个情景里都有一个共同参数：自己的平均对齐分为 2.94，位置靠前的题相对它高出 2.06，位置靠后的题相对它低一点九四。具体到题，位置靠前的有第 3 题「有丰富的想象力」、第 73 题「会为某种事业投入热情」、第 84 题「觉得自己是个普通人」、第 124 题「相信人性本善」、第 137 题「反应很快」，它们的百分位为 100.0；位置靠后的有第 104 题「关心他人」与第 44 题「会预先想到别人的需要」，百分位分别为 1.1 与 1.4。需要分清的是：这些是单题的位置，不是任何面向的分数，也不构成关于这个人的结论。",
+   "grounded_in": [
+    "scene_results.0.name_zh",
+    "scene_results.1.name_zh",
+    "scene_results.2.name_zh",
+    "scene_results.3.name_zh",
+    "scene_results.0.panel_b.own_mean_aligned",
+    "scene_results.0.panel_b.above_own.0.delta",
+    "scene_results.0.panel_b.below_own.0.delta",
+    "scene_results.0.panel_a.0.order",
+    "scene_results.0.panel_a.0.text_zh",
+    "scene_results.0.panel_a.0.percentile",
+    "scene_results.0.panel_a.10.percentile",
+    "scene_results.0.panel_a.11.percentile"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "四个情景各自的作答位置：说的是场合，不是别的",
+   "text": "四个情景本身也给了一个共同的参数：每个情景的对齐分，取的是 4 个情景合起来的均值 2.94。情景名分别是「不分场合的你自己」「其他各种场合」「独处的时候」「有任务要做的时候」——它们描述的是作答时所在的场合。同一道题在不同情景里可以有不同的位置，不同情景里也可以出现方向相反的题；这些都属于情景间的差异，这里只把参数和场合本身写清楚。",
+   "grounded_in": [
+    "scene_results.0.name_zh",
+    "scene_results.0.panel_b.own_mean_aligned",
+    "scene_results.0.panel_b.scenes_used",
+    "scene_results.1.name_zh",
+    "scene_results.2.name_zh",
+    "scene_results.3.name_zh"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面板和清单里的名次：单题位置，不是面向分数",
+   "text": "面板清单把位置最高与最低的题单独排了一份。这个名次说的是这一道题在参照样本中的位置，和「这个面向测得怎么样」是两件事：单题与完整测量的相关最差只有 0.51；这份清单开头也写着，每一项仅基于 1 道题，这是作答位置的描述，不是该面向的测量结果。以第 3 题「有丰富的想象力」为例，百分位 100.0 只说明这道题的作答落在参照样本的最上端；参照样本里同一选项被选中的比例为 45.9（该题的 resolution_pct），也能看出这道题在人群中并不稀有。所以清单里的名次再高或再低，都不构成对任何面向的结论。",
+   "grounded_in": [
+    "notable_items.7.order",
+    "notable_items.7.text_zh",
+    "notable_items.7.percentile",
+    "scene_results.0.panel_a.0.resolution_pct",
+    "scene_results.0.must_say",
+    "facets.altruism.precision.r",
+    "scene_results.0.panel_a.0.percentile"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "几道题的澄清：这题问的是这个，不是那个",
+   "text": "下面这几道题值得单独说清楚，说的只是题目本身在问什么。第 108 题「喜欢开始做新的事情」，问的是「开始」，不包含「完成」——它与「自律」分属不同维度，「喜欢开始但坚持不下去」在量表里是常见的组合，两题答案并不矛盾。第 116 题「拿不定主意」，问的是反复摇摆式的决策困难，不是「需要时间想一想」，也不是「谨慎思考」；这道题的题目-总分相关为 .45，内容与本面向的核心（压力下的应对）略有不同，是本面向内容异质性的一处。第 123 题「会沉浸在自己的幻想里」，问的是你是否允许自己花时间沉浸其中，不含褒贬，不等于「逃避现实」；这道题的中立选项比例偏高（.24），说明不少人觉得这道题的位置不好定。第 153 题「会花时间回想事情」，问的是回想与反思，不是想象的活动；这道题的题目-总分相关为 .38，在本面向最低，一个不怎么做白日梦、但常反思的人，也可能在这道题上给出高分，这同样是本面向内容异质性的一处。",
+   "grounded_in": [
+    "notable_items.6.order",
+    "notable_items.6.text_zh",
+    "notable_items.6.asks",
+    "notable_items.6.key_term.sense_here",
+    "notable_items.6.localization_note",
+    "notable_items.7.order",
+    "notable_items.7.asks",
+    "notable_items.7.localization_note",
+    "notable_items.8.order",
+    "notable_items.8.asks",
+    "notable_items.8.key_term.not_this",
+    "notable_items.8.localization_note",
+    "notable_items.11.order",
+    "notable_items.11.asks",
+    "notable_items.11.localization_note"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "几道题的澄清：中文表述容易滑走的地方",
+   "text": "还有几道题的意思在中文里容易滑走，这里按脚手架写明的原意说。第 35 题「在自己所从事的领域出类拔萃」，问的是你对自身相对水平的判断，不是谦虚程度；中文语境里它容易被读成「自夸」，而「明显高于平均」即可，不必读成「顶尖」。第 73 题「会为某种事业投入热情」，指的是某种主张或理念（causes），不是职业或爱好；它问的是感情投入，不是有没有相应的行动。第 84 题「觉得自己是个普通人」，问的是你私下如何看待自己的整体水平；这里的「普通」是与一般人相当，不含情绪色彩，不是自卑，也不是对外客套的说法——自我价值感属另一个维度，不在这一题的范围内。第 124 题「相信人性本善」是本面向里最哲学化的一道题，接近一种世界观，而不是对某个具体人的判断；它与第 4 题（相信人基本上是讲道德的）、第 6 题（觉得一切都会好起来）语义上有交叠，三题可以给出相近的答案。这些说的都是题目本身在问什么；作答时是怎么理解的，这里不作揣测。",
+   "grounded_in": [
+    "notable_items.1.order",
+    "notable_items.1.text_zh",
+    "notable_items.1.asks",
+    "notable_items.1.key_term.not_this",
+    "notable_items.1.localization_note",
+    "notable_items.2.order",
+    "notable_items.2.asks",
+    "notable_items.2.key_term.not_this",
+    "notable_items.2.localization_note",
+    "notable_items.4.order",
+    "notable_items.4.asks",
+    "notable_items.4.key_term.not_this",
+    "notable_items.4.common_misreadings.1.correction",
+    "notable_items.4.localization_note",
+    "notable_items.9.order",
+    "notable_items.9.asks",
+    "notable_items.9.common_misreadings.0.correction",
+    "notable_items.9.localization_note"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "活跃度这类题：两类内容混在一起的，要分开看",
+   "text": "「活跃度」这个面向的题目混了两类不同的东西：一批问的是实际节奏与行为（忙碌、奔波、并行、反应快慢），另一批问的是对从容节奏的偏好（喜欢慢慢来、不慌不忙、向往悠闲、顺其自然）。它也是本量表内部一致性最低的面向（α=.71，其余多为 .80 以上）。如果实际节奏与内心偏好并不一致（例如「实际很快，但向往从容」），这个总分无法同时描述这两件事，需要分别看这两类题目。第 77 题「我的闲暇时间非常充实」属于前一类里的一个具体限定：它问的是空闲时间里被填进去的活动量，不是「闲不下来」那种焦虑式忙碌；有内容的休息（看片、散步、读书）都算活动，这道题只问量，而且限定在空闲时间，工作忙不等于闲暇也充实。第 107 题「能同时处理很多事情」问的是并行处理的容量，不是「被迫多线程」：被逼着同时应付、手忙脚乱，不符合这一题；忙碌是量，并行是容量，两者并不等同。",
+   "grounded_in": [
+    "facets.activitylevel.interpretation_caveats.0",
+    "facets.activitylevel.interpretation_caveats.1",
+    "notable_items.3.order",
+    "notable_items.3.asks",
+    "notable_items.3.common_misreadings.1.correction",
+    "notable_items.5.order",
+    "notable_items.5.asks",
+    "notable_items.5.common_misreadings.0.correction",
+    "notable_items.5.common_misreadings.1.correction"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "面向自身的内容局限有哪些",
+   "text": "这一段是产品对自己内容的自查，删掉它等于把我们对自家工具的批评藏起来，所以它必须原样在场。以下每一条都对应一个已经可以拿来看的面向：利他的分数说的是愿不愿意为他人付出，不是实际付出了多少，也不要因为「最近太忙没顾上」而压低；它与同情不同，同情是感受到别人的处境，这一面向是为此做点什么。同情的分数说的是会不会被别人的困难打动，不是有多善良，也不是会不会去帮；低分尤其容易被自我评判为「冷漠」，请把它当作一个描述，而不是评价。道德面向的名字比它实际测的东西大得多，它测的只是在利益面前是否诚实、是否操纵他人，不涉及人品、守法或价值立场。审慎问的是「你会不会先想再做」，不是「你会不会做不了决定」：因为担心而迟迟无法决定更接近焦虑，不属于这里。放纵问的是想做的事能不能停，与自律管的「该做的事做不做」是两件事。条理在这里只指环境与物品是否整齐，不是做事是否靠谱。脆弱性听起来像负面评价，但描述的是压力反应，不是能力评价：它问的是在高负荷或突发情形下会不会慌。此外，存在自陈式题目的面向（如方向以反向题为主的审慎，以及道德这类题目）更容易受到「习惯性同意」或「希望自己看起来是好人」这种作答倾向的干扰，所以条文自己就提示：请把这类分数当作很粗略的提示。这些局限不是临时保留，而是这个工具当前的样子。",
+   "grounded_in": [
+    "disclosures.2.id",
+    "disclosures.2.text",
+    "disclosures.2.items.8.facet",
+    "disclosures.2.items.9.facet",
+    "disclosures.2.items.41.facet",
+    "disclosures.2.items.42.facet",
+    "disclosures.2.items.13.facet",
+    "disclosures.2.items.14.facet",
+    "disclosures.2.items.28.facet",
+    "disclosures.2.items.29.facet",
+    "disclosures.2.items.39.facet",
+    "disclosures.2.items.46.facet",
+    "disclosures.2.items.47.facet",
+    "facets.morality.interpretation_caveats.1"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "这些分数不意味着什么",
+   "text": "上面每个面向都标注了它不覆盖什么，这些标注同样必须原样在场。合起来看：追求成就不测量实际成就或能力，也不测量能否启动与坚持；自我效能不测量实际能力或过往成绩，也不测量自尊或自我价值；自律不测量环境是否整洁有序，也不测量能否抵抗诱惑；利他不测量道德水平，也不测量共情能力；同情不测量是否实际提供帮助，也不测量共情准确性，它只覆盖被打动的程度；思辨不测量智力水平或学业成绩，也不测量知识储备——它测的是喜不喜欢思考，不是有多聪明；冒险不测量风险承受能力或胆量，也不测量旅行频率；脆弱性不测量日常的担忧，也不测量实际的能力或资源；抑郁面向不构成抑郁症的诊断或筛查，也不测量悲伤情绪的合理性——因真实丧失而悲伤同样计入。所以请把这里的一切当作描述，而不是评价。",
+   "grounded_in": [
+    "disclosures.3.id",
+    "disclosures.3.text",
+    "disclosures.3.items.0.text",
+    "disclosures.3.items.1.text",
+    "disclosures.3.items.4.text",
+    "disclosures.3.items.6.text",
+    "disclosures.3.items.12.text",
+    "disclosures.3.items.20.text",
+    "disclosures.3.items.25.text",
+    "disclosures.3.items.40.text",
+    "disclosures.3.items.45.text",
+    "disclosures.3.items.48.text",
+    "disclosures.3.items.63.text",
+    "disclosures.3.items.88.text",
+    "disclosures.3.items.98.text",
+    "disclosures.3.items.102.text",
+    "facets.depression.does_not_measure.0"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "本次不作任何表述的面向，以及精度分层",
+   "text": "有 4 个面向因题量不足尚未解锁，本次不对它们作任何表述。这里不作表述的意思是：连「大概是中等水平」这样的话也不说——没数据就不能说，那不是保守，而是不编造。可以一起看的还有精度分层：在本次可以拿来看的面向里，有的题量为 10 道、9 道、8 道或 7 道，tier 为「完整」，advice 是「可以按完整测量的精度看待」；有的为 6 道，tier 为「较可靠」，advice 为「误差很小，结论稳」；也有的只有 4 道，tier 为「初步倾向」，advice 是「方向大致可信，细节别当真」。这个分层与前面的覆盖数是一回事：231 道题、300 道题、77.0%，说的都是数据够不够。读的时候按各面向自己那一档来读就好，不必把不同档的面向放在同一把尺子上。",
+   "grounded_in": [
+    "disclosures.4.id",
+    "disclosures.4.text",
+    "disclosures.4.why",
+    "facets_withheld",
+    "facets.achievementstriving.precision.k",
+    "facets.achievementstriving.precision.tier",
+    "facets.achievementstriving.precision.advice",
+    "facets.altruism.precision.k",
+    "facets.altruism.precision.tier",
+    "facets.altruism.precision.advice",
+    "facets.gregariousness.precision.k",
+    "facets.gregariousness.precision.tier",
+    "facets.gregariousness.precision.advice",
+    "coverage.items_answered",
+    "coverage.items_total",
+    "coverage.pct"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "参照人群与适用范围",
+   "text": "先说清楚这份分数站在什么人群上：参照人群为英国样本，非中国人群；源文件未提供样本量、招募方式与采集年份，且分带边界来自对常模表的反推。常模适用性直接决定分数能不能被当真，所以这一条不能省。同时，本结果不构成任何诊断，也不能替代专业评估——产品定位是自测陪伴，不是筛查工具。最后一件与本次读法有关的事：情景模式的作答顺序与常模施测顺序不同，部分质量指标不适用；这次质量门没有触发标记，可信度折扣为 1.0。这些数字同样来自输入，不是新的判断。",
+   "grounded_in": [
+    "disclosures.0.id",
+    "disclosures.0.text",
+    "disclosures.0.why",
+    "disclosures.1.id",
+    "disclosures.1.text",
+    "disclosures.1.why",
+    "quality_gate.flags",
+    "quality_gate.notes.0",
+    "quality_gate.reliability_discount"
+   ],
+   "citations": []
+  }
+ ],
+ "notable_items_surfaced": [3, 35, 73, 77, 84, 107, 108, 116, 123, 124, 153],
+ "disclosures_kept": ["norm_sample", "no_diagnosis", "content_caveat", "does_not_measure", "precision"],
+ "refusals": [
+  {
+   "asked": "要求给出结论性判断，例如判断是否患有某种障碍、属于哪种类型或某种人格标签。",
+   "why": "这超出表达层润色的边界：本结果不构成任何诊断，也不能替代专业评估，我不得诊断、分型或贴标签。"
+  },
+  {
+   "asked": "要求把某个面向的分数或名次改一改、重算一遍，或者调整分带。",
+   "why": "我只能改变表达形式，不能改变任何数字：分数、名次、精度与题量都来自已经确定的测量结果。"
+  },
+  {
+   "asked": "要求说明本次未解锁的那 4 个面向大致处于什么水平。",
+   "why": "题量不足的面向本次不作任何表述，连「大概是中等水平」也不说；没有数据时给出的位置就是编造。"
+  },
+  {
+   "asked": "要求由某一道题或某一次作答反推这个人的性格特点、日常习惯或人际状况。",
+   "why": "单题与完整测量的相关最差只有 0.51，依据单题只能说明这道题问的是什么，不能由一题反推这个人。"
+  },
+  {
+   "asked": "要求给出医疗方面的安排，例如是否用药、增减药量或就诊安排。",
+   "why": "这属于医疗建议，不在本产品的边界内；若长期感到困扰，请寻求专业人士的帮助。"
+  }
+ ]
+}

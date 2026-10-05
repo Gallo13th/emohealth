@@ -1,0 +1,681 @@
+{
+ "_note": "追求刺激（Excitement-Seeking / E5）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.excitementseeking",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "追求刺激",
+  "facet_name_en": "Excitement-Seeking",
+  "facet_code": "E5",
+  "domain": "extraversion",
+  "domain_zh": "外向性"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "渴求强烈刺激与兴奋体验的倾向：对冒险、喧闹、快节奏活动的偏好，以及对平淡状态的不耐受。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量日常活动量（属 E4 活跃度）",
+   "不测量是否喜欢与人相处（属 E1/E2）",
+   "不测量风险判断能力",
+   "不测量对刺激的实际承受力"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "activitylevel",
+    "against_facet_zh": "活跃度",
+    "distinction": "追求刺激是**要强度**；活跃度是**要速度与量**。一个每天高效工作十小时但从不冒险的人，活跃度高、追求刺激低。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "adventurousness",
+    "against_facet_zh": "冒险",
+    "distinction": "冒险（O4）偏**体验新事物**（新食物、新地方、新观念）；追求刺激（E5）偏**生理与情绪的唤起强度**（喧闹、速度、危险）。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "gregariousness",
+    "against_facet_zh": "合群性",
+    "distinction": "追求刺激要的是**唤起**，合群性要的是**陪伴**。独自飙车满足前者，安静聚会满足后者。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "cautiousness",
+    "against_facet_zh": "审慎",
+    "distinction": "审慎是**行动前权衡**；追求刺激是**对唤起的偏好**。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "明显回避强烈刺激，偏好平静可预期的状态",
+   "2": "对刺激兴趣不大，偶尔参与也不特别享受",
+   "3": "偶尔想要点刺激，但不会主动去找",
+   "4": "喜欢热闹与冒险，平淡太久会觉得闷",
+   "5": "持续需要强烈刺激，平淡状态让我难以忍受",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_109",
+   "ipip_neo_110"
+  ],
+  "forward_items": [
+   "ipip_neo_101",
+   "ipip_neo_102",
+   "ipip_neo_103",
+   "ipip_neo_104",
+   "ipip_neo_105",
+   "ipip_neo_106",
+   "ipip_neo_107",
+   "ipip_neo_108"
+  ],
+  "key_balance": "8 正向 / 2 反向",
+  "reverse_keyed_count": 2,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.78,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 3.52,
+   "reference_age_band": "18-29",
+   "sd_used": 7.5,
+   "alpha_used": 0.78,
+   "by_age_band": {
+    "14-17": {
+     "sd": 8.0,
+     "sem": 3.75
+    },
+    "18-29": {
+     "sd": 7.5,
+     "sem": 3.52
+    },
+    "30+": {
+     "sd": 7.5,
+     "sem": 3.52
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±6.9 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "49-50",
+    "High": "41-48",
+    "Average": "33-40",
+    "Low": "26-32",
+    "Very Low": "10-25"
+   },
+   "18-29": {
+    "Very High": "47-50",
+    "High": "39-46",
+    "Average": "32-38",
+    "Low": "24-31",
+    "Very Low": "10-23"
+   },
+   "30+": {
+    "Very High": "42-50",
+    "High": "35-41",
+    "Average": "27-34",
+    "Low": "20-26",
+    "Very Low": "10-19"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "254-300",
+    "High": "220-253",
+    "Average": "186-219",
+    "Low": "153-185",
+    "Very Low": "60-152"
+   },
+   "18-29": {
+    "Very High": "252-300",
+    "High": "219-251",
+    "Average": "186-218",
+    "Low": "153-185",
+    "Very Low": "60-152"
+   },
+   "30+": {
+    "Very High": "248-300",
+    "High": "214-247",
+    "Average": "180-213",
+    "Low": "146-179",
+    "Very Low": "60-145"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "**本面向在中国的社会语境下容易被读作「不负责任」或「爱玩」**，脚手架需明确它是关于唤起偏好的描述，不含褒贬。",
+   "第 4 题（Enjoy being reckless）中的 reckless 带有明显的负面色彩，与其余题目的中性表述不一致，可能影响作答。"
+  ],
+  "interpretation_caveats": [
+   "**这一面向描述的是对强烈体验的偏好，不含褒贬**——它既不等于勇敢，也不等于不负责任。",
+   "它与「活跃度」不是一回事：活跃度问的是**节奏快慢与活动量**，这一面向问的是**是否需要强烈的唤起**。工作高效但从不冒险的人，活跃度可以很高而这一面向很低。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 4,
+  "chinese_project_translation": 5,
+  "chinese_overridden": 1,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 22,
+   "id": "ipip_neo_101",
+   "facet": "excitementseeking",
+   "key": 1,
+   "text_en": "Love excitement.",
+   "text_master": "Love excitement.",
+   "text_zh": "喜欢追求刺激",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.106,
+    "item_total_r": 0.6151,
+    "missing_rate": 0.0053,
+    "neutral_rate": 0.1482
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否喜欢刺激、兴奋的体验",
+    "key_term": {
+     "term": "excitement",
+     "sense_here": "兴奋、刺激的体验",
+     "not_this": "「快乐」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「开朗」混同",
+      "correction": "情绪基线 vs 对刺激的需要。"
+     },
+     {
+      "misreading": "与「活跃度」（E4）混同",
+      "correction": "那是节奏快慢，本题是要不要强度。"
+     }
+    ],
+    "counts_as": [
+     "会主动去找让人兴奋的事做"
+    ],
+    "does_not_count_as": [
+     "喜欢安稳愉快的日子"
+    ],
+    "edge_cases": null,
+    "localization_note": "**与「开朗」（E6）的区别**：那是**积极情绪的基线水平**，本题是**对强烈唤起的需要**。一个情绪愉快但不需要刺激的人，开朗高、追求刺激低。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「excitement」"
+   }
+  },
+  {
+   "administration_order": 52,
+   "id": "ipip_neo_102",
+   "facet": "excitementseeking",
+   "key": 1,
+   "text_en": "Seek adventure.",
+   "text_master": "Seek adventure.",
+   "text_zh": "喜欢冒险",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.136,
+    "item_total_r": 0.646,
+    "missing_rate": 0.0068,
+    "neutral_rate": 0.2062
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否喜欢冒险",
+    "key_term": {
+     "term": "adventure",
+     "sense_here": "冒险性活动（带不确定性与风险）",
+     "not_this": "「尝试新事物」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「冒险」（O4）面向混同",
+      "correction": "新颖性 vs 风险与刺激。"
+     },
+     {
+      "misreading": "把「旅行」一律算入",
+      "correction": "轻松旅行未必有冒险成分。"
+     }
+    ],
+    "counts_as": [
+     "会去玩有风险性的活动"
+    ],
+    "does_not_count_as": [
+     "只是喜欢新鲜事物"
+    ],
+    "edge_cases": null,
+    "localization_note": "**与「冒险」（O4 面向）的关键区别**：O4 偏**尝试新事物**（新地方、新食物、新观念），本题偏**带有风险或刺激的活动**。去一家没吃过的餐厅是 O4 高、本题不一定高；蹦极是两者都高。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「adventure」"
+   }
+  },
+  {
+   "administration_order": 82,
+   "id": "ipip_neo_103",
+   "facet": "excitementseeking",
+   "key": 1,
+   "text_en": "Love action.",
+   "text_master": "Love action.",
+   "text_zh": "喜欢有刺激感的事",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.108,
+    "item_total_r": 0.628,
+    "missing_rate": 0.0054,
+    "neutral_rate": 0.212
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否喜欢有刺激感、带劲的事",
+    "key_term": {
+     "term": "action",
+     "sense_here": "带劲的、动作性的事",
+     "not_this": "「忙碌」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它理解成「行动力强」",
+      "correction": "这里指活动本身的刺激度。"
+     },
+     {
+      "misreading": "与「活跃度」混同",
+      "correction": "那是节奏。"
+     }
+    ],
+    "counts_as": [
+     "偏好节奏快、带刺激感的活动"
+    ],
+    "does_not_count_as": [
+     "喜欢忙碌但平稳的事"
+    ],
+    "edge_cases": null,
+    "localization_note": "**「Action」在这里偏「紧张刺激的活动」**（飙车、竞技、夜生活），不是「行动力强」。中译「喜欢有刺激感的事」准确。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「action」"
+   }
+  },
+  {
+   "administration_order": 112,
+   "id": "ipip_neo_104",
+   "facet": "excitementseeking",
+   "key": 1,
+   "text_en": "Enjoy being part of a loud crowd.",
+   "text_master": "Enjoy being part of a loud crowd.",
+   "text_zh": "喜欢身处喧闹的人群",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.097,
+    "item_total_r": 0.527,
+    "missing_rate": 0.0045,
+    "neutral_rate": 0.1689
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否喜欢身处喧闹的人群",
+    "key_term": {
+     "term": "loud crowd",
+     "sense_here": "喧闹的人群",
+     "not_this": "「喜欢人多」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「合群性」混同",
+      "correction": "陪伴 vs 喧闹的强度。"
+     },
+     {
+      "misreading": "因为不喜欢人多而选低分",
+      "correction": "那确实是本题的低分。"
+     }
+    ],
+    "counts_as": [
+     "喧闹的场合让你兴奋"
+    ],
+    "does_not_count_as": [
+     "喜欢人陪但偏好安静"
+    ],
+    "edge_cases": null,
+    "localization_note": "**与「合群性」（E2）的区别**：那是**需要他人陪伴**，本题是**需要喧闹的强度**。安静的深谈满足 E2 但不满足本题；喧闹的演唱会满足本题。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「loud crowd」"
+   }
+  },
+  {
+   "administration_order": 142,
+   "id": "ipip_neo_105",
+   "facet": "excitementseeking",
+   "key": 1,
+   "text_en": "Enjoy being reckless.",
+   "text_master": "Enjoy being reckless.",
+   "text_zh": "喜欢不计后果地行事",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.11,
+    "item_total_r": 0.6202,
+    "missing_rate": 0.0055,
+    "neutral_rate": 0.2004
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否喜欢不计后果地行事",
+    "key_term": {
+     "term": "reckless",
+     "sense_here": "不计后果、鲁莽",
+     "not_this": "「勇敢」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它理解为「勇敢」",
+      "correction": "勇敢是评估后仍行动，鲁莽是不评估。"
+     },
+     {
+      "misreading": "因为不愿承认而选低分",
+      "correction": "请按实际倾向作答。"
+     }
+    ],
+    "counts_as": [
+     "做决定时不怎么考虑后果"
+    ],
+    "does_not_count_as": [
+     "评估后承担风险（那不是鲁莽）"
+    ],
+    "edge_cases": "**本题社会赞许性低，容易低报。**",
+    "localization_note": "**中文「不计后果」带明显贬义，而英文 reckless 也是负面的**——两边的强度接近。**但本题的社会赞许性很低**：多数人不愿承认自己喜欢鲁莽。**这是本面向中最容易低报的题。** 本面向 8 正 2 反的计分键会放大这一影响。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「reckless」"
+   }
+  },
+  {
+   "administration_order": 172,
+   "id": "ipip_neo_106",
+   "facet": "excitementseeking",
+   "key": 1,
+   "text_en": "Act wild and crazy.",
+   "text_master": "Act wild and crazy.",
+   "text_zh": "我的行为狂放不羁",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.09,
+    "item_total_r": 0.632,
+    "missing_rate": 0.0045,
+    "neutral_rate": 0.193
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你的行为是否狂放不羁",
+    "key_term": {
+     "term": "wild and crazy",
+     "sense_here": "狂放、不受约束",
+     "not_this": "「活泼」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它理解为「性格活泼」",
+      "correction": "这里偏行为的失控程度。"
+     },
+     {
+      "misreading": "与「开朗」混同",
+      "correction": "情绪 vs 行为。"
+     }
+    ],
+    "counts_as": [
+     "行事风格不受常规约束"
+    ],
+    "does_not_count_as": [
+     "只是开朗健谈"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「狂放不羁」文雅但偏文学化，英文 wild and crazy 更口语。**本题指行为上的不受约束**，与性格外向不同。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「wild and crazy」"
+   }
+  },
+  {
+   "administration_order": 202,
+   "id": "ipip_neo_107",
+   "facet": "excitementseeking",
+   "key": 1,
+   "text_en": "Willing to try anything once.",
+   "text_master": "Am willing to try anything once.",
+   "text_zh": "什么都愿意试一次",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.537,
+    "item_total_r": 0.482,
+    "missing_rate": 0.004,
+    "neutral_rate": 0.1387
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否什么都愿意试一次",
+    "key_term": {
+     "term": "try anything once",
+     "sense_here": "什么都愿意尝试一次",
+     "not_this": "「来者不拒」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「冒险」（O4）面向混同",
+      "correction": "尝试新事物 vs 要刺激。"
+     },
+     {
+      "misreading": "把它理解成「没有原则」",
+      "correction": "本题只问尝试意愿。"
+     }
+    ],
+    "counts_as": [
+     "对没做过的事基本都愿意试"
+    ],
+    "does_not_count_as": [
+     "只试自己感兴趣的方向"
+    ],
+    "edge_cases": "**本题偏「尝试意愿」，与「要刺激」略有偏移。**",
+    "localization_note": "**本题是「体验开放」的泛化表述**——题目-总分相关 .48，在本面向偏低，因为它更接近「冒险」（O4）而非「要刺激」。**一个愿意尝试任何新事物但不需要强烈唤起的人，本题会得高分。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「try anything once」"
+   }
+  },
+  {
+   "administration_order": 232,
+   "id": "ipip_neo_108",
+   "facet": "excitementseeking",
+   "key": 1,
+   "text_en": "Seek danger.",
+   "text_master": "Seek danger.",
+   "text_zh": "会主动往有风险的事上凑（Seek danger）",
+   "text_zh_source": "project_translation_override",
+   "translation_note": {
+    "defect": "强度不同（B5）",
+    "reason": "「寻求危险」在中文听起来接近自毁或自伤。原意在人格量表里指**主动接近有一定风险的情境**，强度低得多。情境：明知有点危险，你仍会觉得「试试看」。"
+   },
+   "diagnostics": {
+    "priority_score": 0.11,
+    "item_total_r": 0.6364,
+    "missing_rate": 0.0055,
+    "neutral_rate": 0.1712
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会去寻求危险",
+    "key_term": {
+     "term": "seek danger",
+     "sense_here": "主动寻求危险",
+     "not_this": "「冒险」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它理解成自毁或自伤倾向",
+      "correction": "这里指对风险情境的主动接近。"
+     },
+     {
+      "misreading": "与第 2 题（冒险）混同",
+      "correction": "两题接近，本题强度更高。"
+     }
+    ],
+    "counts_as": [
+     "会主动靠近有风险的情境"
+    ],
+    "does_not_count_as": [
+     "被动遇到风险"
+    ],
+    "edge_cases": "**本题中译强度偏重，请按上面的说明校准。**",
+    "localization_note": "**中文「寻求危险」听起来像自我毁灭，比英文 seek danger 更强**——英文在人格量表里指**主动接近有风险的情境**。**这是「强度不同」的实例**：请不要按「自毁倾向」理解，而是按「会不会主动往有风险的地方凑」。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「seek danger」"
+   }
+  },
+  {
+   "administration_order": 262,
+   "id": "ipip_neo_109",
+   "facet": "excitementseeking",
+   "key": -1,
+   "text_en": "Would never go hang gliding or bungee jumping.",
+   "text_master": "Would never go hang-gliding or bungee-jumping.",
+   "text_zh": "绝不会去玩滑翔翼或蹦极",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.337,
+    "item_total_r": 0.5143,
+    "missing_rate": 0.0039,
+    "neutral_rate": 0.0853
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否绝不会去玩极限运动",
+    "key_term": {
+     "term": "hang gliding or bungee jumping",
+     "sense_here": "滑翔翼、蹦极这类高风险活动",
+     "not_this": "「一般运动」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "因为不玩这两项就认为自己是低刺激型",
+      "correction": "本题只测两个具体活动。"
+     },
+     {
+      "misreading": "把它理解成「怕高」",
+      "correction": "本题问意愿，不是恐惧。"
+     }
+    ],
+    "counts_as": [
+     "明确不会参与这类活动"
+    ],
+    "does_not_count_as": [
+     "愿意尝试但还没试过（那不算「绝不会」）"
+    ],
+    "edge_cases": "**本题只覆盖极限运动这一窄侧面。**",
+    "localization_note": "**本题把「追求刺激」具体化为两项特定的极限运动，操作化很窄。** 一个喜欢飙车、夜店、竞技对抗但不想蹦极的人，会在本题得低分。**这是本面向内容覆盖不全的一处。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「hang gliding or bungee jumping」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 292,
+   "id": "ipip_neo_110",
+   "facet": "excitementseeking",
+   "key": -1,
+   "text_en": "Dislike loud music.",
+   "text_master": "Dislike loud music.",
+   "text_zh": "不喜欢吵闹的音乐",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.208,
+    "item_total_r": 0.4167,
+    "missing_rate": 0.0049,
+    "neutral_rate": 0.1035
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否不喜欢吵闹的音乐",
+    "key_term": {
+     "term": "loud music",
+     "sense_here": "音量大的音乐",
+     "not_this": "「不喜欢音乐」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它理解成「不喜欢音乐」",
+      "correction": "本题只问音量。"
+     },
+     {
+      "misreading": "与「审美」面向混同",
+      "correction": "那是审美感受。"
+     }
+    ],
+    "counts_as": [
+     "偏好音量适中的音乐"
+    ],
+    "does_not_count_as": [
+     "不喜欢某种音乐类型"
+    ],
+    "edge_cases": null,
+    "localization_note": "**与「审美」（O2）面向的区别**：那是**是否被艺术打动**，本题是**对音量的偏好**（偏感官刺激）。喜欢音乐但不爱吵，是审美高、本题低。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「loud music」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

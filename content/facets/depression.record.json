@@ -1,0 +1,679 @@
+{
+ "_note": "抑郁（Depression / N3）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.depression",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "抑郁",
+  "facet_name_en": "Depression",
+  "facet_code": "N3",
+  "domain": "neuroticism",
+  "domain_zh": "神经质"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "体验低落、悲伤、无望与自我贬低的倾向：情绪基调是否偏灰、是否容易感到无力与不被喜欢。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不构成抑郁症的诊断或筛查（那需要临床评估与专门量表）",
+   "不测量焦虑与担忧（属 N1 焦虑）",
+   "不测量精力与活动量（属 E4 活跃度）",
+   "不测量悲伤情绪的**合理性**——因真实丧失而悲伤同样计入"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "anxiety",
+    "against_facet_zh": "焦虑",
+    "distinction": "抑郁指向已发生的丧失或当下的低落；焦虑指向未来的威胁。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "selfconsciousness",
+    "against_facet_zh": "自我意识",
+    "distinction": "抑郁是整体性的自我贬低（\"我不够好\"）；自我意识特指在他人面前的不自在。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "vulnerability",
+    "against_facet_zh": "脆弱性",
+    "distinction": "抑郁是情绪基调；脆弱性是压力下的应对能力。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "cheerfulness",
+    "against_facet_zh": "开朗",
+    "distinction": "两者是同一维度的两端——抑郁高分通常对应开朗低分，但不必完全互补。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "情绪基调明亮，很少感到低落或无力",
+   "2": "偶尔情绪低落，但很快恢复",
+   "3": "会有低落的时候，通常与具体事情有关",
+   "4": "经常感到低落或提不起劲，不太容易自己走出来",
+   "5": "大部分时间处于低落状态，常觉得没有希望",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_028",
+   "ipip_neo_029",
+   "ipip_neo_030"
+  ],
+  "forward_items": [
+   "ipip_neo_021",
+   "ipip_neo_022",
+   "ipip_neo_023",
+   "ipip_neo_024",
+   "ipip_neo_025",
+   "ipip_neo_026",
+   "ipip_neo_027"
+  ],
+  "key_balance": "7 正向 / 3 反向",
+  "reverse_keyed_count": 3,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.88,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 3.46,
+   "reference_age_band": "18-29",
+   "sd_used": 10.0,
+   "alpha_used": 0.88,
+   "by_age_band": {
+    "14-17": {
+     "sd": 9.5,
+     "sem": 3.29
+    },
+    "18-29": {
+     "sd": 10.0,
+     "sem": 3.46
+    },
+    "30+": {
+     "sd": 10.0,
+     "sem": 3.46
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±6.8 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "46-50",
+    "High": "37-45",
+    "Average": "27-36",
+    "Low": "17-26",
+    "Very Low": "10-16"
+   },
+   "18-29": {
+    "Very High": "45-50",
+    "High": "35-44",
+    "Average": "25-34",
+    "Low": "16-24",
+    "Very Low": "10-15"
+   },
+   "30+": {
+    "Very High": "43-50",
+    "High": "33-42",
+    "Average": "23-32",
+    "Low": "13-22",
+    "Very Low": "10-12"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "242-300",
+    "High": "205-241",
+    "Average": "168-204",
+    "Low": "131-167",
+    "Very Low": "60-130"
+   },
+   "18-29": {
+    "Very High": "238-300",
+    "High": "200-237",
+    "Average": "163-199",
+    "Low": "125-162",
+    "Very Low": "60-124"
+   },
+   "30+": {
+    "Very High": "230-300",
+    "High": "190-229",
+    "Average": "149-189",
+    "Low": "109-148",
+    "Very Low": "60-108"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "**本面向涉及情绪低落，属于需要谨慎处理的内容。** 产品必须明确它不构成抑郁筛查，并在分数偏高时给出寻求专业帮助的路径（escalation 属 Mode B 范畴，v1 未启用）。",
+   "第 1 题（Often feel blue）与第 3 题（Am often down in the dumps）语义重叠。",
+   "**「悲伤的合理性」无法被量表区分**：因真实丧失而悲伤的人与因气质而低落的人得分相同。这是本面向固有的局限，必须在解读中说明。"
+  ],
+  "interpretation_caveats": [
+   "**这个面向不区分「情绪低落的原因」。** 因真实丧失（丧亲、失业、失恋）而悲伤的人，与因气质而长期低落的人，得分可能相同——量表无法分辨这两者。",
+   "本面向**不构成抑郁筛查**。若你长期感到低落、失去兴趣或出现伤害自己的念头，请直接寻求专业帮助，而不是依靠这份测评。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 4,
+  "chinese_project_translation": 6,
+  "chinese_overridden": 0,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 11,
+   "id": "ipip_neo_021",
+   "facet": "depression",
+   "key": 1,
+   "text_en": "Often feel blue.",
+   "text_master": "Often feel blue.",
+   "text_zh": "时常感到忧郁",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.116,
+    "item_total_r": 0.7129,
+    "missing_rate": 0.0058,
+    "neutral_rate": 0.2243
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否时常感到忧郁",
+    "key_term": {
+     "term": "feel blue",
+     "sense_here": "情绪低落、忧郁",
+     "not_this": "「遇到难过的事」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "因为最近有难过的事而选高分",
+      "correction": "请按一贯的情绪基调作答。"
+     },
+     {
+      "misreading": "把这当成抑郁诊断",
+      "correction": "本面向不构成任何筛查。"
+     }
+    ],
+    "counts_as": [
+     "经常无缘由地感到低落"
+    ],
+    "does_not_count_as": [
+     "只在对具体事件反应时低落"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本面向整体涉及情绪低落，属需要谨慎处理的内容。** 本题问的是**情绪基调**，不是对具体事件的反应。**因真实丧失而悲伤，与因气质而长期低落，在此题上得分可能相同——量表无法区分这两者**（见本面向的 `does_not_measure`）。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「feel blue」"
+   }
+  },
+  {
+   "administration_order": 41,
+   "id": "ipip_neo_022",
+   "facet": "depression",
+   "key": 1,
+   "text_en": "Dislike myself.",
+   "text_master": "Dislike myself.",
+   "text_zh": "不喜欢自己",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.11,
+    "item_total_r": 0.7392,
+    "missing_rate": 0.0055,
+    "neutral_rate": 0.2039
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否不喜欢自己",
+    "key_term": {
+     "term": "dislike myself",
+     "sense_here": "对自我的负面评价",
+     "not_this": "「对自己不满」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「对某件事不满」当成「不喜欢自己」",
+      "correction": "本题指对整体的自我。"
+     },
+     {
+      "misreading": "与「自我效能」混同",
+      "correction": "能力 vs 自我价值。"
+     }
+    ],
+    "counts_as": [
+     "常对自己有负面的整体评价"
+    ],
+    "does_not_count_as": [
+     "对具体表现不满但接纳自己"
+    ],
+    "edge_cases": null,
+    "localization_note": "**与「自我效能」（C1）的区别**：那是**对能力的判断**，本题是**对自我整体的评价**（偏情绪色彩）。**「我做不好这件事」与「我不喜欢我自己」不同。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「dislike myself」"
+   }
+  },
+  {
+   "administration_order": 71,
+   "id": "ipip_neo_023",
+   "facet": "depression",
+   "key": 1,
+   "text_en": "Am often down in the dumps.",
+   "text_master": "Am often down in the dumps.",
+   "text_zh": "经常情绪低落",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.108,
+    "item_total_r": 0.7883,
+    "missing_rate": 0.0054,
+    "neutral_rate": 0.2067
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否经常情绪低落",
+    "key_term": {
+     "term": "down in the dumps",
+     "sense_here": "情绪低落、提不起劲",
+     "not_this": "——"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 1 题混同",
+      "correction": "两题接近，可给相近答案。"
+     },
+     {
+      "misreading": "把它理解成「心情不好」",
+      "correction": "本题偏持续的低落。"
+     }
+    ],
+    "counts_as": [
+     "经常处于低落状态"
+    ],
+    "does_not_count_as": [
+     "偶有低落但很快恢复"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 1 题（时常忧郁）语义接近，**两题是本面向的一对近义题**（题目-总分相关分别 .71 与 .79，都是核心题）。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「down in the dumps」"
+   }
+  },
+  {
+   "administration_order": 101,
+   "id": "ipip_neo_024",
+   "facet": "depression",
+   "key": 1,
+   "text_en": "Have a low opinion of myself.",
+   "text_master": "Have a low opinion of myself.",
+   "text_zh": "对自己评价很低",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.09,
+    "item_total_r": 0.745,
+    "missing_rate": 0.0045,
+    "neutral_rate": 0.1548
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否对自己评价很低",
+    "key_term": {
+     "term": "low opinion",
+     "sense_here": "对自我价值的低评价",
+     "not_this": "「谦虚」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「谦虚」当成「评价低」",
+      "correction": "表达 vs 内心判断。"
+     },
+     {
+      "misreading": "因为不愿承认而选低分",
+      "correction": "请按真实感受作答。"
+     }
+    ],
+    "counts_as": [
+     "认为自己不如一般人"
+    ],
+    "does_not_count_as": [
+     "谦虚但内心认可自己"
+    ],
+    "edge_cases": null,
+    "localization_note": "**关键区分**：谦虚是**表达上的低调**，本题是**内心真实的自我价值判断偏低**。社会赞许性可能让一些人低报（不愿承认自我评价低）。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「low opinion」"
+   }
+  },
+  {
+   "administration_order": 131,
+   "id": "ipip_neo_025",
+   "facet": "depression",
+   "key": 1,
+   "text_en": "Have frequent mood swings.",
+   "text_master": "Have frequent mood swings.",
+   "text_zh": "情绪起伏很大",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.08,
+    "item_total_r": 0.5829,
+    "missing_rate": 0.004,
+    "neutral_rate": 0.1736
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你的情绪起伏是否很大",
+    "key_term": {
+     "term": "mood swings",
+     "sense_here": "情绪波动、起落大",
+     "not_this": "「情绪强烈」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「情感丰富」（O3）混同",
+      "correction": "那是情绪的强度与觉察。"
+     },
+     {
+      "misreading": "把「情绪强烈但稳定」当成「起伏大」",
+      "correction": "强度 ≠ 波动。"
+     }
+    ],
+    "counts_as": [
+     "情绪在一天内会有明显起落"
+    ],
+    "does_not_count_as": [
+     "情绪稳定地偏低（那是第 1、3 题）"
+    ],
+    "edge_cases": "**本题偏「情绪不稳」，与「抑郁」的关联较弱。**",
+    "localization_note": "**本题的题目-总分相关 .58，在本面向最低**——「情绪起伏大」更接近**情绪不稳定性**（属 N5 放纵或一般神经质），而不完全是「抑郁」。**一个情绪稳定地低落的人，本题会得低分。** 这是本面向与神经质其他面向边界模糊的地方。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「mood swings」"
+   }
+  },
+  {
+   "administration_order": 161,
+   "id": "ipip_neo_026",
+   "facet": "depression",
+   "key": 1,
+   "text_en": "Feel desperate.",
+   "text_master": "Feel desperate.",
+   "text_zh": "感到绝望",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.098,
+    "item_total_r": 0.6722,
+    "missing_rate": 0.0049,
+    "neutral_rate": 0.1736
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否感到绝望",
+    "key_term": {
+     "term": "desperate",
+     "sense_here": "绝望、走投无路",
+     "not_this": "——"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "因为一时受挫而选高分",
+      "correction": "请按一贯情况作答。"
+     },
+     {
+      "misreading": "把它当作对未来的判断",
+      "correction": "本题问的是情绪体验。"
+     }
+    ],
+    "counts_as": [
+     "常感到走投无路"
+    ],
+    "does_not_count_as": [
+     "只是暂时受挫"
+    ],
+    "edge_cases": "**若你长期感到绝望或出现伤害自己的念头，请直接寻求专业帮助。这份测评不能替代它。**",
+    "localization_note": "**⚠️ 这是本卷语气最重的一题。** 中译「感到绝望」准确传达了 desperate 的强度，但**它可能引发强烈情绪反应**。**本面向不构成抑郁筛查**；若你长期感到绝望、失去兴趣，或出现伤害自己的念头，**请直接寻求专业帮助，而不是依靠这份测评**。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「desperate」"
+   }
+  },
+  {
+   "administration_order": 191,
+   "id": "ipip_neo_027",
+   "facet": "depression",
+   "key": 1,
+   "text_en": "Feel that my life lacks direction.",
+   "text_master": "Feel that my life lacks direction.",
+   "text_zh": "觉得自己的生活没有方向",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.064,
+    "item_total_r": 0.5324,
+    "missing_rate": 0.0032,
+    "neutral_rate": 0.1588
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否觉得自己的生活没有方向",
+    "key_term": {
+     "term": "lacks direction",
+     "sense_here": "缺乏方向感、目标感",
+     "not_this": "「迷茫」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它等同于「情绪低落」",
+      "correction": "本题偏方向感。"
+     },
+     {
+      "misreading": "因为人生阶段性的迷茫而选高分",
+      "correction": "可考虑是否为一贯状态。"
+     }
+    ],
+    "counts_as": [
+     "常觉得不知道自己要去哪"
+    ],
+    "does_not_count_as": [
+     "有明确方向但情绪低落"
+    ],
+    "edge_cases": "**本题偏「方向感」，与「情绪基调」略有偏移。**",
+    "localization_note": "**本题偏「意义感与目标感」**，与「抑郁」的核心（情绪低落）有一定距离，更接近**存在性迷茫**。**一个情绪愉快但不知往哪走的人，本题会得高分。** 这是本面向内容异质性的一处。本题的题目-总分相关 .53，在本面向偏低。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「lacks direction」"
+   }
+  },
+  {
+   "administration_order": 221,
+   "id": "ipip_neo_028",
+   "facet": "depression",
+   "key": -1,
+   "text_en": "Seldom feel blue.",
+   "text_master": "Seldom feel blue.",
+   "text_zh": "很少感到忧郁",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.08,
+    "item_total_r": 0.6317,
+    "missing_rate": 0.004,
+    "neutral_rate": 0.1713
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否很少感到忧郁",
+    "key_term": {
+     "term": "seldom",
+     "sense_here": "很少",
+     "not_this": "「从不」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 1 题方向搞混",
+      "correction": "两题正反配对。"
+     },
+     {
+      "misreading": "把「很少」当成「从不」",
+      "correction": "偶尔也算少。"
+     }
+    ],
+    "counts_as": [
+     "多数时间情绪不低落"
+    ],
+    "does_not_count_as": [
+     "只是不表现出来"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 1 题（时常忧郁）是**正反配对**，用于检测作答一致性。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「seldom」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 251,
+   "id": "ipip_neo_029",
+   "facet": "depression",
+   "key": -1,
+   "text_en": "Feel comfortable with myself.",
+   "text_master": "Feel comfortable with myself.",
+   "text_zh": "对自己感到满意",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.088,
+    "item_total_r": 0.6974,
+    "missing_rate": 0.0044,
+    "neutral_rate": 0.1323
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否对自己感到满意",
+    "key_term": {
+     "term": "comfortable with myself",
+     "sense_here": "对自我的接纳",
+     "not_this": "「自满」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它当成自我评价高",
+      "correction": "接纳 ≠ 高评价。"
+     },
+     {
+      "misreading": "与「自我效能」混同",
+      "correction": "那是能力判断。"
+     }
+    ],
+    "counts_as": [
+     "总体上能接纳自己"
+    ],
+    "does_not_count_as": [
+     "只是不再纠结缺点"
+    ],
+    "edge_cases": null,
+    "localization_note": "**「Comfortable」偏接纳与自在**，不是「觉得自己很优秀」（那属自我效能或谦逊面向）。**能接纳自己的局限，也算本题的高分。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「comfortable with myself」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 281,
+   "id": "ipip_neo_030",
+   "facet": "depression",
+   "key": -1,
+   "text_en": "Am very pleased with myself.",
+   "text_master": "Am very pleased with myself.",
+   "text_zh": "对自己很满意",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.094,
+    "item_total_r": 0.6921,
+    "missing_rate": 0.0047,
+    "neutral_rate": 0.2276
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否对自己很满意",
+    "key_term": {
+     "term": "pleased with myself",
+     "sense_here": "对自我的满意",
+     "not_this": "「自满」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 9 题混同",
+      "correction": "两题接近，可给相近答案。"
+     },
+     {
+      "misreading": "把它理解成「骄傲」",
+      "correction": "本题不含贬义。"
+     }
+    ],
+    "counts_as": [
+     "总体上对自己满意"
+    ],
+    "does_not_count_as": [
+     "只是在某些方面满意"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 9 题（对自己感到满意）语义接近，**两题都属本面向的反向题，共同测「自我接纳」**。与第 3 题（对自己评价很低）对照。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「pleased with myself」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

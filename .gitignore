@@ -1,0 +1,36 @@
+# 界面截图产物（开发用，不进交付包）
+# 生成：node tools/shoot_ui.js
+.shots/
+
+# 验证用临时目录（merge_scenes / build_item_structured / check_item_structured 的
+# 验证机制都在这里跑，别污染 data/；也不该进 MANIFEST 证据清单）
+.tmp/
+
+# Python
+__pycache__/
+*.pyc
+vendor/
+
+# 密钥与本地抓取缓存
+# ⚠️ `.zhihu_key` 是 API 密钥，**绝不能进版本库**；另两个是本地抓取缓存，
+#    留在磁盘上供 tools/survey/ 使用，但不作为项目资产入库。
+.zhihu_key
+.zhihu_docs.json
+.zhihu_zhihu_search.json
+
+# 证据底本：**有意不入版本控制**（2026-10-05 由项目所有者决定）
+#
+# `archive/` 是 2041 文件 / 755,865,089 B 的原始证据（手册 PDF、官方页面快照、
+# 98 MB 定宽数据集、144 MB zip）。不入库的三条理由：
+#   1. 体量：入库会让 .git 多出约 490 MB，任何远端推送都会撞上平台体积上限；
+#   2. 它会**膨胀**且只增不改：每加一份手册 PDF 都在历史里永久留存一份副本；
+#   3. 它的完整性本来就由**更强的机制**守着——不分层的逐字节校验：
+#      `tools/check/verify_archive.py` 报 {files_scanned: 2041, suspicious: 0,
+#      manifest_checked: 268, manifest_problems: 0}，是每轮必跑的第 6 条。
+#
+# ⚠️ **代价必须说清**：git 保护不了 `archive/`。它能检出「被改了」，但**不能还原**
+#    （历史上从未存过它的内容）。所以 archive 需要**独立的物理备份**
+#    （另一块盘 / 快照 / 私有归档），这件事**目前没有做**。
+#    附注：`archive/ipip/data/OpenScales` 内部自带一个第三方 git 克隆
+#    （stmueller/OpenScales，1599 文件 / 53.9 MB），它是 archive 里唯一可完全复现的部分。
+/archive/

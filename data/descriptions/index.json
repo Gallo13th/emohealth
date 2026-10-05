@@ -1,0 +1,235 @@
+{
+ "schema_version": "1.0",
+ "generator": "tools/build/build_descriptions.py",
+ "checker": "tools/check/check_descriptions.py",
+ "instruments": [
+  {
+   "code": "ipip-neo",
+   "instrument": "IPIP-NEO",
+   "description": "data/descriptions/ipip-neo.md",
+   "content_source": "content/descriptions/ipip-neo.json",
+   "instrument_package": "data/instruments/ipip-neo.json",
+   "norms": "data/norms/ipip-neo.json",
+   "norms_record_kind": "descriptions_norms",
+   "norms_status": "available",
+   "items_policy": "included",
+   "n_items": 300,
+   "n_dimensions": 30,
+   "n_reverse_items": 148,
+   "items_translated": 300,
+   "items_translation_sources": [
+    "data/scene-taxonomy.json（大五人格，已人工核对）"
+   ],
+   "sha256": "1cb9fc7d79669928ed8532688dca9780e34004c16426d5e737bb8df1dadd8fdb"
+  },
+  {
+   "code": "pid-5",
+   "instrument": "PID-5",
+   "description": "data/descriptions/pid-5.md",
+   "content_source": "content/descriptions/pid-5.json",
+   "instrument_package": "data/instruments/pid-5.json",
+   "norms": "data/norms/pid-5.json",
+   "norms_record_kind": "detailed_norms",
+   "norms_status": "available",
+   "items_policy": "included",
+   "n_items": 220,
+   "n_dimensions": 30,
+   "n_reverse_items": 16,
+   "items_translated": 220,
+   "items_translation_sources": [
+    "AI 逐条复核 + 仲裁（2026-10-04）",
+    "AI 逐条复核 + 仲裁（2026-10-04，已按仲裁结论更正）"
+   ],
+   "sha256": "e77d046261c881073dcabd2c95a7972dc42e7bdbebc7f945fa0812dc5ab5a1d5"
+  },
+  {
+   "code": "dsm5tr-l1",
+   "instrument": "DSM5TR-L1",
+   "description": "data/descriptions/dsm5tr-l1.md",
+   "content_source": "content/descriptions/dsm5tr-l1.json",
+   "instrument_package": "data/instruments/dsm5tr-l1.json",
+   "norms": "data/norms/dsm5tr-l1.json",
+   "norms_record_kind": "descriptions_norms",
+   "norms_status": "unavailable",
+   "items_policy": "included",
+   "n_items": 23,
+   "n_dimensions": 13,
+   "n_reverse_items": 0,
+   "items_translated": 23,
+   "items_translation_sources": [
+    "AI 逐条复核 + 仲裁（2026-10-04）"
+   ],
+   "sha256": "6a0e5a29500a8e98b47b8fd378424d7f6436923a1de94073d7b694b8fb1118bc"
+  },
+  {
+   "code": "dsm5tr-l2-anger",
+   "instrument": "DSM5TR-L2-Anger",
+   "description": "data/descriptions/dsm5tr-l2-anger.md",
+   "content_source": "content/descriptions/dsm5tr-l2.json",
+   "instrument_package": "data/instruments/dsm5tr-l2-anger.json",
+   "norms": "data/norms/dsm5tr-l2-anger.json",
+   "norms_record_kind": "descriptions_norms",
+   "norms_status": "unavailable",
+   "items_policy": "included",
+   "n_items": 5,
+   "n_dimensions": 1,
+   "n_reverse_items": 0,
+   "items_translated": 5,
+   "items_translation_sources": [
+    "AI 逐条复核 + 仲裁（2026-10-04）"
+   ],
+   "sha256": "55340e7b49dd9be21f431dfd18905cd137831755b8f191ee2a6326a8bc6fc1f5"
+  },
+  {
+   "code": "dsm5tr-l2-anxiety",
+   "instrument": "DSM5TR-L2-Anxiety",
+   "description": "data/descriptions/dsm5tr-l2-anxiety.md",
+   "content_source": "content/descriptions/dsm5tr-l2.json",
+   "instrument_package": "data/instruments/dsm5tr-l2-anxiety.json",
+   "norms": "data/norms/dsm5tr-l2-anxiety.json",
+   "norms_record_kind": "descriptions_norms",
+   "norms_status": "unavailable",
+   "items_policy": "included",
+   "n_items": 7,
+   "n_dimensions": 1,
+   "n_reverse_items": 0,
+   "items_translated": 7,
+   "items_translation_sources": [
+    "AI 逐条复核 + 仲裁（2026-10-04）"
+   ],
+   "sha256": "77a886285e930c55d65f801ee9e6b80647aadf50dd32a492273376e9802cb68d"
+  },
+  {
+   "code": "dsm5tr-l2-depression",
+   "instrument": "DSM5TR-L2-Depression",
+   "description": "data/descriptions/dsm5tr-l2-depression.md",
+   "content_source": "content/descriptions/dsm5tr-l2.json",
+   "instrument_package": "data/instruments/dsm5tr-l2-depression.json",
+   "norms": "data/norms/dsm5tr-l2-depression.json",
+   "norms_record_kind": "descriptions_norms",
+   "norms_status": "unavailable",
+   "items_policy": "included",
+   "n_items": 8,
+   "n_dimensions": 1,
+   "n_reverse_items": 0,
+   "items_translated": 8,
+   "items_translation_sources": [
+    "AI 逐条复核 + 仲裁（2026-10-04）"
+   ],
+   "sha256": "0bc846004cec741fd7a890505e1a628e4c7c2139f3bdae589d9912613e52a21a"
+  },
+  {
+   "code": "dsm5tr-l2-mania",
+   "instrument": "DSM5TR-L2-Mania",
+   "description": "data/descriptions/dsm5tr-l2-mania.md",
+   "content_source": "content/descriptions/dsm5tr-l2.json",
+   "instrument_package": "data/instruments/dsm5tr-l2-mania.json",
+   "norms": "data/norms/dsm5tr-l2-mania.json",
+   "norms_record_kind": "descriptions_norms",
+   "norms_status": "unavailable",
+   "items_policy": "included",
+   "n_items": 5,
+   "n_dimensions": 1,
+   "n_reverse_items": 0,
+   "items_translated": 5,
+   "items_translation_sources": [
+    "AI 逐条复核 + 仲裁（2026-10-04）"
+   ],
+   "sha256": "e7973a2cf17ddcfb894aefef116eb40c530696806951b1fecb77928d6386cb16"
+  },
+  {
+   "code": "dsm5tr-l2-repetitive",
+   "instrument": "DSM5TR-L2-Repetitive",
+   "description": "data/descriptions/dsm5tr-l2-repetitive.md",
+   "content_source": "content/descriptions/dsm5tr-l2.json",
+   "instrument_package": "data/instruments/dsm5tr-l2-repetitive.json",
+   "norms": "data/norms/dsm5tr-l2-repetitive.json",
+   "norms_record_kind": "descriptions_norms",
+   "norms_status": "unavailable",
+   "items_policy": "included",
+   "n_items": 5,
+   "n_dimensions": 1,
+   "n_reverse_items": 0,
+   "items_translated": 5,
+   "items_translation_sources": [
+    "AI 逐条复核 + 仲裁（2026-10-04）"
+   ],
+   "sha256": "12ac0487c86d41c0e25245b1eb8e03425928e2be20820dca56b018e3b7340bb6"
+  },
+  {
+   "code": "dsm5tr-l2-sleep",
+   "instrument": "DSM5TR-L2-Sleep",
+   "description": "data/descriptions/dsm5tr-l2-sleep.md",
+   "content_source": "content/descriptions/dsm5tr-l2.json",
+   "instrument_package": "data/instruments/dsm5tr-l2-sleep.json",
+   "norms": "data/norms/dsm5tr-l2-sleep.json",
+   "norms_record_kind": "descriptions_norms",
+   "norms_status": "unavailable",
+   "items_policy": "included",
+   "n_items": 8,
+   "n_dimensions": 1,
+   "n_reverse_items": 0,
+   "items_translated": 8,
+   "items_translation_sources": [
+    "AI 逐条复核 + 仲裁（2026-10-04）"
+   ],
+   "sha256": "72196cdbe9ef0b02b1f0bbf995a9fecfa939a83ce0bce405dc731d0ed303f1bc"
+  },
+  {
+   "code": "dsm5tr-l2-somatic",
+   "instrument": "DSM5TR-L2-Somatic",
+   "description": "data/descriptions/dsm5tr-l2-somatic.md",
+   "content_source": "content/descriptions/dsm5tr-l2.json",
+   "instrument_package": "data/instruments/dsm5tr-l2-somatic.json",
+   "norms": "data/norms/dsm5tr-l2-somatic.json",
+   "norms_record_kind": "descriptions_norms",
+   "norms_status": "unavailable",
+   "items_policy": "included",
+   "n_items": 15,
+   "n_dimensions": 1,
+   "n_reverse_items": 0,
+   "items_translated": 15,
+   "items_translation_sources": [
+    "AI 逐条复核 + 仲裁（2026-10-04）"
+   ],
+   "sha256": "99db0fa8dcc609c07b05a970ccf271b591e816974d0ee92d3029c8f6881dc64c"
+  },
+  {
+   "code": "dsm5tr-l2-substance",
+   "instrument": "DSM5TR-L2-Substance",
+   "description": "data/descriptions/dsm5tr-l2-substance.md",
+   "content_source": "content/descriptions/dsm5tr-l2.json",
+   "instrument_package": "data/instruments/dsm5tr-l2-substance.json",
+   "norms": "data/norms/dsm5tr-l2-substance.json",
+   "norms_record_kind": "descriptions_norms",
+   "norms_status": "unavailable",
+   "items_policy": "included",
+   "n_items": 10,
+   "n_dimensions": 1,
+   "n_reverse_items": 0,
+   "items_translated": 10,
+   "items_translation_sources": [
+    "AI 逐条复核 + 仲裁（2026-10-04）",
+    "AI 逐条复核 + 仲裁（2026-10-04，已按仲裁结论更正）"
+   ],
+   "sha256": "a276a2e33e85cc4d82adde1a564cf63011121903149f2b0c807dc97d52f22cc3"
+  },
+  {
+   "code": "mmpi-2",
+   "instrument": "MMPI-2",
+   "description": "data/descriptions/mmpi-2.md",
+   "content_source": "content/descriptions/mmpi-2.json",
+   "instrument_package": null,
+   "norms": "data/norms/mmpi-2.json",
+   "norms_record_kind": "descriptions_norms",
+   "norms_status": "partial",
+   "items_policy": "copyright_excluded",
+   "n_items": 0,
+   "n_dimensions": 0,
+   "n_reverse_items": 0,
+   "items_translated": 0,
+   "items_translation_sources": [],
+   "sha256": "ca6dfd347f6fc52b1f2ba02f8838ae1c5e5586f1839ac1cc581cbb061d5c16c9"
+  }
+ ]
+}

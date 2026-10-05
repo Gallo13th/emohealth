@@ -1,0 +1,361 @@
+{
+ "sections": [
+  {
+   "heading": "这份解读覆盖到哪里、还缺哪里",
+   "text": "本次共回答了 150 道题，总题量为 300 道，覆盖 50.0%，完成的轮次为 5 轮。在这次覆盖到的范围里，有 30 个面向参与展示。下面先说清这份结果的边界，再逐题说明本次被标出来、值得澄清的那些题目，最后集中交代这些分数不意味着什么。",
+   "grounded_in": [
+    "coverage.items_answered",
+    "coverage.items_total",
+    "coverage.pct",
+    "coverage.rounds_done",
+    "facets_showable"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "各面向现在的测量精度",
+   "text": "每个面向当前的测量精度并不相同：追求成就的 r 为 0.9073、利他 0.9111、愤怒 0.9603、焦虑 0.937、抑郁 0.9632、开朗 0.9328、追求刺激 0.9276、友好 0.9384、合群性 0.9265、想象力 0.9334、谦逊 0.8984、道德 0.9041、自我意识 0.9329、自律 0.9161、信任 0.9405、脆弱性 0.9293、价值开放 0.9023，这些被标为较可靠或完整，对应的说明是「误差很小，结论稳」，「完整」档的说明是可以按完整测量的精度看待；活跃度 0.8543、冒险 0.8804、审美 0.8876、决断性 0.8923、审慎 0.899、合作 0.8558、责任心 0.8992、情感丰富 0.8241、放纵 0.8753、思辨 0.8931、条理性 0.8843、自我效能 0.8975、同情 0.8895 被标为初步倾向，对应的说明是「方向大致可信，细节别当真」。各面向的 k 均为 5、of 均为 10，也就是说每个面向目前由 10 题中的 5 题支撑。另外，审慎与价值开放的题目以反向题为主（7 反 / 3 正），更容易受到「习惯性同意」这种作答倾向的干扰。",
+   "grounded_in": [
+    "facets.achievementstriving.precision.r",
+    "facets.achievementstriving.precision.tier",
+    "facets.achievementstriving.precision.advice",
+    "facets.achievementstriving.precision.k",
+    "facets.achievementstriving.precision.of",
+    "facets.activitylevel.precision.r",
+    "facets.activitylevel.precision.tier",
+    "facets.activitylevel.precision.advice",
+    "facets.altruism.precision.r",
+    "facets.anger.precision.tier",
+    "facets.depression.precision.tier",
+    "facets.cautiousness.interpretation_caveats.1",
+    "facets.liberalism.interpretation_caveats.2"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "作答范围带来的限制",
+   "text": "质量门本次没有报出任何标记，可靠性折扣为 0.0。唯一一条备注是：反义题一致性无法计算——这是作答范围限制，不是作答质量问题。也就是说，这份结果目前不需要因为作答质量而整体打折。",
+   "grounded_in": [
+    "quality_gate.flags",
+    "quality_gate.reliability_discount",
+    "quality_gate.notes.0"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "想换方向这件事，量表能提供与不能提供的东西",
+   "text": "你自述最近工作上有些变动、团队换了负责人，并且在想要不要换个方向。对这类处境，本量表不提供「该不该换」的答案，它也没有把这些问题合成一个结论。按输入里的面向定义：想达到什么水平属于「追求成就」，而这一面向问的是你想达到多高的水平，不是「你有多忙」，也不是「你已经做到了多少」；会不会先想再做属于「审慎」，它问的是「你会不会先想再做」，不是「你会不会做不了决定」；能不能启动并坚持下去属于「自律」，它不测量抱负高低与成就动机；在需要时接管局面属于「决断性」，它问的是是否主动表达与主导，不是攻击性，也不是爱出风头。这几件事在本量表里是分开的。",
+   "grounded_in": [
+    "user_context",
+    "facets.achievementstriving.name_zh",
+    "facets.achievementstriving.interpretation_caveats.0",
+    "facets.cautiousness.name_zh",
+    "facets.cautiousness.interpretation_caveats.0",
+    "facets.selfdiscipline.name_zh",
+    "facets.selfdiscipline.does_not_measure.2",
+    "facets.assertiveness.name_zh",
+    "facets.assertiveness.interpretation_caveats.0"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "本次被标出来的题目，怎么读",
+   "text": "本次有一批题因为作答位置在两端、且脚手架里记录了常见读法，被单独标出来。这些题目下面逐题说明它问的是什么、常见的另一种读法是什么。这些说明只解释题目本身，不由单题去推断一个人的特质。",
+   "grounded_in": [
+    "notable_items.0.percentile",
+    "notable_items.0.common_misreadings"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "第 13 题：情绪体验的强度",
+   "text": "这道题「能强烈感受到自己的情绪」问的是：你的情绪体验是否鲜明、强烈。承重词 intensely 在这里指的是「强度」，不是「波动大」；常见的另一种读法是把它读成「情绪不稳」——强烈是强度，不稳定是波动。本题不含褒贬。中文「情感丰富」偏褒义，容易被读成「有情怀、有情调」，而本题实际是中性的描述：情绪来得强烈与否，与「情绪稳不稳定」不是一回事。",
+   "grounded_in": [
+    "notable_items.0.asks",
+    "notable_items.0.key_term.term",
+    "notable_items.0.key_term.sense_here",
+    "notable_items.0.key_term.not_this",
+    "notable_items.0.common_misreadings.0.misreading",
+    "notable_items.0.common_misreadings.0.correction",
+    "notable_items.0.common_misreadings.1.correction",
+    "notable_items.0.localization_note"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "第 27 题：愉快是否向外扩散",
+   "text": "这道题「我的快乐会感染周围的人」问的是：你的愉快情绪是否会感染周围的人。承重词 radiate 在这里指「向外散发的、能感染他人」，而不是「自己开心」。常见的另一种读法是只按「我是否开心」来理解——但本题问的是愉快是否向外扩散；因为不爱外露而给出偏低的位置，那确实是本题的低分，不过这一题要与第 2 题（生活快乐）区别看待。本题的中立选项比例较高（.31，本面向最高），在实际作答里，「我开心但不会表现出来」这一类情形应给中等分，因为本题确实问了外溢这一层。",
+   "grounded_in": [
+    "notable_items.1.asks",
+    "notable_items.1.key_term.term",
+    "notable_items.1.key_term.sense_here",
+    "notable_items.1.key_term.not_this",
+    "notable_items.1.common_misreadings.0.correction",
+    "notable_items.1.common_misreadings.1.correction",
+    "notable_items.1.localization_note"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "第 59 题：对处境更差的人的情感反应",
+   "text": "这道题「我同情那些处境不如自己的人」问的是：对处境不如你的人，你是否会感到同情。承重词 worse off 在这里指「处境更差」，不是「能力更弱」。常见的另一种读法是因为不想显得居高临下而否认——请按真实感受作答；另一种读法是把「同情」理解成「施舍」，而同情是情感，施舍是行为。「处境不如自己」这个比较框架在中文语境里可能让人不适，显得居高临下；本题是中性的描述，不含优越感。",
+   "grounded_in": [
+    "notable_items.2.asks",
+    "notable_items.2.key_term.term",
+    "notable_items.2.key_term.sense_here",
+    "notable_items.2.key_term.not_this",
+    "notable_items.2.common_misreadings.0.correction",
+    "notable_items.2.common_misreadings.1.correction",
+    "notable_items.2.localization_note"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "第 101 题：内心真实的自我价值判断",
+   "text": "这道题「对自己评价很低」问的是：你是否对自己评价很低。承重词 low opinion 在这里指「对自我价值的低评价」，而不是「谦虚」。常见的另一种读法是把「谦虚」当成「评价低」——两者一个是表达，一个是内心判断；另一种读法是因为不愿承认而选低分，而本题请按真实感受作答。关键区分在这里：谦虚是表达上的低调，本题是内心真实的自我价值判断偏低。社会赞许性可能让一些人低报，也就是不愿承认自我评价低。",
+   "grounded_in": [
+    "notable_items.3.asks",
+    "notable_items.3.key_term.term",
+    "notable_items.3.key_term.sense_here",
+    "notable_items.3.key_term.not_this",
+    "notable_items.3.common_misreadings.0.correction",
+    "notable_items.3.common_misreadings.1.correction",
+    "notable_items.3.localization_note"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "第 130 题：有没有计划并按之进行",
+   "text": "这道题「按计划做事」问的是：你是否按计划做事。承重词 according to a plan 在这里指「照计划进行」，而不是「能不能执行」。常见的另一种读法是把它与「自律」混同——那一组是计划性与执行力的区别；另一种读法是把它与「审慎」混同，而那一组说的是行动前的思考。与「自律」的区别在于：自律是能不能启动并坚持，本题是有没有计划并按之进行。有计划但执行不了的话，本题高、自律低。",
+   "grounded_in": [
+    "notable_items.4.asks",
+    "notable_items.4.key_term.term",
+    "notable_items.4.key_term.sense_here",
+    "notable_items.4.key_term.not_this",
+    "notable_items.4.common_misreadings.0.correction",
+    "notable_items.4.common_misreadings.1.correction",
+    "notable_items.4.localization_note"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "第 132 题：掌握控制权，而不只是参与",
+   "text": "这道题「掌控局面」问的是：你是否会掌控局面。承重词 take control 在这里指「掌握控制权」，而不是「参与」。常见的另一种读法是把它与第 1 题混同——那两题确实接近；另一种读法是把「参与」当成「掌控」，而参与不等于主导。与第 1 题（接过主导权）的区别是：第 1 题偏在需要时站出来，本题偏持续保持在掌控位置。两题语义接近，答案通常一致。",
+   "grounded_in": [
+    "notable_items.5.asks",
+    "notable_items.5.key_term.term",
+    "notable_items.5.key_term.sense_here",
+    "notable_items.5.key_term.not_this",
+    "notable_items.5.common_misreadings.0.correction",
+    "notable_items.5.common_misreadings.1.correction",
+    "notable_items.5.localization_note"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "第 134 题：对每个人的评价方式",
+   "text": "这道题「对谁都说好话」问的是：你是否对谁都说好话。承重词 a good word for everyone 在这里指「对每个人都有正面评价」，而不是「乐于助人」。常见的另一种读法是把它当成「助人」，而本题说的是评价方式；另一种读法是把它与「合作」混同，而那个面向管的是冲突时是否让步。本题的题目-总分相关为 .46，内容与本面向核心（为他人付出）不同：「对谁都说好话」更接近友善评价或回避冲突，与宜人性的其他面向交叠。一个乐于实打实帮忙、但对人评价直率的人，本题会得低分。这是本面向内容异质性的一处。",
+   "grounded_in": [
+    "notable_items.6.asks",
+    "notable_items.6.key_term.term",
+    "notable_items.6.key_term.sense_here",
+    "notable_items.6.key_term.not_this",
+    "notable_items.6.common_misreadings.0.correction",
+    "notable_items.6.common_misreadings.1.correction",
+    "notable_items.6.localization_note"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "第 38 题：「喜欢音乐」几乎不区分人",
+   "text": "这道题「喜欢音乐」问的是：你是否喜欢听音乐。承重词 like 在这里就是「喜欢」，而不是「懂音乐」。常见的另一种读法是认为必须懂乐理才算——本题只问喜欢与否；另一种读法是觉得自己只是「随便听听」而选低分，但随便听也是喜欢的一种。本题已有诊断数据表明存在明显的天花板效应：只有 3% 的人选「中立」，绝大多数选两端，以「非常符合」为主。在当代几乎人人都会同意这句话，所以它几乎不区分人。",
+   "grounded_in": [
+    "notable_items.7.asks",
+    "notable_items.7.key_term.term",
+    "notable_items.7.key_term.not_this",
+    "notable_items.7.localization_note"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "第 110 题：投入的深度，不是忙不忙",
+   "text": "这道题「全身心投入任务」问的是：做事时你是否会全心投入。承重词 plunge into 在这里指「一头扎进去、全力投入」，而不是「忙碌」。常见的另一种读法是把它与「忙碌」混同——忙不等于投入；另一种读法是认为必须废寝忘食才算，而专注投入即可。中文「全身心投入」表达清楚。注意与「活跃度」的区别：那一组是节奏快慢，本题是投入深度。",
+   "grounded_in": [
+    "notable_items.8.asks",
+    "notable_items.8.key_term.term",
+    "notable_items.8.key_term.sense_here",
+    "notable_items.8.key_term.not_this",
+    "notable_items.8.common_misreadings.0.correction",
+    "notable_items.8.common_misreadings.1.correction",
+    "notable_items.8.localization_note"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "第 30 题：主动防错，不是没出过错",
+   "text": "这道题「避免犯错」问的是：你是否会主动采取措施避免出错。承重词 avoid mistakes 在这里指「事前规避」，而不是「不犯错」。常见的另一种读法是按「我很少犯错」来理解——本题问的是你是否主动去防；另一种读法是把它与「完美主义」混同，而完美主义是标准高，本题是防错。本题的「避免」是主动行为（反复检查、预留时间），不是「运气好没出错」。中文容易把结果当成倾向。",
+   "grounded_in": [
+    "notable_items.9.asks",
+    "notable_items.9.key_term.term",
+    "notable_items.9.key_term.sense_here",
+    "notable_items.9.key_term.not_this",
+    "notable_items.9.common_misreadings.0.correction",
+    "notable_items.9.common_misreadings.1.correction",
+    "notable_items.9.localization_note"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "第 83 题：词汇量是能力指标",
+   "text": "这道题「词汇量丰富」问的是：你的词汇量是否比一般人丰富。承重词 rich vocabulary 在这里指「词汇量」，需要注意的是它是能力指标，不是兴趣指标。常见的另一种读法是把词汇量等同于「喜欢思考」——两者可以分离；另一种读法是因为觉得自己「文笔不好」而选低分，而本题只问词汇量。本题是本面向最明显的构念偏移：词汇量是语言能力的代理指标，而本面向测的是对思考的喜爱。一个词汇量大但不喜欢抽象思考的人，本题会给出偏高的分数。这是把「开放性」操作化为「智力」时的常见问题。",
+   "grounded_in": [
+    "notable_items.10.asks",
+    "notable_items.10.key_term.term",
+    "notable_items.10.key_term.sense_here",
+    "notable_items.10.key_term.not_this",
+    "notable_items.10.common_misreadings.0.correction",
+    "notable_items.10.common_misreadings.1.correction",
+    "notable_items.10.localization_note"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "第 143 题：思考本身是否带来乐趣",
+   "text": "这道题「喜欢琢磨事情」问的是：你是否享受思考本身。承重词 enjoy thinking 在这里指「享受思考」，而不是「思考能力强」。常见的另一种读法是把「不得不思考」当成喜欢——关键是是否享受；另一种读法是把它与「思辨能力」混同，而那是能力，本题是兴趣。中文「琢磨」很贴切。本题直接命中本面向的核心：它问的是「思考是否带来乐趣」，与思考的产出无关。第 83 题与第 143 题给出的线索方向不同，也是本面向内容异质性的一处。",
+   "grounded_in": [
+    "notable_items.11.asks",
+    "notable_items.11.key_term.term",
+    "notable_items.11.key_term.sense_here",
+    "notable_items.11.key_term.not_this",
+    "notable_items.11.common_misreadings.0.correction",
+    "notable_items.11.common_misreadings.1.correction",
+    "notable_items.11.localization_note"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "容易被混在一起看的几组概念",
+   "text": "第 13 题说的「感受的强度」与第 27 题说的「快乐的外溢」是两个东西：一个是情绪来得强不强烈，一个是愉快是否向外扩散。第 59 题只覆盖共情中的情感反应那一半，与是否实际提供帮助是分开的。第 101 题问的是内心真实的自我价值判断，与表达上的低调不是一回事。第 130 题问的是是否有计划并按之进行；它与能不能启动并坚持、行动前会不会先想，是不同的问题。第 132 题涉及的是在需要时接管局面，与攻击性或爱出风头不是一回事。这几组在本量表里各自计分，不合成一个结论。",
+   "grounded_in": [
+    "notable_items.0.text_zh",
+    "notable_items.1.text_zh",
+    "notable_items.2.text_zh",
+    "notable_items.3.text_zh",
+    "notable_items.4.text_zh",
+    "notable_items.5.text_zh",
+    "facets.sympathy.interpretation_caveats.0",
+    "facets.assertiveness.interpretation_caveats.0"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "这些分数不意味着什么（一）：先说不构成什么",
+   "text": "本结果不构成任何诊断，也不能替代专业评估。这一点与量表本身的设计一致：焦虑这一面向不构成焦虑障碍的诊断或筛查，抑郁这一面向不构成抑郁症的诊断或筛查（那需要临床评估与专门量表），放纵不测量成瘾行为（那是临床范畴）。下面说的所有内容都只是自测结果的读法，不构成任何诊断。",
+   "grounded_in": [
+    "disclosures.1.text",
+    "disclosures.1.id",
+    "disclosures.1.why",
+    "facets.anxiety.does_not_measure.4",
+    "facets.depression.does_not_measure.0",
+    "facets.immoderation.does_not_measure.1"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "这些分数不意味着什么（二）：参照人群",
+   "text": "参照人群为英国样本，非中国人群；源文件未提供样本量、招募方式与采集年份，且分带边界来自对常模表的反推。常模适用性直接决定分数能不能被当真，这是读这份结果之前需要先知道的事实。",
+   "grounded_in": [
+    "disclosures.0.text",
+    "disclosures.0.why",
+    "disclosures.0.id"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "这些分数不意味着什么（三）：面向自身的内容局限",
+   "text": "每个面向自己写了内容的局限，这些不能删减。举几处容易被读偏的：「活跃度」的题目混合了两类不同的东西：实际节奏与行为，以及对从容节奏的偏好；它是本量表内部一致性最低的面向（α=.71，其余多为 .80 以上），如果实际节奏与内心偏好并不一致，这个总分无法同时描述这两件事。「情感丰富」问的是对情绪的敏感度与重视程度，其中一题问的是「喜欢审视自己与自己的生活」，那更接近自我探索的兴趣，与本面向的情绪觉察并不完全等同。「道德」的名字比它实际测的东西大得多，它测的只是在利益面前是否诚实、是否操纵他人。「合作」的名字与它实际测的东西有落差，它测的是在分歧和冲突中是否倾向于让步。「谦逊」问的是会不会抬高自己，与自信可以并存。「价值开放」是全部 30 个里最容易被误读的一个。「条理性」在这里只指环境与物品是否整齐，不是做事是否靠谱，且本面向的一题在原始机读数据中缺失正文，是用官方问卷补齐的。「自我意识」在官方便携中文译本上的内部一致性偏低（α=.602）。「脆弱性」描述的是压力反应，不是能力评价。",
+   "grounded_in": [
+    "disclosures.2.text",
+    "disclosures.2.why",
+    "facets.activitylevel.interpretation_caveats.0",
+    "facets.activitylevel.interpretation_caveats.1",
+    "facets.emotionality.interpretation_caveats.1",
+    "facets.morality.interpretation_caveats.0",
+    "facets.cooperation.interpretation_caveats.0",
+    "facets.modesty_humility.interpretation_caveats.1",
+    "facets.liberalism.interpretation_caveats.0",
+    "facets.orderliness.interpretation_caveats.0",
+    "facets.orderliness.interpretation_caveats.1",
+    "facets.selfconsciousness.interpretation_caveats.0",
+    "facets.vulnerability.interpretation_caveats.0"
+   ],
+   "citations": []
+  },
+  {
+   "heading": "这些分数不意味着什么（四）：它们各自不测量什么",
+   "text": "这些分数各自都有明确的不测范围，本面向的清单如下。追求成就不测量实际成就或能力、不测量是否相信自己做得到（属自我效能）、也不测量是否追求外部认可——它问的是想达到什么水平。活跃度不测量对强烈刺激的渴求（属追求刺激）、不测量社交中的主导性（属决断性）、不测量是否喜欢与人相处、不测量积极情绪的高低（属开朗）、不测量工作是否自律。冒险不测量对新观念的兴趣（属价值开放）、不测量风险承受能力或胆量、不测量旅行频率（受经济条件限制）。审美不测量自己创作的能力、不测量是否懂艺术史或技法、不测量想象力、也不测量对娱乐内容的消费量。利他不测量是否喜欢与人相处、不测量道德水平、不测量共情能力（属同情）、也不测量实际付出量（受资源与处境限制）。愤怒不测量担忧与紧张（属焦虑）、不测量表达愤怒的社交技巧、不测量攻击行为的实际发生，也不测量对外界不满的合理表达。这些条目是这份结果的边界：本量表按这些界定来读，不向外延伸。",
+   "grounded_in": [
+    "disclosures.3.text",
+    "disclosures.3.id",
+    "facets.achievementstriving.does_not_measure.0",
+    "facets.achievementstriving.does_not_measure.2",
+    "facets.achievementstriving.does_not_measure.3",
+    "facets.activitylevel.does_not_measure.0",
+    "facets.activitylevel.does_not_measure.1",
+    "facets.activitylevel.does_not_measure.2",
+    "facets.activitylevel.does_not_measure.3",
+    "facets.activitylevel.does_not_measure.4",
+    "facets.adventurousness.does_not_measure.1",
+    "facets.adventurousness.does_not_measure.2",
+    "facets.adventurousness.does_not_measure.3",
+    "facets.aesthetic_appreciation_artistic_interests.does_not_measure.0",
+    "facets.aesthetic_appreciation_artistic_interests.does_not_measure.1",
+    "facets.aesthetic_appreciation_artistic_interests.does_not_measure.2",
+    "facets.aesthetic_appreciation_artistic_interests.does_not_measure.3",
+    "facets.altruism.does_not_measure.0",
+    "facets.altruism.does_not_measure.1",
+    "facets.altruism.does_not_measure.2",
+    "facets.altruism.does_not_measure.3",
+    "facets.anger.does_not_measure.0",
+    "facets.anger.does_not_measure.1",
+    "facets.anger.does_not_measure.2",
+    "facets.anger.does_not_measure.3"
+   ],
+   "citations": []
+  }
+ ],
+ "notable_items_surfaced": [
+  13,
+  27,
+  59,
+  101,
+  130,
+  132,
+  134,
+  38,
+  110,
+  30,
+  83,
+  143
+ ],
+ "disclosures_kept": [
+  "norm_sample",
+  "no_diagnosis",
+  "content_caveat",
+  "does_not_measure"
+ ],
+ "refusals": [
+  {
+   "asked": "从这份结果判断该不该换方向、要不要留在现在的团队",
+   "why": "量表不回答去留与职业选择；它只确定各面向的读数与边界，由分数反推量表之外的结论属于禁止项"
+  },
+  {
+   "asked": "由这次作答反推我是什么样的人、属于哪一类",
+   "why": "本任务禁止诊断、分型与贴标签；单题作答也不能用来反推一个人的特质"
+  },
+  {
+   "asked": "对「要不要换方向」给出具体建议或干预安排",
+   "why": "本产品的定位是自测陪伴，不构成任何诊断，也不能替代专业评估"
+  }
+ ]
+}

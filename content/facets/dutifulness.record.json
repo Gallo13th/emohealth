@@ -1,0 +1,680 @@
+{
+ "_note": "责任心（Dutifulness / C3）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.dutifulness",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "责任心",
+  "facet_name_en": "Dutifulness",
+  "facet_code": "C3",
+  "domain": "conscientiousness",
+  "domain_zh": "尽责性"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "重视并履行义务、承诺与规范的倾向：是否守约、是否按规矩办事，以及对自己应尽之事的严肃程度。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量任务能否及时启动（属 C5 自律）",
+   "不测量道德诚信（属 A2 道德）",
+   "不测量是否盲从——这里问的是**对自己认同的义务的履行**",
+   "不测量工作能力"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "selfdiscipline",
+    "against_facet_zh": "自律",
+    "distinction": "责任心管**外部规范**（该不该做）；自律管**执行**（做不做得到）。**极守规矩但总要人催才能开工的人，责任心高、自律低。**",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "morality",
+    "against_facet_zh": "道德",
+    "distinction": "责任心是**履行义务**；道德是**在利益面前是否诚实**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "orderliness",
+    "against_facet_zh": "条理性",
+    "distinction": "责任心是**守规范**；条理性是**环境整齐**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "liberalism",
+    "against_facet_zh": "价值开放",
+    "distinction": "责任心是**履行**规范；价值开放是**质疑**规范。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "对承诺和义务不太上心，觉得灵活处理就行",
+   "2": "重要的事会守，小事容易松",
+   "3": "一般会按约定办事，特殊情况会变通",
+   "4": "比较重视承诺，答应了就会尽力做到",
+   "5": "对义务看得很重，宁可自己吃亏也要守约",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_266",
+   "ipip_neo_267",
+   "ipip_neo_268",
+   "ipip_neo_269",
+   "ipip_neo_270"
+  ],
+  "forward_items": [
+   "ipip_neo_261",
+   "ipip_neo_262",
+   "ipip_neo_263",
+   "ipip_neo_264",
+   "ipip_neo_265"
+  ],
+  "key_balance": "5 正向 / 5 反向",
+  "reverse_keyed_count": 5,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.71,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 3.23,
+   "reference_age_band": "18-29",
+   "sd_used": 6.0,
+   "alpha_used": 0.71,
+   "by_age_band": {
+    "14-17": {
+     "sd": 6.0,
+     "sem": 3.23
+    },
+    "18-29": {
+     "sd": 6.0,
+     "sem": 3.23
+    },
+    "30+": {
+     "sd": 6.0,
+     "sem": 3.23
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±6.3 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "46-50",
+    "High": "40-45",
+    "Average": "34-39",
+    "Low": "27-33",
+    "Very Low": "10-26"
+   },
+   "18-29": {
+    "Very High": "48-50",
+    "High": "42-47",
+    "Average": "36-41",
+    "Low": "29-35",
+    "Very Low": "10-28"
+   },
+   "30+": {
+    "Very High": "49-50",
+    "High": "43-48",
+    "Average": "37-42",
+    "Low": "32-36",
+    "Very Low": "10-31"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "236-300",
+    "High": "208-235",
+    "Average": "174-207",
+    "Low": "143-173",
+    "Very Low": "60-142"
+   },
+   "18-29": {
+    "Very High": "246-300",
+    "High": "215-245",
+    "Average": "184-214",
+    "Low": "153-183",
+    "Very Low": "60-152"
+   },
+   "30+": {
+    "Very High": "261-300",
+    "High": "231-260",
+    "Average": "200-230",
+    "Low": "169-199",
+    "Very Low": "60-168"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "**特别值得注意：题目诊断显示 C 维度整体的题目-总分相关低于其他维度**，其中第 5 题（Break rules）与第 6 题（Break my promises）为反向题，但**本面向的计分键为 7 正 / 3 反**，方向不平衡，会放大默许倾向（见 `tools/check/validate_records.py` V3 告警）。",
+   "「Break rules」这类表述在不同文化中对「规矩」的所指不同，可能被读作「法律」也可能被读作「不合理的潜规则」。"
+  ],
+  "interpretation_caveats": [
+   "**这一面向问的是「你有多重视承诺与规范」，不是「你有多能干」，也不是「你有多善良」。**",
+   "其中含有「我会打破规则」「我会违背承诺」这类表述——**如果你想到的是某些不合理的规矩，请按你平日里对「承诺」的一般态度作答**，而不是按某个具体情境。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 4,
+  "chinese_project_translation": 6,
+  "chinese_overridden": 0,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 15,
+   "id": "ipip_neo_261",
+   "facet": "dutifulness",
+   "key": 1,
+   "text_en": "Try to follow the rules.",
+   "text_master": "Try to follow the rules.",
+   "text_zh": "尽量遵守规则",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.638,
+    "item_total_r": 0.4761,
+    "missing_rate": 0.0061,
+    "neutral_rate": 0.1565
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会尽量遵守规则",
+    "key_term": {
+     "term": "try to",
+     "sense_here": "**尽量**（承认有做不到的时候）",
+     "not_this": "「绝对遵守」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「道德」面向的同名题混同",
+      "correction": "两题确实高度重叠——这是量表本身的冗余。"
+     },
+     {
+      "misreading": "把「尽量」忽略掉",
+      "correction": "本题承认有例外，不要求绝对。"
+     }
+    ],
+    "counts_as": [
+     "默认按规则办事，即使没人监督"
+    ],
+    "does_not_count_as": [
+     "规则明显不合理时仍盲从"
+    ],
+    "edge_cases": null,
+    "localization_note": "与「道德」面向的 `Stick to the rules`（遵守规则）**几乎是同义题**，两题分属不同面向但题面接近。区别：本面向偏「是否尽义务」，道德面向偏「是否诚实」。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「try to」"
+   }
+  },
+  {
+   "administration_order": 45,
+   "id": "ipip_neo_262",
+   "facet": "dutifulness",
+   "key": 1,
+   "text_en": "Keep my promises.",
+   "text_master": "Keep my promises.",
+   "text_zh": "信守承诺",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.613,
+    "item_total_r": 0.4784,
+    "missing_rate": 0.006,
+    "neutral_rate": 0.0942
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会守住自己许下的承诺",
+    "key_term": {
+     "term": "keep promises",
+     "sense_here": "兑现承诺",
+     "not_this": "「不轻易承诺」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「不轻易承诺」当成守信",
+      "correction": "少承诺但都做到与常承诺常做到，本题都算高分。"
+     },
+     {
+      "misreading": "把「尽力了但没做到」当成违背",
+      "correction": "关键在是否尽力。"
+     }
+    ],
+    "counts_as": [
+     "答应的事会尽力做到"
+    ],
+    "does_not_count_as": [
+     "不可抗力下未能兑现但已尽力"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「信守承诺」很明确，翻译风险低。**判断要点是「答应之后是否做到」**，与「是否轻易答应」无关。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「keep promises」"
+   }
+  },
+  {
+   "administration_order": 75,
+   "id": "ipip_neo_263",
+   "facet": "dutifulness",
+   "key": 1,
+   "text_en": "Pay my bills on time.",
+   "text_master": "Pay my bills on time.",
+   "text_zh": "按时付账单",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.821,
+    "item_total_r": 0.3542,
+    "missing_rate": 0.0043,
+    "neutral_rate": 0.1652
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会按时支付账单",
+    "key_term": {
+     "term": "on time",
+     "sense_here": "按时",
+     "not_this": "「有没有钱付」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "因为用自动扣款而选高分",
+      "correction": "那反映的是设置习惯，不完全是责任心。"
+     },
+     {
+      "misreading": "因为偶尔忘记而选低分",
+      "correction": "偶尔与一贯不同。"
+     }
+    ],
+    "counts_as": [
+     "会记录并按时处理各类到期事务"
+    ],
+    "does_not_count_as": [
+     "设置了自动扣款（那不算主动尽责）"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题把「尽义务」具体化为「按时付账单」，操作化较窄**（题目-总分相关 .35）。**受经济状况与自动化扣款影响很大**——设置自动扣款的人几乎不可能逾期，这与「责任心」无关。这是本面向内容覆盖不全的一处。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「on time」"
+   }
+  },
+  {
+   "administration_order": 105,
+   "id": "ipip_neo_264",
+   "facet": "dutifulness",
+   "key": 1,
+   "text_en": "Tell the truth.",
+   "text_master": "Tell the truth.",
+   "text_zh": "我会实话实说",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.082,
+    "item_total_r": 0.5497,
+    "missing_rate": 0.0041,
+    "neutral_rate": 0.1169
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会如实说出真相",
+    "key_term": {
+     "term": "tell the truth",
+     "sense_here": "说真话",
+     "not_this": "「想到什么说什么」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「善意的回避」当成说谎",
+      "correction": "礼貌性的保留通常不计入。"
+     },
+     {
+      "misreading": "与「直率」混同",
+      "correction": "直率是表达方式。"
+     }
+    ],
+    "counts_as": [
+     "被问到时如实回答，即使对自己不利"
+    ],
+    "does_not_count_as": [
+     "为照顾对方感受而委婉"
+    ],
+    "edge_cases": null,
+    "localization_note": "与「道德」面向的区别：那面向偏「不欺骗、不利用」，本面向偏「如实陈述」。本题会受**社交礼貌**影响——为不伤害对方而用的善意回避，通常不算「不说真话」。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「tell the truth」"
+   }
+  },
+  {
+   "administration_order": 135,
+   "id": "ipip_neo_265",
+   "facet": "dutifulness",
+   "key": 1,
+   "text_en": "Listen to my conscience.",
+   "text_master": "Listen to my conscience.",
+   "text_zh": "听从自己的良心",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.334,
+    "item_total_r": 0.4035,
+    "missing_rate": 0.0046,
+    "neutral_rate": 0.1299
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会依自己的道德感行事",
+    "key_term": {
+     "term": "conscience",
+     "sense_here": "良心、内在道德感",
+     "not_this": "——"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「听从良心」当成「不守规则」",
+      "correction": "两者可以一致。"
+     },
+     {
+      "misreading": "因为自己没有强烈的道德感而选低分",
+      "correction": "可能是你更依赖外部规范，这不等同于不负责。"
+     }
+    ],
+    "counts_as": [
+     "遇到两难时会问自己「这样对不对」"
+    ],
+    "does_not_count_as": [
+     "主要依据外部规则做判断"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「良心」是日常词，理解无障碍。但本题依赖作答者**有清晰的内在道德标准**——若你更依赖外部规范（法律、规则、他人期待），本题可能不适用，而非得分低。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「conscience」"
+   }
+  },
+  {
+   "administration_order": 165,
+   "id": "ipip_neo_266",
+   "facet": "dutifulness",
+   "key": -1,
+   "text_en": "Break rules.",
+   "text_master": "Break rules.",
+   "text_zh": "破坏规则",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.092,
+    "item_total_r": 0.5401,
+    "missing_rate": 0.0046,
+    "neutral_rate": 0.1846
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会破坏规则",
+    "key_term": {
+     "term": "break rules",
+     "sense_here": "破坏、违反",
+     "not_this": "「改良规则」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「质疑不合理规则」当成破坏",
+      "correction": "质疑与违反不同。"
+     },
+     {
+      "misreading": "与「价值开放」混同",
+      "correction": "观念 vs 行为。"
+     }
+    ],
+    "counts_as": [
+     "明知规则仍会违反"
+    ],
+    "does_not_count_as": [
+     "推动修改规则（那不是破坏）"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题在中国语境下容易被读成「不守规矩」，带有较强的社会评价色彩。** 与「价值开放」面向的区别：那面向问你是否**质疑**规则，本题问你是否**违反**规则。质疑而不违反是完全一致的。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「break rules」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 195,
+   "id": "ipip_neo_267",
+   "facet": "dutifulness",
+   "key": -1,
+   "text_en": "Break my promises.",
+   "text_master": "Break my promises.",
+   "text_zh": "违背自己的承诺",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.114,
+    "item_total_r": 0.5265,
+    "missing_rate": 0.0051,
+    "neutral_rate": 0.1006
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会违背自己许下的承诺",
+    "key_term": {
+     "term": "break promises",
+     "sense_here": "违背承诺",
+     "not_this": "——"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 2 题方向搞混",
+      "correction": "第 2 题正向、本题反向。"
+     },
+     {
+      "misreading": "把「未能兑现」一律算违背",
+      "correction": "尽力而未能兑现通常不算。"
+     }
+    ],
+    "counts_as": [
+     "答应后不了了之"
+    ],
+    "does_not_count_as": [
+     "尽力后仍未能兑现"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 2 题（信守承诺）是**正反配对**，用于检测作答一致性。若两题答案矛盾，说明作答时未仔细读题。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「break promises」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 225,
+   "id": "ipip_neo_268",
+   "facet": "dutifulness",
+   "key": -1,
+   "text_en": "Get others to do my duties.",
+   "text_master": "Get others to do my duties.",
+   "text_zh": "让别人替我尽义务",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.062,
+    "item_total_r": 0.4331,
+    "missing_rate": 0.0058,
+    "neutral_rate": 0.1399
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会让别人替你完成本属于自己的义务",
+    "key_term": {
+     "term": "duties",
+     "sense_here": "义务、本分",
+     "not_this": "「请人帮忙」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「团队分工」当成推卸",
+      "correction": "分工是协商的结果。"
+     },
+     {
+      "misreading": "把「委托」当成推卸",
+      "correction": "委托后仍负责，不算。"
+     }
+    ],
+    "counts_as": [
+     "会把自己该做的事推给别人"
+    ],
+    "does_not_count_as": [
+     "合理的分工与委托"
+    ],
+    "edge_cases": null,
+    "localization_note": "**关键区分**：分工协作、请人协助，与「把自己的责任推给别人」不同。判断标准是**这件事在客观上是否属于你的责任**。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「duties」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 255,
+   "id": "ipip_neo_269",
+   "facet": "dutifulness",
+   "key": -1,
+   "text_en": "Do the opposite of what is asked.",
+   "text_master": "Do the opposite of what is asked.",
+   "text_zh": "会反着来",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.58,
+    "item_total_r": 0.4779,
+    "missing_rate": 0.0041,
+    "neutral_rate": 0.1297
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）别人要求你做某事时，你是否会反着来",
+    "key_term": {
+     "term": "the opposite",
+     "sense_here": "**反着做**",
+     "not_this": "「提出不同意见」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「有主见」当成「反着来」",
+      "correction": "本题指无正当理由的对抗。"
+     },
+     {
+      "misreading": "与「价值开放」混同",
+      "correction": "那面向是观念上的质疑。"
+     }
+    ],
+    "counts_as": [
+     "越被要求越不想照做"
+    ],
+    "does_not_count_as": [
+     "有理由地拒绝"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「反着来」很口语，贴近原意。**但它容易被读成「有主见、不盲从」**（正面）。本题在责任心面向里是负面的——它指**为对抗而对**，不是有理有据的反对。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「the opposite」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 285,
+   "id": "ipip_neo_270",
+   "facet": "dutifulness",
+   "key": -1,
+   "text_en": "Misrepresent the facts.",
+   "text_master": "Misrepresent the facts.",
+   "text_zh": "会歪曲事实",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.936,
+    "item_total_r": 0.4445,
+    "missing_rate": 0.0052,
+    "neutral_rate": 0.1648
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会歪曲事实",
+    "key_term": {
+     "term": "misrepresent",
+     "sense_here": "歪曲、曲解",
+     "not_this": "「记错」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「记错」当成歪曲",
+      "correction": "歪曲是故意的。"
+     },
+     {
+      "misreading": "与「说谎」混同",
+      "correction": "两者接近，本题偏对事实的呈现。"
+     }
+    ],
+    "counts_as": [
+     "为达到目的而选择性呈现或改写事实"
+    ],
+    "does_not_count_as": [
+     "无意中的记忆偏差"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 5 题（实话实说）是正反配对。**判断要点是「是否故意」**——无意的记忆偏差不算歪曲。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「misrepresent」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

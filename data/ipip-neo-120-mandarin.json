@@ -1,0 +1,987 @@
+{
+ "instrument": "IPIP-NEO-120 (Mandarin Chinese)",
+ "translation_of": "Johnson, J. A. (2014). IPIP-NEO-120. JRP, 51, 78-89.",
+ "translators": "Zhongyang Xu, Jing Qian, Kunning Chen, Lianxin Zhu, Jianlong Ao (East China Normal University), supervised by Ya Zhang, Ph.D.",
+ "translation_procedure": "forward translation → consensus meetings → back translation → review by experts, English teacher and potential users",
+ "source_url": "https://www.ipip.ori.org/Mandarin%20translation%20of%20IPIP-NEO-120.htm",
+ "retrieved_at": "2026-09-29",
+ "provenance_warning": "IPIP 官方声明：'The accuracy of these translations has not been verified by anyone associated with the IPIP project.' 本译本未经 IPIP 背书，仅作自译校准基准，不得当作已验证工具使用。",
+ "role_in_project": "IPIP-NEO-300 自译的术语与语体校准基准（300 题无任何中文译本）",
+ "coverage": {
+  "items": 120,
+  "facets": 30,
+  "items_per_facet": 4,
+  "covers_all_30_facets": true
+ },
+ "validation": {
+  "problems": []
+ },
+ "build_log": [
+  "由文本匹配确定的循环位置：30 / 30",
+  "结构回退：#28 「View myself as predominantly liberal politically」→ liberalism",
+  "结构回退：#58 「Believe that there is no absolute right or wrong」→ liberalism",
+  "结构回退：#88 「View myself as predominantly conservative politi」→ liberalism"
+ ],
+ "items": [
+  {
+   "order": 1,
+   "en": "Worry about things.",
+   "zh": "为很多事情感到担心",
+   "ipip_code": "H1157",
+   "facet": "anxiety",
+   "match_method": "text_match"
+  },
+  {
+   "order": 2,
+   "en": "Make friends easily.",
+   "zh": "很容易交到朋友",
+   "ipip_code": "H29",
+   "facet": "friendliness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 3,
+   "en": "Have a vivid imagination.",
+   "zh": "有丰富的想象力",
+   "ipip_code": "X14",
+   "facet": "imagination",
+   "match_method": "text_match"
+  },
+  {
+   "order": 4,
+   "en": "Trust others.",
+   "zh": "信任其他人",
+   "ipip_code": "H113",
+   "facet": "trust",
+   "match_method": "text_match"
+  },
+  {
+   "order": 5,
+   "en": "Complete tasks successfully.",
+   "zh": "能成功完成任务",
+   "ipip_code": "H1285",
+   "facet": "selfefficacy",
+   "match_method": "text_match"
+  },
+  {
+   "order": 6,
+   "en": "Get angry easily.",
+   "zh": "很容易生气",
+   "ipip_code": "H754",
+   "facet": "anger",
+   "match_method": "text_match"
+  },
+  {
+   "order": 7,
+   "en": "Love large parties.",
+   "zh": "喜欢参加大型聚会",
+   "ipip_code": "H78",
+   "facet": "gregariousness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 8,
+   "en": "Believe in the importance of art.",
+   "zh": "认为艺术是很重要的",
+   "ipip_code": "X123",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "match_method": "text_match"
+  },
+  {
+   "order": 9,
+   "en": "Use others for my own ends.",
+   "zh": "会利用他人来达成自己的目的",
+   "ipip_code": "H416",
+   "facet": "morality",
+   "match_method": "text_match"
+  },
+  {
+   "order": 10,
+   "en": "Like to tidy up.",
+   "zh": "喜欢整洁",
+   "ipip_code": "H244",
+   "facet": "orderliness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 11,
+   "en": "Often feel blue.",
+   "zh": "时常感到忧郁",
+   "ipip_code": "X74",
+   "facet": "depression",
+   "match_method": "text_match"
+  },
+  {
+   "order": 12,
+   "en": "Take charge.",
+   "zh": "承担责任",
+   "ipip_code": "H334",
+   "facet": "assertiveness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 13,
+   "en": "Experience my emotions intensely.",
+   "zh": "能强烈感受到自己的情绪",
+   "ipip_code": "X92",
+   "facet": "emotionality",
+   "match_method": "text_match"
+  },
+  {
+   "order": 14,
+   "en": "Love to help others.",
+   "zh": "乐于帮助他人",
+   "ipip_code": "H1108",
+   "facet": "altruism",
+   "match_method": "text_match"
+  },
+  {
+   "order": 15,
+   "en": "Keep my promises.",
+   "zh": "信守承诺",
+   "ipip_code": "H149",
+   "facet": "dutifulness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 16,
+   "en": "Find it difficult to approach others.",
+   "zh": "感觉自己很难接近别人",
+   "ipip_code": "H592",
+   "facet": "selfconsciousness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 17,
+   "en": "Am always busy.",
+   "zh": "总是很忙碌",
+   "ipip_code": "H58",
+   "facet": "activitylevel",
+   "match_method": "text_match"
+  },
+  {
+   "order": 18,
+   "en": "Prefer variety to routine.",
+   "zh": "相比墨守成规，我更喜欢有变化。",
+   "ipip_code": "X204",
+   "facet": "adventurousness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 19,
+   "en": "Love a good fight.",
+   "zh": "喜欢和别人比试",
+   "ipip_code": "H453",
+   "facet": "cooperation",
+   "match_method": "text_match"
+  },
+  {
+   "order": 20,
+   "en": "Work hard.",
+   "zh": "工作努力",
+   "ipip_code": "H1206",
+   "facet": "achievementstriving",
+   "match_method": "text_match"
+  },
+  {
+   "order": 21,
+   "en": "Go on binges.",
+   "zh": "大吃大喝寻欢作乐",
+   "ipip_code": "X133",
+   "facet": "immoderation",
+   "match_method": "text_match"
+  },
+  {
+   "order": 22,
+   "en": "Love excitement.",
+   "zh": "喜欢追求刺激",
+   "ipip_code": "H438",
+   "facet": "excitementseeking",
+   "match_method": "text_match"
+  },
+  {
+   "order": 23,
+   "en": "Love to read challenging material.",
+   "zh": "喜欢阅读有挑战性的材料",
+   "ipip_code": "X211",
+   "facet": "intellect",
+   "match_method": "text_match"
+  },
+  {
+   "order": 24,
+   "en": "Believe that I am better than others.",
+   "zh": "相信自己比别人更好",
+   "ipip_code": "H736",
+   "facet": "modesty_humility",
+   "match_method": "text_match"
+  },
+  {
+   "order": 25,
+   "en": "Am always prepared.",
+   "zh": "我总是有所准备",
+   "ipip_code": "X87",
+   "facet": "selfdiscipline",
+   "match_method": "text_match"
+  },
+  {
+   "order": 26,
+   "en": "Panic easily.",
+   "zh": "容易慌张",
+   "ipip_code": "H948",
+   "facet": "vulnerability",
+   "match_method": "text_match"
+  },
+  {
+   "order": 27,
+   "en": "Radiate joy.",
+   "zh": "我的快乐会感染周围的人",
+   "ipip_code": "H32",
+   "facet": "cheerfulness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 28,
+   "en": "View myself as predominantly liberal politically.",
+   "zh": "认为自己在政治方面非常自由开放",
+   "ipip_code": null,
+   "facet": "liberalism",
+   "match_method": "structural_cycle_fallback"
+  },
+  {
+   "order": 29,
+   "en": "Sympathize with the homeless.",
+   "zh": "同情流浪汉",
+   "ipip_code": "X259",
+   "facet": "sympathy",
+   "match_method": "text_match"
+  },
+  {
+   "order": 30,
+   "en": "Jump into things without thinking.",
+   "zh": "会不经过思考就开始行动",
+   "ipip_code": "E46",
+   "facet": "cautiousness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 31,
+   "en": "Fear for the worst.",
+   "zh": "担心会发生最糟糕的情况",
+   "ipip_code": "H999",
+   "facet": "anxiety",
+   "match_method": "text_match"
+  },
+  {
+   "order": 32,
+   "en": "Feel comfortable around people.",
+   "zh": "和其他人待在一起时，我觉得很自在",
+   "ipip_code": "X112",
+   "facet": "friendliness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 33,
+   "en": "Enjoy wild flights of fantasy.",
+   "zh": "喜欢天马行空地幻想",
+   "ipip_code": "X238",
+   "facet": "imagination",
+   "match_method": "text_match"
+  },
+  {
+   "order": 34,
+   "en": "Believe that others have good intentions.",
+   "zh": "相信他人的出发点是好的",
+   "ipip_code": "H549",
+   "facet": "trust",
+   "match_method": "text_match"
+  },
+  {
+   "order": 35,
+   "en": "Excel in what I do.",
+   "zh": "在自己所从事的领域出类拔萃",
+   "ipip_code": "H1174",
+   "facet": "selfefficacy",
+   "match_method": "text_match"
+  },
+  {
+   "order": 36,
+   "en": "Get irritated easily.",
+   "zh": "容易被激怒",
+   "ipip_code": "H761",
+   "facet": "anger",
+   "match_method": "text_match"
+  },
+  {
+   "order": 37,
+   "en": "Talk to a lot of different people at parties.",
+   "zh": "在聚会上，我会和很多不同的人交谈",
+   "ipip_code": "X83",
+   "facet": "gregariousness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 38,
+   "en": "See beauty in things that others might not notice.",
+   "zh": "我能发现别人看不到的美",
+   "ipip_code": "E105",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "match_method": "text_match"
+  },
+  {
+   "order": 39,
+   "en": "Cheat to get ahead.",
+   "zh": "为了领先别人，我会采用作弊的方式",
+   "ipip_code": "X198",
+   "facet": "morality",
+   "match_method": "text_match"
+  },
+  {
+   "order": 40,
+   "en": "Often forget to put things back in their proper place.",
+   "zh": "经常忘记把东西放回原处",
+   "ipip_code": "X82",
+   "facet": "orderliness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 41,
+   "en": "Dislike myself.",
+   "zh": "不喜欢自己",
+   "ipip_code": "X15",
+   "facet": "depression",
+   "match_method": "text_match"
+  },
+  {
+   "order": 42,
+   "en": "Try to lead others.",
+   "zh": "我会尝试去领导他人",
+   "ipip_code": "H524",
+   "facet": "assertiveness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 43,
+   "en": "Feel others' emotions.",
+   "zh": "能感受到他人的情绪",
+   "ipip_code": "E136",
+   "facet": "emotionality",
+   "match_method": "text_match"
+  },
+  {
+   "order": 44,
+   "en": "Am concerned about others.",
+   "zh": "关心他人",
+   "ipip_code": "H1100",
+   "facet": "altruism",
+   "match_method": "text_match"
+  },
+  {
+   "order": 45,
+   "en": "Tell the truth.",
+   "zh": "我会实话实说",
+   "ipip_code": "H145",
+   "facet": "dutifulness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 46,
+   "en": "Am afraid to draw attention to myself.",
+   "zh": "害怕引起他人的注意",
+   "ipip_code": "H655",
+   "facet": "selfconsciousness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 47,
+   "en": "Am always on the go.",
+   "zh": "总是在奔波",
+   "ipip_code": "H54",
+   "facet": "activitylevel",
+   "match_method": "text_match"
+  },
+  {
+   "order": 48,
+   "en": "Prefer to stick with things that I know.",
+   "zh": "我更喜欢做自己熟悉的事情",
+   "ipip_code": "X30",
+   "facet": "adventurousness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 49,
+   "en": "Yell at people.",
+   "zh": "会冲人大喊大叫",
+   "ipip_code": "H809",
+   "facet": "cooperation",
+   "match_method": "text_match"
+  },
+  {
+   "order": 50,
+   "en": "Do more than what's expected of me.",
+   "zh": "我会超出预期地完成任务或工作",
+   "ipip_code": "H2014",
+   "facet": "achievementstriving",
+   "match_method": "text_match"
+  },
+  {
+   "order": 51,
+   "en": "Rarely overindulge.",
+   "zh": "很少过度放纵自己",
+   "ipip_code": "X181",
+   "facet": "immoderation",
+   "match_method": "text_match"
+  },
+  {
+   "order": 52,
+   "en": "Seek adventure.",
+   "zh": "喜欢冒险",
+   "ipip_code": "H446",
+   "facet": "excitementseeking",
+   "match_method": "text_match"
+  },
+  {
+   "order": 53,
+   "en": "Avoid philosophical discussions.",
+   "zh": "会避免参与关于哲学的讨论",
+   "ipip_code": "X248",
+   "facet": "intellect",
+   "match_method": "text_match"
+  },
+  {
+   "order": 54,
+   "en": "Think highly of myself.",
+   "zh": "觉得自己很了不起",
+   "ipip_code": "H2043",
+   "facet": "modesty_humility",
+   "match_method": "text_match"
+  },
+  {
+   "order": 55,
+   "en": "Carry out my plans.",
+   "zh": "能执行自己制定的计划",
+   "ipip_code": "H258",
+   "facet": "selfdiscipline",
+   "match_method": "text_match"
+  },
+  {
+   "order": 56,
+   "en": "Become overwhelmed by events.",
+   "zh": "感到被各种事情压得喘不过气来",
+   "ipip_code": "H959",
+   "facet": "vulnerability",
+   "match_method": "text_match"
+  },
+  {
+   "order": 57,
+   "en": "Have a lot of fun.",
+   "zh": "我的生活很快乐",
+   "ipip_code": "H1094",
+   "facet": "cheerfulness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 58,
+   "en": "Believe that there is no absolute right or wrong.",
+   "zh": "相信没有绝对的对错之分",
+   "ipip_code": null,
+   "facet": "liberalism",
+   "match_method": "structural_cycle_fallback"
+  },
+  {
+   "order": 59,
+   "en": "Feel sympathy for those who are worse off than myself.",
+   "zh": "我同情那些处境不如自己的人",
+   "ipip_code": "E115",
+   "facet": "sympathy",
+   "match_method": "text_match"
+  },
+  {
+   "order": 60,
+   "en": "Make rash decisions.",
+   "zh": "会做出草率的决定",
+   "ipip_code": "H853",
+   "facet": "cautiousness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 61,
+   "en": "Am afraid of many things.",
+   "zh": "对很多事情感到害怕",
+   "ipip_code": "H968",
+   "facet": "anxiety",
+   "match_method": "text_match"
+  },
+  {
+   "order": 62,
+   "en": "Avoid contacts with others.",
+   "zh": "避免和他人接触",
+   "ipip_code": "H648",
+   "facet": "friendliness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 63,
+   "en": "Love to daydream.",
+   "zh": "喜欢做白日梦",
+   "ipip_code": "X71",
+   "facet": "imagination",
+   "match_method": "text_match"
+  },
+  {
+   "order": 64,
+   "en": "Trust what people say.",
+   "zh": "相信他人说的话",
+   "ipip_code": "E157",
+   "facet": "trust",
+   "match_method": "text_match"
+  },
+  {
+   "order": 65,
+   "en": "Handle tasks smoothly.",
+   "zh": "能轻松完成任务",
+   "ipip_code": "H1354",
+   "facet": "selfefficacy",
+   "match_method": "text_match"
+  },
+  {
+   "order": 66,
+   "en": "Lose my temper.",
+   "zh": "发脾气",
+   "ipip_code": "H755",
+   "facet": "anger",
+   "match_method": "text_match"
+  },
+  {
+   "order": 67,
+   "en": "Prefer to be alone.",
+   "zh": "更喜欢一个人独处",
+   "ipip_code": "H587",
+   "facet": "gregariousness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 68,
+   "en": "Do not like poetry.",
+   "zh": "不喜欢诗歌",
+   "ipip_code": "X45",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "match_method": "text_match"
+  },
+  {
+   "order": 69,
+   "en": "Take advantage of others.",
+   "zh": "占别人的便宜",
+   "ipip_code": "H427",
+   "facet": "morality",
+   "match_method": "text_match"
+  },
+  {
+   "order": 70,
+   "en": "Leave a mess in my room.",
+   "zh": "我的房间很乱",
+   "ipip_code": "H822",
+   "facet": "orderliness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 71,
+   "en": "Am often down in the dumps.",
+   "zh": "经常情绪低落",
+   "ipip_code": "H640",
+   "facet": "depression",
+   "match_method": "text_match"
+  },
+  {
+   "order": 72,
+   "en": "Take control of things.",
+   "zh": "掌控局面",
+   "ipip_code": "H325",
+   "facet": "assertiveness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 73,
+   "en": "Rarely notice my emotional reactions.",
+   "zh": "很少察觉到自己的情绪反应",
+   "ipip_code": "X10",
+   "facet": "emotionality",
+   "match_method": "text_match"
+  },
+  {
+   "order": 74,
+   "en": "Am indifferent to the feelings of others.",
+   "zh": "对他人的感受漠不关心",
+   "ipip_code": "X203",
+   "facet": "altruism",
+   "match_method": "text_match"
+  },
+  {
+   "order": 75,
+   "en": "Break rules.",
+   "zh": "破坏规则",
+   "ipip_code": "H1346",
+   "facet": "dutifulness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 76,
+   "en": "Only feel comfortable with friends.",
+   "zh": "只有和朋友在一起的时候我才会感到自在",
+   "ipip_code": "H656",
+   "facet": "selfconsciousness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 77,
+   "en": "Do a lot in my spare time.",
+   "zh": "我的闲暇时间非常充实",
+   "ipip_code": "H79",
+   "facet": "activitylevel",
+   "match_method": "text_match"
+  },
+  {
+   "order": 78,
+   "en": "Dislike changes.",
+   "zh": "不喜欢改变",
+   "ipip_code": "H1063",
+   "facet": "adventurousness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 79,
+   "en": "Insult people.",
+   "zh": "侮辱他人",
+   "ipip_code": "H1103",
+   "facet": "cooperation",
+   "match_method": "text_match"
+  },
+  {
+   "order": 80,
+   "en": "Do just enough work to get by.",
+   "zh": "在工作或学习上，我不会多做，过得去就行",
+   "ipip_code": "X115",
+   "facet": "achievementstriving",
+   "match_method": "text_match"
+  },
+  {
+   "order": 81,
+   "en": "Easily resist temptations.",
+   "zh": "能轻松抵御诱惑",
+   "ipip_code": "X274",
+   "facet": "immoderation",
+   "match_method": "text_match"
+  },
+  {
+   "order": 82,
+   "en": "Enjoy being reckless.",
+   "zh": "喜欢不计后果地行事",
+   "ipip_code": "E35",
+   "facet": "excitementseeking",
+   "match_method": "text_match"
+  },
+  {
+   "order": 83,
+   "en": "Have difficulty understanding abstract ideas.",
+   "zh": "理解抽象概念对我来说有些困难",
+   "ipip_code": "X176",
+   "facet": "intellect",
+   "match_method": "text_match"
+  },
+  {
+   "order": 84,
+   "en": "Have a high opinion of myself.",
+   "zh": "对自己的评价很高",
+   "ipip_code": "H738",
+   "facet": "modesty_humility",
+   "match_method": "text_match"
+  },
+  {
+   "order": 85,
+   "en": "Waste my time.",
+   "zh": "浪费时间",
+   "ipip_code": "H1186",
+   "facet": "selfdiscipline",
+   "match_method": "text_match"
+  },
+  {
+   "order": 86,
+   "en": "Feel that I'm unable to deal with things.",
+   "zh": "感觉自己处理事情力不从心",
+   "ipip_code": "H954",
+   "facet": "vulnerability",
+   "match_method": "text_match"
+  },
+  {
+   "order": 87,
+   "en": "Love life.",
+   "zh": "热爱生活",
+   "ipip_code": "H33",
+   "facet": "cheerfulness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 88,
+   "en": "View myself as predominantly conservative politically.",
+   "zh": "我在政治上比较保守",
+   "ipip_code": null,
+   "facet": "liberalism",
+   "match_method": "structural_cycle_fallback"
+  },
+  {
+   "order": 89,
+   "en": "Am not interested in other people's problems.",
+   "zh": "对别人遇到的麻烦事不感兴趣",
+   "ipip_code": "X227",
+   "facet": "sympathy",
+   "match_method": "text_match"
+  },
+  {
+   "order": 90,
+   "en": "Rush into things.",
+   "zh": "仓促行事",
+   "ipip_code": "H862",
+   "facet": "cautiousness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 91,
+   "en": "Get stressed out easily.",
+   "zh": "我很容易觉得压力大",
+   "ipip_code": "X107",
+   "facet": "anxiety",
+   "match_method": "text_match"
+  },
+  {
+   "order": 92,
+   "en": "Keep others at a distance.",
+   "zh": "和他人保持距离",
+   "ipip_code": "H704",
+   "facet": "friendliness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 93,
+   "en": "Like to get lost in thought.",
+   "zh": "喜欢陷入沉思",
+   "ipip_code": "E163",
+   "facet": "imagination",
+   "match_method": "text_match"
+  },
+  {
+   "order": 94,
+   "en": "Distrust people.",
+   "zh": "不相信别人",
+   "ipip_code": "H1195",
+   "facet": "trust",
+   "match_method": "text_match"
+  },
+  {
+   "order": 95,
+   "en": "Know how to get things done.",
+   "zh": "知道如何完成任务",
+   "ipip_code": "H1333",
+   "facet": "selfefficacy",
+   "match_method": "text_match"
+  },
+  {
+   "order": 96,
+   "en": "Am not easily annoyed.",
+   "zh": "不会轻易被惹恼",
+   "ipip_code": "X23",
+   "facet": "anger",
+   "match_method": "text_match"
+  },
+  {
+   "order": 97,
+   "en": "Avoid crowds.",
+   "zh": "避开人多的地方",
+   "ipip_code": "H650",
+   "facet": "gregariousness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 98,
+   "en": "Do not enjoy going to art museums.",
+   "zh": "不喜欢去美术馆",
+   "ipip_code": "X235",
+   "facet": "aesthetic_appreciation_artistic_interests",
+   "match_method": "text_match"
+  },
+  {
+   "order": 99,
+   "en": "Obstruct others' plans.",
+   "zh": "给别人使坏",
+   "ipip_code": "H494",
+   "facet": "morality",
+   "match_method": "text_match"
+  },
+  {
+   "order": 100,
+   "en": "Leave my belongings around.",
+   "zh": "我的东西放得到处都是",
+   "ipip_code": "H823",
+   "facet": "orderliness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 101,
+   "en": "Feel comfortable with myself.",
+   "zh": "对自己感到满意",
+   "ipip_code": "X129",
+   "facet": "depression",
+   "match_method": "text_match"
+  },
+  {
+   "order": 102,
+   "en": "Wait for others to lead the way.",
+   "zh": "等着别人来带头",
+   "ipip_code": "H976",
+   "facet": "assertiveness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 103,
+   "en": "Don't understand people who get emotional.",
+   "zh": "不理解那些情绪化的人",
+   "ipip_code": "E156",
+   "facet": "emotionality",
+   "match_method": "text_match"
+  },
+  {
+   "order": 104,
+   "en": "Take no time for others.",
+   "zh": "不愿为他人花费时间",
+   "ipip_code": "H918",
+   "facet": "altruism",
+   "match_method": "text_match"
+  },
+  {
+   "order": 105,
+   "en": "Break my promises.",
+   "zh": "违背自己的承诺",
+   "ipip_code": "H1018",
+   "facet": "dutifulness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 106,
+   "en": "Am not bothered by difficult social situations.",
+   "zh": "不会被复杂的社交情境所困扰",
+   "ipip_code": "X209",
+   "facet": "selfconsciousness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 107,
+   "en": "Like to take it easy.",
+   "zh": "喜欢慢慢来",
+   "ipip_code": "E113",
+   "facet": "activitylevel",
+   "match_method": "text_match"
+  },
+  {
+   "order": 108,
+   "en": "Am attached to conventional ways.",
+   "zh": "我喜欢传统的方式",
+   "ipip_code": "H312",
+   "facet": "adventurousness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 109,
+   "en": "Get back at others.",
+   "zh": "报复别人",
+   "ipip_code": "H699",
+   "facet": "cooperation",
+   "match_method": "text_match"
+  },
+  {
+   "order": 110,
+   "en": "Put little time and effort into my work.",
+   "zh": "对工作或学业不怎么投入时间和精力",
+   "ipip_code": "X167",
+   "facet": "achievementstriving",
+   "match_method": "text_match"
+  },
+  {
+   "order": 111,
+   "en": "Am able to control my cravings.",
+   "zh": "可以控制自己的欲望",
+   "ipip_code": "X251",
+   "facet": "immoderation",
+   "match_method": "text_match"
+  },
+  {
+   "order": 112,
+   "en": "Act wild and crazy.",
+   "zh": "我的行为狂放不羁",
+   "ipip_code": "H871",
+   "facet": "excitementseeking",
+   "match_method": "text_match"
+  },
+  {
+   "order": 113,
+   "en": "Am not interested in theoretical discussions.",
+   "zh": "对理论性的讨论不感兴趣",
+   "ipip_code": "X239",
+   "facet": "intellect",
+   "match_method": "text_match"
+  },
+  {
+   "order": 114,
+   "en": "Boast about my virtues.",
+   "zh": "吹嘘自己的美德",
+   "ipip_code": "H746",
+   "facet": "modesty_humility",
+   "match_method": "text_match"
+  },
+  {
+   "order": 115,
+   "en": "Have difficulty starting tasks.",
+   "zh": "拖很久才开始做一件事",
+   "ipip_code": "H621",
+   "facet": "selfdiscipline",
+   "match_method": "text_match"
+  },
+  {
+   "order": 116,
+   "en": "Remain calm under pressure.",
+   "zh": "在压力下能保持冷静",
+   "ipip_code": "X79",
+   "facet": "vulnerability",
+   "match_method": "text_match"
+  },
+  {
+   "order": 117,
+   "en": "Look at the bright side of life.",
+   "zh": "看到生活中好的一面",
+   "ipip_code": "H42",
+   "facet": "cheerfulness",
+   "match_method": "text_match"
+  },
+  {
+   "order": 118,
+   "en": "Believe that we should be tough on crime.",
+   "zh": "认为我们应该严惩犯罪",
+   "ipip_code": "X157",
+   "facet": "liberalism",
+   "match_method": "text_match"
+  },
+  {
+   "order": 119,
+   "en": "Try not to think about the needy.",
+   "zh": "我尽量不去想那些需要帮助的人",
+   "ipip_code": "E166",
+   "facet": "sympathy",
+   "match_method": "text_match"
+  },
+  {
+   "order": 120,
+   "en": "Act without thinking.窗体底端",
+   "zh": "做事不经过思考",
+   "ipip_code": "H846",
+   "facet": "cautiousness",
+   "match_method": "text_match"
+  }
+ ]
+}

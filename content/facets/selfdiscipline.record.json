@@ -1,0 +1,706 @@
+{
+ "_note": "自律（Self-Discipline / C5）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.selfdiscipline",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "自律",
+  "facet_name_en": "Self-Discipline",
+  "facet_code": "C5",
+  "domain": "conscientiousness",
+  "domain_zh": "尽责性"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "启动并坚持执行任务的倾向：能否在想做之前就动手，能否把自己定下的计划推进下去，以及启动环节的阻力有多大。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量环境是否整洁有序（属 C2 条理性）",
+   "不测量是否守规矩、尽义务（属 C3 责任心）",
+   "不测量抱负高低与成就动机（属 C4 追求成就）",
+   "不测量对自己能力的信心（属 C1 自我效能）",
+   "不测量能否抵抗诱惑（属 N5 放纵）"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "orderliness",
+    "against_facet_zh": "条理性",
+    "distinction": "条理性管**环境与物品**是否有序；自律管**行动**能否启动与推进。桌面很乱但任务照做的人，自律高、条理性低。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "dutifulness",
+    "against_facet_zh": "责任心",
+    "distinction": "责任心管**外部规范**；自律管**执行**。极守规矩但总要人催才能开工的人，责任心高、自律低。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "achievementstriving",
+    "against_facet_zh": "追求成就",
+    "distinction": "追求成就管**想要多高**；自律管**能不能做到**。想拿第一却从不开始的人，追求成就高、自律低。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "selfefficacy",
+    "against_facet_zh": "自我效能",
+    "distinction": "自我效能是**相信自己能做成**；自律是**真的去做**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "immoderation",
+    "against_facet_zh": "放纵",
+    "distinction": "自律是**该做的事做不做**；放纵是**想做的事停不停**。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "任务到手往往要搁置很久，常需别人推才启动",
+   "2": "多数任务会拖，但最终能完成",
+   "3": "有些事立刻做，有些会拖，视任务而定",
+   "4": "多数事情能较快启动，偶有拖延",
+   "5": "想到就做，启动几乎无阻力，自己定的计划基本都能推进",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_286",
+   "ipip_neo_287",
+   "ipip_neo_288",
+   "ipip_neo_289",
+   "ipip_neo_290"
+  ],
+  "forward_items": [
+   "ipip_neo_281",
+   "ipip_neo_282",
+   "ipip_neo_283",
+   "ipip_neo_284",
+   "ipip_neo_285"
+  ],
+  "key_balance": "5 正向 / 5 反向",
+  "reverse_keyed_count": 5,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.85,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 3.1,
+   "reference_age_band": "18-29",
+   "sd_used": 8.0,
+   "alpha_used": 0.85,
+   "by_age_band": {
+    "14-17": {
+     "sd": 7.5,
+     "sem": 2.9
+    },
+    "18-29": {
+     "sd": 8.0,
+     "sem": 3.1
+    },
+    "30+": {
+     "sd": 8.5,
+     "sem": 3.29
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±6.1 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "39-50",
+    "High": "31-38",
+    "Average": "24-30",
+    "Low": "16-23",
+    "Very Low": "10-15"
+   },
+   "18-29": {
+    "Very High": "41-50",
+    "High": "33-40",
+    "Average": "25-32",
+    "Low": "17-24",
+    "Very Low": "10-16"
+   },
+   "30+": {
+    "Very High": "45-50",
+    "High": "36-44",
+    "Average": "28-35",
+    "Low": "19-27",
+    "Very Low": "10-18"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "236-300",
+    "High": "208-235",
+    "Average": "174-207",
+    "Low": "143-173",
+    "Very Low": "60-142"
+   },
+   "18-29": {
+    "Very High": "246-300",
+    "High": "215-245",
+    "Average": "184-214",
+    "Low": "153-183",
+    "Very Low": "60-152"
+   },
+   "30+": {
+    "Very High": "261-300",
+    "High": "231-260",
+    "Average": "200-230",
+    "Low": "169-199",
+    "Very Low": "60-168"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "本面向的题目混合了「启动速度」（第 3、4 题）与「持续执行」（第 5 题）两个侧面，以及「是否浪费时间」这一偏结果导向的表述（第 7 题）。α=.85 尚可接受，但侧面并不单一。",
+   "第 10 题（Postpone decisions）针对**决策**而非行动，与本面向其余题目的对象不同。"
+  ],
+  "interpretation_caveats": [
+   "本面向的题目混合了「**启动速度**」（第 3、4 题）与「**持续执行**」（第 5 题）两个侧面，第 10 题问的则是**决策**而非行动。α=.85 尚可接受，但若你在这几个侧面上差别很大，总分可能掩盖这一差异。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 4,
+  "chinese_project_translation": 6,
+  "chinese_overridden": 0,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 25,
+   "id": "ipip_neo_281",
+   "facet": "selfdiscipline",
+   "key": 1,
+   "text_en": "Get chores done right away.",
+   "text_master": "Get chores done right away.",
+   "text_zh": "把该做的杂事马上做掉",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.092,
+    "item_total_r": 0.5806,
+    "missing_rate": 0.0046,
+    "neutral_rate": 0.2133
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "该做的事，你是否会立刻动手而不是往后拖",
+    "key_term": {
+     "term": "chores",
+     "sense_here": "日常该做但没什么乐趣的琐事",
+     "not_this": "只指需要花力气的正事，把琐事排除在外"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把\"杂事\"理解成\"大事\"",
+      "correction": "这里问的恰恰是没什么成就感的小事。大事往往有外部压力推着，小事才考验自律。"
+     },
+     {
+      "misreading": "认为\"马上做\"等于\"一次做完\"",
+      "correction": "立刻开始 ≠ 一次做完。先动手就算符合，中间休息不影响。"
+     }
+    ],
+    "counts_as": [
+     "该做的事一出现就动手，不用先给自己做心理建设",
+     "不用等到\"状态好\"才开始"
+    ],
+    "does_not_count_as": [
+     "因为这件事本身有趣所以立刻去做",
+     "被截止日期逼着立刻做"
+    ],
+    "edge_cases": "如果某类事你能立刻做、另一类总拖，按占多数的情形作答。",
+    "localization_note": null,
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「chores」"
+   }
+  },
+  {
+   "administration_order": 55,
+   "id": "ipip_neo_282",
+   "facet": "selfdiscipline",
+   "key": 1,
+   "text_en": "Am always prepared.",
+   "text_master": "Am always prepared.",
+   "text_zh": "我总是有所准备",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.398,
+    "item_total_r": 0.5019,
+    "missing_rate": 0.007,
+    "neutral_rate": 0.2826
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你平时是否处于\"已经准备好\"的状态",
+    "key_term": {
+     "term": "prepared",
+     "sense_here": "事情到来之前已完成必要准备",
+     "not_this": "不是\"能力上能应付\""
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把\"有准备\"理解成\"能力强\"",
+      "correction": "这里问的是有没有提前做准备，不是能不能做好。能力强但从不预习的人，这题应给低分。"
+     },
+     {
+      "misreading": "想到自己\"随时能应付突发情况\"就选高分",
+      "correction": "临时应对不算准备。区别在于事情发生前你是否已经动过手。"
+     }
+    ],
+    "counts_as": [
+     "出门前会提前收拾好东西",
+     "事情还没到截止时间就已经开始推进"
+    ],
+    "does_not_count_as": [
+     "对自己的应变能力有信心",
+     "事情来了才现做，但做得不错"
+    ],
+    "edge_cases": null,
+    "localization_note": null,
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「prepared」"
+   }
+  },
+  {
+   "administration_order": 85,
+   "id": "ipip_neo_283",
+   "facet": "selfdiscipline",
+   "key": 1,
+   "text_en": "Start tasks right away.",
+   "text_master": "Start tasks right away.",
+   "text_zh": "立刻开始做事",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.128,
+    "item_total_r": 0.7114,
+    "missing_rate": 0.0064,
+    "neutral_rate": 0.2163
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "面对任务，你是否马上开始而不是先搁一搁",
+    "key_term": {
+     "term": "right away",
+     "sense_here": "从\"知道要做\"到\"开始做\"之间的延迟很短",
+     "not_this": "不是\"做得快\""
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把\"马上开始\"等同于\"很快做完\"",
+      "correction": "这里只问开始得早不早。开始得早但做得慢，仍算符合。"
+     },
+     {
+      "misreading": "因为任务本身紧急所以马上做，也算高分吗",
+      "correction": "如果只在被逼急时才马上开始，平时都拖，那反映的是外部压力而非自律，应给低分。"
+     }
+    ],
+    "counts_as": [
+     "任务一到手就着手，不需要缓冲期",
+     "想到要做就去做，中间不插入别的事"
+    ],
+    "does_not_count_as": [
+     "因为有人催才马上做",
+     "把开始时间排在计划里的较后位置，但确实按计划执行"
+    ],
+    "edge_cases": "若你习惯\"先想清楚再动手\"，而想清楚只需要很短时间，仍算马上开始；若想的过程本身在拖延，则不算。",
+    "localization_note": null,
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「right away」"
+   }
+  },
+  {
+   "administration_order": 115,
+   "id": "ipip_neo_284",
+   "facet": "selfdiscipline",
+   "key": 1,
+   "text_en": "Get to work at once.",
+   "text_master": "Get to work at once.",
+   "text_zh": "马上动手干活",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.116,
+    "item_total_r": 0.6429,
+    "missing_rate": 0.0058,
+    "neutral_rate": 0.2219
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "需要动手时，你是否能立刻进入工作状态",
+    "key_term": {
+     "term": "at once",
+     "sense_here": "从\"决定做\"到\"实际动手\"几乎无间隔",
+     "not_this": "不是\"工作时的投入程度\""
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 3 题（立刻开始做事）混为一谈",
+      "correction": "第 3 题问\"开始得早不早\"，这题问\"启动时顺不顺\"。有人开始得早但要磨蹭很久才真正进入，两题答案可以不同。"
+     },
+     {
+      "misreading": "把\"进入状态\"理解成\"进入心流\"",
+      "correction": "这里不要求沉浸，只要求动手。"
+     }
+    ],
+    "counts_as": [
+     "坐下来就能开始，不需要先刷手机、先整理桌子",
+     "决定做之后立刻付诸动作"
+    ],
+    "does_not_count_as": [
+     "需要很长时间的仪式感才能开工",
+     "身体坐下了但一直没真正动手"
+    ],
+    "edge_cases": null,
+    "localization_note": null,
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「at once」"
+   }
+  },
+  {
+   "administration_order": 145,
+   "id": "ipip_neo_285",
+   "facet": "selfdiscipline",
+   "key": 1,
+   "text_en": "Carry out my plans.",
+   "text_master": "Carry out my plans.",
+   "text_zh": "能执行自己制定的计划",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.098,
+    "item_total_r": 0.5462,
+    "missing_rate": 0.0049,
+    "neutral_rate": 0.2267
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你自己定的计划，是否真能执行下去",
+    "key_term": {
+     "term": "plans",
+     "sense_here": "自己主动定下的、非他人强加的安排",
+     "not_this": "不是\"别人交代的任务\""
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把\"完成任务\"当成\"执行计划\"",
+      "correction": "别人交办的任务有外部约束，执行它不代表自律。这里的关键是**你自己定的**计划。"
+     },
+     {
+      "misreading": "只有完整执行才算吗",
+      "correction": "大部分执行、偶尔调整也算符合。这一题问的是趋势，不是零失误。"
+     }
+    ],
+    "counts_as": [
+     "自己定的作息、学习、锻炼安排能坚持",
+     "计划有变动也会补上，不让它整体垮掉"
+    ],
+    "does_not_count_as": [
+     "只完成别人安排的事，自己定的计划总是搁置",
+     "计划定得很宽松所以总能完成"
+    ],
+    "edge_cases": null,
+    "localization_note": null,
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「plans」"
+   }
+  },
+  {
+   "administration_order": 175,
+   "id": "ipip_neo_286",
+   "facet": "selfdiscipline",
+   "key": -1,
+   "text_en": "Find it difficult to get down to work.",
+   "text_master": "Find it difficult to get down to work.",
+   "text_zh": "很难静下心来开始做事",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.112,
+    "item_total_r": 0.7,
+    "missing_rate": 0.0056,
+    "neutral_rate": 0.1819
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否难以让自己进入工作状态",
+    "key_term": {
+     "term": "get down to work",
+     "sense_here": "真正坐下来开始干活这一步",
+     "not_this": "不是\"工作过程辛苦\""
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它理解成\"工作很累\"",
+      "correction": "这里卡在\"开始\"这一步，不是过程的疲惫。工作轻松但迟迟不开始，才符合这一题。"
+     },
+     {
+      "misreading": "没注意是反向题",
+      "correction": "这题说的是\"难以开始\"。越符合，自律越低。照实作答即可，系统会反向计分。"
+     }
+    ],
+    "counts_as": [
+     "总要先做很多别的事，才肯开始正事",
+     "明知该做却反复推迟动手"
+    ],
+    "does_not_count_as": [
+     "开始得慢但一旦开始就很投入（那属第 4 题的范围）",
+     "任务本身难度大导致需要更多准备时间"
+    ],
+    "edge_cases": null,
+    "localization_note": null,
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「get down to work」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 205,
+   "id": "ipip_neo_287",
+   "facet": "selfdiscipline",
+   "key": -1,
+   "text_en": "Waste my time.",
+   "text_master": "Waste my time.",
+   "text_zh": "浪费时间",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.082,
+    "item_total_r": 0.6262,
+    "missing_rate": 0.0041,
+    "neutral_rate": 0.2002
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你的时间是否常被浪费掉",
+    "key_term": {
+     "term": "waste",
+     "sense_here": "事后回看觉得本可以用得更好的时间",
+     "not_this": "不是\"休息\""
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把休息也算成浪费",
+      "correction": "主动安排的休息不是浪费。这里指事后你自己都觉得可惜的那些时间。"
+     },
+     {
+      "misreading": "因为\"谁都会刷手机\"就选中间值",
+      "correction": "这一题问的是程度。每天几小时与偶尔十分钟，差别很大。"
+     }
+    ],
+    "counts_as": [
+     "一天结束时说不出时间花在哪",
+     "经常在无目的地滑动中度过较长时间"
+    ],
+    "does_not_count_as": [
+     "有计划的休息与放空",
+     "时间花在了计划外但有价值的事情上"
+    ],
+    "edge_cases": null,
+    "localization_note": null,
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「waste」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 235,
+   "id": "ipip_neo_288",
+   "facet": "selfdiscipline",
+   "key": -1,
+   "text_en": "Need a push to get started.",
+   "text_master": "Need a push to get started.",
+   "text_zh": "需要别人推一把才能开始",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.108,
+    "item_total_r": 0.6594,
+    "missing_rate": 0.0054,
+    "neutral_rate": 0.1787
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）开始做事前，你是否需要别人推动",
+    "key_term": {
+     "term": "a push",
+     "sense_here": "来自外部的启动推力",
+     "not_this": "不是\"需要建议或方向\""
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把\"需要建议\"当成\"需要推动\"",
+      "correction": "需要别人告诉你做什么 ≠ 需要别人推你才肯做。后者才是这一题。"
+     },
+     {
+      "misreading": "认为\"有人提醒也正常\"",
+      "correction": "偶尔提醒正常。这一题问的是否**总要**有人推。"
+     }
+    ],
+    "counts_as": [
+     "没人催就一直不动",
+     "需要外部压力才能启动"
+    ],
+    "does_not_count_as": [
+     "自己启动，只是偶尔接受提醒",
+     "需要的是信息或资源，不是推力"
+    ],
+    "edge_cases": null,
+    "localization_note": null,
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「a push」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 265,
+   "id": "ipip_neo_289",
+   "facet": "selfdiscipline",
+   "key": -1,
+   "text_en": "Have difficulty starting tasks.",
+   "text_master": "Have difficulty starting tasks.",
+   "text_zh": "拖很久才开始做一件事",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.098,
+    "item_total_r": 0.7275,
+    "missing_rate": 0.0049,
+    "neutral_rate": 0.1751
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你从\"该做\"到\"开始做\"之间是否拖得很久",
+    "key_term": {
+     "term": "difficulty starting",
+     "sense_here": "启动环节的阻力",
+     "not_this": "不是\"做得慢\""
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把\"做得慢\"当成\"开始得慢\"",
+      "correction": "开始得快但做得慢，不符合这一题。"
+     },
+     {
+      "misreading": "认为只有严重拖延才算",
+      "correction": "经常拖上几天就已属明显。这一题问的是启动阻力的大小。"
+     }
+    ],
+    "counts_as": [
+     "任务到手后总要搁置一段时间才开始",
+     "启动前有明显的心理阻力"
+    ],
+    "does_not_count_as": [
+     "开始得快但过程慢",
+     "为完成任务预留了准备期，且确实按计划开始"
+    ],
+    "edge_cases": null,
+    "localization_note": null,
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「difficulty starting」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 295,
+   "id": "ipip_neo_290",
+   "facet": "selfdiscipline",
+   "key": -1,
+   "text_en": "Postpone decisions.",
+   "text_master": "Postpone decisions.",
+   "text_zh": "把决定往后拖",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.305,
+    "item_total_r": 0.5082,
+    "missing_rate": 0.0055,
+    "neutral_rate": 0.1977
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否习惯把决定往后推",
+    "key_term": {
+     "term": "postpone decisions",
+     "sense_here": "决断本身的推迟",
+     "not_this": "不是\"深思熟虑\""
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把\"谨慎决策\"当成\"拖延决策\"",
+      "correction": "有明确理由、有时间表的等待不算推后。这里指没有理由的搁置。"
+     },
+     {
+      "misreading": "与\"拖延做事\"混同",
+      "correction": "这一题特指**决定**这一环。事可以照做，但决定一直不下。"
+     }
+    ],
+    "counts_as": [
+     "明知该定下来，仍一再往后放",
+     "把选择拖到不得不做时才做"
+    ],
+    "does_not_count_as": [
+     "为了等关键信息而有意等待",
+     "决策快但执行慢（那是另一回事）"
+    ],
+    "edge_cases": null,
+    "localization_note": null,
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「postpone decisions」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

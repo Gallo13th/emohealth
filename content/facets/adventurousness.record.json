@@ -1,0 +1,686 @@
+{
+ "_note": "冒险（Adventurousness / O4）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.adventurousness",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "冒险",
+  "facet_name_en": "Adventurousness",
+  "facet_code": "O4",
+  "domain": "openness",
+  "domain_zh": "开放性"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "愿意尝试新活动、新地方与新体验的倾向：对熟悉与变化的偏好，以及是否主动走出舒适区。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量对强烈刺激的渴求（属 E5 追求刺激）",
+   "不测量对新观念的兴趣（属 O6 价值开放）",
+   "不测量风险承受能力或胆量",
+   "不测量旅行频率（受经济条件限制）"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "excitementseeking",
+    "against_facet_zh": "追求刺激",
+    "distinction": "冒险偏**新颖性**（没做过的事）；追求刺激偏**唤起强度**（心跳加速）。去一家没吃过的异国餐厅是冒险但不刺激；蹦极是两者兼具。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "imagination",
+    "against_facet_zh": "想象力",
+    "distinction": "冒险是**实际去做**；想象力是**在心里想**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "cautiousness",
+    "against_facet_zh": "审慎",
+    "distinction": "审慎是**行动前权衡**；冒险是**对新颖的偏好**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "liberalism",
+    "against_facet_zh": "价值开放",
+    "distinction": "冒险偏**体验与行为**；价值开放偏**观念与立场**。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "明显偏好熟悉的事物，不愿尝试没做过的",
+   "2": "多数时候选熟悉的，偶尔尝试新的",
+   "3": "对新鲜事物有兴趣，但不主动去找",
+   "4": "喜欢尝试新东西，会主动安排没做过的体验",
+   "5": "几乎总在寻找新体验，重复熟悉的事情让我觉得乏味",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_155",
+   "ipip_neo_156",
+   "ipip_neo_157",
+   "ipip_neo_158",
+   "ipip_neo_159",
+   "ipip_neo_160"
+  ],
+  "forward_items": [
+   "ipip_neo_151",
+   "ipip_neo_152",
+   "ipip_neo_153",
+   "ipip_neo_154"
+  ],
+  "key_balance": "4 正向 / 6 反向",
+  "reverse_keyed_count": 6,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.77,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 2.88,
+   "reference_age_band": "18-29",
+   "sd_used": 6.0,
+   "alpha_used": 0.77,
+   "by_age_band": {
+    "14-17": {
+     "sd": 6.0,
+     "sem": 2.88
+    },
+    "18-29": {
+     "sd": 6.0,
+     "sem": 2.88
+    },
+    "30+": {
+     "sd": 6.0,
+     "sem": 2.88
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±5.6 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "45-50",
+    "High": "39-44",
+    "Average": "33-38",
+    "Low": "26-32",
+    "Very Low": "10-25"
+   },
+   "18-29": {
+    "Very High": "45-50",
+    "High": "39-44",
+    "Average": "33-38",
+    "Low": "28-32",
+    "Very Low": "10-27"
+   },
+   "30+": {
+    "Very High": "46-50",
+    "High": "40-45",
+    "Average": "34-39",
+    "Low": "28-33",
+    "Very Low": "10-27"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "260-300",
+    "High": "234-259",
+    "Average": "208-233",
+    "Low": "182-207",
+    "Very Low": "60-181"
+   },
+   "18-29": {
+    "Very High": "263-300",
+    "High": "238-262",
+    "Average": "212-237",
+    "Low": "187-211",
+    "Very Low": "60-186"
+   },
+   "30+": {
+    "Very High": "266-300",
+    "High": "239-265",
+    "Average": "212-238",
+    "Low": "186-211",
+    "Very Low": "60-185"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "**第 1 题（Am interested in many things）与 O5 思辨在语义上有交集**，可能被读作「兴趣广泛」而非「愿意尝试」。",
+   "第 4 题（Dislike new foods）把「冒险」具体化为饮食偏好，对饮食保守但其他方面爱冒险的人会产生偏差。"
+  ],
+  "interpretation_caveats": [
+   "这一面向问的是**你愿不愿意尝试没做过的事**，与**胆量、风险承受力**无关，也与**能不能去**（时间、金钱、身体条件）无关。请按意愿作答，不按条件作答。",
+   "它与「追求刺激」不同：追求刺激要的是**心跳加速**，这一面向要的是**新鲜感**。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 3,
+  "chinese_project_translation": 6,
+  "chinese_overridden": 1,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 18,
+   "id": "ipip_neo_151",
+   "facet": "adventurousness",
+   "key": 1,
+   "text_en": "Prefer variety to routine.",
+   "text_master": "Prefer variety to routine.",
+   "text_zh": "相比固定的日常安排，我更喜欢有变化（Prefer variety to routine）",
+   "text_zh_source": "project_translation_override",
+   "text_zh_official_ref": "相比墨守成规，我更喜欢有变化。",
+   "translation_note": {
+    "defect": "强度不同（B5）",
+    "reason": "routine 是**中性词**，指固定的日常安排。「墨守成规」在中文带贬义，会让本题变成对「保守落后」的自我评价。情境：同样的路线、同样的作息过久了，你会想换一换。"
+   },
+   "diagnostics": {
+    "priority_score": 0.503,
+    "item_total_r": 0.4896,
+    "missing_rate": 0.0061,
+    "neutral_rate": 0.2061
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "在规律与变化之间，你是否更偏好变化",
+    "key_term": {
+     "term": "variety",
+     "sense_here": "多样性、变化",
+     "not_this": "「忙」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把 routine 理解成「保守落后」",
+      "correction": "它只是「固定的安排」。"
+     },
+     {
+      "misreading": "认为有规律就是没变化",
+      "correction": "本题问的是偏好。"
+     }
+    ],
+    "counts_as": [
+     "生活里需要不断有新鲜元素"
+    ],
+    "does_not_count_as": [
+     "有规律但也喜欢偶尔的变化"
+    ],
+    "edge_cases": null,
+    "localization_note": "中译「墨守成规」带贬义，而英文 routine 是中性的（日常规律）。**这是「强度不同」的一例**：请把 routine 理解为「固定的日常安排」，不含贬义。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「variety」"
+   }
+  },
+  {
+   "administration_order": 48,
+   "id": "ipip_neo_152",
+   "facet": "adventurousness",
+   "key": 1,
+   "text_en": "Like to visit new places.",
+   "text_master": "Like to visit new places.",
+   "text_zh": "喜欢去没去过的地方",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.623,
+    "item_total_r": 0.3886,
+    "missing_rate": 0.0056,
+    "neutral_rate": 0.0824
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否喜欢去没去过的地方",
+    "key_term": {
+     "term": "new places",
+     "sense_here": "没去过的地方",
+     "not_this": "「远的地方」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "必须出国或远行才算",
+      "correction": "没去过的地方就行。"
+     },
+     {
+      "misreading": "因为条件限制去不了而选低分",
+      "correction": "本题问意愿，不问条件。"
+     }
+    ],
+    "counts_as": [
+     "会主动去没去过的地方看看"
+    ],
+    "does_not_count_as": [
+     "只因为出差才去新地方"
+    ],
+    "edge_cases": null,
+    "localization_note": "与「追求刺激」（E5）不同：那是**要刺激感**，本题是**要新鲜感**。离家五公里没去过的小巷，也算 new places。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「new places」"
+   }
+  },
+  {
+   "administration_order": 78,
+   "id": "ipip_neo_153",
+   "facet": "adventurousness",
+   "key": 1,
+   "text_en": "Interested in many things.",
+   "text_master": "Am interested in many things.",
+   "text_zh": "对很多事情感兴趣",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 1.843,
+    "item_total_r": 0.3533,
+    "missing_rate": 0.0035,
+    "neutral_rate": 0.0769
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你的兴趣面是否很广",
+    "key_term": {
+     "term": "many things",
+     "sense_here": "**兴趣的广度**",
+     "not_this": "「懂得多」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「兴趣广」当成「什么都懂」",
+      "correction": "只问兴趣。"
+     },
+     {
+      "misreading": "与「思辨」面向混同",
+      "correction": "那面向问是否享受思考。"
+     }
+    ],
+    "counts_as": [
+     "对很多领域都有想了解的兴趣"
+    ],
+    "does_not_count_as": [
+     "只在少数几件事上专注"
+    ],
+    "edge_cases": "**本题与「思辨」面向语义交叠**，在两个面向里都会影响得分。",
+    "localization_note": "**本题的题目-总分相关为 .35，在本面向偏低**，且它与「思辨」面向的题目高度重叠（那面向也有一道近义题）。**它更像「求知欲」而非「愿意尝试新体验」。** 这是本面向内容异质性的一处。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「many things」"
+   }
+  },
+  {
+   "administration_order": 108,
+   "id": "ipip_neo_154",
+   "facet": "adventurousness",
+   "key": 1,
+   "text_en": "Like to begin new things.",
+   "text_master": "Like to begin new things.",
+   "text_zh": "喜欢开始做新的事情",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.614,
+    "item_total_r": 0.4777,
+    "missing_rate": 0.0057,
+    "neutral_rate": 0.1306
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否喜欢开始新的事情",
+    "key_term": {
+     "term": "begin",
+     "sense_here": "**开始**",
+     "not_this": "「完成」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "认为「开始」就该包含「完成」",
+      "correction": "本题只问开始。"
+     },
+     {
+      "misreading": "与自律混同",
+      "correction": "两题分属不同维度。"
+     }
+    ],
+    "counts_as": [
+     "常同时开展好几件新事情"
+    ],
+    "does_not_count_as": [
+     "喜欢把一个项目做到底（那是另一回事）"
+    ],
+    "edge_cases": null,
+    "localization_note": "与「自律」（C5）的区别：自律是**能不能坚持**，本题是**喜不喜欢开始**。**「喜欢开始但坚持不下去」是很常见的组合**，两题答案不矛盾。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「begin」"
+   }
+  },
+  {
+   "administration_order": 138,
+   "id": "ipip_neo_155",
+   "facet": "adventurousness",
+   "key": -1,
+   "text_en": "Prefer to stick with things that I know.",
+   "text_master": "Prefer to stick with things that I know.",
+   "text_zh": "我更喜欢做自己熟悉的事情",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.074,
+    "item_total_r": 0.5655,
+    "missing_rate": 0.0037,
+    "neutral_rate": 0.2066
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否更喜欢熟悉的事物",
+    "key_term": {
+     "term": "stick with",
+     "sense_here": "留在熟悉的范围内",
+     "not_this": "「稳重」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「稳重」当成「不喜欢新事物」",
+      "correction": "本题问偏好。"
+     },
+     {
+      "misreading": "与审慎混同",
+      "correction": "思考 vs 偏好。"
+     }
+    ],
+    "counts_as": [
+     "在熟悉的领域里更自在"
+    ],
+    "does_not_count_as": [
+     "只是在陌生领域会多做准备（那属审慎）"
+    ],
+    "edge_cases": null,
+    "localization_note": "注意与「审慎」（C6）的区别：审慎是**行动前的思考**，本题是**对熟悉感的偏好**。一个想得很清楚然后去冒险的人，审慎高、冒险也高。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「stick with」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 168,
+   "id": "ipip_neo_156",
+   "facet": "adventurousness",
+   "key": -1,
+   "text_en": "Dislike changes.",
+   "text_master": "Dislike changes.",
+   "text_zh": "不喜欢改变",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.086,
+    "item_total_r": 0.6772,
+    "missing_rate": 0.0043,
+    "neutral_rate": 0.2252
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否不喜欢改变",
+    "key_term": {
+     "term": "changes",
+     "sense_here": "变化（工作、环境、安排等）",
+     "not_this": "「适应慢」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「不喜欢突然的变化」当成「不喜欢所有变化」",
+      "correction": "按整体倾向作答。"
+     },
+     {
+      "misreading": "与第 8 题（保持熟悉）混同",
+      "correction": "两题语义接近，可给相同答案。"
+     }
+    ],
+    "counts_as": [
+     "环境或安排变动时会不适"
+    ],
+    "does_not_count_as": [
+     "只是需要一点适应时间（那属焦虑面向）"
+    ],
+    "edge_cases": null,
+    "localization_note": "——",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「changes」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 198,
+   "id": "ipip_neo_157",
+   "facet": "adventurousness",
+   "key": -1,
+   "text_en": "Don't like the idea of change.",
+   "text_master": "Don't like the idea of change.",
+   "text_zh": "不喜欢改变",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.08,
+    "item_total_r": 0.6725,
+    "missing_rate": 0.004,
+    "neutral_rate": 0.1878
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否在观念上就排斥改变",
+    "key_term": {
+     "term": "the idea of",
+     "sense_here": "**观念上**",
+     "not_this": "「实际适应困难」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 6 题混同",
+      "correction": "两题确实高度重叠，这是本面向题目冗余的表现。"
+     },
+     {
+      "misreading": "把「实际适应慢」当成「观念排斥」",
+      "correction": "那属焦虑面向。"
+     }
+    ],
+    "counts_as": [
+     "听到「要变」就先觉得不好"
+    ],
+    "does_not_count_as": [
+     "观念上接受但实际适应慢"
+    ],
+    "edge_cases": "**本题与第 6 题是明显的近义重复。**",
+    "localization_note": "**本题与第 6 题英文几乎同义（Dislike changes）**，是明显的题目冗余。区别只在于本题偏「观念上不接受」，第 6 题偏「情感上不喜欢」。作答时若感到重复，按同一标准作答即可。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「the idea of」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 228,
+   "id": "ipip_neo_158",
+   "facet": "adventurousness",
+   "key": -1,
+   "text_en": "Am a creature of habit.",
+   "text_master": "Am a creature of habit.",
+   "text_zh": "习惯按老一套来",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.678,
+    "item_total_r": 0.4673,
+    "missing_rate": 0.0037,
+    "neutral_rate": 0.2476
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你的生活是否高度依赖固定的习惯",
+    "key_term": {
+     "term": "creature of habit",
+     "sense_here": "高度依赖习惯",
+     "not_this": "「保守」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「有固定习惯」当成「保守」",
+      "correction": "本题只描述生活方式。"
+     },
+     {
+      "misreading": "觉得难判断",
+      "correction": "可回想「改变日常安排时是否感到不适」。"
+     }
+    ],
+    "counts_as": [
+     "每天的流程基本固定，被打乱会不适"
+    ],
+    "does_not_count_as": [
+     "有习惯但能灵活调整"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「老一套」略含贬义，而英文 a creature of habit 基本中性。**请按「生活是否依赖固定流程」理解**，不含评价。本题中立选项比例较高（.25），说明不少人觉得难以定位自己。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「creature of habit」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 258,
+   "id": "ipip_neo_159",
+   "facet": "adventurousness",
+   "key": -1,
+   "text_en": "Dislike new foods.",
+   "text_master": "Dislike new foods.",
+   "text_zh": "不喜欢没吃过的食物",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 2.444,
+    "item_total_r": 0.2907,
+    "missing_rate": 0.0037,
+    "neutral_rate": 0.1123
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否抗拒没吃过的食物",
+    "key_term": {
+     "term": "new foods",
+     "sense_here": "没吃过的食物",
+     "not_this": "——"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "因为饮食保守就认为自己是保守的人",
+      "correction": "本题只测一个窄侧面。"
+     },
+     {
+      "misreading": "与「口味偏好」混同",
+      "correction": "挑食不等于抗拒新食物。"
+     }
+    ],
+    "counts_as": [
+     "面对没吃过的菜会犹豫或回避"
+    ],
+    "does_not_count_as": [
+     "只是有特定忌口"
+    ],
+    "edge_cases": "**本题只覆盖「冒险」的一个窄侧面。**",
+    "localization_note": "**本题把「冒险」具体化为「饮食开放度」，是本面向最窄的操作化**（题目-总分相关仅 .29）。**一个在旅行、工作、观念上都很开放、唯独饮食保守的人，会被这道题显著拉低分数。** 这是本面向内容覆盖不全的表现。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「new foods」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 288,
+   "id": "ipip_neo_160",
+   "facet": "adventurousness",
+   "key": -1,
+   "text_en": "Am attached to conventional ways.",
+   "text_master": "Am attached to conventional ways.",
+   "text_zh": "我喜欢传统的方式",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.389,
+    "item_total_r": 0.4988,
+    "missing_rate": 0.005,
+    "neutral_rate": 0.2821
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否偏好传统、常规的做法",
+    "key_term": {
+     "term": "conventional ways",
+     "sense_here": "常规、传统的做法",
+     "not_this": "——"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「价值开放」混同",
+      "correction": "本题偏行为偏好，那面向偏观念立场。"
+     },
+     {
+      "misreading": "把「尊重传统」当成「不愿改变」",
+      "correction": "可以既尊重传统又愿意尝试新事物。"
+     }
+    ],
+    "counts_as": [
+     "做事倾向沿用大家习惯的方式"
+    ],
+    "does_not_count_as": [
+     "尊重传统但乐于尝试新方法"
+    ],
+    "edge_cases": "**本题与「价值开放」面向存在语义交叠。**",
+    "localization_note": "**本题与「价值开放」面向（O6）语义交叠**——那面向测的是对传统与规范的**态度**，本题测的是对传统做法的**偏好**。两面向的边界在题面上不干净。本题中立选项比例较高（.28，本面向最高），说明不少人难以定位。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「conventional ways」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

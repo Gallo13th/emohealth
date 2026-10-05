@@ -1,0 +1,675 @@
+{
+ "_note": "愤怒（Anger / N2）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.anger",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "愤怒",
+  "facet_name_en": "Anger",
+  "facet_code": "N2",
+  "domain": "neuroticism",
+  "domain_zh": "神经质"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "体验愤怒、烦躁与挫败感的倾向：发怒的阈值高低、情绪爆发的强度，以及在受挫时保持冷静的难易。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量担忧与紧张（属 N1 焦虑）",
+   "不测量表达愤怒的社交技巧",
+   "不测量攻击行为的实际发生（那是行为，不是特质）",
+   "不测量对外界不满的合理表达"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "anxiety",
+    "against_facet_zh": "焦虑",
+    "distinction": "愤怒是烦躁、敌意与挫败；焦虑是警觉与畏惧。两者都伴随生理唤醒，但情绪方向不同。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "cooperation",
+    "against_facet_zh": "合作",
+    "distinction": "合作管的是**面对冲突时是否让步**；愤怒管的是**是否容易起火**。可以易怒但最终让步。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "immoderation",
+    "against_facet_zh": "放纵",
+    "distinction": "放纵管的是**能否控制冲动**（吃、买、赌）；愤怒管的是**情绪本身**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "depression",
+    "against_facet_zh": "抑郁",
+    "distinction": "抑郁是低落与无望；愤怒是激越与敌意。抑郁症常见易怒，但两者在构念上分开。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "几乎不发火，遇到明显的冒犯也能平静处置",
+   "2": "很少烦躁，偶有不满但很快过去",
+   "3": "会为一些事生气，通常在情理之中",
+   "4": "容易烦躁，小事也能点着火，但一般不至于失控",
+   "5": "经常处于易怒状态，常因小事爆发或与人争执",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_016",
+   "ipip_neo_017",
+   "ipip_neo_018",
+   "ipip_neo_019",
+   "ipip_neo_020"
+  ],
+  "forward_items": [
+   "ipip_neo_011",
+   "ipip_neo_012",
+   "ipip_neo_013",
+   "ipip_neo_014",
+   "ipip_neo_015"
+  ],
+  "key_balance": "5 正向 / 5 反向",
+  "reverse_keyed_count": 5,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.88,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 3.12,
+   "reference_age_band": "18-29",
+   "sd_used": 9.0,
+   "alpha_used": 0.88,
+   "by_age_band": {
+    "14-17": {
+     "sd": 9.0,
+     "sem": 3.12
+    },
+    "18-29": {
+     "sd": 9.0,
+     "sem": 3.12
+    },
+    "30+": {
+     "sd": 9.0,
+     "sem": 3.12
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±6.1 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "45-50",
+    "High": "36-44",
+    "Average": "27-35",
+    "Low": "18-26",
+    "Very Low": "10-17"
+   },
+   "18-29": {
+    "Very High": "43-50",
+    "High": "34-42",
+    "Average": "25-33",
+    "Low": "16-24",
+    "Very Low": "10-15"
+   },
+   "30+": {
+    "Very High": "42-50",
+    "High": "33-41",
+    "Average": "24-32",
+    "Low": "15-23",
+    "Very Low": "10-14"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "242-300",
+    "High": "205-241",
+    "Average": "168-204",
+    "Low": "131-167",
+    "Very Low": "60-130"
+   },
+   "18-29": {
+    "Very High": "238-300",
+    "High": "200-237",
+    "Average": "163-199",
+    "Low": "125-162",
+    "Very Low": "60-124"
+   },
+   "30+": {
+    "Very High": "230-300",
+    "High": "190-229",
+    "Average": "149-189",
+    "Low": "109-148",
+    "Very Low": "60-108"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "本面向的题目里含有少量攻击性表述（如 Lose my temper、Yell at people），社会赞许性会使部分作答者压低分数。",
+   "第 3 题（Get angry easily）与第 4 题（Get irritated easily）在语义上高度接近，存在题目冗余的可能。"
+  ],
+  "interpretation_caveats": [
+   "本面向含攻击性表述，**社会赞许性会让一部分人低报**。若你作答时感到「不太想说真话」，这个分数可能偏低。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 4,
+  "chinese_project_translation": 6,
+  "chinese_overridden": 0,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 6,
+   "id": "ipip_neo_011",
+   "facet": "anger",
+   "key": 1,
+   "text_en": "Get angry easily.",
+   "text_master": "Get angry easily.",
+   "text_zh": "很容易生气",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.084,
+    "item_total_r": 0.758,
+    "missing_rate": 0.0042,
+    "neutral_rate": 0.2112
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否很容易生气",
+    "key_term": {
+     "term": "get angry easily",
+     "sense_here": "发怒的**门槛低**",
+     "not_this": "「偶尔生气」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「会生气」当成「容易生气」",
+      "correction": "本题问门槛高低。"
+     },
+     {
+      "misreading": "与「脆弱性」面向混同",
+      "correction": "那是压力下的承受力。"
+     }
+    ],
+    "counts_as": [
+     "相同处境下比别人更快上火"
+    ],
+    "does_not_count_as": [
+     "遇到大事才会生气"
+    ],
+    "edge_cases": null,
+    "localization_note": "**「Easily」是关键**——它问的是**触发门槛**，不是「会不会生气」（人人都会）。同样的处境下，你比别人更快起火，才符合本题。本面向 α=.88，是全量表最一致的面向之一。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「get angry easily」"
+   }
+  },
+  {
+   "administration_order": 36,
+   "id": "ipip_neo_012",
+   "facet": "anger",
+   "key": 1,
+   "text_en": "Get irritated easily.",
+   "text_master": "Get irritated easily.",
+   "text_zh": "容易被激怒",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.138,
+    "item_total_r": 0.7347,
+    "missing_rate": 0.0069,
+    "neutral_rate": 0.1902
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否容易被激怒",
+    "key_term": {
+     "term": "irritated",
+     "sense_here": "被激惹、烦躁",
+     "not_this": "——"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 1 题混同",
+      "correction": "两题接近，可给相近答案。"
+     },
+     {
+      "misreading": "把「烦躁」当成「生气」",
+      "correction": "烦躁的强度通常更轻。"
+     }
+    ],
+    "counts_as": [
+     "小事就能让你烦躁"
+    ],
+    "does_not_count_as": [
+     "只是心情不好但不烦"
+    ],
+    "edge_cases": null,
+    "localization_note": "**与第 1 题（容易生气）语义高度接近，两题是本面向的一对近义题。**「Angry」偏愤怒情绪，irritated 偏烦躁不适。作答时若感到重复，按同一标准作答即可。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「irritated」"
+   }
+  },
+  {
+   "administration_order": 66,
+   "id": "ipip_neo_013",
+   "facet": "anger",
+   "key": 1,
+   "text_en": "Get upset easily.",
+   "text_master": "Get upset easily.",
+   "text_zh": "很容易心烦",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.056,
+    "item_total_r": 0.7155,
+    "missing_rate": 0.0028,
+    "neutral_rate": 0.193
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否很容易心烦",
+    "key_term": {
+     "term": "upset",
+     "sense_here": "心烦、不悦（**不限于愤怒**）",
+     "not_this": "「生气」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "只按「发火」理解",
+      "correction": "本题包含心烦不悦，不限于愤怒。"
+     },
+     {
+      "misreading": "把「难过」也算进来",
+      "correction": "那更接近抑郁面向。"
+     }
+    ],
+    "counts_as": [
+     "容易被各种事搅得心烦"
+    ],
+    "does_not_count_as": [
+     "只有明确被冒犯才不悦"
+    ],
+    "edge_cases": "**本题的语义比其他题宽（含心烦、不悦），与「愤怒」的构念纯度稍低。**",
+    "localization_note": "**⚠️ 本题的语义比其他题更宽**——英文 upset 可指心烦、难过、不安，不完全是愤怒。**中译「很容易心烦」保持了这种宽度。** 因此本题可能混入神经质的其他成分（如焦虑或抑郁），题目-总分相关 .72 仍高，但与构念的纯度不及第 1 题。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「upset」"
+   }
+  },
+  {
+   "administration_order": 96,
+   "id": "ipip_neo_014",
+   "facet": "anger",
+   "key": 1,
+   "text_en": "Am often in a bad mood.",
+   "text_master": "Am often in a bad mood.",
+   "text_zh": "常常心情不好",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.104,
+    "item_total_r": 0.5812,
+    "missing_rate": 0.0052,
+    "neutral_rate": 0.1938
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否常常心情不好",
+    "key_term": {
+     "term": "bad mood",
+     "sense_here": "情绪状态不佳（**弥散性的**）",
+     "not_this": "「生气」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它等同于「易怒」",
+      "correction": "心情不好不等于易怒。"
+     },
+     {
+      "misreading": "与「抑郁」面向混同",
+      "correction": "那面向的题也问情绪基调，两处交叠。"
+     }
+    ],
+    "counts_as": [
+     "情绪基调偏灰、容易不顺"
+    ],
+    "does_not_count_as": [
+     "心情不好时会发火（那是另一回事）"
+    ],
+    "edge_cases": "**本题偏情绪基调，与「愤怒」的关联较弱。**",
+    "localization_note": "**本题的题目-总分相关 .58，是本面向最低**——「常常心情不好」更像**抑郁情绪基调或情绪不稳**（属 N3 抑郁或一般神经质），而不完全是「愤怒」。**一个情绪低落但不发脾气的人，本题会得高分。** 这是本面向内容异质性的一处。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「bad mood」"
+   }
+  },
+  {
+   "administration_order": 126,
+   "id": "ipip_neo_015",
+   "facet": "anger",
+   "key": 1,
+   "text_en": "Lose my temper.",
+   "text_master": "Lose my temper.",
+   "text_zh": "发脾气",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.066,
+    "item_total_r": 0.7765,
+    "missing_rate": 0.0033,
+    "neutral_rate": 0.1548
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会发脾气",
+    "key_term": {
+     "term": "lose my temper",
+     "sense_here": "失控地发火",
+     "not_this": "「表达不满」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「表达不满」当成「发脾气」",
+      "correction": "关键在是否失控。"
+     },
+     {
+      "misreading": "把它当成「会不会生气」",
+      "correction": "本题问是否爆发。"
+     }
+    ],
+    "counts_as": [
+     "气到一定程度会爆发出来"
+    ],
+    "does_not_count_as": [
+     "生气但能控制表达"
+    ],
+    "edge_cases": null,
+    "localization_note": "**「Lose」强调失控**——有理由地、克制地表达不满不算。本题问的是**情绪是否冲破控制**。题目-总分相关 .78，是本面向最核心的题之一。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「lose my temper」"
+   }
+  },
+  {
+   "administration_order": 156,
+   "id": "ipip_neo_016",
+   "facet": "anger",
+   "key": -1,
+   "text_en": "Rarely get irritated.",
+   "text_master": "Rarely get irritated.",
+   "text_zh": "很少被激怒",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.106,
+    "item_total_r": 0.7437,
+    "missing_rate": 0.0053,
+    "neutral_rate": 0.1632
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否很少被激怒",
+    "key_term": {
+     "term": "rarely",
+     "sense_here": "很少",
+     "not_this": "「从不」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 2 题方向搞混",
+      "correction": "两题正反配对。"
+     },
+     {
+      "misreading": "把「很少」当成「从不」",
+      "correction": "偶尔也算少。"
+     }
+    ],
+    "counts_as": [
+     "多数情况下不会被激怒"
+    ],
+    "does_not_count_as": [
+     "只是不表现出来"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 2 题（容易被激怒）是**正反配对**。**「很少」不等于「从不」**——偶尔被激怒仍可选择本题的「比较符合」。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「rarely」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 186,
+   "id": "ipip_neo_017",
+   "facet": "anger",
+   "key": -1,
+   "text_en": "Seldom get mad.",
+   "text_master": "Seldom get mad.",
+   "text_zh": "很少发火",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.098,
+    "item_total_r": 0.7226,
+    "missing_rate": 0.0049,
+    "neutral_rate": 0.1555
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否很少发火",
+    "key_term": {
+     "term": "get mad",
+     "sense_here": "发火",
+     "not_this": "「没有情绪」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 5 题方向搞混",
+      "correction": "第 5 题正向、本题反向，系统会自动反向计分。"
+     }
+    ],
+    "counts_as": [
+     "很少失控发火"
+    ],
+    "does_not_count_as": [
+     "经常生气但压着"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 5 题（发脾气）是正反配对。**注意区分「不发火」与「没有不满」**——不满但不爆发，本题应给高分。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「get mad」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 216,
+   "id": "ipip_neo_018",
+   "facet": "anger",
+   "key": -1,
+   "text_en": "Am not easily annoyed.",
+   "text_master": "Am not easily annoyed.",
+   "text_zh": "不会轻易被惹恼",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.108,
+    "item_total_r": 0.7017,
+    "missing_rate": 0.0054,
+    "neutral_rate": 0.1443
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否不会轻易被惹恼",
+    "key_term": {
+     "term": "annoyed",
+     "sense_here": "被惹恼、烦扰",
+     "not_this": "——"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与第 2、6 题混同",
+      "correction": "三题语义接近。"
+     },
+     {
+      "misreading": "把「不在乎」当成「不被惹恼」",
+      "correction": "不在乎是不投入。"
+     }
+    ],
+    "counts_as": [
+     "多数事情不会让你烦"
+    ],
+    "does_not_count_as": [
+     "只是不说出来"
+    ],
+    "edge_cases": null,
+    "localization_note": "与第 2、6 题共同测「发怒门槛」。**本面向共 5 道反向题，其中多道都在问「是否不容易被激怒」**——存在明显的题目冗余。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「annoyed」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 246,
+   "id": "ipip_neo_019",
+   "facet": "anger",
+   "key": -1,
+   "text_en": "Keep my cool.",
+   "text_master": "Keep my cool.",
+   "text_zh": "能保持冷静",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.062,
+    "item_total_r": 0.5976,
+    "missing_rate": 0.0031,
+    "neutral_rate": 0.1484
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否能保持冷静",
+    "key_term": {
+     "term": "keep my cool",
+     "sense_here": "保持冷静、不失控",
+     "not_this": "「没有情绪」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「内心平静」当成「保持冷静」",
+      "correction": "冷静指不失控，不要求内心无波。"
+     },
+     {
+      "misreading": "与「脆弱性」面向混同",
+      "correction": "那是压力下的承受。"
+     }
+    ],
+    "counts_as": [
+     "生气时也能维持理智"
+    ],
+    "does_not_count_as": [
+     "内心毫无波动（那不是本题所指）"
+    ],
+    "edge_cases": null,
+    "localization_note": "**「保持冷静」指外在可控、内在可以有情绪**。它偏**情绪调节能力**，与本面向的「发怒倾向」相关但不等同——这是本面向里偏「能力」的一题。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「keep my cool」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 276,
+   "id": "ipip_neo_020",
+   "facet": "anger",
+   "key": -1,
+   "text_en": "Rarely complain.",
+   "text_master": "Rarely complain.",
+   "text_zh": "很少抱怨",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.406,
+    "item_total_r": 0.4931,
+    "missing_rate": 0.003,
+    "neutral_rate": 0.1981
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否很少抱怨",
+    "key_term": {
+     "term": "complain",
+     "sense_here": "抱怨、诉说不满",
+     "not_this": "「不发火」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「不发火」当成「不抱怨」",
+      "correction": "抱怨是言语表达。"
+     },
+     {
+      "misreading": "因为觉得抱怨不好而选高分",
+      "correction": "请按实际频率作答。"
+     }
+    ],
+    "counts_as": [
+     "很少向人诉说不满"
+    ],
+    "does_not_count_as": [
+     "不满但不发火"
+    ],
+    "edge_cases": "**本题偏表达风格，与「发怒倾向」的关联较弱。**",
+    "localization_note": "**本题的题目-总分相关 .49，是本面向最低的**——「很少抱怨」更接近**表达风格**（可能与宜人性或内敛有关），而不完全是「不容易发怒」。**一个常抱怨但很少失控发火的人，本题会得低分。** 这是本面向内容异质性的一处。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「complain」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

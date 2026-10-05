@@ -1,0 +1,680 @@
+{
+ "_note": "利他（Altruism / A3）。由 tools/build/build_all_facets.py 从 data/ 与 content/ 组装。",
+ "identity": {
+  "id": "ipip-neo-300.altruism",
+  "instrument": "IPIP-NEO-300",
+  "facet_name_zh": "利他",
+  "facet_name_en": "Altruism",
+  "facet_code": "A3",
+  "domain": "agreeableness",
+  "domain_zh": "宜人性"
+ },
+ "license": {
+  "status": "public_domain",
+  "show_items": true,
+  "translate": true,
+  "redistribute": true,
+  "evidence": "https://www.ipip.ori.org/newPermission.htm — 'permission has already been automatically granted for any person to use IPIP items, scales, and inventories for any purpose, commercial or non-commercial'"
+ },
+ "construct": {
+  "definition": {
+   "text": "主动为他人付出、关心他人处境的倾向：是否愿意花时间与精力帮助别人，以及是否从助人中获得满足。",
+   "basis": "改述自 Costa & McCrae (1992) NEO-PI-R 专业手册中该面向的定义",
+   "provenance": "published_definition"
+  },
+  "does_not_measure": [
+   "不测量是否喜欢与人相处（属 E1 友好、E2 合群）",
+   "不测量道德水平（属 A2 道德）",
+   "不测量共情能力（属 A6 同情）",
+   "不测量的实际付出量（受资源与处境限制）"
+  ],
+  "boundaries": [
+   {
+    "against_facet": "sympathy",
+    "against_facet_zh": "同情",
+    "distinction": "同情是**感受到**他人的处境；利他是**为此做点什么**。可以深深共情但从不行动。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "cooperation",
+    "against_facet_zh": "合作",
+    "distinction": "利他是**主动给予**；合作是**冲突时让步**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "friendliness",
+    "against_facet_zh": "友好",
+    "distinction": "友好是**情感温度**；利他是**行为付出**。",
+    "basis": "NEO-PI-R 面向定义"
+   },
+   {
+    "against_facet": "trust",
+    "against_facet_zh": "信任",
+    "distinction": "利他是**自己的付出**；信任是**对他人的假设**。",
+    "basis": "NEO-PI-R 面向定义"
+   }
+  ],
+  "applicable_population": "成年一般人群",
+  "inapplicable_population": [
+   "无法理解中文题面者",
+   "处于急性危机状态者（应先处理危机，而非测评）"
+  ]
+ },
+ "administration": {
+  "recall_window": {
+   "value": "typical",
+   "instruction_quote": "Describe yourself as you generally are now, not as you wish to be in the future.",
+   "source": "IPIP-NEO-300 官方问卷指导语",
+   "plain_zh": "请描述你平时一贯的样子，而不是今天的样子，也不是你希望成为的样子。"
+  },
+  "item_count": 10,
+  "item_order_in_full_instrument": "interleaved_30_facet_cycle",
+  "order_style": "interleaved_facet_cycle",
+  "estimated_duration_min": 35,
+  "response_format": {
+   "points": 5,
+   "labels_zh": [
+    "非常不符合",
+    "比较不符合",
+    "中立",
+    "比较符合",
+    "非常符合"
+   ]
+  },
+  "anchor_semantics": {
+   "1": "很少主动帮人，觉得各人顾各人就好",
+   "2": "别人开口会帮，但不会主动",
+   "3": "愿意帮人，但要看情况和关系",
+   "4": "经常主动帮忙，帮到别人让我觉得踏实",
+   "5": "帮助他人是我重要的满足来源，几乎总会伸出手",
+   "provenance": "editorial_clarification"
+  }
+ },
+ "scoring": {
+  "algorithm": "10 题求和（反向题先做 6 − x 转换）。范围 10–50。",
+  "reverse_items": [
+   "ipip_neo_206",
+   "ipip_neo_207",
+   "ipip_neo_208",
+   "ipip_neo_209",
+   "ipip_neo_210"
+  ],
+  "forward_items": [
+   "ipip_neo_201",
+   "ipip_neo_202",
+   "ipip_neo_203",
+   "ipip_neo_204",
+   "ipip_neo_205"
+  ],
+  "key_balance": "5 正向 / 5 反向",
+  "reverse_keyed_count": 5,
+  "reference_system": "norm_percentile"
+ },
+ "reliability": {
+  "cronbach_alpha": 0.77,
+  "alpha_source": "OpenScales IPIP-NEO.osd（源自 Goldberg 的 ESCS 数据）",
+  "sem": {
+   "formula": "SEM = SD × sqrt(1 − α)",
+   "status": "DERIVED",
+   "value": 2.88,
+   "reference_age_band": "18-29",
+   "sd_used": 6.0,
+   "alpha_used": 0.77,
+   "by_age_band": {
+    "14-17": {
+     "sd": 7.0,
+     "sem": 3.36
+    },
+    "18-29": {
+     "sd": 6.0,
+     "sem": 2.88
+    },
+    "30+": {
+     "sd": 6.0,
+     "sem": 2.88
+    }
+   },
+   "derivation": "源文件未直接给出 SD；分带按 σ 定义，由带边界反推。",
+   "caveat": "⚠️ 由整数化带边界反推，约 ±0.5 分舍入不确定性，不是源文件直接给出的 SD。"
+  },
+  "noise_floor": {
+   "basis": "Kohút et al. (2020)，facet 层 6 个月重测 r ≈ .70",
+   "source_file": "archive/literature/interpretation/kohut2020_bfi2-slovak-6month-retest.pdf",
+   "user_facing_rule": "facet 分数在约 0.15–0.2 SD 以内的变动属测量噪音。",
+   "interpretation_with_sem": "95% 置信区间约 ±5.6 分；小于该幅度的变化不应被解读为真实变化。",
+   "provenance": "published_definition"
+  }
+ },
+ "norms": {
+  "status": "AVAILABLE",
+  "parser": "tools/build/parse_uk_norms.py",
+  "bands_values": {
+   "14-17": {
+    "Very High": "49-50",
+    "High": "42-48",
+    "Average": "35-41",
+    "Low": "29-34",
+    "Very Low": "10-28"
+   },
+   "18-29": {
+    "Very High": "49-50",
+    "High": "43-48",
+    "Average": "37-42",
+    "Low": "30-36",
+    "Very Low": "10-29"
+   },
+   "30+": {
+    "Very High": "49-50",
+    "High": "43-48",
+    "Average": "37-42",
+    "Low": "31-36",
+    "Very Low": "10-30"
+   }
+  },
+  "domain_bands_values": {
+   "14-17": {
+    "Very High": "247-300",
+    "High": "217-246",
+    "Average": "187-216",
+    "Low": "157-186",
+    "Very Low": "60-156"
+   },
+   "18-29": {
+    "Very High": "253-300",
+    "High": "224-252",
+    "Average": "195-223",
+    "Low": "166-194",
+    "Very Low": "60-165"
+   },
+   "30+": {
+    "Very High": "254-300",
+    "High": "227-253",
+    "Average": "200-226",
+    "Low": "174-199",
+    "Very Low": "60-173"
+   }
+  },
+  "source_anomalies": [],
+  "bands_scheme": "Very High > 1.5σ | High 0.6–1.4σ | Average −0.5–0.5σ | Low −0.6–−1.4σ | Very Low < −1.5σ",
+  "applicability_caveat": "**UK 人群，非中国人群。** 源文件未提供样本量、招募方式与采集年份。年龄段划分较粗（14-17 / 18-29 / 30+）。",
+  "cross_file_discrepancy_note": "同一 OSF 目录下的 TRAITS 与 FACETS 文件在 CONSCIENTIOUSNESS/14-17 边界上不一致；本档案统一采用 FACETS 文件，以保证 facet 与维度同源。"
+ },
+ "evidence": {
+  "validated_in_chinese": false,
+  "chinese_note": "IPIP-NEO-300 无任何中文译本。官方标记的普通话译本仅覆盖 120 题版（每 facet 4 题），且 IPIP 官方声明该译本未经其验证。其余题目为本项目自译。",
+  "known_critiques": [
+   "**「利他」的行为表现受资源、时间与处境限制**：一个忙于生计的人可能内心很想帮人却没有余力，而题目（如 Love to help others）问的是意愿还是行为并不清晰。",
+   "第 5 题（Am concerned about others）与 A6 同情的题目语义交叠，两个面向的边界在题面上不够干净。"
+  ],
+  "interpretation_caveats": [
+   "这一面向问的是**你愿不愿意为他人付出**，不是**你实际付出了多少**。请按意愿作答，不要因为「最近太忙没顾上」而压低分数。",
+   "它与「同情」不同：同情是**感受到**别人的处境，这一面向是**为此做点什么**。两者可以不一致。"
+  ]
+ },
+ "item_status": {
+  "total": 10,
+  "chinese_official": 4,
+  "chinese_project_translation": 6,
+  "chinese_overridden": 0,
+  "scaffolding_authored": 10,
+  "scaffolding_pending": 0,
+  "pending_orders": []
+ },
+ "items": [
+  {
+   "administration_order": 14,
+   "id": "ipip_neo_201",
+   "facet": "altruism",
+   "key": 1,
+   "text_en": "Make people feel welcome.",
+   "text_master": "Make people feel welcome.",
+   "text_zh": "让别人感到被欢迎",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.106,
+    "item_total_r": 0.5364,
+    "missing_rate": 0.0053,
+    "neutral_rate": 0.1642
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会让别人感到被欢迎",
+    "key_term": {
+     "term": "make people feel welcome",
+     "sense_here": "让来者感到被接纳",
+     "not_this": "「有礼貌」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "与「友好」面向混同",
+      "correction": "那是情感温度，本题是行为。"
+     },
+     {
+      "misreading": "把「有礼貌」当成「让人感到欢迎」",
+      "correction": "礼貌是规范，欢迎是主动的接纳。"
+     }
+    ],
+    "counts_as": [
+     "会主动招呼新来的人"
+    ],
+    "does_not_count_as": [
+     "礼貌但被动"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「让别人感到被欢迎」很明确。**注意它与「友好」（E1）面向的区别**：那面向偏**情感温度**，本题偏**主动做出的接纳行为**。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「make people feel welcome」"
+   }
+  },
+  {
+   "administration_order": 44,
+   "id": "ipip_neo_202",
+   "facet": "altruism",
+   "key": 1,
+   "text_en": "Anticipate the needs of others.",
+   "text_master": "Anticipate the needs of others.",
+   "text_zh": "会预先想到别人的需要",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.431,
+    "item_total_r": 0.4948,
+    "missing_rate": 0.0051,
+    "neutral_rate": 0.1813
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否会预先想到别人的需要",
+    "key_term": {
+     "term": "anticipate",
+     "sense_here": "提前想到、预见",
+     "not_this": "「体贴」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「别人提出后帮忙」当成「预先想到」",
+      "correction": "本题强调在提出之前。"
+     },
+     {
+      "misreading": "与「同情」面向混同",
+      "correction": "那是情感共鸣。"
+     }
+    ],
+    "counts_as": [
+     "常能在别人开口前就留意到他们的需要"
+    ],
+    "does_not_count_as": [
+     "别人说了才注意到"
+    ],
+    "edge_cases": null,
+    "localization_note": "**「Anticipate」强调「在你被要求之前就想到」**，比「体贴」更具体。本题测的是**主动的关注**，不只是被动的响应。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「anticipate」"
+   }
+  },
+  {
+   "administration_order": 74,
+   "id": "ipip_neo_203",
+   "facet": "altruism",
+   "key": 1,
+   "text_en": "Love to help others.",
+   "text_master": "Love to help others.",
+   "text_zh": "乐于帮助他人",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.062,
+    "item_total_r": 0.6089,
+    "missing_rate": 0.0031,
+    "neutral_rate": 0.1657
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否乐于帮助他人",
+    "key_term": {
+     "term": "love to help",
+     "sense_here": "乐于、享受帮助",
+     "not_this": "「会帮助」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「会帮忙」当成「乐于帮忙」",
+      "correction": "本题问是否享受。"
+     },
+     {
+      "misreading": "因为自己帮得不多而选低分",
+      "correction": "本题问意愿，不是数量。"
+     }
+    ],
+    "counts_as": [
+     "帮忙时是发自内心愿意的"
+    ],
+    "does_not_count_as": [
+     "出于义务才帮"
+    ],
+    "edge_cases": null,
+    "localization_note": "**「Love to」强调乐意与享受**，不只是「会去做」。**出于责任感而帮忙但内心不情愿的人，本题应给中等分。** 中文「乐于」准确传达了这一层。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「love to help」"
+   }
+  },
+  {
+   "administration_order": 104,
+   "id": "ipip_neo_204",
+   "facet": "altruism",
+   "key": 1,
+   "text_en": "Am concerned about others.",
+   "text_master": "Am concerned about others.",
+   "text_zh": "关心他人",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.076,
+    "item_total_r": 0.6203,
+    "missing_rate": 0.0038,
+    "neutral_rate": 0.104
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否关心他人",
+    "key_term": {
+     "term": "concerned about",
+     "sense_here": "关心、挂念",
+     "not_this": "「对人有兴趣」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「对人好奇」当成「关心」",
+      "correction": "好奇与挂念不同。"
+     },
+     {
+      "misreading": "因为不擅表达关心而选低分",
+      "correction": "本题问内心是否挂念。"
+     }
+    ],
+    "counts_as": [
+     "会在意别人的处境与感受"
+    ],
+    "does_not_count_as": [
+     "只是对人好奇"
+    ],
+    "edge_cases": null,
+    "localization_note": "**本题是本面向最泛化的一题**（题目-总分相关 .62，最高）。它几乎等同于「利他」的总体自评。中文「关心他人」表达清楚。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「concerned about」"
+   }
+  },
+  {
+   "administration_order": 134,
+   "id": "ipip_neo_205",
+   "facet": "altruism",
+   "key": 1,
+   "text_en": "Have a good word for everyone.",
+   "text_master": "Have a good word for everyone.",
+   "text_zh": "对谁都说好话",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.748,
+    "item_total_r": 0.4595,
+    "missing_rate": 0.0033,
+    "neutral_rate": 0.2353
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "你是否对谁都说好话",
+    "key_term": {
+     "term": "a good word for everyone",
+     "sense_here": "对每个人都有正面评价",
+     "not_this": "「乐于助人」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把它当成「助人」",
+      "correction": "本题说的是评价方式。"
+     },
+     {
+      "misreading": "与「合作」（A4）混同",
+      "correction": "那面向管冲突时是否让步。"
+     }
+    ],
+    "counts_as": [
+     "很少对他人作负面评价"
+    ],
+    "does_not_count_as": [
+     "乐于帮忙但评价直率"
+    ],
+    "edge_cases": "**本题偏「友善评价」，与「为他人付出」的构念有偏移。**",
+    "localization_note": "**本题的题目-总分相关 .46，内容与本面向核心（为他人付出）不同**——「对谁都说好话」更接近**友善评价**或**回避冲突**（与宜人性的其他面向交叠）。**一个乐于实打实帮忙、但对人评价直率的人，本题会得低分。** 这是本面向内容异质性的一处。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「a good word for everyone」"
+   }
+  },
+  {
+   "administration_order": 164,
+   "id": "ipip_neo_206",
+   "facet": "altruism",
+   "key": -1,
+   "text_en": "Look down on others.",
+   "text_master": "Look down on others.",
+   "text_zh": "看不起别人",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.541,
+    "item_total_r": 0.4816,
+    "missing_rate": 0.004,
+    "neutral_rate": 0.161
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否看不起别人",
+    "key_term": {
+     "term": "look down on",
+     "sense_here": "轻视、看不上",
+     "not_this": "「不认同某人」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「不认同」当成「看不起」",
+      "correction": "针对行为 vs 针对人。"
+     },
+     {
+      "misreading": "与「谦逊」面向混同",
+      "correction": "那是自我定位。"
+     }
+    ],
+    "counts_as": [
+     "心里常觉得很多人不如自己"
+    ],
+    "does_not_count_as": [
+     "对具体做法有批评但不轻视人"
+    ],
+    "edge_cases": null,
+    "localization_note": "**关键区分**：不认同某人的做法 ≠ 看不起这个人。本题指**对他人整体的轻视**。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「look down on」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 194,
+   "id": "ipip_neo_207",
+   "facet": "altruism",
+   "key": -1,
+   "text_en": "Am indifferent to the feelings of others.",
+   "text_master": "Am indifferent to the feelings of others.",
+   "text_zh": "对他人的感受漠不关心",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.086,
+    "item_total_r": 0.5454,
+    "missing_rate": 0.0043,
+    "neutral_rate": 0.1596
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否对他人的感受漠不关心",
+    "key_term": {
+     "term": "indifferent",
+     "sense_here": "漠不关心、无所谓",
+     "not_this": "「不知道对方感受」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「不知道如何回应」当成「漠不关心」",
+      "correction": "在意但不会表达仍属于在意。"
+     },
+     {
+      "misreading": "与「同情」面向混同",
+      "correction": "情感共鸣 vs 态度关注。"
+     }
+    ],
+    "counts_as": [
+     "别人的情绪状态对你影响不大"
+    ],
+    "does_not_count_as": [
+     "在意但不知怎么安慰"
+    ],
+    "edge_cases": null,
+    "localization_note": "**与「同情」（A6）面向的区别**：同情是**是否被打动**（情感反应），本题是**是否在意**（态度）。可以被打动但不知如何回应，那是另一回事。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「indifferent」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 224,
+   "id": "ipip_neo_208",
+   "facet": "altruism",
+   "key": -1,
+   "text_en": "Make people feel uncomfortable.",
+   "text_master": "Make people feel uncomfortable.",
+   "text_zh": "让别人感到不自在",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.852,
+    "item_total_r": 0.4513,
+    "missing_rate": 0.0044,
+    "neutral_rate": 0.1666
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否会让别人感到不自在",
+    "key_term": {
+     "term": "uncomfortable",
+     "sense_here": "不自在、窘迫",
+     "not_this": "「提出不同意见」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「表达不同意见让对方不适」当成本题",
+      "correction": "本题偏持续的社交不适感。"
+     },
+     {
+      "misreading": "与「自我意识」面向混同",
+      "correction": "那是自己不适，本题是让别人不适。"
+     }
+    ],
+    "counts_as": [
+     "常在不经意间让对方觉得尴尬"
+    ],
+    "does_not_count_as": [
+     "有时会说错话但整体还好"
+    ],
+    "edge_cases": "**本题偏社交技巧，与「关心他人」略有偏移。**",
+    "localization_note": "**本题的题目-总分相关 .45，在本面向偏低**——「让别人不自在」更接近**社交技巧**或**社交敏感度**（与自我意识、友好面向交叠），而不完全是「是否关心他人」。**一个真心想帮人但不擅察言观色的人，本题会得高分。**",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「uncomfortable」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 254,
+   "id": "ipip_neo_209",
+   "facet": "altruism",
+   "key": -1,
+   "text_en": "Turn my back on others.",
+   "text_master": "Turn my back on others.",
+   "text_zh": "对别人置之不理",
+   "text_zh_source": "project_translation",
+   "diagnostics": {
+    "priority_score": 0.114,
+    "item_total_r": 0.5235,
+    "missing_rate": 0.0036,
+    "neutral_rate": 0.088
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否对别人置之不理",
+    "key_term": {
+     "term": "turn my back on",
+     "sense_here": "转身不理、不理会",
+     "not_this": "「拒绝帮忙」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「不插手」当成「置之不理」",
+      "correction": "尊重边界是不主动介入，置之不理是明明需要也不理会。"
+     },
+     {
+      "misreading": "与第 5 题（看不起）混同",
+      "correction": "轻视 vs 不理会。"
+     }
+    ],
+    "counts_as": [
+     "别人求助时也会选择不理"
+    ],
+    "does_not_count_as": [
+     "尊重边界但需要时会帮"
+    ],
+    "edge_cases": null,
+    "localization_note": "中文「置之不理」很贴切。**注意与「边界感」的区别**：尊重别人的边界而不主动插手，不属于「置之不理」。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「turn my back on」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  },
+  {
+   "administration_order": 284,
+   "id": "ipip_neo_210",
+   "facet": "altruism",
+   "key": -1,
+   "text_en": "Take no time for others.",
+   "text_master": "Take no time for others.",
+   "text_zh": "不愿为他人花费时间",
+   "text_zh_source": "mandarin_baseline",
+   "diagnostics": {
+    "priority_score": 0.1,
+    "item_total_r": 0.5522,
+    "missing_rate": 0.005,
+    "neutral_rate": 0.0947
+   },
+   "scaffolding": {
+    "status": "AUTHORED",
+    "asks": "（反向题）你是否不愿为他人花费时间",
+    "key_term": {
+     "term": "take no time for",
+     "sense_here": "不肯花时间",
+     "not_this": "「自己很忙」"
+    },
+    "common_misreadings": [
+     {
+      "misreading": "把「忙」当成「不愿」",
+      "correction": "本题问意愿。"
+     },
+     {
+      "misreading": "与第 8 题（置之不理）混同",
+      "correction": "意愿 vs 行为。"
+     }
+    ],
+    "counts_as": [
+     "不愿意把时间用在别人的事上"
+    ],
+    "does_not_count_as": [
+     "想帮但确实忙不过来"
+    ],
+    "edge_cases": null,
+    "localization_note": "**关键区分**：忙得没时间 ≠ 不愿花时间。本题问的是**意愿**。若你很想帮但确实抽不出时间，本题应给低分。",
+    "provenance": "editorial_clarification",
+    "evidence_anchor": "题干承重词为「take no time for」；本题为反向计分",
+    "reverse_item_note": "反向题。题干表述的是本面向的**低**端。照实作答即可，系统会反向计分。"
+   }
+  }
+ ]
+}

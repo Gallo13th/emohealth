@@ -1,0 +1,177 @@
+{
+ "schema": "en-repairs/1.0",
+ "repairs": {
+  "pid5_014": {
+   "verbatim": "I do things to makesure people notice me.",
+   "repaired": "I do things to make sure people notice me.",
+   "kinds": [
+    "missing_space"
+   ]
+  },
+  "pid5_026": {
+   "verbatim": "I almost never enjoylife.",
+   "repaired": "I almost never enjoy life.",
+   "kinds": [
+    "missing_space"
+   ]
+  },
+  "pid5_040": {
+   "verbatim": "To behonest, I’m just more important than other people.",
+   "repaired": "To be honest, I’m just more important than other people.",
+   "kinds": [
+    "missing_space"
+   ]
+  },
+  "pid5_051": {
+   "verbatim": "I’ve missed out on things becauseI was busy trying to get something I was doing exactly right.",
+   "repaired": "I’ve missed out on things because I was busy trying to get something I was doing exactly right.",
+   "kinds": [
+    "missing_space"
+   ]
+  },
+  "pid5_078": {
+   "verbatim": "It is hard forme to shift from one activityto another.",
+   "repaired": "It is hard for me to shift from one activity to another.",
+   "kinds": [
+    "missing_space"
+   ]
+  },
+  "pid5_082": {
+   "verbatim": "Ikeep my distance from people.",
+   "repaired": "I keep my distance from people.",
+   "kinds": [
+    "missing_space"
+   ]
+  },
+  "pid5_086": {
+   "verbatim": "I’m so ashamed by how I’ve let people down in lotsof little ways.",
+   "repaired": "I’m so ashamed by how I’ve let people down in lots of little ways.",
+   "kinds": [
+    "missing_space"
+   ]
+  },
+  "pid5_102": {
+   "verbatim": "I ama highly emotional person.",
+   "repaired": "I am a highly emotional person.",
+   "kinds": [
+    "missing_space"
+   ]
+  },
+  "pid5_113": {
+   "verbatim": "My behavior is often bold and grabs peoples’attention.",
+   "repaired": "My behavior is often bold and grabs people’s attention.",
+   "kinds": [
+    "apostrophe_placement",
+    "missing_space"
+   ],
+   "erratum": true,
+   "why": "源件拼写/撇号错误（`peoples’` 应为 `people’s`）+ 缺空格。判据：① 语义唯一——`grabs peoples’ attention` 里 `peoples`（各民族）读不通，原意只能是 `people’s`（别人的）；② `people’s` 是规范拼写，`peoples’` 是撇号位置错误；③ 已获 Lead 裁决（2026-10-05）批准按源件拼写错误修正。此信息仅留数据层，不上界面。"
+  },
+  "pid5_127": {
+   "verbatim": "I fear being alone inlife more than anything else.",
+   "repaired": "I fear being alone in life more than anything else.",
+   "kinds": [
+    "missing_space"
+   ]
+  },
+  "pid5_129": {
+   "verbatim": "I’m often pretty careless with my own and others’things.",
+   "repaired": "I’m often pretty careless with my own and others’ things.",
+   "kinds": [
+    "apostrophe_placement"
+   ]
+  },
+  "pid5_130": {
+   "verbatim": "I am a very anxiousperson.",
+   "repaired": "I am a very anxious person.",
+   "kinds": [
+    "missing_space"
+   ]
+  },
+  "pid5_133": {
+   "verbatim": "It seems like I’m always getting a “raw deal”from others.",
+   "repaired": "It seems like I’m always getting a “raw deal” from others.",
+   "kinds": [
+    "punctuation_spacing"
+   ]
+  },
+  "pid5_139": {
+   "verbatim": "Ihave seen things that weren’t really there.",
+   "repaired": "I have seen things that weren’t really there.",
+   "kinds": [
+    "missing_space"
+   ]
+  },
+  "pid5_154": {
+   "verbatim": "Sometimes I feel “controlled”by thoughts that belong to someone else.",
+   "repaired": "Sometimes I feel “controlled” by thoughts that belong to someone else.",
+   "kinds": [
+    "punctuation_spacing"
+   ]
+  },
+  "pid5_156": {
+   "verbatim": "I make promises that I don’t really intendto keep.",
+   "repaired": "I make promises that I don’t really intend to keep.",
+   "kinds": [
+    "missing_space"
+   ]
+  },
+  "pid5_166": {
+   "verbatim": "It’s no big deal if I hurt other peoples’feelings.",
+   "repaired": "It’s no big deal if I hurt other people’s feelings.",
+   "kinds": [
+    "apostrophe_placement",
+    "missing_space"
+   ],
+   "erratum": true,
+   "why": "源件拼写/撇号错误（`peoples’` 应为 `people’s`）+ 缺空格。判据：① 语义唯一——`hurt other peoples’ feelings` 里 `peoples`（各民族）读不通，原意只能是 `people’s`；② `people’s` 是规范拼写；③ 已获 Lead 裁决（2026-10-05）批准。此信息仅留数据层，不上界面。"
+  },
+  "pid5_171": {
+   "verbatim": "I’ve skippedtown to avoid responsibilities.",
+   "repaired": "I’ve skipped town to avoid responsibilities.",
+   "kinds": [
+    "missing_space"
+   ]
+  },
+  "pid5_175": {
+   "verbatim": "I never want tobe alone.",
+   "repaired": "I never want to be alone.",
+   "kinds": [
+    "missing_space"
+   ]
+  },
+  "pid5_183": {
+   "verbatim": "I don’t care about other peoples’problems.",
+   "repaired": "I don’t care about other people’s problems.",
+   "kinds": [
+    "apostrophe_placement",
+    "missing_space"
+   ],
+   "erratum": true,
+   "why": "源件拼写/撇号错误（`peoples’` 应为 `people’s`）+ 缺空格。判据：① 语义唯一——`care about other peoples’ problems` 里 `peoples` 读不通，原意只能是 `people’s`；② 平行证据——archive 的 IPIP 对应句写作 `other people's problems`（`archive/ipip/site/30FacetNEO-PI-RItems.htm` 等 41 处）；③ 已获 Lead 裁决（2026-10-05）批准。此信息仅留数据层，不上界面。"
+  },
+  "pid5_188": {
+   "verbatim": "It makes me really angry when people insult mein even a minor way.",
+   "repaired": "It makes me really angry when people insult me in even a minor way.",
+   "kinds": [
+    "missing_space"
+   ]
+  },
+  "pid5_190": {
+   "verbatim": "I suspect that even my so-called “friends”betray me a lot.",
+   "repaired": "I suspect that even my so-called “friends” betray me a lot.",
+   "kinds": [
+    "punctuation_spacing"
+   ]
+  },
+  "pid5_213": {
+   "verbatim": "I often “zone out”and then suddenly come to and realize that a lot of timehas passed.",
+   "repaired": "I often “zone out” and then suddenly come to and realize that a lot of time has passed.",
+   "kinds": [
+    "missing_space",
+    "punctuation_spacing"
+   ]
+  }
+ },
+ "needs_lead_review": {}
+}
