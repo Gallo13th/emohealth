@@ -1,5 +1,5 @@
 # EmoHealth 打包清单
-# 生成时间 2026-10-05T20:34:49
+# 生成时间 2026-10-05T20:36:21
 # 文件总数 2539（核心 525，档案 2014）
 # 总大小 736.1 MB
 #
@@ -273,7 +273,7 @@
       6687  tools/analyze/diagnose_items.py
       9854  tools/analyze/optimize_tier_design.py
       1484  tools/analyze/probe_engine_rtotal.py
-     10704  tools/backup_archive.py
+     12419  tools/backup_archive.py
       4486  tools/build/attach_linkage.py
       5840  tools/build/attach_norms.py
       2627  tools/build/batch_convert_ipip.py

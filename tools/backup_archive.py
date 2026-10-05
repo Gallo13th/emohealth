@@ -191,6 +191,8 @@ def main() -> int:
     ap.add_argument("--dest", default=DEFAULT_DEST, help=f"备份目标目录（默认 {DEFAULT_DEST}）")
     ap.add_argument("--only", choices=["archive", "repo"], help="只备份其中一个 payload")
     ap.add_argument("--verify-only", action="store_true", help="只校验，不拷贝")
+    ap.add_argument("--force", action="store_true",
+                    help="目标目录已存在且不带本仓库标记时也照写（默认拒绝，防盘符错位）")
     args = ap.parse_args()
 
     root = str(find_root())
@@ -207,7 +209,27 @@ def main() -> int:
         head = dest.split(os.sep)[0] + os.sep
         if not os.path.isdir(head):
             print(f"❌ 目标盘不存在：{head}")
+            print("   （移动硬盘没插上，或盘符变了。插好后重跑；盘符不是 D 时用 --dest 指定。）")
             return 2
+        # 移动硬盘特有的风险：盘符由系统分配，**插拔顺序不同就可能变成 E:/F:**，
+        # 而 D:/ 可能已被另一个卷占用。若不做检查，脚本会静默把 790 MB 写进**别的盘**，
+        # 而且"备份成功"的报告会让人以为有备份、实际那份在错误的卷上——静默失败里最坏的一种。
+        # 所以：目标要么不存在/为空（首次备份），要么已经是我们自己的备份（BACKUP-INFO.json
+        # 的 source_root 与本仓库一致）。否则拒绝写入，要求显式 --dest 或 --force。
+        if os.path.isdir(dest) and os.listdir(dest) and not args.force:
+            marker = os.path.join(dest, "BACKUP-INFO.json")
+            same_repo = False
+            if os.path.isfile(marker):
+                try:
+                    with open(marker, encoding="utf-8") as fh:
+                        same_repo = json.load(fh).get("source_root") == root
+                except Exception:
+                    same_repo = False
+            if not same_repo:
+                print(f"❌ 目标目录已存在，但不是本仓库的备份：{dest}")
+                print("   拒绝写入——盘符很可能被系统分给了别的卷（移动硬盘常见）。")
+                print("   确认路径后：--dest <正确路径>；确实是首次在此目录备份才用 --force。")
+                return 2
         os.makedirs(dest, exist_ok=True)
 
     payloads = {}
