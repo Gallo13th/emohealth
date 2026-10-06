@@ -104,12 +104,251 @@
     8,
     40
    ],
-   "bands": [],
+   "bands": [
+    {
+     "label": "None to slight",
+     "lo": null,
+     "hi": 55.0,
+     "lo_inclusive": false,
+     "hi_inclusive": false,
+     "verbatim": "Less than 55"
+    },
+    {
+     "label": "Mild",
+     "lo": 55.0,
+     "hi": 59.9,
+     "lo_inclusive": true,
+     "hi_inclusive": true,
+     "verbatim": "55.0—59.9"
+    },
+    {
+     "label": "Moderate",
+     "lo": 60.0,
+     "hi": 69.9,
+     "lo_inclusive": true,
+     "hi_inclusive": true,
+     "verbatim": "60.0—69.9"
+    },
+    {
+     "label": "Severe",
+     "lo": 70.0,
+     "hi": null,
+     "lo_inclusive": true,
+     "hi_inclusive": false,
+     "verbatim": "70 and over"
+    }
+   ],
    "cutoff": null,
-   "tscore_table": null,
-   "source_of_criteria": "pending_external",
-   "pending_reason": "手册 Scoring 段要求使用 T-score table，但**表不在册子里**（已核查：无 raw→T 成对数字）。需另取 PROMIS 官方 scoring manual 才能给 T 分；在取到之前只给原始分。",
-   "evidence": "archive/scales/DSM5TR-L2-Depression/manual.pdf 的 Scoring and Interpretation 段"
+   "tscore_table": {
+    "form": "PROMIS Adult Short Form v1.0 – Depression 8b",
+    "metric": "T 分（美国一般人群 M=50, SD=10）",
+    "columns": [
+     "raw",
+     "t_score",
+     "se"
+    ],
+    "raw_range": [
+     8,
+     40
+    ],
+    "rows": [
+     [
+      8,
+      37.1,
+      5.5
+     ],
+     [
+      9,
+      43.3,
+      3.4
+     ],
+     [
+      10,
+      46.2,
+      2.8
+     ],
+     [
+      11,
+      48.2,
+      2.4
+     ],
+     [
+      12,
+      49.8,
+      2.2
+     ],
+     [
+      13,
+      51.2,
+      2.0
+     ],
+     [
+      14,
+      52.3,
+      1.9
+     ],
+     [
+      15,
+      53.4,
+      1.8
+     ],
+     [
+      16,
+      54.3,
+      1.8
+     ],
+     [
+      17,
+      55.3,
+      1.7
+     ],
+     [
+      18,
+      56.2,
+      1.7
+     ],
+     [
+      19,
+      57.1,
+      1.7
+     ],
+     [
+      20,
+      57.9,
+      1.7
+     ],
+     [
+      21,
+      58.8,
+      1.7
+     ],
+     [
+      22,
+      59.7,
+      1.8
+     ],
+     [
+      23,
+      60.7,
+      1.8
+     ],
+     [
+      24,
+      61.6,
+      1.8
+     ],
+     [
+      25,
+      62.5,
+      1.8
+     ],
+     [
+      26,
+      63.5,
+      1.8
+     ],
+     [
+      27,
+      64.4,
+      1.8
+     ],
+     [
+      28,
+      65.4,
+      1.8
+     ],
+     [
+      29,
+      66.4,
+      1.8
+     ],
+     [
+      30,
+      67.4,
+      1.8
+     ],
+     [
+      31,
+      68.3,
+      1.8
+     ],
+     [
+      32,
+      69.3,
+      1.8
+     ],
+     [
+      33,
+      70.4,
+      1.8
+     ],
+     [
+      34,
+      71.4,
+      1.8
+     ],
+     [
+      35,
+      72.5,
+      1.8
+     ],
+     [
+      36,
+      73.6,
+      1.8
+     ],
+     [
+      37,
+      74.8,
+      1.9
+     ],
+     [
+      38,
+      76.2,
+      2.0
+     ],
+     [
+      39,
+      77.9,
+      2.4
+     ],
+     [
+      40,
+      81.1,
+      3.4
+     ]
+    ],
+    "source": {
+     "file": "archive/literature/norms/healthmeasures2023_promis-depression-cat-scoring-manual.pdf",
+     "page": 15,
+     "section": "APPENDIX 1 — SCORING TABLES",
+     "table_title": "PROMIS Adult Short Form v1.0 – Depression 8b Short Form Conversion Table"
+    },
+    "verification": {
+     "worked_example_verbatim": "For example, if 6 of 8 items were answered and the sum of those 6 responses was 20, the prorated raw score would be 20 X 8/6 = 26.67. The T-score in this example would be that T-score associated with the rounded whole number raw score (in this case 27, for a T-score of 64.4).",
+     "lookup": "算例 raw 27 → 查本表得 T 64.4（与册子印的 64.4 一致）"
+    },
+    "completeness": "raw 8–40 连续无缺口，共 33 行"
+   },
+   "source_of_criteria": "archived_scoring_manual",
+   "evidence": "archive/scales/DSM5TR-L2-Depression/manual.pdf 的 Scoring and Interpretation 段",
+   "bands_unit": "T 分（美国一般人群 M=50, SD=10）",
+   "bands_boundary_rule": "T 分按 **1 位小数**报告，故 55.0–59.9 与 60.0–69.9 在该分辨率下无缝；`lo`/`hi` 为 `null` 表示无界（−∞ / +∞），`*_inclusive` 标明该端开闭。",
+   "bands_source": {
+    "file": "archive/scales/DSM5TR-L2-Depression/manual.pdf",
+    "page": 9,
+    "section": "Instructions to Clinicians — Scoring and Interpretation"
+   },
+   "bands_verification": {
+    "verbatim": "interpreted as follows: Less than 55 = None to slight 55.0—59.9 = Mild 60.0 —69.9 = Moderate70 and over = Severe",
+    "labels_found": [
+     "None to slight",
+     "Mild",
+     "Moderate",
+     "Severe"
+    ],
+    "completeness": "首档下界与末档上界为开区间；相邻档按 0.1 分辨率严丝合缝、无重叠"
+   }
   },
   "DSM5TR-L2-Anger": {
    "kind": "t_score",
@@ -119,12 +358,191 @@
     5,
     25
    ],
-   "bands": [],
+   "bands": [
+    {
+     "label": "None to slight",
+     "lo": null,
+     "hi": 55.0,
+     "lo_inclusive": false,
+     "hi_inclusive": false,
+     "verbatim": "Less than 55"
+    },
+    {
+     "label": "Mild",
+     "lo": 55.0,
+     "hi": 59.9,
+     "lo_inclusive": true,
+     "hi_inclusive": true,
+     "verbatim": "55.0—59.9"
+    },
+    {
+     "label": "Moderate",
+     "lo": 60.0,
+     "hi": 69.9,
+     "lo_inclusive": true,
+     "hi_inclusive": true,
+     "verbatim": "60.0—69.9"
+    },
+    {
+     "label": "Severe",
+     "lo": 70.0,
+     "hi": null,
+     "lo_inclusive": true,
+     "hi_inclusive": false,
+     "verbatim": "70 and over"
+    }
+   ],
    "cutoff": null,
-   "tscore_table": null,
-   "source_of_criteria": "pending_external",
-   "pending_reason": "手册 Scoring 段要求使用 T-score table，但**表不在册子里**（已核查：无 raw→T 成对数字）。需另取 PROMIS 官方 scoring manual 才能给 T 分；在取到之前只给原始分。",
-   "evidence": "archive/scales/DSM5TR-L2-Anger/manual.pdf 的 Scoring and Interpretation 段"
+   "tscore_table": {
+    "form": "PROMIS Anger Short Form（APA 册内 5 题版）",
+    "metric": "T 分（美国一般人群 M=50, SD=10）",
+    "columns": [
+     "raw",
+     "t_score",
+     "se"
+    ],
+    "raw_range": [
+     5,
+     25
+    ],
+    "rows": [
+     [
+      5,
+      32.9,
+      5.3
+     ],
+     [
+      6,
+      38.1,
+      4.0
+     ],
+     [
+      7,
+      41.3,
+      3.7
+     ],
+     [
+      8,
+      44.0,
+      3.5
+     ],
+     [
+      9,
+      46.3,
+      3.4
+     ],
+     [
+      10,
+      48.4,
+      3.3
+     ],
+     [
+      11,
+      50.5,
+      3.3
+     ],
+     [
+      12,
+      52.6,
+      3.2
+     ],
+     [
+      13,
+      54.7,
+      3.2
+     ],
+     [
+      14,
+      56.7,
+      3.2
+     ],
+     [
+      15,
+      58.8,
+      3.2
+     ],
+     [
+      16,
+      60.8,
+      3.2
+     ],
+     [
+      17,
+      62.9,
+      3.2
+     ],
+     [
+      18,
+      65.0,
+      3.2
+     ],
+     [
+      19,
+      67.2,
+      3.2
+     ],
+     [
+      20,
+      69.4,
+      3.3
+     ],
+     [
+      21,
+      71.7,
+      3.3
+     ],
+     [
+      22,
+      74.1,
+      3.3
+     ],
+     [
+      23,
+      76.8,
+      3.4
+     ],
+     [
+      24,
+      79.7,
+      3.5
+     ],
+     [
+      25,
+      83.3,
+      3.9
+     ]
+    ],
+    "source": {
+     "file": "archive/scales/DSM5TR-L2-Anger/manual.pdf",
+     "page": 9,
+     "section": "Instructions to Clinicians — Scoring and Interpretation（表随正文）",
+     "table_title": "Raw / T-Score / SE 转换表（APA 册内印出）"
+    },
+    "verification": {
+     "worked_example_verbatim": "For example, if 4 of 5 items were answered and the sum of those 4 responses was 15, the prorated raw score would be 15 X 5/4 = 18.75. The T-score in this example would be that T-score associated with the rounded whole number raw score (in this case 19, for a T-score of 67.2).",
+     "lookup": "算例 raw 19 → 查本表得 T 67.2（与册子印的 67.2 一致）"
+    },
+    "completeness": "raw 5–25 连续无缺口，共 21 行"
+   },
+   "source_of_criteria": "manual",
+   "evidence": "archive/scales/DSM5TR-L2-Anger/manual.pdf 的 Scoring and Interpretation 段",
+   "bands_unit": "T 分（美国一般人群 M=50, SD=10）",
+   "bands_boundary_rule": "T 分按 **1 位小数**报告，故 55.0–59.9 与 60.0–69.9 在该分辨率下无缝；`lo`/`hi` 为 `null` 表示无界（−∞ / +∞），`*_inclusive` 标明该端开闭。",
+   "bands_source": {
+    "file": "archive/scales/DSM5TR-L2-Anger/manual.pdf",
+    "page": 9,
+    "section": "Instructions to Clinicians — Scoring and Interpretation"
+   },
+   "bands_verification": {
+    "verbatim": "interpreted as follows: Less than 5 5 = None to slight 14 56.7 3.2 55.0—59.9 = Mild 60.0 —69.9 = Moderate70 and over = Severe",
+    "labels_found": [
+     "None to slight",
+     "Mild",
+     "Moderate",
+     "Severe"
+    ],
+    "completeness": "首档下界与末档上界为开区间；相邻档按 0.1 分辨率严丝合缝、无重叠"
+   }
   },
   "DSM5TR-L2-Anxiety": {
    "kind": "t_score",
@@ -134,12 +552,231 @@
     7,
     35
    ],
-   "bands": [],
+   "bands": [
+    {
+     "label": "None to slight",
+     "lo": null,
+     "hi": 55.0,
+     "lo_inclusive": false,
+     "hi_inclusive": false,
+     "verbatim": "Less than 55"
+    },
+    {
+     "label": "Mild",
+     "lo": 55.0,
+     "hi": 59.9,
+     "lo_inclusive": true,
+     "hi_inclusive": true,
+     "verbatim": "55.0—59.9"
+    },
+    {
+     "label": "Moderate",
+     "lo": 60.0,
+     "hi": 69.9,
+     "lo_inclusive": true,
+     "hi_inclusive": true,
+     "verbatim": "60.0—69.9"
+    },
+    {
+     "label": "Severe",
+     "lo": 70.0,
+     "hi": null,
+     "lo_inclusive": true,
+     "hi_inclusive": false,
+     "verbatim": "70 and over"
+    }
+   ],
    "cutoff": null,
-   "tscore_table": null,
-   "source_of_criteria": "pending_external",
-   "pending_reason": "手册 Scoring 段要求使用 T-score table，但**表不在册子里**（已核查：无 raw→T 成对数字）。需另取 PROMIS 官方 scoring manual 才能给 T 分；在取到之前只给原始分。",
-   "evidence": "archive/scales/DSM5TR-L2-Anxiety/manual.pdf 的 Scoring and Interpretation 段"
+   "tscore_table": {
+    "form": "PROMIS Adult Short Form v1.0 – Anxiety 7a",
+    "metric": "T 分（美国一般人群 M=50, SD=10）",
+    "columns": [
+     "raw",
+     "t_score",
+     "se"
+    ],
+    "raw_range": [
+     7,
+     35
+    ],
+    "rows": [
+     [
+      7,
+      36.3,
+      5.4
+     ],
+     [
+      8,
+      42.1,
+      3.4
+     ],
+     [
+      9,
+      44.7,
+      2.9
+     ],
+     [
+      10,
+      46.7,
+      2.6
+     ],
+     [
+      11,
+      48.4,
+      2.4
+     ],
+     [
+      12,
+      49.9,
+      2.3
+     ],
+     [
+      13,
+      51.3,
+      2.3
+     ],
+     [
+      14,
+      52.6,
+      2.2
+     ],
+     [
+      15,
+      53.8,
+      2.2
+     ],
+     [
+      16,
+      55.1,
+      2.2
+     ],
+     [
+      17,
+      56.3,
+      2.2
+     ],
+     [
+      18,
+      57.6,
+      2.2
+     ],
+     [
+      19,
+      58.8,
+      2.2
+     ],
+     [
+      20,
+      60.0,
+      2.2
+     ],
+     [
+      21,
+      61.3,
+      2.2
+     ],
+     [
+      22,
+      62.6,
+      2.2
+     ],
+     [
+      23,
+      63.8,
+      2.2
+     ],
+     [
+      24,
+      65.1,
+      2.2
+     ],
+     [
+      25,
+      66.4,
+      2.2
+     ],
+     [
+      26,
+      67.7,
+      2.2
+     ],
+     [
+      27,
+      68.9,
+      2.2
+     ],
+     [
+      28,
+      70.2,
+      2.2
+     ],
+     [
+      29,
+      71.5,
+      2.2
+     ],
+     [
+      30,
+      72.9,
+      2.2
+     ],
+     [
+      31,
+      74.3,
+      2.2
+     ],
+     [
+      32,
+      75.8,
+      2.3
+     ],
+     [
+      33,
+      77.4,
+      2.4
+     ],
+     [
+      34,
+      79.5,
+      2.7
+     ],
+     [
+      35,
+      82.7,
+      3.5
+     ]
+    ],
+    "source": {
+     "file": "archive/literature/norms/healthmeasures2023_promis-anxiety-cat-scoring-manual.pdf",
+     "page": 14,
+     "section": "APPENDIX 1 – SCORING TABLES",
+     "table_title": "PROMIS Adult Short Form v1.0 – Anxiety 7a Short Form Conversion Table"
+    },
+    "verification": {
+     "worked_example_verbatim": "For example, if 6 of 7 items were answered and the sum of those 6 responses was 20, the prorated raw score would be 20 X 7/6 = 23.33. The T-score in this example would be that T-score associated with the rounded whole number raw score (in this case 23, for a T-score of 63.8).",
+     "lookup": "算例 raw 23 → 查本表得 T 63.8（与册子印的 63.8 一致）"
+    },
+    "completeness": "raw 7–35 连续无缺口，共 29 行"
+   },
+   "source_of_criteria": "archived_scoring_manual",
+   "evidence": "archive/scales/DSM5TR-L2-Anxiety/manual.pdf 的 Scoring and Interpretation 段",
+   "bands_unit": "T 分（美国一般人群 M=50, SD=10）",
+   "bands_boundary_rule": "T 分按 **1 位小数**报告，故 55.0–59.9 与 60.0–69.9 在该分辨率下无缝；`lo`/`hi` 为 `null` 表示无界（−∞ / +∞），`*_inclusive` 标明该端开闭。",
+   "bands_source": {
+    "file": "archive/scales/DSM5TR-L2-Anxiety/manual.pdf",
+    "page": 9,
+    "section": "Instructions to Clinicians — Scoring and Interpretation"
+   },
+   "bands_verification": {
+    "verbatim": "interpreted as follows:Less than 5 5 = None to slight55. 0—59.9 = Mild 60.0—69.9 = Moderate70 and over = Severe",
+    "labels_found": [
+     "None to slight",
+     "Mild",
+     "Moderate",
+     "Severe"
+    ],
+    "completeness": "首档下界与末档上界为开区间；相邻档按 0.1 分辨率严丝合缝、无重叠"
+   }
   },
   "DSM5TR-L2-Sleep": {
    "kind": "t_score",
@@ -149,12 +786,252 @@
     8,
     40
    ],
-   "bands": [],
+   "bands": [
+    {
+     "label": "None to slight",
+     "lo": null,
+     "hi": 55.0,
+     "lo_inclusive": false,
+     "hi_inclusive": false,
+     "verbatim": "Less than 55"
+    },
+    {
+     "label": "Mild",
+     "lo": 55.0,
+     "hi": 59.9,
+     "lo_inclusive": true,
+     "hi_inclusive": true,
+     "verbatim": "55.0—59.9"
+    },
+    {
+     "label": "Moderate",
+     "lo": 60.0,
+     "hi": 69.9,
+     "lo_inclusive": true,
+     "hi_inclusive": true,
+     "verbatim": "60.0—69.9"
+    },
+    {
+     "label": "Severe",
+     "lo": 70.0,
+     "hi": null,
+     "lo_inclusive": true,
+     "hi_inclusive": false,
+     "verbatim": "70 and over"
+    }
+   ],
    "cutoff": null,
-   "tscore_table": null,
-   "source_of_criteria": "pending_external",
-   "pending_reason": "手册 Scoring 段要求使用 T-score table，但**表不在册子里**（已核查：无 raw→T 成对数字）。需另取 PROMIS 官方 scoring manual 才能给 T 分；在取到之前只给原始分。",
-   "evidence": "archive/scales/DSM5TR-L2-Sleep/manual.pdf 的 Scoring and Interpretation 段"
+   "tscore_table": {
+    "form": "PROMIS Adult Short Form v1.0 – Sleep Disturbance 8a",
+    "metric": "T 分（美国一般人群 M=50, SD=10）",
+    "columns": [
+     "raw",
+     "t_score",
+     "se"
+    ],
+    "raw_range": [
+     8,
+     40
+    ],
+    "rows": [
+     [
+      8,
+      30.5,
+      4.9
+     ],
+     [
+      9,
+      35.3,
+      3.7
+     ],
+     [
+      10,
+      38.1,
+      3.3
+     ],
+     [
+      11,
+      40.4,
+      3.1
+     ],
+     [
+      12,
+      42.2,
+      3.0
+     ],
+     [
+      13,
+      43.9,
+      2.9
+     ],
+     [
+      14,
+      45.3,
+      2.8
+     ],
+     [
+      15,
+      46.7,
+      2.7
+     ],
+     [
+      16,
+      47.9,
+      2.7
+     ],
+     [
+      17,
+      49.1,
+      2.6
+     ],
+     [
+      18,
+      50.2,
+      2.6
+     ],
+     [
+      19,
+      51.3,
+      2.6
+     ],
+     [
+      20,
+      52.4,
+      2.6
+     ],
+     [
+      21,
+      53.4,
+      2.6
+     ],
+     [
+      22,
+      54.3,
+      2.5
+     ],
+     [
+      23,
+      55.3,
+      2.5
+     ],
+     [
+      24,
+      56.2,
+      2.5
+     ],
+     [
+      25,
+      57.2,
+      2.5
+     ],
+     [
+      26,
+      58.1,
+      2.5
+     ],
+     [
+      27,
+      59.1,
+      2.5
+     ],
+     [
+      28,
+      60.0,
+      2.5
+     ],
+     [
+      29,
+      61.0,
+      2.5
+     ],
+     [
+      30,
+      62.0,
+      2.6
+     ],
+     [
+      31,
+      63.0,
+      2.6
+     ],
+     [
+      32,
+      64.0,
+      2.6
+     ],
+     [
+      33,
+      65.1,
+      2.6
+     ],
+     [
+      34,
+      66.2,
+      2.7
+     ],
+     [
+      35,
+      67.4,
+      2.8
+     ],
+     [
+      36,
+      68.7,
+      2.9
+     ],
+     [
+      37,
+      70.2,
+      3.0
+     ],
+     [
+      38,
+      72.0,
+      3.2
+     ],
+     [
+      39,
+      74.1,
+      3.5
+     ],
+     [
+      40,
+      77.5,
+      4.2
+     ]
+    ],
+    "source": {
+     "file": "archive/literature/norms/healthmeasures2023_promis-sleep-cat-scoring-manual.pdf",
+     "page": 12,
+     "section": "APPENDIX 1 – SCORING TABLES",
+     "table_title": "PROMIS Adult Short Form v1.0 – Sleep Disturbance 8a Short Form Conversion Table"
+    },
+    "verification": {
+     "worked_example_verbatim": "For example, if 6 of 8 items were answered and the sum of those 6 responses was 20, the prorated raw score would be 20 X 8/6 = 26.67. The T-score in this example would be that T-score associated with the rounded whole number raw score (in this case 27, for a T-score of 57.3).",
+     "lookup": "算例 raw 27 → 查本表得 T 59.1（册子印的是 57.3）",
+     "discrepancy": "**与 APA 册子的算例不一致**：册子（©2008-2012）算例给 raw 27 → T 57.3；官方 2023 表给 59.1。官方手册该页明写「The Sleep Disturbance 8a table was revised on 5/22/2014. Instruments scored prior to this date should be re-scored using this table.」→ 官方表为**现行权威**，册子算例系**改订前**旧表的数。本项目按官方现行表给 T 分，并作此留存。（另 3 册 Anxiety/Depression/Anger 的算例与表**逐位吻合**，无此问题。）"
+    },
+    "completeness": "raw 8–40 连续无缺口，共 33 行"
+   },
+   "source_of_criteria": "archived_scoring_manual",
+   "evidence": "archive/scales/DSM5TR-L2-Sleep/manual.pdf 的 Scoring and Interpretation 段",
+   "bands_unit": "T 分（美国一般人群 M=50, SD=10）",
+   "bands_boundary_rule": "T 分按 **1 位小数**报告，故 55.0–59.9 与 60.0–69.9 在该分辨率下无缝；`lo`/`hi` 为 `null` 表示无界（−∞ / +∞），`*_inclusive` 标明该端开闭。",
+   "bands_source": {
+    "file": "archive/scales/DSM5TR-L2-Sleep/manual.pdf",
+    "page": 9,
+    "section": "Instructions to Clinicians — Scoring and Interpretation"
+   },
+   "bands_verification": {
+    "verbatim": "interpreted as follows: Less than 55 = None to slight55.0 —59.9 = Mild 60.0 —69.9 = Moderate 70 and over = Severe",
+    "labels_found": [
+     "None to slight",
+     "Mild",
+     "Moderate",
+     "Severe"
+    ],
+    "completeness": "首档下界与末档上界为开区间；相邻档按 0.1 分辨率严丝合缝、无重叠"
+   }
   }
  }
 }

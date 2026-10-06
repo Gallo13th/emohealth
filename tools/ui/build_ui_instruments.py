@@ -28,6 +28,43 @@ ROOT = find_root()
 OUT_DIR = os.path.join(ROOT, "ui", "instruments")
 MANIFEST = os.path.join(ROOT, "ui", "instruments.js")
 TEXT_DB = os.path.join(ROOT, "data", "text-db", "text-db.json")
+NORMS_DIR = os.path.join(ROOT, "data", "norms")
+
+#: 从 `data/norms/<code>.json` 随前端包下发的**解释性字段**（导出报告要逐字引用；
+#: 界面默认视野一个字都不读它们）。
+#:
+#: ⚠️ 改这里之前先读三条铁律：
+#:   ① **只做加法**：绝不覆盖量表包里已有的 `norms` 键（`setdefault`），也绝不动 `norms_status`；
+#:   ② **绝不下发 `facets` / `domains` / `scales`**——界面用 `norms.{facets|domains|scales}`
+#:      判「有没有常模」（`ui/index.html` 的 `hasNorms`）。下发它们会把门槛型量表（L1/L2）
+#:      误判成「有常模」，默认结果页凭空多出百分位列——违反 D120「界面默认视野只留用户
+#:      要判断的东西」；
+#:   ③ `source.citation` **展平成 `source_citation` 字符串**：`norms.source` 在
+#:      IPIP-NEO / PID-5 的包里本来就是**字符串**，塞个对象进去会让同名字段有两种类型。
+NORMS_EXPLAIN_KEYS = ("status", "interpretation_basis", "unavailable_reason",
+                      "applicability_warning", "reference_sample", "detail_source")
+
+
+def norms_explanation(code: str) -> dict:
+    """读 `data/norms/<code>.json` 的解释性字段（只取有值的）→ 合并进前端包 `norms`。
+
+    为什么需要：`data/norms/dsm5tr-l1.json` 里有一条**权威**的 `unavailable_reason`
+    （「APA 把本册设计为门槛型筛查而非常模参照量表……」），但它原先没随包下发——运行时
+    只剩 `norms_status.reason` 那句弱化版（「归档中未找到可溯源的常模」）。
+    **两句含义不同**：原文是「手册按设计就不提供」，弱化版读起来像「我们没找到」。
+    导出因此做不到逐字引用。这里只补解释性字段，不整包塞（体积与「界面不显示」是两件事）。
+    """
+    p = os.path.join(NORMS_DIR, code.lower() + ".json")
+    if not os.path.exists(p):
+        return {}
+    with open(p, encoding="utf-8") as fh:
+        rec = json.load(fh)
+    out = {k: rec[k] for k in NORMS_EXPLAIN_KEYS if rec.get(k) not in (None, "", [], {})}
+    src = rec.get("source")
+    citation = src.get("citation") if isinstance(src, dict) else None
+    if citation:
+        out["source_citation"] = citation
+    return out
 
 
 def norm(t: str) -> str:
@@ -84,6 +121,11 @@ def lean(d: dict, tdb: dict) -> dict:
         items.append(row)
     prov = {k: v for k, v in (d.get("provenance") or {}).items()
             if k not in ("item_options", "item_options_mirror_note")}
+    # 常模的解释性字段（导出用）：从 `data/norms/<code>.json` 补进 `norms`。
+    # ⚠️ 只做加法（setdefault），且绝不下发 facets/domains/scales——见 NORMS_EXPLAIN_KEYS 的说明。
+    norms = dict(d.get("norms") or {})
+    for k, v in norms_explanation(d["instrument"]).items():
+        norms.setdefault(k, v)
     return {
         "instrument": d["instrument"],
         "display_name": d["display_name"],
@@ -100,7 +142,7 @@ def lean(d: dict, tdb: dict) -> dict:
                            if x.get("reverse_keyed") else {})}
                        for x in d["dimensions"]],
         "scoring": d["scoring"],
-        "norms": d.get("norms", {}),
+        "norms": norms,
         "norms_status": d.get("norms_status", {}),
         # 判读口径（如 DSM-5-TR L1 的「门槛」）：界面据此呈现判定，
         # 而不是硬套百分位——L1 不是常模量表。

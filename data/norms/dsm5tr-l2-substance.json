@@ -18,6 +18,6 @@
   "license": "APA 版权；允许研究人员/临床医生为患者使用而复制"
  },
  "applicability_warning": "各册的分带/分界只对**该册自己的量表与施测方式**有效，不得跨册套用。",
- "notes": "逐册的 kind / 分带 / 分界 / T 分待补状态见 data/criteria/dsm5tr-l2.json；本文档 §4 直接渲染该文件，不复制第二份。",
- "unavailable_reason": ""
+ "notes": "逐册的 kind / 分带 / 分界 / T 分与百分位可用状态见 data/criteria/dsm5tr-l2.json；本文档 §4 直接渲染该文件，不复制第二份。",
+ "unavailable_reason": "本册**逐项**判读（改编自 NIDA-Modified ASSIST）：每一面对应一种物质，各项独立看是否 >0，不求和为总分。它本身不是常模量表，不给出百分位或 T 分。"
 }

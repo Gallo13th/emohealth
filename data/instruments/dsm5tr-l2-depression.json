@@ -194,12 +194,251 @@
    8,
    40
   ],
-  "bands": [],
+  "bands": [
+   {
+    "label": "None to slight",
+    "lo": null,
+    "hi": 55.0,
+    "lo_inclusive": false,
+    "hi_inclusive": false,
+    "verbatim": "Less than 55"
+   },
+   {
+    "label": "Mild",
+    "lo": 55.0,
+    "hi": 59.9,
+    "lo_inclusive": true,
+    "hi_inclusive": true,
+    "verbatim": "55.0—59.9"
+   },
+   {
+    "label": "Moderate",
+    "lo": 60.0,
+    "hi": 69.9,
+    "lo_inclusive": true,
+    "hi_inclusive": true,
+    "verbatim": "60.0—69.9"
+   },
+   {
+    "label": "Severe",
+    "lo": 70.0,
+    "hi": null,
+    "lo_inclusive": true,
+    "hi_inclusive": false,
+    "verbatim": "70 and over"
+   }
+  ],
   "cutoff": null,
-  "tscore_table": null,
-  "source_of_criteria": "pending_external",
-  "pending_reason": "手册 Scoring 段要求使用 T-score table，但**表不在册子里**（已核查：无 raw→T 成对数字）。需另取 PROMIS 官方 scoring manual 才能给 T 分；在取到之前只给原始分。",
-  "evidence": "archive/scales/DSM5TR-L2-Depression/manual.pdf 的 Scoring and Interpretation 段"
+  "tscore_table": {
+   "form": "PROMIS Adult Short Form v1.0 – Depression 8b",
+   "metric": "T 分（美国一般人群 M=50, SD=10）",
+   "columns": [
+    "raw",
+    "t_score",
+    "se"
+   ],
+   "raw_range": [
+    8,
+    40
+   ],
+   "rows": [
+    [
+     8,
+     37.1,
+     5.5
+    ],
+    [
+     9,
+     43.3,
+     3.4
+    ],
+    [
+     10,
+     46.2,
+     2.8
+    ],
+    [
+     11,
+     48.2,
+     2.4
+    ],
+    [
+     12,
+     49.8,
+     2.2
+    ],
+    [
+     13,
+     51.2,
+     2.0
+    ],
+    [
+     14,
+     52.3,
+     1.9
+    ],
+    [
+     15,
+     53.4,
+     1.8
+    ],
+    [
+     16,
+     54.3,
+     1.8
+    ],
+    [
+     17,
+     55.3,
+     1.7
+    ],
+    [
+     18,
+     56.2,
+     1.7
+    ],
+    [
+     19,
+     57.1,
+     1.7
+    ],
+    [
+     20,
+     57.9,
+     1.7
+    ],
+    [
+     21,
+     58.8,
+     1.7
+    ],
+    [
+     22,
+     59.7,
+     1.8
+    ],
+    [
+     23,
+     60.7,
+     1.8
+    ],
+    [
+     24,
+     61.6,
+     1.8
+    ],
+    [
+     25,
+     62.5,
+     1.8
+    ],
+    [
+     26,
+     63.5,
+     1.8
+    ],
+    [
+     27,
+     64.4,
+     1.8
+    ],
+    [
+     28,
+     65.4,
+     1.8
+    ],
+    [
+     29,
+     66.4,
+     1.8
+    ],
+    [
+     30,
+     67.4,
+     1.8
+    ],
+    [
+     31,
+     68.3,
+     1.8
+    ],
+    [
+     32,
+     69.3,
+     1.8
+    ],
+    [
+     33,
+     70.4,
+     1.8
+    ],
+    [
+     34,
+     71.4,
+     1.8
+    ],
+    [
+     35,
+     72.5,
+     1.8
+    ],
+    [
+     36,
+     73.6,
+     1.8
+    ],
+    [
+     37,
+     74.8,
+     1.9
+    ],
+    [
+     38,
+     76.2,
+     2.0
+    ],
+    [
+     39,
+     77.9,
+     2.4
+    ],
+    [
+     40,
+     81.1,
+     3.4
+    ]
+   ],
+   "source": {
+    "file": "archive/literature/norms/healthmeasures2023_promis-depression-cat-scoring-manual.pdf",
+    "page": 15,
+    "section": "APPENDIX 1 — SCORING TABLES",
+    "table_title": "PROMIS Adult Short Form v1.0 – Depression 8b Short Form Conversion Table"
+   },
+   "verification": {
+    "worked_example_verbatim": "For example, if 6 of 8 items were answered and the sum of those 6 responses was 20, the prorated raw score would be 20 X 8/6 = 26.67. The T-score in this example would be that T-score associated with the rounded whole number raw score (in this case 27, for a T-score of 64.4).",
+    "lookup": "算例 raw 27 → 查本表得 T 64.4（与册子印的 64.4 一致）"
+   },
+   "completeness": "raw 8–40 连续无缺口，共 33 行"
+  },
+  "source_of_criteria": "archived_scoring_manual",
+  "evidence": "archive/scales/DSM5TR-L2-Depression/manual.pdf 的 Scoring and Interpretation 段",
+  "bands_unit": "T 分（美国一般人群 M=50, SD=10）",
+  "bands_boundary_rule": "T 分按 **1 位小数**报告，故 55.0–59.9 与 60.0–69.9 在该分辨率下无缝；`lo`/`hi` 为 `null` 表示无界（−∞ / +∞），`*_inclusive` 标明该端开闭。",
+  "bands_source": {
+   "file": "archive/scales/DSM5TR-L2-Depression/manual.pdf",
+   "page": 9,
+   "section": "Instructions to Clinicians — Scoring and Interpretation"
+  },
+  "bands_verification": {
+   "verbatim": "interpreted as follows: Less than 55 = None to slight 55.0—59.9 = Mild 60.0 —69.9 = Moderate70 and over = Severe",
+   "labels_found": [
+    "None to slight",
+    "Mild",
+    "Moderate",
+    "Severe"
+   ],
+   "completeness": "首档下界与末档上界为开区间；相邻档按 0.1 分辨率严丝合缝、无重叠"
+  }
  },
  "criteria_source": "DSM-5-TR Online Assessment Measures（APA 官方公开）"
 }

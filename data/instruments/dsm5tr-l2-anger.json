@@ -155,12 +155,191 @@
    5,
    25
   ],
-  "bands": [],
+  "bands": [
+   {
+    "label": "None to slight",
+    "lo": null,
+    "hi": 55.0,
+    "lo_inclusive": false,
+    "hi_inclusive": false,
+    "verbatim": "Less than 55"
+   },
+   {
+    "label": "Mild",
+    "lo": 55.0,
+    "hi": 59.9,
+    "lo_inclusive": true,
+    "hi_inclusive": true,
+    "verbatim": "55.0—59.9"
+   },
+   {
+    "label": "Moderate",
+    "lo": 60.0,
+    "hi": 69.9,
+    "lo_inclusive": true,
+    "hi_inclusive": true,
+    "verbatim": "60.0—69.9"
+   },
+   {
+    "label": "Severe",
+    "lo": 70.0,
+    "hi": null,
+    "lo_inclusive": true,
+    "hi_inclusive": false,
+    "verbatim": "70 and over"
+   }
+  ],
   "cutoff": null,
-  "tscore_table": null,
-  "source_of_criteria": "pending_external",
-  "pending_reason": "手册 Scoring 段要求使用 T-score table，但**表不在册子里**（已核查：无 raw→T 成对数字）。需另取 PROMIS 官方 scoring manual 才能给 T 分；在取到之前只给原始分。",
-  "evidence": "archive/scales/DSM5TR-L2-Anger/manual.pdf 的 Scoring and Interpretation 段"
+  "tscore_table": {
+   "form": "PROMIS Anger Short Form（APA 册内 5 题版）",
+   "metric": "T 分（美国一般人群 M=50, SD=10）",
+   "columns": [
+    "raw",
+    "t_score",
+    "se"
+   ],
+   "raw_range": [
+    5,
+    25
+   ],
+   "rows": [
+    [
+     5,
+     32.9,
+     5.3
+    ],
+    [
+     6,
+     38.1,
+     4.0
+    ],
+    [
+     7,
+     41.3,
+     3.7
+    ],
+    [
+     8,
+     44.0,
+     3.5
+    ],
+    [
+     9,
+     46.3,
+     3.4
+    ],
+    [
+     10,
+     48.4,
+     3.3
+    ],
+    [
+     11,
+     50.5,
+     3.3
+    ],
+    [
+     12,
+     52.6,
+     3.2
+    ],
+    [
+     13,
+     54.7,
+     3.2
+    ],
+    [
+     14,
+     56.7,
+     3.2
+    ],
+    [
+     15,
+     58.8,
+     3.2
+    ],
+    [
+     16,
+     60.8,
+     3.2
+    ],
+    [
+     17,
+     62.9,
+     3.2
+    ],
+    [
+     18,
+     65.0,
+     3.2
+    ],
+    [
+     19,
+     67.2,
+     3.2
+    ],
+    [
+     20,
+     69.4,
+     3.3
+    ],
+    [
+     21,
+     71.7,
+     3.3
+    ],
+    [
+     22,
+     74.1,
+     3.3
+    ],
+    [
+     23,
+     76.8,
+     3.4
+    ],
+    [
+     24,
+     79.7,
+     3.5
+    ],
+    [
+     25,
+     83.3,
+     3.9
+    ]
+   ],
+   "source": {
+    "file": "archive/scales/DSM5TR-L2-Anger/manual.pdf",
+    "page": 9,
+    "section": "Instructions to Clinicians — Scoring and Interpretation（表随正文）",
+    "table_title": "Raw / T-Score / SE 转换表（APA 册内印出）"
+   },
+   "verification": {
+    "worked_example_verbatim": "For example, if 4 of 5 items were answered and the sum of those 4 responses was 15, the prorated raw score would be 15 X 5/4 = 18.75. The T-score in this example would be that T-score associated with the rounded whole number raw score (in this case 19, for a T-score of 67.2).",
+    "lookup": "算例 raw 19 → 查本表得 T 67.2（与册子印的 67.2 一致）"
+   },
+   "completeness": "raw 5–25 连续无缺口，共 21 行"
+  },
+  "source_of_criteria": "manual",
+  "evidence": "archive/scales/DSM5TR-L2-Anger/manual.pdf 的 Scoring and Interpretation 段",
+  "bands_unit": "T 分（美国一般人群 M=50, SD=10）",
+  "bands_boundary_rule": "T 分按 **1 位小数**报告，故 55.0–59.9 与 60.0–69.9 在该分辨率下无缝；`lo`/`hi` 为 `null` 表示无界（−∞ / +∞），`*_inclusive` 标明该端开闭。",
+  "bands_source": {
+   "file": "archive/scales/DSM5TR-L2-Anger/manual.pdf",
+   "page": 9,
+   "section": "Instructions to Clinicians — Scoring and Interpretation"
+  },
+  "bands_verification": {
+   "verbatim": "interpreted as follows: Less than 5 5 = None to slight 14 56.7 3.2 55.0—59.9 = Mild 60.0 —69.9 = Moderate70 and over = Severe",
+   "labels_found": [
+    "None to slight",
+    "Mild",
+    "Moderate",
+    "Severe"
+   ],
+   "completeness": "首档下界与末档上界为开区间；相邻档按 0.1 分辨率严丝合缝、无重叠"
+  }
  },
  "criteria_source": "DSM-5-TR Online Assessment Measures（APA 官方公开）"
 }

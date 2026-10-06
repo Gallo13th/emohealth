@@ -222,12 +222,252 @@
    8,
    40
   ],
-  "bands": [],
+  "bands": [
+   {
+    "label": "None to slight",
+    "lo": null,
+    "hi": 55.0,
+    "lo_inclusive": false,
+    "hi_inclusive": false,
+    "verbatim": "Less than 55"
+   },
+   {
+    "label": "Mild",
+    "lo": 55.0,
+    "hi": 59.9,
+    "lo_inclusive": true,
+    "hi_inclusive": true,
+    "verbatim": "55.0—59.9"
+   },
+   {
+    "label": "Moderate",
+    "lo": 60.0,
+    "hi": 69.9,
+    "lo_inclusive": true,
+    "hi_inclusive": true,
+    "verbatim": "60.0—69.9"
+   },
+   {
+    "label": "Severe",
+    "lo": 70.0,
+    "hi": null,
+    "lo_inclusive": true,
+    "hi_inclusive": false,
+    "verbatim": "70 and over"
+   }
+  ],
   "cutoff": null,
-  "tscore_table": null,
-  "source_of_criteria": "pending_external",
-  "pending_reason": "手册 Scoring 段要求使用 T-score table，但**表不在册子里**（已核查：无 raw→T 成对数字）。需另取 PROMIS 官方 scoring manual 才能给 T 分；在取到之前只给原始分。",
-  "evidence": "archive/scales/DSM5TR-L2-Sleep/manual.pdf 的 Scoring and Interpretation 段"
+  "tscore_table": {
+   "form": "PROMIS Adult Short Form v1.0 – Sleep Disturbance 8a",
+   "metric": "T 分（美国一般人群 M=50, SD=10）",
+   "columns": [
+    "raw",
+    "t_score",
+    "se"
+   ],
+   "raw_range": [
+    8,
+    40
+   ],
+   "rows": [
+    [
+     8,
+     30.5,
+     4.9
+    ],
+    [
+     9,
+     35.3,
+     3.7
+    ],
+    [
+     10,
+     38.1,
+     3.3
+    ],
+    [
+     11,
+     40.4,
+     3.1
+    ],
+    [
+     12,
+     42.2,
+     3.0
+    ],
+    [
+     13,
+     43.9,
+     2.9
+    ],
+    [
+     14,
+     45.3,
+     2.8
+    ],
+    [
+     15,
+     46.7,
+     2.7
+    ],
+    [
+     16,
+     47.9,
+     2.7
+    ],
+    [
+     17,
+     49.1,
+     2.6
+    ],
+    [
+     18,
+     50.2,
+     2.6
+    ],
+    [
+     19,
+     51.3,
+     2.6
+    ],
+    [
+     20,
+     52.4,
+     2.6
+    ],
+    [
+     21,
+     53.4,
+     2.6
+    ],
+    [
+     22,
+     54.3,
+     2.5
+    ],
+    [
+     23,
+     55.3,
+     2.5
+    ],
+    [
+     24,
+     56.2,
+     2.5
+    ],
+    [
+     25,
+     57.2,
+     2.5
+    ],
+    [
+     26,
+     58.1,
+     2.5
+    ],
+    [
+     27,
+     59.1,
+     2.5
+    ],
+    [
+     28,
+     60.0,
+     2.5
+    ],
+    [
+     29,
+     61.0,
+     2.5
+    ],
+    [
+     30,
+     62.0,
+     2.6
+    ],
+    [
+     31,
+     63.0,
+     2.6
+    ],
+    [
+     32,
+     64.0,
+     2.6
+    ],
+    [
+     33,
+     65.1,
+     2.6
+    ],
+    [
+     34,
+     66.2,
+     2.7
+    ],
+    [
+     35,
+     67.4,
+     2.8
+    ],
+    [
+     36,
+     68.7,
+     2.9
+    ],
+    [
+     37,
+     70.2,
+     3.0
+    ],
+    [
+     38,
+     72.0,
+     3.2
+    ],
+    [
+     39,
+     74.1,
+     3.5
+    ],
+    [
+     40,
+     77.5,
+     4.2
+    ]
+   ],
+   "source": {
+    "file": "archive/literature/norms/healthmeasures2023_promis-sleep-cat-scoring-manual.pdf",
+    "page": 12,
+    "section": "APPENDIX 1 – SCORING TABLES",
+    "table_title": "PROMIS Adult Short Form v1.0 – Sleep Disturbance 8a Short Form Conversion Table"
+   },
+   "verification": {
+    "worked_example_verbatim": "For example, if 6 of 8 items were answered and the sum of those 6 responses was 20, the prorated raw score would be 20 X 8/6 = 26.67. The T-score in this example would be that T-score associated with the rounded whole number raw score (in this case 27, for a T-score of 57.3).",
+    "lookup": "算例 raw 27 → 查本表得 T 59.1（册子印的是 57.3）",
+    "discrepancy": "**与 APA 册子的算例不一致**：册子（©2008-2012）算例给 raw 27 → T 57.3；官方 2023 表给 59.1。官方手册该页明写「The Sleep Disturbance 8a table was revised on 5/22/2014. Instruments scored prior to this date should be re-scored using this table.」→ 官方表为**现行权威**，册子算例系**改订前**旧表的数。本项目按官方现行表给 T 分，并作此留存。（另 3 册 Anxiety/Depression/Anger 的算例与表**逐位吻合**，无此问题。）"
+   },
+   "completeness": "raw 8–40 连续无缺口，共 33 行"
+  },
+  "source_of_criteria": "archived_scoring_manual",
+  "evidence": "archive/scales/DSM5TR-L2-Sleep/manual.pdf 的 Scoring and Interpretation 段",
+  "bands_unit": "T 分（美国一般人群 M=50, SD=10）",
+  "bands_boundary_rule": "T 分按 **1 位小数**报告，故 55.0–59.9 与 60.0–69.9 在该分辨率下无缝；`lo`/`hi` 为 `null` 表示无界（−∞ / +∞），`*_inclusive` 标明该端开闭。",
+  "bands_source": {
+   "file": "archive/scales/DSM5TR-L2-Sleep/manual.pdf",
+   "page": 9,
+   "section": "Instructions to Clinicians — Scoring and Interpretation"
+  },
+  "bands_verification": {
+   "verbatim": "interpreted as follows: Less than 55 = None to slight55.0 —59.9 = Mild 60.0 —69.9 = Moderate 70 and over = Severe",
+   "labels_found": [
+    "None to slight",
+    "Mild",
+    "Moderate",
+    "Severe"
+   ],
+   "completeness": "首档下界与末档上界为开区间；相邻档按 0.1 分辨率严丝合缝、无重叠"
+  }
  },
  "criteria_source": "DSM-5-TR Online Assessment Measures（APA 官方公开）"
 }

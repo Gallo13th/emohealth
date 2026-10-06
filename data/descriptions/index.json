@@ -78,7 +78,7 @@
    "items_translation_sources": [
     "AI 逐条复核 + 仲裁（2026-10-04）"
    ],
-   "sha256": "55340e7b49dd9be21f431dfd18905cd137831755b8f191ee2a6326a8bc6fc1f5"
+   "sha256": "4cafb69c9bffad86723d20b1e313f12e9936e4e6d70016379a830e40a868641f"
   },
   {
    "code": "dsm5tr-l2-anxiety",
@@ -97,7 +97,7 @@
    "items_translation_sources": [
     "AI 逐条复核 + 仲裁（2026-10-04）"
    ],
-   "sha256": "77a886285e930c55d65f801ee9e6b80647aadf50dd32a492273376e9802cb68d"
+   "sha256": "11b108cd69b87d0e45e0bdb9463d75e56068cd439ade83976df66d5261e620b4"
   },
   {
    "code": "dsm5tr-l2-depression",
@@ -116,7 +116,7 @@
    "items_translation_sources": [
     "AI 逐条复核 + 仲裁（2026-10-04）"
    ],
-   "sha256": "0bc846004cec741fd7a890505e1a628e4c7c2139f3bdae589d9912613e52a21a"
+   "sha256": "b2ad7ac84c5b4c8630248e76c5333e6558bef8d67b5a4e3463ebf261c741bbf8"
   },
   {
    "code": "dsm5tr-l2-mania",
@@ -135,7 +135,7 @@
    "items_translation_sources": [
     "AI 逐条复核 + 仲裁（2026-10-04）"
    ],
-   "sha256": "e7973a2cf17ddcfb894aefef116eb40c530696806951b1fecb77928d6386cb16"
+   "sha256": "df2130cb2cc707d8366ae836fcf51241e3356d20b7c5956a7694fcad6b104a73"
   },
   {
    "code": "dsm5tr-l2-repetitive",
@@ -154,7 +154,7 @@
    "items_translation_sources": [
     "AI 逐条复核 + 仲裁（2026-10-04）"
    ],
-   "sha256": "12ac0487c86d41c0e25245b1eb8e03425928e2be20820dca56b018e3b7340bb6"
+   "sha256": "735a85ca301ca3045b5f4f98ea99edb3b0994910835e1e63472e57cceb8168f9"
   },
   {
    "code": "dsm5tr-l2-sleep",
@@ -173,7 +173,7 @@
    "items_translation_sources": [
     "AI 逐条复核 + 仲裁（2026-10-04）"
    ],
-   "sha256": "72196cdbe9ef0b02b1f0bbf995a9fecfa939a83ce0bce405dc731d0ed303f1bc"
+   "sha256": "16ec76b2e910fa2c04f54d386a6ee2db1caea402d9efa5108f7f1e5e00889e86"
   },
   {
    "code": "dsm5tr-l2-somatic",
@@ -192,7 +192,7 @@
    "items_translation_sources": [
     "AI 逐条复核 + 仲裁（2026-10-04）"
    ],
-   "sha256": "99db0fa8dcc609c07b05a970ccf271b591e816974d0ee92d3029c8f6881dc64c"
+   "sha256": "bed75384a339c36e2842f04ff34444eef4cbd42bfc6b6b615a5fdd5b64d8c2e7"
   },
   {
    "code": "dsm5tr-l2-substance",
@@ -212,7 +212,7 @@
     "AI 逐条复核 + 仲裁（2026-10-04）",
     "AI 逐条复核 + 仲裁（2026-10-04，已按仲裁结论更正）"
    ],
-   "sha256": "a276a2e33e85cc4d82adde1a564cf63011121903149f2b0c807dc97d52f22cc3"
+   "sha256": "3f3e3cbb1bb8f1dc1deead05f4b2506ed9c8b765a70d6e75ee3fc051606f3d47"
   },
   {
    "code": "mmpi-2",

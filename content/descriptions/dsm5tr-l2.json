@@ -1,422 +1,558 @@
 {
-  "_note": "DSM-5-TR Level 2（8 册）的证据文件。一个文件服务 8 套量表：顶层为共享事实，instruments[<code>] 为各册特化。生成物 data/descriptions/dsm5tr-l2-*.md 由 tools/build/build_descriptions.py 产出，禁止手改。",
-  "record_kind": "descriptions_source",
-  "schema_version": "1.0",
-  "what_it_is": {
-    "text": "APA「DSM-5-TR Online Assessment Measures」的第二级：**对 Level 1 已经触发的症状域做更细的评估**。本项目收录 8 册（Anger / Anxiety / Depression / Mania / Repetitive / Sleep / Somatic / Substance），每册是一套**单一维度**的自评量表。",
-    "source": "archive/scales/DSM5TR-L2-*/manual.pdf（逐册）；总览见 data/criteria/dsm5tr-l2.json 与 data/linkage/dsm5tr-chain.json"
+ "_note": "DSM-5-TR Level 2（8 册）的证据文件。一个文件服务 8 套量表：顶层为共享事实，instruments[<code>] 为各册特化。生成物 data/descriptions/dsm5tr-l2-*.md 由 tools/build/build_descriptions.py 产出，禁止手改。",
+ "record_kind": "descriptions_source",
+ "schema_version": "1.0",
+ "what_it_is": {
+  "text": "APA「DSM-5-TR Online Assessment Measures」的第二级：**对 Level 1 已经触发的症状域做更细的评估**。本项目收录 8 册（Anger / Anxiety / Depression / Mania / Repetitive / Sleep / Somatic / Substance），每册是一套**单一维度**的自评量表。",
+  "source": "archive/scales/DSM5TR-L2-*/manual.pdf（逐册）；总览见 data/criteria/dsm5tr-l2.json 与 data/linkage/dsm5tr-chain.json"
+ },
+ "what_it_measures": {
+  "text": "被 Level 1 触发的那个域在过去 7 天（或各册自定的窗口）内的**症状频度/严重度**。各册的计分口径**互不相同**——PROMIS 四册按手册要求应换算 T 分，躁狂册是 5 组选项求和，躯体册是 0–2 求和，物质册是逐项独立解释。",
+  "source": "data/criteria/dsm5tr-l2.json 的 note 与逐册 kind/sum_range"
+ },
+ "does_not_measure": [
+  {
+   "text": "**不做诊断**。与 Level 1 同源的免责声明适用于全部 8 册：结果只能用于临床决策的辅助，不得作为诊断的唯一依据。",
+   "source": "data/linkage/dsm5tr-chain.json 的 disclaimer（APA 手册原文）"
   },
-  "what_it_measures": {
-    "text": "被 Level 1 触发的那个域在过去 7 天（或各册自定的窗口）内的**症状频度/严重度**。各册的计分口径**互不相同**——PROMIS 四册按手册要求应换算 T 分，躁狂册是 5 组选项求和，躯体册是 0–2 求和，物质册是逐项独立解释。",
-    "source": "data/criteria/dsm5tr-l2.json 的 note 与逐册 kind/sum_range"
+  {
+   "text": "**不是常模参照量表**（就本项目现有资料而言）：4 册 PROMIS 的 T 分表**均已归档**（Anxiety 7a / Depression 8b / Sleep Disturbance 8a 在 PROMIS 官方 scoring manual 的 Appendix 1，Anger 5a 印在 APA 册内），4 册非 PROMIS 只有手册给出的分带/分界。**8 册都拿不到一般人群的百分位**。",
+   "source": "data/criteria/dsm5tr-l2.json 逐册 tscore_table=null / bands / cutoff"
   },
-  "does_not_measure": [
-    {
-      "text": "**不做诊断**。与 Level 1 同源的免责声明适用于全部 8 册：结果只能用于临床决策的辅助，不得作为诊断的唯一依据。",
-      "source": "data/linkage/dsm5tr-chain.json 的 disclaimer（APA 手册原文）"
-    },
-    {
-      "text": "**不是常模参照量表**（就本项目现有资料而言）：4 册 PROMIS 的 T 分表不在归档册子里，4 册非 PROMIS 只有手册给出的分带/分界。**8 册都拿不到一般人群的百分位**。",
-      "source": "data/criteria/dsm5tr-l2.json 逐册 tscore_table=null / bands / cutoff"
-    },
-    {
-      "text": "**不能跨册比较分数**：8 册来自不同工具（PROMIS 短表、ASRM、FOCI 改编、PHQ-15、NIDA-Modified ASSIST），题数 5–15、量纲 0–2 / 0–4 / 1–5 各不相同。",
-      "source": "data/criteria/dsm5tr-l2.json 的 note；题数与量纲见各量表包 structure"
-    },
-    {
-      "text": "**不是诊断访谈**。手册的设计用途是「访谈者施测 + 辅助判断」，本册题目不覆盖病程、功能损害、排除标准与鉴别诊断。",
-      "source": "archive/scales/DSM5TR-L2-*/manual.pdf 的 Scoring and Interpretation 段"
-    }
+  {
+   "text": "**不能跨册比较分数**：8 册来自不同工具（PROMIS 短表、ASRM、FOCI 改编、PHQ-15、NIDA-Modified ASSIST），题数 5–15、量纲 0–2 / 0–4 / 1–5 各不相同。",
+   "source": "data/criteria/dsm5tr-l2.json 的 note；题数与量纲见各量表包 structure"
+  },
+  {
+   "text": "**不是诊断访谈**。手册的设计用途是「访谈者施测 + 辅助判断」，本册题目不覆盖病程、功能损害、排除标准与鉴别诊断。",
+   "source": "archive/scales/DSM5TR-L2-*/manual.pdf 的 Scoring and Interpretation 段"
+  }
+ ],
+ "applicability": {
+  "applicable": "18 岁及以上成人（8 册均为成人版）。",
+  "inapplicable": [
+   "18 岁以下",
+   "未经 Level 1 触发就直接施测（本册设计上用于细评已触发的域）"
   ],
-  "applicability": {
-    "applicable": "18 岁及以上成人（8 册均为成人版）。",
-    "inapplicable": [
-      "18 岁以下",
-      "未经 Level 1 触发就直接施测（本册设计上用于细评已触发的域）"
-    ],
-    "source": "archive/scales/DSM5TR-L2-*/manual.pdf（Adult 版）"
+  "source": "archive/scales/DSM5TR-L2-*/manual.pdf（Adult 版）"
+ },
+ "translation_policy": {
+  "stance": "supplementary_bilingual",
+  "text": "APA 授权写明「may not be modified absent written permission from APA」。本项目**逐字不改原文**，而是把 ① 英文原文、② 中文翻译、③ 本地化内容讲解三者**并列**呈现——中译与讲解是**补充性独立内容**，不是对原文的修改，因此授权条款不构成障碍。各条中译的复核状态见其 `zh_source`（均标「subagent 初译/重译（待人工复核）」），**未人工复核前不得作为定稿中文版发布**。",
+  "supersedes": "`display_chinese_items: false` / 旧 `translation_unavailable_reason`（「不在文档里提供中译」）——该处置已被 R2 推翻，本字段为其替代。",
+  "source": "archive/scales/DSM5TR-L1/source.json 的授权原文 + 用户 R2"
+ },
+ "reverse_note": "本项目收录的 8 册**都没有反向计分题**（全部题目 key = +1）。注意：这**不等于**「题面都是正向表述」——例如睡眠册第 2/3/7 题（我满意我的睡眠 / 我的睡眠让我恢复精力 / 我睡够了）在原版里是正向表述、按正向计分。",
+ "response_labels_source": "各册 structure.response_format.labels（英文原文）；中译为**补充性独立内容**（见 translation_policy），不是官方中文版",
+ "scoring_notes": [
+  {
+   "text": "**每册的口径由该册自己的量表包 `scoring` 声明**，不要假设都是求和：PROMIS 四册与躁狂/躯体/重复思维册为 `sum`，物质册为 `count_true`（>0 的项数，**不是总分**）。",
+   "source": "data/instruments/dsm5tr-l2-*.json 的 scoring；data/criteria/dsm5tr-l2.json 的 kind"
   },
-  "translation_policy": {
-    "stance": "supplementary_bilingual",
-    "text": "APA 授权写明「may not be modified absent written permission from APA」。本项目**逐字不改原文**，而是把 ① 英文原文、② 中文翻译、③ 本地化内容讲解三者**并列**呈现——中译与讲解是**补充性独立内容**，不是对原文的修改，因此授权条款不构成障碍。各条中译的复核状态见其 `zh_source`（均标「subagent 初译/重译（待人工复核）」），**未人工复核前不得作为定稿中文版发布**。",
-    "supersedes": "`display_chinese_items: false` / 旧 `translation_unavailable_reason`（「不在文档里提供中译」）——该处置已被 R2 推翻，本字段为其替代。",
-    "source": "archive/scales/DSM5TR-L1/source.json 的授权原文 + 用户 R2"
+  {
+   "text": "缺答规则：手册通行要求是缺答超过 25% 时不得使用分数；个别册允许按比例推算（prorated）。",
+   "source": "data/criteria/dsm5tr-l2.json 的 missing_rule"
+  }
+ ],
+ "score_ranges": [
+  {
+   "text": "各册分值范围不同：Anger 5–25、Anxiety 7–35、Depression 8–40、Sleep 8–40（以上 1–5 计分）；Mania 0–20、Repetitive 0–20、Substance 0–40（以上 0–4 计分，Substance 以「>0 的项数」解释）；Somatic 0–30（0–2 计分）。",
+   "source": "data/criteria/dsm5tr-l2.json 逐册 sum_range；量表包 response_format 与 items 数"
+  }
+ ],
+ "norms_spec": {
+  "status": "unavailable",
+  "interpretation_basis": "bands_or_t_score_pending",
+  "reference_sample": null,
+  "applicability_warning": "各册的分带/分界只对**该册自己的量表与施测方式**有效，不得跨册套用。",
+  "source": {
+   "citation": "American Psychiatric Association. DSM-5-TR Online Assessment Measures — Level 2（8 册）。",
+   "evidence": [
+    "archive/scales/DSM5TR-L2-*/manual.pdf",
+    "archive/scales/DSM5TR-L2-*/source.json",
+    "data/criteria/dsm5tr-l2.json"
+   ],
+   "license": "APA 版权；允许研究人员/临床医生为患者使用而复制"
   },
-  "reverse_note": "本项目收录的 8 册**都没有反向计分题**（全部题目 key = +1）。注意：这**不等于**「题面都是正向表述」——例如睡眠册第 2/3/7 题（我满意我的睡眠 / 我的睡眠让我恢复精力 / 我睡够了）在原版里是正向表述、按正向计分。",
-  "response_labels_source": "各册 structure.response_format.labels（英文原文）；中译为**补充性独立内容**（见 translation_policy），不是官方中文版",
-  "scoring_notes": [
-    {
-      "text": "**每册的口径由该册自己的量表包 `scoring` 声明**，不要假设都是求和：PROMIS 四册与躁狂/躯体/重复思维册为 `sum`，物质册为 `count_true`（>0 的项数，**不是总分**）。",
-      "source": "data/instruments/dsm5tr-l2-*.json 的 scoring；data/criteria/dsm5tr-l2.json 的 kind"
-    },
-    {
-      "text": "缺答规则：手册通行要求是缺答超过 25% 时不得使用分数；个别册允许按比例推算（prorated）。",
-      "source": "data/criteria/dsm5tr-l2.json 的 missing_rule"
+  "notes": "逐册的 kind / 分带 / 分界 / T 分与百分位可用状态见 data/criteria/dsm5tr-l2.json；本文档 §4 直接渲染该文件，不复制第二份。"
+ },
+ "alpha": {
+  "values": {},
+  "note": "**这 8 册的手册都没有报告 α。** 4 册 PROMIS 短表的信度在 PROMIS 官方 scoring manual 与相关论文里，但本项目**未入档**该来源（见 evidence_gaps）；照「不编造数字」的规则，本项目不给 α 数值。",
+  "summary": [
+   {
+    "text": "可核对的替代信息是题源与题数：逐册题数与工具名见 data/criteria/dsm5tr-l2.json 的 scale 字段。",
+    "source": "data/criteria/dsm5tr-l2.json"
+   }
+  ]
+ },
+ "known_critiques": [
+  {
+   "text": "4 册 PROMIS 短表的手册都要求「使用 T-score table」，**四册的表均已归档并入库**为可查的 raw→T 表（Anxiety 7a / Depression 8b / Sleep Disturbance 8a 见 PROMIS 官方 scoring manual 的 Appendix 1；Anger 5a 印在 APA 册子内）。⚠️ 其中 **Sleep 册的算例**用的是**改订前旧表**（官方 2023 表已注明 2014-05-22 改订并要求旧数据重算），算例与其表的这一处不一致已如实留存于该册记录。",
+   "source": "data/criteria/dsm5tr-l2.json 逐册 tscore_table / source_of_criteria；复核工具 tools/survey/probe_promis_tscore.py"
+  },
+  {
+   "text": "Level 2 与 PID-5 的衔接**不是**这 9 册手册的原文：已核查 9 册正文一次都没提到 PID-5 或 personality disorder。",
+   "source": "data/linkage/dsm5tr-chain.json 的 pid5_interface.caveat"
+  }
+ ],
+ "interpretation_caveats": [
+  {
+   "text": "**不得**由任一册的结果推出诊断结论。",
+   "source": "data/linkage/dsm5tr-chain.json 的 disclaimer（APA 手册原文）"
+  },
+  {
+   "text": "**不得**跨册比较分数，也不得把某册的原始分说成「严重度高于常人」。",
+   "source": "data/criteria/dsm5tr-l2.json 的 note（八册口径互不相同）"
+  },
+  {
+   "text": "**不得**把物质使用册的分数当作总分：该册逐项独立解释，「>0 的项数」是严重度/复杂度指标。",
+   "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Substance.aggregate_label"
+  },
+  {
+   "text": "**不得**用无出处的数字换算 T 分或百分位：T 分只能查**已归档**的转换表（逐册见 data/criteria/dsm5tr-l2.json 的 `tscore_table`）。",
+   "source": "data/criteria/dsm5tr-l2.json 逐册 tscore_table"
+  },
+  {
+   "text": "**不得**把本项目的中译当作「官方中文版」发布：APA 授权未许可**修改**原文；本项目提供的是**补充性独立内容**（① 英文原文 + ② 中译 + ③ 本地化讲解），且中译均**未经人工复核**。",
+   "source": "archive/scales/DSM5TR-L1/source.json 的授权原文（同体系条款）；各册 source.json"
+  }
+ ],
+ "provenance": {
+  "题项提取": "archive/scales/DSM5TR-L2-*/items-extracted.json（提取器 tools/build/build_l2_items.py 与 build_l2_items_rest.py）",
+  "判读口径": "archive/scales/DSM5TR-L2-*/manual.pdf 的 Scoring and Interpretation 段；整理进 data/criteria/dsm5tr-l2.json",
+  "授权原文": "archive/scales/DSM5TR-L2-*/source.json"
+ },
+ "evidence_gaps": [
+  {
+   "what": "PROMIS 短表的 raw→T 分表",
+   "detail": "**已闭合（2026-10-06）**：4 册的转换表均已在档并入库——Anxiety 7a / Depression 8b / Sleep Disturbance 8a 见 `archive/literature/norms/healthmeasures2023_promis-*-cat-scoring-manual.pdf` 的 Appendix 1，Anger 5a 的表印在 `archive/scales/DSM5TR-L2-Anger/manual.pdf` 第 9 页。逐册均经「raw 全域连续 + 算例查表」自证；**Sleep 一处例外已留档**：APA 册的算例（raw 27 → T 57.3）用的是2014-05-22 改订前的旧表，官方现行表为 59.1，本项目按官方现行表给分。第三方附录（sunnaas 2021、rimed 2021）仍不作为权威转换来源。"
+  },
+  {
+   "what": "PROMIS 短表的 α / 信度",
+   "detail": "需要 PROMIS 官方 scoring manual 或原始论文；当前未入档，故不给数值。"
+  },
+  {
+   "what": "睡眠册第 8 题与物质册题面的完整性",
+   "detail": "实测 dsm5trl2sleep_08 题文为「My sleep quality was」**截断**；l2-sleep 部分题面残留 NUL 填充字符；l1_23 尾部混入版权句。均为数据层缺陷，已在 research/descriptions-evidence/known-data-gaps.md 登记，本任务未改动数据。"
+  }
+ ],
+ "instruments": {
+  "dsm5tr-l2-anger": {
+   "display_name": "Level 2—Anger—Adult（PROMIS Emotional Distress—Anger—Short Form）",
+   "dimension_order": [
+    "l2_anger"
+   ],
+   "dimensions": {
+    "l2_anger": {
+     "zh": "愤怒",
+     "gloss": "过去 7 天里被激惹、感到愤怒、觉得快要爆发、脾气坏、被惹恼的频率。",
+     "gloss_source": "derived_from_items:dsm5trl2anger_01…05",
+     "definition": "PROMIS Emotional Distress—Anger 短表（APA 版，5 题）。",
+     "definition_source": "archive/scales/DSM5TR-L2-Anger/manual.pdf",
+     "does_not_measure": [
+      "不衡量愤怒的表达或攻击行为",
+      "不诊断任何障碍"
+     ]
     }
-  ],
-  "score_ranges": [
+   },
+   "score_ranges": [
     {
-      "text": "各册分值范围不同：Anger 5–25、Anxiety 7–35、Depression 8–40、Sleep 8–40（以上 1–5 计分）；Mania 0–20、Repetitive 0–20、Substance 0–40（以上 0–4 计分，Substance 以「>0 的项数」解释）；Somatic 0–30（0–2 计分）。",
-      "source": "data/criteria/dsm5tr-l2.json 逐册 sum_range；量表包 response_format 与 items 数"
+     "text": "5–25（5 题 × 1–5，求和）。",
+     "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Anger.sum_range"
     }
-  ],
-  "norms_spec": {
+   ],
+   "result_reading": [
+    {
+     "text": "本册按 **T 分**判读：raw 5–25 的完整转换表见 `archive/scales/DSM5TR-L2-Anger/manual.pdf` 第 9 页（已入库）。**没有百分位常模**——PROMIS 给的是 T 分常模（M=50, SD=10），不是一般人群的百分位分布。",
+     "source": "data/criteria/dsm5tr-l2.json 的 tscore_table（含 source 页码与逐行自证）"
+    }
+   ],
+   "norms_spec": {
     "status": "unavailable",
     "interpretation_basis": "bands_or_t_score_pending",
     "reference_sample": null,
     "applicability_warning": "各册的分带/分界只对**该册自己的量表与施测方式**有效，不得跨册套用。",
     "source": {
-      "citation": "American Psychiatric Association. DSM-5-TR Online Assessment Measures — Level 2（8 册）。",
-      "evidence": [
-        "archive/scales/DSM5TR-L2-*/manual.pdf",
-        "archive/scales/DSM5TR-L2-*/source.json",
-        "data/criteria/dsm5tr-l2.json"
-      ],
-      "license": "APA 版权；允许研究人员/临床医生为患者使用而复制"
+     "citation": "American Psychiatric Association. DSM-5-TR Online Assessment Measures — Level 2（8 册）。",
+     "evidence": [
+      "archive/scales/DSM5TR-L2-*/manual.pdf",
+      "archive/scales/DSM5TR-L2-*/source.json",
+      "data/criteria/dsm5tr-l2.json"
+     ],
+     "license": "APA 版权；允许研究人员/临床医生为患者使用而复制"
     },
-    "notes": "逐册的 kind / 分带 / 分界 / T 分待补状态见 data/criteria/dsm5tr-l2.json；本文档 §4 直接渲染该文件，不复制第二份。"
+    "notes": "逐册的 kind / 分带 / 分界 / T 分与百分位可用状态见 data/criteria/dsm5tr-l2.json；本文档 §4 直接渲染该文件，不复制第二份。",
+    "unavailable_reason": "本册**有 T 分**可用：来源 `archive/scales/DSM5TR-L2-Anger/manual.pdf` 第 9 页（册内印出的 raw→T 转换表，raw 5–25）。**没有百分位常模**：PROMIS 提供的是 T 分常模（M=50, SD=10），不是一般人群的百分位分布。"
+   }
   },
-  "alpha": {
-    "values": {},
-    "note": "**这 8 册的手册都没有报告 α。** 4 册 PROMIS 短表的信度在 PROMIS 官方 scoring manual 与相关论文里，但本项目**未入档**该来源（见 evidence_gaps）；照「不编造数字」的规则，本项目不给 α 数值。",
-    "summary": [
-      {
-        "text": "可核对的替代信息是题源与题数：逐册题数与工具名见 data/criteria/dsm5tr-l2.json 的 scale 字段。",
-        "source": "data/criteria/dsm5tr-l2.json"
-      }
-    ]
+  "dsm5tr-l2-anxiety": {
+   "display_name": "Level 2—Anxiety—Adult（PROMIS Emotional Distress—Anxiety—Short Form）",
+   "dimension_order": [
+    "l2_anxiety"
+   ],
+   "dimensions": {
+    "l2_anxiety": {
+     "zh": "焦虑",
+     "gloss": "过去 7 天里害怕、焦虑、担心、除了焦虑难以专注、紧张、不安、绷紧的频率。",
+     "gloss_source": "derived_from_items:dsm5trl2anxiety_01…07",
+     "definition": "PROMIS Emotional Distress—Anxiety 短表（APA 版，7 题）。",
+     "definition_source": "archive/scales/DSM5TR-L2-Anxiety/manual.pdf",
+     "does_not_measure": [
+      "不区分广泛性焦虑/惊恐/社交焦虑",
+      "不诊断任何障碍"
+     ]
+    }
+   },
+   "score_ranges": [
+    {
+     "text": "7–35（7 题 × 1–5，求和）。",
+     "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Anxiety.sum_range"
+    }
+   ],
+   "result_reading": [
+    {
+     "text": "本册按 **T 分**判读：raw 7–35 的转换表见 `archive/literature/norms/healthmeasures2023_promis-anxiety-cat-scoring-manual.pdf` 第 14 页（Anxiety 7a，已入库）。**没有百分位常模**。",
+     "source": "data/criteria/dsm5tr-l2.json 的 tscore_table（含 source 页码与逐行自证）"
+    }
+   ],
+   "norms_spec": {
+    "status": "unavailable",
+    "interpretation_basis": "bands_or_t_score_pending",
+    "reference_sample": null,
+    "applicability_warning": "各册的分带/分界只对**该册自己的量表与施测方式**有效，不得跨册套用。",
+    "source": {
+     "citation": "American Psychiatric Association. DSM-5-TR Online Assessment Measures — Level 2（8 册）。",
+     "evidence": [
+      "archive/scales/DSM5TR-L2-*/manual.pdf",
+      "archive/scales/DSM5TR-L2-*/source.json",
+      "data/criteria/dsm5tr-l2.json"
+     ],
+     "license": "APA 版权；允许研究人员/临床医生为患者使用而复制"
+    },
+    "notes": "逐册的 kind / 分带 / 分界 / T 分与百分位可用状态见 data/criteria/dsm5tr-l2.json；本文档 §4 直接渲染该文件，不复制第二份。",
+    "unavailable_reason": "本册**有 T 分**可用：来源 `archive/literature/norms/healthmeasures2023_promis-anxiety-cat-scoring-manual.pdf` 第 14 页（PROMIS Adult Short Form v1.0 – Anxiety 7a 转换表，raw 7–35）。**没有百分位常模**：PROMIS 提供的是 T 分常模（M=50, SD=10），不是一般人群的百分位分布。"
+   }
   },
-  "known_critiques": [
-    {
-      "text": "4 册 PROMIS 短表的手册要求「使用 T-score table」，但**表不在册子里**（已逐流核查：册内没有 raw→T 的成对数字）。在取到 PROMIS 官方 scoring manual 之前，这 4 册只能给原始分。",
-      "source": "data/criteria/dsm5tr-l2.json 逐册 pending_reason；核查工具 tools/survey/probe_promis_tscore.py"
-    },
-    {
-      "text": "Level 2 与 PID-5 的衔接**不是**这 9 册手册的原文：已核查 9 册正文一次都没提到 PID-5 或 personality disorder。",
-      "source": "data/linkage/dsm5tr-chain.json 的 pid5_interface.caveat"
+  "dsm5tr-l2-depression": {
+   "display_name": "Level 2—Depression—Adult（PROMIS Emotional Distress—Depression—Short Form）",
+   "dimension_order": [
+    "l2_depression"
+   ],
+   "dimensions": {
+    "l2_depression": {
+     "zh": "抑郁",
+     "gloss": "过去 7 天里觉得没价值、没什么可期待、无助、难过、失败、抑郁、不快乐、绝望的频率。",
+     "gloss_source": "derived_from_items:dsm5trl2depression_01…08",
+     "definition": "PROMIS Emotional Distress—Depression 短表（APA 版，8 题）。",
+     "definition_source": "archive/scales/DSM5TR-L2-Depression/manual.pdf",
+     "does_not_measure": [
+      "不区分抑郁与双相抑郁",
+      "不诊断任何障碍",
+      "不评估自杀风险"
+     ]
     }
-  ],
-  "interpretation_caveats": [
+   },
+   "score_ranges": [
     {
-      "text": "**不得**由任一册的结果推出诊断结论。",
-      "source": "data/linkage/dsm5tr-chain.json 的 disclaimer（APA 手册原文）"
-    },
-    {
-      "text": "**不得**跨册比较分数，也不得把某册的原始分说成「严重度高于常人」。",
-      "source": "data/criteria/dsm5tr-l2.json 的 note（八册口径互不相同）"
-    },
-    {
-      "text": "**不得**把物质使用册的分数当作总分：该册逐项独立解释，「>0 的项数」是严重度/复杂度指标。",
-      "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Substance.aggregate_label"
-    },
-    {
-      "text": "**不得**在拿到 PROMIS T 分表之前给出 T 分或百分位：手册要求的表不在册子里，任何自行换算都会引入无出处的数字。",
-      "source": "data/criteria/dsm5tr-l2.json 逐册 pending_reason"
-    },
-    {
-      "text": "**不得**把本项目的中译当作「官方中文版」发布：APA 授权未许可**修改**原文；本项目提供的是**补充性独立内容**（① 英文原文 + ② 中译 + ③ 本地化讲解），且中译均**未经人工复核**。",
-      "source": "archive/scales/DSM5TR-L1/source.json 的授权原文（同体系条款）；各册 source.json"
+     "text": "8–40（8 题 × 1–5，求和）。",
+     "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Depression.sum_range"
     }
-  ],
-  "provenance": {
-    "题项提取": "archive/scales/DSM5TR-L2-*/items-extracted.json（提取器 tools/build/build_l2_items.py 与 build_l2_items_rest.py）",
-    "判读口径": "archive/scales/DSM5TR-L2-*/manual.pdf 的 Scoring and Interpretation 段；整理进 data/criteria/dsm5tr-l2.json",
-    "授权原文": "archive/scales/DSM5TR-L2-*/source.json"
+   ],
+   "result_reading": [
+    {
+     "text": "本册按 **T 分**判读：raw 8–40 的转换表见 `archive/literature/norms/healthmeasures2023_promis-depression-cat-scoring-manual.pdf` 第 15 页（Depression 8b，已入库）。**没有百分位常模**。",
+     "source": "data/criteria/dsm5tr-l2.json 的 tscore_table（含 source 页码与逐行自证）"
+    }
+   ],
+   "norms_spec": {
+    "status": "unavailable",
+    "interpretation_basis": "bands_or_t_score_pending",
+    "reference_sample": null,
+    "applicability_warning": "各册的分带/分界只对**该册自己的量表与施测方式**有效，不得跨册套用。",
+    "source": {
+     "citation": "American Psychiatric Association. DSM-5-TR Online Assessment Measures — Level 2（8 册）。",
+     "evidence": [
+      "archive/scales/DSM5TR-L2-*/manual.pdf",
+      "archive/scales/DSM5TR-L2-*/source.json",
+      "data/criteria/dsm5tr-l2.json"
+     ],
+     "license": "APA 版权；允许研究人员/临床医生为患者使用而复制"
+    },
+    "notes": "逐册的 kind / 分带 / 分界 / T 分与百分位可用状态见 data/criteria/dsm5tr-l2.json；本文档 §4 直接渲染该文件，不复制第二份。",
+    "unavailable_reason": "本册**有 T 分**可用：来源 `archive/literature/norms/healthmeasures2023_promis-depression-cat-scoring-manual.pdf` 第 15 页（PROMIS Adult Short Form v1.0 – Depression 8b 转换表，raw 8–40）。**没有百分位常模**：PROMIS 提供的是 T 分常模（M=50, SD=10），不是一般人群的百分位分布。"
+   }
   },
-  "evidence_gaps": [
-    {
-      "what": "PROMIS 短表的 raw→T 分表",
-      "detail": "官方站点改版后旧 URL 404；archive/norms/promis/ 只入档到 2 份**第三方**附录（sunnaas 2021、rimed 2021），官方表一份都没有。第三方附录不能作为权威转换来源，故本项目不据此给 T 分。"
-    },
-    {
-      "what": "PROMIS 短表的 α / 信度",
-      "detail": "需要 PROMIS 官方 scoring manual 或原始论文；当前未入档，故不给数值。"
-    },
-    {
-      "what": "睡眠册第 8 题与物质册题面的完整性",
-      "detail": "实测 dsm5trl2sleep_08 题文为「My sleep quality was」**截断**；l2-sleep 部分题面残留 NUL 填充字符；l1_23 尾部混入版权句。均为数据层缺陷，已在 research/descriptions-evidence/known-data-gaps.md 登记，本任务未改动数据。"
+  "dsm5tr-l2-sleep": {
+   "display_name": "Level 2—Sleep Disturbance—Adult（PROMIS—Sleep Disturbance—Short Form）",
+   "dimension_order": [
+    "l2_sleep_disturbance"
+   ],
+   "dimensions": {
+    "l2_sleep_disturbance": {
+     "zh": "睡眠困扰",
+     "gloss": "过去 7 天睡眠不安稳、不满意、不恢复精力、难以入睡、难以维持睡眠、睡不够、睡眠质量差的频率。",
+     "gloss_source": "derived_from_items:dsm5trl2sleep_01…08",
+     "definition": "PROMIS Sleep Disturbance 短表（APA 版，8 题）。",
+     "definition_source": "archive/scales/DSM5TR-L2-Sleep/manual.pdf",
+     "does_not_measure": [
+      "不诊断失眠障碍",
+      "不区分入睡困难/维持困难/早醒",
+      "不衡量睡眠时长或客观睡眠质量（无多导睡眠图）"
+     ],
+     "note": "本册有两处数据缺陷（第 8 题题文截断、部分题面残留 NUL 填充字符），见 evidence_gaps。"
     }
-  ],
-  "instruments": {
-    "dsm5tr-l2-anger": {
-      "display_name": "Level 2—Anger—Adult（PROMIS Emotional Distress—Anger—Short Form）",
-      "dimension_order": [
-        "l2_anger"
-      ],
-      "dimensions": {
-        "l2_anger": {
-          "zh": "愤怒",
-          "gloss": "过去 7 天里被激惹、感到愤怒、觉得快要爆发、脾气坏、被惹恼的频率。",
-          "gloss_source": "derived_from_items:dsm5trl2anger_01…05",
-          "definition": "PROMIS Emotional Distress—Anger 短表（APA 版，5 题）。",
-          "definition_source": "archive/scales/DSM5TR-L2-Anger/manual.pdf",
-          "does_not_measure": [
-            "不衡量愤怒的表达或攻击行为",
-            "不诊断任何障碍"
-          ]
-        }
-      },
-      "score_ranges": [
-        {
-          "text": "5–25（5 题 × 1–5，求和）。",
-          "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Anger.sum_range"
-        }
-      ],
-      "result_reading": [
-        {
-          "text": "手册要求换算 T 分，但**表不在册子里**；在取到 PROMIS 官方 scoring manual 之前，本项目只给 5–25 的原始分，不给 T 分、不给百分位。",
-          "source": "data/criteria/dsm5tr-l2.json 的 pending_reason"
-        }
-      ]
-    },
-    "dsm5tr-l2-anxiety": {
-      "display_name": "Level 2—Anxiety—Adult（PROMIS Emotional Distress—Anxiety—Short Form）",
-      "dimension_order": [
-        "l2_anxiety"
-      ],
-      "dimensions": {
-        "l2_anxiety": {
-          "zh": "焦虑",
-          "gloss": "过去 7 天里害怕、焦虑、担心、除了焦虑难以专注、紧张、不安、绷紧的频率。",
-          "gloss_source": "derived_from_items:dsm5trl2anxiety_01…07",
-          "definition": "PROMIS Emotional Distress—Anxiety 短表（APA 版，7 题）。",
-          "definition_source": "archive/scales/DSM5TR-L2-Anxiety/manual.pdf",
-          "does_not_measure": [
-            "不区分广泛性焦虑/惊恐/社交焦虑",
-            "不诊断任何障碍"
-          ]
-        }
-      },
-      "score_ranges": [
-        {
-          "text": "7–35（7 题 × 1–5，求和）。",
-          "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Anxiety.sum_range"
-        }
-      ],
-      "result_reading": [
-        {
-          "text": "同愤怒册：手册要求 T 分表而表不在册子里，本项目只给 7–35 的原始分。",
-          "source": "data/criteria/dsm5tr-l2.json 的 pending_reason"
-        }
-      ]
-    },
-    "dsm5tr-l2-depression": {
-      "display_name": "Level 2—Depression—Adult（PROMIS Emotional Distress—Depression—Short Form）",
-      "dimension_order": [
-        "l2_depression"
-      ],
-      "dimensions": {
-        "l2_depression": {
-          "zh": "抑郁",
-          "gloss": "过去 7 天里觉得没价值、没什么可期待、无助、难过、失败、抑郁、不快乐、绝望的频率。",
-          "gloss_source": "derived_from_items:dsm5trl2depression_01…08",
-          "definition": "PROMIS Emotional Distress—Depression 短表（APA 版，8 题）。",
-          "definition_source": "archive/scales/DSM5TR-L2-Depression/manual.pdf",
-          "does_not_measure": [
-            "不区分抑郁与双相抑郁",
-            "不诊断任何障碍",
-            "不评估自杀风险"
-          ]
-        }
-      },
-      "score_ranges": [
-        {
-          "text": "8–40（8 题 × 1–5，求和）。",
-          "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Depression.sum_range"
-        }
-      ],
-      "result_reading": [
-        {
-          "text": "同前两册：只给 8–40 的原始分，T 分待补。",
-          "source": "data/criteria/dsm5tr-l2.json 的 pending_reason"
-        }
-      ]
-    },
-    "dsm5tr-l2-sleep": {
-      "display_name": "Level 2—Sleep Disturbance—Adult（PROMIS—Sleep Disturbance—Short Form）",
-      "dimension_order": [
-        "l2_sleep_disturbance"
-      ],
-      "dimensions": {
-        "l2_sleep_disturbance": {
-          "zh": "睡眠困扰",
-          "gloss": "过去 7 天睡眠不安稳、不满意、不恢复精力、难以入睡、难以维持睡眠、睡不够、睡眠质量差的频率。",
-          "gloss_source": "derived_from_items:dsm5trl2sleep_01…08",
-          "definition": "PROMIS Sleep Disturbance 短表（APA 版，8 题）。",
-          "definition_source": "archive/scales/DSM5TR-L2-Sleep/manual.pdf",
-          "does_not_measure": [
-            "不诊断失眠障碍",
-            "不区分入睡困难/维持困难/早醒",
-            "不衡量睡眠时长或客观睡眠质量（无多导睡眠图）"
-          ],
-          "note": "本册有两处数据缺陷（第 8 题题文截断、部分题面残留 NUL 填充字符），见 evidence_gaps。"
-        }
-      },
-      "score_ranges": [
-        {
-          "text": "8–40（8 题 × 1–5，求和）。",
-          "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Sleep.sum_range"
-        }
-      ],
-      "result_reading": [
-        {
-          "text": "同 PROMIS 其余三册：只给 8–40 的原始分，T 分待补。",
-          "source": "data/criteria/dsm5tr-l2.json 的 pending_reason"
-        }
-      ]
-    },
-    "dsm5tr-l2-mania": {
-      "display_name": "Level 2—Mania—Adult（Altman Self-Rating Mania Scale [ASRM]）",
-      "dimension_order": [
-        "l2_mania"
-      ],
-      "dose_not_measure_note": "",
-      "dimensions": {
-        "l2_mania": {
-          "zh": "躁狂症状（ASRM 总分）",
-          "gloss": "本册每题不是一句陈述，而是**一组 5 句陈述**（0–4），作答者选出最符合自己的一句。5 组分别对应：情绪/愉快感、自信、睡眠需求、言语量、活动量（以量表包中保存的原版选项组为准）。",
-          "gloss_source": "derived_from_items:dsm5trl2mania_01…05 与量表包 items[].options（原版 ASRM 选项组）",
-          "definition": "Altman Self-Rating Mania Scale（ASRM），APA 版收录于 DSM-5-TR Level 2。",
-          "definition_source": "archive/scales/DSM5TR-L2-Mania/manual.pdf",
-          "does_not_measure": [
-            "不诊断双相障碍或躁狂发作（诊断需病程与功能损害标准）",
-            "不区分轻躁狂与躁狂",
-            "不评估抑郁相"
-          ]
-        }
-      },
-      "render_item_options": true,
-      "scoring_notes": [
-        {
-          "text": "5 组各 0–4 分，**求和**得 0–20 的总分。",
-          "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Mania（kind=cutoff, sum_range=[0,20]）"
-        }
-      ],
-      "score_ranges": [
-        {
-          "text": "0–20（5 组 × 0–4，求和）。",
-          "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Mania.sum_range"
-        }
-      ],
-      "result_reading": [
-        {
-          "text": "手册给出分界：**≤5** 不太可能与显著躁狂症状相关；**≥6** 高度可能是躁狂或轻躁狂，可能需要治疗与/或进一步诊断性检查。",
-          "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Mania.cutoff 与 bands（archive/scales/DSM5TR-L2-Mania/manual.pdf）"
-        },
-        {
-          "text": "这是**手册的分带**，不是一般人群常模：没有百分位、没有 T 分。",
-          "source": "本册在该体系里没有被指定常模表"
-        }
-      ],
-      "localization_notes": {
-        "1": "补充说明（**非原文**）：第 1 组的第 4 句原文作 “I feel happier **of** more cheerful than usual all of the time.”，其中 **of 疑为 or 之误**。本项目**逐字保留原文**（原文即如此），此句仅作说明，不构成对原文的更正。"
-      }
-    },
-    "dsm5tr-l2-repetitive": {
-      "display_name": "Level 2—Repetitive Thoughts and Behaviors—Adult（改编自 FOCI 严重度分量表 Part B）",
-      "dimension_order": [
-        "l2_repetitive_thoughts_and_behaviors"
-      ],
-      "dimensions": {
-        "l2_repetitive_thoughts_and_behaviors": {
-          "zh": "重复思维与行为的严重度",
-          "gloss": "这些想法/行为每天占多少时间、带来多少痛苦、有多难控制、让你回避多少事情、让你觉得受到多大妨碍（每题 0–4）。",
-          "gloss_source": "derived_from_items:dsm5trl2repetitive_01…05",
-          "definition": "改编自 Florida Obsessive-Compulsive Inventory（FOCI）严重度分量表 Part B。",
-          "definition_source": "archive/scales/DSM5TR-L2-Repetitive/manual.pdf",
-          "does_not_measure": [
-            "不诊断强迫症",
-            "不区分强迫思维与其它侵入性思维",
-            "不问症状内容（只问严重度）"
-          ]
-        }
-      },
-      "score_ranges": [
-        {
-          "text": "0–20（5 题 × 0–4，求和）。原文另有『average total score』口径。",
-          "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Repetitive（sum_range、notes）"
-        }
-      ],
-      "result_reading": [
-        {
-          "text": "手册给出分界：**≤7** 低于分界；**≥8** 可考虑对强迫症做更详细的评估。",
-          "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Repetitive.cutoff 与 bands"
-        }
-      ]
-    },
-    "dsm5tr-l2-somatic": {
-      "display_name": "Level 2—Somatic Symptom—Adult（Patient Health Questionnaire 15 [PHQ-15]）",
-      "dimension_order": [
-        "l2_somatic_symptom"
-      ],
-      "dimensions": {
-        "l2_somatic_symptom": {
-          "zh": "躯体症状负荷",
-          "gloss": "过去 7 天被 15 个常见躯体症状（胃痛、背痛、四肢或关节痛、月经问题、头痛、胸痛、头晕、昏厥、心悸、气短、性交疼痛、肠胃问题、恶心胀气、疲乏、睡眠困难）困扰的程度（0=完全没被困扰，2=被困扰很多）。",
-          "gloss_source": "derived_from_items:dsm5trl2somatic_01…15",
-          "definition": "Patient Health Questionnaire 15（PHQ-15）躯体症状严重度量表，APA 版收录于 DSM-5-TR Level 2。",
-          "definition_source": "archive/scales/DSM5TR-L2-Somatic/manual.pdf",
-          "does_not_measure": [
-            "不排除器质性病因（分数不能用来推断症状是心理来源）",
-            "不诊断躯体症状障碍",
-            "不评估症状的医学严重度"
-          ]
-        }
-      },
-      "score_ranges": [
-        {
-          "text": "0–30（15 题 × 0–2，求和）。",
-          "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Somatic.sum_range"
-        }
-      ],
-      "result_reading": [
-        {
-          "text": "手册给出四档严重度分带：Minimal 0–4、Low 5–9、Medium 10–14、High 15–30。",
-          "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Somatic.bands（archive/scales/DSM5TR-L2-Somatic/manual.pdf）"
-        },
-        {
-          "text": "分带来自 PHQ-15 的原始报告，是**该量表的严重度分带**，不是本册自带的一般人群常模。",
-          "source": "PHQ-15 原始文献的分带；本项目未入档 PHQ-15 原始文献，故只引手册给出的分带"
-        }
-      ]
-    },
-    "dsm5tr-l2-substance": {
-      "display_name": "Level 2—Substance Use—Adult（改编自 NIDA-Modified ASSIST）",
-      "dimension_order": [
-        "l2_substance_use"
-      ],
-      "dimensions": {
-        "l2_substance_use": {
-          "zh": "物质使用（逐项）",
-          "gloss": "过去 7 天使用 10 类物质（镇痛药、兴奋剂、镇静剂、大麻、可卡因、俱乐部药物、致幻剂、海洛因、吸入剂、甲基苯丙胺）的频率，0=完全没有，4=几乎每天。",
-          "gloss_source": "derived_from_items:dsm5trl2substance_01…10",
-          "definition": "改编自 NIDA-Modified ASSIST，APA 版收录于 DSM-5-TR Level 2。",
-          "definition_source": "archive/scales/DSM5TR-L2-Substance/manual.pdf",
-          "does_not_measure": [
-            "不诊断物质使用障碍",
-            "不评估剂量、耐受、戒断、功能损害或依赖程度",
-            "**不是总分**：不能把 10 项加总当成一个严重度分数"
-          ]
-        }
-      },
-      "scoring_notes": [
-        {
-          "text": "**逐项独立解释**：每一行对应一种物质；「>0 的项数」（count_true）是严重度/复杂度指标，**不是总分**。",
-          "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Substance（kind=per_item, aggregate=count_positive）"
-        }
-      ],
-      "score_ranges": [
-        {
-          "text": "每题 0–4；汇总只取「>0 的项数」（0–10）。原文不定义总分。",
-          "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Substance.aggregate_label"
-        }
-      ],
-      "result_reading": [
-        {
-          "text": "逐项读：哪几种物质被报告过、频率如何；多项 >0 表示更严重、更复杂。**不给出单一总分与分界。**",
-          "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Substance.notes"
-        }
-      ]
+   },
+   "score_ranges": [
+    {
+     "text": "8–40（8 题 × 1–5，求和）。",
+     "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Sleep.sum_range"
     }
+   ],
+   "result_reading": [
+    {
+     "text": "本册按 **T 分**判读：raw 8–40 的转换表见 `archive/literature/norms/healthmeasures2023_promis-sleep-cat-scoring-manual.pdf` 第 12 页（Sleep Disturbance 8a，已入库）。**没有百分位常模**。",
+     "source": "data/criteria/dsm5tr-l2.json 的 tscore_table（含 source 页码与逐行自证）"
+    }
+   ],
+   "norms_spec": {
+    "status": "unavailable",
+    "interpretation_basis": "bands_or_t_score_pending",
+    "reference_sample": null,
+    "applicability_warning": "各册的分带/分界只对**该册自己的量表与施测方式**有效，不得跨册套用。",
+    "source": {
+     "citation": "American Psychiatric Association. DSM-5-TR Online Assessment Measures — Level 2（8 册）。",
+     "evidence": [
+      "archive/scales/DSM5TR-L2-*/manual.pdf",
+      "archive/scales/DSM5TR-L2-*/source.json",
+      "data/criteria/dsm5tr-l2.json"
+     ],
+     "license": "APA 版权；允许研究人员/临床医生为患者使用而复制"
+    },
+    "notes": "逐册的 kind / 分带 / 分界 / T 分与百分位可用状态见 data/criteria/dsm5tr-l2.json；本文档 §4 直接渲染该文件，不复制第二份。",
+    "unavailable_reason": "本册**有 T 分**可用：来源 `archive/literature/norms/healthmeasures2023_promis-sleep-cat-scoring-manual.pdf` 第 12 页（PROMIS Adult Short Form v1.0 – Sleep Disturbance 8a 转换表，raw 8–40）。**没有百分位常模**：PROMIS 提供的是 T 分常模（M=50, SD=10），不是一般人群的百分位分布。"
+   }
+  },
+  "dsm5tr-l2-mania": {
+   "display_name": "Level 2—Mania—Adult（Altman Self-Rating Mania Scale [ASRM]）",
+   "dimension_order": [
+    "l2_mania"
+   ],
+   "dose_not_measure_note": "",
+   "dimensions": {
+    "l2_mania": {
+     "zh": "躁狂症状（ASRM 总分）",
+     "gloss": "本册每题不是一句陈述，而是**一组 5 句陈述**（0–4），作答者选出最符合自己的一句。5 组分别对应：情绪/愉快感、自信、睡眠需求、言语量、活动量（以量表包中保存的原版选项组为准）。",
+     "gloss_source": "derived_from_items:dsm5trl2mania_01…05 与量表包 items[].options（原版 ASRM 选项组）",
+     "definition": "Altman Self-Rating Mania Scale（ASRM），APA 版收录于 DSM-5-TR Level 2。",
+     "definition_source": "archive/scales/DSM5TR-L2-Mania/manual.pdf",
+     "does_not_measure": [
+      "不诊断双相障碍或躁狂发作（诊断需病程与功能损害标准）",
+      "不区分轻躁狂与躁狂",
+      "不评估抑郁相"
+     ]
+    }
+   },
+   "render_item_options": true,
+   "scoring_notes": [
+    {
+     "text": "5 组各 0–4 分，**求和**得 0–20 的总分。",
+     "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Mania（kind=cutoff, sum_range=[0,20]）"
+    }
+   ],
+   "score_ranges": [
+    {
+     "text": "0–20（5 组 × 0–4，求和）。",
+     "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Mania.sum_range"
+    }
+   ],
+   "result_reading": [
+    {
+     "text": "手册给出分界：**≤5** 不太可能与显著躁狂症状相关；**≥6** 高度可能是躁狂或轻躁狂，可能需要治疗与/或进一步诊断性检查。",
+     "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Mania.cutoff 与 bands（archive/scales/DSM5TR-L2-Mania/manual.pdf）"
+    },
+    {
+     "text": "这是**手册的分带**，不是一般人群常模：没有百分位、没有 T 分。",
+     "source": "本册在该体系里没有被指定常模表"
+    }
+   ],
+   "localization_notes": {
+    "1": "补充说明（**非原文**）：第 1 组的第 4 句原文作 “I feel happier **of** more cheerful than usual all of the time.”，其中 **of 疑为 or 之误**。本项目**逐字保留原文**（原文即如此），此句仅作说明，不构成对原文的更正。"
+   },
+   "norms_spec": {
+    "status": "unavailable",
+    "interpretation_basis": "bands_or_t_score_pending",
+    "reference_sample": null,
+    "applicability_warning": "各册的分带/分界只对**该册自己的量表与施测方式**有效，不得跨册套用。",
+    "source": {
+     "citation": "American Psychiatric Association. DSM-5-TR Online Assessment Measures — Level 2（8 册）。",
+     "evidence": [
+      "archive/scales/DSM5TR-L2-*/manual.pdf",
+      "archive/scales/DSM5TR-L2-*/source.json",
+      "data/criteria/dsm5tr-l2.json"
+     ],
+     "license": "APA 版权；允许研究人员/临床医生为患者使用而复制"
+    },
+    "notes": "逐册的 kind / 分带 / 分界 / T 分与百分位可用状态见 data/criteria/dsm5tr-l2.json；本文档 §4 直接渲染该文件，不复制第二份。",
+    "unavailable_reason": "本册按**分界值**判读（ASRM，总分 0–20）：≥6 提示可能与显著躁狂症状相关、可能需要进一步评估。它本身不是常模量表，不给出百分位或 T 分。"
+   }
+  },
+  "dsm5tr-l2-repetitive": {
+   "display_name": "Level 2—Repetitive Thoughts and Behaviors—Adult（改编自 FOCI 严重度分量表 Part B）",
+   "dimension_order": [
+    "l2_repetitive_thoughts_and_behaviors"
+   ],
+   "dimensions": {
+    "l2_repetitive_thoughts_and_behaviors": {
+     "zh": "重复思维与行为的严重度",
+     "gloss": "这些想法/行为每天占多少时间、带来多少痛苦、有多难控制、让你回避多少事情、让你觉得受到多大妨碍（每题 0–4）。",
+     "gloss_source": "derived_from_items:dsm5trl2repetitive_01…05",
+     "definition": "改编自 Florida Obsessive-Compulsive Inventory（FOCI）严重度分量表 Part B。",
+     "definition_source": "archive/scales/DSM5TR-L2-Repetitive/manual.pdf",
+     "does_not_measure": [
+      "不诊断强迫症",
+      "不区分强迫思维与其它侵入性思维",
+      "不问症状内容（只问严重度）"
+     ]
+    }
+   },
+   "score_ranges": [
+    {
+     "text": "0–20（5 题 × 0–4，求和）。原文另有『average total score』口径。",
+     "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Repetitive（sum_range、notes）"
+    }
+   ],
+   "result_reading": [
+    {
+     "text": "手册给出分界：**≤7** 低于分界；**≥8** 可考虑对强迫症做更详细的评估。",
+     "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Repetitive.cutoff 与 bands"
+    }
+   ],
+   "norms_spec": {
+    "status": "unavailable",
+    "interpretation_basis": "bands_or_t_score_pending",
+    "reference_sample": null,
+    "applicability_warning": "各册的分带/分界只对**该册自己的量表与施测方式**有效，不得跨册套用。",
+    "source": {
+     "citation": "American Psychiatric Association. DSM-5-TR Online Assessment Measures — Level 2（8 册）。",
+     "evidence": [
+      "archive/scales/DSM5TR-L2-*/manual.pdf",
+      "archive/scales/DSM5TR-L2-*/source.json",
+      "data/criteria/dsm5tr-l2.json"
+     ],
+     "license": "APA 版权；允许研究人员/临床医生为患者使用而复制"
+    },
+    "notes": "逐册的 kind / 分带 / 分界 / T 分与百分位可用状态见 data/criteria/dsm5tr-l2.json；本文档 §4 直接渲染该文件，不复制第二份。",
+    "unavailable_reason": "本册按**分界值**判读（改编自 FOCI，总分 0–20）：≥8 提示可考虑对强迫症做更详细的评估。它本身不是常模量表，不给出百分位或 T 分。"
+   }
+  },
+  "dsm5tr-l2-somatic": {
+   "display_name": "Level 2—Somatic Symptom—Adult（Patient Health Questionnaire 15 [PHQ-15]）",
+   "dimension_order": [
+    "l2_somatic_symptom"
+   ],
+   "dimensions": {
+    "l2_somatic_symptom": {
+     "zh": "躯体症状负荷",
+     "gloss": "过去 7 天被 15 个常见躯体症状（胃痛、背痛、四肢或关节痛、月经问题、头痛、胸痛、头晕、昏厥、心悸、气短、性交疼痛、肠胃问题、恶心胀气、疲乏、睡眠困难）困扰的程度（0=完全没被困扰，2=被困扰很多）。",
+     "gloss_source": "derived_from_items:dsm5trl2somatic_01…15",
+     "definition": "Patient Health Questionnaire 15（PHQ-15）躯体症状严重度量表，APA 版收录于 DSM-5-TR Level 2。",
+     "definition_source": "archive/scales/DSM5TR-L2-Somatic/manual.pdf",
+     "does_not_measure": [
+      "不排除器质性病因（分数不能用来推断症状是心理来源）",
+      "不诊断躯体症状障碍",
+      "不评估症状的医学严重度"
+     ]
+    }
+   },
+   "score_ranges": [
+    {
+     "text": "0–30（15 题 × 0–2，求和）。",
+     "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Somatic.sum_range"
+    }
+   ],
+   "result_reading": [
+    {
+     "text": "手册给出四档严重度分带：Minimal 0–4、Low 5–9、Medium 10–14、High 15–30。",
+     "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Somatic.bands（archive/scales/DSM5TR-L2-Somatic/manual.pdf）"
+    },
+    {
+     "text": "分带来自 PHQ-15 的原始报告，是**该量表的严重度分带**，不是本册自带的一般人群常模。",
+     "source": "PHQ-15 原始文献的分带；本项目未入档 PHQ-15 原始文献，故只引手册给出的分带"
+    }
+   ],
+   "norms_spec": {
+    "status": "unavailable",
+    "interpretation_basis": "bands_or_t_score_pending",
+    "reference_sample": null,
+    "applicability_warning": "各册的分带/分界只对**该册自己的量表与施测方式**有效，不得跨册套用。",
+    "source": {
+     "citation": "American Psychiatric Association. DSM-5-TR Online Assessment Measures — Level 2（8 册）。",
+     "evidence": [
+      "archive/scales/DSM5TR-L2-*/manual.pdf",
+      "archive/scales/DSM5TR-L2-*/source.json",
+      "data/criteria/dsm5tr-l2.json"
+     ],
+     "license": "APA 版权；允许研究人员/临床医生为患者使用而复制"
+    },
+    "notes": "逐册的 kind / 分带 / 分界 / T 分与百分位可用状态见 data/criteria/dsm5tr-l2.json；本文档 §4 直接渲染该文件，不复制第二份。",
+    "unavailable_reason": "本册按**严重度分带**判读（PHQ-15，总分 0–30）：极轻 0–4、轻 5–9、中 10–14、重 15–30。它本身不是常模量表，不给出百分位或 T 分。"
+   }
+  },
+  "dsm5tr-l2-substance": {
+   "display_name": "Level 2—Substance Use—Adult（改编自 NIDA-Modified ASSIST）",
+   "dimension_order": [
+    "l2_substance_use"
+   ],
+   "dimensions": {
+    "l2_substance_use": {
+     "zh": "物质使用（逐项）",
+     "gloss": "过去 7 天使用 10 类物质（镇痛药、兴奋剂、镇静剂、大麻、可卡因、俱乐部药物、致幻剂、海洛因、吸入剂、甲基苯丙胺）的频率，0=完全没有，4=几乎每天。",
+     "gloss_source": "derived_from_items:dsm5trl2substance_01…10",
+     "definition": "改编自 NIDA-Modified ASSIST，APA 版收录于 DSM-5-TR Level 2。",
+     "definition_source": "archive/scales/DSM5TR-L2-Substance/manual.pdf",
+     "does_not_measure": [
+      "不诊断物质使用障碍",
+      "不评估剂量、耐受、戒断、功能损害或依赖程度",
+      "**不是总分**：不能把 10 项加总当成一个严重度分数"
+     ]
+    }
+   },
+   "scoring_notes": [
+    {
+     "text": "**逐项独立解释**：每一行对应一种物质；「>0 的项数」（count_true）是严重度/复杂度指标，**不是总分**。",
+     "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Substance（kind=per_item, aggregate=count_positive）"
+    }
+   ],
+   "score_ranges": [
+    {
+     "text": "每题 0–4；汇总只取「>0 的项数」（0–10）。原文不定义总分。",
+     "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Substance.aggregate_label"
+    }
+   ],
+   "result_reading": [
+    {
+     "text": "逐项读：哪几种物质被报告过、频率如何；多项 >0 表示更严重、更复杂。**不给出单一总分与分界。**",
+     "source": "data/criteria/dsm5tr-l2.json 的 DSM5TR-L2-Substance.notes"
+    }
+   ],
+   "norms_spec": {
+    "status": "unavailable",
+    "interpretation_basis": "bands_or_t_score_pending",
+    "reference_sample": null,
+    "applicability_warning": "各册的分带/分界只对**该册自己的量表与施测方式**有效，不得跨册套用。",
+    "source": {
+     "citation": "American Psychiatric Association. DSM-5-TR Online Assessment Measures — Level 2（8 册）。",
+     "evidence": [
+      "archive/scales/DSM5TR-L2-*/manual.pdf",
+      "archive/scales/DSM5TR-L2-*/source.json",
+      "data/criteria/dsm5tr-l2.json"
+     ],
+     "license": "APA 版权；允许研究人员/临床医生为患者使用而复制"
+    },
+    "notes": "逐册的 kind / 分带 / 分界 / T 分与百分位可用状态见 data/criteria/dsm5tr-l2.json；本文档 §4 直接渲染该文件，不复制第二份。",
+    "unavailable_reason": "本册**逐项**判读（改编自 NIDA-Modified ASSIST）：每一面对应一种物质，各项独立看是否 >0，不求和为总分。它本身不是常模量表，不给出百分位或 T 分。"
+   }
   }
+ }
 }

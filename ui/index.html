@@ -1001,72 +1001,977 @@ function instExportJSON(data, e) {
       dimension: r.name, value: r.value, answered: r.n_answered,
       items: r.n_items, complete: r.complete, is_domain: !!r.isDomain,
     })) : null,
+    /* ── D122（task-34）：**结果快照**为新增字段，旧存档仍能导入 ──────────────
+       `format` 不变（`emohealth.instrument.v1`），`instImportJSON` 只校验 format +
+       `responses`，所以这里加字段**不破坏导入兼容**；导入后重新渲染即可还原报告所需
+       的一切（报告数据全部可由 `responses` + 数据包重算，快照只是存档时的留痕）。
+       ⚠️ 本函数在 `instReport` 之后定义，但导出是用户点击时调用，运行时序没问题。 */
+    report_snapshot: (() => {
+      try {
+        const R = instReport(data, e);
+        return {
+          generated_at: R.generated_at,
+          generated_at_local: R.generated_at_local,
+          license_label: R.license_label,
+          answered: R.answered, total: R.total,
+          norm_notes: R.norm_notes,
+          judgment: R.judgment,
+          score_rows: R.score_rows,
+          infer_summary: R.infer ? {
+            n_total: R.infer.n_total, n_ready: R.infer.n_ready,
+            n_allowed: R.infer.n_allowed, model: R.infer.model,
+            item_dim_corr_kind: R.infer.item_dim_corr_kind,
+            ceiling_ratio: R.infer.ceiling_ratio,
+          } : null,
+          missing_norm_entries: R.missing_norm_entries,
+        };
+      } catch (err) { return {error: String(err && err.message || err)}; }
+    })(),
     items: rows,
   };
   download(`${e.code}-存档-${stamp()}.json`,
            JSON.stringify(payload, null, 1), "application/json");
 }
 
-function instExportMD(data, e) {
-  const rows = instRows(data);
-  const n = rows.filter(r => r.value !== "").length;
-  let md = `# ${data.display_name}\n\n`;
-  md += `- 量表代码：\`${e.code}\`\n`;
-  md += `- 已答：${n}/${rows.length} 题\n`;
-  md += `- 作答范围：${data.response_format.min}–${data.response_format.max}\n`;
-  if (data.response_format.labels && data.response_format.labels.length) {
-    md += `- 选项含义：${data.response_format.labels.map((x, i) =>
-      `${data.response_format.min + i}=${x}`).join("，")}\n`;
-  }
-  md += `- 授权：${e.license.label || e.license.kind || ""}`;
-  if (data.license && data.license.holder) md += `（${data.license.holder}）`;
-  md += "\n";
-  if (data.citation) md += `- 引用：${data.citation}\n`;
-  md += "\n";
+/* ── 分带命中判定（**唯一实现**，null 安全的边界处理）────────────────────────
+   数据层的分带：`lo`/`hi` 为 **null = 无界**（−∞ / +∞），并带
+   `lo_inclusive`/`hi_inclusive`（数据侧有闭合断言保证铺满无重叠）。
+   ⚠️ **不能拿 null 直接做数值比较**：JS 里 `null < 55` 是 `true`（null→0），
+   会静默把「无下界」当成「>0」。这里显式换成 ±Infinity；
+   兼容旧数据（无 `*_inclusive` 字段时按闭区间）。 */
+function bandHit(b, v) {
+  if (!b || v == null) return false;
+  const x = Number(v);
+  if (!Number.isFinite(x)) return false;
+  const lo = (b.lo == null) ? -Infinity : Number(b.lo);
+  const hi = (b.hi == null) ? Infinity : Number(b.hi);
+  const loOk = (b.lo_inclusive === undefined) ? (x >= lo)
+    : (b.lo_inclusive ? (x >= lo) : (x > lo));
+  const hiOk = (b.hi_inclusive === undefined) ? (x <= hi)
+    : (b.hi_inclusive ? (x <= hi) : (x < hi));
+  return loOk && hiOk;
+}
 
-  if (S.instResult) {
-    md += `## 结果\n\n| 维度 | 分数 | 已答/题数 | 口径 |\n|---|---|---|---|\n`;
-    const hasNorms = !!(data.norms && (data.norms.facets || data.norms.domains));
-    if (hasNorms) md = md.replace("| 维度 | 分数 | 已答/题数 | 口径 |\n|---|---|---|---|\n",
-                                  "| 维度 | 分数 | 百分位 | 已答/题数 | 口径 |\n|---|---|---|---|---|\n");
-    for (const r of S.instResult.rows) {
-      const rule = data.scoring[r.id] || {};
-      const pct = hasNorms ? instPercentile(data, r.name, r.value) : null;
-      md += hasNorms
-        ? `| ${r.name} | ${r.value.toFixed(2)} | ${pct == null ? "—" : pct + "%ile"} | ${r.n_answered}/${r.n_items} | ${rule.aggregation || ""} |\n`
-        : `| ${r.name} | ${r.value.toFixed(2)} | ${r.n_answered}/${r.n_items} | ${rule.aggregation || ""} |\n`;
+/* ── 判读：门槛型 / 分界 / 分带 / 逐项 / T 分型 —— **唯一实现** ──────────────
+   结果页渲染与导出（MD/CSV/JSON）都走这里，纯数据、不含 HTML：
+   一处改了另一处不会走样，导出也不会出现「自己再算一套」。
+   数据来源：`data.interpretation`（L1 门槛）与 `data.criteria`（L2 八册），
+   分值与 `S.instResult.rows`（= `instAggregate`/`instScores` 的结果）。 */
+function instJudgment(data) {
+  const it = data.interpretation || {};
+  const cr = data.criteria || {};
+  const rows = (S.instResult && S.instResult.rows) || [];
+  const byName = new Map(rows.map(r => [r.name, r]));
+
+  if (it.kind === "threshold") {
+    const doms = (it.domains || []).map(d => {
+      const r = byName.get(d.domain);
+      const v = r ? r.value : null;
+      const complete = r ? !!r.complete : false;
+      const reached = v != null && v >= d.threshold;
+      /* ⚠️ 域分是**域内最高分**：部分作答时「达到门槛」是可靠的正向结论，
+         但「未达门槛」**不可靠**（未答的题可能是高分）→ 输出「未答完，不能判定」。 */
+      return {domain: d.domain, value: v, threshold: d.threshold,
+        threshold_label: d.threshold_label || "", level2: d.level2 || null,
+        answered: v != null, complete,
+        decidable: reached || complete,
+        reached};
+    });
+    const p = it.pid5_interface;
+    const pf = (p && p.status === "inferred") ? byName.get(p.from_domain) : null;
+    return {
+      kind: "threshold",
+      scoring: it.scoring || "",
+      disclaimer: it.disclaimer || "",
+      domains: doms,
+      hit: doms.filter(x => x.reached).length,
+      low_threshold_domains: (it.domains || []).filter(d => d.threshold === 1)
+        .map(d => d.domain),
+      pid5_interface: (p && p.status === "inferred") ? {
+        status: p.status, from_domain: p.from_domain, to: p.to || "PID-5",
+        reached: !!(pf && pf.value != null && pf.value >= 2),
+      } : null,
+    };
+  }
+  if (cr.kind) {
+    const kv = rows.length === 1 ? rows[0].value : null;
+    const n = rows.length === 1 ? rows[0].n_answered : 0;
+    /* ── T 分（Phase 2）：有官方 raw→T 转换表就算，**只查表**、不内插不外推 ──
+       ⚠️ 未答满不给：域分是域内**最高分**，部分作答时只是下界 → 算出的 T 会偏低。 */
+    const row0 = rows.length === 1 ? rows[0] : null;
+    const domainComplete = row0 ? !!row0.complete : false;
+    const tScore = (() => {
+      if (!cr.tscore_table) return null;
+      if (!row0 || row0.value == null) {
+        return {found: false, reason: "该域未答：没有原始分可查表"};
+      }
+      if (!domainComplete) {
+        return {found: false, raw: row0.value,
+          reason: `该域未答满（${row0.n_answered}/${row0.n_items}）：域分是域内最高分、`
+            + `部分作答时只是**下界**，据此算出的 T 会偏低，因此不给 T 分`};
+      }
+      return instTScoreDetail(data, row0.value);
+    })();
+    /* T 单位的分带（`criteria.bands` 非空时才用）：**null 安全**的命中判定，
+       并把分带出处（APA 册子 p.9）与 T 表出处（PROMIS 官方 manual）**分开带出**。 */
+    const tBand = (tScore && tScore.found && Array.isArray(cr.bands) && cr.bands.length)
+      ? (cr.bands.find(b => bandHit(b, tScore.T)) || null) : null;
+    const bandsMeta = (Array.isArray(cr.bands) && cr.bands.length) ? {
+      source: cr.bands_source || null,
+      bands: cr.bands.map(b => ({label: b.label, lo: b.lo == null ? null : b.lo,
+        hi: b.hi == null ? null : b.hi, lo_inclusive: b.lo_inclusive,
+        hi_inclusive: b.hi_inclusive, verbatim: b.verbatim || ""})),
+    } : null;
+
+    if (cr.kind === "per_item") {
+      const items = (INST_NOW.items || []).map(x => ({
+        order: x.order, id: x.id, zh: x.zh || x.text, en: x.en || x.text || "",
+        value: (x.id in S.instResp) ? S.instResp[x.id] : null,
+      }));
+      return {kind: "per_item", scale: cr.scale || "",
+        aggregate_label: cr.aggregate_label || "", notes: cr.notes || "",
+        value: kv, answered: n, items,
+        n_positive: items.filter(x => x.value > 0).length};
     }
-    md += hasNorms
-      ? `\n常模来源：${data.norms.source}（n=${data.norms.n}），${data.norms.percentile_method}\n`
-      : `\n该量表暂无可用常模，因此只给原始分，不给百分位，也不作「高于/低于常人」的判断。\n`;
-    md += "\n";
+    if (cr.kind === "severity_bands" || cr.kind === "cutoff") {
+      const bands = (cr.bands || []).map(b => ({lo: b.lo, hi: b.hi, label: b.label,
+        lo_inclusive: b.lo_inclusive, hi_inclusive: b.hi_inclusive,
+        verbatim: b.verbatim || ""}));
+      const band = bands.find(b => bandHit(b, kv)) || null;
+      return {kind: cr.kind, scale: cr.scale || "", sum_range: cr.sum_range || [],
+        cutoff: (cr.cutoff == null ? null : cr.cutoff), value: kv,
+        answered: rows.length === 1 ? n : 0, bands,
+        band: band ? band.label : null, notes: cr.notes || "",
+        bands_meta: bandsMeta,
+        complete: domainComplete, tscore: tScore, t_band: tBand ? tBand.label : null};
+    }
+    if (cr.kind === "t_score") {
+      return {kind: "t_score", scale: cr.scale || "", sum_range: cr.sum_range || [],
+        value: kv, answered: n, complete: domainComplete,
+        tscore_table: !!cr.tscore_table, tscore: tScore,
+        t_band: tBand ? tBand.label : null,
+        bands_meta: bandsMeta,
+        metric: (cr.tscore_table && cr.tscore_table.metric) || "",
+        notes: cr.notes || ""};
+    }
+  }
+  return null;
+}
+
+/* ── 推断估计（唯一实现来自 ui/lib/inference.js 的 predictFrom）──────────────
+   导出与面板共用；**硬规则**：本维度一题未答 → 不给估计、不给置信度。 */
+function instInferenceTable(data, e) {
+  if (!e || !e.code) return null;
+  const payload = inferencePayload(e.code);
+  const lib = window.EmoHealthInference;
+  if (!payload || !payload.params || !lib || typeof lib.predictFrom !== "function") return null;
+  /* ⚠️ 直接调库（**唯一推断实现**），不用面板那份带缓存的 `currentPrediction`——
+     导出可能与面板渲染时刻不同步（作答后未重绘），那样会导出与作答不一致的估计，
+     甚至出现「1/8 已答」却被判成「一题未答」这种自相矛盾（缺陷 1/2 的根因之一）。 */
+  let pred = null;
+  try { pred = lib.predictFrom(payload, S.instResp); } catch (err) { return null; }
+  if (!pred || pred.error) return null;
+  const p = payload.params || {};
+  const dims = Object.keys(p.dim_items || {});
+  const rows = dims.map(dim => {
+    const b = (pred.inferred || {})[dim];
+    if (!b) return null;
+    return {dim, name: b.name || dimNameOf(p, dim),
+      allowed: !!b.display_allowed, available: !!b.available,
+      confidence_r: b.display_allowed ? b.confidence_r : null,
+      estimate: b.display_allowed && b.available ? b.predicted_score : null,
+      n_answered_own: b.n_answered_own || 0,
+      n_items: b.n_items || (p.dim_items[dim] || []).length,
+      ceiling_pct: b.ceiling_pct == null ? null : b.ceiling_pct,
+      ceiling_need: b.ceiling_need == null ? null : b.ceiling_need,
+      status: b.status || "", reason: b.reason || ""};
+  }).filter(Boolean);
+  rows.sort((a, b) => a.name.localeCompare(b.name));
+  return {rows, n_allowed: rows.filter(x => x.allowed).length,
+    n_ready: rows.filter(x => x.available).length, n_total: rows.length,
+    model: (payload.model && payload.model.name) || null,
+    formula: (payload.model && payload.model.formula) || null,
+    item_dim_corr_kind: p.item_dim_corr_kind || null,
+    ceiling_ratio: p.ceiling_ratio == null ? null : p.ceiling_ratio,
+    ceiling_ratio_source: p.ceiling_ratio_source || null,
+    layer_note: pred.layer_note || "", hard_rule: (payload.model && payload.model.hard_rule) || ""};
+}
+
+/* PID-5 条件常模的**分层敏感度**（披露用，数字来自 Lead + confidence-judge 的
+   三重独立复核，2026-10-06；导出只**照报**这两个数，不自行推算）：
+     · 9 个性别×年龄分层 + overall 层之间，同一 raw 的百分位**全局最大跨度 45.93 个百分点**
+       （例：deceitfulness raw=0.6 → f [65,Inf) 79.02 vs m [18,35) 33.09）
+     · 若恒定使用第一层 `f [18,35)`（旧行为），相对真实分层**最大偏差 32.98 个百分点**
+       （例：deceitfulness raw=0.5 → f [18,35) 38.73 vs f [65,Inf) 71.71） */
+const PID5_LAYER_SENSITIVITY = {
+  max_span_pp: 45.93,
+  first_cell_max_dev_pp: 32.98,
+  max_span_example: "deceitfulness raw=0.6：f [65,Inf)=79.02 vs m [18,35)=33.09",
+  first_cell_example: "deceitfulness raw=0.5：f [18,35)=38.73 vs f [65,Inf)=71.71",
+  verified_by: "Lead + confidence-judge 三重独立复核（2026-10-06）",
+};
+
+/* ══ 报告模型（**导出三件套的唯一数据源**）════════════════════════════════════
+   一次算出：元数据、得分总表、逐维度细则、判读（门槛/分带）、推断表、常模说明。
+   MD / 结果明细 CSV / 存档 JSON 都从这里取数——「一个数一个来源」。 */
+function instReport(data, e) {
+  const rows = instRows(data);
+  const answered = rows.filter(r => r.value !== "").length;
+  const nrm = data.norms || null;
+  const hasNorms = !!(nrm && (nrm.facets || nrm.domains || nrm.scales));
+  const rrows = (S.instResult && S.instResult.rows) || [];
+  const infer = instInferenceTable(data, e);
+  const inferByName = new Map((infer ? infer.rows : []).map(x => [x.name, x]));
+  const dimName = new Map((data.dimensions || []).map(d => [d.id, d.name]));
+  const revCount = id => (data.scoring[id] || {}).of
+    ? (data.scoring[id].of.filter(iid => {
+        const it = (data.items || []).find(x => x.id === iid);
+        return it && it.key === -1;
+      }).length) : 0;
+
+  /* ── 每一行的分类与位置（D122 修正：缺陷 1/2/3）────────────────────────────
+     `state` **只由真实原因决定**，绝不用「一题未答」兜底：
+       · unanswered  : n_answered === 0            → 硬规则：不给估计/置信度/位置
+       · insufficient: n_answered > 0 但置信度未达门槛 → 说明真实原因（不是「未答」）
+       · estimated   : 可给估计（conf_r ≥ 门槛）      → 估计分 + 位置（**按估计分算**，明确标注）
+       · measured    : 该维度**答满**（complete）      → 才有「实测位置」（用完整原始分查常模）
+     ⚠️ **绝不用部分作答的原始分查常模**：部分均值 ≠ 完整维度得分（缺陷 3）。
+        用户在意的「位置」用**估计分**给，并明确标注它不是实测位置。 */
+  const missingNormEntries = [];
+  const scoreRows = rrows.map(r => {
+    const rule = data.scoring[r.id] || {};
+    const b = inferByName.get(r.name) || null;
+    const nAns = r.n_answered;
+    const full = !!r.complete;
+    /* ⚠️ 没有推断模型（L1/L2 八册）时**不存在「置信度门槛」这回事**：
+       状态按「未答 / 未答满 / 答满」如实分，绝不套用推断那套文案。 */
+    const state = !infer
+      ? (nAns === 0 ? "unanswered" : (full ? "complete" : "partial"))
+      : ((nAns === 0) ? "unanswered"
+        : ((b && b.allowed && b.available) ? "estimated" : "insufficient"));
+    const est = state === "estimated" ? b.estimate : null;
+    const rAll = (b && b.allowed) ? b.confidence_r : null;
+    /* 实测位置：**只有答满才有**（否则 null，且写明原因） */
+    const nd = (full && hasNorms) ? instPercentileDetail(data, r.name, r.value) : null;
+    if (full && hasNorms && !nd) missingNormEntries.push(r.name);
+    /* 估计位置：按估计分查常模（性质完全不同，导出里单独一列 + 标注） */
+    const ndEst = (state === "estimated" && hasNorms)
+      ? instPercentileDetail(data, r.name, est) : null;
+    /* Phase 2：L2 的官方 raw→T **查表**（只查表；未答满/超范围一律不给） */
+    const tsc = (data.criteria && data.criteria.tscore_table)
+      ? (full ? instTScoreDetail(data, r.value)
+        : {found: false, raw: r.value,
+          reason: `该域未答满（${nAns}/${r.n_items}）：域分是域内最高分、部分作答时只是**下界**，`
+            + `据此算出的 T 会偏低，因此不给 T 分`})
+      : null;
+    const note = state === "unanswered"
+      ? "本维度一道题都没答：按硬规则不给估计、置信度与位置"
+      : (state === "insufficient"
+        ? `已答 ${nAns}/${r.n_items} 题，信息量不足（置信度 r=${rAll == null ? "—" : (+rAll).toFixed(4)} 未达展示门槛），暂不给估计与位置`
+        : (state === "partial"
+          ? `已答 ${nAns}/${r.n_items} 题（**未答满**）：本册没有推断模型与常模，`
+            + `因此不给估计与位置；判读见上面的门槛/分带表`
+          : ""));
+    return {
+      id: r.id, name: r.name, value: r.value, n_answered: nAns,
+      n_items: r.n_items, complete: full, is_domain: !!r.isDomain,
+      aggregation: rule.aggregation || "",
+      reverse_items: revCount(r.id),
+      state,
+      estimate: est, confidence_r: rAll, estimate_note: note,
+      /* 实测位置（答满才有） */
+      measured: !!nd,
+      pctl: nd ? nd.pctl : null, pctl_lo: nd && nd.pctl_lo != null ? nd.pctl_lo : null,
+      pctl_hi: nd && nd.pctl_hi != null ? nd.pctl_hi : null,
+      /* T 分：优先常模来源直接给的（PID-5 条件常模）；否则 L2 的官方 raw→T **查表**。
+         ⚠️ 查表只在**答满**时做（部分作答的域分只是下界）。 */
+      T: (nd && nd.T != null) ? nd.T : (tsc && tsc.found ? tsc.T : null),
+      T_lo: nd && nd.T_lo != null ? nd.T_lo : null,
+      T_hi: nd && nd.T_hi != null ? nd.T_hi : null,
+      SE: (tsc && tsc.found && tsc.SE != null) ? tsc.SE : null,
+      T_source: (nd && nd.T != null) ? "常模来源直接给（条件常模）"
+        : ((tsc && tsc.found) ? "查表：官方 raw→T 转换表" : ""),
+      T_reason: (!nd || nd.T == null) ? ((tsc && !tsc.found) ? tsc.reason : "") : "",
+      z: nd && nd.z != null ? nd.z
+        : ((nd && nd.T != null) || (tsc && tsc.found)
+          ? Math.round(((((nd && nd.T) || (tsc && tsc.T)) - 50) / 10) * 100) / 100 : null),
+      z_from: nd && nd.z != null ? "mean/sd"
+        : ((nd && nd.T != null) ? "由来源 T 分换算 (T-50)/10"
+          : ((tsc && tsc.found) ? "由**查表 T 分**换算 (T-50)/10" : "")),
+      mean: nd && nd.mean != null ? nd.mean : null,
+      sd: nd && nd.sd != null ? nd.sd : null,
+      /* z 本身就是「距均值多少个 SD」；两者必须一致（缺陷：同列不给值却给了 z 自相矛盾） */
+      sd_from_mean: nd && nd.z != null ? nd.z
+        : ((nd && nd.sd_from_mean != null) ? nd.sd_from_mean
+          : ((tsc && tsc.found) ? Math.round((tsc.T - 50) / 10 * 100) / 100 : null)),
+      sd_lo: nd && nd.sd_lo != null ? nd.sd_lo : null,
+      sd_hi: nd && nd.sd_hi != null ? nd.sd_hi : null,
+      sd_unavailable_reason: (nd && nd.sd_lo == null)
+        ? "条件常模没有 mean/SD（只给百分位与 T 分及其 95% 区间），所以 ±1SD 是**原始分单位**的区间、给不出来；z 是标准化单位，见「距均值(SD)」列"
+        : ((tsc && tsc.found)
+          ? "T 分型册子只给 raw→T 转换表（没有 mean/SD），所以 ±1SD 是原始分单位的区间、给不出来；z/距均值(SD) 由 T 换算"
+          : ""),
+      /* T 转换表的溯源（导出该有的细则） */
+      t_table: tsc ? {
+        form: tsc.form, metric: tsc.metric, raw_range: tsc.raw_range,
+        completeness: tsc.completeness, table_title: tsc.table_title,
+        source: tsc.source,
+      } : null,
+      /* 实测位置为什么没有 */
+      measured_note: nd ? ""
+        : (!full
+          ? `未答满（${nAns}/${r.n_items}）：**不用部分作答的原始分查常模**（部分均值 ≠ 完整维度得分），所以不给实测百分位/T/z`
+          : (hasNorms ? "该维度在这套常模里没有对应条目（**已单独报告 Lead**）" : "本量表没有可用常模")),
+      /* 估计位置（按估计分） */
+      est_pctl: ndEst ? ndEst.pctl : null,
+      est_T: ndEst && ndEst.T != null ? ndEst.T : null,
+      est_z: ndEst && ndEst.z != null ? ndEst.z
+        : (ndEst && ndEst.T != null ? Math.round((ndEst.T - 50) / 10 * 100) / 100 : null),
+      est_note: ndEst
+        ? `按**估计分**（${(+est).toFixed(2)}）算出的位置：基于已答 ${nAns}/${r.n_items} 题、置信度 r=${rAll == null ? "—" : (+rAll).toFixed(4)}——**不是实测位置**`
+        : "",
+      cell: nd ? (nd.cell || "") : (ndEst ? (ndEst.cell || "") : ""),
+      cell_is_default: (nd || ndEst) ? !!(nd || ndEst).cell_is_default : false,
+      cell_fallback: (nd || ndEst) ? !!(nd || ndEst).cell_fallback : false,
+      cell_default: (nd || ndEst) ? !!(nd || ndEst).cell_default : false,
+      default_cell: (nd || ndEst) ? ((nd || ndEst).default_cell || "") : "",
+      cell_source: !(nd || ndEst) ? "" : ((nd || ndEst).cell_fallback
+        ? `回退：数据源没有 overall 层，取第一层 ${(nd || ndEst).cell}`
+        : ((nd || ndEst).cell_requested ? `指定分层 ${(nd || ndEst).cell}` : `默认总体层 ${(nd || ndEst).cell}`)),
+      n_cells: (nd || ndEst) ? ((nd || ndEst).n_cells || 0) : 0,
+      extrap: nd ? !!nd.extrap : false,
+      facet_id: (nd || ndEst) ? ((nd || ndEst).facet_id || (nd || ndEst).scale_id || "") : "",
+      percentile_method: (nd || ndEst) ? ((nd || ndEst).percentile_method || "") : "",
+    };
+  });
+  /* 推断表里「有估计但不在得分表」的维度（例如某维度答了题但原始分不可算） */
+  const inScore = new Set(scoreRows.map(r => r.name));
+  const inferExtra = (infer ? infer.rows : []).filter(x => !inScore.has(x.name));
+
+  /* ⚠️ 答题进行中（还没点「看结果」，`S.instResult` 为空）：导出**仍要给估计**——
+     用户反馈里「没有具体估计的得分情况」说的正是这件事。此时没有原始分行，
+     估计分/置信度照给（硬规则不变：本维度未答 → 不给估计与置信度）。 */
+  if (!scoreRows.length && infer) {
+    for (const b of infer.rows) {
+      const rule = (data.scoring && (data.scoring[b.dim] || {})) || {};
+      const state = b.n_answered_own === 0 ? "unanswered"
+        : ((b.allowed && b.available) ? "estimated" : "insufficient");
+      const est = state === "estimated" ? b.estimate : null;
+      const ndEst = (state === "estimated" && hasNorms)
+        ? instPercentileDetail(data, b.name, est) : null;
+      scoreRows.push({
+        id: b.dim, name: b.name, value: null,
+        n_answered: b.n_answered_own, n_items: b.n_items, complete: false,
+        is_domain: false, aggregation: rule.aggregation || "", reverse_items: 0,
+        state,
+        estimate: est, confidence_r: b.allowed ? b.confidence_r : null,
+        estimate_note: state === "unanswered"
+          ? "本维度一道题都没答：按硬规则不给估计、置信度与位置"
+          : (state === "insufficient"
+            ? `已答 ${b.n_answered_own}/${b.n_items} 题，信息量不足（置信度 r=${b.confidence_r == null ? "—" : (+b.confidence_r).toFixed(4)} 未达展示门槛），暂不给估计与位置`
+            : ""),
+        measured: false,
+        pctl: null, pctl_lo: null, pctl_hi: null, T: null, T_lo: null, T_hi: null,
+        z: null, mean: null, sd: null, sd_from_mean: null, sd_lo: null, sd_hi: null,
+        z_from: "", sd_unavailable_reason: "",
+        measured_note: b.n_answered_own === 0
+          ? "本维度一道题都没答：没有位置可给"
+          : `未答满（${b.n_answered_own}/${b.n_items}）：不用部分作答的原始分查常模`,
+        est_pctl: ndEst ? ndEst.pctl : null,
+        est_T: ndEst && ndEst.T != null ? ndEst.T : null,
+        est_z: ndEst && ndEst.z != null ? ndEst.z
+          : (ndEst && ndEst.T != null ? Math.round((ndEst.T - 50) / 10 * 100) / 100 : null),
+        est_note: ndEst
+          ? `按**估计分**（${(+est).toFixed(2)}）算出的位置：基于已答 ${b.n_answered_own}/${b.n_items} 题、置信度 r=${b.confidence_r == null ? "—" : (+b.confidence_r).toFixed(4)}——**不是实测位置**`
+          : "",
+        cell: ndEst ? (ndEst.cell || "") : "",
+        cell_default: ndEst ? !!ndEst.cell_default : false,
+        cell_is_default: ndEst ? !!ndEst.cell_is_default : false,
+        cell_fallback: ndEst ? !!ndEst.cell_fallback : false,
+        default_cell: ndEst ? (ndEst.default_cell || "") : "",
+        cell_source: !ndEst ? "" : (ndEst.cell_fallback
+          ? `回退：数据源没有 overall 层，取第一层 ${ndEst.cell}`
+          : (ndEst.cell_requested ? `指定分层 ${ndEst.cell}` : `默认总体层 ${ndEst.cell}`)),
+        n_cells: (nrm && nrm.cells) ? nrm.cells.length : 0,
+        extrap: false, facet_id: "", percentile_method: "",
+      });
+    }
   }
 
-  md += `## 逐题作答\n\n| 题号 | 维度 | 你的作答 | 中文题面 |\n|---|---|---|---|\n`;
-  const dimName = new Map((data.dimensions || []).map(d => [d.id, d.name]));
-  for (const r of rows) {
-    const d = r.dim.split("|").map(x => dimName.get(x) || x).join("、");
-    const v = r.value === "" ? "（未答）" : r.value;
-    md += `| ${r.order} | ${d} | ${v} | ${(r.zh || r.en).replace(/\|/g, "\\|")} |\n`;
+  const judgment = instJudgment(data);
+  const normNotes = {
+    has_norms: hasNorms,
+    source: hasNorms ? (nrm.source || "") : "",
+    n: hasNorms ? (nrm.n == null ? null : nrm.n) : null,
+    n_note: hasNorms ? (nrm.n_note || (data.norms_status && data.norms_status.note) || "") : "",
+    percentile_method: hasNorms ? (nrm.percentile_method || "") : "",
+    unit: hasNorms ? (nrm.unit || "") : "", domain_unit: hasNorms ? (nrm.domain_unit || "") : "",
+    conditional: hasNorms ? !!nrm.conditional : false,
+    cells: hasNorms && Array.isArray(nrm.cells) ? nrm.cells.slice() : [],
+    scale_range: hasNorms ? (nrm.scale_range || null) : null,
+    reverse_transform: hasNorms ? (nrm.reverse_transform || null) : null,
+    /* ⚠️ 「为什么没有常模」——**权威原文优先**（打包层已把 `norms.unavailable_reason`
+       下发到前端包）；只有数据层没给原文时，才按本册实际口径组装**分册**的说明，
+       绝不合成一句通用理由（L2 四册是 T 分型、不是「分界/分带」，混起来会让人以为
+       这个量表本来就没有 T 分）。 */
+    unavailable_reason: (() => {
+      if (hasNorms) return "";
+      if (nrm && nrm.unavailable_reason) return String(nrm.unavailable_reason);
+      const cr = data.criteria || {};
+      if (cr.kind === "t_score") {
+        /* Phase 2：表已入档 → 说法必须改成「已接线」，不能再写「尚未取得」 */
+        if (cr.tscore_table && Array.isArray(cr.tscore_table.rows) && cr.tscore_table.rows.length) {
+          const tt = cr.tscore_table;
+          return `本册按 **T 分**判读（${cr.scale || "PROMIS Short Form"}）：`
+            + `已入档官方 **raw→T 转换表**`
+            + `${tt.form ? `（${tt.form}）` : ""}`
+            + `${tt.completeness ? `，${tt.completeness}` : ""}，`
+            + `据此给出 **T 分与 SE**（${tt.metric || "M=50, SD=10"}）；`
+            + `转换表不是常模百分位表，因此**不给百分位**。`;
+        }
+        return `本册按 **T 分**判读（${cr.scale || "PROMIS Short Form"}）：`
+          + `**手册要求使用 T 分表，但 T 分表尚未取得**`
+          + `${cr.source_of_criteria ? `（source_of_criteria=${cr.source_of_criteria}）` : ""}`
+          + `${cr.pending_reason ? `。数据层说明（原文）：${cr.pending_reason}` : ""}`;
+      }
+      if (cr.kind === "cutoff") {
+        return `本册的判读口径是**分界值**（cutoff`
+          + `${cr.cutoff != null ? ` ≥${cr.cutoff}` : ""}）：按分界判读，`
+          + `不提供百分位或 T 分。`;
+      }
+      if (cr.kind === "severity_bands") {
+        return `本册的判读口径是**严重度分带**（severity bands）：`
+          + `按分数落在哪个带判读，不提供百分位或 T 分。`;
+      }
+      if (cr.kind === "per_item") {
+        return `本册的判读口径是**逐项判读**（per item，**不计算总分**）：`
+          + `各项独立解释，不提供百分位或 T 分。`;
+      }
+      if ((data.interpretation || {}).kind === "threshold") {
+        return "本册按手册设计是**门槛型筛查**（threshold）：手册不提供常模表、"
+          + "百分位或 T 分，只提供每个域的门槛。";
+      }
+      return (data.norms_status && data.norms_status.note) || "（数据层未给出原因）";
+    })(),
+    unavailable_reason_source: hasNorms ? ""
+      : ((nrm && nrm.unavailable_reason)
+        ? (((data.norms_status && data.norms_status.file)
+          || ("data/norms/" + String((e && e.code) || data.instrument || "").toLowerCase() + ".json"))
+          + " 的 unavailable_reason（原文照引）")
+        : "按本册 criteria.kind / interpretation.kind 组装（数据层未提供 unavailable_reason 原文）"),
+    design_basis: hasNorms ? "" : ((data.interpretation && data.interpretation.kind)
+      || (data.criteria && data.criteria.kind) || ""),
+    norms_status: data.norms_status || null,
+    /* 条件常模的分层使用方式 + **分层敏感度**（数字来自 Lead + confidence-judge 的
+       三重独立复核 2026-10-06，不在导出里另行推算） */
+    default_layer: (scoreRows.find(r => r.cell) || {}).default_cell || "",
+    used_layers: [...new Set(scoreRows.map(r => r.cell).filter(Boolean))],
+    fell_back: scoreRows.some(r => r.cell_fallback),
+    sensitivity: PID5_LAYER_SENSITIVITY,
+  };
+  /* 授权标签：**给人类读的 label**，绝不把 `license.kind` 这种内部枚举印到报告里
+     （缺陷 4：`copyright_permitted` / `public_domain`）。数据包里的 license 常常只有
+     `kind`，人读标签在目录条目（`e.license.label`）里，所以两边合并、label 优先。 */
+  const LIC = Object.assign({}, (data.license || {}), (e && e.license) || {});
+  if (!LIC.label && (data.license && data.license.label)) LIC.label = data.license.label;
+  const LIC_LABEL = LIC.label || "";
+  /* 报告时间：本地时间（缺陷 5：`toISOString()` 是 UTC，用户在 Asia/Shanghai 会读到 8 小时前） */
+  const now = new Date();
+  const pad = n => String(n).padStart(2, "0");
+  const tz = (() => { try { return Intl.DateTimeFormat().resolvedOptions().timeZone; }
+    catch (err) { return "本地时区"; } })();
+  const localStamp = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} `
+    + `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+  return {
+    code: e.code, display_name: data.display_name,
+    generated_at: now.toISOString(),
+    generated_at_local: `${localStamp}（${tz}，本地时间）`,
+    answered, total: rows.length,
+    response_format: data.response_format,
+    license: LIC, license_label: LIC_LABEL,
+    citation: data.citation || "",
+    score_rows: scoreRows, infer, infer_extra: inferExtra,
+    missing_norm_entries: missingNormEntries,
+    judgment, norm_notes: normNotes,
+    items: rows, dim_name: dimName,
+  };
+}
+
+function instExportMD(data, e) {
+  const R = instReport(data, e);
+  const fmt = (v, d) => (v == null || v === "" ? "—" : (typeof v === "number" ? (+v).toFixed(d) : v));
+  const rf = R.response_format || {};
+  let md = `# ${R.display_name}\n\n`;
+  md += `- 量表代码：\`${R.code}\`\n`;
+  md += `- 报告生成时间：${R.generated_at_local}（机器可读 UTC：${R.generated_at}）\n`;
+  md += `- 已答：${R.answered}/${R.total} 题\n`;
+  md += `- 作答范围：${rf.min}–${rf.max}`;
+  if (rf.labels && rf.labels.length) {
+    md += `（${rf.labels.map((x, i) => `${rf.min + i}=${x}`).join("，")}）`;
   }
-  md += `\n---\n\n本报告由 EmoHealth 生成，仅含「${e.code}」这一套量表的作答。\n`;
+  md += "\n";
+  md += `- 授权：${R.license_label || "（许可标签未标注）"}`;
+  if (R.license.holder) md += `（权利人：${R.license.holder}）`;
+  md += "\n";
+  if (R.citation) md += `- 引用：${R.citation}\n`;
+  md += "\n";
+
+  /* ── 判读（门槛 / 分带 / 逐项 / T 分型）：没有常模的量表走这一段 ── */
+  if (R.judgment) {
+    const J = R.judgment;
+    if (J.kind === "threshold") {
+      md += `## 门槛判读（本量表不是常模量表）\n\n`;
+      if (J.scoring) md += `计分方式：${J.scoring.replace(/\*\*/g, "")}\n\n`;
+      md += `| 域 | 域分 | 门槛 | 判定 | 建议 |\n|---|---|---|---|---|\n`;
+      for (const d of J.domains) {
+        const sug = d.reached
+          ? (d.level2 ? `建议做 ${d.level2.replace("DSM5TR-L2-", "Level 2—")}`
+            : (d.domain === "Personality Functioning" ? "建议进一步评估 → PID-5"
+              : "建议进一步评估（无对应 Level 2）"))
+          : "—";
+        const verdict = !d.answered ? "未答"
+          : (d.reached ? "达到门槛" : (d.decidable ? "未达到" : "未答完，不能判定"));
+        md += `| ${d.domain} | ${d.answered ? d.value.toFixed(0) : "未答"} | `
+          + `≥${d.threshold} ${d.threshold_label} | ${verdict} | ${sug} |\n`;
+      }
+      md += `\n共 ${J.hit} 个域达到门槛。`;
+      if (J.domains.some(d => d.answered && !d.reached && !d.complete)) {
+        md += `另有域**未答完**：域分取域内最高分，未答的题可能是高分，`
+          + `所以未答完时**不能判「未达到」**（只有「已达门槛」是可靠的正向结论）。`;
+      }
+      if (J.low_threshold_domains.length) {
+        md += `注意：${J.low_threshold_domains.join("、")} 这三个域的门槛是 **≥1**`
+          + `（比其余更低）——因为漏报的代价高于误报。`;
+      }
+      md += "\n";
+      if (J.pid5_interface) {
+        md += `\n**与 PID-5 的衔接**${J.pid5_interface.reached ? "" : "（本域未达门槛）"}：`
+          + `「${J.pid5_interface.from_domain}」域没有对应的 Level 2 细评册——`
+          + `人格功能的细评工具是 DSM-5 Section III 的 PID-5。`
+          + `（接口状态：\`${J.pid5_interface.status}\`）\n`;
+      }
+      if (J.disclaimer) md += `\n${J.disclaimer.replace(/\*\*/g, "")}\n`;
+      md += "\n**本量表没有可用常模**：";
+      md += `不提供百分位、T 分或「高于/低于常人」的判断。原因：${
+        R.norm_notes.unavailable_reason || "（数据层未给出原因）"}\n\n`;
+    } else if (J.kind === "per_item") {
+      md += `## 逐项判读（本册不计算总分）\n\n`;
+      md += `本册的每一项对应一种不同的物质，应**独立**解释；多项 >0 表示严重度与复杂度更高。\n\n`;
+      md += `| 题号 | 项 | 作答 | 是否 >0 |\n|---|---|---|---|\n`;
+      for (const x of J.items) {
+        md += `| ${x.order} | ${String(x.zh || x.en).replace(/\|/g, "\\|")} | `
+          + `${x.value == null ? "未答" : x.value} | ${x.value > 0 ? "是" : (x.value == null ? "—" : "否")} |\n`;
+      }
+      md += `\n${J.aggregate_label}：${J.value == null ? "—" : J.value}`
+        + `（共 ${J.answered} 项已答；>0 的项数 ${J.n_positive}）。`
+        + `⚠️ 这不是总分，也不能用来做「严重程度分级」。\n`;
+      if (J.notes) md += `\n${J.notes}\n`;
+      md += `\n**本量表没有可用常模**：不提供百分位或 T 分。原因：${
+        R.norm_notes.unavailable_reason || "（数据层未给出原因）"}\n\n`;
+    } else if (J.kind === "severity_bands" || J.kind === "cutoff") {
+      md += `## 分带判读\n\n本册是 **${J.scale}**，原始分求和范围 ${(J.sum_range || []).join("–")}。\n\n`;
+      md += `| 分数区间 | 判读 | 你的位置 |\n|---|---|---|\n`;
+      for (const b of J.bands) {
+        md += `| ${b.lo}–${b.hi} | ${b.label} | ${J.band === b.label ? "← 你的分数在此" : ""} |\n`;
+      }
+      if (J.value != null) {
+        md += `\n你的原始分：**${J.value.toFixed(0)}**${J.band ? ` → ${J.band}` : "（不在任何区间内）"}`;
+        if (J.cutoff) md += `；分界值 ≥${J.cutoff}`;
+        md += "\n";
+      }
+      if (J.notes) md += `\n${J.notes}\n`;
+    } else if (J.kind === "t_score") {
+      md += `## T 分型判读\n\n本册是 **${J.scale}**。原始分（范围 ${(J.sum_range || []).join("–")}）`
+        + `经 **T 分转换表**换算为 T 分（${/M=50/.test(J.metric || "")
+          ? "常模 M=50, SD=10" : (J.metric || "常模 M=50, SD=10")}）。\n\n`;
+      const ts = J.tscore;
+      if (ts && ts.found) {
+        const sd = Math.round((ts.T - 50) / 10 * 100) / 100;
+        const dir = sd > 0 ? "高于" : (sd < 0 ? "低于" : "等于");
+        md += `- 你的原始分：**${J.value == null ? "—" : J.value.toFixed(0)}**`
+          + `（共 ${J.answered} 题已答${J.complete ? "，已答满" : "，**未答满**"}）\n`;
+        md += `- **T = ${ts.T.toFixed(1)}**`
+          + `${ts.SE != null ? `，**SE = ${ts.SE.toFixed(1)}**` : ""}`
+          + `（**查表值**，来自官方 raw→T 转换表，不做内插/外推）；`
+          + `即${dir}常模均值 **${Math.abs(sd).toFixed(2)} 个标准差**`
+          + `（z 由 T 换算 (T−50)/10）\n`;
+        if (J.t_band) md += `- 分带：**${J.t_band}**（T 分单位）\n`;
+        /* 分带出处（APA 册子 p.9）与 T 表出处（PROMIS 官方 manual / Anger 例外）**分开写** */
+        if (J.bands_meta && J.bands_meta.source) {
+          md += `- 分带来源：\`${J.bands_meta.source.file}\``
+            + `${J.bands_meta.source.page ? `，p.${J.bands_meta.source.page}` : ""}`
+            + `${J.bands_meta.source.section ? `，${J.bands_meta.source.section}` : ""}`
+            + `（与上面的 T 转换表**不是同一处**）\n`;
+        }
+        if (ts.table_title) {
+          md += `- 转换表：${ts.table_title}`
+            + `${ts.raw_range ? `（raw ${ts.raw_range[0]}–${ts.raw_range[1]}）` : ""}`
+            + `${ts.completeness ? `；${ts.completeness}` : ""}\n`;
+        }
+        if (ts.source) {
+          md += `- 转换表来源：\`${ts.source.file}\``
+            + `${ts.source.page ? `，p.${ts.source.page}` : ""}`
+            + `${ts.source.section ? `，${ts.source.section}` : ""}\n`;
+        }
+        md += `- 百分位：**不可用**（本册没有常模百分位表；T 分来自官方转换表，不是百分位）\n`;
+      } else if (ts && !ts.found) {
+        md += `⚠️ **暂不给 T 分**：${ts.reason}\n`;
+        if (J.value != null) md += `你的原始分：**${J.value.toFixed(0)}**（共 ${J.answered} 题已答）\n`;
+      } else if (!J.tscore_table) {
+        md += `⚠️ **目前只给原始分**：本册的 T 分转换表尚未取得，所以不做任何近似换算。\n`;
+        if (J.value != null) md += `你的原始分：**${J.value.toFixed(0)}**（共 ${J.answered} 题已答）\n`;
+      }
+    }
+  }
+
+  /* ── 得分总表（常模量表；答题进行中则是「估计表」） ── */
+  if (R.score_rows.length) {
+    md += S.instResult ? `## 得分总表\n\n` : `## 各维度的目前估计（答题进行中，尚未出结果）\n\n`;
+    md += "| 维度 | 原始分 | 已答/题数 | 估计分 | 置信度 r | 实测百分位 | 实测 T 分 | SE | 实测 z 分 | 距均值(SD) | ±1SD 区间 | T 分来源 | 估计位置（按估计分） | 口径 |\n";
+    md += "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n";
+    for (const r of R.score_rows) {
+      const sdTxt = (r.sd_lo != null && r.sd_hi != null) ? `[${r.sd_lo}, ${r.sd_hi}]` : "—";
+      const estPos = (r.est_pctl != null || r.est_T != null)
+        ? `${r.est_pctl == null ? "—" : r.est_pctl + "%ile"}`
+          + ` / T ${fmt(r.est_T, 1)} / z ${fmt(r.est_z, 2)}`
+        : "—";
+      md += `| ${r.name} | ${fmt(r.value, 2)} | ${r.n_answered}/${r.n_items}`
+        + ` | ${fmt(r.estimate, 2)} | ${fmt(r.confidence_r, 4)}`
+        + ` | ${r.pctl == null ? "—" : r.pctl + "%ile"}`
+        + ` | ${fmt(r.T, 1)} | ${fmt(r.SE, 1)} | ${fmt(r.z, 2)} | ${fmt(r.sd_from_mean, 2)}`
+        + ` | ${sdTxt} | ${r.T_source || "—"}`
+        + ` | ${estPos} | ${r.aggregation} |\n`;
+    }
+    md += `\n- **实测百分位/T 分/z 分**：只用**答满**该维度的原始分查常模`
+      + `（部分作答的均值 ≠ 完整维度得分，两者不可比，因此**不用部分分查表**）。\n`;
+    md += `- **L2 的 T 分是「查表值」**：来自官方 raw→T 转换表（` + "`criteria.tscore_table.rows`"
+      + `），**不做内插、不做外推**；SE 也来自同一张表。`
+      + `\`z\`/\`距均值(SD)\` 是**由 T 换算**（(T−50)/10），与「查表得到的 T」性质不同。\n`;
+    md += `- **估计位置（按估计分）**：用该维度的**估计分**代入常模算出，`
+      + `性质与实测位置不同（基于已答 k 题、带置信度 r），逐维度细则里写明了说明。\n\n`;
+    if (!R.norm_notes.has_norms) {
+      const hasT = R.score_rows.some(r => r.T != null) || (R.judgment && R.judgment.tscore
+        && R.judgment.tscore.found);
+      md += hasT
+        ? `**本册没有常模百分位**（数据层 \`status=unavailable\`）：`
+        : `**本量表没有可用常模**：百分位/T 分/z 分/±1SD 均不可用。`;
+      md += `${R.norm_notes.unavailable_reason}\n`;
+      md += `（原因来源：${R.norm_notes.unavailable_reason_source}）\n\n`;
+    }
+    /* 逐维度细则 */
+    md += `## 逐维度细则\n\n`;
+    for (const r of R.score_rows) {
+      md += `**${r.name}**\n\n`;
+      md += `- 原始分：${fmt(r.value, 2)}（${r.n_answered}/${r.n_items} 题已答`
+        + `${r.complete ? "，已答满" : "，**未答满**"}）；计分口径：${r.aggregation || "—"}`
+        + `；含反向计分题 ${r.reverse_items} 道（反向题在统计时已折算）\n`;
+      /* 估计分：按真实原因分三种情况写（绝不把「未答」当兜底语） */
+      if (r.estimate != null) {
+        md += `- 估计分：**${fmt(r.estimate, 2)}**；置信度 r：${fmt(r.confidence_r, 4)}`
+          + `——估计按「本维度已答 ${r.n_answered} 题」的作答向量计算，`
+          + `**不等于答满时的真实得分**\n`;
+      } else {
+        md += `- 估计分：—；置信度 r：${r.confidence_r == null ? "—" : fmt(r.confidence_r, 4)}`
+          + `${r.state === "insufficient" ? `（已答 ${r.n_answered}/${r.n_items} 题，`
+            + `置信度未达展示门槛，暂不给估计与位置——**这不是「未答」**）` : ""}`
+          + `${r.state === "partial" ? `（已答 ${r.n_answered}/${r.n_items} 题、未答满；`
+            + `本册没有推断模型与常模，不给估计与位置）` : ""}`
+          + `${r.state === "unanswered" ? "（本维度一道题都没答）" : ""}\n`;
+      }
+      if (R.norm_notes.has_norms) {
+        if (r.measured) {
+          md += `- **实测位置**（用答满的原始分）：百分位 ${r.pctl == null ? "—" : r.pctl + "%ile"}`
+            + `${r.pctl_lo != null ? `（95% 区间 ${r.pctl_lo}–${r.pctl_hi}%ile）` : ""}`
+            + `；T 分 ${fmt(r.T, 1)}${r.T_lo != null ? `（95% 区间 ${r.T_lo}–${r.T_hi}）` : ""}`;
+          if (r.z != null) md += `；z 分 ${fmt(r.z, 2)}（${r.z_from}）`;
+          if (r.mean != null && r.sd != null) md += `；常模 mean=${r.mean}、sd=${r.sd}`;
+          md += "\n";
+        } else {
+          md += `- **实测位置：不给**——${r.measured_note}\n`;
+        }
+        if (r.est_note) md += `- **估计位置**：${r.est_pctl == null ? "—" : r.est_pctl + "%ile"}`
+          + `${r.est_T != null ? `、T ${fmt(r.est_T, 1)}` : ""}`
+          + `${r.est_z != null ? `、z ${fmt(r.est_z, 2)}` : ""}。${r.est_note}\n`;
+        if (r.sd_unavailable_reason) md += `- ⚠️ ±1SD 区间：${r.sd_unavailable_reason}\n`;
+        md += `- 常模来源：${R.norm_notes.source}（n=${R.norm_notes.n}）`
+          + `；换算方式：${r.percentile_method || R.norm_notes.percentile_method}\n`;
+        if (r.cell) {
+          md += `- 常模分层：**${r.cell}**（${r.cell_source}；该量表共 ${r.n_cells} 个`
+            + `性别×年龄分层）`;
+          if (r.cell_fallback) {
+            md += `——⚠️ 数据源**没有** overall 总体层，这是**回退**到第一层的结果`
+              + `（不是默认总体层，导出如实标注）`;
+          }
+          md += `。本工具不采集用户的性别与年龄，因此**不对任何个人做分层校正**。\n`;
+        }
+        if (r.extrap) md += `- ⚠️ 该原始分落在常模表的端点之外（extrap=true）：百分位/T 分是端点值，请谨慎解读\n`;
+      } else if (r.T != null) {
+        /* Phase 2：L2 的 T 分型册子——T/SE 来自**官方 raw→T 查表**（不是常模百分位） */
+        const sdT = Math.round((r.T - 50) / 10 * 100) / 100;
+        const dir = sdT > 0 ? "高于" : (sdT < 0 ? "低于" : "等于");
+        md += `- **T 分（查表值）**：**T = ${fmt(r.T, 1)}**`
+          + `${r.SE != null ? `，SE = ${fmt(r.SE, 1)}` : ""}`
+          + `（${(r.t_table && r.t_table.metric) || "M=50, SD=10"}），`
+          + `即${dir}常模均值 **${Math.abs(sdT).toFixed(2)} 个标准差**`
+          + `${r.z != null ? `（z = ${fmt(r.z, 2)}，由 T 换算 (T−50)/10）` : ""}\n`;
+        md += `- 百分位：**不可用**——本册没有常模百分位表；T 分来自官方转换表，不是百分位\n`;
+        if (r.t_table) {
+          md += `- 转换表：${r.t_table.table_title || ""}`
+            + `${r.t_table.raw_range ? `（raw ${r.t_table.raw_range[0]}–${r.t_table.raw_range[1]}）` : ""}`
+            + `${r.t_table.completeness ? `；${r.t_table.completeness}` : ""}\n`;
+          if (r.t_table.source) {
+            md += `- 转换表来源：\`${r.t_table.source.file}\``
+              + `${r.t_table.source.page ? `，p.${r.t_table.source.page}` : ""}`
+              + `${r.t_table.source.section ? `，${r.t_table.source.section}` : ""}\n`;
+          }
+        }
+        if (r.sd_unavailable_reason) md += `- ⚠️ ±1SD 区间：${r.sd_unavailable_reason}\n`;
+      } else if (r.T_reason) {
+        md += `- **T 分：不给**——${r.T_reason}\n`;
+      } else {
+        md += `- 常模位置：**不可用**（本册没有可用常模`;
+        md += R.norm_notes.design_basis === "threshold"
+          ? `：门槛型筛查，手册按设计不提供常模表/百分位/T 分）\n`
+          : `）。原因：${R.norm_notes.unavailable_reason || "（数据层未给出原因）"}\n`;
+      }
+      if (r.is_domain) md += `- 本行是**域分**（由若干面向聚合而成，见 `+"`scoring`"+` 的 of 列表）\n`;
+    }
+    md += "\n";
+    /* 「未答维度」：判据**只能**是 n_answered === 0（缺陷 1/2 的修正） */
+    const unanswered = R.score_rows.filter(r => r.n_answered === 0)
+      .concat((R.infer ? R.infer.rows.filter(x => x.n_answered_own === 0
+        && !R.score_rows.some(r => r.name === x.name)) : [])
+        .map(x => ({name: x.name, n_answered: 0, n_items: x.n_items})));
+    if (unanswered.length) {
+      md += `## 未答维度（一题都没答）\n\n`;
+      md += `| 维度 | 已答/题数 | 说明 |\n|---|---|---|\n`;
+      for (const b of unanswered) {
+        md += `| ${b.name} | ${b.n_answered}/${b.n_items} | 本维度一道题都没答：`
+          + `按硬规则不给估计、置信度与位置（与别的维度答了多少无关） |\n`;
+      }
+      md += "\n";
+    }
+    /* 「答了但信息量不足」：**与「一题未答」分开写**（缺陷 1 的根因） */
+    const notEnough = R.score_rows.filter(r => r.state === "insufficient");
+    if (notEnough.length) {
+      md += `## 已作答但信息量不足（暂不给估计与位置）\n\n`;
+      md += `| 维度 | 已答/题数 | 置信度 r | 说明 |\n|---|---|---|---|\n`;
+      for (const r of notEnough) {
+        md += `| ${r.name} | ${r.n_answered}/${r.n_items} | ${fmt(r.confidence_r, 4)} | `
+          + `已答题，但置信度未达展示门槛（\`conf_r ≥ dim_ceiling × ceiling_ratio\`），`
+          + `因此不给估计与位置——**这不是「未答」** |\n`;
+      }
+      md += "\n";
+    }
+    /* 没有推断模型的册子：未答满的维度单独说明（不套用「置信度门槛」文案） */
+    const partial = R.score_rows.filter(r => r.state === "partial");
+    if (partial.length) {
+      md += `## 未答满的维度\n\n`;
+      md += `| 维度 | 已答/题数 | 说明 |\n|---|---|---|\n`;
+      for (const r of partial) {
+        md += `| ${r.name} | ${r.n_answered}/${r.n_items} | 已答题但未答满：`
+          + `本册**没有推断模型与常模**，因此不给估计、置信度与百分位；`
+          + `判读以上面的门槛/分带表为准 |\n`;
+      }
+      md += "\n";
+    }
+    /* 答满却没有常模条目：另一类问题，单独列出（并报告 Lead） */
+    if (R.missing_norm_entries.length) {
+      md += `## 答满但常模表里没有对应条目\n\n`;
+      md += `以下维度**已答满**，但这套常模里找不到对应条目，所以给不出位置：`
+        + `${R.missing_norm_entries.join("、")}。（这属于「常模覆盖缺口」，不是部分作答问题。）\n\n`;
+    }
+    if (R.infer) {
+      md += `## 估计与置信度口径\n\n`;
+      md += `- 估计分来自 \`ui/lib/inference.js\`（唯一推断实现）：以「已答的题目＋作答值」为条件`
+        + `的线性预测${R.infer.model ? `（模型：\`${R.infer.model}\`）` : ""}。\n`;
+      md += `- 置信度 \`r\`（\`conf_r\`）口径：${R.infer.item_dim_corr_kind || "—"}`
+        + `；展示门槛：\`conf_r ≥ dim_ceiling × ceiling_ratio\``
+        + `${R.infer.ceiling_ratio != null ? `（ceiling_ratio=${R.infer.ceiling_ratio}）` : ""}`
+        + `${R.infer.ceiling_ratio_source ? `；来源：${R.infer.ceiling_ratio_source}` : ""}\n`;
+      md += `- **硬规则**：本维度一道题都没答 → 不出估计、不出置信度`
+        + `${R.infer.hard_rule ? `（硬规则标记：\`${R.infer.hard_rule}\`）` : ""}。\n`;
+      md += `- 本次共 ${R.infer.n_total} 个可估计维度：可给估计 ${R.infer.n_ready} 个、`
+        + `已达可展示门槛 ${R.infer.n_allowed} 个。\n`;
+      if (R.infer.layer_note) md += `- 分层口径：${String(R.infer.layer_note).replace(/\*\*/g, "")}\n`;
+      md += `\n**声明**：估计分**不是已经测出来的得分**，只是以已答信息为条件的最优猜测；`
+        + `答满后请以原始分为准。\n\n`;
+    }
+  }
+
+  /* ── 常模与参照说明 ── */
+  md += `## 常模与参照说明\n\n`;
+  if (R.norm_notes.has_norms) {
+    md += `- 常模来源：${R.norm_notes.source}；样本量 n=${R.norm_notes.n}\n`;
+    if (R.norm_notes.n_note) md += `- 样本说明（照抄数据层原文）：${R.norm_notes.n_note}\n`;
+    md += `- 单位：${R.norm_notes.unit || "—"}`
+      + `${R.norm_notes.domain_unit ? `（域分单位：${R.norm_notes.domain_unit}）` : ""}\n`;
+    md += `- 百分位换算方式：${R.norm_notes.percentile_method || "—"}\n`;
+    if (R.norm_notes.conditional && R.norm_notes.cells.length) {
+      const S2 = R.norm_notes.sensitivity || {};
+      md += `- 这是**条件常模**（按性别×年龄分层）：共 ${R.norm_notes.cells.length} 个分层 —— `
+        + `${R.norm_notes.cells.join("、")}。\n`;
+      md += `- 本工具**不采集用户的性别与年龄**，因此固定使用数据源专门提供的**总体分层 `
+        + `\`${R.norm_notes.default_layer || R.norm_notes.cells[R.norm_notes.cells.length - 1]}\`**`
+        + `（不对任何个人做分层校正）`;
+      if (R.norm_notes.fell_back) {
+        md += `；⚠️ **但数据源缺少该总体层，本次实际回退到了第一层 `
+          + `「${(R.norm_notes.used_layers || [])[0] || R.norm_notes.cells[0]}」**`
+          + `（这是回退结果，不是默认总体层）`;
+      }
+      md += `。\n`;
+      md += `- **分层敏感度**（同一原始分在不同性别×年龄分层下的百分位差别，`
+        + `来源：\`${S2.verified_by || "复核"}\`）：9 个分层之间**全局最大跨度 `
+        + `约 ${S2.max_span_pp} 个百分点**（例：${S2.max_span_example}）；`
+        + `若像旧版本那样恒定使用第一层 \`f [18,35)\`，相对真实分层**最大偏差约 `
+        + `${S2.first_cell_max_dev_pp} 个百分点**（例：${S2.first_cell_example}）——`
+        + `同一份作答可能被读成「偏低」或「明显偏高」，结论会反过来。\n`;
+      md += `- 如需按本人性别×年龄校正，需要先由使用者提供这两项信息；`
+        + `本工具当前**不采集**，也不做近似替代。\n`;
+    }
+    if (R.norm_notes.scale_range) md += `- 量表分数范围：${JSON.stringify(R.norm_notes.scale_range)}\n`;
+    if (R.norm_notes.reverse_transform) md += `- 反向计分折算：${JSON.stringify(R.norm_notes.reverse_transform)}\n`;
+  } else {
+    /* 无常模：**照引数据层的权威原文**（打包层已下发 `norms.unavailable_reason`）；
+       没有原文时按本册实际 criteria.kind 分册说明（不合成通用理由）。
+       ⚠️ L2 的 T 分型册子**有 T 分**（来自官方转换表），只是没有百分位常模——
+       不能写成「不给 T 分」。 */
+    const hasT2 = R.score_rows.some(r => r.T != null)
+      || (R.judgment && R.judgment.tscore && R.judgment.tscore.found);
+    md += hasT2
+      ? `- **本册没有常模百分位**（数据层 \`status=unavailable\`）：**T 分来自官方 raw→T 转换表**`
+        + `（见上「T 分型判读」），不是百分位。原因：${R.norm_notes.unavailable_reason}\n`
+      : `- **本量表没有可用常模**（数据层 \`status=unavailable\`）：不给百分位/T 分。`
+        + `原因：${R.norm_notes.unavailable_reason}\n`;
+    md += `- 原因来源：${R.norm_notes.unavailable_reason_source}\n`;
+    if (data.norms_status && data.norms_status.note) {
+      md += `- 数据层运行时说明：${data.norms_status.note}\n`;
+    }
+  }
+  md += "\n";
+
+  /* ── 逐题作答 ── */
+  md += `## 逐题作答\n\n| 题号 | 维度 | 你的作答 | 中文题面 |\n|---|---|---|---|\n`;
+  for (const r of R.items) {
+    const d = r.dim.split("|").map(x => R.dim_name.get(x) || x).join("、");
+    const v = r.value === "" ? "（未答）" : r.value;
+    md += `| ${r.order} | ${d} | ${v} | ${String(r.zh || r.en).replace(/\|/g, "\\|")} |\n`;
+  }
+  md += `\n## 授权与引用\n\n- 授权：${R.license_label || "（许可标签未标注）"}`;
+  if (R.license.holder) md += `（权利人：${R.license.holder}）`;
+  md += "\n";
+  if (R.license.notes) md += `- 许可说明：${R.license.notes}\n`;
+  if (R.citation) md += `- 引用：${R.citation}\n`;
+  md += `\n## 免责声明\n\n本报告由 **EmoHealth · 人格与心理测量自查工具** 生成，`
+    + `只含「${R.code}」这一套量表的作答，**不构成诊断**，也不能替代专业人员评估。`
+    + `估计分是统计推断结果，不是已经测出来的得分。\n`;
   download(`${e.code}-报告-${stamp()}.md`, md, "text/markdown");
 }
 
 function instExportResultCSV(data, e) {
   if (!S.instResult) return;
-  const head = ["维度", "分数", "百分位", "已答", "题数", "答完", "是否域", "口径"];
-  const hasNorms = !!(data.norms && (data.norms.facets || data.norms.domains));
-  const rows = S.instResult.rows.map(r => {
-    const rule = data.scoring[r.id] || {};
-    const pct = hasNorms ? instPercentile(data, r.name, r.value) : null;
-    return [r.name, r.value, pct == null ? "" : pct, r.n_answered, r.n_items,
-            r.complete ? "是" : "否", r.isDomain ? "是" : "否", rule.aggregation || ""];
-  });
-  const csv = "\ufeff" + [head, ...rows].map(r => r.map(v => {
-    const s = String(v == null ? "" : v);
+  const R = instReport(data, e);
+  const head = ["维度", "状态", "原始分", "估计分", "置信度r", "估计说明",
+    "实测百分位", "实测百分位95下限", "实测百分位95上限",
+    "实测T分", "实测T分95下限", "实测T分95上限", "SE", "T分来源", "T分不可用原因", "T分带", "分带来源", "转换表", "转换表来源",
+    "实测z分", "z分来源", "常模均值", "常模标准差", "距均值SD数",
+    "1SD下限", "1SD上限", "±1SD不可用原因", "实测位置说明",
+    "估计位置百分位", "估计位置T分", "估计位置z分", "估计位置说明",
+    "常模分层", "分层来源", "分层是否默认", "分层是否回退", "分层数", "外推",
+    "已答", "题数", "答完", "是否域", "计分口径", "反向题数",
+    "常模来源", "常模样本量", "百分位换算方式", "无可用常模原因"];
+  const esc2 = v => {
+    const s = v == null ? "" : String(v);
     return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
-  }).join(",")).join("\r\n");
+  };
+  /* 用列名定位（不用硬编码下标：列一多就会错位，且 `extra` 行的下标也会漂） */
+  const idx = k => head.indexOf(k);
+  const rows = R.score_rows.map(r => {
+    const a = new Array(head.length).fill("");
+    const set = (k, v) => { a[idx(k)] = (v == null ? "" : v); };
+    set("维度", r.name);
+    set("状态", r.state === "unanswered" ? "未答（一题未答）"
+      : (r.state === "insufficient" ? "已答但信息量不足"
+        : (r.state === "estimated" ? "有估计（按估计分给位置）"
+          : (r.state === "partial" ? "已答但未答满" : "已答满"))));
+    set("原始分", r.value == null ? "" : r.value);
+    set("估计分", r.estimate == null ? "" : r.estimate);
+    set("置信度r", r.confidence_r == null ? "" : r.confidence_r);
+    set("估计说明", r.estimate_note);
+    set("实测百分位", r.pctl == null ? "" : r.pctl);
+    set("实测百分位95下限", r.pctl_lo == null ? "" : r.pctl_lo);
+    set("实测百分位95上限", r.pctl_hi == null ? "" : r.pctl_hi);
+    set("实测T分", r.T == null ? "" : r.T);
+    set("SE", r.SE == null ? "" : r.SE);
+    set("T分来源", r.T_source || "");
+    set("T分不可用原因", r.T_reason || "");
+    set("T分带", (R.judgment && R.judgment.t_band) || "");
+    set("分带来源", (R.judgment && R.judgment.bands_meta && R.judgment.bands_meta.source)
+      ? [R.judgment.bands_meta.source.file,
+        R.judgment.bands_meta.source.page ? "p." + R.judgment.bands_meta.source.page : ""]
+        .filter(Boolean).join("；") : "");
+    set("转换表", r.t_table ? (r.t_table.table_title || r.t_table.form || "") : "");
+    set("转换表来源", (r.t_table && r.t_table.source)
+      ? [r.t_table.source.file, r.t_table.source.page ? "p." + r.t_table.source.page : "",
+        r.t_table.source.section || ""].filter(Boolean).join("；") : "");
+    set("实测T分95下限", r.T_lo == null ? "" : r.T_lo);
+    set("实测T分95上限", r.T_hi == null ? "" : r.T_hi);
+    set("实测z分", r.z == null ? "" : r.z);
+    set("z分来源", r.z_from);
+    set("常模均值", r.mean == null ? "" : r.mean);
+    set("常模标准差", r.sd == null ? "" : r.sd);
+    set("距均值SD数", r.sd_from_mean == null ? "" : r.sd_from_mean);
+    set("1SD下限", r.sd_lo == null ? "" : r.sd_lo);
+    set("1SD上限", r.sd_hi == null ? "" : r.sd_hi);
+    set("±1SD不可用原因", r.sd_unavailable_reason);
+    set("实测位置说明", r.measured_note);
+    set("估计位置百分位", r.est_pctl == null ? "" : r.est_pctl);
+    set("估计位置T分", r.est_T == null ? "" : r.est_T);
+    set("估计位置z分", r.est_z == null ? "" : r.est_z);
+    set("估计位置说明", r.est_note);
+    set("常模分层", r.cell);
+    set("分层来源", r.cell_source);
+    set("分层是否默认", r.cell ? (r.cell_is_default ? "是" : "否") : "");
+    set("分层是否回退", r.cell ? (r.cell_fallback ? "是" : "否") : "");
+    set("分层数", r.n_cells || "");
+    set("外推", R.norm_notes.has_norms ? (r.extrap ? "是" : "否") : "");
+    set("已答", r.n_answered);
+    set("题数", r.n_items);
+    set("答完", r.complete ? "是" : "否");
+    set("是否域", r.is_domain ? "是" : "否");
+    set("计分口径", r.aggregation);
+    set("反向题数", r.reverse_items);
+    if (R.norm_notes.has_norms) {
+      set("常模来源", R.norm_notes.source || "");
+      set("常模样本量", R.norm_notes.n == null ? "" : R.norm_notes.n);
+      set("百分位换算方式", r.percentile_method || R.norm_notes.percentile_method || "");
+    } else {
+      set("无可用常模原因", R.norm_notes.unavailable_reason || "");
+    }
+    return a;
+  });
+  /* 未答维度也出一行（估计/置信度留空），让「硬规则」在明细里可见 */
+  const extra = (R.infer ? R.infer.rows.filter(x => !x.allowed) : []).map(x => {
+    const a = new Array(head.length).fill("");
+    a[idx("维度")] = x.name;
+    const zero = x.n_answered_own === 0;
+    a[idx("状态")] = zero ? "未答（一题未答）" : "已答但信息量不足";
+    a[idx("估计说明")] = zero
+      ? "本维度一道题都没答：按硬规则不给估计、置信度与位置"
+      : `已答 ${x.n_answered_own}/${x.n_items} 题，信息量不足（置信度 r=${
+        x.confidence_r == null ? "—" : (+x.confidence_r).toFixed(4)} 未达展示门槛），`
+        + `暂不给估计与位置——**这不是「未答」**`;
+    a[idx("已答")] = x.n_answered_own;
+    a[idx("题数")] = x.n_items;
+    a[idx("答完")] = "否";
+    if (!R.norm_notes.has_norms) {
+      a[idx("无可用常模原因")] = R.norm_notes.design_basis === "threshold"
+        ? "本册是门槛型筛查：手册按设计不提供常模表/百分位/T 分（不是「没找到」）"
+        : "本册没有可用常模（判读依据是分界/分带/逐项判据）";
+    }
+    return a;
+  });
+  const csv = "\ufeff" + [head, ...rows, ...extra].map(r => r.map(esc2).join(",")).join("\r\n");
   download(`${e.code}-结果-${stamp()}.csv`, csv, "text/csv");
 }
 /* 该量表可用的作答方式：天赋树（> 60 题且已有布局数据）+ 经典逐题。
@@ -1557,34 +2462,75 @@ function refreshInferencePanel() {
      · PID-5 形态：**条件常模**（按性别×年龄分层），来源直接给出逐 raw 的百分位
        → 查表 + 相邻点插值，并把「外推」标记一并带出
    ⚠️ 没有常模时返回 null——界面必须显示「无参照」，不能编一个百分位出来。 */
+/* 常模位置查表（**全仓唯一实现**：界面与导出都走这里）。
+   两种形态：
+     · IPIP-NEO 形态：`facets`/`domains` 各带 1..99 的百分位表 → 线性插值；
+       **并且**该表带 `mean`/`sd` → 由「唯一实现」一并给出 z、T=50+10z、±1SD 区间
+       （公式是标准定义，不是自造量：`z=(v-mean)/sd`）。
+     · PID-5 形态：**条件常模**（性别×年龄 9 个分层），来源直接给出逐 raw 的
+       `pctl` / `pctl_lo` / `pctl_hi` / `T` / `T_lo` / `T_hi` / `extrap`
+       → 查表 + 相邻点插值，**95% 区间照搬来源**（不自己算），并带出：
+         · `cell`：实际用的分层（如 `f [18,35)`）
+         · `cell_default`：是否因**未指定分层**而落到默认第一个分层
+           ⚠️ 界面不采集性别/年龄，所以 `cell` 永远是默认分层——导出必须写明这件事。
+   ⚠️ 没有常模时返回 null——界面必须显示「无参照」，不能编一个百分位出来。 */
 function instPercentileDetail(data, name, value, cell) {
   const nrm = data && data.norms;
   if (!nrm) return null;
-  // 条件常模
+  // 条件常模（PID-5）
   if (nrm.scales) {
     const id = (nrm.scale_names && Object.entries(nrm.scale_names)
       .find(([, v]) => v === name) || [])[0];
     const sc = id && nrm.scales[id];
     if (!sc) return null;
-    const use = (cell && sc.cells[cell]) ? cell
-      : (nrm.cells || Object.keys(sc.cells))[0];
-    const tbl = sc.cells[use] || sc.cells[Object.keys(sc.cells)[0]];
+    const cellKeys = (Array.isArray(nrm.cells) && nrm.cells.length)
+      ? nrm.cells.slice() : Object.keys(sc.cells);
+    /* ⚠️ 默认分层（D122 修正，Lead + confidence-judge 三重独立复核 2026-10-06）：
+       以前用 `cellKeys[0]` = `f [18,35)`——那只是 JSON 键顺序的偶然结果，等于把
+       「女性 18–35 岁」的百分位当成任何人的百分位（相对真实分层最大偏差 32.98 个百分点）。
+       现在**优先数据源专门提供的总体代表性分层 `overall`**；只有它缺失时才退回第一层，
+       并且**退到哪一层必须显式报出去**（`cell_fallback`，导出里如实写明，不静默）。 */
+    const DEFAULT_CELL = "overall";
+    const hasOverall = !!(sc.cells && sc.cells[DEFAULT_CELL]);
+    const fallbackCell = cellKeys[0];
+    const requested = (cell && sc.cells[cell]) ? cell : null;
+    const use = requested || (hasOverall ? DEFAULT_CELL : fallbackCell);
+    const cellMeta = {
+      cell_requested: requested || null,
+      cell_is_default: !requested && use === DEFAULT_CELL,   // 走了正常默认（overall）
+      cell_fallback: !requested && use !== DEFAULT_CELL,     // overall 缺失 → 回退到第一层
+      cell_default: !requested && use !== DEFAULT_CELL,      // 兼容旧名：语义 = 「落到了回退层」
+      n_cells: cellKeys.length,
+      default_cell: hasOverall ? DEFAULT_CELL : fallbackCell,
+    };
+    const tbl = sc.cells[use] || sc.cells[fallbackCell];
     if (!tbl) return null;
     const pts = Object.entries(tbl)
       .map(([k, v]) => [parseFloat(k), v])
       .sort((a, b) => a[0] - b[0]);
     if (!pts.length) return null;
-    const pick = p => ({pctl: Math.round(p.pctl), T: p.T, extrap: p.extrap,
-                        cell: use});
+    const round1 = x => (x == null ? null : Math.round(x * 10) / 10);
+    const pick = p => Object.assign({pctl: Math.round(p.pctl), T: p.T, extrap: !!p.extrap,
+                        pctl_lo: p.pctl_lo == null ? null : Math.round(p.pctl_lo),
+                        pctl_hi: p.pctl_hi == null ? null : Math.round(p.pctl_hi),
+                        T_lo: round1(p.T_lo), T_hi: round1(p.T_hi),
+                        cell: use, scale_id: id,
+                        percentile_method: nrm.percentile_method || null}, cellMeta);
     if (value <= pts[0][0]) return pick(pts[0][1]);
     if (value >= pts[pts.length - 1][0]) return pick(pts[pts.length - 1][1]);
     for (let i = 1; i < pts.length; i++) {
-      const [x0, a] = pts[i - 1], [x1, b] = pts[i];
+      const [x0, a, ] = pts[i - 1];
+      const b = pts[i][1], x1 = pts[i][0];
       if (value <= x1) {
         const k = x1 === x0 ? 0 : (value - x0) / (x1 - x0);
-        return {pctl: Math.round(a.pctl + (b.pctl - a.pctl) * k),
-                T: Math.round((a.T + (b.T - a.T) * k) * 10) / 10,
-                extrap: false, cell: use};
+        const mix = (p, q) => (p == null || q == null) ? null : p + (q - p) * k;
+        return Object.assign({pctl: Math.round(mix(a.pctl, b.pctl)),
+                T: round1(mix(a.T, b.T)),
+                pctl_lo: mix(a.pctl_lo, b.pctl_lo) == null ? null : Math.round(mix(a.pctl_lo, b.pctl_lo)),
+                pctl_hi: mix(a.pctl_hi, b.pctl_hi) == null ? null : Math.round(mix(a.pctl_hi, b.pctl_hi)),
+                T_lo: round1(mix(a.T_lo, b.T_lo)), T_hi: round1(mix(a.T_hi, b.T_hi)),
+                extrap: false, cell: use, scale_id: id,
+                percentile_method: nrm.percentile_method || null}, cellMeta);
       }
     }
     return null;
@@ -1593,24 +2539,40 @@ function instPercentileDetail(data, name, value, cell) {
   const idOf = {};
   for (const [fid, fname] of Object.entries(nrm.facet_names || {})) idOf[fname] = fid;
   const cand = [name, idOf[name]].filter(Boolean);
-  let t = null;
+  let t = null, tKey = null;
   for (const key of cand) {
     t = (nrm.facets && nrm.facets[key]) || (nrm.domains && nrm.domains[key]);
-    if (t) break;
+    if (t) { tKey = key; break; }
   }
   if (!t || !t.percentiles) return null;
+  /* mean/sd 存在时补 z / T / ±1SD（IPIP-NEO 的 facet 与 domain 都有） */
+  const deco = o => {
+    if (t.mean == null || t.sd == null || !(+t.sd)) return o;
+    const z = (+value - +t.mean) / +t.sd;
+    return Object.assign(o, {
+      mean: +t.mean, sd: +t.sd, z: Math.round(z * 100) / 100,
+      T: Math.round((50 + 10 * z) * 10) / 10,
+      sd_lo: Math.round((+t.mean - +t.sd) * 100) / 100,
+      sd_hi: Math.round((+t.mean + +t.sd) * 100) / 100,
+      sd_from_mean: Math.round(z * 100) / 100,
+      unit: nrm.unit || null, domain_unit: nrm.domain_unit || null,
+      facet_id: tKey, percentile_method: nrm.percentile_method || null,
+      sources_given: true,
+    });
+  };
   const ps = t.percentiles;
   const pts = [];
   for (let p = 1; p <= 99; p++) if (ps[String(p)] != null) pts.push([ps[String(p)], p]);
   if (!pts.length) return null;
-  if (value <= pts[0][0]) return {pctl: pts[0][1], T: null, extrap: false};
+  if (value <= pts[0][0]) return deco({pctl: pts[0][1], T: null, extrap: false, sources_given: true});
   if (value >= pts[pts.length - 1][0])
-    return {pctl: pts[pts.length - 1][1], T: null, extrap: false};
+    return deco({pctl: pts[pts.length - 1][1], T: null, extrap: false, sources_given: true});
   for (let i = 1; i < pts.length; i++) {
     const [x0, p0] = pts[i - 1], [x1, p1] = pts[i];
     if (value <= x1) {
       const k = x1 === x0 ? 0 : (value - x0) / (x1 - x0);
-      return {pctl: Math.round(p0 + (p1 - p0) * k), T: null, extrap: false};
+      return deco({pctl: Math.round(p0 + (p1 - p0) * k), T: null, extrap: false,
+                   sources_given: true});
     }
   }
   return null;
@@ -1619,6 +2581,46 @@ function instPercentileDetail(data, name, value, cell) {
 function instPercentile(data, name, value, cell) {
   const d = instPercentileDetail(data, name, value, cell);
   return d ? d.pctl : null;
+}
+
+/* ══ L2 的 raw→T 查表（**唯一实现**）═════════════════════════════════════════
+   数据来源：`data.criteria.tscore_table`（`{form, metric, columns, raw_range,
+   rows:[[raw, T, SE], …], source{file,page,section,table_title}, verification,
+   completeness}`）。三册（Anxiety 7a / Depression 8b / Anger 5a）已入档官方转换表；
+   Sleep 仍为 `null`（表未取得，保持明示缺失）。
+   ⚠️ 三条铁律（Lead 定，与 PID-5「部分分不查常模」同一条原则）：
+     ① **只查表**：T/SE 一律来自 `rows`，**绝不用公式算、绝不内插**；
+     ② **不外推**：raw 超出 `raw_range` → `found=false` 并说明；
+     ③ **未答满不给**：域分是域内**最高分**、部分作答时只是**下界**，据此算 T 会偏低，
+        由调用方（`instJudgment` / `instReport`）在 `complete !== true` 时直接不调用它。
+   返回 `null` = 这册没有转换表。 */
+function instTScoreDetail(data, raw) {
+  const tt = (data && data.criteria && data.criteria.tscore_table) || null;
+  if (!tt || !Array.isArray(tt.rows) || !tt.rows.length) return null;
+  const rr = Array.isArray(tt.raw_range) ? tt.raw_range.map(Number) : null;
+  const base = {
+    form: tt.form || "", metric: tt.metric || "", columns: tt.columns || [],
+    raw_range: rr, completeness: tt.completeness || "",
+    source: tt.source || null,
+    table_title: (tt.source && tt.source.table_title) || "",
+  };
+  const r = (raw == null || raw === "") ? null : Number(raw);
+  if (r == null || !Number.isFinite(r)) {
+    return Object.assign(base, {found: false, reason: "没有原始分（该域未答）"});
+  }
+  if (rr && (r < rr[0] || r > rr[1])) {
+    return Object.assign(base, {found: false, raw: r,
+      reason: `原始分 ${r} 超出转换表范围 ${rr[0]}–${rr[1]}（**不做外推**）`});
+  }
+  const row = tt.rows.find(x => Number(x[0]) === r);
+  if (!row) {
+    return Object.assign(base, {found: false, raw: r,
+      reason: `转换表里没有 raw=${r} 这一行（全表 ${tt.rows.length} 行）`});
+  }
+  return Object.assign(base, {
+    found: true, raw: r, T: Number(row[1]),
+    SE: (row.length > 2 && row[2] != null) ? Number(row[2]) : null,
+  });
 }
 /* ══ 路由（hash）══════════════════════════════════════════════════════
 
@@ -2141,12 +3143,17 @@ function renderThresholdResult(data) {
     const r = byName.get(d.domain);
     const v = r ? r.value : null;
     const reached = v != null && v >= d.threshold;
+    /* ⚠️ 域分 = 域内最高分：部分作答时「未达门槛」不可靠（未答的题可能是高分），
+       所以只有「答满」或「已达标」才给确定结论，否则写「未答完，不能判定」。 */
+    const complete = r ? !!r.complete : false;
+    const decidable = reached || complete;
     if (reached) hit++;
     h += `<tr${reached ? ' class="domrow"' : ""}>
       <td>${esc(d.domain)}</td>
       <td>${v == null ? "—" : v.toFixed(0)}</td>
       <td class="note">≥${d.threshold} ${esc(d.threshold_label || "")}</td>
-      <td>${v == null ? "未答" : (reached ? "达到门槛" : "未达到")}</td>
+      <td>${v == null ? "未答" : (reached ? "达到门槛"
+        : (decidable ? "未达到" : "未答完，不能判定"))}</td>
       <td class="note">${reached
         ? (d.level2
             ? `建议做 <button class="linkbtn" data-goscale="${esc(d.level2)}"
@@ -2288,11 +3295,24 @@ function renderCriteriaResult(data) {
 
   if (cr.kind === "t_score") {
     h += `<div class="note" style="margin-bottom:10px">本册是 <b>${esc(cr.scale || "")}</b>。
-      原始分（范围 ${(cr.sum_range || []).join("–")}）需经 <b>T 分转换表</b>
+      原始分（范围 ${(cr.sum_range || []).join("–")}）经 <b>T 分转换表</b>
       换算为 T 分（美国一般人群 M=50, SD=10）。</div>`;
-    if (!cr.tscore_table) {
-      /* D120（task-24）：研究过程（已核查 / 官方 scoring manual / 取到再补）**已删除**；
-         只留用户要知道的那一句：现在只给原始分、不做近似换算。 */
+    /* Phase 2：表已入档的三册 → **查表**给出 T 与 SE（只查表、不内插、不外推） */
+    const J = instJudgment(data);
+    const ts = J && J.tscore;
+    if (ts && ts.found) {
+      const sd = Math.round((ts.T - 50) / 10 * 100) / 100;
+      const dir = sd > 0 ? "高于" : (sd < 0 ? "低于" : "等于");
+      h += `<div class="note" style="border-left:3px solid var(--warm);padding-left:10px">
+        <b>T = ${ts.T.toFixed(1)}</b>${ts.SE == null ? "" : `（SE = ${ts.SE.toFixed(1)}）`}
+        ，即${dir}常模均值 <b>${Math.abs(sd).toFixed(2)} 个标准差</b>
+        <span class="note">（T 分＝查表值；标准差由 T 换算 (T−50)/10）</span>${
+        J.t_band ? `<br>分带：<b>${esc(J.t_band)}</b>` : ""}</div>`;
+    } else if (ts && !ts.found) {
+      h += `<div class="note" style="border-left:3px solid var(--warm);
+        padding-left:10px">⚠️ <b>暂不给 T 分</b>：${esc(ts.reason || "")}</div>`;
+    } else if (!cr.tscore_table) {
+      /* 表确实没有（Sleep 册）：明示缺失，不做近似换算 */
       h += `<div class="note" style="border-left:3px solid var(--warm);
         padding-left:10px">⚠️ <b>目前只给原始分</b>：本册的 <b>T 分转换表</b>尚未取得，
         所以不做任何近似换算。</div>`;

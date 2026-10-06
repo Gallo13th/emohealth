@@ -99,15 +99,34 @@ const ck = (n, c, d = '') => {
      sub.heads.join(',') === '项,物质,作答,是否 >0', sub.heads.join(','));
   ck('明确写出「不是总分」', /不是总分/.test(sub.body));
 
-  console.log('\n=== PROMIS（Depression）：T 分表待补，只给原始分 ===');
+  console.log('\n=== PROMIS（Depression）：T 分**查表**（Phase 2）===');
   const dep = await probe('DSM5TR-L2-Depression', 5); // 8×5 = 40
   ck('原始分 = 40', dep.value === 40, String(dep.value));
-  /* D119：可见文案改用户语言（「目前只给原始分…T 分转换表尚未取得」），
-     「已核查 / scoring manual / 查不到出处」那类研究过程收进「依据」折叠。
-     断言跟着改，但**仍要求如实说明缺口**。 */
-  ck('如实说明目前只给原始分（T 分转换表缺口）',
-     /T 分转换表/.test(dep.body) && /尚未取得/.test(dep.body) && /只给原始分/.test(dep.body));
+  /* Phase 2：Depression 的官方 raw→T 转换表已入档 → 页面给出**查表** T 与 SE，
+     不再说「T 分转换表尚未取得」。断言跟着契约改（仍要求如实说明百分位不可用）。 */
+  ck('结果页给出查表 T 分与 SE（不再说 T 分表尚未取得）',
+     /T = \d/.test(dep.body) && /SE/.test(dep.body) && !/尚未取得/.test(dep.body),
+     dep.body.slice(0, 140));
+  ck('结果页说明「T 分＝查表值」，并用标准差衡量（高于/低于常模均值 x.xx 个标准差）',
+     /查表值/.test(dep.body) && /个标准差/.test(dep.body), dep.body.slice(0, 140));
   ck('给出 T 分口径说明（M=50, SD=10）', /M=50/.test(dep.body));
+  /* 表缺失分支（将来某册尚未入档时走这里）：临时把表藏掉 → 必须明示缺失、不给 T */
+  const depNoTable = await ev(`(() => {
+      const saved = INST_NOW.criteria.tscore_table;
+      INST_NOW.criteria.tscore_table = null;
+      renderStage();
+      const st = document.getElementById('stage');
+      const body = [...st.children].filter(x => !x.classList.contains('insthead')
+        && !x.classList.contains('chainbar')).map(x => x.textContent).join(' ')
+        .replace(/\\s+/g, ' ').slice(0, 400);
+      const J = instJudgment(INST_NOW);
+      INST_NOW.criteria.tscore_table = saved;
+      renderStage();
+      return {body: body, hadTable: !!saved, t: J.tscore}; })()`);
+  ck('表缺失时（tscore_table=null）页面明示「尚未取得」且不给 T',
+     depNoTable.hadTable === true && depNoTable.t === null
+     && /尚未取得/.test(depNoTable.body) && !/T = \d/.test(depNoTable.body),
+     depNoTable.body.slice(0, 140));
 
   ws.close(); ch.kill();
   console.log(fail ? `\n❌ ${fail} 项未通过` : '\n✅ L2 逐册口径全部通过');

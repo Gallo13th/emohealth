@@ -1,12 +1,12 @@
 # EmoHealth 打包清单
-# 生成时间 2026-10-05T20:36:21
-# 文件总数 2539（核心 525，档案 2014）
-# 总大小 736.1 MB
+# 生成时间 2026-10-06T22:57:13
+# 文件总数 2543（核心 527，档案 2016）
+# 总大小 736.8 MB
 #
 # 核心文件校验：  shasum -a 256 -c MANIFEST.sha256
 # 档案校验：      python3 tools/check/verify_archive.py --root archive
 
-## 核心文件（525 个，逐字节校验）
+## 核心文件（527 个，逐字节校验）
        730  .cleanup-baseline.txt
       1159  .gitattributes
       1812  .gitignore
@@ -16,7 +16,7 @@
      25834  ARCHITECTURE.md
       4435  CLEANUP-PLAN.md
       8036  IMPLEMENTATION-STATUS.md
-     27760  PLAN.md
+     29104  PLAN.md
      14716  README.md
      14308  SCOPE-REDUCTION.md
      33096  STALE-CLEANUP.md
@@ -25,7 +25,7 @@
          0  content/__init__.py
       2712  content/descriptions/_README.md
      20188  content/descriptions/dsm5tr-l1.json
-     23269  content/descriptions/dsm5tr-l2.json
+     32255  content/descriptions/dsm5tr-l2.json
      12712  content/descriptions/ipip-neo.json
      19880  content/descriptions/mmpi-2.json
      22783  content/descriptions/pid-5.json
@@ -76,17 +76,17 @@
     307959  data/adaptive-network.json
      10033  data/antonym-pairs.json
     147968  data/correlation-network.json
-      5148  data/criteria/dsm5tr-l2.json
+     21038  data/criteria/dsm5tr-l2.json
       1160  data/decision-paths.json
      35673  data/descriptions/dsm5tr-l1.md
-     14734  data/descriptions/dsm5tr-l2-anger.md
-     15252  data/descriptions/dsm5tr-l2-anxiety.md
-     15745  data/descriptions/dsm5tr-l2-depression.md
-     18221  data/descriptions/dsm5tr-l2-mania.md
-     16543  data/descriptions/dsm5tr-l2-repetitive.md
-     16146  data/descriptions/dsm5tr-l2-sleep.md
-     20802  data/descriptions/dsm5tr-l2-somatic.md
-     18757  data/descriptions/dsm5tr-l2-substance.md
+     15824  data/descriptions/dsm5tr-l2-anger.md
+     16437  data/descriptions/dsm5tr-l2-anxiety.md
+     16982  data/descriptions/dsm5tr-l2-depression.md
+     19217  data/descriptions/dsm5tr-l2-mania.md
+     17528  data/descriptions/dsm5tr-l2-repetitive.md
+     17376  data/descriptions/dsm5tr-l2-sleep.md
+     21784  data/descriptions/dsm5tr-l2-somatic.md
+     19758  data/descriptions/dsm5tr-l2-substance.md
       8506  data/descriptions/index.json
     103202  data/descriptions/ipip-neo.md
      18466  data/descriptions/mmpi-2.md
@@ -95,12 +95,12 @@
     332441  data/inference/pid-5.json
       5656  data/instruments/catalog.json
      23598  data/instruments/dsm5tr-l1.json
-      4962  data/instruments/dsm5tr-l2-anger.json
-      5658  data/instruments/dsm5tr-l2-anxiety.json
-      6152  data/instruments/dsm5tr-l2-depression.json
+      8187  data/instruments/dsm5tr-l2-anger.json
+      9277  data/instruments/dsm5tr-l2-anxiety.json
+      9973  data/instruments/dsm5tr-l2-depression.json
       7622  data/instruments/dsm5tr-l2-mania.json
       7181  data/instruments/dsm5tr-l2-repetitive.json
-      6567  data/instruments/dsm5tr-l2-sleep.json
+     10915  data/instruments/dsm5tr-l2-sleep.json
       8458  data/instruments/dsm5tr-l2-somatic.json
      10151  data/instruments/dsm5tr-l2-substance.json
     167059  data/instruments/ipip-neo.json
@@ -128,14 +128,14 @@
       2345  data/model-comparison.json
      62535  data/network-edges.json
       1417  data/norms/dsm5tr-l1.json
-       981  data/norms/dsm5tr-l2-anger.json
-       985  data/norms/dsm5tr-l2-anxiety.json
-       991  data/norms/dsm5tr-l2-depression.json
-       981  data/norms/dsm5tr-l2-mania.json
-       991  data/norms/dsm5tr-l2-repetitive.json
-       981  data/norms/dsm5tr-l2-sleep.json
-       985  data/norms/dsm5tr-l2-somatic.json
-       989  data/norms/dsm5tr-l2-substance.json
+      1254  data/norms/dsm5tr-l2-anger.json
+      1319  data/norms/dsm5tr-l2-anxiety.json
+      1331  data/norms/dsm5tr-l2-depression.json
+      1187  data/norms/dsm5tr-l2-mania.json
+      1186  data/norms/dsm5tr-l2-repetitive.json
+      1323  data/norms/dsm5tr-l2-sleep.json
+      1177  data/norms/dsm5tr-l2-somatic.json
+      1200  data/norms/dsm5tr-l2-substance.json
      62969  data/norms/ipip-neo-300.json
       5107  data/norms/ipip-neo.json
       1720  data/norms/mmpi-2.json
@@ -251,18 +251,20 @@
      28853  research/phase3_interaction_design.md
      28948  research/phase3_scene_demo.txt
      20604  research/phase3_tiered_unlock.md
+     17319  research/pid5-norm-stratum-sensitivity.md
      18364  research/pid5_psychometrics_survey.md
       3073  research/pipe_pid5_status.md
    1076662  research/scales/inventory.json
      94928  research/text-review-queue.json
        499  run.sh
-     86748  tools/README.md
+     86685  tools/README.md
       1318  tools/_root.js
      11590  tools/_root.py
       8465  tools/analyze/analyze_block_and_network.py
      10076  tools/analyze/analyze_correlation_network.py
       7666  tools/analyze/analyze_decision_paths.py
       7469  tools/analyze/analyze_partial_administration.py
+     20459  tools/analyze/analyze_pid5_stratum_sensitivity.py
       6152  tools/analyze/analyze_scene_precision.py
      13970  tools/analyze/analyze_tiered_unlock.py
       4238  tools/analyze/audit_rtotal_curve.py
@@ -341,7 +343,7 @@
       2295  tools/check/check_item_truncation.py
      16861  tools/check/check_item_typo_repair.py
       1003  tools/check/check_l1_interpretation.py
-      1772  tools/check/check_l2_criteria.py
+      3863  tools/check/check_l2_criteria.py
       1499  tools/check/check_l2_fields_persist.py
       1294  tools/check/check_l2_glyphs.py
       1557  tools/check/check_missing_format.py
@@ -381,13 +383,13 @@
      28629  tools/check/test_item_fields_inference_ui.js
       3564  tools/check/test_l1_instrument.py
       5395  tools/check/test_l1_threshold_ui.js
-      6363  tools/check/test_l2_criteria_ui.js
+      7516  tools/check/test_l2_criteria_ui.js
       7675  tools/check/test_local_file.js
       6893  tools/check/test_mania_options_ui.js
      13989  tools/check/test_multiscale_fetch.js
       7089  tools/check/test_pid5_instrument.py
       4013  tools/check/test_pid5_norms_ui.js
-      6520  tools/check/test_scale_export.js
+     49853  tools/check/test_scale_export.js
       7951  tools/check/test_scale_pages.js
       6284  tools/check/test_scene.py
       9936  tools/check/test_scene_sourcing_fuzzy.py
@@ -479,7 +481,7 @@
       8744  tools/textkey.py
      17475  tools/ui/build_tier_layout.py
       9954  tools/ui/build_ui_bundle.py
-      8818  tools/ui/build_ui_instruments.py
+     11461  tools/ui/build_ui_instruments.py
       6370  tools/ui/dev_check_render.js
       4926  tools/ui/dev_probe.js
      20253  tools/ui/pack_ui_data.py
@@ -492,26 +494,26 @@
       3248  tools/ui/shoot_tree.js
       7415  tools/ui/shoot_ui.js
       4555  tools/ui/sync_blog.js
-     40020  ui/README.md
+     47298  ui/README.md
     307986  ui/adaptive-data.js
       4606  ui/catalog.js
     597195  ui/emohealth-data.js
-    145785  ui/index.html
+    209584  ui/index.html
        207  ui/inference.js
     455075  ui/inference/ipip-neo.js
     303334  ui/inference/pid-5.js
        925  ui/instruments.js
-     18951  ui/instruments/dsm5tr-l1.js
-      4413  ui/instruments/dsm5tr-l2-anger.js
-      4819  ui/instruments/dsm5tr-l2-anxiety.js
-      5284  ui/instruments/dsm5tr-l2-depression.js
-      6248  ui/instruments/dsm5tr-l2-mania.js
-      5908  ui/instruments/dsm5tr-l2-repetitive.js
-      5446  ui/instruments/dsm5tr-l2-sleep.js
-      6988  ui/instruments/dsm5tr-l2-somatic.js
-      7862  ui/instruments/dsm5tr-l2-substance.js
-    293217  ui/instruments/ipip-neo.js
-   2481575  ui/instruments/pid-5.js
+     19618  ui/instruments/dsm5tr-l1.js
+      7094  ui/instruments/dsm5tr-l2-anger.js
+      7691  ui/instruments/dsm5tr-l2-anxiety.js
+      8232  ui/instruments/dsm5tr-l2-depression.js
+      6779  ui/instruments/dsm5tr-l2-mania.js
+      6428  ui/instruments/dsm5tr-l2-repetitive.js
+      8916  ui/instruments/dsm5tr-l2-sleep.js
+      7505  ui/instruments/dsm5tr-l2-somatic.js
+      8399  ui/instruments/dsm5tr-l2-substance.js
+    293986  ui/instruments/ipip-neo.js
+   2482157  ui/instruments/pid-5.js
        760  ui/items-structured.js
      31664  ui/items-structured/dsm5tr-l1.js
       8537  ui/items-structured/dsm5tr-l2-anger.js
@@ -533,10 +535,10 @@
      13010  ui/tree-layouts/pid-5.js
     136900  ui/unlock-data.js
 
-## 档案（2014 个，按目录汇总）
+## 档案（2016 个，按目录汇总）
      1 个       0.0 MB  archive/README.md
     24 个     457.8 MB  archive/datasets
   1820 个      62.5 MB  archive/ipip
-    73 个      77.5 MB  archive/literature
+    75 个      78.0 MB  archive/literature
     63 个     109.4 MB  archive/norms
     33 个       3.2 MB  archive/scales

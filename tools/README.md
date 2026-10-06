@@ -245,7 +245,7 @@
 >    所以 C3 报 0 违例**不等于**这一层真的干净。目标形态：改读 `data/**` 的中译来源。
 
 
-### 3.3 `tools/analyze/`　数据层（统计与表格再组织）（14）
+### 3.3 `tools/analyze/`　数据层（统计与表格再组织）（15）
 
 | 脚本 | 职责 | 输入 | 输出 |
 |---|---|---|---|
@@ -253,6 +253,7 @@
 | `analyze_correlation_network.py` | 相关性网络：一道题能细化哪些分值（三张表） | `archive/…/validity/ipip20993.dat`、`data/ipip-neo-300.json` | `data/correlation-network.json` |
 | `analyze_decision_paths.py` | 决策树能否定义「解锁路径」（节点级连接、按已回答组合解锁反馈） | `archive/…/validity/ipip20993.dat`、`data/ipip-neo-300.json` | `data/decision-paths.json` |
 | `analyze_partial_administration.py` | 部分施测精度：只答 k 题时估计与完整 10 题分的相关 | `archive/…/validity/ipip20993.dat`、`data/ipip-neo-300.json` | `data/partial-administration.json` |
+| `analyze_pid5_stratum_sensitivity.py` | **PID-5 条件常模 9 个性别×年龄分层的敏感性**（task-36，只统计不改数据）：按文件实际顺序取分层（`cells[0]`=`f [18,35)`、`overall` 在 index 8），算 pctl/T 的九层全局最大与中位跨度、以 50/70/85 为界的档位变化数与实例、`extrap` 占比，并对比「把每一层分别当默认层」的偏差（含 `overall` 口径）；报告见 `research/pid5-norm-stratum-sensitivity.md` | `data/norms/pid-5.json` | stdout（`--json` 另存摘要） |
 | `analyze_scene_precision.py` | 情景结构可用性：每个可能子集的估计精度（预先可枚举，运行时查表） | `archive/…/validity/ipip20993.dat`、`data/scene-taxonomy.json` | `data/scene-precision.json` |
 | `analyze_tiered_unlock.py` | 分级解锁可行性：粗粒度题库与完整 300 题分的相关是否足够近似 | `archive/…/validity/ipip20993.dat`、`data/ipip-neo-300.json`、`data/uk-norms.json` | `data/tiered-unlock.json` |
 | `audit_rtotal_curve.py` | 用「**答题数 n**」直跑引擎给出无歧义曲线（n=1..10），同时打印 `conf_r`（判据）与 `r_total`（估计准确度）、跨维度借用比例；并核对字段名（曾把 `borrowed_from_cross_dim` 读成 `borrowed_ratio`，导致「跨维借用恒为 0」的误判） | `data/inference/*.json`、`data/instruments/*.json` | stdout |

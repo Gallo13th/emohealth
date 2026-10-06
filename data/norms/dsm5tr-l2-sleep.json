@@ -18,6 +18,6 @@
   "license": "APA 版权；允许研究人员/临床医生为患者使用而复制"
  },
  "applicability_warning": "各册的分带/分界只对**该册自己的量表与施测方式**有效，不得跨册套用。",
- "notes": "逐册的 kind / 分带 / 分界 / T 分待补状态见 data/criteria/dsm5tr-l2.json；本文档 §4 直接渲染该文件，不复制第二份。",
- "unavailable_reason": ""
+ "notes": "逐册的 kind / 分带 / 分界 / T 分与百分位可用状态见 data/criteria/dsm5tr-l2.json；本文档 §4 直接渲染该文件，不复制第二份。",
+ "unavailable_reason": "本册**有 T 分**可用：来源 `archive/literature/norms/healthmeasures2023_promis-sleep-cat-scoring-manual.pdf` 第 12 页（PROMIS Adult Short Form v1.0 – Sleep Disturbance 8a 转换表，raw 8–40）。**没有百分位常模**：PROMIS 提供的是 T 分常模（M=50, SD=10），不是一般人群的百分位分布。"
 }
