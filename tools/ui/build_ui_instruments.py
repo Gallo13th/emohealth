@@ -77,9 +77,10 @@ def norm(t: str) -> str:
 
 
 def load_text_db() -> dict:
-    """读统一文本库：归一化题文 → {zh, note}。
+    """读统一文本库：归一化题文 → {zh, note, scaffold}。
 
-    界面数据包的中译与注释**只从文本库来**（D113：前端不自己去猜或去翻）。
+    界面数据包的中译**只从文本库来**（D113：前端不自己去猜或去翻）；
+    `note`/`scaffold` 是译者/审阅者备忘，**不下发**（见 lean() 里的说明）。
     """
     if not os.path.exists(TEXT_DB):
         return {}
@@ -94,8 +95,9 @@ def ident(code: str) -> str:
 def lean(d: dict, tdb: dict) -> dict:
     """只保留界面需要的字段，并保留溯源信息（授权、引用、结构）。
 
-    题项**带上中译与注释**：中译取自统一文本库（D113），英文原文一并保留，
-    这样界面既能默认显示中文，也能随时回看原题。
+    题项**带上中译**（取自统一文本库 D113）与英文原文：界面既能默认显示中文，
+    也能随时回看原题。**不带**文本库里的 `note` / `scaffold`——那是译者/审阅者备忘，
+    界面不许出现开发者文案（D120），见下面那一行的说明。
     """
     items = []
     for x in d["items"]:
@@ -104,10 +106,15 @@ def lean(d: dict, tdb: dict) -> dict:
                "key": x.get("key", 1)}
         if e.get("zh"):
             row["zh"] = e["zh"]
-        if e.get("note"):
-            row["note"] = e["note"]
-        if e.get("scaffold"):
-            row["scaffold"] = e["scaffold"]
+        # ⚠️ **不下发**文本库里的 `note` / `scaffold`——它们是**译者/审阅者备忘**：
+        #    · `note`  例：「测快感缺失：…」「原文 enjoylife 为排版噪声…」
+        #    · `scaffold` 是结构化的逐题审阅注释 {asks, counts, mis, loc, edge}（300 条）
+        #    它们**留在 `data/text-db/text-db.json`** 作为溯源资产（D113 的中间产物，
+        #    也供 build_item_structured / check_text_db / audit_capabilities 使用），
+        #    但**不该随前端包发出去**：界面不许出现开发者/审阅者文案（D120）。
+        #    只靠界面不渲染是「一层」；**不发才是纵深防御的第二层**——下一个人手滑加
+        #    一行 `it.note` 渲染就又漏了。下发 ≠ 渲染，反过来也一样：不该下发的别下发。
+        #    （历史：这两行曾把 PID-5 的 220 条备忘、IPIP-NEO 的 300 条 scaffold 发到前端。）
         if x.get("kind"):
             row["kind"] = x["kind"]
         # ⚠️ 每题自己的选项组必须带出去（Mania 每题是一组整句陈述、Repetitive 各题
@@ -182,7 +189,7 @@ def main() -> int:
 
     manifest: dict[str, str] = {}
     TDB = load_text_db()
-    print(f"文本库 {len(TDB)} 条（用于填中译与注释）")
+    print(f"文本库 {len(TDB)} 条（用于填中译；`note`/`scaffold` 是译者备忘，不下发）")
     total = 0
     biggest = ("", 0)
     for p in paths:

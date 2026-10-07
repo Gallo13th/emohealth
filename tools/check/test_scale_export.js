@@ -156,6 +156,12 @@ function parseCSV(text) {
   const csv = A.csv;
   ck('逐题作答 CSV 有中文表头', /题号,题项ID,维度,计分键/.test(csv),
      csv.split('\n')[0].slice(0, 60));
+  /* task-40：译者备忘（`it.note`）已从数据与代码里删掉，所以「注释」列**连列带字段一起去掉**——
+     留一个恒为空的列会被读者当成「这题没有注释」（Lead 裁决：删列比留空列好）。 */
+  const csvHead = csv.split(/\r?\n/)[0].replace(/^\ufeff/, "");
+  ck('逐题作答 CSV 表头 = 8 列（不再有「注释」列）',
+     csvHead === "题号,题项ID,维度,计分键,英文原题,中文题面,你的作答,作答范围", csvHead);
+  ck('逐题作答 CSV **不得**再出现「注释」列 / note 字段', !/注释/.test(csvHead));
   const csvLines = csv.split(/\r?\n/).filter(Boolean);
   ck('CSV 行数 = 表头 + 5 题', csvLines.length === 6, csvLines.length + ' 行');
 

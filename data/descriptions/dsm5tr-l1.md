@@ -172,7 +172,7 @@
 ### 题文与中译状态（能不能照着填）
 
 - **题文**：23 题，英文原文来自量表包（`data/instruments/<code>.json` 的 `items[].text`）。
-- **中译**：23/23 题在**数据层**有中译，来源标记为：「AI 逐条复核 + 仲裁（2026-10-04）」× 23。
+- **中译**：23/23 题在**数据层**有中译，来源标记为：「AI 逐条复核 + 仲裁（2026-10-04）」× 21；「AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）」× 2。
 - **授权与本地化处置（R2，2026-10-04）**：APA 授权写明「may not be modified absent written permission from APA」。本项目**逐字不改原文**，而是把 ① 英文原文、② 中文翻译、③ 本地化内容讲解三者**并列**呈现——中译与讲解是**补充性独立内容**，不是对原文的修改，因此授权条款不构成障碍。各条中译的复核状态见其 `zh_source`（均标「subagent 初译/重译（待人工复核）」），**未人工复核前不得作为定稿中文版发布**。
   - 依据：`archive/scales/DSM5TR-L1/source.json 的授权原文 + 用户 R2`
 - ⚠️ **中译复核状态**：逐条见 §3 的题项对照表（`zh_source` 列）。标「subagent 初译/重译（待人工复核）」的条目**尚未人工复核**，可作自填与内部核对，**不得**当作定稿中文版发布。
@@ -219,9 +219,9 @@
 | 11 | Thoughts of actually hurting yourself? | 想过真的要伤害自己？（AI 逐条复核 + 仲裁（2026-10-04）） | 近两周出现过「真的伤害自己」的念头。（derived_from_items:l1_11） |
 | 12 | Hearing things other people couldn’t hear, such as voices even when no one was around? | 听到别人听不到的声音，例如周围无人时听到说话声？（AI 逐条复核 + 仲裁（2026-10-04）） | 近两周听到别人听不到的声音，或觉得别人能听到自己的想法 / 自己能听到别人的想法。（derived_from_items:l1_12,l1_13） |
 | 13 | Feeling that someone could hear your thoughts, or that you could hear what another person was thinking? | 感觉别人能听到你的想法，或你能听到别人在想什么？（AI 逐条复核 + 仲裁（2026-10-04）） | 近两周听到别人听不到的声音，或觉得别人能听到自己的想法 / 自己能听到别人的想法。（derived_from_items:l1_12,l1_13） |
-| 14 | Problems with sleep that affected your sleep quality over all? | 睡眠问题影响了您总体的睡眠质量？（AI 逐条复核 + 仲裁（2026-10-04）） | 近两周的睡眠问题影响到了整体睡眠质量。（derived_from_items:l1_14） |
+| 14 | Problems with sleep that affected your sleep quality over all? | 睡眠问题影响了你总体的睡眠质量？（AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）） | 近两周的睡眠问题影响到了整体睡眠质量。（derived_from_items:l1_14） |
 | 15 | Problems with memory (e.g., learning new information) or with location (e.g., finding your way home)? | 记忆方面有问题（例如学习新信息），或地点定向方面有问题（例如找不到回家的路）？（AI 逐条复核 + 仲裁（2026-10-04）） | 近两周记东西（学习新信息）或找路（如回家）出现问题。（derived_from_items:l1_15） |
-| 16 | Unpleasant thoughts, urges, or images that repeatedly enter your mind? | 反复闯入您脑海的令人不快的想法、冲动或画面？（AI 逐条复核 + 仲裁（2026-10-04）） | 近两周反复出现不愉快的想法、冲动或画面，以及感到被驱动着反复做某些行为或心理活动。（derived_from_items:l1_16,l1_17） |
+| 16 | Unpleasant thoughts, urges, or images that repeatedly enter your mind? | 反复闯入你脑海的令人不快的想法、冲动或画面？（AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）） | 近两周反复出现不愉快的想法、冲动或画面，以及感到被驱动着反复做某些行为或心理活动。（derived_from_items:l1_16,l1_17） |
 | 17 | Feeling driven to perform certain behaviors or mental acts over and over again? | 感到被驱使着反复做某些行为或心理活动？（AI 逐条复核 + 仲裁（2026-10-04）） | 近两周反复出现不愉快的想法、冲动或画面，以及感到被驱动着反复做某些行为或心理活动。（derived_from_items:l1_16,l1_17） |
 | 18 | Feeling detached or distant from yourself, your body, your physical surroundings, or your memories? | 感觉自己与自己、自己的身体、周围环境或记忆疏离或有距离感？（AI 逐条复核 + 仲裁（2026-10-04）） | 近两周感到与自己、自己的身体、周围环境或记忆疏离、有距离。（derived_from_items:l1_18） |
 | 19 | Not knowing who you really are or what you want out of life? | 不知道自己真正是谁，或不知道自己想从生活中得到什么？（AI 逐条复核 + 仲裁（2026-10-04）） | 近两周不清楚自己是谁、想要什么，以及感到与他人不亲近或无法享受关系。（derived_from_items:l1_19,l1_20） |

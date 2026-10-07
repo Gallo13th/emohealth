@@ -270,6 +270,9 @@ MMPI-2 目前是**指标文档 + 元数据**，没有题项包。
 python tools/check_architecture.py                 # 三层契约 C1/C2/C3；未判定必须为 0。红 → 按它打印的违例行改代码，不改守卫
 python tools/check/check_text_db.py                # 文本库闸门；不过就不该生成前端包。红 → 回 tools/build/build_text_db.py 修上游，别手改 JSON
 python tools/check/check_item_structured.py        # 结构化题目（V1 起，含情景说明与冗余度校验）。红 → 按它给的 V 编号改 content/item-anchors.json，再重跑生成器
+# ↓ 起因：用户 2026-10-07 指出 pid5_073 把 `step on some toes` 逐字直译成「踩到一些人的脚趾」（中文里没这说法），
+#   规则是「**对于俚语不要直译**」。判据窄而准：英文没命中习语表就完全不检查（不会因中文里出现某个词就假红）。
+python tools/check/check_idiom_translation.py      # 习语/比喻不得直译（习语表 18 条→字面词对照 + 直译黑名单 1 条）。红 → 改中译（走 data/text-db/reviewed-corrections.json 的 corrections，别手改产物）
 python tools/check/check_scene_sourcing.py         # 材料可查性：606 题每一题在材料库里查得到（text_en 583 + text_en_verbatim 回退 23），防「有材料却自己编」。红 → 该题材料 key 与题干写法不符，或真的没有材料
 python tools/check/check_time_window.py            # text-db 每条 note 的回忆时间窗 ↔ 该册权威时间窗（instrument_guide.time_frame_zh）。红 → 改 note 并留 note_fix；模糊窗进「未判定」
 python tools/check/verify_archive.py               # 原始证据逐字节（R5）。红 → 档案被改动或损坏：按 R5 只能新增、不能覆盖原件
@@ -290,9 +293,11 @@ python tools/ui/pack_ui_data.py --check            # 前端包逐字节。红 �
 
 # ③ 新鲜度哨兵（放最后：② 通过也可能是「陈旧但自洽」）
 python tools/check/check_pack_freshness.py         # 改了 data/** 却没重打包 ui/** 会红（修法：python tools/ui/pack_ui_data.py）
-# ↓ 起因：实测「每轮必跑」曾有 6 条在 Windows 默认 GBK 控制台下因 print ✅/❌ 崩溃，退出码 1
-#   与真红**不可区分**（第一条就是 check_architecture.py——干净仓库上也会假红）。修法是在
-#   tools/_root.py 提供唯一实现 force_utf8_io()，各入口调用；本行证明整份清单不再犯。
+# ↓ 起因：这条清单里**多条**命令曾在 Windows 默认 GBK 控制台下因 print ✅/❌ 崩溃，退出码 1 与真红
+#   **不可区分**（可复核的记录：`check_cli_encoding.py` 的 docstring 记了 pack_ui_data.py 与
+#   check_pack_freshness.py；我实测到 check_size_regression.py；check_architecture.py 与
+#   check_idiom_translation.py 由 Lead 实测并修复）。修法是在 `tools/_root.py` 提供唯一实现
+#   `force_utf8_io()`，各入口调用；本行证明整份清单不再犯。
 python tools/check/check_cli_encoding.py           # GBK 控制台下「每轮必跑」命令不许崩；崩溃=❌，业务性红不算
 ```
 

@@ -4,11 +4,37 @@
  "reviewed_at": "2026-10-04",
  "scope": "zh_source 含「待人工复核」的全部条目（初译 336 + 重译 1 = 337）",
  "reviewed_count": 337,
- "method": "AI 逐条对抗性审核（每批 20 条）+ **独立复核者仲裁**压误报：原始报出 40 条问题 → 仲裁压掉 36 条误报 → 确认 4 条",
+ "method": "AI 逐条对抗性审核（每批 20 条）+ **独立复核者仲裁**压误报：原始报出 40 条问题 → 仲裁压掉 36 条误报 → 确认 4 条\n\n**本轮（2026-10-07）补入判据**：\n- **习语/比喻性表达不得直译**：`step on someone's toes`、`tip of the iceberg`、`down in the dumps` 这类**非字面表达**，译文必须给出其**实际含义**，不得把字面内容词逐个搬进中文（判据：一句中文在中文语境里不成立、或读者会理解成字面意思，即缺陷）。\n- **文化特定说法**（体育/军事/宗教来源的比喻）同上：译其含义，必要时用中文的对应说法。\n- **读起来不像中文**（翻译腔、逐词对应、生硬搭配）即使意思没错，也算缺陷——用户的抱怨原话就是「不像中文」。",
  "outcome": {
   "passed": 333,
-  "confirmed_issues": 4,
-  "breakdown": "3 条译文更正（见 corrections）；1 条是**修复前旧版残留**（L1 第 23 题含页脚授权句的旧条目），按「同题旧版清理」规则删除，不是译文问题"
+  "confirmed_issues": 10,
+  "breakdown": "2026-10-04 轮：3 条译文更正 + 1 条修复前旧版残留（共 4 条）。2026-10-07 轮：用户指出俚语直译 → 修 `pid5_073`（习语直译）；Lead 复核「生硬/偏移」清单后裁决再修 6 条（1 条语义偏移 + 2 条人称不一致 + 2 条睡眠册生硬 + 1 条 PID-5 生硬）。**另 5 条 IPIP-NEO 生硬候选未修**——其源为标着「已人工核对」的 `data/scene-taxonomy.json`，动它等于推翻人工结论，须用户点头（见 `pending_decision`）。",
+  "corrections_total": 3,
+  "pending_decision": {
+   "items": [
+    {
+     "code": "IPIP-NEO X198",
+     "note": "Cheat to get ahead. →「为了领先别人，我会采用作弊的方式」偏生硬"
+    },
+    {
+     "code": "IPIP-NEO H2014",
+     "note": "Do more than what's expected of me. →「我会超出预期地完成任务或工作」翻译腔"
+    },
+    {
+     "code": "IPIP-NEO H1032",
+     "note": "Have little to contribute. →「没什么能贡献的」生硬"
+    },
+    {
+     "code": "IPIP-NEO H30",
+     "note": "Make people feel welcome. →「让别人感到被欢迎」生硬"
+    },
+    {
+     "code": "IPIP-NEO E140",
+     "note": "Set high standards for myself and others. →「对自己和别人都设高标准」生硬"
+    }
+   ],
+   "why_not_fixed": "源是 `data/scene-taxonomy.json`（标着「已人工核对」）——动它等于推翻一个人的结论并连带改溯源标签，属须用户点头的事。"
+  }
  },
  "label": "AI 逐条复核 + 仲裁（2026-10-04）",
  "label_corrected": "AI 逐条复核 + 仲裁（2026-10-04，已按仲裁结论更正）",
@@ -28,9 +54,60 @@
   },
   {
    "en": "You need to step on some toes to get what you want in life.",
-   "old_zh": "在生活中，你必须踩到一些人的脚趾，才能得到自己想要的（You need to step on some toes to get what you want in life.）。",
-   "new_zh": "在生活中，你必须踩到一些人的脚趾，才能得到自己想要的。",
-   "reason": "去掉句末重复的整句英文（英文原文已由条目本身承载）。"
+   "old_zh": "在生活中，你必须踩到一些人的脚趾，才能得到自己想要的。",
+   "new_zh": "在生活中，想要得到自己想要的，就难免要得罪一些人。",
+   "note": "英语习语，意为为了达成目的而冒犯、损害他人的利益——不是字面上的意思。旧译逐字直译，已按含义重译。",
+   "reason": "① `step on someone's toes` 是**英语习语**，字面义不可翻；② 习语的实际含义是**冒犯、越界、为达成目的而损害他人利益**（在本题里对应「无情性」面向）；③ 旧译「踩到一些人的脚趾」是**逐字直译**，中文里没有这个说法，读者会理解成**真的去踩别人的脚**——意思整个跑偏；④ **用户 2026-10-07 裁决**：「对于俚语不要直译」（并给出该习语的英文释义）。新译「就难免要得罪一些人」直接译出习语含义，且与题干「You need to…」的必要性语气一致。",
+   "reviewed_at": "2026-10-07",
+   "zh_source": "AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）"
+  },
+  {
+   "en": "Obstruct others' plans.",
+   "old_zh": "给别人使坏",
+   "new_zh": "会阻挠别人的计划",
+   "reason": "**语义偏移**：`obstruct others' plans` 指**阻挠/妨碍别人的计划**；旧译「给别人使坏」带**恶意捉弄**之义，把行为性质改了。2026-10-07 Lead 裁决：这是「意思错了」，不是润色，必须修。",
+   "reviewed_at": "2026-10-07",
+   "zh_source": "AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）"
+  },
+  {
+   "en": "Problems with sleep that affected your sleep quality over all?",
+   "old_zh": "睡眠问题影响了您总体的睡眠质量？",
+   "new_zh": "睡眠问题影响了你总体的睡眠质量？",
+   "reason": "**同一份自评表人称不一致**：本册另有 3 条用「你」，只有本条与下一条用「您」。自评表人称混用本身就是作答体验缺陷。2026-10-07 Lead 裁决：**统一为「你」**。",
+   "reviewed_at": "2026-10-07",
+   "zh_source": "AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）"
+  },
+  {
+   "en": "Unpleasant thoughts, urges, or images that repeatedly enter your mind?",
+   "old_zh": "反复闯入您脑海的令人不快的想法、冲动或画面？",
+   "new_zh": "反复闯入你脑海的令人不快的想法、冲动或画面？",
+   "reason": "**同一份自评表人称不一致**：见上一条（本册仅这两条用「您」）。2026-10-07 Lead 裁决：**统一为「你」**。",
+   "reviewed_at": "2026-10-07",
+   "zh_source": "AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）"
+  },
+  {
+   "en": "My sleep was restless",
+   "old_zh": "我的睡眠是不安稳的。",
+   "new_zh": "我睡得很不安稳",
+   "reason": "**生硬/翻译腔**：「我的睡眠是……的」是逐词对应，不是自然中文。2026-10-07 Lead 裁决：临床条目受访者要照着它作答，生硬会改变作答，不只是不好看。",
+   "reviewed_at": "2026-10-07",
+   "zh_source": "AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）"
+  },
+  {
+   "en": "I had trouble staying asleep",
+   "old_zh": "我难以保持睡眠。",
+   "new_zh": "我睡着后容易醒",
+   "reason": "**生硬/翻译腔**：「保持睡眠」不是自然中文搭配（睡眠医学的术语是「睡眠维持」，口语说法是「容易醒」）。2026-10-07 Lead 裁决：同上。",
+   "reviewed_at": "2026-10-07",
+   "zh_source": "AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）"
+  },
+  {
+   "en": "I fear being alone inlife more than anything else.",
+   "old_zh": "我最害怕的就是孤身一人地生活。",
+   "new_zh": "我最怕一个人过日子",
+   "reason": "**生硬/翻译腔**：「孤身一人地生活」是逐词对应（alone in life）；中文口语说「一个人过日子」。2026-10-07 Lead 裁决：改自然。",
+   "reviewed_at": "2026-10-07",
+   "zh_source": "AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）"
   }
  ],
  "confirmed_findings": [
@@ -57,8 +134,72 @@
    "en": "You need to step on some toes to get what you want in life.",
    "kind": "translation_corrected",
    "fixed_in": "corrections[2]"
+  },
+  {
+   "no": 5,
+   "en": "You need to step on some toes to get what you want in life.",
+   "kind": "translation_corrected",
+   "fixed_in": "corrections[2]",
+   "note": "**习语被直译**。2026-10-07 用户指出；本条在 2026-10-04 那轮 337 条复核里**被放过**，根因见 `blind_spots`。"
+  },
+  {
+   "no": 6,
+   "en": "Obstruct others' plans.",
+   "kind": "translation_corrected",
+   "fixed_in": "corrections[3]",
+   "reviewed_at": "2026-10-07"
+  },
+  {
+   "no": 7,
+   "en": "Problems with sleep that affected your sleep quality over all?",
+   "kind": "translation_corrected",
+   "fixed_in": "corrections[4]",
+   "reviewed_at": "2026-10-07"
+  },
+  {
+   "no": 8,
+   "en": "Unpleasant thoughts, urges, or images that repeatedly enter your mind?",
+   "kind": "translation_corrected",
+   "fixed_in": "corrections[5]",
+   "reviewed_at": "2026-10-07"
+  },
+  {
+   "no": 9,
+   "en": "My sleep was restless",
+   "kind": "translation_corrected",
+   "fixed_in": "corrections[6]",
+   "reviewed_at": "2026-10-07"
+  },
+  {
+   "no": 10,
+   "en": "I had trouble staying asleep",
+   "kind": "translation_corrected",
+   "fixed_in": "corrections[7]",
+   "reviewed_at": "2026-10-07"
+  },
+  {
+   "no": 11,
+   "en": "I fear being alone inlife more than anything else.",
+   "kind": "translation_corrected",
+   "fixed_in": "corrections[8]",
+   "reviewed_at": "2026-10-07"
   }
  ],
  "item23_final_status": "L1 第 23 题（新条目）此前标「subagent 重译（待人工复核）」；本轮 337 条**全部**经过「AI 逐条 + 独立仲裁」，故按 Lead 意见转为**「AI 逐条复核 + 仲裁（2026-10-04）」**。注意措辞：**不是「已人工复核」**——AI 复核不等于人工复核，仍以规则校验与抽样兜底。",
- "r6_resolution": "**已决（Lead 2026-10-04，选②）**：`zh` 里的「（英文原文）」内嵌**统一删除**——R2 的三部分是**并列**的，英文原文由 `en` 字段承担（界面本就把 `zh`/`en` 并列显示），不该在同一字段里混排。规则落在 `tools/build/build_text_db.py` 的 `strip_parenthetical_english()`，判据反转进 `tools/check/check_text_db.py`。本次删除 29 处；`（如麦角酸二乙酰胺，LSD）`、`（如冰毒）` 等**正常中文补充不动**。"
+ "r6_resolution": "**已决（Lead 2026-10-04，选②）**：`zh` 里的「（英文原文）」内嵌**统一删除**——R2 的三部分是**并列**的，英文原文由 `en` 字段承担（界面本就把 `zh`/`en` 并列显示），不该在同一字段里混排。规则落在 `tools/build/build_text_db.py` 的 `strip_parenthetical_english()`，判据反转进 `tools/check/check_text_db.py`。本次删除 29 处；`（如麦角酸二乙酰胺，LSD）`、`（如冰毒）` 等**正常中文补充不动**。",
+ "blind_spots": [
+  {
+   "reviewed_at": "2026-10-04",
+   "scope": "zh_source 含「待人工复核」的 337 条",
+   "missed": "You need to step on some toes to get what you want in life.",
+   "root_cause": "那轮判据里**没有「习语不得直译」这一条**——只审了「有没有英文残留 / 术语是否统一 / 是否擅加主语」等，所以一条**字面直译的英语习语**在 337 条里被当成正常译文放过了。",
+   "corrective_rule": "见 `translation_rules`：**非字面表达（习语/比喻/文化特定说法）不得直译，译其含义**；并由 `tools/check/check_idiom_translation.py` 守卫。",
+   "recorded_on": "2026-10-07"
+  }
+ ],
+ "translation_rules": [
+  "**习语/比喻性表达不得直译**：`step on someone's toes`、`tip of the iceberg`、`down in the dumps` 这类**非字面表达**，译文必须给出其**实际含义**，不得把字面内容词逐个搬进中文（判据：一句中文在中文语境里不成立、或读者会理解成字面意思，即缺陷）。",
+  "**文化特定说法**（体育/军事/宗教来源的比喻）同上：译其含义，必要时用中文的对应说法。",
+  "**读起来不像中文**（翻译腔、逐词对应、生硬搭配）即使意思没错，也算缺陷——用户的抱怨原话就是「不像中文」。"
+ ]
 }

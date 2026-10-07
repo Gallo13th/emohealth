@@ -318,10 +318,9 @@
   .scene{margin:0 0 10px;padding:6px 10px;font-size:13px;line-height:1.55;
     color:var(--ink2);background:#fbfbfa;border-left:3px solid #cdd6d1;
     border-radius:0 6px 6px 0;overflow-wrap:break-word;word-break:break-word}
-  /* 逐题注释：说明「这题实际在问什么」 */
-  .instnote{font-size:12.5px;line-height:1.5;color:var(--accent);
-    background:#f2f8f5;border-left:2px solid var(--accent);border-radius:0 6px 6px 0;
-    padding:6px 10px;margin:0 0 10px}
+  /* ⛔️ 原来这里有一条 `.instnote`（逐题注释）样式，对应的是**译者备忘**回退
+     （task-40 已删除：备忘永不上界面）。样式一并删掉——留着它等于给「再塞一次备忘」
+     留了门。用户可见注记走 `.instnotes`（作答注记 `notes_zh`）与 `.scene`（情景）。 */
   /* 作答指示语（非题项）：不参与计分，样式上明显区别于题项 */
   .institem.instr{background:#fafafa;border-radius:8px;padding:10px 12px}
   .institem.instr .insttext{font-weight:600;font-size:15px;margin-bottom:4px}
@@ -1024,7 +1023,10 @@ function instPageHeader(data, e) {
   </div>`;
 }
 
-/* 单量表导出：范围只含这一套。 */
+/* 单量表导出：范围只含这一套。
+   ⚠️ `it.note`（译者备忘）与 `it.scaffold` 已经**从发前端的量表包里删掉**（converge-pack），
+   这里也**不再保留任何备注字段**：导出文件里一个「注释」概念都不存在，
+   免得留一个永远为空、却让人以为「这题没有注释」的列（task-40）。 */
 function instRows(data) {
   return data.items.map(it => ({
     order: it.order,
@@ -1033,7 +1035,6 @@ function instRows(data) {
     key: it.key === -1 ? -1 : 1,
     en: it.text,
     zh: it.zh || "",
-    note: it.note || "",
     value: (it.id in S.instResp) ? S.instResp[it.id] : "",
   }));
 }
@@ -1043,12 +1044,14 @@ function instExportCSV(data, e) {
     const s = String(v == null ? "" : v);
     return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
   };
+  /* ⚠️ 表头**没有**「注释」列：那个概念（译者备忘）已经不存在了，
+     留一个恒为空的列会被读者当成「这题没有注释」（task-40，Lead 裁决）。 */
   const head = ["题号", "题项ID", "维度", "计分键", "英文原题", "中文题面",
-                "你的作答", "作答范围", "注释"];
+                "你的作答", "作答范围"];
   const rf = data.response_format;
   const rows = instRows(data).map(r => [
     r.order, r.id, r.dim, r.key, r.en, r.zh, r.value,
-    `${rf.min}-${rf.max}`, r.note,
+    `${rf.min}-${rf.max}`,
   ]);
   const csv = "\ufeff" + [head, ...rows].map(r => r.map(esc2).join(",")).join("\r\n");
   download(`${e.code}-逐题作答-${stamp()}.csv`, csv, "text/csv");
@@ -2201,9 +2204,14 @@ function itemStemHtml(it, st) {
     h += `<ul class="instnotes" data-f="notes_zh">`;
     for (const n of notes) h += `<li>${md(n.text || "")}</li>`;
     h += `</ul>`;
-  } else if (it.note) {
-    h += `<div class="instnote">${esc(it.note)}</div>`;
   }
+  /* ⛔️ 这里**故意没有** `it.note` 的回退（task-40）。
+     `it.note` 是**译者备忘**（「测快感缺失：…」「原文 enjoylife 为排版噪声…」），
+     PID-5 只有 15/220 题有「情景提醒」，删掉提醒后**其余约 205 题会回落到备忘**，
+     把开发者文案显示给用户——违反 D120 的用户裁决。
+     正确做法是**不发、不渲染**，而不是去判断哪条备忘「读起来还可以」。
+     用户可见注记只有两个来源：`scenario_zh`（情景，见上）与 `notes_zh`（作答注记，
+     来自 `content/scenes/*.json`，606 题全覆盖）。`it.note` 同时也不进任何导出文件。 */
   return h;
 }
 

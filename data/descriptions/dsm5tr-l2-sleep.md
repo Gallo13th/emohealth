@@ -53,7 +53,7 @@
 ### 题文与中译状态（能不能照着填）
 
 - **题文**：8 题，英文原文来自量表包（`data/instruments/<code>.json` 的 `items[].text`）。
-- **中译**：8/8 题在**数据层**有中译，来源标记为：「AI 逐条复核 + 仲裁（2026-10-04）」× 8。
+- **中译**：8/8 题在**数据层**有中译，来源标记为：「AI 逐条复核 + 仲裁（2026-10-04）」× 6；「AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）」× 2。
 - **授权与本地化处置（R2，2026-10-04）**：APA 授权写明「may not be modified absent written permission from APA」。本项目**逐字不改原文**，而是把 ① 英文原文、② 中文翻译、③ 本地化内容讲解三者**并列**呈现——中译与讲解是**补充性独立内容**，不是对原文的修改，因此授权条款不构成障碍。各条中译的复核状态见其 `zh_source`（均标「subagent 初译/重译（待人工复核）」），**未人工复核前不得作为定稿中文版发布**。
   - 依据：`archive/scales/DSM5TR-L1/source.json 的授权原文 + 用户 R2`
 - ⚠️ **中译复核状态**：逐条见 §3 的题项对照表（`zh_source` 列）。标「subagent 初译/重译（待人工复核）」的条目**尚未人工复核**，可作自填与内部核对，**不得**当作定稿中文版发布。
@@ -84,11 +84,11 @@
 
 | 题号 | ① 英文原文 | ② 中文翻译（`zh_source`） | ③ 本地化讲解（维度构念） |
 |---|---|---|---|
-| 1 | My sleep was restless | 我的睡眠是不安稳的。（AI 逐条复核 + 仲裁（2026-10-04）） | 过去 7 天睡眠不安稳、不满意、不恢复精力、难以入睡、难以维持睡眠、睡不够、睡眠质量差的频率。（derived_from_items:dsm5trl2sleep_01…08） |
+| 1 | My sleep was restless | 我睡得很不安稳（AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）） | 过去 7 天睡眠不安稳、不满意、不恢复精力、难以入睡、难以维持睡眠、睡不够、睡眠质量差的频率。（derived_from_items:dsm5trl2sleep_01…08） |
 | 2 | I was satisfied with my sleep | 我对自己的睡眠感到满意（AI 逐条复核 + 仲裁（2026-10-04）） | 过去 7 天睡眠不安稳、不满意、不恢复精力、难以入睡、难以维持睡眠、睡不够、睡眠质量差的频率。（derived_from_items:dsm5trl2sleep_01…08） |
 | 3 | My sleep was refreshing | 我的睡眠让我感到恢复精力（AI 逐条复核 + 仲裁（2026-10-04）） | 过去 7 天睡眠不安稳、不满意、不恢复精力、难以入睡、难以维持睡眠、睡不够、睡眠质量差的频率。（derived_from_items:dsm5trl2sleep_01…08） |
 | 4 | I had difficulty falling asleep | 我入睡困难（AI 逐条复核 + 仲裁（2026-10-04）） | 过去 7 天睡眠不安稳、不满意、不恢复精力、难以入睡、难以维持睡眠、睡不够、睡眠质量差的频率。（derived_from_items:dsm5trl2sleep_01…08） |
-| 5 | I had trouble staying asleep | 我难以保持睡眠。（AI 逐条复核 + 仲裁（2026-10-04）） | 过去 7 天睡眠不安稳、不满意、不恢复精力、难以入睡、难以维持睡眠、睡不够、睡眠质量差的频率。（derived_from_items:dsm5trl2sleep_01…08） |
+| 5 | I had trouble staying asleep | 我睡着后容易醒（AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）） | 过去 7 天睡眠不安稳、不满意、不恢复精力、难以入睡、难以维持睡眠、睡不够、睡眠质量差的频率。（derived_from_items:dsm5trl2sleep_01…08） |
 | 6 | I had trouble sleeping | 我睡得不好（AI 逐条复核 + 仲裁（2026-10-04）） | 过去 7 天睡眠不安稳、不满意、不恢复精力、难以入睡、难以维持睡眠、睡不够、睡眠质量差的频率。（derived_from_items:dsm5trl2sleep_01…08） |
 | 7 | I got enough sleep | 我睡眠充足（AI 逐条复核 + 仲裁（2026-10-04）） | 过去 7 天睡眠不安稳、不满意、不恢复精力、难以入睡、难以维持睡眠、睡不够、睡眠质量差的频率。（derived_from_items:dsm5trl2sleep_01…08） |
 | 8 | My sleep quality was　<br>**本题专属选项**：5=Very Poor；4=Poor；3=Fair；2=Good；1=Very good | 我的睡眠质量是（AI 逐条复核 + 仲裁（2026-10-04）） | 过去 7 天睡眠不安稳、不满意、不恢复精力、难以入睡、难以维持睡眠、睡不够、睡眠质量差的频率。（derived_from_items:dsm5trl2sleep_01…08） |

@@ -11955,8 +11955,8 @@
    "id": "ipip_neo_200",
    "order": 200,
    "text_en": "Obstruct others' plans.",
-   "text_zh": "给别人使坏",
-   "text_zh_source": "data/scene-taxonomy.json（大五人格，已人工核对）",
+   "text_zh": "会阻挠别人的计划",
+   "text_zh_source": "AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）",
    "dimensions": [
     "morality"
    ],

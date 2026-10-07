@@ -270,7 +270,7 @@
 因此按内容归 analyze。`compare_linear_vs_tree.py`、`diagnose_items.py` 机械规则判为 other，
 按 `compare_`/`diagnose_` 与内容归 analyze。
 
-### 3.4 `tools/check/`　守卫与测试（83）
+### 3.4 `tools/check/`　守卫与测试（84）
 
 | 脚本 | 职责 | 输入 | 输出 |
 |---|---|---|---|
@@ -284,6 +284,7 @@
 | `check_descriptions.py` | 校验描述文档与常模记录 V1–V9：章节结构、清单一致、**反向题逐项**、常模 schema、α 出处、MMPI-2 版权、生成物未手改（非假绿：7 类破坏植入全部捕获） | 见脚本 docstring | 见脚本 docstring |
 | `check_dimension_coverage.py` | 核对每套量表的**每道题都归属某个维度** | `data/instruments/*.json` | stdout |
 | `check_dsm_item_text.py` | 守卫：量表包的题面/选项**不得**含控制字符、授权句、方括号不配对、以省略号结尾；并校验 `provenance.item_options` 与 `items[].options` 镜像一致；L1 追加「每题以 `?` 结尾」不变量（截断征兆） | `data/instruments/*.json` | stdout；有污染则 exit 1 |
+| `check_idiom_translation.py` | 守卫：**非字面表达不得直译**——英文命中习语表（`step on toes` / `on edge` / `cold fish` / `raw deal` …）且中译里出现该习语的**字面内容词**时报错；另有一条**直译黑名单**防回归（`pid5_073` 的「踩到…脚趾」，2026-10-07 用户裁决「对于俚语不要直译」）。判据**窄而准**：英文没命中该习语则完全不检查，不会误红 | `data/text-db/text-db.json` | stdout；命中则 exit 1 |
 | `check_index_completeness.py` | 对账：`tools/README.md` 的索引表 vs 磁盘实际文件（未录入 / 悬空条目） | `tools/README.md` + `tools/**` | stdout；不一致则 exit 1 |
 | `check_item_language.py` | 扫描全部量表包，找出非英文题项（混进的翻译串） | `data/instruments/*.json` | stdout |
 | `check_item_structured.py` | 校验三级结构化文本 V1–V13：**`text_en` 对量表包、`text_zh` 对文本库逐字节一致**、三级齐全、**每个选项都有定量数字或锚点级「凭你自己的判断」声明**（V11/V12）、**同一句在同一量表内重复不得超过 N 个选项**（V13，默认 N=2，防止把高级内容塞进低级选项）、生成物未手改（反例：7 类破坏全部捕获） | `data/items-structured/*.json`、`data/instruments/*.json`、`data/text-db/text-db.json`、`content/item-anchors.json` | stdout（退出码） |

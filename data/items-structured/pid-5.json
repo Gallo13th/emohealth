@@ -15,11 +15,11 @@
   "scales": 1,
   "options_quantified": 0,
   "options_self_report": 880,
-  "items_with_notes": 16,
+  "items_with_notes": 15,
   "reverse_keyed": 16,
   "option_level_meanings": 0,
   "with_scenario": 220,
-  "with_notes": 16,
+  "with_notes": 15,
   "text_en_repaired": 23
  },
  "quantification_kind_counts": {
@@ -3062,8 +3062,8 @@
    "id": "pid5_073",
    "order": 73,
    "text_en": "You need to step on some toes to get what you want in life.",
-   "text_zh": "在生活中，你必须踩到一些人的脚趾，才能得到自己想要的。",
-   "text_zh_source": "AI 逐条复核 + 仲裁（2026-10-04，已按仲裁结论更正）",
+   "text_zh": "在生活中，想要得到自己想要的，就难免要得罪一些人。",
+   "text_zh_source": "AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）",
    "dimensions": [
     "pid5_callousness"
    ],
@@ -3096,13 +3096,7 @@
      }
     ]
    },
-   "scenario_zh": "抢一个名额时，你知道这么做会让同事难堪，还是照做，因为你要拿到它。",
-   "notes_zh": [
-    {
-     "text": "这里说的是为了达成目的不惜冒犯别人，不是真的踩谁的脚。",
-     "source": "data/item-scenes.json（由 content/scenes/*.json 合并）"
-    }
-   ]
+   "scenario_zh": "抢一个名额时，你知道这么做会让同事难堪，还是照做，因为你要拿到它。"
   },
   {
    "id": "pid5_074",
@@ -5277,8 +5271,8 @@
    "text_en_repairs": [
     "inlife → in life"
    ],
-   "text_zh": "我最害怕的就是孤身一人地生活。",
-   "text_zh_source": "AI 逐条复核 + 仲裁（2026-10-04）",
+   "text_zh": "我最怕一个人过日子",
+   "text_zh_source": "AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）",
    "dimensions": [
     "pid5_separation_insecurity"
    ],

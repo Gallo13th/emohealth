@@ -775,8 +775,8 @@
    "id": "l1_14",
    "order": 14,
    "text_en": "Problems with sleep that affected your sleep quality over all?",
-   "text_zh": "睡眠问题影响了您总体的睡眠质量？",
-   "text_zh_source": "AI 逐条复核 + 仲裁（2026-10-04）",
+   "text_zh": "睡眠问题影响了你总体的睡眠质量？",
+   "text_zh_source": "AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）",
    "dimensions": [
     "l1_sleep_problems"
    ],
@@ -865,8 +865,8 @@
    "id": "l1_16",
    "order": 16,
    "text_en": "Unpleasant thoughts, urges, or images that repeatedly enter your mind?",
-   "text_zh": "反复闯入您脑海的令人不快的想法、冲动或画面？",
-   "text_zh_source": "AI 逐条复核 + 仲裁（2026-10-04）",
+   "text_zh": "反复闯入你脑海的令人不快的想法、冲动或画面？",
+   "text_zh_source": "AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）",
    "dimensions": [
     "l1_repetitive_thoughts_and_behaviors"
    ],

@@ -86,7 +86,7 @@
    "scale_item_counts": {
     "dsm5tr-l1.frequency_0_4": 23
    },
-   "sha256": "feb6f5f187648af35e459b20dc30344c3b4aea128d42017237967fabcf6c75e8"
+   "sha256": "f2106c206dfddc6a09f3a3ef1103d2cdc85adb305f2abbc32a18eec0e5d5219e"
   },
   {
    "code": "dsm5tr-l2-anger",
@@ -265,7 +265,7 @@
    "scale_item_counts": {
     "dsm5tr-l2-sleep.intensity_1_5": 8
    },
-   "sha256": "c9fa8965b62959f46419ab19706551d5246957526d88bd23e66def89045e48fd"
+   "sha256": "acde6bbc8cb156f4b7b76cb70be0db52867b085a340a6ecc95f5d7323e94fca8"
   },
   {
    "code": "dsm5tr-l2-somatic",
@@ -413,7 +413,7 @@
     "ipip-neo.accuracy_1_5.selfdiscipline": 10,
     "ipip-neo.accuracy_1_5.cautiousness": 10
    },
-   "sha256": "f080b6c306909ac2dd99fe46535c3865e9f2a930256f120624b6858c61f8cd6d"
+   "sha256": "d465d1ecc9794a200a00939b769c9369b148b52018e2485a53f0c29dfa2842a6"
   },
   {
    "code": "pid-5",
@@ -427,11 +427,11 @@
    "scales": 1,
    "options_quantified": 0,
    "options_self_report": 880,
-   "items_with_notes": 16,
+   "items_with_notes": 15,
    "reverse_keyed": 16,
    "option_level_meanings": 0,
    "with_scenario": 220,
-   "with_notes": 16,
+   "with_notes": 15,
    "text_en_repaired": 23,
    "quantification_basis_counts": {
     "self_report": 880
@@ -442,7 +442,7 @@
    "scale_item_counts": {
     "pid-5.false_true_0_3": 220
    },
-   "sha256": "d094c7c6870f3fda2fef2c44e5f413b8392b47eec1194587345722461391af36"
+   "sha256": "ec7a2045c81a9da3a983749f88ce64ac5b08430e977db08b50cc1932210160de"
   }
  ],
  "scale_table": {
@@ -604,11 +604,11 @@
   "scales": 40,
   "options_quantified": 147,
   "options_self_report": 2633,
-  "items_with_notes": 80,
+  "items_with_notes": 79,
   "reverse_keyed": 164,
   "option_level_meanings": 25,
   "with_scenario": 606,
-  "with_notes": 80,
+  "with_notes": 79,
   "text_en_repaired": 23
  }
 }

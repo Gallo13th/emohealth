@@ -271,8 +271,19 @@ def apply_review(entries: dict) -> dict:
         if e.get("zh") != c["new_zh"]:
             e["zh"] = c["new_zh"]
             corrected += 1
-        e["zh_source"] = label_fix
-        note = f"复核更正（{rec.get('reviewed_at','')}）：{c.get('reason','')}"
+        # 该条更正的**自己的**日期/标签（缺省才回落到整表的）。
+        # ⚠️ 修正表是**累积**的：表头的 `reviewed_at` 属于最早那轮复核，新加的更正
+        #    必须能带自己的日期，否则会把它记成上一轮做的——日期错就是溯源错。
+        when = c.get("reviewed_at") or rec.get("reviewed_at", "")
+        e["zh_source"] = c.get("zh_source") or label_fix
+        # 译者的**逐题备忘**（`note`）也由复核结论统一更正。
+        # ⚠️ 这些 note **没有独立源头文件**——只活在产物里、靠 `load_previous()` 继承，
+        #    所以「译文改了、备忘还描述着旧的直译」这种不一致必须由本表来收口，
+        #    否则没有任何一处能持久地改它（task-40：pid5_073 的备忘就写着「踩到脚趾…非字面义」，
+        #    而正文恰恰是直译）。判据：修正表里给了 `note` 就覆盖。
+        if c.get("note"):
+            e["note"] = c["note"]
+        note = f"复核更正（{when}）：{c.get('reason','')}"
         if note not in (e.get("zh_note") or ""):
             e["zh_note"] = (note + " " + (e.get("zh_note") or "")).strip()
     return {"reviewed": rec.get("reviewed_count", 0), "relabelled": relabelled,

@@ -144,8 +144,8 @@
    "id": "dsm5trl2sleep_01",
    "order": 1,
    "text_en": "My sleep was restless",
-   "text_zh": "我的睡眠是不安稳的。",
-   "text_zh_source": "AI 逐条复核 + 仲裁（2026-10-04）",
+   "text_zh": "我睡得很不安稳",
+   "text_zh_source": "AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）",
    "dimensions": [
     "l2_sleep_disturbance"
    ],
@@ -330,8 +330,8 @@
    "id": "dsm5trl2sleep_05",
    "order": 5,
    "text_en": "I had trouble staying asleep",
-   "text_zh": "我难以保持睡眠。",
-   "text_zh_source": "AI 逐条复核 + 仲裁（2026-10-04）",
+   "text_zh": "我睡着后容易醒",
+   "text_zh_source": "AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）",
    "dimensions": [
     "l2_sleep_disturbance"
    ],

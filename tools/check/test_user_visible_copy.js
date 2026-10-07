@@ -1,4 +1,4 @@
-// 用户端产品化（D118 / task-20）：**默认视野**里不该有开发者/审阅者向的内容。
+﻿// 用户端产品化（D118 / task-20）：**默认视野**里不该有开发者/审阅者向的内容。
 // （文件名按 Lead 2026-10-05 裁决⑥由 `test_user_facing_ux.js` 改成这个：它测的是
 //   「可见文案」，UX 是更宽的东西。）
 //
@@ -587,6 +587,170 @@ const VIS = `(() => {
        sc.innerFields === false);
   }
   ck('3 个量表的情景块全部合格（汇总）', sceneAllOk === true && sceneOrderOk === true);
+
+  /* ══ ⑩ 逐题覆盖（task-40）：译者备忘**永不上界面、永不进导出文件** ══════════
+     背景：itemStemHtml 里原来有一条 else if (it.note) 回退，把**译者备忘**
+     （「测快感缺失：…」「原文 enjoylife 为排版噪声…」）当注记渲染。PID-5 只有 15/220
+     题有情景提醒 → 其余约 205 题回落到备忘，违反 D120。旧守卫只扫「打开的那几页」，
+     散落在中间的备忘从没被扫到 —— 这段就是补这个覆盖漏洞。
+     覆盖：4 个量表**逐题**（PID-5 全 220 题，不抽样），数据 / DOM / 导出文件三层各断言一次。
+     ⚠️ 备忘的前提**没有消失，只是搬到了 data 层**：converge-pack 已把 note/scaffold
+     从发前端的量表包里去掉（D120 的纵深防御第一层），界面这层由本段守（第二层）。 */
+  console.log('\n=== ⑩ 逐题覆盖：译者备忘绝不上界面、绝不进导出文件（task-40）===');
+  const tdbPath = path.join(ROOT, 'data', 'text-db', 'text-db.json');
+  const TDB = JSON.parse(fs.readFileSync(tdbPath, 'utf8'));
+  const tdbEntries = Array.isArray(TDB.entries) ? TDB.entries : Object.values(TDB.entries || {});
+  const memoTexts = [];
+  for (const en of tdbEntries) {
+    if (!en || typeof en !== 'object') continue;
+    if (typeof en.note === 'string' && en.note.trim()) memoTexts.push(en.note.trim());
+    const sc = en.scaffold;
+    if (sc && typeof sc === 'object') {
+      for (const v of Object.values(sc)) if (typeof v === 'string' && v.trim()) memoTexts.push(v.trim());
+    }
+  }
+  const nNote = tdbEntries.filter(x => x && x.note).length;
+  const nScaf = tdbEntries.filter(x => x && x.scaffold).length;
+  console.log('    data 层对照：text-db ' + tdbEntries.length + ' 条，其中 '
+    + nNote + ' 条带 note、' + nScaf + ' 条带 scaffold；抽出 ' + memoTexts.length + ' 段备忘文本');
+  ck('对照（前提搬到 data 层、没消失）：text-db 里**仍有大量**译者备忘 → 守卫非空转',
+     nNote + nScaf > 100 && memoTexts.length > 100, nNote + ' note + ' + nScaf + ' scaffold');
+  /* 按题面英文归一化 → 该题的备忘片段（用于逐题精确对查，避免 O(题×全部备忘)） */
+  const normEn = s => String(s || '').toLowerCase().replace(/\s+/g, ' ').trim();
+  /* ⚠️ 探针必须是**只可能来自备忘**的片段：
+     · 只取**中文**片段（题面本身含英文，ASCII 片段会假阳性）；
+     · 且不能是该题自己的 en/zh 文本的一部分（`scaffold` 里有些字段会复述题面）。
+     这样才能把「题面正常显示」与「备忘被渲染出来」区分开。 */
+  const memoProbesOf = en => {
+    const out = [];
+    const push = s => {
+      const t = String(s == null ? '' : s).trim();
+      if (t.length >= 8 && /[\u4e00-\u9fff]/.test(t)) out.push(t.slice(0, 12));
+    };
+    push(en.note);
+    const sc = en.scaffold;
+    if (sc && typeof sc === 'object') {
+      push(sc.asks); push(sc.loc); push(sc.edge);
+      if (Array.isArray(sc.counts)) sc.counts.forEach(push);
+    }
+    const own = (normEn(en.en) + ' ' + String(en.zh || '').toLowerCase());
+    return out.filter(p => own.indexOf(p.toLowerCase()) < 0);
+  };
+  const probeByEn = {};
+  for (const en of tdbEntries) {
+    if (!en || typeof en !== 'object') continue;
+    const key = normEn(en.en);
+    if (!key) continue;
+    const use = [...new Set(memoProbesOf(en))];
+    if (use.length) probeByEn[key] = use;
+  }
+  console.log('    可逐题对查的备忘题面：' + Object.keys(probeByEn).length + ' 条');
+  ck('逐题对查表非空（每道带备忘的题都能对上自己的备忘片段）',
+     Object.keys(probeByEn).length > 100, Object.keys(probeByEn).length + ' 条');
+
+  const PER_ITEM_SCALES = ['PID-5', 'IPIP-NEO', 'DSM5TR-L1', 'DSM5TR-L2-Anger'];
+  let perItemTotal = 0, shippedMemoTotal = 0;
+  const counts = {};
+  for (const code of PER_ITEM_SCALES) {
+    await nav(URL_ + '#/scale/' + code + '/classic');
+    await waitReady(code);
+    const r = await ev(`(async () => {
+        for (let i = 0; i < 80; i++) {
+          if (INST_NOW && INST_NOW.instrument === ${JSON.stringify(code)}) break;
+          await new Promise(r2 => setTimeout(r2, 150));
+        }
+        const d = INST_NOW;
+        const probes = ${JSON.stringify(probeByEn)};
+        const norm = s => String(s || '').toLowerCase().replace(/\s+/g, ' ').trim();
+        const items = d.items || [];
+        const stOf = it => { try { const m = structIndex(d.instrument);
+          return m ? m.get(it.id) : null; } catch (e) { return null; } };
+        /* ① 发前端的包里不该再有备忘字段（纵深防御第一层） */
+        const shipped = items.filter(it => (it.note && String(it.note).trim())
+          || (it.scaffold && String(it.scaffold).trim()));
+        /* ② 逐题渲染（真实 DOM 容器，离屏）：查 .instnote 元素 + 该题自己的备忘片段 */
+        const box = document.createElement('div');
+        box.style.cssText = 'position:fixed;left:-9999px;top:0;width:400px';
+        document.body.appendChild(box);
+        const instnoteIds = [], memoIds = [];
+        let withProbe = 0;
+        for (const it of items) {
+          box.innerHTML = itemStemHtml(it, stOf(it));
+          if (box.querySelector('.instnote')) instnoteIds.push(it.id);
+          const ps = probes[norm(it.text)];
+          if (ps) {
+            withProbe++;
+            const txt = box.textContent;
+            if (ps.some(p => txt.indexOf(p) >= 0)) memoIds.push(it.id);
+          }
+        }
+        /* ③ 整批渲染（所有题同时在场）：.instnote 必须为 0，且备忘样式文案 0 命中 */
+        box.innerHTML = items.map(it => itemStemHtml(it, stOf(it))).join('');
+        const batchInstnote = box.querySelectorAll('.instnote').length;
+        const batchText = box.textContent;
+        const MEMO_RES = [[/测[\u4e00-\u9fff]{2,8}：/, '测XX：'], [/排版噪声/, '排版噪声'],
+          [/缺空格|漏空格/, '缺空格'], [/直译/, '直译'], [/逐字/, '逐字']];
+        const batchPats = MEMO_RES.filter(x => x[0].test(batchText)).map(x => x[1]);
+        /* 整批文本里也不许出现任何一条 data 层备忘片段 */
+        const allProbes = [];
+        for (const k of Object.keys(probes)) for (const p of probes[k]) allProbes.push(p);
+        const batchMemoHits = allProbes.filter(p => batchText.indexOf(p) >= 0).slice(0, 3);
+        box.innerHTML = '';
+        box.remove();
+        /* ④ 导出文件：逐题 CSV 与存档 JSON 里一个备忘片段都不许有 */
+        const cap = [], orig = window.download;
+        window.download = (n, t) => { cap.push({n: n, t: t}); };
+        try { instExportCSV(d, catalogEntry(d.instrument));
+              instExportJSON(d, catalogEntry(d.instrument)); }
+        finally { window.download = orig; }
+        const csv = (cap.find(x => /\\.csv$/.test(x.n)) || {}).t || '';
+        const js = (cap.find(x => /\\.json$/.test(x.n)) || {}).t || '';
+        const exportMemoHits = allProbes.filter(p => csv.indexOf(p) >= 0 || js.indexOf(p) >= 0)
+          .slice(0, 3);
+        const rows = instRows(d);
+        const memoKeys = ['note', 'notes', 'scaffold'].filter(k => rows.some(x => k in x));
+        const csvHead = (csv.split(/\\r?\\n/)[0] || '');
+        return {code: d.instrument, items: items.length, shippedMemo: shipped.length,
+          withProbe: withProbe, instnoteIds: instnoteIds.slice(0, 3), instnoteLeak: instnoteIds.length,
+          memoIds: memoIds.slice(0, 3), memoTextLeak: memoIds.length,
+          batchInstnote: batchInstnote, batchPats: batchPats, batchMemoHits: batchMemoHits,
+          exportMemoHits: exportMemoHits, memoKeys: memoKeys,
+          csvHasNoteCol: csvHead.indexOf('注释') >= 0,
+          csvCols: csvHead.split(',').length}; })()`);
+    if (typeof r === 'string' && r.startsWith('EXC:')) {
+      ck(code + '：逐题渲染未抛异常', false, r.slice(0, 160));
+      continue;
+    }
+    perItemTotal += r.items;
+    shippedMemoTotal += r.shippedMemo;
+    counts[code] = r.items;
+    console.log('    ' + code + '：' + r.items + ' 题（其中 ' + r.withProbe + ' 题能对上 data 层备忘）'
+      + '｜发前端包带备忘 ' + r.shippedMemo + '｜逐题 .instnote ' + r.instnoteLeak
+      + '｜逐题备忘文本 ' + r.memoTextLeak + '｜整批 .instnote ' + r.batchInstnote
+      + '｜整批备忘片段 ' + JSON.stringify(r.batchMemoHits)
+      + '｜导出含备忘 ' + JSON.stringify(r.exportMemoHits)
+      + '｜备注字段 ' + JSON.stringify(r.memoKeys) + '｜逐题CSV ' + r.csvCols + ' 列');
+    ck(code + '：发前端的量表包里 **0 条**备忘（note/scaffold 不发货）',
+       r.shippedMemo === 0, r.shippedMemo + ' 条');
+    ck(code + '：逐题渲染**全部 ' + r.items + ' 题**都不出现 .instnote 元素',
+       r.instnoteLeak === 0, JSON.stringify(r.instnoteIds));
+    ck(code + '：逐题渲染**全部题**都不把译者备忘正文显示出来',
+       r.memoTextLeak === 0, JSON.stringify(r.memoIds));
+    ck(code + '：整批渲染后 .instnote = 0，且不出现备忘样式文案（测XX：/排版噪声/缺空格/直译/逐字）',
+       r.batchInstnote === 0 && r.batchPats.length === 0,
+       JSON.stringify({instnote: r.batchInstnote, pats: r.batchPats}));
+    ck(code + '：整批题面文本里**没有**任何 data 层备忘片段',
+       r.batchMemoHits.length === 0, JSON.stringify(r.batchMemoHits));
+    ck(code + '：逐题 CSV / 存档 JSON 里**没有**任何 data 层备忘片段',
+       r.exportMemoHits.length === 0, JSON.stringify(r.exportMemoHits));
+    ck(code + '：导出对象里不再有 note / notes / scaffold 字段，逐题 CSV 也不再有「注释」列',
+       r.memoKeys.length === 0 && r.csvHasNoteCol === false,
+       JSON.stringify({memoKeys: r.memoKeys, csvHasNoteCol: r.csvHasNoteCol}));
+  }
+  ck('逐题覆盖合计 ≥ 540 题（PID-5 全 220 + IPIP-NEO 全 300 + L1 23 + L2 5）',
+     perItemTotal >= 540 && counts['PID-5'] === 220, JSON.stringify(counts));
+  ck('4 个量表发前端的备忘合计 = 0（一条都不发）', shippedMemoTotal === 0,
+     shippedMemoTotal + ' 条');
 
   console.log('\n脚本报错:', errs.length ? errs.slice(0, 2) : '无');
   ck('无脚本异常', errs.length === 0);

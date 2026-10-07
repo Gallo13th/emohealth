@@ -1,12 +1,12 @@
 # EmoHealth 打包清单
-# 生成时间 2026-10-07T08:54:47
-# 文件总数 2543（核心 527，档案 2016）
-# 总大小 736.8 MB
+# 生成时间 2026-10-07T21:38:11
+# 文件总数 2544（核心 528，档案 2016）
+# 总大小 736.6 MB
 #
 # 核心文件校验：  shasum -a 256 -c MANIFEST.sha256
 # 档案校验：      python3 tools/check/verify_archive.py --root archive
 
-## 核心文件（527 个，逐字节校验）
+## 核心文件（528 个，逐字节校验）
        730  .cleanup-baseline.txt
       1159  .gitattributes
       1812  .gitignore
@@ -16,7 +16,7 @@
      25834  ARCHITECTURE.md
       4435  CLEANUP-PLAN.md
       8036  IMPLEMENTATION-STATUS.md
-     29104  PLAN.md
+     29830  PLAN.md
      14716  README.md
      14308  SCOPE-REDUCTION.md
      33096  STALE-CLEANUP.md
@@ -68,7 +68,7 @@
      25246  content/pilot/selfdiscipline.record.json
      15240  content/scenes/dsm5tr.json
      45674  content/scenes/ipip-neo.json
-     32687  content/scenes/pid-5.json
+     32593  content/scenes/pid-5.json
       6054  content/translation_overrides.py
      15285  content/translations.py
       7169  data/_scene_cache/pass1.json
@@ -78,17 +78,17 @@
     147968  data/correlation-network.json
      21038  data/criteria/dsm5tr-l2.json
       1160  data/decision-paths.json
-     35673  data/descriptions/dsm5tr-l1.md
+     35807  data/descriptions/dsm5tr-l1.md
      15824  data/descriptions/dsm5tr-l2-anger.md
      16437  data/descriptions/dsm5tr-l2-anxiety.md
      16982  data/descriptions/dsm5tr-l2-depression.md
      19217  data/descriptions/dsm5tr-l2-mania.md
      17528  data/descriptions/dsm5tr-l2-repetitive.md
-     17376  data/descriptions/dsm5tr-l2-sleep.md
+     17498  data/descriptions/dsm5tr-l2-sleep.md
      21784  data/descriptions/dsm5tr-l2-somatic.md
      19758  data/descriptions/dsm5tr-l2-substance.md
-      8506  data/descriptions/index.json
-    103202  data/descriptions/ipip-neo.md
+      8734  data/descriptions/index.json
+    103282  data/descriptions/ipip-neo.md
      18466  data/descriptions/mmpi-2.md
      41579  data/descriptions/pid-5.md
     494642  data/inference/ipip-neo.json
@@ -111,19 +111,19 @@
    1228928  data/item-embeddings.npy
      45522  data/item-norms-pid5.json
     143903  data/item-norms.json
-     92245  data/item-scenes.json
-     38918  data/items-structured/dsm5tr-l1.json
+     92153  data/item-scenes.json
+     38972  data/items-structured/dsm5tr-l1.json
      10486  data/items-structured/dsm5tr-l2-anger.json
      12428  data/items-structured/dsm5tr-l2-anxiety.json
      13533  data/items-structured/dsm5tr-l2-depression.json
      19679  data/items-structured/dsm5tr-l2-mania.json
      18011  data/items-structured/dsm5tr-l2-repetitive.json
-     14131  data/items-structured/dsm5tr-l2-sleep.json
+     14173  data/items-structured/dsm5tr-l2-sleep.json
      18602  data/items-structured/dsm5tr-l2-somatic.json
      17337  data/items-structured/dsm5tr-l2-substance.json
      25849  data/items-structured/index.json
-    449370  data/items-structured/ipip-neo.json
-    262224  data/items-structured/pid-5.json
+    449386  data/items-structured/ipip-neo.json
+    262017  data/items-structured/pid-5.json
       6956  data/linkage/dsm5tr-chain.json
       2345  data/model-comparison.json
      62535  data/network-edges.json
@@ -170,8 +170,8 @@
      10513  data/text-db/pending/_batch-056-out.json
       5131  data/text-db/pending/_gen_batch070.py
      15976  data/text-db/pending/index.json
-      4107  data/text-db/reviewed-corrections.json
-    498446  data/text-db/text-db.json
+     12614  data/text-db/reviewed-corrections.json
+    501293  data/text-db/text-db.json
       6028  data/text-db/translated/batch-015.zh.json
       5338  data/text-db/translated/batch-017.zh.json
          2  data/text-db/translation-results.json
@@ -257,7 +257,7 @@
    1076662  research/scales/inventory.json
      94928  research/text-review-queue.json
        499  run.sh
-     86685  tools/README.md
+     87799  tools/README.md
       1318  tools/_root.js
      11590  tools/_root.py
       8465  tools/analyze/analyze_block_and_network.py
@@ -307,7 +307,7 @@
      15578  tools/build/build_quality_gate.py
      34289  tools/build/build_remaining_slices.py
      13365  tools/build/build_scene_taxonomy.py
-     28651  tools/build/build_text_db.py
+     29624  tools/build/build_text_db.py
      10371  tools/build/build_tier_ladder.py
      15646  tools/build/build_tier_ui_data.py
      11526  tools/build/build_tree_layouts.py
@@ -325,7 +325,7 @@
      12830  tools/build/merge_scenes.py
       4624  tools/build/merge_translations.py
      13008  tools/build/parse_uk_norms.py
-      2431  tools/build/translate_prompt.md
+      4162  tools/build/translate_prompt.md
      26551  tools/build_scales.py
       4521  tools/check/audit_capabilities.py
       3691  tools/check/calibrate_ceiling_ratio.py
@@ -337,6 +337,7 @@
      15091  tools/check/check_descriptions.py
       1302  tools/check/check_dimension_coverage.py
       5034  tools/check/check_dsm_item_text.py
+      7129  tools/check/check_idiom_translation.py
       4649  tools/check/check_index_completeness.py
       2976  tools/check/check_item_language.py
      35337  tools/check/check_item_structured.py
@@ -389,7 +390,7 @@
      13989  tools/check/test_multiscale_fetch.js
       7089  tools/check/test_pid5_instrument.py
      15703  tools/check/test_pid5_norms_ui.js
-     50572  tools/check/test_scale_export.js
+     51174  tools/check/test_scale_export.js
       7951  tools/check/test_scale_pages.js
       6284  tools/check/test_scene.py
       9936  tools/check/test_scene_sourcing_fuzzy.py
@@ -397,7 +398,7 @@
      13526  tools/check/test_scoring.py
      10301  tools/check/test_tree_mode.js
      22613  tools/check/test_tree_unlock.js
-     37096  tools/check/test_user_visible_copy.js
+     47329  tools/check/test_user_visible_copy.js
      46203  tools/check/validate_inference_holdout.py
      13380  tools/check/validate_records.py
       8459  tools/check/validate_tier_design.py
@@ -481,7 +482,7 @@
       8744  tools/textkey.py
      17475  tools/ui/build_tier_layout.py
       9954  tools/ui/build_ui_bundle.py
-     11461  tools/ui/build_ui_instruments.py
+     12561  tools/ui/build_ui_instruments.py
       6370  tools/ui/dev_check_render.js
       4926  tools/ui/dev_probe.js
      20253  tools/ui/pack_ui_data.py
@@ -498,35 +499,35 @@
     307986  ui/adaptive-data.js
       4606  ui/catalog.js
     597195  ui/emohealth-data.js
-    224415  ui/index.html
+    225597  ui/index.html
        207  ui/inference.js
     455075  ui/inference/ipip-neo.js
     303334  ui/inference/pid-5.js
        925  ui/instruments.js
-     19618  ui/instruments/dsm5tr-l1.js
-      7094  ui/instruments/dsm5tr-l2-anger.js
-      7691  ui/instruments/dsm5tr-l2-anxiety.js
-      8232  ui/instruments/dsm5tr-l2-depression.js
-      6779  ui/instruments/dsm5tr-l2-mania.js
-      6428  ui/instruments/dsm5tr-l2-repetitive.js
-      8916  ui/instruments/dsm5tr-l2-sleep.js
-      7505  ui/instruments/dsm5tr-l2-somatic.js
-      8399  ui/instruments/dsm5tr-l2-substance.js
-    293986  ui/instruments/ipip-neo.js
-   2482157  ui/instruments/pid-5.js
+     18415  ui/instruments/dsm5tr-l1.js
+      6629  ui/instruments/dsm5tr-l2-anger.js
+      7160  ui/instruments/dsm5tr-l2-anxiety.js
+      7500  ui/instruments/dsm5tr-l2-depression.js
+      6286  ui/instruments/dsm5tr-l2-mania.js
+      5863  ui/instruments/dsm5tr-l2-repetitive.js
+      8276  ui/instruments/dsm5tr-l2-sleep.js
+      6092  ui/instruments/dsm5tr-l2-somatic.js
+      7346  ui/instruments/dsm5tr-l2-substance.js
+     94700  ui/instruments/ipip-neo.js
+   2460761  ui/instruments/pid-5.js
        760  ui/items-structured.js
-     31664  ui/items-structured/dsm5tr-l1.js
+     31718  ui/items-structured/dsm5tr-l1.js
       8537  ui/items-structured/dsm5tr-l2-anger.js
       9931  ui/items-structured/dsm5tr-l2-anxiety.js
      10766  ui/items-structured/dsm5tr-l2-depression.js
      16097  ui/items-structured/dsm5tr-l2-mania.js
      14291  ui/items-structured/dsm5tr-l2-repetitive.js
-     11255  ui/items-structured/dsm5tr-l2-sleep.js
+     11297  ui/items-structured/dsm5tr-l2-sleep.js
      15130  ui/items-structured/dsm5tr-l2-somatic.js
      13904  ui/items-structured/dsm5tr-l2-substance.js
      25849  ui/items-structured/index.json
-    346703  ui/items-structured/ipip-neo.js
-    207969  ui/items-structured/pid-5.js
+    346719  ui/items-structured/ipip-neo.js
+    207795  ui/items-structured/pid-5.js
      34622  ui/lib/inference.js
      12350  ui/net-layout.js
     125002  ui/tier-data.js

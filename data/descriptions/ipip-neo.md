@@ -347,7 +347,7 @@
 ### 题文与中译状态（能不能照着填）
 
 - **题文**：300 题，英文原文来自量表包（`data/instruments/<code>.json` 的 `items[].text`）。
-- **中译**：300/300 题在**数据层**有中译，来源标记为：「data/scene-taxonomy.json（大五人格，已人工核对）」× 300。
+- **中译**：300/300 题在**数据层**有中译，来源标记为：「AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）」× 1；「data/scene-taxonomy.json（大五人格，已人工核对）」× 299。
 - **中译的单一真相源**：数据层文本库 `data/text-db/text-db.json`（生成器 `tools/build/build_text_db.py`）；连接键是 `items[].source_code` ↔ `entries[*].codes`。界面侧数据包只是读文本库后的下游再生成物。
 - ⚠️ **中译质量**：300 题中译的**单一真相源是数据层文本库** `data/text-db/text-db.json`，其 `zh_source` 标记为「data/scene-taxonomy.json（大五人格，已人工核对）」——即已人工核对。但注意：这 300 条里只有约 120 题来自官方普通话译本（每 facet 4 题），其余是项目自译（见 §1.1 与 facet 记录的 `item_status`）。
 - ⚠️ **中译复核状态**：逐条见 §3 的题项对照表（`zh_source` 列）。标「subagent 初译/重译（待人工复核）」的条目**尚未人工复核**，可作自填与内部核对，**不得**当作定稿中文版发布。

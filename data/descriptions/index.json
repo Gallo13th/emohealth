@@ -18,9 +18,10 @@
    "n_reverse_items": 148,
    "items_translated": 300,
    "items_translation_sources": [
+    "AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）",
     "data/scene-taxonomy.json（大五人格，已人工核对）"
    ],
-   "sha256": "1cb9fc7d79669928ed8532688dca9780e34004c16426d5e737bb8df1dadd8fdb"
+   "sha256": "c8ece7d0ad2891a544734804afac67e12abeab7ec94e223f4bbf2d858a464345"
   },
   {
    "code": "pid-5",
@@ -38,9 +39,9 @@
    "items_translated": 220,
    "items_translation_sources": [
     "AI 逐条复核 + 仲裁（2026-10-04）",
-    "AI 逐条复核 + 仲裁（2026-10-04，已按仲裁结论更正）"
+    "AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）"
    ],
-   "sha256": "e77d046261c881073dcabd2c95a7972dc42e7bdbebc7f945fa0812dc5ab5a1d5"
+   "sha256": "05d10a9d3961e714135a6597a139c9070b153743f5a473b1bb87020a8bcf8490"
   },
   {
    "code": "dsm5tr-l1",
@@ -57,9 +58,10 @@
    "n_reverse_items": 0,
    "items_translated": 23,
    "items_translation_sources": [
-    "AI 逐条复核 + 仲裁（2026-10-04）"
+    "AI 逐条复核 + 仲裁（2026-10-04）",
+    "AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）"
    ],
-   "sha256": "6a0e5a29500a8e98b47b8fd378424d7f6436923a1de94073d7b694b8fb1118bc"
+   "sha256": "0d4e5ff77b9e7be3f434a01015f420271ec4f9c1e6712649a94ce81a2db7ebec"
   },
   {
    "code": "dsm5tr-l2-anger",
@@ -171,9 +173,10 @@
    "n_reverse_items": 0,
    "items_translated": 8,
    "items_translation_sources": [
-    "AI 逐条复核 + 仲裁（2026-10-04）"
+    "AI 逐条复核 + 仲裁（2026-10-04）",
+    "AI 逐条复核 + 仲裁（2026-10-07，已按仲裁结论更正）"
    ],
-   "sha256": "16ec76b2e910fa2c04f54d386a6ee2db1caea402d9efa5108f7f1e5e00889e86"
+   "sha256": "a5c0cbe69ed4ae6e28a9358d42c3b5d369d5719dfc9b389506470578f8060075"
   },
   {
    "code": "dsm5tr-l2-somatic",
