@@ -394,7 +394,17 @@
 | `shoot_subpage.js` | 给子页出图：子页头部（返回 + 本量表导出）+ 内容 | `ui/index.html`（CDP） | 截图文件 |
 | `shoot_tree.js` | 给天赋树出图（PID-5，答若干题后） | `ui/index.html`（CDP） | 截图文件 |
 | `shoot_ui.js` | 界面截图工具（CDP 直连无头 Chrome，不需 puppeteer） | `ui/index.html`（CDP） | 截图文件 |
-| `sync_blog.js` | 把运行时文件同步到博客仓库 `astro/public/emohealth/` | `ui/**` | `Myblogsource/astro/public/emohealth/**` |
+| `sync_blog.js` | **整树镜像**运行时文件到博客仓库 `astro/public/emohealth/`；`--check` 只比对（有差异退出 1）。**会删除目标里多出来的文件**（该目录完全由本构建拥有）——否则精简前那批废弃量表包会永远留在部署里 | `ui/**` | `Myblogsource/astro/public/emohealth/**` |
+
+> **`sync_blog.js` 的两次翻车（2026-10-07 改为整树镜像的直接原因）**：
+> ① 最早是**手写白名单**（根目录 9 个文件）——漏同步过一次 `index.html`，于是量到的还是旧行为。
+> ② 后来补了 `instruments/` 与 `tree-layouts/` 两个子目录，**但仍是白名单**，漏掉了
+>   `items-structured.js` / `items-structured/` / `inference.js` / `inference/` / `lib/` ——
+>   而 `ui/index.html` 的 614-621 行与 743 行**会去加载它们**，所以部署出去的页面**会 404**。
+>   上线时才发现（当时部署目录还停在精简前的 370 个文件：347 个废弃、21 个待更新、17 个缺失）。
+> **教训**：白名单靠"人记得加"，而人一定会忘；**能枚举的就不该手写**。
+> 另：`astro/public/emohealth/` 是**构建产物目录**，末级目录名保护（必须以 `emohealth` 结尾）
+> 是为了防止路径写错把别处删空。
 
 > **注（`build_tier_ui_data.py` 为何不在本组）**：前缀初筛把它归 ui（规则含 `build_tier_ui`），
 > 但它**读** `archive/datasets/osf-johnson/validity/ipip20993.dat`

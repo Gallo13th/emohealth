@@ -1,5 +1,5 @@
 # EmoHealth 打包清单
-# 生成时间 2026-10-07T23:05:23
+# 生成时间 2026-10-08T00:08:08
 # 文件总数 2546（核心 530，档案 2016）
 # 总大小 736.7 MB
 #
@@ -258,7 +258,7 @@
    1076662  research/scales/inventory.json
      94928  research/text-review-queue.json
        499  run.sh
-     87888  tools/README.md
+     89034  tools/README.md
       1318  tools/_root.js
      11590  tools/_root.py
       8465  tools/analyze/analyze_block_and_network.py
@@ -496,12 +496,12 @@
       2734  tools/ui/shoot_subpage.js
       3248  tools/ui/shoot_tree.js
       7415  tools/ui/shoot_ui.js
-      4555  tools/ui/sync_blog.js
+      5343  tools/ui/sync_blog.js
      51152  ui/README.md
     307986  ui/adaptive-data.js
       4606  ui/catalog.js
     597195  ui/emohealth-data.js
-    236007  ui/index.html
+    236584  ui/index.html
        207  ui/inference.js
     455075  ui/inference/ipip-neo.js
     303334  ui/inference/pid-5.js
