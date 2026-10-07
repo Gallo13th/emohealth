@@ -379,8 +379,8 @@ ce5dd2a4edab0986205ec2f32ac26fe122859b8adb8142d98c99f8b73a917435  ./tools/check/
 ab576e5f66dc715a9d15726ace6b7ff6b29ae2a1ae01dffb219274f0f5bf6c96  ./tools/check/test_mania_options_ui.js
 b911ea11f128ff0188db373eec615d5dc19423b3f2c853d9b01ec013ded0f4ce  ./tools/check/test_multiscale_fetch.js
 28fba092f4ce6dc5424047249b60de72c115ac28b97e97edf45ada9ef2344fdc  ./tools/check/test_pid5_instrument.py
-ebfbcea92fa8d050ddf1663361d8a57ae0de568eb01cc515cec101e581346a9c  ./tools/check/test_pid5_norms_ui.js
-968e190f135283ba1d1f2cac8fe60674a828b931bf5b580069e66d60ef4006cc  ./tools/check/test_scale_export.js
+11c79830a98e7ec176aec0ecd744078635a7e12b17d3b1dfeaf5ba6834f097a3  ./tools/check/test_pid5_norms_ui.js
+5d2ec87f123fdc588dd7d67b8491355a35a1390dd30b603126ee46ee087d251c  ./tools/check/test_scale_export.js
 8d4b984d041db883ddd32309ce9b9199d944b79afa112b7fae5d018ea14db3af  ./tools/check/test_scale_pages.js
 fc02286d3f73249d1fb2444b98818b69209a07aebc800d83131c2fa4df7d0527  ./tools/check/test_scene.py
 e719662d0d07f1fced94e1ed9787656c6b73b8695f913fd313a924198ec571b2  ./tools/check/test_scene_sourcing_fuzzy.py
@@ -485,11 +485,11 @@ d893440554bafb6b64db56f595973b9c03666d02cb142ac869873af9ac3a46c3  ./tools/ui/pac
 2aa3eed92ab619c0b7c3eb90dfc7ad66057b0121f2d2654bc12f5ad03ae823a2  ./tools/ui/shoot_tree.js
 81ee8e881d5018667fa90102b4fcce3c81454aa52d49097820441775cd24049b  ./tools/ui/shoot_ui.js
 7c0431db810d7d6242c87fc2c34847fda0a7133f20e577cc286371bcedad90d6  ./tools/ui/sync_blog.js
-a17cf217e7cc8a0c21c949b8b61cb110e0214df290869782911f6294ffd928a9  ./ui/README.md
+12b7e95b60828bef9b589ae4294f5407c0a077e87a3cb3e016322927c7715ed1  ./ui/README.md
 e71de36b2e832becdac186d4ba1cfa23d945429a4ea680ee27f9b5452a37587c  ./ui/adaptive-data.js
 e788365c1cf5e4749f122bc48eae98b853cdbca8afd95a0cf24048391e84996b  ./ui/catalog.js
 fa5719ee5bbbb1f80123b3ba8d4aaf4d28aca49c4eb3c472857922bdf9277b99  ./ui/emohealth-data.js
-372d1cc15b36a5207239e710f115a81f127bc60c6a59a09aa5102defb91f43d9  ./ui/index.html
+0c47bc295ce57bf5c530b8cfdc2ea1494b1651de6273a70936aefac5b0422d18  ./ui/index.html
 a335993f90ee402f269f4bec138b59323f3e2721047558d036cf772ffaec84c0  ./ui/inference.js
 50c65bc4907bb4ee9f53d6e6c3c318477b6816a993be5cbb1dc3b48fed2db441  ./ui/inference/ipip-neo.js
 17d91caae64bc02d664502123d665b53dbea8e869147891d8d78a77add0a03bb  ./ui/inference/pid-5.js

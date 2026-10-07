@@ -428,6 +428,19 @@
   .instback{border:1px solid var(--line);background:#fff;border-radius:8px;
     padding:6px 11px;cursor:pointer;font:inherit;font-size:13px;color:inherit}
   .instback:hover{border-color:var(--accent)}
+  /* 常模分层参数（task-39）：**只在 PID-5 出现**，可选、可清除、只存本机。
+     视觉上刻意做得轻（一行 + 小字说明），不挡作答、不做必答、不反复提示。 */
+  .stratum{display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+    padding:8px 10px;margin:0 0 10px;border:1px solid var(--line);border-radius:8px;
+    background:#fbfbfa;font-size:13px}
+  .stratum label{display:flex;gap:5px;align-items:center;color:var(--ink2)}
+  .stratum select{font:inherit;font-size:13px;padding:3px 6px;border:1px solid var(--line);
+    border-radius:6px;background:#fff;color:inherit}
+  .stratum .stclear{border:1px solid var(--line);background:#fff;border-radius:6px;
+    padding:3px 9px;cursor:pointer;font:inherit;font-size:12.5px;color:var(--ink2)}
+  .stratum .stclear:hover{border-color:var(--accent);color:inherit}
+  .stratum .stnow{font-size:12.5px;color:var(--ink3)}
+  .stratum .stnote{font-size:12px;color:var(--ink3);flex-basis:100%;margin-top:2px}
   .expwrap{position:relative;display:inline-block}
   .expwrap>button{border:1px solid var(--line);background:#fff;border-radius:8px;
     padding:6px 11px;cursor:pointer;font:inherit;font-size:13px;color:inherit}
@@ -793,8 +806,70 @@ const S = {
   instResult: null,    // 该量表的计分结果（用户点「看结果」后才有）
   instView: "classic", // 作答方式："classic"（经典逐题）| "tree"（天赋树，仅 > 60 题）
   treeSel: null,       // 天赋树里选中的节点（题号）
+  /* PID-5 条件常模的**分层参数**（性别 × 年龄）。见下方 STRATUM_* 一段：
+     ⚠️ 它是**常模参数**，不是作答数据——单独存、单独清，绝不进 `instResp`/计分/存档作答位。 */
+  normStratum: {sex: "", age: ""},
 };
 const INST_PER_PAGE = 10;      // 单量表分页：每页 10 题
+/* ══ PID-5 条件常模的「性别 × 年龄」分层参数（task-39）══════════════════════
+   为什么有它：`data/norms/pid-5.json` 是**条件常模**（9 个分层：f/m × [18,35)/[35,50)/
+   [50,65)/[65,Inf) + overall）。不填时恒定用总体层 `overall`——换个性别年龄，同一个
+   原始分的百分位最大能差 26.17 个百分点，甚至跨过 50/70 分档线。填了就用对应分层。
+   ⚠️ 隐私边界（用户数据，硬约束）：
+     ① **可选**：不填是默认且完全合法，绝不设为必答、绝不反复提示；
+     ② **只存本机**（独立 localStorage 键），可**清除**；`file://` 离线单文件，无任何上传路径；
+     ③ **不是作答数据**：绝不进 `S.instResp`、不进 responses/计分/推断，单独字段；
+     ④ **导出克制**：报告只写**用了哪个分层码**（如 `f [35,50)`），不写「女性、35–49 岁」
+        这种更直白的表述（分层码已足够表达，也更不容易被当临床信息误读）。
+   落到百分位查询的唯一入口是 `instPercentileDetail(data, name, value, cell)` 的 `cell`。 */
+const STRATUM_STORE = "emohealth.stratum.v1";
+/* 年龄档 → 数据源里的分层后缀（**左闭右开**，与 `data/norms/pid-5.json` 一致） */
+const STRATUM_AGES = [
+  ["18-34", "[18,35)"], ["35-49", "[35,50)"],
+  ["50-64", "[50,65)"], ["65+", "[65,Inf)"],
+];
+/* `lt18` 不是 UI 选项（不主动收集未成年人数据），但**存储/导入里若出现**必须有确定行为：
+   数据源没有任何 <18 分层 → 用 `[0,18)` 这个必然不存在的键走同一个回退入口并说明原因。 */
+const STRATUM_UNDER18 = "[0,18)";
+function stratumState() {
+  if (!S.normStratum || typeof S.normStratum !== "object") S.normStratum = {sex: "", age: ""};
+  return S.normStratum;
+}
+function stratumRequestedCell() {
+  const st = stratumState();
+  const sex = (st.sex === "f" || st.sex === "m") ? st.sex : "";
+  if (!sex || !st.age) return null;                 // 未填 → 交给入口走默认总体层
+  if (st.age === "lt18") return sex + " " + STRATUM_UNDER18;
+  const a = (STRATUM_AGES.find(x => x[0] === st.age) || [])[1];
+  return a ? (sex + " " + a) : null;
+}
+function stratumUserWhy() {
+  const st = stratumState();
+  const sex = (st.sex === "f" || st.sex === "m") ? st.sex : "";
+  if (!sex || !st.age) return "unfilled";
+  return st.age === "lt18" ? "under18" : "filled";
+}
+function saveStratum() {
+  try {
+    const st = stratumState();
+    localStorage.setItem(STRATUM_STORE,
+      JSON.stringify({v: 1, sex: st.sex, age: st.age, at: Date.now()}));
+  } catch (e) {}
+}
+function loadStratum() {
+  try {
+    const o = JSON.parse(localStorage.getItem(STRATUM_STORE) || "null");
+    if (o && o.v === 1) {
+      stratumState().sex = (o.sex === "f" || o.sex === "m") ? o.sex : "";
+      stratumState().age = STRATUM_AGES.some(x => x[0] === o.age) || o.age === "lt18"
+        ? o.age : "";
+    }
+  } catch (e) {}
+}
+function clearStratum() {
+  S.normStratum = {sex: "", age: ""};
+  try { localStorage.removeItem(STRATUM_STORE); } catch (e) {}
+}
 /* 天赋树（D114）：**只有 > 60 题、且有布局数据的量表**提供。短表全答一遍本来就快，
    天赋树的价值在长表上——用户不必手动翻 22 页。 */
 const TREE_MIN_ITEMS = 61;
@@ -992,6 +1067,18 @@ function instExportJSON(data, e) {
     norms_status: data.norms_status || null,
     answered: rows.filter(r => r.value !== "").length,
     total: rows.length,
+    /* ── 常模分层参数（task-39）：**独立字段**，与作答严格分开 ────────────────
+       它只用于「条件常模用哪一层」，**不是作答数据**、不参与计分/推断。
+       存档带上它是为了让换设备后能复现同一份报告的分层选择；不填时是 null。
+       ⚠️ 只存**分层码**（`f [35,50)`），不存「女性 / 35–49 岁」这类直白表述。 */
+    norm_stratum: (data.norms && data.norms.scales) ? (() => {
+      const rc = resolveNormCell(data.norms.scales[Object.keys(data.norms.scales)[0]],
+        data.norms, stratumRequestedCell());
+      return {
+        note: "常模参数，只用于选择条件常模的分层；不是作答内容，未上传，可随时清除。",
+        requested_cell: rc.requested, used_cell: rc.use, reason: rc.reason,
+      };
+    })() : null,
     // 作答按 itemId 存，续做与复核都靠它
     responses: Object.fromEntries(rows.filter(r => r.value !== "")
       .map(r => [r.id, r.value])),
@@ -1238,6 +1325,10 @@ function instReport(data, e) {
      ⚠️ **绝不用部分作答的原始分查常模**：部分均值 ≠ 完整维度得分（缺陷 3）。
         用户在意的「位置」用**估计分**给，并明确标注它不是实测位置。 */
   const missingNormEntries = [];
+  /* 用户填的分层（PID-5 条件常模）；没填 / 不适用 → null，入口会走默认总体层。
+     只在**这一个变量**里解析一次，本函数里所有百分位查询都用它（含下面没有
+     `instResult` 时的「估计表」分支——那个分支在 map 之外，所以必须声明在函数级）。 */
+  const REQ_CELL = (data.norms && data.norms.scales) ? stratumRequestedCell() : null;
   const scoreRows = rrows.map(r => {
     const rule = data.scoring[r.id] || {};
     const b = inferByName.get(r.name) || null;
@@ -1252,11 +1343,11 @@ function instReport(data, e) {
     const est = state === "estimated" ? b.estimate : null;
     const rAll = (b && b.allowed) ? b.confidence_r : null;
     /* 实测位置：**只有答满才有**（否则 null，且写明原因） */
-    const nd = (full && hasNorms) ? instPercentileDetail(data, r.name, r.value) : null;
+    const nd = (full && hasNorms) ? instPercentileDetail(data, r.name, r.value, REQ_CELL) : null;
     if (full && hasNorms && !nd) missingNormEntries.push(r.name);
     /* 估计位置：按估计分查常模（性质完全不同，导出里单独一列 + 标注） */
     const ndEst = (state === "estimated" && hasNorms)
-      ? instPercentileDetail(data, r.name, est) : null;
+      ? instPercentileDetail(data, r.name, est, REQ_CELL) : null;
     /* Phase 2：L2 的官方 raw→T **查表**（只查表；未答满/超范围一律不给） */
     const tsc = (data.criteria && data.criteria.tscore_table)
       ? (full ? instTScoreDetail(data, r.value)
@@ -1334,10 +1425,19 @@ function instReport(data, e) {
       cell_is_default: (nd || ndEst) ? !!(nd || ndEst).cell_is_default : false,
       cell_fallback: (nd || ndEst) ? !!(nd || ndEst).cell_fallback : false,
       cell_default: (nd || ndEst) ? !!(nd || ndEst).cell_default : false,
+      /* task-39：`cell_reason` 区分「你填的 / 默认 / 回退」，措辞只在下面这一处生成 */
+      cell_reason: (nd || ndEst) ? ((nd || ndEst).cell_reason || "") : "",
+      cell_requested: (nd || ndEst) ? ((nd || ndEst).cell_requested || "") : "",
       default_cell: (nd || ndEst) ? ((nd || ndEst).default_cell || "") : "",
-      cell_source: !(nd || ndEst) ? "" : ((nd || ndEst).cell_fallback
-        ? `回退：数据源没有 overall 层，取第一层 ${(nd || ndEst).cell}`
-        : ((nd || ndEst).cell_requested ? `指定分层 ${(nd || ndEst).cell}` : `默认总体层 ${(nd || ndEst).cell}`)),
+      cell_source: !(nd || ndEst) ? "" : (() => {
+        const m = nd || ndEst;
+        return (m.cell_reason === "user") ? `你填写的分层 ${m.cell}`
+          : (m.cell_reason === "fallback")
+            ? `回退：你填写的分层 ${m.cell_requested} 在本册不存在 → 用总体层 ${m.cell}`
+            : (m.cell_reason === "fallback-norm")
+              ? `回退：数据源没有 overall 层 → 取第一层 ${m.cell}`
+              : `默认总体层 ${m.cell}（你没填性别与年龄）`;
+      })(),
       n_cells: (nd || ndEst) ? ((nd || ndEst).n_cells || 0) : 0,
       extrap: nd ? !!nd.extrap : false,
       facet_id: (nd || ndEst) ? ((nd || ndEst).facet_id || (nd || ndEst).scale_id || "") : "",
@@ -1358,7 +1458,7 @@ function instReport(data, e) {
         : ((b.allowed && b.available) ? "estimated" : "insufficient");
       const est = state === "estimated" ? b.estimate : null;
       const ndEst = (state === "estimated" && hasNorms)
-        ? instPercentileDetail(data, b.name, est) : null;
+        ? instPercentileDetail(data, b.name, est, REQ_CELL) : null;
       scoreRows.push({
         id: b.dim, name: b.name, value: null,
         n_answered: b.n_answered_own, n_items: b.n_items, complete: false,
@@ -1388,10 +1488,16 @@ function instReport(data, e) {
         cell_default: ndEst ? !!ndEst.cell_default : false,
         cell_is_default: ndEst ? !!ndEst.cell_is_default : false,
         cell_fallback: ndEst ? !!ndEst.cell_fallback : false,
+        cell_reason: ndEst ? (ndEst.cell_reason || "") : "",
+        cell_requested: ndEst ? (ndEst.cell_requested || "") : "",
         default_cell: ndEst ? (ndEst.default_cell || "") : "",
-        cell_source: !ndEst ? "" : (ndEst.cell_fallback
-          ? `回退：数据源没有 overall 层，取第一层 ${ndEst.cell}`
-          : (ndEst.cell_requested ? `指定分层 ${ndEst.cell}` : `默认总体层 ${ndEst.cell}`)),
+        cell_source: !ndEst ? "" : ((ndEst.cell_reason === "user")
+          ? `你填写的分层 ${ndEst.cell}`
+          : (ndEst.cell_reason === "fallback")
+            ? `回退：你填写的分层 ${ndEst.cell_requested} 在本册不存在 → 用总体层 ${ndEst.cell}`
+            : (ndEst.cell_reason === "fallback-norm")
+              ? `回退：数据源没有 overall 层 → 取第一层 ${ndEst.cell}`
+              : `默认总体层 ${ndEst.cell}（你没填性别与年龄）`),
         n_cells: (nrm && nrm.cells) ? nrm.cells.length : 0,
         extrap: false, facet_id: "", percentile_method: "",
       });
@@ -1399,6 +1505,35 @@ function instReport(data, e) {
   }
 
   const judgment = instJudgment(data);
+  /* ── 分层参数披露（task-39）：**只写分层码**，不写「女性 / 35–49 岁」这类更直白的表述──
+     报告可能被交给第三方，分层码已足够表达，也更不容易被误读成临床信息。 */
+  const stratum = (() => {
+    const why = stratumUserWhy();
+    if (!(hasNorms && nrm && nrm.scales)) {
+      return {applicable: false, requested: null, used: "", reason: "", why,
+        requested_ok: false, n_cells: 0, default_cell: "", cells: [], note: ""};
+    }
+    const scId = Object.keys(nrm.scales)[0];
+    const rc = resolveNormCell(nrm.scales[scId], nrm, stratumRequestedCell());
+    const cells = Array.isArray(nrm.cells) ? nrm.cells.slice() : Object.keys(nrm.scales[scId].cells || {});
+    let note;
+    if (rc.reason === "user") {
+      note = `本报告用**你填写的分层** \`${rc.use}\`（性别 × 年龄，左闭右开）换算百分位与 T 分。`
+        + `该参数**只存在本机**、未上传；不填则用总体层。`;
+    } else if (rc.reason === "fallback") {
+      note = `你填写的信息对应分层 \`${rc.requested}\`，但本册**没有这一层**`
+        + `（${why === "under18" ? "数据源没有任何 18 岁以下的分层" : "该 scale 缺这一层"}）`
+        + `→ 已**回退到总体层** \`${rc.use}\`，并在此说明原因。`;
+    } else if (rc.reason === "fallback-norm") {
+      note = `数据源没有总体层 \`overall\` → **回退到第一层** \`${rc.use}\`（如实标注）。`;
+    } else {
+      note = `你**未填**性别与年龄 → 使用数据源专门提供的**默认总体层** \`${rc.use}\`。`
+        + `填了就会用对应分层（该参数只存在本机、未上传）。`;
+    }
+    return {applicable: true, requested: rc.requested, used: rc.use, reason: rc.reason,
+      requested_ok: rc.requested_ok, n_cells: rc.n_cells, default_cell: rc.default_cell,
+      cells, why, note};
+  })();
   const normNotes = {
     has_norms: hasNorms,
     source: hasNorms ? (nrm.source || "") : "",
@@ -1492,7 +1627,7 @@ function instReport(data, e) {
     citation: data.citation || "",
     score_rows: scoreRows, infer, infer_extra: inferExtra,
     missing_norm_entries: missingNormEntries,
-    judgment, norm_notes: normNotes,
+    judgment, norm_notes: normNotes, norm_stratum: stratum,
     items: rows, dim_name: dimName,
   };
 }
@@ -1698,11 +1833,18 @@ function instExportMD(data, e) {
         if (r.cell) {
           md += `- 常模分层：**${r.cell}**（${r.cell_source}；该量表共 ${r.n_cells} 个`
             + `性别×年龄分层）`;
-          if (r.cell_fallback) {
+          if (r.cell_reason === "fallback") {
+            md += `——⚠️ 你填写的分层 ${r.cell_requested} 在本册**不存在**，已**回退到总体层**`
+              + `（原因见下面「常模与参照说明」，导出如实标注）`;
+          } else if (r.cell_reason === "fallback-norm") {
             md += `——⚠️ 数据源**没有** overall 总体层，这是**回退**到第一层的结果`
               + `（不是默认总体层，导出如实标注）`;
+          } else if (r.cell_reason === "user") {
+            md += `——**你填写的**分层（只存在本机、未上传）`;
+          } else {
+            md += `——**默认总体层**（你未填性别与年龄）`;
           }
-          md += `。本工具不采集用户的性别与年龄，因此**不对任何个人做分层校正**。\n`;
+          md += `。\n`;
         }
         if (r.extrap) md += `- ⚠️ 该原始分落在常模表的端点之外（extrap=true）：百分位/T 分是端点值，请谨慎解读\n`;
       } else if (r.T != null) {
@@ -1807,19 +1949,27 @@ function instExportMD(data, e) {
     md += `- 单位：${R.norm_notes.unit || "—"}`
       + `${R.norm_notes.domain_unit ? `（域分单位：${R.norm_notes.domain_unit}）` : ""}\n`;
     md += `- 百分位换算方式：${R.norm_notes.percentile_method || "—"}\n`;
-    if (R.norm_notes.conditional && R.norm_notes.cells.length) {
+    if (R.norm_stratum && R.norm_stratum.applicable && R.norm_notes.cells.length) {
       const S2 = R.norm_notes.sensitivity || {};
+      const ST = R.norm_stratum || {};
       md += `- 这是**条件常模**（按性别×年龄分层）：共 ${R.norm_notes.cells.length} 个分层 —— `
         + `${R.norm_notes.cells.join("、")}。\n`;
-      md += `- 本工具**不采集用户的性别与年龄**，因此固定使用数据源专门提供的**总体分层 `
-        + `\`${R.norm_notes.default_layer || R.norm_notes.cells[R.norm_notes.cells.length - 1]}\`**`
-        + `（不对任何个人做分层校正）`;
-      if (R.norm_notes.fell_back) {
-        md += `；⚠️ **但数据源缺少该总体层，本次实际回退到了第一层 `
-          + `「${(R.norm_notes.used_layers || [])[0] || R.norm_notes.cells[0]}」**`
-          + `（这是回退结果，不是默认总体层）`;
+      /* task-39：**只写分层码**（写「女性/35–49 岁」更直白、也更易被误读成临床信息） */
+      md += `- **本次实际使用的分层：\`${ST.used || R.norm_notes.default_layer || "overall"}\`**`;
+      if (ST.reason === "user") {
+        md += `（**你填写的**分层；该参数只存在本机、未上传）`;
+      } else if (ST.reason === "fallback") {
+        md += ` —— ⚠️ 你填写的信息对应分层 \`${ST.requested}\`，但本册**没有这一层**`;
+        md += ST.why === "under18"
+          ? `（数据源**没有任何 18 岁以下**的分层）` : `（该 scale 缺这一层）`;
+        md += `，因此**回退到总体层** \`${ST.used}\`。`;
+      } else if (ST.reason === "fallback-norm") {
+        md += ` —— ⚠️ 数据源缺少 \`overall\` 总体层，**回退到第一层**（不是默认总体层）。`;
+      } else {
+        md += `（**默认总体层**：你未填性别与年龄；填了就会用对应分层）`;
       }
-      md += `。\n`;
+      md += `\n`;
+      if (ST.note) md += `- 分层说明：${ST.note}\n`;
       md += `- **分层敏感度**（同一原始分在不同性别×年龄分层下的百分位差别，`
         + `来源：\`${S2.verified_by || "复核"}\`）：9 个分层之间**全局最大跨度 `
         + `约 ${S2.max_span_pp} 个百分点**（例：${S2.max_span_example}）；`
@@ -2384,6 +2534,7 @@ function refreshInferencePanel() {
   const rf = data.response_format;
 
   let h = withChainBar(instPageHeader(data, e), data, e);
+  h += stratumPanelHtml(data);
   h += `<div class="ph">${esc(data.display_name)}</div>
     <div class="nqhead"><b>第 ${page + 1}/${pages} 页</b>
       <span class="note">已答 ${done}/${items.length} 题</span></div>
@@ -2474,6 +2625,65 @@ function refreshInferencePanel() {
          · `cell_default`：是否因**未指定分层**而落到默认第一个分层
            ⚠️ 界面不采集性别/年龄，所以 `cell` 永远是默认分层——导出必须写明这件事。
    ⚠️ 没有常模时返回 null——界面必须显示「无参照」，不能编一个百分位出来。 */
+/* ── 常模分层参数面板（task-39）：**只在 PID-5**（有 `norms.scales` 的条件常模）出现。
+   可选、只存本机、可清除；文案直说「不填就用总体层」。不填是默认且完全合法。 */
+function stratumPanelHtml(data) {
+  if (!(data && data.norms && data.norms.scales)) return "";
+  const st = stratumState();
+  const rc = resolveNormCell(data.norms.scales[Object.keys(data.norms.scales)[0]],
+    data.norms, stratumRequestedCell());
+  const why = stratumUserWhy();
+  let now;
+  if (rc.reason === "user") now = `当前使用：**你填写的分层** ${rc.use}`;
+  else if (rc.reason === "fallback") {
+    now = `当前使用：总体层 ${rc.use}（你填写的 ${rc.requested} 在本册不存在`
+      + `${why === "under18" ? "：数据源没有 18 岁以下的分层" : ""}，已回退）`;
+  } else if (rc.reason === "fallback-norm") now = `当前使用：第一层 ${rc.use}（数据源缺总体层）`;
+  else now = `当前使用：**默认总体层** ${rc.use}（未填）`;
+  const opt = (v, label, cur) =>
+    `<option value="${esc(v)}"${v === cur ? " selected" : ""}>${esc(label)}</option>`;
+  return `<div class="stratum" data-stratum-panel="1">
+    <label>性别
+      <select data-stratum="sex">${opt("", "不填", st.sex)}${opt("f", "女", st.sex)}${opt("m", "男", st.sex)}</select></label>
+    <label>年龄
+      <select data-stratum="age">${opt("", "不填", st.age)}${STRATUM_AGES.map(a =>
+        opt(a[0], a[0] === "65+" ? "65 岁以上" : a[0].replace("-", "–") + " 岁", st.age)).join("")}</select></label>
+    <button type="button" class="stclear" data-stratum-clear="1">清除</button>
+    <span class="stnow">${md(now)}</span>
+    <span class="stnote">可选，**只保存在本机、不上传**；不填就用总体层。这一项是**常模参照参数**，
+      不是作答内容，不影响计分。</span>
+  </div>`;
+}
+
+/* ── 条件常模用哪一层：**唯一的分层决策实现**（`instPercentileDetail` 与披露文案共用）──
+   回退链（task-39，显式且可解释）：
+     ① `cell` 给了且该 scale 真有这一层 → 用它（`reason="user"`，用户填的）；
+     ② `cell` 没给 → 数据源的总体层 `overall`（`reason="default"`，未填的默认）；
+     ③ `cell` 给了但这一层不存在（例如 <18：数据源没有任何未成年分层；或该 scale 缺这一层）
+        → `overall`（`reason="fallback"`，并保留 `requested` 以便如实说明为什么回退）；
+     ④ 连 `overall` 都没有（当前 31/31 个 scale 都有，理论兜底）→ 第一层，`reason="fallback-norm"`。
+   注意：这里**只做分层选择**，百分位查表仍在 `instPercentileDetail` 里。 */
+function resolveNormCell(sc, nrm, cell) {
+  const DEFAULT_CELL = "overall";
+  const cells = (sc && sc.cells) || {};
+  const cellKeys = (nrm && Array.isArray(nrm.cells) && nrm.cells.length)
+    ? nrm.cells.slice() : Object.keys(cells);
+  const requested = cell ? String(cell) : null;
+  const requestedOk = !!(requested && cells[requested]);
+  const hasOverall = !!cells[DEFAULT_CELL];
+  const fallbackCell = cellKeys[0] || null;
+  const use = requestedOk ? requested : (hasOverall ? DEFAULT_CELL : fallbackCell);
+  let reason = "default";
+  if (requestedOk) reason = "user";
+  else if (requested) reason = hasOverall ? "fallback" : "fallback-norm";
+  else if (!hasOverall) reason = "fallback-norm";
+  return {
+    use, requested, requested_ok: requestedOk, reason,
+    n_cells: cellKeys.length,
+    default_cell: hasOverall ? DEFAULT_CELL : fallbackCell,
+    has_overall: hasOverall,
+  };
+}
 function instPercentileDetail(data, name, value, cell) {
   const nrm = data && data.norms;
   if (!nrm) return null;
@@ -2488,20 +2698,20 @@ function instPercentileDetail(data, name, value, cell) {
     /* ⚠️ 默认分层（D122 修正，Lead + confidence-judge 三重独立复核 2026-10-06）：
        以前用 `cellKeys[0]` = `f [18,35)`——那只是 JSON 键顺序的偶然结果，等于把
        「女性 18–35 岁」的百分位当成任何人的百分位（相对真实分层最大偏差 32.98 个百分点）。
-       现在**优先数据源专门提供的总体代表性分层 `overall`**；只有它缺失时才退回第一层，
-       并且**退到哪一层必须显式报出去**（`cell_fallback`，导出里如实写明，不静默）。 */
-    const DEFAULT_CELL = "overall";
-    const hasOverall = !!(sc.cells && sc.cells[DEFAULT_CELL]);
+       task-39 起：用户填了就用**他填的那一层**（`cell`），没填用 `overall`，
+       填了但不存在则回退 `overall` 并说明原因——决策在 `resolveNormCell` 里，只有一处。 */
+    const rc = resolveNormCell(sc, nrm, cell);
     const fallbackCell = cellKeys[0];
-    const requested = (cell && sc.cells[cell]) ? cell : null;
-    const use = requested || (hasOverall ? DEFAULT_CELL : fallbackCell);
+    const use = rc.use;
     const cellMeta = {
-      cell_requested: requested || null,
-      cell_is_default: !requested && use === DEFAULT_CELL,   // 走了正常默认（overall）
-      cell_fallback: !requested && use !== DEFAULT_CELL,     // overall 缺失 → 回退到第一层
-      cell_default: !requested && use !== DEFAULT_CELL,      // 兼容旧名：语义 = 「落到了回退层」
-      n_cells: cellKeys.length,
-      default_cell: hasOverall ? DEFAULT_CELL : fallbackCell,
+      cell_requested: rc.requested,        // 用户**想用**的那层（可能不存在，便于解释回退）
+      cell_requested_ok: rc.requested_ok,
+      cell_reason: rc.reason,              // user | default | fallback | fallback-norm
+      cell_is_default: rc.reason === "default",   // 走了正常默认（overall）
+      cell_fallback: rc.reason === "fallback" || rc.reason === "fallback-norm",
+      cell_default: rc.reason === "fallback" || rc.reason === "fallback-norm", // 兼容旧名
+      n_cells: rc.n_cells,
+      default_cell: rc.default_cell,
     };
     const tbl = sc.cells[use] || sc.cells[fallbackCell];
     if (!tbl) return null;
@@ -2992,6 +3202,10 @@ function renderInstTree(el) {
   // 如实标注布局依据 + 授权：**移出答题主视野**，收进下面「依据与出处」的折叠里
   // （`test_tree_mode.js` 用 stage.textContent 断言「布局依据」仍在——折叠内容计入
   //  textContent，所以断言照过，但用户默认看不到；这是 D118 的处置方式。）
+  /* ⚠️ 常模分层参数（task-39）在**天赋树**里放在图**之后**：图是这一页的主体，
+     窄屏（320px）下「图必须能在 2.5 屏内到达」是既有硬约束（`check_mobile_layout.js`），
+     面板放在图前面会把它顶下去。经典逐题页与结果页短，直接放顶部。 */
+  h += stratumPanelHtml(data);
   el.innerHTML = h;
 }
 /* 推荐框 + 节点图例（放在天赋树上方）。
@@ -3345,6 +3559,7 @@ function renderInstResult(el, data, e) {
   // 常模有两种结构：百分位表 或 条件常模（PID-5 的 scales）
   const hasNorms = !!(nrm && (nrm.facets || nrm.domains || nrm.scales));
   let h = withChainBar(instPageHeader(data, e), data, e);
+  h += stratumPanelHtml(data);
   /* D120（task-24）：结果页默认视野只留用户要判断的东西（分数 + 百分位 + 作答进度）。
      计分口径（sum/mean/max）、常模来源、`n=`、样本说明、百分位换算方式**全部删掉**；
      「跟谁比」只用一句白话（把样本量取整到千位，不给字段名/DOI/样本构成）。 */
@@ -3360,7 +3575,7 @@ function renderInstResult(el, data, e) {
       ${hasNorms ? "<th>百分位</th>" : ""}<th>已答/题数</th></tr></thead><tbody>`;
   for (const r of rows) {
     const rule = data.scoring[r.id] || {};
-    const pct = hasNorms ? instPercentile(data, r.name, r.value) : null;
+    const pct = hasNorms ? instPercentile(data, r.name, r.value, stratumRequestedCell()) : null;
     h += `<tr${r.isDomain ? ' class="domrow"' : ""} data-dim-row="${esc(r.id)}"
       data-agg="${esc(rule.aggregation || "")}">
       <td>${esc(r.name)}</td>
@@ -3515,7 +3730,15 @@ document.addEventListener("click", (e) => {
     go("#/scale/" + encodeURIComponent(pick.dataset.inst));
     return;
   }
-  if (e.target.closest("[data-instback]")) {
+  /* ── 常模分层参数（PID-5，task-39）：**只改 `S.normStratum`（常模参数）**，
+        绝不碰 `S.instResp`/计分/推断；改完立刻重渲染（百分位随之切换）。 */
+  if (e.target.closest("[data-stratum-clear]")) {
+    clearStratum();
+    renderTop(); renderStage();
+    return;
+  }
+  const sb = e.target.closest("[data-instback]");
+  if (sb) {
     S.instCode = null; S.instResult = null; INST_NOW = null;
     S.instView = "classic"; S.treeSel = null;
     renderTop(); renderStage();
@@ -3651,10 +3874,28 @@ document.addEventListener("click", (e) => {
 /* 顶层只有一个入口按钮：回量表库。 */
 document.getElementById("modes").addEventListener("click", () => go("#/"));
 
+/* ── 常模分层参数（PID-5，task-39）：`change` 走**独立监听**（不是作答，也不触发保存作答）──
+   只更新 `S.normStratum` + 独立的 localStorage 键，然后重渲染让百分位随之切换。 */
+document.addEventListener("change", (e) => {
+  const sel = e.target.closest && e.target.closest("[data-stratum]");
+  if (!sel) return;
+  const st = stratumState();
+  const which = sel.dataset.stratum;
+  if (which === "sex") st.sex = (sel.value === "f" || sel.value === "m") ? sel.value : "";
+  else if (which === "age") {
+    st.age = (STRATUM_AGES.some(x => x[0] === sel.value) || sel.value === "lt18")
+      ? sel.value : "";
+  } else return;
+  saveStratum();
+  renderTop(); renderStage();
+});
+
 /* 路由：hash 变化 → 应用。浏览器后退/前进也走这里，不需要自己维护历史栈。 */
 window.addEventListener("hashchange", applyRoute);
 /* ── 启动：先看本机有没有未完成的作答 ─────────────────── */
 (function boot() {
+  /* 常模分层参数：**独立于作答存档**的本机偏好（不填就什么都不做） */
+  loadStratum();
   const saved = loadLocal();
   const nSaved = saved ? Object.keys(saved.instResp || {}).length : 0;
   if (nSaved) {

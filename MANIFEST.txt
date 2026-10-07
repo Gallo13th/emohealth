@@ -1,5 +1,5 @@
 # EmoHealth 打包清单
-# 生成时间 2026-10-06T22:57:13
+# 生成时间 2026-10-07T08:54:47
 # 文件总数 2543（核心 527，档案 2016）
 # 总大小 736.8 MB
 #
@@ -388,8 +388,8 @@
       6893  tools/check/test_mania_options_ui.js
      13989  tools/check/test_multiscale_fetch.js
       7089  tools/check/test_pid5_instrument.py
-      4013  tools/check/test_pid5_norms_ui.js
-     49853  tools/check/test_scale_export.js
+     15703  tools/check/test_pid5_norms_ui.js
+     50572  tools/check/test_scale_export.js
       7951  tools/check/test_scale_pages.js
       6284  tools/check/test_scene.py
       9936  tools/check/test_scene_sourcing_fuzzy.py
@@ -494,11 +494,11 @@
       3248  tools/ui/shoot_tree.js
       7415  tools/ui/shoot_ui.js
       4555  tools/ui/sync_blog.js
-     47298  ui/README.md
+     49726  ui/README.md
     307986  ui/adaptive-data.js
       4606  ui/catalog.js
     597195  ui/emohealth-data.js
-    209584  ui/index.html
+    224415  ui/index.html
        207  ui/inference.js
     455075  ui/inference/ipip-neo.js
     303334  ui/inference/pid-5.js
