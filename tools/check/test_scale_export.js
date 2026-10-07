@@ -182,9 +182,14 @@ function parseCSV(text) {
   ck('Markdown 有标题', /^# /.test(md), md.split('\n')[0].slice(0, 50));
   // ← 旧断言「仅含「<code>」」按新文案改写（不是删除：仍要求声明只含本量表）
   ck('Markdown 声明只含本量表', /只含「DSM5TR-L2-Anger」这一套量表/.test(md));
-  // ← 旧断言「| 维度 | 分数 |」按新表头改写
-  ck('Markdown 有得分总表（新表头）', /\| 维度 \| 原始分 \| 已答\/题数 \| 估计分 \|/.test(md),
-     (md.split('\n').find(l => l.startsWith('| 维度 |')) || '').slice(0, 90));
+  // ← task-41：L2-Anger 这一册**已答满**（5/5），所以按新契约走「全答满」列集：
+  //    分数列叫「实测得分」，**不出现**「估计分 / 置信度 r / 估计位置」列。
+  ck('Markdown 有得分总表（全答满列集：实测得分，无估计列）',
+     /^\| 维度 \| 原始分 \| 已答\/题数 \| 实测得分 \|/.test(
+       md.split('\n').find(l => l.startsWith('| 维度 |')) || '')
+     && !/估计分|置信度 r|估计位置/.test(
+       md.split('\n').find(l => l.startsWith('| 维度 |')) || ''),
+     (md.split('\n').find(l => l.startsWith('| 维度 |')) || '').slice(0, 100));
   ck('Markdown 有逐题表', /## 逐题作答/.test(md));
   // ← 旧断言「暂无可用常模」按新文案改写（仍要求说明常模缺失）；
   //    Phase 2：T 分型册子**有 T 分**，所以精确说法是「没有常模**百分位**」
@@ -208,10 +213,17 @@ function parseCSV(text) {
   ck('L2 t_score 册：不得再出现「判读依据是分界/分带/逐项判据」这种通用错句',
      !/判读依据是分界\/分带\/逐项判据/.test(md));
 
-  /* task-34 ①：MD 得分总表同时出现这些列头 */
+  /* task-34 ①：MD 得分总表的列头。
+     ⚠️ task-41 契约变更：**这一册已答满**（5/5），所以列集是「全答满」那套——
+     分数列叫「实测得分」，**不再有**「估计分 / 置信度 r / 估计位置」三列
+     （答满时不存在估计；那个 r 是问卷的可辨上限，不是这次得分的置信度）。
+     未答满时才出现的列，由下面的 B 段（PID-5 部分作答）专门断言。 */
   const mdHead = md.split('\n').find(l => l.startsWith('| 维度 |')) || '';
-  for (const col of ['原始分', '估计分', '置信度 r', 'T 分', 'z 分', '±1SD 区间']) {
-    ck(`MD 得分总表有「${col}」列头`, mdHead.includes(col), mdHead.slice(0, 100));
+  for (const col of ['原始分', '实测得分', 'T 分', 'z 分', '±1SD 区间']) {
+    ck(`MD 得分总表（全答满）有「${col}」列头`, mdHead.includes(col), mdHead.slice(0, 100));
+  }
+  for (const col of ['估计分', '置信度', '估计位置']) {
+    ck(`MD 得分总表（全答满）**不得**出现「${col}」列`, !mdHead.includes(col), mdHead.slice(0, 100));
   }
   /* 结果 CSV 表头（新契约）+ 真实解析 */
   const rc = A.result;
@@ -293,8 +305,11 @@ function parseCSV(text) {
      cell('估计分') !== '' && cell('估计分') !== '—', JSON.stringify(cell('估计分')));
   ck('② 部分作答：置信度 r 列有值', cell('置信度 r') !== '' && cell('置信度 r') !== '—',
      JSON.stringify(cell('置信度 r')));
-  ck('② 逐维度细则里写明估计是怎么来的（按已答 k 题 / 不等于真实得分）',
-     /估计分：/.test(pmd) && /不等于答满时的真实得分/.test(pmd));
+  ck('② 逐维度细则里写明估计是怎么来的（按已答 k 题 / **不等于你答满时会得到的分数**）',
+     /估计分：/.test(pmd) && /不等于你答满时会得到的分数/.test(pmd),
+     (pmd.match(/估计分：[^\n]{0,60}/) || [''])[0]);
+  ck('② 未答满时**不得**再用「不等于答满时的真实得分」这种过期措辞',
+     !/不等于答满时的真实得分/.test(pmd));
   /* 三条口径（Lead 定）：部分作答不给实测位置、但给「按估计分算的位置」并明确标注 */
   ck('② 部分作答：实测百分位/T/z 三列都为空（不得用部分原始分查常模）',
      cell('实测百分位') === '—' && cell('实测 T 分') === '—'
@@ -356,12 +371,12 @@ function parseCSV(text) {
   ck('回归② 答了题但置信度未达门槛的维度出现在「已作答但信息量不足」表里（真实原因）',
      insufficientNames.length > 0 && insufficientNames.every(n =>
        new RegExp('\\| ' + n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ' \\|').test(
-         pmd.slice(pmd.indexOf('## 已作答但信息量不足')))),
+         pmd.slice(pmd.indexOf('## 已作答但**未答满**、信息量不足')))),
      JSON.stringify({insufficientNames, answeredNames}));
   ck('回归② 已达门槛、有估计的维度**不**出现在「信息量不足」表里',
      answeredNames.filter(n => !insufficientNames.includes(n)).every(n =>
        !new RegExp('\\| ' + n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ' \\|').test(
-         pmd.slice(pmd.indexOf('## 已作答但信息量不足')))), JSON.stringify(answeredNames));
+         pmd.slice(pmd.indexOf('## 已作答但**未答满**、信息量不足')))), JSON.stringify(answeredNames));
   /* ③ 部分作答：得分总表里这些维度的「实测百分位/实测 T 分/实测 z 分」必须全为 — */
   const partialRows = mdLines.filter(l => /^\| .+? \| [\d.]+ \| \d+\/\d+ \|/.test(l)
     && !/ \| \d+\/\d+ \| .+ \| .+ \| [\d.]+%ile/.test(l));
@@ -798,6 +813,91 @@ function parseCSV(text) {
      && /archive\/scales\//.test(bRow[bHead.indexOf('分带来源')] || ''),
      JSON.stringify({band: bRow[bHead.indexOf('T分带')],
        src: bRow[bHead.indexOf('分带来源')]}));
+
+  /* ══════════ F. task-41：全答满（220/220）的真实报告 ══════════
+     用户原话：「我全部回答了，然后你说 r 不是 1，这问题很大。」
+     修的口径：**按「是否答满」分叉**——答满只有实测分（不存在估计），
+     那个 r 是问卷的可辨上限，**不逐行显示**，统一在「估计与置信度口径」一节说明。 */
+  console.log('\n=== F. 全答满（PID-5 220/220）===');
+  await S('Page.navigate', {url: URL_ + '#/scale/PID-5/classic'});
+  await sleep(3200);
+  const full = await ev(`(async () => {
+      for (let i = 0; i < 90; i++) {
+        if (INST_NOW && INST_NOW.norms && INST_NOW.norms.scales) break;
+        await new Promise(r => setTimeout(r, 150));
+      }
+      S.instResp = {}; S.ansVer++;
+      INST_NOW.items.forEach((it, i) => { S.instResp[it.id] = i % 4; });
+      S.normStratum = {sex: "m", age: "18-34"};
+      S.ansVer++; renderTop(); renderStage();
+      S.instResult = {rows: instScores(INST_NOW, S.instResp)};
+      S.instResult.rows.forEach(r => { r.complete = (r.n_answered === r.n_items); });
+      renderTop(); renderStage();
+      return {answered: Object.keys(S.instResp).length,
+        rows: S.instResult.rows.length,
+        complete: S.instResult.rows.filter(r => r.complete).length,
+        stratum: stratumRequestedCell()}; })()`);
+  console.log('  全答满状态：', JSON.stringify(full));
+  ck('F. 220/220 全答满，30 个维度（25 面向 + 5 领域）全部 complete',
+     full.answered === 220 && full.rows === 30 && full.complete === 30, JSON.stringify(full));
+  const fmd = await exportOf('md', '.md', `instExportMD(INST_NOW, catalogEntry(S.instCode))`);
+  const fcsv = await exportOf('result', '.csv',
+    `instExportResultCSV(INST_NOW, catalogEntry(S.instCode))`);
+  const fLines = fmd.split('\n');
+  const fHead = fLines.find(l => l.startsWith('| 维度 |')) || '';
+  console.log('  表头：', fHead.slice(0, 150));
+  /* ① 全答满：不出现「估计分 / 估计位置」列，分数列叫「实测得分」 */
+  ck('F① 全答满时得分总表**不出现**「估计分 / 估计位置」列，分数列叫「实测得分」',
+     /^\| 维度 \| 原始分 \| 已答\/题数 \| 实测得分 \|/.test(fHead)
+     && !/估计分/.test(fHead) && !/估计位置/.test(fHead), fHead.slice(0, 130));
+  /* ② 全答满：r **不逐行显示**，表头不含「置信度」，也没有任何 r 列 */
+  ck('F② 全答满时表头**不含**「置信度」，且**没有任何 r 列**（答满不逐行显示 r）',
+     !/置信度/.test(fHead) && !/信度上限|可辨上限/.test(fHead), fHead.slice(0, 130));
+  ck('F②b 「估计与置信度口径」一节照抄 judge 的三句（口径非空、不是 —）',
+     /不是「你这次得分有多准」/.test(fmd) && /可辨上限的九成/.test(fmd)
+     && /不会、也不应该是 1/.test(fmd), '');
+  ck('F②c 口径一节**不含**内部字段名（pairB64 / dim_ceiling / ceiling_ratio）',
+     !/pairB64|dim_ceiling|ceiling_ratio|bᵀA/.test(fmd));
+  /* ③ 已答满的维度下不得出现「不等于答满时的真实得分」 */
+  ck('F③ 报告里**没有**「不等于答满时的真实得分」（答满时那是假话）',
+     !/不等于答满时的真实得分/.test(fmd));
+  ck('F③b 答满维度用「实测得分」措辞，并写明不存在估计误差',
+     /- \*\*实测得分：[\d.]+\*\*/.test(fmd) && /不存在估计误差/.test(fmd),
+     (fmd.match(/- \*\*实测得分：[^\n]{0,40}/) || [''])[0]);
+  ck('F③c 答满维度**不得逐行**出现 r 数值（0.9307 这类上限值一次都不出现）',
+     !/0\.9307|0\.9354|0\.9609/.test(fmd),
+     (fmd.match(/0\.9\d{3}/g) || []).slice(0, 3).join(' '));
+  /* ④ 不得出现「本工具当前不采集」（性别年龄输入已上线） */
+  ck('F④ 报告里**不得出现**「本工具当前不采集」（性别年龄已上线）',
+     !/不采集/.test(fmd), (fmd.match(/[^\n]{0,30}不采集[^\n]{0,30}/) || [''])[0]);
+  ck('F④b 分层那句改成「可在作答页/结果页选择性别与年龄」并报出实际用的层',
+     /可在 PID-5 的作答页\/结果页选择\*\*性别与年龄\*\*/.test(fmd)
+     && /m \[18,35\)/.test(fmd));
+  /* ⑤ conf_r 口径字段非空（内容由 F②b 断言） */
+  ck('F⑤ 口径字段不是空占位（无「口径：—」）',
+     !/口径：—/.test(fmd) && !/口径：\s*$/.test(fmd));
+  /* ⑥ 维度计数与表格行数自洽 */
+  const fCnt = (fmd.match(/共 \*\*(\d+)\*\* 个维度（(\d+) 个面向 \+ (\d+) 个领域）[\s\S]{0,90}?已答满 (\d+) 个[\s\S]{0,60}?未答满 (\d+) 个/) || []);
+  const fRows = fLines.filter(l => /^\| [^|]+ \| [\d.]+ \| \d+\/\d+ \|/.test(l)).length;
+  ck('F⑥ 维度计数与表格行数自洽（30 = 25 面向 + 5 领域，已答满 30）',
+     fCnt[1] === '30' && fCnt[2] === '25' && fCnt[3] === '5'
+     && fCnt[4] === '30' && fCnt[5] === '0' && fRows === 30,
+     JSON.stringify({声明: fCnt.slice(1, 6), 表格行: fRows}));
+  ck('F⑥b 「已作答但信息量不足」表**不再列出已答满的领域**（整节消失）',
+     !/已作答但/.test(fmd));
+  ck('F⑥c 5 个领域行都给实测位置（不再被当成「信息量不足」）',
+     ['Negative Affect', 'Detachment', 'Antagonism', 'Disinhibition', 'Psychoticism']
+       .every(n => new RegExp('^\\| ' + n + ' \\| [\\d.]+ \\| \\d+/\\d+ \\| [\\d.]+ \\| \\d+%ile',
+         'm').test(fmd)));
+  /* CSV 侧：答满行估计列为空，r 进「维度信度上限」 */
+  const fHead2 = parseCSV(fcsv)[0] || [];
+  const fRow2 = parseCSV(fcsv)[1] || [];
+  ck('F⑦ 结果 CSV：答满行 估计分/置信度r 为空、r 进「维度信度上限」、状态写「已答满（实测分）」',
+     fRow2[fHead2.indexOf('估计分')] === '' && fRow2[fHead2.indexOf('置信度r')] === ''
+     && fRow2[fHead2.indexOf('维度信度上限')] !== ''
+     && /已答满/.test(fRow2[fHead2.indexOf('状态')] || ''),
+     JSON.stringify({状态: fRow2[fHead2.indexOf('状态')],
+       上限: fRow2[fHead2.indexOf('维度信度上限')]}));
 
   ws.close(); ch.kill();
   console.log(fail ? `\n❌ ${fail} 项未通过` : '\n✅ 子页导出（报告/明细/存档/逐题）全部通过');

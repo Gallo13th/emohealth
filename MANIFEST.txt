@@ -1,12 +1,12 @@
 # EmoHealth 打包清单
-# 生成时间 2026-10-07T22:24:09
-# 文件总数 2544（核心 528，档案 2016）
-# 总大小 736.6 MB
+# 生成时间 2026-10-07T23:05:23
+# 文件总数 2546（核心 530，档案 2016）
+# 总大小 736.7 MB
 #
 # 核心文件校验：  shasum -a 256 -c MANIFEST.sha256
 # 档案校验：      python3 tools/check/verify_archive.py --root archive
 
-## 核心文件（528 个，逐字节校验）
+## 核心文件（530 个，逐字节校验）
        730  .cleanup-baseline.txt
       1159  .gitattributes
       1812  .gitignore
@@ -234,6 +234,7 @@
      73103  research/agent-eval/scenarios/S7.prompt.txt
      27008  research/conf-r-cross-calibration.json
      12350  research/conf-r-cross-calibration.md
+     15571  research/conf_r_definition.md
       5637  research/descriptions-evidence/README.md
      24933  research/descriptions-evidence/known-data-gaps.md
       7398  research/descriptions-evidence/mmpi-2-sources.md
@@ -257,10 +258,11 @@
    1076662  research/scales/inventory.json
      94928  research/text-review-queue.json
        499  run.sh
-     87799  tools/README.md
+     87888  tools/README.md
       1318  tools/_root.js
      11590  tools/_root.py
       8465  tools/analyze/analyze_block_and_network.py
+      9079  tools/analyze/analyze_conf_r_semantics.py
      10076  tools/analyze/analyze_correlation_network.py
       7666  tools/analyze/analyze_decision_paths.py
       7469  tools/analyze/analyze_partial_administration.py
@@ -390,7 +392,7 @@
      13989  tools/check/test_multiscale_fetch.js
       7089  tools/check/test_pid5_instrument.py
      15703  tools/check/test_pid5_norms_ui.js
-     51174  tools/check/test_scale_export.js
+     58549  tools/check/test_scale_export.js
       7951  tools/check/test_scale_pages.js
       6284  tools/check/test_scene.py
       9936  tools/check/test_scene_sourcing_fuzzy.py
@@ -495,11 +497,11 @@
       3248  tools/ui/shoot_tree.js
       7415  tools/ui/shoot_ui.js
       4555  tools/ui/sync_blog.js
-     49726  ui/README.md
+     51152  ui/README.md
     307986  ui/adaptive-data.js
       4606  ui/catalog.js
     597195  ui/emohealth-data.js
-    225597  ui/index.html
+    236007  ui/index.html
        207  ui/inference.js
     455075  ui/inference/ipip-neo.js
     303334  ui/inference/pid-5.js

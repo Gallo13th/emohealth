@@ -810,6 +810,21 @@ const S = {
   normStratum: {sex: "", age: ""},
 };
 const INST_PER_PAGE = 10;      // 单量表分页：每页 10 题
+/* ══ `r`（`conf_r`）的口径 —— **confidence-judge 定稿，照抄，不要改写成更技术的说法** ══
+   为什么必须这么写：用户做了 220/220 全答满，报告却说「置信度 r=0.9307」，
+   他读成「我的分只有 93% 可信」。而真相是：**这个 r 只看你答了哪些题、完全不看你答了什么**
+   （全 0 作答与全 3 作答的 r 逐维相同，差 0.00e+00）——它是**这张问卷的性质**，
+   不是**你这个人的性质**。答满时它停在该特质的「可辨上限」，**因此不会也不该是 1**。
+   ⚠️ 这段文字里**不许出现** `bᵀA⁻¹b` / `pairB64` / `ceiling_ratio` / `dim_ceiling` 这类内部字段名。 */
+const CONF_R_DEF_TEXT = "**r 说的是「这套题能把你这项特质辨到什么程度」，不是「你这次得分有多准」**"
+  + "——它只取决于你**答了哪些题**，与你答出的具体分值无关。\n"
+  + "  只答了一部分时，r 随已答题数与贴题程度变化，我们要求达到该特质**可辨上限的九成**"
+  + "才会给出估计与位置；\n"
+  + "  把该特质的题**全部答完**时，分数已经是精确值（估计 = 官方计分、误差为 0），"
+  + "此时 r 停在**这套量表对该特质的可辨上限**，**因此不会、也不应该是 1**。";
+/* 各特质可辨上限的**区间**：优先用本次导出里已答满面向的 r 现算（一个数一个来源）；
+   导出里没有足够的已答满面向时，用 judge 给的经验区间（同一份定稿）。 */
+const CONF_R_CEILING_RANGE_FALLBACK = "约 0.82–0.96";
 /* ══ PID-5 条件常模的「性别 × 年龄」分层参数（task-39）══════════════════════
    为什么有它：`data/norms/pid-5.json` 是**条件常模**（9 个分层：f/m × [18,35)/[35,50)/
    [50,65)/[65,Inf) + overall）。不填时恒定用总体层 `overall`——换个性别年龄，同一个
@@ -1272,6 +1287,13 @@ function instInferenceTable(data, e) {
       estimate: b.display_allowed && b.available ? b.predicted_score : null,
       n_answered_own: b.n_answered_own || 0,
       n_items: b.n_items || (p.dim_items[dim] || []).length,
+      /* task-41：`dim_ceiling_cross` 是**答满该维度时的 conf_r**（信度型上限）。
+         报告在「已答满」的行里展示它，但**必须改名**（叫「维度信度上限」），
+         否则读者会把它当成「我的得分只有 93% 可信」。 */
+      ceiling_cross: (payload.dim_ceiling_cross && payload.dim_ceiling_cross[dim] != null)
+        ? payload.dim_ceiling_cross[dim] : null,
+      ceiling_self: (payload.dim_ceiling && payload.dim_ceiling[dim] != null)
+        ? payload.dim_ceiling[dim] : null,
       ceiling_pct: b.ceiling_pct == null ? null : b.ceiling_pct,
       ceiling_need: b.ceiling_need == null ? null : b.ceiling_need,
       status: b.status || "", reason: b.reason || ""};
@@ -1281,9 +1303,12 @@ function instInferenceTable(data, e) {
     n_ready: rows.filter(x => x.available).length, n_total: rows.length,
     model: (payload.model && payload.model.name) || null,
     formula: (payload.model && payload.model.formula) || null,
-    item_dim_corr_kind: p.item_dim_corr_kind || null,
+    item_dim_corr_kind: p.item_dim_corr_kind || payload.item_dim_corr_kind || null,
     ceiling_ratio: p.ceiling_ratio == null ? null : p.ceiling_ratio,
     ceiling_ratio_source: p.ceiling_ratio_source || null,
+    ceiling_note: payload.ceiling_note || "",
+    ceiling_cross_note: payload.ceiling_cross_note || "",
+    n_dims_payload: payload.n_dims == null ? null : payload.n_dims,
     layer_note: pred.layer_note || "", hard_rule: (payload.model && payload.model.hard_rule) || ""};
 }
 
@@ -1343,13 +1368,20 @@ function instReport(data, e) {
       ? (nAns === 0 ? "unanswered" : (full ? "complete" : "partial"))
       : ((nAns === 0) ? "unanswered"
         : ((b && b.allowed && b.available) ? "estimated" : "insufficient"));
-    const est = state === "estimated" ? b.estimate : null;
+    const est = (state === "estimated" && !full) ? b.estimate : null;
     const rAll = (b && b.allowed) ? b.confidence_r : null;
+    /* task-41：**答满的维度没有「估计」**——分数是实测的，位置也是实测的。
+       「估计分 / 估计位置 / 置信度 r」这三个概念只对**未答满**的维度成立。
+       答满时那个 r 的真正含义是「**维度信度上限**」（`dim_ceiling_cross`），
+       必须改名展示，并写明「这不是你这次得分的置信度」。 */
+    const ceilingR = full
+      ? ((b && b.ceiling_cross != null) ? b.ceiling_cross : rAll)
+      : null;
     /* 实测位置：**只有答满才有**（否则 null，且写明原因） */
     const nd = (full && hasNorms) ? instPercentileDetail(data, r.name, r.value, REQ_CELL) : null;
     if (full && hasNorms && !nd) missingNormEntries.push(r.name);
-    /* 估计位置：按估计分查常模（性质完全不同，导出里单独一列 + 标注） */
-    const ndEst = (state === "estimated" && hasNorms)
+    /* 估计位置：按估计分查常模（只对**未答满**的维度成立） */
+    const ndEst = (state === "estimated" && !full && hasNorms)
       ? instPercentileDetail(data, r.name, est, REQ_CELL) : null;
     /* Phase 2：L2 的官方 raw→T **查表**（只查表；未答满/超范围一律不给） */
     const tsc = (data.criteria && data.criteria.tscore_table)
@@ -1416,14 +1448,21 @@ function instReport(data, e) {
         : (!full
           ? `未答满（${nAns}/${r.n_items}）：**不用部分作答的原始分查常模**（部分均值 ≠ 完整维度得分），所以不给实测百分位/T/z`
           : (hasNorms ? "该维度在这套常模里没有对应条目（**已单独报告 Lead**）" : "本量表没有可用常模")),
-      /* 估计位置（按估计分） */
+      /* 估计位置（按估计分）：**只对未答满的维度成立**（答满时 ndEst 必为 null） */
       est_pctl: ndEst ? ndEst.pctl : null,
       est_T: ndEst && ndEst.T != null ? ndEst.T : null,
       est_z: ndEst && ndEst.z != null ? ndEst.z
         : (ndEst && ndEst.T != null ? Math.round((ndEst.T - 50) / 10 * 100) / 100 : null),
       est_note: ndEst
-        ? `按**估计分**（${(+est).toFixed(2)}）算出的位置：基于已答 ${nAns}/${r.n_items} 题、置信度 r=${rAll == null ? "—" : (+rAll).toFixed(4)}——**不是实测位置**`
+        ? `按**估计分**（${(+est).toFixed(2)}）算出的位置：基于已答 ${nAns}/${r.n_items} 题、`
+          + `置信度 r=${rAll == null ? "—" : (+rAll).toFixed(4)}——**不是实测位置**，`
+          + `**不等于你答满时会得到的分数**`
         : "",
+      /* task-41：「该维度是否答满」的三个显式标记 + 信度上限 */
+      complete: full,
+      est_applicable: ndEst != null || (est != null),
+      ceiling_r: ceilingR,
+      ceiling_cross_note: (infer && full) ? (infer.ceiling_cross_note || "") : "",
       cell: nd ? (nd.cell || "") : (ndEst ? (ndEst.cell || "") : ""),
       cell_is_default: (nd || ndEst) ? !!(nd || ndEst).cell_is_default : false,
       cell_fallback: (nd || ndEst) ? !!(nd || ndEst).cell_fallback : false,
@@ -1638,6 +1677,9 @@ function instReport(data, e) {
 function instExportMD(data, e) {
   const R = instReport(data, e);
   const fmt = (v, d) => (v == null || v === "" ? "—" : (typeof v === "number" ? (+v).toFixed(d) : v));
+  /* task-41：全答满 / 有未答满 —— 决定「估计」那一套列与文案是否出现（函数级，两处都用） */
+  const allComplete = R.score_rows.length > 0 && R.score_rows.every(r => r.complete);
+  const anyIncomplete = R.score_rows.some(r => !r.complete);
   const rf = R.response_format || {};
   let md = `# ${R.display_name}\n\n`;
   md += `- 量表代码：\`${R.code}\`\n`;
@@ -1762,31 +1804,61 @@ function instExportMD(data, e) {
     }
   }
 
-  /* ── 得分总表（常模量表；答题进行中则是「估计表」） ── */
+  /* ── 得分总表（常模量表；答题进行中则是「估计表」） ──
+     ⚠️ task-41：**按「是否答满」分叉**，不要把「实测」和「估计」混在同一套列里。
+     全答满时：不出现「估计分 / 置信度 r / 估计位置」这三列（它们对答满的维度不成立），
+     分数列叫「实测得分」，r 改叫「维度信度上限」并写明它不是得分置信度。 */
   if (R.score_rows.length) {
+    const rowsN = R.score_rows.length;
     md += S.instResult ? `## 得分总表\n\n` : `## 各维度的目前估计（答题进行中，尚未出结果）\n\n`;
-    md += "| 维度 | 原始分 | 已答/题数 | 估计分 | 置信度 r | 实测百分位 | 实测 T 分 | SE | 实测 z 分 | 距均值(SD) | ±1SD 区间 | T 分来源 | 估计位置（按估计分） | 口径 |\n";
-    md += "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n";
+    const COMPLETE_ONLY_NOTE = "不适用：已答满";
+    const head = ["维度", "原始分", "已答/题数", "实测得分"];
+    /* ⚠️ task-41（Lead 口径）：**答满的维度不逐行显示 r**。
+       r 对答满的人来说对所有人都一样（它是问卷的性质，不是这个人的性质），
+       逐行摆在每个维度旁边必然被读成「我这个维度的分不可靠」——那正是用户这次的误读机制。
+       所以：全答满 → 整个 r 列不出现；有未答满 → 该列只对未答满的行有值。 */
+    if (anyIncomplete) head.push("估计分", "置信度 r（仅未答满时）");
+    head.push("实测百分位", "实测 T 分", "SE", "实测 z 分", "距均值(SD)", "±1SD 区间", "T 分来源");
+    if (anyIncomplete) head.push("估计位置（按估计分）");
+    head.push("口径");
+    md += "| " + head.join(" | ") + " |\n";
+    md += "|" + head.map(() => "---").join("|") + "|\n";
     for (const r of R.score_rows) {
       const sdTxt = (r.sd_lo != null && r.sd_hi != null) ? `[${r.sd_lo}, ${r.sd_hi}]` : "—";
       const estPos = (r.est_pctl != null || r.est_T != null)
         ? `${r.est_pctl == null ? "—" : r.est_pctl + "%ile"}`
           + ` / T ${fmt(r.est_T, 1)} / z ${fmt(r.est_z, 2)}`
         : "—";
-      md += `| ${r.name} | ${fmt(r.value, 2)} | ${r.n_answered}/${r.n_items}`
-        + ` | ${fmt(r.estimate, 2)} | ${fmt(r.confidence_r, 4)}`
-        + ` | ${r.pctl == null ? "—" : r.pctl + "%ile"}`
-        + ` | ${fmt(r.T, 1)} | ${fmt(r.SE, 1)} | ${fmt(r.z, 2)} | ${fmt(r.sd_from_mean, 2)}`
-        + ` | ${sdTxt} | ${r.T_source || "—"}`
-        + ` | ${estPos} | ${r.aggregation} |\n`;
+      const cells = [r.name, fmt(r.value, 2), `${r.n_answered}/${r.n_items}`,
+        r.complete ? fmt(r.value, 2) : "—"];
+      if (anyIncomplete) {
+        cells.push(r.complete ? COMPLETE_ONLY_NOTE : (r.estimate == null ? "—" : fmt(r.estimate, 2)));
+        cells.push(r.complete ? COMPLETE_ONLY_NOTE : fmt(r.confidence_r, 4));
+      }
+      cells.push(r.pctl == null ? "—" : r.pctl + "%ile",
+        fmt(r.T, 1), fmt(r.SE, 1), fmt(r.z, 2), fmt(r.sd_from_mean, 2),
+        sdTxt, r.T_source || "—");
+      if (anyIncomplete) cells.push(r.complete ? COMPLETE_ONLY_NOTE : estPos);
+      cells.push(r.aggregation);
+      md += `| ${cells.join(" | ")} |\n`;
     }
-    md += `\n- **实测百分位/T 分/z 分**：只用**答满**该维度的原始分查常模`
+    md += `\n- **「实测得分」与「估计分」是两件事**：答满的维度给**实测分**`
+      + `（${allComplete ? "本次报告全部答满，所以只有实测得分" : "上表里答满的行"}）；`
+      + `只有**未答满**的维度才有「估计分」与「置信度 r」。\n`;
+    md += `- **已答满的维度不存在「置信度」**：分数是实测值，没有估计误差；`
+      + `「这套题能把这个特质辨到什么程度」是**问卷的性质**，不逐维度列出，`
+      + `统一写在下面的「估计与置信度口径」一节。\n`;
+    md += `- **实测百分位/T 分/z 分**：只用**答满**该维度的原始分查常模`
       + `（部分作答的均值 ≠ 完整维度得分，两者不可比，因此**不用部分分查表**）。\n`;
     md += `- **L2 的 T 分是「查表值」**：来自官方 raw→T 转换表（` + "`criteria.tscore_table.rows`"
       + `），**不做内插、不做外推**；SE 也来自同一张表。`
       + `\`z\`/\`距均值(SD)\` 是**由 T 换算**（(T−50)/10），与「查表得到的 T」性质不同。\n`;
-    md += `- **估计位置（按估计分）**：用该维度的**估计分**代入常模算出，`
-      + `性质与实测位置不同（基于已答 k 题、带置信度 r），逐维度细则里写明了说明。\n\n`;
+    if (anyIncomplete) {
+      md += `- **估计位置（按估计分）**：只对**未答满**的维度给出：用该维度的**估计分**代入常模算出。`
+        + `它**不等于你答满时会得到的分数**，性质与实测位置不同（基于已答 k 题、带置信度 r），`
+        + `逐维度细则里写明了说明。\n`;
+    }
+    md += `\n`;
     if (!R.norm_notes.has_norms) {
       const hasT = R.score_rows.some(r => r.T != null) || (R.judgment && R.judgment.tscore
         && R.judgment.tscore.found);
@@ -1803,11 +1875,18 @@ function instExportMD(data, e) {
       md += `- 原始分：${fmt(r.value, 2)}（${r.n_answered}/${r.n_items} 题已答`
         + `${r.complete ? "，已答满" : "，**未答满**"}）；计分口径：${r.aggregation || "—"}`
         + `；含反向计分题 ${r.reverse_items} 道（反向题在统计时已折算）\n`;
-      /* 估计分：按真实原因分三种情况写（绝不把「未答」当兜底语） */
-      if (r.estimate != null) {
+      /* task-41：**按「是否答满」分叉**。
+         答满 → 只有实测分（不存在估计），r 改名「维度信度上限」并写明它不是得分置信度。
+         未答满 → 保留「估计分 + 置信度 r」，措辞用「**不等于你答满时会得到的分数**」。 */
+      if (r.complete) {
+        md += `- **实测得分：${fmt(r.value, 2)}**（${r.n_answered}/${r.n_items} 题已答满）`
+          + `——这是**已经测出来的分**，不是估计，不存在估计误差。\n`;
+        /* ⚠️ 答满时**不逐行显示那个 r**（Lead 口径）：它是问卷的固有上限，
+           对所有人都一样，摆在每个维度旁边只会被读成「我这维的分不可靠」。 */
+      } else if (r.estimate != null) {
         md += `- 估计分：**${fmt(r.estimate, 2)}**；置信度 r：${fmt(r.confidence_r, 4)}`
           + `——估计按「本维度已答 ${r.n_answered} 题」的作答向量计算，`
-          + `**不等于答满时的真实得分**\n`;
+          + `**不等于你答满时会得到的分数**\n`;
       } else {
         md += `- 估计分：—；置信度 r：${r.confidence_r == null ? "—" : fmt(r.confidence_r, 4)}`
           + `${r.state === "insufficient" ? `（已答 ${r.n_answered}/${r.n_items} 题，`
@@ -1896,14 +1975,18 @@ function instExportMD(data, e) {
       }
       md += "\n";
     }
-    /* 「答了但信息量不足」：**与「一题未答」分开写**（缺陷 1 的根因） */
-    const notEnough = R.score_rows.filter(r => r.state === "insufficient");
+    /* 「答了但**未答满**、信息量不足」：**与「一题未答」「已答满」都分开写**。
+       ⚠️ task-41：判据必须排除**已答满**的维度——领域分（23/23 等）已经答满、
+       实测位置也给了，却曾被列进这张表，标题与内容直接矛盾。 */
+    const notEnough = R.score_rows.filter(r => r.state === "insufficient" && !r.complete);
     if (notEnough.length) {
-      md += `## 已作答但信息量不足（暂不给估计与位置）\n\n`;
+      md += `## 已作答但**未答满**、信息量不足（暂不给估计与位置）\n\n`;
+      md += `（判据：这一维**还没答满**，且当前作答组合的置信度未达展示门槛；`
+        + `**已答满的维度不在此列**——它们给的是实测分与实测位置。）\n\n`;
       md += `| 维度 | 已答/题数 | 置信度 r | 说明 |\n|---|---|---|---|\n`;
       for (const r of notEnough) {
         md += `| ${r.name} | ${r.n_answered}/${r.n_items} | ${fmt(r.confidence_r, 4)} | `
-          + `已答题，但置信度未达展示门槛（\`conf_r ≥ dim_ceiling × ceiling_ratio\`），`
+          + `已答题但未答满，且置信度未达展示门槛（\`conf_r ≥ dim_ceiling × ceiling_ratio\`），`
           + `因此不给估计与位置——**这不是「未答」** |\n`;
       }
       md += "\n";
@@ -1927,20 +2010,52 @@ function instExportMD(data, e) {
         + `${R.missing_norm_entries.join("、")}。（这属于「常模覆盖缺口」，不是部分作答问题。）\n\n`;
     }
     if (R.infer) {
+      /* 维度计数：**必须与表格行数自洽**（task-41）——面向（有推断模型）+ 领域，
+         答满 / 未答满分开数，别再出现「25 个维度」后面跟着 5 行"未达门槛"的表。 */
+      const nRows = R.score_rows.length;
+      const nFacet = R.infer.rows.length;
+      const nDomain = Math.max(0, nRows - nFacet);
+      const nComplete = R.score_rows.filter(r => r.complete).length;
+      const nIncomplete = nRows - nComplete;
+      const nIncompleteEst = R.score_rows.filter(r => !r.complete && r.estimate != null).length;
+      const nIncompleteBlocked = nIncomplete - nIncompleteEst;
       md += `## 估计与置信度口径\n\n`;
       md += `- 估计分来自 \`ui/lib/inference.js\`（唯一推断实现）：以「已答的题目＋作答值」为条件`
-        + `的线性预测${R.infer.model ? `（模型：\`${R.infer.model}\`）` : ""}。\n`;
-      md += `- 置信度 \`r\`（\`conf_r\`）口径：${R.infer.item_dim_corr_kind || "—"}`
-        + `；展示门槛：\`conf_r ≥ dim_ceiling × ceiling_ratio\``
-        + `${R.infer.ceiling_ratio != null ? `（ceiling_ratio=${R.infer.ceiling_ratio}）` : ""}`
-        + `${R.infer.ceiling_ratio_source ? `；来源：${R.infer.ceiling_ratio_source}` : ""}\n`;
-      md += `- **硬规则**：本维度一道题都没答 → 不出估计、不出置信度`
-        + `${R.infer.hard_rule ? `（硬规则标记：\`${R.infer.hard_rule}\`）` : ""}。\n`;
-      md += `- 本次共 ${R.infer.n_total} 个可估计维度：可给估计 ${R.infer.n_ready} 个、`
-        + `已达可展示门槛 ${R.infer.n_allowed} 个。\n`;
+        + `的线性预测${R.infer.model ? `（模型：\`${R.infer.model}\`）` : ""}。`
+        + `**只有未答满的维度才有估计分**；答满的维度给的是实测分。\n`;
+      /* ⚠️ 这一句是 **confidence-judge 定稿**（照抄，不改写成更技术的说法） */
+      md += `- **\`r\` 的口径**：${CONF_R_DEF_TEXT}\n`;
+      /* 本量表的实际可辨上限区间：优先用本次导出里**已答满**面向的 r 现算
+         （答满时 r == 该特质的可辨上限，逐位相同，Lead + confidence-judge 已核）；
+         抽样不足以定范围时退回 judge 给的经验区间。 */
+      const ceilVals = R.score_rows.filter(r => r.complete && r.ceiling_r != null)
+        .map(r => r.ceiling_r);
+      const ceilTxt = ceilVals.length >= 5
+        ? `${Math.min(...ceilVals).toFixed(2)}–${Math.max(...ceilVals).toFixed(2)}`
+          + `（${ceilVals.length} 个面向，按本次导出实测）`
+        : CONF_R_CEILING_RANGE_FALLBACK;
+      md += `- 本量表**各特质的可辨上限**：${ceilTxt}。它**对所有人都一样**——`
+        + `同一套题、同样的已答集合，不管你把题答成 0 还是 3，这个 r 都不变；`
+        + `它是**这张问卷的性质**，不是**你这个人的性质**。\n`;
+      md += `- 给估计与位置的门槛（**只对未答满的维度生效**）：只答了一部分时，`
+        + `要求 r 达到该特质**可辨上限的九成**才给估计与位置；未达标就只给能给的实测位置。\n`;
+      md += `- **硬规则**：本维度一道题都没答 → 不出估计、不出置信度。\n`;
+      md += `- **维度计数（与上面的表逐行对得上）**：本次报告共 **${nRows}** 个维度`
+        + `（${nFacet} 个面向 + ${nDomain} 个领域）；其中**已答满 ${nComplete} 个**`
+        + `（直接给实测分与实测位置，**不需要估计、也不逐行列置信度**）、`
+        + `**未答满 ${nIncomplete} 个**`
+        + `（其中给估计 ${nIncompleteEst} 个、因未达门槛不给估计 ${nIncompleteBlocked} 个）。\n`;
+      if (R.infer.n_total && R.infer.n_total !== nFacet) {
+        md += `- 推断模型覆盖 ${nFacet} 个面向（领域分不做推断）：可给估计 `
+          + `${R.infer.n_ready}/${nFacet}、已达可展示门槛 ${R.infer.n_allowed}/${nFacet}。\n`;
+      }
       if (R.infer.layer_note) md += `- 分层口径：${String(R.infer.layer_note).replace(/\*\*/g, "")}\n`;
-      md += `\n**声明**：估计分**不是已经测出来的得分**，只是以已答信息为条件的最优猜测；`
-        + `答满后请以原始分为准。\n\n`;
+      md += allComplete
+        ? `\n**声明**：本次报告**所有维度都已答满**，给出的都是**实测分**（不是估计），`
+          + `不存在估计误差；上面那个 r 是**这套题对各项特质的可辨上限**，`
+          + `**不是**你这次得分的可信程度。\n\n`
+        : `\n**声明**：估计分**不是已经测出来的得分**，只是以已答信息为条件的最优猜测，`
+          + `**不等于你答满时会得到的分数**；答满的维度一律以实测分为准。\n\n`;
     }
   }
 
@@ -1979,8 +2094,11 @@ function instExportMD(data, e) {
         + `若像旧版本那样恒定使用第一层 \`f [18,35)\`，相对真实分层**最大偏差约 `
         + `${S2.first_cell_max_dev_pp} 个百分点**（例：${S2.first_cell_example}）——`
         + `同一份作答可能被读成「偏低」或「明显偏高」，结论会反过来。\n`;
-      md += `- 如需按本人性别×年龄校正，需要先由使用者提供这两项信息；`
-        + `本工具当前**不采集**，也不做近似替代。\n`;
+      /* task-41：删掉「本工具当前**不采集**」——性别年龄输入已上线（task-39），
+         那句话与上面的「本次实际使用的分层 = 你填写的」直接冲突。 */
+      md += `- 分层参数：可在 PID-5 的作答页/结果页选择**性别与年龄**（**可选、只存本机、`
+        + `可随时清除**；不填则用数据源的总体层）。本次实际使用的分层见上：`
+        + `\`${ST.used || "overall"}\`。\n`;
     }
     if (R.norm_notes.scale_range) md += `- 量表分数范围：${JSON.stringify(R.norm_notes.scale_range)}\n`;
     if (R.norm_notes.reverse_transform) md += `- 反向计分折算：${JSON.stringify(R.norm_notes.reverse_transform)}\n`;
@@ -2024,7 +2142,9 @@ function instExportMD(data, e) {
 function instExportResultCSV(data, e) {
   if (!S.instResult) return;
   const R = instReport(data, e);
-  const head = ["维度", "状态", "原始分", "估计分", "置信度r", "估计说明",
+  /* ⚠️ task-41：`估计分`/`置信度r` **只对未答满的维度有效**（答满的行留空，
+     它们给的是**实测分**）；答满时那个 r 的真名是「维度信度上限」（单独一列）。 */
+  const head = ["维度", "状态", "原始分", "估计分", "置信度r", "维度信度上限", "估计说明",
     "实测百分位", "实测百分位95下限", "实测百分位95上限",
     "实测T分", "实测T分95下限", "实测T分95上限", "SE", "T分来源", "T分不可用原因", "T分带", "分带来源", "转换表", "转换表来源",
     "实测z分", "z分来源", "常模均值", "常模标准差", "距均值SD数",
@@ -2044,13 +2164,20 @@ function instExportResultCSV(data, e) {
     const set = (k, v) => { a[idx(k)] = (v == null ? "" : v); };
     set("维度", r.name);
     set("状态", r.state === "unanswered" ? "未答（一题未答）"
-      : (r.state === "insufficient" ? "已答但信息量不足"
-        : (r.state === "estimated" ? "有估计（按估计分给位置）"
-          : (r.state === "partial" ? "已答但未答满" : "已答满"))));
+      : (r.complete ? "已答满（实测分）"
+        : (r.state === "insufficient" ? "已答但未答满、信息量不足"
+          : (r.state === "estimated" ? "未答满（按估计分给位置）"
+            : "已答但未答满"))));
     set("原始分", r.value == null ? "" : r.value);
-    set("估计分", r.estimate == null ? "" : r.estimate);
-    set("置信度r", r.confidence_r == null ? "" : r.confidence_r);
-    set("估计说明", r.estimate_note);
+    /* 答满的维度：估计分/置信度r **留空**（不存在估计）；它的 r 进「维度信度上限」列 */
+    set("估计分", (!r.complete && r.estimate != null) ? r.estimate : "");
+    set("置信度r", (!r.complete && r.confidence_r != null) ? r.confidence_r : "");
+    set("维度信度上限", r.complete && r.ceiling_r != null
+      ? Math.round(r.ceiling_r * 10000) / 10000 : "");
+    set("估计说明", r.complete
+      ? "已答满：这一行的分数是**实测分**，不存在估计（估计分/置信度 r 不适用）；"
+        + "「维度信度上限」是题目分辨能力上限，不是得分置信度"
+      : r.estimate_note);
     set("实测百分位", r.pctl == null ? "" : r.pctl);
     set("实测百分位95下限", r.pctl_lo == null ? "" : r.pctl_lo);
     set("实测百分位95上限", r.pctl_hi == null ? "" : r.pctl_hi);

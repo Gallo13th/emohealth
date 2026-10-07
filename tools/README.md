@@ -245,11 +245,12 @@
 >    所以 C3 报 0 违例**不等于**这一层真的干净。目标形态：改读 `data/**` 的中译来源。
 
 
-### 3.3 `tools/analyze/`　数据层（统计与表格再组织）（15）
+### 3.3 `tools/analyze/`　数据层（统计与表格再组织）（16）
 
 | 脚本 | 职责 | 输入 | 输出 |
 |---|---|---|---|
 | `analyze_block_and_network.py` | 「按维度分块解锁」是否成立：某维度答 R×6 题时与完整分相关 | `archive/…/validity/ipip20993.dat`、`data/ipip-neo-300.json`、`data/tier-ladder.json` | `data/network-edges.json` |
+| `analyze_conf_r_semantics.py` | **`conf_r` 语义复核**（读实现 + 跑数字，不靠字段名推断含义）：验证「整卷答满时 `conf_r` == 数据里的 `dim_ceiling_cross`」「只答本维度全部题时 == `dim_ceiling`」（25 维，最大差 ~5e-05，即 4 位小数舍入）、`conf_r` **只看答了哪些题、不看作答值**（全 0 vs 全 3 差 0）、`dim_ceiling_cross < 1` 恒成立，并用合成单因子模型演示 `√(bᵀΣ⁻¹b)` 只在「题目无独特方差」时趋近 1；口径定义（可直接写进导出报告的那几句）见 `research/conf_r_definition.md` | `data/inference/pid-5.json`、`engine/inference.py` | stdout（A–G 七节证据） |
 | `analyze_correlation_network.py` | 相关性网络：一道题能细化哪些分值（三张表） | `archive/…/validity/ipip20993.dat`、`data/ipip-neo-300.json` | `data/correlation-network.json` |
 | `analyze_decision_paths.py` | 决策树能否定义「解锁路径」（节点级连接、按已回答组合解锁反馈） | `archive/…/validity/ipip20993.dat`、`data/ipip-neo-300.json` | `data/decision-paths.json` |
 | `analyze_partial_administration.py` | 部分施测精度：只答 k 题时估计与完整 10 题分的相关 | `archive/…/validity/ipip20993.dat`、`data/ipip-neo-300.json` | `data/partial-administration.json` |
