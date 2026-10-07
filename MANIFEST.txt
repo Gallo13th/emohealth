@@ -1,5 +1,5 @@
 # EmoHealth 打包清单
-# 生成时间 2026-10-07T21:38:11
+# 生成时间 2026-10-07T22:24:09
 # 文件总数 2544（核心 528，档案 2016）
 # 总大小 736.6 MB
 #
@@ -398,7 +398,7 @@
      13526  tools/check/test_scoring.py
      10301  tools/check/test_tree_mode.js
      22613  tools/check/test_tree_unlock.js
-     47329  tools/check/test_user_visible_copy.js
+     47728  tools/check/test_user_visible_copy.js
      46203  tools/check/validate_inference_holdout.py
      13380  tools/check/validate_records.py
       8459  tools/check/validate_tier_design.py

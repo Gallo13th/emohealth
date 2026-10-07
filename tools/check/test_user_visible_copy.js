@@ -1,4 +1,4 @@
-﻿// 用户端产品化（D118 / task-20）：**默认视野**里不该有开发者/审阅者向的内容。
+// 用户端产品化（D118 / task-20）：**默认视野**里不该有开发者/审阅者向的内容。
 // （文件名按 Lead 2026-10-05 裁决⑥由 `test_user_facing_ux.js` 改成这个：它测的是
 //   「可见文案」，UX 是更宽的东西。）
 //
@@ -103,6 +103,11 @@ const VIS = `(() => {
   const a = await send('Target.attachToTarget', {targetId: t.result.targetId, flatten: true});
   const S = (m, p) => send(m, p, a.result.sessionId);
   await S('Page.enable'); await S('Runtime.enable');
+  /* ⚠️ ⑩ 段会调 `instExportCSV/instExportJSON`（内部走 `download()`）——先把下载行为设成
+     「允许但不弹窗」，否则 headless 下的下载会挂住这一页（实测卡了 15 分钟）。 */
+  const dlDir = fs.mkdtempSync(path.join(os.tmpdir(), 'uxdl-'));
+  await S('Browser.setDownloadBehavior',
+    {behavior: 'allow', downloadPath: dlDir, eventsEnabled: true});
   const ev = async x => {
     const r = await S('Runtime.evaluate',
       {expression: x, returnByValue: true, awaitPromise: true});
