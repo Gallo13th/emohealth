@@ -350,7 +350,7 @@ b8cc8903688c1400be308ccb80525f09e9a613636078e9382c47d1e092ab6ff3  ./tools/check/
 b57765fc585795b4ca53264519f9d16de0f2cac36a40ea2c7b37e3fba7e8ce22  ./tools/check/check_test_targets.py
 db13725a4e55835b09ae363ac5ec71f755dcb098eaeca23b8eeb19b7b37c8576  ./tools/check/check_text_db.py
 7a6637c97a874097e1760885a187b5a853f4a09be4e6e7ee8f8d51e5b78e6064  ./tools/check/check_time_window.py
-25313a466455d686a81af3e70c48a7b82a13bd7afca1df1de7b167d9d241468e  ./tools/check/check_tree_geometry.py
+e4b4c9f731f5a9242d6f9b6effa9fd04564962768d4a6a8ee243f68a6c973888  ./tools/check/check_tree_geometry.py
 8f3eed98e6b4f036268d0cc076b1d11fa0a605bc31d3f7d6acfa3442d463e0e9  ./tools/check/curve_corrected_vs_inflated.py
 a254f44af5c2563c4fd9c28819aa6d99fd75729d146ce17cd022b50c8cc4e95a  ./tools/check/diagnose_ipip_recoding.py
 3a3cbbaf4cf8f33ea4f0fc9bee1957c7f287ab35b844f4017071ce6313a31a7c  ./tools/check/diagnose_itemfacetr.py
@@ -374,12 +374,12 @@ e87e1ba78ebe3db4e88f893edb0c2fe6c9eecf5da313372f3816001d084ba6cb  ./tools/check/
 687bc5b23e86951100de7609b858f765daca1e0017fdbc593052238ddada7e09  ./tools/check/test_inference_engine.py
 e5fac4e1f0e1c6f5f76107d0d5272748afe5b6704362b3bf614d626f47692840  ./tools/check/test_inference_pyjs_consistency.py
 00ec9a9372290d1032b87ee9cbed21802904267bd45de3d068abac28a584ef46  ./tools/check/test_item_coding.py
-4f8adbfb665b4cd6c8009b728e94405cfa006eb234cf5920592caa25a5a6a1af  ./tools/check/test_item_fields_inference_ui.js
+94b0122b6b3aa90930e1b50dcbcf0bf687ed72e27cc45a4f6795e6d9c4b85fff  ./tools/check/test_item_fields_inference_ui.js
 2e33ccda8878776cec1d417700c95e284a1870bcea81d03eda4fdee3adb86593  ./tools/check/test_l1_instrument.py
 0f7c64fcd2cf38c623502d8315e657afa0ff10bc7c1135efedee98c321201481  ./tools/check/test_l1_threshold_ui.js
 e9ad11ec47ce7cd6d8196a45286567289e38e253d67095a38d2e09798dbee3a9  ./tools/check/test_l2_criteria_ui.js
 ce5dd2a4edab0986205ec2f32ac26fe122859b8adb8142d98c99f8b73a917435  ./tools/check/test_local_file.js
-ab576e5f66dc715a9d15726ace6b7ff6b29ae2a1ae01dffb219274f0f5bf6c96  ./tools/check/test_mania_options_ui.js
+29a4de81df31fb07a77b9b5d4afd060af51f828314bc7a4280cd100422277d2d  ./tools/check/test_mania_options_ui.js
 b911ea11f128ff0188db373eec615d5dc19423b3f2c853d9b01ec013ded0f4ce  ./tools/check/test_multiscale_fetch.js
 28fba092f4ce6dc5424047249b60de72c115ac28b97e97edf45ada9ef2344fdc  ./tools/check/test_pid5_instrument.py
 11c79830a98e7ec176aec0ecd744078635a7e12b17d3b1dfeaf5ba6834f097a3  ./tools/check/test_pid5_norms_ui.js
@@ -389,9 +389,9 @@ fc02286d3f73249d1fb2444b98818b69209a07aebc800d83131c2fa4df7d0527  ./tools/check/
 e719662d0d07f1fced94e1ed9787656c6b73b8695f913fd313a924198ec571b2  ./tools/check/test_scene_sourcing_fuzzy.py
 2a8da3bf16fa30759374fdf34233065b2841bac8619c5e0141c2519139480dca  ./tools/check/test_schema_roundtrip.py
 ad6794cb53da14cf8905580b4ba728e9ad1d6c86b0e8af82555500116a2612e9  ./tools/check/test_scoring.py
-dada79b9afb74ea175f2840066f88f147286d86400101cff2908853371cd88b5  ./tools/check/test_tree_mode.js
-d4f6ebbf24ce602d04936bd566f566a4391068c3f4fef2c1583af266c8f01e4b  ./tools/check/test_tree_unlock.js
-699317ad457e6f182004153e64cd3335340d6309b73a335d2df21f392aa0bc4c  ./tools/check/test_user_visible_copy.js
+029922852db410f20be629511f2fb95043bfbce89c3b3b21ce6799470d24b280  ./tools/check/test_tree_mode.js
+f385aaf58372972dded3bd39ef199e358ca0c645070fb6ea70ec56216c8dafb6  ./tools/check/test_tree_unlock.js
+0fd48b210d681e808de1483db9620f51716a85f46e3f5599a20bc635fe56cf4b  ./tools/check/test_user_visible_copy.js
 df2da7c98bdf7b41b0d16c83ca5a9e702fafbfc4431b351edd187bcadf5f7024  ./tools/check/validate_inference_holdout.py
 a500f8e7a015d40f0be411c38b702f3145dcb12fdb4516e2acbb2d5379a4cf32  ./tools/check/validate_records.py
 8540b3d8308a2d57f0520f6c761f5bfb4c5ae742d5da58dd9f52f609cb410913  ./tools/check/validate_tier_design.py
@@ -478,7 +478,7 @@ b5944f3750607b87cefcfbd76379653cecc3730a2dcc26ca6786e9bbc47c9b52  ./tools/ui/bui
 b8d3e67ce32dca357d2e8c75c3a91b7554a8d87b015b9eaa33a0533254bb6c8c  ./tools/ui/build_ui_instruments.py
 90aaab6095ab2fd2d8952a60837d4877957200eaa3d34ebc18a847ac0ead1aa2  ./tools/ui/dev_check_render.js
 92c1045ad42d1538413e119fc2eb6f7f5d45d058eb9a183ecbcd7a5e36cf784d  ./tools/ui/dev_probe.js
-d893440554bafb6b64db56f595973b9c03666d02cb142ac869873af9ac3a46c3  ./tools/ui/pack_ui_data.py
+cd765f4c536bcf7529ab37d06247d95c170b3152fbed3ab84be5b8c8dd2653bd  ./tools/ui/pack_ui_data.py
 55e4aca6b92c7c4f15481a08deaa7df17645891d3656591adb50d26c7a323ff5  ./tools/ui/serve_dist.js
 5a904e5411ef5865a960a82198521dde2571ba2146fb99aefa3b74141d7afece  ./tools/ui/serve_local.js
 4aa3de83255c54f49abe38d3c635c12614bf330940d7bc49dfed01f0c5da6835  ./tools/ui/shoot_mania.js
@@ -492,7 +492,7 @@ e0cc8f4472fb7edf5f5a6989e6757ef1cc279cb79ed3fa922c2ae30cca4267cc  ./ui/README.md
 e71de36b2e832becdac186d4ba1cfa23d945429a4ea680ee27f9b5452a37587c  ./ui/adaptive-data.js
 e788365c1cf5e4749f122bc48eae98b853cdbca8afd95a0cf24048391e84996b  ./ui/catalog.js
 fa5719ee5bbbb1f80123b3ba8d4aaf4d28aca49c4eb3c472857922bdf9277b99  ./ui/emohealth-data.js
-376e0155aaca5e802a5fbdab64d4ae41dac7abc25967c8e56a12d3fbb95811e5  ./ui/index.html
+6c2463c4eda1876fea2c47077ea3968c5a233fca4ce1f5faf9dd72ac054da5e4  ./ui/index.html
 a335993f90ee402f269f4bec138b59323f3e2721047558d036cf772ffaec84c0  ./ui/inference.js
 50c65bc4907bb4ee9f53d6e6c3c318477b6816a993be5cbb1dc3b48fed2db441  ./ui/inference/ipip-neo.js
 17d91caae64bc02d664502123d665b53dbea8e869147891d8d78a77add0a03bb  ./ui/inference/pid-5.js
@@ -525,6 +525,6 @@ c9c3a43a4689f386ab54109d068489ece8d83c011ed20c5666b04d07a8874054  ./ui/items-str
 bef6e54d3d2dd0df45a0f72368eb7196b2c36afba07eab4338ce541f1e47d178  ./ui/net-layout.js
 72ec92cf3bccf0b82a0f09cca82c484ed99f9f1aba0764cd62e78cf5ff3476b8  ./ui/tier-data.js
 a815dcaa92d96cf6b3df0146255d5dea668e2eaab58bc697b6cdc17bec904412  ./ui/tree-layouts/index.json
-80e9f083411663b84a07ff1f2632b8d7f66878afb30de986312bbfde6df3b764  ./ui/tree-layouts/ipip-neo.js
-9e370b695f7ef183e6c8fe3ad22ded7f2bd6f7c7f42cd77ada88dacee55b2f78  ./ui/tree-layouts/pid-5.js
+cfd1c749cb07f667ee045b04b12b1aff76fe7483aafab9c91d3a4cd4427d7e97  ./ui/tree-layouts/ipip-neo.js
+464e3da2c6d275c5dbc6cf44ed01db050a4a130eb619e82cff36a99e0036bfa3  ./ui/tree-layouts/pid-5.js
 95548f8c568f75d9828073a0384b191e73dc1577b8d28ab323ecb6d95aea981b  ./ui/unlock-data.js

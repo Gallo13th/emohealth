@@ -1,5 +1,5 @@
 # EmoHealth 打包清单
-# 生成时间 2026-10-08T00:08:08
+# 生成时间 2026-10-09T00:54:28
 # 文件总数 2546（核心 530，档案 2016）
 # 总大小 736.7 MB
 #
@@ -359,7 +359,7 @@
       2810  tools/check/check_test_targets.py
      17630  tools/check/check_text_db.py
       9956  tools/check/check_time_window.py
-      1554  tools/check/check_tree_geometry.py
+     13254  tools/check/check_tree_geometry.py
       3720  tools/check/curve_corrected_vs_inflated.py
       3716  tools/check/diagnose_ipip_recoding.py
       3451  tools/check/diagnose_itemfacetr.py
@@ -383,12 +383,12 @@
      13626  tools/check/test_inference_engine.py
      13572  tools/check/test_inference_pyjs_consistency.py
       4851  tools/check/test_item_coding.py
-     28629  tools/check/test_item_fields_inference_ui.js
+     28990  tools/check/test_item_fields_inference_ui.js
       3564  tools/check/test_l1_instrument.py
       5395  tools/check/test_l1_threshold_ui.js
       7516  tools/check/test_l2_criteria_ui.js
       7675  tools/check/test_local_file.js
-      6893  tools/check/test_mania_options_ui.js
+      7257  tools/check/test_mania_options_ui.js
      13989  tools/check/test_multiscale_fetch.js
       7089  tools/check/test_pid5_instrument.py
      15703  tools/check/test_pid5_norms_ui.js
@@ -398,9 +398,9 @@
       9936  tools/check/test_scene_sourcing_fuzzy.py
       5506  tools/check/test_schema_roundtrip.py
      13526  tools/check/test_scoring.py
-     10301  tools/check/test_tree_mode.js
-     22613  tools/check/test_tree_unlock.js
-     47728  tools/check/test_user_visible_copy.js
+     11944  tools/check/test_tree_mode.js
+     34985  tools/check/test_tree_unlock.js
+     48164  tools/check/test_user_visible_copy.js
      46203  tools/check/validate_inference_holdout.py
      13380  tools/check/validate_records.py
       8459  tools/check/validate_tier_design.py
@@ -487,7 +487,7 @@
      12561  tools/ui/build_ui_instruments.py
       6370  tools/ui/dev_check_render.js
       4926  tools/ui/dev_probe.js
-     20253  tools/ui/pack_ui_data.py
+     34256  tools/ui/pack_ui_data.py
       1849  tools/ui/serve_dist.js
       3406  tools/ui/serve_local.js
       2750  tools/ui/shoot_mania.js
@@ -501,7 +501,7 @@
     307986  ui/adaptive-data.js
       4606  ui/catalog.js
     597195  ui/emohealth-data.js
-    236584  ui/index.html
+    251770  ui/index.html
        207  ui/inference.js
     455075  ui/inference/ipip-neo.js
     303334  ui/inference/pid-5.js
@@ -534,8 +534,8 @@
      12350  ui/net-layout.js
     125002  ui/tier-data.js
        353  ui/tree-layouts/index.json
-     17252  ui/tree-layouts/ipip-neo.js
-     13010  ui/tree-layouts/pid-5.js
+     18473  ui/tree-layouts/ipip-neo.js
+     14258  ui/tree-layouts/pid-5.js
     136900  ui/unlock-data.js
 
 ## 档案（2016 个，按目录汇总）

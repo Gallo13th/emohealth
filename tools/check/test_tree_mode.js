@@ -65,10 +65,23 @@ const ck = (n, c, d = '') => {
       open: document.querySelectorAll('.treenode.open').length,
       locked: document.querySelectorAll('.treenode.locked').length,
       edges: document.querySelectorAll('.treeedge').length,
-      /* D120（task-24）：不再渲染数据层的 layout_basis 方法学长文，改成一句白话；
-         断言跟着文案改，但**仍要求如实说明这不是数据相关性图**。 */
-      hasBasis: /这张图按维度分组排布/.test(document.getElementById('stage').textContent),
-      basisIsHonest: /不是根据答题数据/.test(document.getElementById('stage').textContent),
+      /* task-43 契约变更（Lead 指出旧文案现在是**假的**）：task-42 之后环序**确实**
+         来自「题↔面向相关」（item_dim_corr 降序），所以不能再写「不是根据答题数据」。
+         新文案要把两件事分清：① 环序依据**题库自身**的题级相关（所以第 1 环 = 每方面信息量最大的题）；
+         ② 它**不是按你个人的作答**画的图。断言跟着改，并**新增**两条（环序依据 + 环数）。
+         ⚠️ 「测试绿」不等于「文案对」——这条断言就是上一轮没人改文案才留着的。 */
+      /* ⚠️ 别在这段模板字符串里写带反斜杠转义的正则：模板会把 「\/」 还原成 「/」、
+         「\d」 还原成 「d」，结果页面里变成「非法 flags」或永远匹配不上（实测踩过）。 */
+      hasBasis: document.getElementById('stage').textContent.indexOf('这张图按') >= 0
+        && document.getElementById('stage').textContent.indexOf('维度') >= 0,
+      basisOrderFromBank: /题↔面向相关/.test(document.getElementById('stage').textContent),
+      basisIsHonest: /不是按你个人的作答/.test(document.getElementById('stage').textContent),
+      basisOldClaimGone: !/不是根据答题数据/.test(document.getElementById('stage').textContent),
+      ringsShownInHead: (() => {
+        const m = document.getElementById('stage').textContent.match(/共 (\\d+) 环/);
+        return m ? +m[1] : null;
+      })(),
+      layoutRings: (TREE_NOW && TREE_NOW.rings) || null,
       hasSwitch: !!document.querySelector('[data-instmode]')
     })`);
   ck('默认视图是天赋树', st.view === 'tree', st.view);
@@ -77,7 +90,13 @@ const ck = (n, c, d = '') => {
      `可答 ${st.open} / 锁定 ${st.locked}`);
   ck('画出了支撑边', st.edges > 0, st.edges + ' 条');
   ck('标注了这张图的排布依据（白话）', st.hasBasis === true);
-  ck('如实说明「不是根据答题数据画的相关性图」', st.basisIsHonest === true);
+  ck('如实说明环序依据是「题↔面向相关」（题库自身统计）', st.basisOrderFromBank === true);
+  ck('如实说明「不是按你个人的作答画出来的相关性图」', st.basisIsHonest === true);
+  ck('旧文案「不是根据答题数据」已删除（task-42 后它是假的）',
+     st.basisOldClaimGone === true);
+  ck('页面报出的环数 = 布局数据的真实环数（不再硬编码 10）',
+     st.layoutRings === 14 && st.ringsShownInHead === st.layoutRings,
+     `页面 ${st.ringsShownInHead} 环 / 布局 ${st.layoutRings} 环`);
   ck('提供作答方式切换', st.hasSwitch === true);
 
   console.log('\n=== 答一题后解锁它的下游节点 ===');

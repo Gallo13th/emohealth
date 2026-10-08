@@ -1,4 +1,4 @@
-// Mania 每题选项组（ASRM）：必须从 **items[].options** 渲染出 5 组 × 5 句陈述。
+﻿// Mania 每题选项组（ASRM）：必须从 **items[].options** 渲染出 5 组 × 5 句陈述。
 //
 // 为什么要这条测试
 // ================
@@ -107,7 +107,11 @@ const ck = (n, c, d = '') => {
       const nodes = [...document.querySelectorAll('.treenode')];
       if (!nodes.length) return {err: 'no tree nodes'};
       // 点一个有内容的节点（跳过前几个纯结构点）
-      const n = nodes[Math.min(5, nodes.length - 1)];
+      /* task-43：不要按下标盲点——task-42 之后环序/
+         环内选谁由数据决定，第 6 个节点可能落在未解锁环上（点了不会有反应，
+         旧写法会假红）。这里改点**真的可答**的节点。 */
+      const open = [...document.querySelectorAll('.treenode.open')];
+      const n = open[Math.min(3, open.length - 1)] || nodes[Math.min(5, nodes.length - 1)];
       n.dispatchEvent(new MouseEvent('click', {bubbles: true}));
       return new Promise(res => setTimeout(() => {
         const q = document.querySelector('.treeq');

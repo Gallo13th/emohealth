@@ -413,7 +413,11 @@ const norm = s => String(s == null ? '' : s).replace(/\*\*/g, '').replace(/\s+/g
   ck('天赋树页的按需数据已就位', await waitReady('PID-5') === true);
   const tree = await ev(`(() => {
       const nodes = [...document.querySelectorAll('.treenode')];
-      const n = nodes[Math.min(5, nodes.length - 1)];
+      /* task-43：不要按下标盲点——task-42 之后环序/
+         环内选谁由数据决定，第 6 个节点可能落在未解锁环上（点了不会有反应，
+         旧写法会假红）。这里改点**真的可答**的节点。 */
+      const open = [...document.querySelectorAll('.treenode.open')];
+      const n = open[Math.min(3, open.length - 1)] || nodes[Math.min(5, nodes.length - 1)];
       n.dispatchEvent(new MouseEvent('click', {bubbles: true}));
       return new Promise(res => setTimeout(() => {
         const q = document.querySelector('.treeq');

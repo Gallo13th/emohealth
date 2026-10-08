@@ -338,8 +338,12 @@ const VIS = `(() => {
       const basis = open('[data-dev="tree-basis"]');
       const vis = ${VIS};
       return {hasBasisFold: !!document.querySelector('[data-dev="tree-basis"]'),
-        basisHasPlainLayout: !!(basis && /按维度分组排布/.test(basis)
-          && /不是根据答题数据/.test(basis)),
+        /* task-43 契约变更：task-42 之后环序**确实**来自「题↔面向相关」，
+           旧文案「不是根据答题数据」现在是**假的** → 断言改成新文案，
+           但仍要求说清「不是按你个人的作答」、且不含内部字段名。 */
+        basisHasPlainLayout: !!(basis && /按维度分组/.test(basis)
+          && /题↔面向相关/.test(basis) && /不是按你个人的作答/.test(basis)
+          && !/不是根据答题数据/.test(basis)),
         basisHasAuth: !!(basis && /授权/.test(basis)),
         basisHasInternal: !!(basis && /conf_r|ceiling|门槛|判据|calibrate|research\\//.test(basis)),
         hasRecoBasisFold: !!document.querySelector('[data-dev="reco-basis"]'),
@@ -358,7 +362,8 @@ const VIS = `(() => {
      tree.hasRecoBasisFold === false);
   ck('推荐的机器可读契约仍在（data-reco-item / data-reco-own-display）',
      tree.recoAttrsKept === true);
-  ck('图例仍是四类状态', tree.legend === 4, tree.legend + ' 项');
+  ck('图例是五类状态（含 task-43 的「新解锁（相关/互补）」）',
+     tree.legend === 5, tree.legend + ' 项');
 
   /* ══ 结果页：常模型（PID-5）与门槛/分带型（L2）分别看 ══ */
   console.log('\n=== 结果页 A：常模型（PID-5，220 题答满）===');
