@@ -1,12 +1,12 @@
 # EmoHealth 打包清单
-# 生成时间 2026-10-09T00:54:28
-# 文件总数 2546（核心 530，档案 2016）
+# 生成时间 2026-10-09T09:09:21
+# 文件总数 2547（核心 531，档案 2016）
 # 总大小 736.7 MB
 #
 # 核心文件校验：  shasum -a 256 -c MANIFEST.sha256
 # 档案校验：      python3 tools/check/verify_archive.py --root archive
 
-## 核心文件（530 个，逐字节校验）
+## 核心文件（531 个，逐字节校验）
        730  .cleanup-baseline.txt
       1159  .gitattributes
       1812  .gitignore
@@ -258,7 +258,7 @@
    1076662  research/scales/inventory.json
      94928  research/text-review-queue.json
        499  run.sh
-     89034  tools/README.md
+     90271  tools/README.md
       1318  tools/_root.js
      11590  tools/_root.py
       8465  tools/analyze/analyze_block_and_network.py
@@ -392,6 +392,7 @@
      13989  tools/check/test_multiscale_fetch.js
       7089  tools/check/test_pid5_instrument.py
      15703  tools/check/test_pid5_norms_ui.js
+     13289  tools/check/test_reverse_option_meaning.js
      58549  tools/check/test_scale_export.js
       7951  tools/check/test_scale_pages.js
       6284  tools/check/test_scene.py
@@ -501,7 +502,7 @@
     307986  ui/adaptive-data.js
       4606  ui/catalog.js
     597195  ui/emohealth-data.js
-    251770  ui/index.html
+    255387  ui/index.html
        207  ui/inference.js
     455075  ui/inference/ipip-neo.js
     303334  ui/inference/pid-5.js
